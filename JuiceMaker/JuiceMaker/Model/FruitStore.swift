@@ -8,7 +8,6 @@ import Foundation
 
 // 과일 저장소 타입
 class FruitStore {
-    
     enum Fruits {
         case starawberry, banana, pineapple, kiwi, mango
     }
@@ -33,5 +32,4 @@ class FruitStore {
             mango = amount
         }
     }
-    
 }
