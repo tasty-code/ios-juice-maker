@@ -41,5 +41,8 @@ enum Juice: String {
 
 struct JuiceMaker {
    let fruitStore = FruitStore()
-
+   
+    func makeJuice() -> Bool {
+        
+    }
 }

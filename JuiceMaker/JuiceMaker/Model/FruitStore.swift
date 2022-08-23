@@ -12,13 +12,20 @@ enum Fruit: Int {
 
 // 과일 저장소 타입
 class FruitStore {
-    var strawberry: Int = 10
-    var banana: Int = 10
-    var pineapple: Int = 10
-    var kiwi: Int = 10
-    var mango: Int = 10
+    var strawberry: Int
+    var banana: Int
+    var pineapple: Int
+    var kiwi: Int
+    var mango: Int
     
-     
+    init(_ strawberry: Int = 10, _ banana: Int = 10, _ pineapple: Int = 10, _ kiwi: Int = 10, _ mango: Int = 10) {
+        self.strawberry = strawberry
+        self.banana = banana
+        self.pineapple = pineapple
+        self.kiwi = kiwi
+        self.mango = mango
+    }
+    
     func changeAmount(fruit: Fruit, amount: Int) {
         switch fruit {
         case .strawberry:
@@ -33,6 +40,7 @@ class FruitStore {
             mango = amount
         }
     }
+    
 }
 
 
