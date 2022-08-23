@@ -17,4 +17,19 @@ class FruitStore {
     var pineapple:Int = 10
     var kiwi:Int = 10
     var mango:Int = 10
+    
+    func changeFruitStock(_ fruit: Fruit, _ stock: Int) {
+        switch fruit {
+        case .strawberry:
+            strawberry = stock
+        case .banana:
+            banana = stock
+        case .pineapple:
+            pineapple = stock
+        case .kiwi:
+            kiwi = stock
+        case .mango:
+            mango = stock
+        }
+    }
 }
