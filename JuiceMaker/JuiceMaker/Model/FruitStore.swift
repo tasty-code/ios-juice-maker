@@ -21,15 +21,15 @@ class FruitStore {
     func changeFruitStock(_ fruit: Fruit, _ stock: Int) {
         switch fruit {
         case .strawberry:
-            strawberry = stock
+            strawberry += stock
         case .banana:
-            banana = stock
+            banana += stock
         case .pineapple:
-            pineapple = stock
+            pineapple += stock
         case .kiwi:
-            kiwi = stock
+            kiwi += stock
         case .mango:
-            mango = stock
+            mango += stock
         }
     }
 }

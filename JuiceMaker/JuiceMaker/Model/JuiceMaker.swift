@@ -16,15 +16,44 @@ enum Juice: String {
     case mangoKiwiJuice = "망키쥬스"
 }
 
+enum JuiceRecipe {
+    static let strawberryRecipe: [Fruit: Int] = [Fruit.strawberry : 16]
+    static let bananaRecipe: [Fruit: Int] = [Fruit.banana: 2]
+    static let kiwiRecipe: [Fruit: Int] = [Fruit.kiwi: 3]
+    static let pineappleRecipe: [Fruit: Int] = [Fruit.pineapple: 2]
+    static let strawberryBananaRecipe: [Fruit: Int] = [Fruit.strawberry: 10, Fruit.banana: 1]
+    static let mangoRecipe: [Fruit: Int] = [Fruit.mango: 3]
+    static let mangoKiwiRecipe: [Fruit: Int] = [Fruit.mango: 2, Fruit.kiwi: 1]
+}
+
 // 쥬스 메이커 타입
 struct JuiceMaker {
     let fruitStore = FruitStore()
     
-    var strawberryRecipe: Int = 16
-    var bananaRecipe: Int = 2
-    var kiwiRecipe: Int = 3
-    var pineappleRecipe: Int = 2
-    var strawberryBananaRecipe: [Int] = [10, 1]
-    var mangoRecipe: Int = 3
-    var mangoKiwiRecipe: [Int] = [2, 1]
+    func compareFruitStock(_ juiceRecipe: [Fruit: Int]) {
+        for (key, value) in juiceRecipe {
+            switch key {
+            case .strawberry:
+                if fruitStore.strawberry >= value {
+                    fruitStore.changeFruitStock(.strawberry, -value)
+                }
+            case .banana:
+                if fruitStore.banana >= value {
+                    fruitStore.changeFruitStock(.banana, -value)
+                }
+            case .pineapple:
+                if fruitStore.pineapple >= value {
+                    fruitStore.changeFruitStock(.pineapple, -value)
+                }
+            case .kiwi:
+                if fruitStore.kiwi >= value {
+                    fruitStore.changeFruitStock(.kiwi, -value)
+                }
+            case .mango:
+                if fruitStore.mango >= value {
+                    fruitStore.changeFruitStock(.mango, -value)
+                }
+            }
+        }
+    }
 }
