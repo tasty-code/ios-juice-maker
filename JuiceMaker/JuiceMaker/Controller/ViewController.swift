@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var strawberryBananaOrderButton: orderButton!
     @IBOutlet weak var strawberryOrderButton: orderButton!
-    @IBOutlet weak var BananaOrderButton: orderButton!
+    @IBOutlet weak var bananaOrderButton: orderButton!
     @IBOutlet weak var pineappleOrderButton: orderButton!
     @IBOutlet weak var mangoKiwiOrderButton: orderButton!
     @IBOutlet weak var kiwiOrderButton: orderButton!
@@ -31,7 +31,13 @@ class ViewController: UIViewController {
     }
     
     private func settingOrderButton() {
-        
+        strawberryBananaOrderButton.juice = JuiceType.strawberryBanana
+        strawberryOrderButton.juice = JuiceType.strawberry
+        bananaOrderButton.juice = JuiceType.banana
+        pineappleOrderButton.juice = JuiceType.pineapple
+        mangoKiwiOrderButton.juice = JuiceType.mangoKiwi
+        kiwiOrderButton.juice = JuiceType.kiwi
+        mangoOrderButton.juice = JuiceType.mango
     }
     private func initialSetting() {
         updateAmount()
