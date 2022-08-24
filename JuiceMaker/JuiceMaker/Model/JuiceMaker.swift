@@ -7,5 +7,11 @@
 import Foundation
 
 struct JuiceMaker {
-    
+    func makeJuice(_ menu: Juice) {
+        for recipe in menu.recipes {
+            if menu.canMake {
+                recipe.Storage.minusAmount(recipe.amount)
+            }
+        }
+    }
 }
