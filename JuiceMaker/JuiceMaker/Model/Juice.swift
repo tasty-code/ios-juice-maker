@@ -13,6 +13,15 @@ class Juice {
     private(set) var recipes: [recipe]
     let name: String
     
+    var canMake: Bool {
+        for recipe in recipes {
+            if recipe.Storage.amount < recipe.amount {
+                return false
+            }
+        }
+        return true
+    }
+    
     init(_ recipes: [recipe], _ name: String) {
         self.recipes = recipes
         self.name = name
