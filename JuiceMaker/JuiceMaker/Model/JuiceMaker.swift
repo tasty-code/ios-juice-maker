@@ -8,6 +8,25 @@ import Foundation
 
 let Fruit = FruitStore()
 
+func printFruitJuice(fruit: String) {
+    if fruit == "strawberry" {
+        print("딸기주스 여깄다")
+        print("딸기 : \(Fruit.strawberry)")
+    } else if fruit == "banana" {
+        print("바나나주스 여깄다")
+        print("바나나 : \(Fruit.banana)")
+    } else if fruit == "pineapple" {
+        print("파인애플주스 여깄다")
+        print("파인애플 : \(Fruit.pineapple)")
+    } else if fruit == "kiwi" {
+        print("키위주스 여깄다")
+        print("키위 : \(Fruit.kiwi)")
+    } else if fruit == "mango" {
+        print("망고주스 여깄다")
+        print("망고 : \(Fruit.mango)")
+    }
+}
+
 func checkStock(fruit: String) -> Bool {
     switch fruit{
     case "strawberry":
