@@ -24,11 +24,4 @@ class FruitStore {
         change = 0
     }
     
-//    func fruitChange() {
-//        let strawberrys = strawberry + change
-//        let bananas = banana + change
-//        let pineapples = pineapple + change
-//        let kiwis = kiwi + change
-//        let mangos = mango + change
-//    }
 }

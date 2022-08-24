@@ -19,50 +19,58 @@ struct JuiceMaker {
             return
         }
         
-        var fruitJuiceNumber: Int = 0
+        var strawberrys = fruitStore.strawberry + fruitStore.change
+        var bananas = fruitStore.banana + fruitStore.change
+        var pineapples = fruitStore.pineapple + fruitStore.change
+        var kiwis = fruitStore.kiwi + fruitStore.change
+        var mangos = fruitStore.mango + fruitStore.change
         
+       
         switch choiceJuice {
         case "strawberry":
-            fruitJuiceNumber = fruitStore.strawberry + fruitStore.change - 16
-            print(fruitJuiceNumber)
-            
-            if fruitJuiceNumber < 16 {
+            strawberrys = strawberrys - 16
+            print(strawberrys)
+            if strawberrys < 16 {
                 print("과일을 제조할 수 없습니다.")
             }
         case "banana":
-            fruitJuiceNumber = fruitStore.banana + fruitStore.change - 2
-            print(fruitJuiceNumber)
-            if fruitJuiceNumber < 2 {
+            bananas = bananas - 2
+            print(bananas)
+            if bananas < 2 {
                 print("과일을 제조할 수 없습니다.")
             }
         case "kiwi":
-            fruitJuiceNumber = fruitStore.kiwi + fruitStore.change - 3
-            print(fruitJuiceNumber)
-            if fruitJuiceNumber < 3 {
+            kiwis = kiwis - 3
+            print(kiwis)
+            if kiwis < 3 {
                 print("과일을 제조할 수 없습니다.")
             }
-        case "딸바주스":
-            fruitJuiceNumber = (fruitStore.strawberry + fruitStore.change - 10) + (fruitStore.banana + fruitStore.change - 1)
-            print(fruitJuiceNumber)
-            if  fruitStore.strawberry < 10 && fruitStore.banana < 1 {
+        case "strawbanana":
+            strawberrys = strawberrys - 10
+            print(strawberrys)
+            bananas = bananas - 1
+            print(bananas)
+            if strawberrys < 10 && bananas < 1 {
                 print("과일을 제조할 수 없습니다.")
             }
         case "pineapple":
-            fruitJuiceNumber = fruitStore.pineapple + fruitStore.change - 2
-            print(fruitJuiceNumber)
-            if fruitJuiceNumber < 2 {
+            pineapples = pineapples - 2
+            print(pineapples)
+            if pineapples < 2 {
                 print("과일을 제조할 수 없습니다.")
             }
         case "mango":
-            fruitJuiceNumber = fruitStore.mango + fruitStore.change - 3
-            print(fruitJuiceNumber)
-            if fruitJuiceNumber < 3 {
+            mangos = mangos - 3
+            print(mangos)
+            if mangos < 3 {
                 print("과일을 제조할 수 없습니다.")
             }
-        case "망고키위":
-            fruitJuiceNumber = (fruitStore.mango + fruitStore.change - 2) + (fruitStore.kiwi + fruitStore.change - 1)
-            print(fruitJuiceNumber)
-            if fruitStore.mango < 2 && fruitStore.kiwi < 1 {
+        case "mangokiwi":
+            mangos = mangos - 3
+            print(mangos)
+            kiwis = kiwis - 3
+            print(kiwis)
+            if mangos < 2 && kiwis < 1 {
                 print("과일을 제조할 수 없습니다.")
             }
         default:
