@@ -217,10 +217,17 @@
                     <navigationItem key="navigationItem" title="맛있는 쥬스를 만들어 드려요!" id="Eal-fj-o4N">
                         <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="bananaAmount" destination="gvk-pA-Lw5" id="X4M-nQ-opd"/>
+                        <outlet property="kiwiAmount" destination="FZq-de-TJG" id="zxt-DG-eLp"/>
+                        <outlet property="mangoAmount" destination="3Ce-SU-JeH" id="ge2-kb-zq2"/>
+                        <outlet property="pineAppleAmount" destination="ccQ-Dk-PuY" id="hif-fi-qtr"/>
+                        <outlet property="strawberryAmount" destination="Qas-vP-td6" id="qcR-w4-d0A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="762.72321428571422" y="92.753623188405811"/>
+            <point key="canvasLocation" x="820" y="0.0"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LzN-aE-P5w">
