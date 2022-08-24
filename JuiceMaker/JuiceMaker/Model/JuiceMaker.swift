@@ -56,4 +56,23 @@ struct JuiceMaker {
             }
         }
     }
+    
+    func makeJuice(_ juice: Juice) {
+        switch juice {
+        case .strawberryJuice:
+            compareFruitStock(JuiceRecipe.strawberryRecipe)
+        case .bananaJuice:
+            compareFruitStock(JuiceRecipe.bananaRecipe)
+        case .kiwiJuice:
+            compareFruitStock(JuiceRecipe.kiwiRecipe)
+        case .pineappleJuice:
+            compareFruitStock(JuiceRecipe.pineappleRecipe)
+        case .strawberryBananaJuice:
+            compareFruitStock(JuiceRecipe.strawberryBananaRecipe)
+        case .mangoJuice:
+            compareFruitStock(JuiceRecipe.mangoRecipe)
+        case .mangoKiwiJuice:
+            compareFruitStock(JuiceRecipe.mangoKiwiRecipe)
+        }
+    }
 }
