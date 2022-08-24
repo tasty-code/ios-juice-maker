@@ -15,12 +15,12 @@ class FruitStore {
     var mango : Int
     var change: Int
     
-    init(strawberry: Int = 10, banana: Int = 10, pineapple: Int = 10, kiwi: Int = 10, mango: Int = 10, change: Int = 0) {
-        self.strawberry = strawberry
-        self.banana = banana
-        self.pineapple = pineapple
-        self.kiwi = kiwi
-        self.mango = mango
-        self.change = change
+    init() {
+        strawberry = 10
+        banana = 10
+        pineapple = 10
+        kiwi = 10
+        mango = 10
+        change = 0
     }
 }
