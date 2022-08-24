@@ -6,7 +6,12 @@
 
 import Foundation
 
-// 쥬스 메이커 타입
 struct JuiceMaker {
-    
+    func makeJuice(_ menu: Juice) {
+        for recipe in menu.recipes {
+            if menu.canMake {
+                recipe.Storage.minusAmount(recipe.amount)
+            }
+        }
+    }
 }
