@@ -12,7 +12,11 @@ import Foundation
 struct JuiceMaker {
     var fruitStore = FruitStore()
     
-    
+    func exceedNumberOfFruits(fruit: Int, num: Int) -> Void {
+        if fruit < num {
+            print("과일을 제조할 수 없습니다.")
+        }
+    }
     
     func makeJuice() {
         guard let choiceJuice: String = readLine() else{
@@ -24,60 +28,36 @@ struct JuiceMaker {
         var pineapples = fruitStore.pineapple + fruitStore.change
         var kiwis = fruitStore.kiwi + fruitStore.change
         var mangos = fruitStore.mango + fruitStore.change
-        
-       
+
         switch choiceJuice {
         case "strawberry":
             strawberrys = strawberrys - 16
-            print(strawberrys)
-            if strawberrys < 16 {
-                print("과일을 제조할 수 없습니다.")
-            }
+            exceedNumberOfFruits(fruit: strawberrys, num: 16)
         case "banana":
             bananas = bananas - 2
-            print(bananas)
-            if bananas < 2 {
-                print("과일을 제조할 수 없습니다.")
-            }
+            exceedNumberOfFruits(fruit: bananas, num: 2)
         case "kiwi":
             kiwis = kiwis - 3
-            print(kiwis)
-            if kiwis < 3 {
-                print("과일을 제조할 수 없습니다.")
-            }
+            exceedNumberOfFruits(fruit: kiwis, num: 3)
         case "strawbanana":
             strawberrys = strawberrys - 10
-            print(strawberrys)
             bananas = bananas - 1
-            print(bananas)
             if strawberrys < 10 && bananas < 1 {
                 print("과일을 제조할 수 없습니다.")
             }
         case "pineapple":
             pineapples = pineapples - 2
-            print(pineapples)
-            if pineapples < 2 {
-                print("과일을 제조할 수 없습니다.")
-            }
+            exceedNumberOfFruits(fruit: pineapples, num: 2)
         case "mango":
             mangos = mangos - 3
-            print(mangos)
-            if mangos < 3 {
-                print("과일을 제조할 수 없습니다.")
-            }
+            exceedNumberOfFruits(fruit: kiwis, num: 3)
         case "mangokiwi":
             mangos = mangos - 3
-            print(mangos)
             kiwis = kiwis - 3
-            print(kiwis)
             if mangos < 2 && kiwis < 1 {
                 print("과일을 제조할 수 없습니다.")
             }
-        default:
-            print("잘못")
+        default: break
         }
     }
 }
-
-
-
