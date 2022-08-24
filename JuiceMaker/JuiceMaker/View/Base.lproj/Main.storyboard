@@ -221,7 +221,7 @@
                         <outlet property="bananaAmount" destination="gvk-pA-Lw5" id="X4M-nQ-opd"/>
                         <outlet property="kiwiAmount" destination="FZq-de-TJG" id="zxt-DG-eLp"/>
                         <outlet property="mangoAmount" destination="3Ce-SU-JeH" id="ge2-kb-zq2"/>
-                        <outlet property="pineAppleAmount" destination="ccQ-Dk-PuY" id="hif-fi-qtr"/>
+                        <outlet property="pineappleAmount" destination="ccQ-Dk-PuY" id="MJw-1Z-fN8"/>
                         <outlet property="strawberryAmount" destination="Qas-vP-td6" id="qcR-w4-d0A"/>
                     </connections>
                 </viewController>
@@ -247,10 +247,10 @@
             </objects>
             <point key="canvasLocation" x="19.419642857142858" y="92.753623188405811"/>
         </scene>
-        <!--View Controller-->
+        <!--Amount View Controller-->
         <scene sceneID="fkG-vv-hpE">
             <objects>
-                <viewController id="Yu1-lM-nqp" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AmountV" id="Yu1-lM-nqp" customClass="AmountViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tKV-4l-Vtc">
                         <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -358,7 +358,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1637" y="901"/>
+            <point key="canvasLocation" x="1558" y="908"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cAf-jL-tPK">
