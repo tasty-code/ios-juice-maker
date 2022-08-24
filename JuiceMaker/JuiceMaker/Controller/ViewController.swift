@@ -14,6 +14,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var pineappleAmount: UILabel!
     @IBOutlet weak var mangoAmount: UILabel!
     
+    @IBOutlet weak var strawberryBananaOrderButton: orderButton!
+    @IBOutlet weak var strawberryOrderButton: orderButton!
+    @IBOutlet weak var BananaOrderButton: orderButton!
+    @IBOutlet weak var pineappleOrderButton: orderButton!
+    @IBOutlet weak var mangoKiwiOrderButton: orderButton!
+    @IBOutlet weak var kiwiOrderButton: orderButton!
+    @IBOutlet weak var mangoOrderButton: orderButton!
+    
     private func updateAmount() {
         strawberryAmount.text = String(Fruit.strawberry.amount)
         bananaAmount.text = String(Fruit.banana.amount)
@@ -22,9 +30,15 @@ class ViewController: UIViewController {
         mangoAmount.text = String(Fruit.mango.amount)
     }
     
+    private func settingOrderButton() {
+        
+    }
+    private func initialSetting() {
+        updateAmount()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateAmount()
+        initialSetting()
     }
 
     
