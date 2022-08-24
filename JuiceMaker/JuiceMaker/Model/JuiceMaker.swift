@@ -9,9 +9,9 @@ import Foundation
 struct JuiceMaker {
     func makeJuice(_ menu: Juice) {
         for recipe in menu.recipes {
-            if menu.canMake {
+            print(recipe.amount)
                 recipe.Storage.minusAmount(recipe.amount)
-            }
+            print(recipe.Storage.amount)
         }
     }
 }

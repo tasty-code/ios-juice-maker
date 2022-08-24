@@ -9,5 +9,4 @@ import UIKit
 
 class orderButton: UIButton {
     var juice: Juice = JuiceType.strawberry
-
 }

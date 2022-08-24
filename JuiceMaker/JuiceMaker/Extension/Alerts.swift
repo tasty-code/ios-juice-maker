@@ -9,8 +9,10 @@ import Foundation
 import UIKit
 
 extension UIViewController {
-    func sucessMakeJuiceAlert(_ juice: Juice) {
+    func successMakeJuiceAlert(_ juice: Juice) {
         let alert = UIAlertController(title: "제조완료", message: "\(juice.name) 나왔습니다! 맛있게 드세요!", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .cancel)
+        alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
     }
     func failMakeJuiceAlert() {

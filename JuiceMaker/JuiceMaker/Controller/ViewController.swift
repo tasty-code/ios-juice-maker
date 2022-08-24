@@ -30,6 +30,16 @@ class ViewController: UIViewController {
         mangoAmount.text = String(Fruit.mango.amount)
     }
     
+    @IBAction func clickOrderButton(_ sender: orderButton) {
+        if sender.juice.canMake {
+            JuiceMaker().makeJuice(sender.juice)
+            successMakeJuiceAlert(sender.juice)
+        } else {
+            failMakeJuiceAlert()
+        }
+        updateAmount()
+    }
+    
     private func settingOrderButton() {
         strawberryBananaOrderButton.juice = JuiceType.strawberryBanana
         strawberryOrderButton.juice = JuiceType.strawberry
@@ -41,6 +51,7 @@ class ViewController: UIViewController {
     }
     private func initialSetting() {
         updateAmount()
+        settingOrderButton()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
