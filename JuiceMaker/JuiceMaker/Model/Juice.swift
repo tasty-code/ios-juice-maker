@@ -29,7 +29,7 @@ class Juice {
 }
 
 enum JuiceType {
-    static let strawberry = Juice(recipes.strawberry, "딿기주스")
+    static let strawberry = Juice(recipes.strawberry, "딸기주스")
     static let banana = Juice(recipes.banana, "바나나주스")
     static let pineapple = Juice(recipes.pineapple, "파인애플주스")
     static let kiwi = Juice(recipes.kiwi, "키위주스")

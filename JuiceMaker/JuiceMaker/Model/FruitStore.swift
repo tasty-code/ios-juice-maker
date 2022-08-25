@@ -6,7 +6,6 @@
 
 import Foundation
 
-// 과일 저장소 타입
 class Storage {
     private(set) var amount: Int = 10
     
