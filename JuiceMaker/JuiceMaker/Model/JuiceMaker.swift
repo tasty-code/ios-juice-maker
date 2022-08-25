@@ -6,32 +6,22 @@
 
 import Foundation
 // 쥬스 메이커 타입
-struct JuiceMaker {
-    var fruitStore = FruitStore()
-    
-    enum Juice {
-        case strawberryJuice
-        case bananaJuice
-        case kiwiJuice
-        case pineappleJuice
-        case strawberryBananaJuice
-        case mangoJuice
-        case mangoKiwiJuice
+class JuiceMaker {
+    enum Recipe {
+        static let strawberryJuice = ["strawberry": 16]
+        static let bananaJuice = ["banana": 2]
+        static let kiwiJuice = ["kiwi": 3]
+        static let pineappleJuice = ["pineapple": 2]
+        static let strawberryBananaJuice = ["strawberry": 10, "banana": 1]
+        static let mangoJuice = ["mango": 3]
+        static let mangoKiwiJuice = ["mango": 2, "kiwi": 1]
         
     }
     
-    let ingredientsForJuice: [Juice: [FruitStore.Fruit: Int]] =
-    [.strawberryJuice: [.strawberry : 16],
-     .bananaJuice: [.banana: 2],
-     .kiwiJuice: [.kiwi: 3],
-     .pineappleJuice: [.pineapple: 2],
-     .strawberryBananaJuice: [.strawberry: 10, .banana: 1],
-     .mangoJuice: [.mango: 3],
-     .mangoKiwiJuice: [.mango: 2, .kiwi: 1]]
     
-    func makeJuice(of juiceType: Juice) {
-        if isMakeAble(to: ingredientsForJuice[juiceType]) {
-            
+    func makeJuice(of optionalJuiceRecipe: [String: Int]?) {
+        guard let juiceRecipe = optionalJuiceRecipe else {
+            return
         }
     }
     
