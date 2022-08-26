@@ -29,7 +29,9 @@ struct JuiceMaker {
         }
     }
     
-    func canMakeJuiceOf(juiceType: FruitJuice) {
+    func canMakeJuiceOf(juiceType: FruitJuice) -> Bool {
+        var canMakeJuice = false
+        
         switch juiceType {
         case .strawberry:
             if fruitStore.strawberry < 16 {
@@ -59,6 +61,10 @@ struct JuiceMaker {
             if fruitStore.mango < 2 && fruitStore.kiwi < 1 {
                 print("망키 재고가 부족합니다.")
             }
+        default:
+            canMakeJuice = true
         }
+        
+        return canMakeJuice
     }
 }
