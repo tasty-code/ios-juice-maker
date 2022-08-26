@@ -6,6 +6,24 @@
 
 import Foundation
 
+enum FruitJuice: String {
+    case strawberry = "S"
+    case banana = "B"
+    case pineapple = "P"
+    case kiwi = "K"
+    case mango = "M"
+    case strawberryBanana = "SB"
+    case mangoKiwi = "MK"
+}
+
+enum Fruit: String {
+    case strawberry = "S"
+    case banana = "B"
+    case pineapple = "P"
+    case kiwi = "K"
+    case mango = "M"
+}
+
 // 과일 저장소 타입
 public class FruitStore {
     var strawberry: Int = 10
