@@ -27,23 +27,21 @@ class FruitStore {
         }
         return 0
     }
-    
     func increase(of name: Fruit, to amount: Int) {
-        for ingredinet in fruits {
-            var outDict: Int = ingredinet.value
+        for ingredient in fruits {
+            var outDict: Int = ingredient.value
             
-            if name == ingredinet.key {
+            if name == ingredient.key {
                 outDict += amount
             }
             fruits[name] = outDict
         }
     }
-   
     func decrease(of name: Fruit, to amount: Int) {
-        for ingredinet in fruits {
-            var outDict: Int = ingredinet.value
+        for ingredient in fruits {
+            var outDict: Int = ingredient.value
             
-            if name == ingredinet.key {
+            if name == ingredient.key {
                 outDict -= amount
             }
             fruits[name] = outDict

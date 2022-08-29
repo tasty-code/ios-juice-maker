@@ -64,7 +64,6 @@ class JuiceMaker {
         
         useIngredients(of: menu)
     }
-    
     func isMakeAble(juice: Juice) -> Bool {
         for ingredients in juice.recipe {
             let demandFruitType: FruitStore.Fruit = ingredients.key
@@ -76,7 +75,6 @@ class JuiceMaker {
         
         return true
     }
-    
     func useIngredients(of menu: Juice) {
         for ingredients in menu.recipe {
             let demandFruitType: FruitStore.Fruit = ingredients.key
