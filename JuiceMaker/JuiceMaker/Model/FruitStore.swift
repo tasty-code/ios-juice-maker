@@ -8,21 +8,11 @@ import Foundation
 
 // 과일 저장소 타입
 class FruitStore {
-//    var strawberry : Int
-//    var banana : Int
-//    var pineapple : Int
-//    var kiwi : Int
-//    var mango : Int
-//    var change: Int
-//
-//    init() {
-//        strawberry = 10
-//        banana = 10
-//        pineapple = 10
-//        kiwi = 10
-//        mango = 10
-//        change = 0
-//    }
+    var strawberry : Int = 10
+    var banana : Int = 10
+    var pineapple : Int = 10
+    var kiwi : Int = 10
+    var mango : Int = 10
   
     enum Fruit {
         case strawberry, banana, pineapple, kiwi, mango
