@@ -14,6 +14,16 @@ enum JuiceName: String {
     case 딸바쥬스
     case 망고_쥬스 = "망고 쥬스"
     case 망고키위_쥬스 = "망고키위 쥬스"
+    
+    static let dictionary: [String: JuiceName] = [
+        딸기쥬스.rawValue: 딸기쥬스,
+        바나나쥬스.rawValue: 바나나쥬스,
+        키위쥬스.rawValue: 키위쥬스,
+        파인애플_쥬스.rawValue: 파인애플_쥬스,
+        딸바쥬스.rawValue: 딸바쥬스,
+        망고_쥬스.rawValue: 망고_쥬스,
+        망고키위_쥬스.rawValue: 망고키위_쥬스,
+    ]
 }
 
 struct JuiceMaker {
