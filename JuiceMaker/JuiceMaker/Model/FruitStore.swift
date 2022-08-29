@@ -24,4 +24,12 @@ class FruitStore {
     ]
     
     init() {}
+    
+    func getFruitQuantity(name: FruitName) -> Int {
+        return fruits[name] ?? 0
+    }
+    
+    func setFruit(name: FruitName, quantity: Int) {
+        fruits[name] = quantity
+    }
 }
