@@ -55,4 +55,10 @@ struct JuiceMaker {
     var fruitStore = FruitStore()
 
     init () {}
+    
+    private func checkFruitQuantity(juice: JuiceName) -> Bool {
+        let minFluteQuantity = needFruitQuantity[juice]?.map { fruitStore.getFruitQuantity(name: $0.key) - $0.value }.min() ?? 0
+        
+        return minFluteQuantity >= 0
+    }
 }
