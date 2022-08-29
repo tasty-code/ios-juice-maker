@@ -25,6 +25,11 @@ enum JuiceName: String {
         망고키위_쥬스.rawValue: 망고키위_쥬스,
     ]
 }
+enum texts: String {
+    case noJuice = "주스가 존재하지 않습니다."
+    case noFruit = "재료의 재고가 부족합니다."
+    case makeComplet = "나왔습니다~!"
+}
 
 struct JuiceMaker {
     let needFruitQuantity: [JuiceName: [FruitName: Int]] = [
@@ -60,5 +65,20 @@ struct JuiceMaker {
         let minFluteQuantity = needFruitQuantity[juice]?.map { fruitStore.getFruitQuantity(name: $0.key) - $0.value }.min() ?? 0
         
         return minFluteQuantity >= 0
+    }
+    
+    func makeJuice(name: String) -> String {
+        if let juice = JuiceName.dictionary[name] {
+            if checkFruitQuantity(juice: juice) {
+                needFruitQuantity[juice]?.forEach {
+                    fruitStore.setFruit(name: $0.key, quantity: fruitStore.getFruitQuantity(name: $0.key) - $0.value)
+                }
+                return name + texts.makeComplet.rawValue
+            } else {
+                return texts.noFruit.rawValue
+            }
+        } else {
+            return texts.noJuice.rawValue
+        }
     }
 }
