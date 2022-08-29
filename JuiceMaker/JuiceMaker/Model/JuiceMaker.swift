@@ -17,6 +17,31 @@ enum JuiceName: String {
 }
 
 struct JuiceMaker {
+    let needFruitQuantity: [JuiceName: [FruitName: Int]] = [
+        .딸기쥬스: [
+            .strawberry: 16
+        ],
+        .바나나쥬스: [
+            .banana: 2
+        ],
+        .키위쥬스: [
+            .kiwi: 3
+        ],
+        .파인애플_쥬스: [
+            .pineapple: 2
+        ],
+        .딸바쥬스: [
+            .strawberry: 10,
+            .banana: 1
+        ],
+        .망고_쥬스: [
+            .mango: 3
+        ],
+        .망고키위_쥬스: [
+            .mango: 2,
+            .kiwi: 1
+        ],
+    ]
     var fruitStore = FruitStore()
 
     init () {}
