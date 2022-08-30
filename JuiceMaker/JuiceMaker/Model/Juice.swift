@@ -13,7 +13,7 @@ class Juice {
     private(set) var recipes: [recipe]
     let name: String
     
-    var canMake: Bool {
+    var isMakeCheck: Bool {
         for recipe in recipes {
             if recipe.Storage.amount < recipe.amount {
                 return false
@@ -47,4 +47,5 @@ class Juice {
         static let mangoKiwi = Juice(Recipes.mangoKiwi, "망키주스")
     }
 }
+
 
