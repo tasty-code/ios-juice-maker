@@ -48,12 +48,12 @@ class FruitStore {
     }
     func decrease(of name: Fruit, to amount: Int) {
         for fruit in fruits {
-            var outDict: Int = fruit.value
+            var fruitsValue: Int = fruit.value
             
             if name == fruit.key {
-                outDict -= amount
+                fruitsValue -= amount
             }
-            fruits[name] = outDict
+            fruits[name] = fruitsValue
         }
     }
 }
