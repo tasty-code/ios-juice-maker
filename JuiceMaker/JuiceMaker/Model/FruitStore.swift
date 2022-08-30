@@ -26,6 +26,7 @@ class FruitStore {
             fruits[fruit] = defaultAmount
         }
     }
+    
     func getAmount(of name: Fruit) -> Int {
         for fruit in fruits {
             if name == fruit.key {
@@ -35,6 +36,7 @@ class FruitStore {
         
         return 0
     }
+    
     func increase(of name: Fruit, to amount: Int) {
         for fruit in fruits {
             var outDict: Int = fruit.value
@@ -46,6 +48,7 @@ class FruitStore {
             fruits[name] = outDict
         }
     }
+    
     func decrease(of name: Fruit, to amount: Int) {
         for fruit in fruits {
             var fruitsValue: Int = fruit.value

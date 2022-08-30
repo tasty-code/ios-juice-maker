@@ -64,6 +64,7 @@ struct JuiceMaker {
         
         useIngredients(of: menu)
     }
+    
     private func isMakeAble(juice: Juice) -> Bool {
         for ingredients in juice.recipe {
             let demandFruitType: FruitStore.Fruit = ingredients.key
@@ -75,6 +76,7 @@ struct JuiceMaker {
         
         return true
     }
+    
     private func useIngredients(of menu: Juice) {
         for ingredients in menu.recipe {
             let demandFruitType: FruitStore.Fruit = ingredients.key

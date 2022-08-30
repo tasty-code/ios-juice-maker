@@ -10,10 +10,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let juice = JuiceMaker()
-        juice.makeJuice(to: .kiwi)
     }
-
-
 }
 
