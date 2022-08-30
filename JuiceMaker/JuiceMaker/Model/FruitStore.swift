@@ -6,7 +6,7 @@
 
 import Foundation
 
-enum FruitName: String {
+enum Fruit {
     case strawberry
     case banana
     case pineapple
@@ -14,8 +14,12 @@ enum FruitName: String {
     case mango
 }
 
+enum ValueError: Error {
+    case noValue
+}
+
 class FruitStore {
-    var fruits: [FruitName: Int] = [
+    var fruits: [Fruit: Int] = [
         .strawberry: 10,
         .banana: 10,
         .pineapple: 10,
@@ -25,11 +29,12 @@ class FruitStore {
     
     init() {}
     
-    func getFruitQuantity(name: FruitName) -> Int {
-        return fruits[name] ?? 0
+    func getFruitQuantity(of: Fruit) throws -> Int {
+        guard let result = fruits[of] else { throw ValueError.noValue }
+        return result
     }
     
-    func setFruit(name: FruitName, quantity: Int) {
-        fruits[name] = quantity
+    func setFruit(of: Fruit, quantity: Int) {
+        fruits[of] = quantity
     }
 }

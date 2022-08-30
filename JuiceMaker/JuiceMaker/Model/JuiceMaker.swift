@@ -6,7 +6,7 @@
 
 import Foundation
 
-enum JuiceName: String {
+enum Juice: String {
     case 딸기쥬스
     case 바나나쥬스
     case 키위쥬스
@@ -15,7 +15,7 @@ enum JuiceName: String {
     case 망고_쥬스 = "망고 쥬스"
     case 망고키위_쥬스 = "망고키위 쥬스"
     
-    static let dictionary: [String: JuiceName] = [
+    static let dictionary: [String: Juice] = [
         딸기쥬스.rawValue: 딸기쥬스,
         바나나쥬스.rawValue: 바나나쥬스,
         키위쥬스.rawValue: 키위쥬스,
@@ -25,14 +25,14 @@ enum JuiceName: String {
         망고키위_쥬스.rawValue: 망고키위_쥬스,
     ]
 }
-enum texts: String {
-    case noJuice = "주스가 존재하지 않습니다."
-    case noFruit = "재료의 재고가 부족합니다."
-    case makeComplet = "나왔습니다~!"
+enum Text {
+    static let noJuice = "쥬스가 존재하지 않습니다."
+    static let noFruit = "재료의 재고가 부족합니다."
+    static let makeComplet = "나왔습니다~!"
 }
 
 struct JuiceMaker {
-    let needFruitQuantity: [JuiceName: [FruitName: Int]] = [
+    let needFruitQuantity: [Juice: [Fruit: Int]] = [
         .딸기쥬스: [
             .strawberry: 16
         ],
@@ -57,28 +57,30 @@ struct JuiceMaker {
             .kiwi: 1
         ],
     ]
-    var fruitStore = FruitStore()
+    let fruitStore = FruitStore()
 
     init () {}
     
-    private func checkFruitQuantity(juice: JuiceName) -> Bool {
-        let minFluteQuantity = needFruitQuantity[juice]?.map { fruitStore.getFruitQuantity(name: $0.key) - $0.value }.min() ?? 0
+    private func canMakeJuice(of: Juice) -> Bool {
+        let minFluteQuantity = needFruitQuantity[of]?.map {
+            return (try? fruitStore.getFruitQuantity(of: $0.key) - $0.value) ?? -1
+        }.min() ?? 0
         
         return minFluteQuantity >= 0
     }
     
     func makeJuice(name: String) -> String {
-        if let juice = JuiceName.dictionary[name] {
-            if checkFruitQuantity(juice: juice) {
+        if let juice = Juice.dictionary[name] {
+            if canMakeJuice(of: juice) {
                 needFruitQuantity[juice]?.forEach {
-                    fruitStore.setFruit(name: $0.key, quantity: fruitStore.getFruitQuantity(name: $0.key) - $0.value)
+                    fruitStore.setFruit(of: $0.key, quantity: try! fruitStore.getFruitQuantity(of: $0.key) - $0.value)
                 }
-                return name + texts.makeComplet.rawValue
+                return name + Text.makeComplet
             } else {
-                return texts.noFruit.rawValue
+                return Text.noFruit
             }
         } else {
-            return texts.noJuice.rawValue
+            return Text.noJuice
         }
     }
 }
