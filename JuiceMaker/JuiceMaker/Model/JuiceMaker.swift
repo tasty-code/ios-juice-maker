@@ -6,7 +6,7 @@
 
 import Foundation
 
-class JuiceMaker {
+struct JuiceMaker {
     enum Juice {
         case strawberry
         case banana
@@ -55,7 +55,7 @@ class JuiceMaker {
         }
     }
     
-    var fruitStore = FruitStore()
+    let fruitStore = FruitStore()
     
     func makeJuice(to menu: Juice) {
         if isMakeAble(juice: menu) == false {
@@ -64,7 +64,7 @@ class JuiceMaker {
         
         useIngredients(of: menu)
     }
-    func isMakeAble(juice: Juice) -> Bool {
+    private func isMakeAble(juice: Juice) -> Bool {
         for ingredients in juice.recipe {
             let demandFruitType: FruitStore.Fruit = ingredients.key
             
@@ -75,7 +75,7 @@ class JuiceMaker {
         
         return true
     }
-    func useIngredients(of menu: Juice) {
+    private func useIngredients(of menu: Juice) {
         for ingredients in menu.recipe {
             let demandFruitType: FruitStore.Fruit = ingredients.key
             fruitStore.decrease(of: demandFruitType, to: ingredients.value)
