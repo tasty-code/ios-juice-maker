@@ -61,14 +61,10 @@ enum Text {
     static let makeComplet = "나왔습니다~!"
 }
 
-struct JuiceMaker {
-    let fruitStore = FruitStore()
-
-    init () {}
-    
+class JuiceMaker: FruitStore {
     private func canMakeJuice(of juice: Juice) -> Bool {
         let minFluteQuantity = juice.needFruitQuantity.map {
-            return (try? fruitStore.getQuantity(of: $0.key) - $0.value) ?? -1
+            return (try? self.getQuantity(of: $0.key) - $0.value) ?? -1
         }.min() ?? 0
         
         return minFluteQuantity >= 0
@@ -78,7 +74,7 @@ struct JuiceMaker {
         if canMakeJuice(of: juice) {
             for i in juice.needFruitQuantity {
                 do {
-                    fruitStore.setQuantity(of: i.key, at: try fruitStore.getQuantity(of: i.key) - i.value)
+                    self.setQuantity(of: i.key, at: try self.getQuantity(of: i.key) - i.value)
                 } catch {
                     return Text.noneFruit
                 }
