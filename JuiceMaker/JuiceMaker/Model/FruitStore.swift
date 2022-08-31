@@ -10,10 +10,6 @@ enum Fruit: CaseIterable {
     case strawberry, banana, pineapple, kiwi, mango
 }
 
-enum ValueError: Error {
-    case noValue
-}
-
 class FruitStore {
     var fruits: [Fruit: Int] = Dictionary(Fruit.allCases.map { ($0, 10) }, uniquingKeysWith: { (first, _) in first })
     
