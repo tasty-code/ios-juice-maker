@@ -31,44 +31,54 @@ class MakeJuiceController: UIViewController {
     }
     
     @IBAction func hitStrawberryBananaJuiceButton(_ sender: Any) {
-        juiceMaker.makeJuice(of: .strawberryBanana)
+        makeJuice(of: .strawberryBanana)
     }
     
     @IBAction func hitMangoKiwiJuice(_ sender: Any) {
-        juiceMaker.makeJuice(of: .mangoKiwi)
+        makeJuice(of: .mangoKiwi)
     }
     
     @IBAction func hitStrawberryJuiceButton(_ sender: Any) {
-        juiceMaker.makeJuice(of: .strawberry)
+        makeJuice(of: .strawberry)
     }
     
     @IBAction func hitBananaJuiceButton(_ sender: Any) {
-        juiceMaker.makeJuice(of: .banana)
+        makeJuice(of: .banana)
     }
     
     @IBAction func hitPineappleJuiceButton(_ sender: Any) {
-        juiceMaker.makeJuice(of: .pineapple)
+        makeJuice(of: .pineapple)
     }
     
     @IBAction func hitKiwiJuiceButton(_ sender: Any) {
-        juiceMaker.makeJuice(of: .kiwi)
+        makeJuice(of: .kiwi)
     }
     
     @IBAction func hiwMangoJuiceButton(_ sender: Any) {
-        juiceMaker.makeJuice(of: .mango)
+        makeJuice(of: .mango)
     }
     
-    func showAlert(message: String, confirmText: String, confirmHandler: ((UIAlertAction) -> Void)?, cancelText: String?, cancelHandler: ((UIAlertAction) -> Void)?) {
+    func showAlert(message: String, confirmText: String, confirmHandler: ((UIAlertAction) -> Void)? = nil, cancelText: String = "") {
         let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
         let confirm = UIAlertAction(title: confirmText, style: .default, handler: confirmHandler)
-        let cancel = UIAlertAction(title: cancelText, style: .cancel, handler: cancelHandler)
+        let cancel = UIAlertAction(title: cancelText, style: .cancel)
         
         alert.addAction(confirm)
-        if (cancelText != nil) {
+        if (cancelText != "") {
             alert.addAction(cancel)
         }
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    func makeJuice(of juice: Juice) {
+        let juiceStatus = juiceMaker.makeJuice(of: juice)
+        
+        if juiceStatus.status == .lackOfFruit {
+            showAlert(message: juiceStatus.message, confirmText: "예", cancelText: "아니오")
+        } else {
+            showAlert(message: juiceStatus.message, confirmText: "확인")
+        }
     }
     
     func fruitsObserve(_ fruits: [Fruit: Int]) {
