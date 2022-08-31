@@ -7,6 +7,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    let juiceMaker = JuiceMaker()
     
     @IBOutlet weak var strawberryAmount: UILabel!
     @IBOutlet weak var bananaAmount: UILabel!
@@ -23,16 +24,21 @@ class ViewController: UIViewController {
     @IBOutlet weak var mangoOrderButton: orderButton!
     
     private func updateAmount() {
-        strawberryAmount.text = String(Fruit.strawberry.amount)
-        bananaAmount.text = String(Fruit.banana.amount)
-        kiwiAmount.text = String(Fruit.kiwi.amount)
-        pineappleAmount.text = String(Fruit.pineapple.amount)
-        mangoAmount.text = String(Fruit.mango.amount)
+        strawberryAmount.text = String(juiceMaker.fruitStore.fruits[.strawberry]!)
+        bananaAmount.text = String(juiceMaker.fruitStore.fruits[.banana]!)
+        kiwiAmount.text = String(juiceMaker.fruitStore.fruits[.kiwi]!)
+        pineappleAmount.text = String(juiceMaker.fruitStore.fruits[.pineapple]!)
+        mangoAmount.text = String(juiceMaker.fruitStore.fruits[.mango]!)
+        print(juiceMaker.fruitStore.fruits[.strawberry]!)
+        print(juiceMaker.fruitStore.fruits[.banana]!)
+        print(juiceMaker.fruitStore.fruits[.pineapple]!)
+        print(juiceMaker.fruitStore.fruits[.kiwi]!)
+        print(juiceMaker.fruitStore.fruits[.mango]!)
     }
     
     @IBAction func clickOrderButton(_ sender: orderButton) {
-        if sender.juice.canMake {
-            JuiceMaker().makeJuice(sender.juice)
+        if juiceMaker.canMake(sender.juice) {
+            juiceMaker.makeJuice(sender.juice)
             successMakeJuiceAlert(sender.juice)
         } else {
             failMakeJuiceAlert()
@@ -41,13 +47,13 @@ class ViewController: UIViewController {
     }
     
     private func settingOrderButton() {
-        strawberryBananaOrderButton.juice = JuiceType.strawberryBanana
-        strawberryOrderButton.juice = JuiceType.strawberry
-        bananaOrderButton.juice = JuiceType.banana
-        pineappleOrderButton.juice = JuiceType.pineapple
-        mangoKiwiOrderButton.juice = JuiceType.mangoKiwi
-        kiwiOrderButton.juice = JuiceType.kiwi
-        mangoOrderButton.juice = JuiceType.mango
+        strawberryBananaOrderButton.juice = JuiceMaker.Juice.strawberryBanana
+        strawberryOrderButton.juice = JuiceMaker.Juice.strawberry
+        bananaOrderButton.juice = JuiceMaker.Juice.banana
+        pineappleOrderButton.juice = JuiceMaker.Juice.pineapple
+        mangoKiwiOrderButton.juice = JuiceMaker.Juice.mangoKiwi
+        kiwiOrderButton.juice = JuiceMaker.Juice.kiwi
+        mangoOrderButton.juice = JuiceMaker.Juice.mango
     }
     private func initialSetting() {
         updateAmount()

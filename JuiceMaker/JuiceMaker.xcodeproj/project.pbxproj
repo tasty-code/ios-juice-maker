@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		35613A2528B5AAAB00C177FC /* JuiceRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35613A2428B5AAAB00C177FC /* JuiceRecipe.swift */; };
-		35613A2728B5AC2F00C177FC /* Juice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35613A2628B5AC2F00C177FC /* Juice.swift */; };
 		35613A2928B5E95E00C177FC /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35613A2828B5E95E00C177FC /* Alerts.swift */; };
 		35613A2B28B5EAED00C177FC /* AmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35613A2A28B5EAED00C177FC /* AmountViewController.swift */; };
 		35613A3028B5F00100C177FC /* orderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35613A2F28B5F00100C177FC /* orderButton.swift */; };
@@ -23,8 +21,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		35613A2428B5AAAB00C177FC /* JuiceRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceRecipe.swift; sourceTree = "<group>"; };
-		35613A2628B5AC2F00C177FC /* Juice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Juice.swift; sourceTree = "<group>"; };
 		35613A2828B5E95E00C177FC /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		35613A2A28B5EAED00C177FC /* AmountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountViewController.swift; sourceTree = "<group>"; };
 		35613A2F28B5F00100C177FC /* orderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orderButton.swift; sourceTree = "<group>"; };
@@ -76,8 +72,6 @@
 			children = (
 				C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */,
 				C71CD66A266C7ACB0038B9CB /* FruitStore.swift */,
-				35613A2428B5AAAB00C177FC /* JuiceRecipe.swift */,
-				35613A2628B5AC2F00C177FC /* Juice.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -190,7 +184,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35613A2528B5AAAB00C177FC /* JuiceRecipe.swift in Sources */,
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
 				35613A2B28B5EAED00C177FC /* AmountViewController.swift in Sources */,
 				35613A2928B5E95E00C177FC /* Alerts.swift in Sources */,
@@ -199,7 +192,6 @@
 				C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */,
 				C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */,
 				35613A3028B5F00100C177FC /* orderButton.swift in Sources */,
-				35613A2728B5AC2F00C177FC /* Juice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
