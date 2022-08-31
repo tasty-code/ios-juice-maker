@@ -7,24 +7,34 @@
 import Foundation
 
 enum Juice: String {
-    case strawberryJuice = "딸기쥬스"
-    case bananaJuice = "바나나쥬스"
-    case kiwiJuice = "키위쥬스"
-    case pineappleJuice = "파인애플 쥬스"
-    case strawberryBananaJuice = "딸바쥬스"
-    case mangoJuice = "망고 쥬스"
-    case mangoKiwiJuice = "망고키위 쥬스"
+    case strawberryJuice
+    case bananaJuice
+    case kiwiJuice
+    case pineappleJuice
+    case strawberryBananaJuice
+    case mangoJuice
+    case mangoKiwiJuice
     
-    static let dictionary: [String: Juice] = [
-        strawberryJuice.rawValue: strawberryJuice,
-        bananaJuice.rawValue: bananaJuice,
-        kiwiJuice.rawValue: kiwiJuice,
-        pineappleJuice.rawValue: pineappleJuice,
-        strawberryBananaJuice.rawValue: strawberryBananaJuice,
-        mangoJuice.rawValue: mangoJuice,
-        mangoKiwiJuice.rawValue: mangoKiwiJuice,
-    ]
+    var name: String {
+        switch self {
+            case .strawberryJuice:
+                return "딸기쥬스"
+            case .bananaJuice:
+                return "바나나쥬스"
+            case .kiwiJuice:
+                return "키위쥬스"
+            case .pineappleJuice:
+                return "파인애플 쥬스"
+            case .strawberryBananaJuice:
+                return "딸바쥬스"
+            case .mangoJuice:
+                return "망고 쥬스"
+            case .mangoKiwiJuice:
+                return "망고키위 쥬스"
+        }
+    }
 }
+
 enum Text {
     static let noJuice = "쥬스가 존재하지 않습니다."
     static let noFruit = "재료의 재고가 부족합니다."
