@@ -19,12 +19,12 @@ class FruitStore {
     
     init() {}
     
-    func getQuantity(of: Fruit) throws -> Int {
-        guard let result = fruits[of] else { throw ValueError.noValue }
+    func getQuantity(of fruit: Fruit) throws -> Int {
+        guard let result = fruits[fruit] else { throw ValueError.noValue }
         return result
     }
     
-    func setQuantity(of: Fruit, at: Int) {
-        fruits[of] = at
+    func setQuantity(of fruit: Fruit, at quantity: Int) {
+        fruits[fruit] = quantity
     }
 }

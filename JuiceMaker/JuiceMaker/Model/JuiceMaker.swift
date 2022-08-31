@@ -63,20 +63,20 @@ struct JuiceMaker {
 
     init () {}
     
-    private func canMakeJuice(of: Juice) -> Bool {
-        let minFluteQuantity = of.needFruitQuantity.map {
+    private func canMakeJuice(of juice: Juice) -> Bool {
+        let minFluteQuantity = juice.needFruitQuantity.map {
             return (try? fruitStore.getQuantity(of: $0.key) - $0.value) ?? -1
         }.min() ?? 0
         
         return minFluteQuantity >= 0
     }
     
-    func makeJuice(of: Juice) -> String {
-        if canMakeJuice(of: of) {
-            of.needFruitQuantity.forEach {
+    func makeJuice(of juice: Juice) -> String {
+        if canMakeJuice(of: juice) {
+            juice.needFruitQuantity.forEach {
                 fruitStore.setQuantity(of: $0.key, at: try! fruitStore.getQuantity(of: $0.key) - $0.value)
             }
-            return of.name + Text.makeComplet
+            return juice.name + Text.makeComplet
         } else {
             return Text.noFruit
         }
