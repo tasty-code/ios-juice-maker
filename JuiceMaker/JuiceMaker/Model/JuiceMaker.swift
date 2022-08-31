@@ -10,26 +10,26 @@ import Foundation
 struct JuiceMaker {
     private var fruitStore = FruitStore()
     
-    func makeJuice(of juiceType: FruitJuice) {
+    func makeJuice(of juiceType: FruitStore.FruitJuice) {
         switch juiceType {
         case .strawberry:
-            fruitStore.changeStock(strawberry: -16)
+            fruitStore.decreaseStock(strawberry: 16)
         case .banana:
-            fruitStore.changeStock(banana: -2)
+            fruitStore.decreaseStock(banana: 2)
         case .pineapple:
-            fruitStore.changeStock(pineapple: -2)
+            fruitStore.decreaseStock(pineapple: 2)
         case .kiwi:
-            fruitStore.changeStock(kiwi: -3)
+            fruitStore.decreaseStock(kiwi: 3)
         case .mango:
-            fruitStore.changeStock(mango: -3)
+            fruitStore.decreaseStock(mango: 3)
         case .strawberryBanana:
-            fruitStore.changeStock(strawberry: -10, banana: -1)
+            fruitStore.decreaseStock(strawberry: 10, banana: 1)
         case .mangoKiwi:
-            fruitStore.changeStock(kiwi: -1, mango: -2)
+            fruitStore.decreaseStock(kiwi: 1, mango: 2)
         }
     }
     
-    func canMakeJuice(of juiceType: FruitJuice) -> Bool {
+    func canMakeJuice(of juiceType: FruitStore.FruitJuice) -> Bool {
         var canMakeJuice = true
         
         switch juiceType {
