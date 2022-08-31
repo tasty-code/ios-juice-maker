@@ -57,7 +57,7 @@ enum Juice {
 
 enum Text {
     static let noneFruit = "없는 과일입니다."
-    static let noFruit = "재료의 재고가 부족합니다."
+    static let lackOfFruit = "재료의 재고가 부족합니다."
     static let makeComplet = "나왔습니다~!"
 }
 
@@ -85,7 +85,7 @@ struct JuiceMaker {
             }
             return juice.name + Text.makeComplet
         } else {
-            return Text.noFruit
+            return Text.lackOfFruit
         }
     }
 }
