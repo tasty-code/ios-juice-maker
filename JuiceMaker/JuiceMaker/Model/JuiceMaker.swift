@@ -7,22 +7,22 @@
 import Foundation
 
 enum Juice: String {
-    case 딸기쥬스
-    case 바나나쥬스
-    case 키위쥬스
-    case 파인애플_쥬스 = "파인애플 쥬스"
-    case 딸바쥬스
-    case 망고_쥬스 = "망고 쥬스"
-    case 망고키위_쥬스 = "망고키위 쥬스"
+    case strawberryJuice = "딸기쥬스"
+    case bananaJuice = "바나나쥬스"
+    case kiwiJuice = "키위쥬스"
+    case pineappleJuice = "파인애플 쥬스"
+    case strawberryBananaJuice = "딸바쥬스"
+    case mangoJuice = "망고 쥬스"
+    case mangoKiwiJuice = "망고키위 쥬스"
     
     static let dictionary: [String: Juice] = [
-        딸기쥬스.rawValue: 딸기쥬스,
-        바나나쥬스.rawValue: 바나나쥬스,
-        키위쥬스.rawValue: 키위쥬스,
-        파인애플_쥬스.rawValue: 파인애플_쥬스,
-        딸바쥬스.rawValue: 딸바쥬스,
-        망고_쥬스.rawValue: 망고_쥬스,
-        망고키위_쥬스.rawValue: 망고키위_쥬스,
+        strawberryJuice.rawValue: strawberryJuice,
+        bananaJuice.rawValue: bananaJuice,
+        kiwiJuice.rawValue: kiwiJuice,
+        pineappleJuice.rawValue: pineappleJuice,
+        strawberryBananaJuice.rawValue: strawberryBananaJuice,
+        mangoJuice.rawValue: mangoJuice,
+        mangoKiwiJuice.rawValue: mangoKiwiJuice,
     ]
 }
 enum Text {
@@ -33,26 +33,26 @@ enum Text {
 
 struct JuiceMaker {
     let needFruitQuantity: [Juice: [Fruit: Int]] = [
-        .딸기쥬스: [
+        .strawberryJuice: [
             .strawberry: 16
         ],
-        .바나나쥬스: [
+        .bananaJuice: [
             .banana: 2
         ],
-        .키위쥬스: [
+        .kiwiJuice: [
             .kiwi: 3
         ],
-        .파인애플_쥬스: [
+        .pineappleJuice: [
             .pineapple: 2
         ],
-        .딸바쥬스: [
+        .strawberryBananaJuice: [
             .strawberry: 10,
             .banana: 1
         ],
-        .망고_쥬스: [
+        .mangoJuice: [
             .mango: 3
         ],
-        .망고키위_쥬스: [
+        .mangoKiwiJuice: [
             .mango: 2,
             .kiwi: 1
         ],
@@ -63,7 +63,7 @@ struct JuiceMaker {
     
     private func canMakeJuice(of: Juice) -> Bool {
         let minFluteQuantity = needFruitQuantity[of]?.map {
-            return (try? fruitStore.getFruitQuantity(of: $0.key) - $0.value) ?? -1
+            return (try? fruitStore.getQuantity(of: $0.key) - $0.value) ?? -1
         }.min() ?? 0
         
         return minFluteQuantity >= 0
@@ -73,7 +73,7 @@ struct JuiceMaker {
         if let juice = Juice.dictionary[name] {
             if canMakeJuice(of: juice) {
                 needFruitQuantity[juice]?.forEach {
-                    fruitStore.setFruit(of: $0.key, quantity: try! fruitStore.getFruitQuantity(of: $0.key) - $0.value)
+                    fruitStore.setQuantity(of: $0.key, at: try! fruitStore.getQuantity(of: $0.key) - $0.value)
                 }
                 return name + Text.makeComplet
             } else {
