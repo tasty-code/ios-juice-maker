@@ -39,24 +39,25 @@ class FruitStore {
     
     func increase(of name: Fruit, to amount: Int) {
         for fruit in fruits {
-            var outDict: Int = fruit.value
+            var fruitValue: Int = fruit.value
             
             if name == fruit.key {
-                outDict += amount
+                fruitValue += amount
+                fruits[name] = fruitValue
+                break
             }
-            
-            fruits[name] = outDict
         }
     }
     
     func decrease(of name: Fruit, to amount: Int) {
         for fruit in fruits {
-            var fruitsValue: Int = fruit.value
+            var fruitValue: Int = fruit.value
             
             if name == fruit.key {
-                fruitsValue -= amount
+                fruitValue -= amount
+                fruits[name] = fruitValue
+                break
             }
-            fruits[name] = fruitsValue
         }
     }
 }
