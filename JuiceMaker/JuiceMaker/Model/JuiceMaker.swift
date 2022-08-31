@@ -33,6 +33,24 @@ enum Juice: String {
                 return "망고키위 쥬스"
         }
     }
+    var needFruitQuantity: [Fruit: Int] {
+        switch self {
+        case .strawberryJuice:
+            return [ .strawberry: 16 ]
+        case .bananaJuice:
+            return [ .banana: 2 ]
+        case .kiwiJuice:
+            return [ .kiwi: 3 ]
+        case .pineappleJuice:
+            return [ .pineapple: 2 ]
+        case .strawberryBananaJuice:
+            return [ .strawberry: 10, .banana: 1 ]
+        case .mangoJuice:
+            return [ .mango: 3 ]
+        case .mangoKiwiJuice:
+            return [ .mango: 2, .kiwi: 1 ]
+        }
+    }
 }
 
 enum Text {
@@ -41,37 +59,12 @@ enum Text {
 }
 
 struct JuiceMaker {
-    let needFruitQuantity: [Juice: [Fruit: Int]] = [
-        .strawberryJuice: [
-            .strawberry: 16
-        ],
-        .bananaJuice: [
-            .banana: 2
-        ],
-        .kiwiJuice: [
-            .kiwi: 3
-        ],
-        .pineappleJuice: [
-            .pineapple: 2
-        ],
-        .strawberryBananaJuice: [
-            .strawberry: 10,
-            .banana: 1
-        ],
-        .mangoJuice: [
-            .mango: 3
-        ],
-        .mangoKiwiJuice: [
-            .mango: 2,
-            .kiwi: 1
-        ],
-    ]
     let fruitStore = FruitStore()
 
     init () {}
     
     private func canMakeJuice(of: Juice) -> Bool {
-        let minFluteQuantity = needFruitQuantity[of]?.map {
+        let minFluteQuantity = of.needFruitQuantity.map {
             return (try? fruitStore.getQuantity(of: $0.key) - $0.value) ?? -1
         }.min() ?? 0
         
@@ -80,7 +73,7 @@ struct JuiceMaker {
     
     func makeJuice(of: Juice) -> String {
         if canMakeJuice(of: of) {
-            needFruitQuantity[of]?.forEach {
+            of.needFruitQuantity.forEach {
                 fruitStore.setQuantity(of: $0.key, at: try! fruitStore.getQuantity(of: $0.key) - $0.value)
             }
             return of.name + Text.makeComplet
