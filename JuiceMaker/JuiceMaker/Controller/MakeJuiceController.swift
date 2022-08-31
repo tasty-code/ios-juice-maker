@@ -58,6 +58,10 @@ class MakeJuiceController: UIViewController {
         makeJuice(of: .mango)
     }
     
+    @IBAction func hitFruitManagementButton(_ sender: Any) {
+        pushFruitManagement()
+    }
+    
     func showAlert(message: String, confirmText: String, confirmHandler: ((UIAlertAction) -> Void)? = nil, cancelText: String = "") {
         let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
         let confirm = UIAlertAction(title: confirmText, style: .default, handler: confirmHandler)
@@ -83,7 +87,9 @@ class MakeJuiceController: UIViewController {
     
     func pushFruitManagement() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let fruitManagementVC = storyboard.instantiateViewController(identifier: "FruitManagement")
+        let fruitManagementVC = storyboard.instantiateViewController(identifier: "FruitManagement") as FruitManagementController
+        
+        fruitManagementVC.juiceMaker = juiceMaker
     
         navigationController?.pushViewController(fruitManagementVC, animated: true)
     }

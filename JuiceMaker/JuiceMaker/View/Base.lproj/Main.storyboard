@@ -238,7 +238,7 @@
                     <navigationItem key="navigationItem" title="맛있는 쥬스를 만들어 드려요!" id="Eal-fj-o4N">
                         <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT">
                             <connections>
-                                <segue destination="Yu1-lM-nqp" kind="show" id="ZNu-AP-Mfs"/>
+                                <action selector="hitFruitManagementButton:" destination="BYZ-38-t0r" id="HxP-17-mun"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -380,6 +380,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="g4W-fY-l7r"/>
+                    <connections>
+                        <outlet property="bananaLabel" destination="gKu-86-RhI" id="8Ju-am-Nt0"/>
+                        <outlet property="kiwiLabel" destination="ZDv-1m-HBY" id="qPZ-mb-jNj"/>
+                        <outlet property="mangoLabel" destination="YJI-ER-LJR" id="new-lJ-uk9"/>
+                        <outlet property="pineappleLabel" destination="MpT-VW-hCb" id="F3V-8S-JFI"/>
+                        <outlet property="strawberryLabel" destination="0yV-kn-zaT" id="lW9-3E-W9q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
             </objects>
