@@ -11,9 +11,19 @@ enum Fruit: CaseIterable {
 }
 
 class FruitStore {
-    var fruits: [Fruit: Int] = Dictionary(Fruit.allCases.map { ($0, 10) }, uniquingKeysWith: { (first, _) in first })
+    private var observeFun: ([Fruit: Int]) -> Void = { _ in  }
+    var fruits: [Fruit: Int] = Dictionary(Fruit.allCases.map { ($0, 10) }, uniquingKeysWith: { (first, _) in first }) {
+        didSet(oldTotalSteps) {
+            observeFun(fruits)
+        }
+    }
     
     init() {}
+    
+    func fruitsObserve(at: @escaping ([Fruit: Int]) -> Void) -> () -> Void {
+        observeFun = at
+        return { () -> Void in self.observeFun = {_ in  } }
+    }
     
     func getQuantity(of fruit: Fruit) throws -> Int {
         guard let result = fruits[fruit] else { throw ValueError.noValue }
