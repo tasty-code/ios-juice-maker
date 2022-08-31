@@ -8,38 +8,39 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let juiceMaker = JuiceMaker()
+    var juiceMaker: JuiceMaker?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        juiceMaker = JuiceMaker(viewController: self)
     }
     
     @IBAction func strawberryBananaJuiceButton(_ sender: Any) {
-        juiceMaker.makeJuice(to: .strawberryBanana)
+        juiceMaker?.makeJuice(to: .strawberryBanana)
     }
     
     @IBAction func mangoKiwiJuiceButton(_ sender: Any) {
-        juiceMaker.makeJuice(to: .mangoKiwi)
+        juiceMaker?.makeJuice(to: .mangoKiwi)
     }
     
     @IBAction func strawberryJuiceButton(_ sender: Any) {
-        juiceMaker.makeJuice(to: .strawberry)
+        juiceMaker?.makeJuice(to: .strawberry)
     }
     
     @IBAction func bananaJuiceButton(_ sender: Any) {
-        juiceMaker.makeJuice(to: .banana)
+        juiceMaker?.makeJuice(to: .banana)
     }
     
     @IBAction func pineappleJuiceButton(_ sender: Any) {
-        juiceMaker.makeJuice(to: .pineapple)
+        juiceMaker?.makeJuice(to: .pineapple)
     }
     
     @IBAction func kiwiJuiceButton(_ sender: Any) {
-        juiceMaker.makeJuice(to: .kiwi)
+        juiceMaker?.makeJuice(to: .kiwi)
     }
     
     @IBAction func mangoJuiceButton(_ sender: Any) {
-        juiceMaker.makeJuice(to: .mango)
+        juiceMaker?.makeJuice(to: .mango)
     }
     
 }

@@ -5,6 +5,7 @@
 // 
 
 import Foundation
+import UIKit
 
 struct JuiceMaker {
     enum Juice {
@@ -55,6 +56,12 @@ struct JuiceMaker {
         }
     }
     
+    let viewController: UIViewController
+    
+    init(viewController: UIViewController) {
+        self.viewController = viewController
+    }
+    
     let fruitStore = FruitStore()
     
     func makeJuice(to menu: Juice) {
@@ -74,6 +81,7 @@ struct JuiceMaker {
             }
         }
         
+        showMenuAlert(of: juice)
         return true
     }
     
@@ -82,5 +90,12 @@ struct JuiceMaker {
             let demandFruitType: FruitStore.Fruit = ingredients.key
             fruitStore.decrease(of: demandFruitType, to: ingredients.value)
         }
+    }
+    
+    private func showMenuAlert(of juice: Juice) {
+        let alert = UIAlertController(title: "\(juice.name) 나왔습니다!", message: "맛있게 드세요!", preferredStyle: UIAlertController.Style.alert)
+        let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
+        alert.addAction(ok)
+        viewController.present(alert, animated: true)
     }
 }
