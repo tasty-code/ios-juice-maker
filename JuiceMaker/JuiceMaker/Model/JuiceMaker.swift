@@ -6,48 +6,48 @@
 
 import Foundation
 
-enum Juice: String {
-    case strawberryJuice
-    case bananaJuice
-    case kiwiJuice
-    case pineappleJuice
-    case strawberryBananaJuice
-    case mangoJuice
-    case mangoKiwiJuice
+enum Juice {
+    case strawberry
+    case banana
+    case kiwi
+    case pineapple
+    case strawberryBanana
+    case mango
+    case mangoKiwi
     
     var name: String {
         switch self {
-            case .strawberryJuice:
+            case .strawberry:
                 return "딸기쥬스"
-            case .bananaJuice:
+            case .banana:
                 return "바나나쥬스"
-            case .kiwiJuice:
+            case .kiwi:
                 return "키위쥬스"
-            case .pineappleJuice:
+            case .pineapple:
                 return "파인애플 쥬스"
-            case .strawberryBananaJuice:
+            case .strawberryBanana:
                 return "딸바쥬스"
-            case .mangoJuice:
+            case .mango:
                 return "망고 쥬스"
-            case .mangoKiwiJuice:
+            case .mangoKiwi:
                 return "망고키위 쥬스"
         }
     }
     var needFruitQuantity: [Fruit: Int] {
         switch self {
-        case .strawberryJuice:
+        case .strawberry:
             return [ .strawberry: 16 ]
-        case .bananaJuice:
+        case .banana:
             return [ .banana: 2 ]
-        case .kiwiJuice:
+        case .kiwi:
             return [ .kiwi: 3 ]
-        case .pineappleJuice:
+        case .pineapple:
             return [ .pineapple: 2 ]
-        case .strawberryBananaJuice:
+        case .strawberryBanana:
             return [ .strawberry: 10, .banana: 1 ]
-        case .mangoJuice:
+        case .mango:
             return [ .mango: 3 ]
-        case .mangoKiwiJuice:
+        case .mangoKiwi:
             return [ .mango: 2, .kiwi: 1 ]
         }
     }
