@@ -18,10 +18,15 @@ class Storage {
     }
 }
 
-enum Fruit {
-    static let strawberry = Storage()
-    static let banana = Storage()
-    static let kiwi = Storage()
-    static let pineapple = Storage()
-    static let mango = Storage()
+class FruitStore {
+    enum Fruit {
+        static let strawberry = Storage()
+        static let banana = Storage()
+        static let kiwi = Storage()
+        static let pineapple = Storage()
+        static let mango = Storage()
+    }
 }
+
+
+
