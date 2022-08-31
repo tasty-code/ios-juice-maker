@@ -242,6 +242,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="bananaCountLabel" destination="gvk-pA-Lw5" id="rEK-hv-Lgl"/>
+                        <outlet property="kiwiCountLabel" destination="FZq-de-TJG" id="9ST-kt-FSA"/>
+                        <outlet property="mangoCountLabel" destination="3Ce-SU-JeH" id="jSd-Eu-0Gc"/>
+                        <outlet property="pineappleCountLabel" destination="ccQ-Dk-PuY" id="HS0-ef-4lN"/>
+                        <outlet property="strawberryCountLabel" destination="Qas-vP-td6" id="QdU-HN-K4q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

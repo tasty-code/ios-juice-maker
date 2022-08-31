@@ -7,12 +7,22 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var strawberryCountLabel: UILabel!
+    @IBOutlet weak var bananaCountLabel: UILabel!
+    @IBOutlet weak var pineappleCountLabel: UILabel!
+    @IBOutlet weak var kiwiCountLabel: UILabel!
+    @IBOutlet weak var mangoCountLabel: UILabel!
     
     var juiceMaker: JuiceMaker?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         juiceMaker = JuiceMaker(viewController: self)
+        updateFruitsAmount(sender: juiceMaker?.fruitStore)
+    }
+    
+    func updateFruitsAmount(sender: Any) {
+        
     }
     
     @IBAction func strawberryBananaJuiceButton(_ sender: Any) {
