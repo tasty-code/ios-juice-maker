@@ -7,10 +7,10 @@
 
 import Foundation
 
-typealias recipe = (Storage: Storage, amount: Int)
+typealias Recipe = (Storage: Storage, amount: Int)
 
 class Juice {
-    private(set) var recipes: [recipe]
+    private(set) var recipes: [Recipe]
     let name: String
     
     var isMakeCheck: Bool {
@@ -22,12 +22,12 @@ class Juice {
         return true
     }
     
-    init(_ recipes: [recipe], _ name: String) {
+    init(_ recipes: [Recipe], _ name: String) {
         self.recipes = recipes
         self.name = name
     }
     
-    enum Recipes {
+    enum JuiceRecipe {
         static let strawberry = [(Fruit.strawberry, 16)]
         static let banana = [(Fruit.banana, 2)]
         static let kiwi = [(Fruit.kiwi, 3)]
@@ -38,13 +38,13 @@ class Juice {
     }
     
     enum JuiceType {
-        static let strawberry = Juice(Recipes.strawberry, "딿기주스")
-        static let banana = Juice(Recipes.banana, "바나나주스")
-        static let pineapple = Juice(Recipes.pineapple, "파인애플주스")
-        static let kiwi = Juice(Recipes.kiwi, "키위주스")
-        static let strawberryBanana = Juice(Recipes.strawberryBanana, "딸바주스")
-        static let mango = Juice(Recipes.mango, "망고주스")
-        static let mangoKiwi = Juice(Recipes.mangoKiwi, "망키주스")
+        static let strawberry = Juice(JuiceRecipe.strawberry, "딸기주스")
+        static let banana = Juice(JuiceRecipe.banana, "바나나주스")
+        static let pineapple = Juice(JuiceRecipe.pineapple, "파인애플주스")
+        static let kiwi = Juice(JuiceRecipe.kiwi, "키위주스")
+        static let strawberryBanana = Juice(JuiceRecipe.strawberryBanana, "딸바주스")
+        static let mango = Juice(JuiceRecipe.mango, "망고주스")
+        static let mangoKiwi = Juice(JuiceRecipe.mangoKiwi, "망키주스")
     }
 }
 

@@ -9,12 +9,12 @@ import Foundation
 class Storage {
     private(set) var amount: Int = 10
     
-    func minusAmount(_ amount: Int) {
+    func decreaseAmount(_ amount: Int) {
         self.amount -= amount
     }
     
-    func addAmount(_ amount: Int) {
-        self.amount = amount
+    func increaseAmount(_ amount: Int) {
+        self.amount += amount
     }
 }
 
