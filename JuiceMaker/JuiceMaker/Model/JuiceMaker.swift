@@ -17,22 +17,23 @@ enum Juice {
     
     var name: String {
         switch self {
-            case .strawberry:
-                return "딸기쥬스"
-            case .banana:
-                return "바나나쥬스"
-            case .kiwi:
-                return "키위쥬스"
-            case .pineapple:
-                return "파인애플 쥬스"
-            case .strawberryBanana:
-                return "딸바쥬스"
-            case .mango:
-                return "망고 쥬스"
-            case .mangoKiwi:
-                return "망고키위 쥬스"
+        case .strawberry:
+            return "딸기쥬스"
+        case .banana:
+            return "바나나쥬스"
+        case .kiwi:
+            return "키위쥬스"
+        case .pineapple:
+            return "파인애플 쥬스"
+        case .strawberryBanana:
+            return "딸바쥬스"
+        case .mango:
+            return "망고 쥬스"
+        case .mangoKiwi:
+            return "망고키위 쥬스"
         }
     }
+    
     var needFruitQuantity: [Fruit: Int] {
         switch self {
         case .strawberry:
@@ -51,6 +52,7 @@ enum Juice {
             return [ .mango: 2, .kiwi: 1 ]
         }
     }
+    
 }
 
 enum Text {
