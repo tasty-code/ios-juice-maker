@@ -77,6 +77,7 @@ struct JuiceMaker {
             let demandFruitType: FruitStore.Fruit = ingredients.key
             
             if fruitStore.getAmount(of: demandFruitType) < ingredients.value {
+                notShowMenuAlert(of: juice)
                 return false
             }
         }
@@ -97,5 +98,22 @@ struct JuiceMaker {
         let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
         alert.addAction(ok)
         viewController.present(alert, animated: true)
+    }
+    
+    private func notShowMenuAlert(of juice: Juice) {
+        let alert = UIAlertController(title:"재료가 모자라요. 재고를 수정할까요?",message: "",preferredStyle: UIAlertController.Style.alert)
+        let ok = UIAlertAction(title: "예", style: .default, handler: {
+            action in
+            guard let nextVC = viewController.storyboard?.instantiateViewController(identifier: "ingredientCheangedView") else {return}
+             viewController.present(nextVC, animated: true)
+            
+        })
+        
+        let cancle = UIAlertAction(title: "아니오", style: .destructive, handler: nil)
+        
+        alert.addAction(cancle)
+        alert.addAction(ok)
+        viewController.present(alert,animated: true,completion: nil)
+        
     }
 }
