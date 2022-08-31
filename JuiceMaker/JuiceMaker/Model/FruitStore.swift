@@ -28,11 +28,19 @@ class FruitStore {
     var kiwi: Int = 10
     var mango: Int = 10
     
-    func changeStock(strawberry: Int = 0, banana: Int = 0, pineapple: Int = 0, kiwi: Int = 0, mango: Int = 0) {
+    func addStock(strawberry: Int = 0, banana: Int = 0, pineapple: Int = 0, kiwi: Int = 0, mango: Int = 0) {
         self.strawberry += strawberry
         self.banana += banana
         self.pineapple += pineapple
         self.kiwi += kiwi
         self.mango += mango
+    }
+    
+    func decreaseStock(strawberry: Int = 0, banana: Int = 0, pineapple: Int = 0, kiwi: Int = 0, mango: Int = 0) {
+        self.strawberry -= strawberry
+        self.banana -= banana
+        self.pineapple -= pineapple
+        self.kiwi -= kiwi
+        self.mango -= mango
     }
 }
