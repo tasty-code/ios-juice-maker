@@ -36,7 +36,6 @@ enum Juice: String {
 }
 
 enum Text {
-    static let noJuice = "쥬스가 존재하지 않습니다."
     static let noFruit = "재료의 재고가 부족합니다."
     static let makeComplet = "나왔습니다~!"
 }
@@ -79,18 +78,14 @@ struct JuiceMaker {
         return minFluteQuantity >= 0
     }
     
-    func makeJuice(name: String) -> String {
-        if let juice = Juice.dictionary[name] {
-            if canMakeJuice(of: juice) {
-                needFruitQuantity[juice]?.forEach {
-                    fruitStore.setQuantity(of: $0.key, at: try! fruitStore.getQuantity(of: $0.key) - $0.value)
-                }
-                return name + Text.makeComplet
-            } else {
-                return Text.noFruit
+    func makeJuice(of: Juice) -> String {
+        if canMakeJuice(of: of) {
+            needFruitQuantity[of]?.forEach {
+                fruitStore.setQuantity(of: $0.key, at: try! fruitStore.getQuantity(of: $0.key) - $0.value)
             }
+            return of.name + Text.makeComplet
         } else {
-            return Text.noJuice
+            return Text.noFruit
         }
     }
 }
