@@ -6,12 +6,8 @@
 
 import Foundation
 
-enum Fruit {
-    case strawberry
-    case banana
-    case pineapple
-    case kiwi
-    case mango
+enum Fruit: CaseIterable {
+    case strawberry, banana, pineapple, kiwi, mango
 }
 
 enum ValueError: Error {
@@ -19,22 +15,16 @@ enum ValueError: Error {
 }
 
 class FruitStore {
-    var fruits: [Fruit: Int] = [
-        .strawberry: 10,
-        .banana: 10,
-        .pineapple: 10,
-        .kiwi: 10,
-        .mango: 10,
-    ]
+    var fruits: [Fruit: Int] = Dictionary(Fruit.allCases.map { ($0, 10) }, uniquingKeysWith: { (first, _) in first })
     
     init() {}
     
-    func getFruitQuantity(of: Fruit) throws -> Int {
+    func getQuantity(of: Fruit) throws -> Int {
         guard let result = fruits[of] else { throw ValueError.noValue }
         return result
     }
     
-    func setFruit(of: Fruit, quantity: Int) {
-        fruits[of] = quantity
+    func setQuantity(of: Fruit, at: Int) {
+        fruits[of] = at
     }
 }
