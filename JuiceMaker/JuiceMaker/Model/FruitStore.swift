@@ -6,29 +6,45 @@
 
 import Foundation
 
-class Storage {
-    private(set) var amount: Int = 10
-    
-    func decreaseAmount(_ amount: Int) {
-        self.amount -= amount
-    }
-    
-    func increaseAmount(_ amount: Int) {
-        self.amount += amount
-    }
-}
+
+//class Storage {
+//    private(set) var amount: Int = 10
+//
+//    func decreaseAmount(_ amount: Int) {
+//        self.amount -= amount
+//    }
+//
+//    func increaseAmount(_ amount: Int) {
+//        self.amount += amount
+//    }
+//}
 
 class FruitStore {
-    static let shared = FruitStore()
+ 
+    enum Fruit: Int, CaseIterable {
+        case strawberry, banana, kiwi, pineapple, mango
+    }
     
-    let strawberry = Storage()
-    let banana = Storage()
-    let kiwi = Storage()
-    let pineapple = Storage()
-    let mango = Storage()
+    var fruits = [Fruit: Int]()
     
-    private init() { }
+    init() {
+        for fruit in Fruit.allCases {
+            fruits[fruit] = 10
+        }
+    }
+    
+    func increase(_ fruit: Fruit, _ amount: Int) {
+        guard var fruits = fruits[fruit] else { return }
+        fruits += amount
+    }
+    
+    func decrease(_ fruits: [Fruit: Int]) {
+        for fruit in fruits {
+            guard var fruits = self.fruits[fruit.key] else { return }
+            fruits -= fruit.value
+            self.fruits.updateValue(fruits, forKey: fruit.key)
+        }
+    }
 }
-
 
 
