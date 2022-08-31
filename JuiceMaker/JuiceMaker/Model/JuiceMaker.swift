@@ -57,8 +57,19 @@ enum Juice {
 
 enum Text {
     static let noneFruit = "없는 과일입니다."
-    static let lackOfFruit = "재료의 재고가 부족합니다."
-    static let makeComplet = "나왔습니다~!"
+    static let lackOfFruit = "재료가 모자라요. 재고를 수정할까요?"
+    static let makeComplet = " 나왔습니다! 맛있게 드세요!"
+}
+
+enum MakeJuiceStatus {
+    case noneFruit
+    case lackOfFruit
+    case makeComplet
+}
+
+struct MakeJuice {
+    var status: MakeJuiceStatus
+    var message: String
 }
 
 class JuiceMaker: FruitStore {
@@ -70,18 +81,18 @@ class JuiceMaker: FruitStore {
         return minFluteQuantity >= 0
     }
     
-    func makeJuice(of juice: Juice) -> String {
+    func makeJuice(of juice: Juice) -> MakeJuice {
         if canMakeJuice(of: juice) {
             for i in juice.needFruitQuantity {
                 do {
                     self.setQuantity(of: i.key, at: try self.getQuantity(of: i.key) - i.value)
                 } catch {
-                    return Text.noneFruit
+                    return MakeJuice(status: .noneFruit, message: Text.noneFruit)
                 }
             }
-            return juice.name + Text.makeComplet
+            return MakeJuice(status: .makeComplet, message: juice.name + Text.makeComplet)
         } else {
-            return Text.lackOfFruit
+            return MakeJuice(status: .lackOfFruit, message: Text.lackOfFruit)
         }
     }
 }
