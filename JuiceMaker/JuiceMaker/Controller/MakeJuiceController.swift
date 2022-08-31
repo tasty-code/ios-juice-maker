@@ -30,8 +30,32 @@ class MakeJuiceController: UIViewController {
         fruitsObserve()
     }
     
-    @IBAction func hitStrawberryJuiceButton(_ sender: Any) {
+    @IBAction func hitStrawberryBananaJuiceButton(_ sender: Any) {
         juiceMaker.makeJuice(of: .strawberryBanana)
+    }
+    
+    @IBAction func hitMangoKiwiJuice(_ sender: Any) {
+        juiceMaker.makeJuice(of: .mangoKiwi)
+    }
+    
+    @IBAction func hitStrawberryJuiceButton(_ sender: Any) {
+        juiceMaker.makeJuice(of: .strawberry)
+    }
+    
+    @IBAction func hitBananaJuiceButton(_ sender: Any) {
+        juiceMaker.makeJuice(of: .banana)
+    }
+    
+    @IBAction func hitPineappleJuiceButton(_ sender: Any) {
+        juiceMaker.makeJuice(of: .pineapple)
+    }
+    
+    @IBAction func hitKiwiJuiceButton(_ sender: Any) {
+        juiceMaker.makeJuice(of: .kiwi)
+    }
+    
+    @IBAction func hiwMangoJuiceButton(_ sender: Any) {
+        juiceMaker.makeJuice(of: .mango)
     }
     
     func fruitsObserve(_ fruits: [Fruit: Int]) {
