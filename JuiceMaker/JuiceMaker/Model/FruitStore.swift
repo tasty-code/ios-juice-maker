@@ -8,14 +8,46 @@ import Foundation
 
 // 과일 저장소 타입
 class FruitStore {
-    enum FruitJuice: String {
-        case strawberry = "S"
-        case banana = "B"
-        case pineapple = "P"
-        case kiwi = "K"
-        case mango = "M"
-        case strawberryBanana = "SB"
-        case mangoKiwi = "MK"
+    enum FruitJuice: CaseIterable {
+        case strawberry, banana, pineapple, kiwi, mango, strawberryBanana, mangoKiwi
+        
+        var juiceName: String {
+            switch self {
+            case .strawberry:
+                return "딸기"
+            case .banana:
+                return "바나나"
+            case .pineapple:
+                return "파인애플"
+            case .kiwi:
+                return "키위"
+            case .mango:
+                return "망고"
+            case .strawberryBanana:
+                return "딸바"
+            case .mangoKiwi:
+                return "망키"
+            }
+        }
+        
+        var juiceRecipe: [Int] {
+            switch self {
+            case .strawberry:
+                return [16]
+            case .banana:
+                return [2]
+            case .pineapple:
+                return [2]
+            case .kiwi:
+                return [3]
+            case .mango:
+                return [3]
+            case .strawberryBanana:
+                return [10, 1]
+            case .mangoKiwi:
+                return [2, 1]
+            }
+        }
     }
 
     enum Fruit: CaseIterable {
