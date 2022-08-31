@@ -75,10 +75,17 @@ class MakeJuiceController: UIViewController {
         let juiceStatus = juiceMaker.makeJuice(of: juice)
         
         if juiceStatus.status == .lackOfFruit {
-            showAlert(message: juiceStatus.message, confirmText: "예", cancelText: "아니오")
+            showAlert(message: juiceStatus.message, confirmText: "예", confirmHandler: { _ in self.pushFruitManagement() }, cancelText: "아니오")
         } else {
             showAlert(message: juiceStatus.message, confirmText: "확인")
         }
+    }
+    
+    func pushFruitManagement() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let fruitManagementVC = storyboard.instantiateViewController(identifier: "FruitManagement")
+    
+        navigationController?.pushViewController(fruitManagementVC, animated: true)
     }
     
     func fruitsObserve(_ fruits: [Fruit: Int]) {
