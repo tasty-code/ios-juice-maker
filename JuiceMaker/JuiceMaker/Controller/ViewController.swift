@@ -29,11 +29,6 @@ class ViewController: UIViewController {
         kiwiAmount.text = String(juiceMaker.fruitStore.fruits[.kiwi]!)
         pineappleAmount.text = String(juiceMaker.fruitStore.fruits[.pineapple]!)
         mangoAmount.text = String(juiceMaker.fruitStore.fruits[.mango]!)
-        print(juiceMaker.fruitStore.fruits[.strawberry]!)
-        print(juiceMaker.fruitStore.fruits[.banana]!)
-        print(juiceMaker.fruitStore.fruits[.pineapple]!)
-        print(juiceMaker.fruitStore.fruits[.kiwi]!)
-        print(juiceMaker.fruitStore.fruits[.mango]!)
     }
     
     @IBAction func clickOrderButton(_ sender: orderButton) {
