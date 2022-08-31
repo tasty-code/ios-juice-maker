@@ -58,6 +58,19 @@ class MakeJuiceController: UIViewController {
         juiceMaker.makeJuice(of: .mango)
     }
     
+    func showAlert(message: String, confirmText: String, confirmHandler: ((UIAlertAction) -> Void)?, cancelText: String?, cancelHandler: ((UIAlertAction) -> Void)?) {
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        let confirm = UIAlertAction(title: confirmText, style: .default, handler: confirmHandler)
+        let cancel = UIAlertAction(title: cancelText, style: .cancel, handler: cancelHandler)
+        
+        alert.addAction(confirm)
+        if (cancelText != nil) {
+            alert.addAction(cancel)
+        }
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
     func fruitsObserve(_ fruits: [Fruit: Int]) {
         updateFluitLabel()
     }
