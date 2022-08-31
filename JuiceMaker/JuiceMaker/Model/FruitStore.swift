@@ -19,13 +19,15 @@ class Storage {
 }
 
 class FruitStore {
-    enum Fruit {
-        static let strawberry = Storage()
-        static let banana = Storage()
-        static let kiwi = Storage()
-        static let pineapple = Storage()
-        static let mango = Storage()
-    }
+    static let shared = FruitStore()
+    
+    let strawberry = Storage()
+    let banana = Storage()
+    let kiwi = Storage()
+    let pineapple = Storage()
+    let mango = Storage()
+    
+    private init() { }
 }
 
 

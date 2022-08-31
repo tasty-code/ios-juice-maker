@@ -11,8 +11,10 @@ typealias Recipe = (Storage: Storage, amount: Int)
 struct JuiceMaker {
     
     class Juice {
+        
         private(set) var recipes: [Recipe]
         let name: String
+        let fruitStore = FruitStore.shared
         
         var isMakeCheck: Bool {
             for recipe in recipes {
@@ -29,13 +31,13 @@ struct JuiceMaker {
         }
         
         enum JuiceRecipe {
-            static let strawberry = [(Fruit.strawberry, 16)]
-            static let banana = [(Fruit.banana, 2)]
-            static let kiwi = [(Fruit.kiwi, 3)]
-            static let pineapple = [(Fruit.pineapple, 2)]
-            static let strawberryBanana = [(Fruit.strawberry, 10), (Fruit.banana, 1)]
-            static let mango = [(Fruit.mango, 3)]
-            static let mangoKiwi = [(Fruit.mango, 2), (Fruit.kiwi, 1)]
+            static let strawberry = [(fruitStore.strawberry, 16)]
+            static let banana = [(fruitStore.banana, 2)]
+            static let kiwi = [(fruitStore.kiwi, 3)]
+            static let pineapple = [(fruitStore.pineapple, 2)]
+            static let strawberryBanana = [(fruitStore.strawberry, 10), (fruitStore.banana, 1)]
+            static let mango = [(fruitStore.mango, 3)]
+            static let mangoKiwi = [(fruitStore.mango, 2), (fruitStore.kiwi, 1)]
         }
         
         enum JuiceType {
