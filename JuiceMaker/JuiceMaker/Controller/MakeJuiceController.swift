@@ -15,19 +15,19 @@ class MakeJuiceController: UIViewController {
     @IBOutlet weak var mangoLabel: UILabel!
     
     let juiceMaker = JuiceMaker()
-    var fruitsObserve: () -> Void = {   }
+    var fruitsObserver: () -> Void = {   }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        updateFluitLabel()
-        fruitsObserve = juiceMaker.fruitsObserve(at: fruitsObserve)
+        updateAllFluitLabel()
+        fruitsObserver = juiceMaker.fruitsObserve(at: fruitsObserve)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        fruitsObserve()
+        fruitsObserver()
     }
     
     @IBAction func hitStrawberryBananaJuiceButton(_ sender: Any) {
@@ -95,10 +95,10 @@ class MakeJuiceController: UIViewController {
     }
     
     func fruitsObserve(_ fruits: [Fruit: Int]) {
-        updateFluitLabel()
+        updateAllFluitLabel()
     }
 
-    func updateFluitLabel() {
+    func updateAllFluitLabel() {
         strawberryLabel.text = String((try? juiceMaker.getQuantity(of: .strawberry)) ?? 0)
         bananaLabel.text = String((try? juiceMaker.getQuantity(of: .banana)) ?? 0)
         pineappleLabel.text = String((try? juiceMaker.getQuantity(of: .pineapple)) ?? 0)
