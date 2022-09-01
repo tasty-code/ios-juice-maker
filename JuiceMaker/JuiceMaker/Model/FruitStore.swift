@@ -6,19 +6,6 @@
 
 import Foundation
 
-
-//class Storage {
-//    private(set) var amount: Int = 10
-//
-//    func decreaseAmount(_ amount: Int) {
-//        self.amount -= amount
-//    }
-//
-//    func increaseAmount(_ amount: Int) {
-//        self.amount += amount
-//    }
-//}
-
 class FruitStore {
  
     enum Fruit: Int, CaseIterable {
