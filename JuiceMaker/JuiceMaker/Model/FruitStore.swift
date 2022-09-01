@@ -54,23 +54,25 @@ class FruitStore {
         case strawberry, banana, pineapple, kiwi, mango
     }
     
-    func addStock(strawberry: Int = 0, banana: Int = 0, pineapple: Int = 0, kiwi: Int = 0, mango: Int = 0) {
-        self.strawberry += strawberry
-        self.banana += banana
-        self.pineapple += pineapple
-        self.kiwi += kiwi
-        self.mango += mango
-    }
-    
-    func decreaseStock(strawberry: Int = 0, banana: Int = 0, pineapple: Int = 0, kiwi: Int = 0, mango: Int = 0) {
-        self.strawberry -= strawberry
-        self.banana -= banana
-        self.pineapple -= pineapple
-        self.kiwi -= kiwi
-        self.mango -= mango
-    }
-    
     var fruits = [Fruit : Int]()
+
+    
+    func addStock(fruit changedStockfruit : Fruit, stock: Int) {
+        for fruit in Fruit.allCases {
+            if fruit == changedStockfruit {
+                fruits[fruit]! += stock
+            }
+        }
+    }
+    
+    func decreaseStock(fruit changedStockfruit : Fruit, stock: Int) {
+        for fruit in Fruit.allCases {
+            if fruit == changedStockfruit {
+                fruits[fruit]! -= stock
+            }
+        }
+    }
+    
     
     init() {
         for fruit in Fruit.allCases {
