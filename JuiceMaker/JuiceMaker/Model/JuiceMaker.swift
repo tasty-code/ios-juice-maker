@@ -83,9 +83,9 @@ class JuiceMaker: FruitStore {
     
     func makeJuice(of juice: Juice) -> MakeJuice {
         if canMakeJuice(of: juice) {
-            for i in juice.needFruitQuantity {
+            for value in juice.needFruitQuantity {
                 do {
-                    self.setQuantity(of: i.key, at: try self.getQuantity(of: i.key) - i.value)
+                    self.setQuantity(of: value.key, at: try self.getQuantity(of: value.key) - value.value)
                 } catch {
                     return MakeJuice(status: .noneFruit, message: Text.noneFruit)
                 }
