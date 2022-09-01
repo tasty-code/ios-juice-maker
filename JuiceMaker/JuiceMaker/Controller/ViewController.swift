@@ -27,11 +27,18 @@ class ViewController: UIViewController {
         if let strawberryAmountInt = juiceMaker.fruitStore.fruits[.strawberry] {
             strawberryAmount.text = String(strawberryAmountInt)
         }
-        strawberryAmount.text = String(juiceMaker.fruitStore.fruits[.strawberry]!)
-        bananaAmount.text = String(juiceMaker.fruitStore.fruits[.banana]!)
-        kiwiAmount.text = String(juiceMaker.fruitStore.fruits[.kiwi]!)
-        pineappleAmount.text = String(juiceMaker.fruitStore.fruits[.pineapple]!)
-        mangoAmount.text = String(juiceMaker.fruitStore.fruits[.mango]!)
+        if let bananaAmountInt = juiceMaker.fruitStore.fruits[.banana] {
+            bananaAmount.text = String(bananaAmountInt)
+        }
+        if let kiwiAmountInt = juiceMaker.fruitStore.fruits[.kiwi] {
+            kiwiAmount.text = String(kiwiAmountInt)
+        }
+        if let pineappleAmountInt = juiceMaker.fruitStore.fruits[.pineapple] {
+            pineappleAmount.text = String(pineappleAmountInt)
+        }
+        if let mangoAmountInt = juiceMaker.fruitStore.fruits[.mango] {
+            mangoAmount.text = String(mangoAmountInt)
+        }
     }
     
     @IBAction func clickOrderButton(_ sender: orderButton) {
