@@ -50,15 +50,15 @@ class FruitStore {
         }
     }
 
-    enum Fruit: CaseIterable {
+    enum Fruit: Int, CaseIterable {
         case strawberry, banana, pineapple, kiwi, mango
     }
     
-    var strawberry: Int = 10
-    var banana: Int = 10
-    var pineapple: Int = 10
-    var kiwi: Int = 10
-    var mango: Int = 10
+    var strawberry = Int()
+    var banana = Int()
+    var pineapple = Int()
+    var kiwi = Int()
+    var mango = Int()
     
     func addStock(strawberry: Int = 0, banana: Int = 0, pineapple: Int = 0, kiwi: Int = 0, mango: Int = 0) {
         self.strawberry += strawberry
@@ -74,5 +74,15 @@ class FruitStore {
         self.pineapple -= pineapple
         self.kiwi -= kiwi
         self.mango -= mango
+    }
+    
+    let initialStock = 10
+    
+    init() {
+        self.strawberry = initialStock
+        self.banana = initialStock
+        self.pineapple = initialStock
+        self.kiwi = initialStock
+        self.mango = initialStock
     }
 }
