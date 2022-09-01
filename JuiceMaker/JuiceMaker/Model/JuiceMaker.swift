@@ -11,22 +11,22 @@ struct JuiceMaker {
     private var fruitStore = FruitStore()
     
     func makeJuice(of juiceType: FruitStore.FruitJuice) {
-        switch juiceType {
-        case .strawberry:
-            fruitStore.decreaseStock(strawberry: 16)
-        case .banana:
-            fruitStore.decreaseStock(banana: 2)
-        case .pineapple:
-            fruitStore.decreaseStock(pineapple: 2)
-        case .kiwi:
-            fruitStore.decreaseStock(kiwi: 3)
-        case .mango:
-            fruitStore.decreaseStock(mango: 3)
-        case .strawberryBanana:
-            fruitStore.decreaseStock(strawberry: 10, banana: 1)
-        case .mangoKiwi:
-            fruitStore.decreaseStock(kiwi: 1, mango: 2)
-        }
+//        switch juiceType {
+//        case .strawberry:
+//            fruitStore.decreaseStock(strawberry: 16)
+//        case .banana:
+//            fruitStore.decreaseStock(banana: 2)
+//        case .pineapple:
+//            fruitStore.decreaseStock(pineapple: 2)
+//        case .kiwi:
+//            fruitStore.decreaseStock(kiwi: 3)
+//        case .mango:
+//            fruitStore.decreaseStock(mango: 3)
+//        case .strawberryBanana:
+//            fruitStore.decreaseStock(strawberry: 10, banana: 1)
+//        case .mangoKiwi:
+//            fruitStore.decreaseStock(kiwi: 1, mango: 2)
+//        }
     }
     
     func canMakeJuice(of juiceType: FruitStore.FruitJuice) -> Bool {
