@@ -52,7 +52,18 @@ class FruitManagementController: UIViewController {
     
     func setFruitQuantity(of fruit: Fruit, at quantity: Int) {
         juiceMaker.setQuantity(of: fruit, at: quantity)
-        strawberryLabel.text = String((try? juiceMaker.getQuantity(of: fruit)) ?? 0)
+        switch fruit {
+        case .strawberry:
+            strawberryLabel.text = String(quantity)
+        case .banana:
+            bananaLabel.text = String(quantity)
+        case .pineapple:
+            pineappleLabel.text = String(quantity)
+        case .kiwi:
+            kiwiLabel.text = String(quantity)
+        case .mango:
+            mangoLabel.text = String(quantity)
+        }
     }
 
     func updateAllFluitLabel() {
