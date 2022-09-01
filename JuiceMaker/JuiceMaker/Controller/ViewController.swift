@@ -24,6 +24,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var mangoOrderButton: orderButton!
     
     private func updateAmount() {
+        if let strawberryAmountInt = juiceMaker.fruitStore.fruits[.strawberry] {
+            strawberryAmount.text = String(strawberryAmountInt)
+        }
         strawberryAmount.text = String(juiceMaker.fruitStore.fruits[.strawberry]!)
         bananaAmount.text = String(juiceMaker.fruitStore.fruits[.banana]!)
         kiwiAmount.text = String(juiceMaker.fruitStore.fruits[.kiwi]!)
@@ -58,8 +61,5 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         initialSetting()
     }
-
-    
-
 }
 
