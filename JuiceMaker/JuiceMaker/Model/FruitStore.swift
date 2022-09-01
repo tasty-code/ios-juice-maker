@@ -54,12 +54,6 @@ class FruitStore {
         case strawberry, banana, pineapple, kiwi, mango
     }
     
-    var strawberry = Int()
-    var banana = Int()
-    var pineapple = Int()
-    var kiwi = Int()
-    var mango = Int()
-    
     func addStock(strawberry: Int = 0, banana: Int = 0, pineapple: Int = 0, kiwi: Int = 0, mango: Int = 0) {
         self.strawberry += strawberry
         self.banana += banana
@@ -76,13 +70,11 @@ class FruitStore {
         self.mango -= mango
     }
     
-    let initialStock = 10
+    var fruits = [Fruit : Int]()
     
     init() {
-        self.strawberry = initialStock
-        self.banana = initialStock
-        self.pineapple = initialStock
-        self.kiwi = initialStock
-        self.mango = initialStock
+        for fruit in Fruit.allCases {
+            fruits[fruit] = 10
+        }
     }
 }
