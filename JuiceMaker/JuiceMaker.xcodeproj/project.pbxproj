@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		35D1507328C09FAF00B41ED3 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D1507128C09FAF00B41ED3 /* Alerts.swift */; };
+		35D1507328C09FAF00B41ED3 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D1507128C09FAF00B41ED3 /* UIViewController+Alert.swift */; };
 		35D1507428C09FAF00B41ED3 /* orderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D1507228C09FAF00B41ED3 /* orderButton.swift */; };
 		35D1507D28C09FEF00B41ED3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35D1507828C09FEF00B41ED3 /* Assets.xcassets */; };
 		35D1507E28C09FEF00B41ED3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35D1507928C09FEF00B41ED3 /* LaunchScreen.storyboard */; };
@@ -21,7 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		35D1507128C09FAF00B41ED3 /* Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		35D1507128C09FAF00B41ED3 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		35D1507228C09FAF00B41ED3 /* orderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = orderButton.swift; sourceTree = "<group>"; };
 		35D1507828C09FEF00B41ED3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35D1507A28C09FEF00B41ED3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -50,8 +50,7 @@
 		35D1507028C09FAF00B41ED3 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				35D1507128C09FAF00B41ED3 /* Alerts.swift */,
-				35D1507228C09FAF00B41ED3 /* orderButton.swift */,
+				35D1507128C09FAF00B41ED3 /* UIViewController+Alert.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -67,13 +66,21 @@
 			path = Model/View;
 			sourceTree = "<group>";
 		};
+		35E79E4C28C1DEEB00250DD0 /* CustomClass */ = {
+			isa = PBXGroup;
+			children = (
+				35D1507228C09FAF00B41ED3 /* orderButton.swift */,
+			);
+			path = CustomClass;
+			sourceTree = "<group>";
+		};
 		C71CD66D266C7B470038B9CB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				35D1508028C0A09800B41ED3 /* AmountViewController.swift */,
 				C73DAF36255D0CDD00020D38 /* AppDelegate.swift */,
 				C73DAF38255D0CDD00020D38 /* SceneDelegate.swift */,
 				C73DAF3A255D0CDD00020D38 /* OrderViewController.swift */,
+				35D1508028C0A09800B41ED3 /* AmountViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -106,6 +113,7 @@
 		C73DAF35255D0CDD00020D38 /* JuiceMaker */ = {
 			isa = PBXGroup;
 			children = (
+				35E79E4C28C1DEEB00250DD0 /* CustomClass */,
 				35D1507028C09FAF00B41ED3 /* Extension */,
 				C71CD66D266C7B470038B9CB /* Controller */,
 				35D1507728C09FEF00B41ED3 /* View */,
@@ -191,7 +199,7 @@
 				C73DAF3B255D0CDD00020D38 /* OrderViewController.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
 				C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */,
-				35D1507328C09FAF00B41ED3 /* Alerts.swift in Sources */,
+				35D1507328C09FAF00B41ED3 /* UIViewController+Alert.swift in Sources */,
 				C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

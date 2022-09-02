@@ -35,8 +35,8 @@ class OrderViewController: UIViewController {
         pineappleAmount.text = convert(optionalValue: juiceMaker.fruitStore.fruits[.pineapple])
         mangoAmount.text = convert(optionalValue: juiceMaker.fruitStore.fruits[.mango])
     }
-    
-    @IBAction func clickOrderButton(_ sender: orderButton) {
+
+    @IBAction func didTapOrderButton(_ sender: orderButton) {
         if juiceMaker.canMake(sender.juice) {
             juiceMaker.makeJuice(sender.juice)
             successMakeJuiceAlert(sender.juice)

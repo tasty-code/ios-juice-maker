@@ -22,7 +22,7 @@ extension UIViewController {
         let okAction = UIAlertAction(title: "예", style: .cancel) { action in
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let amountView = storyboard.instantiateViewController(withIdentifier: "AmountV")
-            self.navigationController?.pushViewController(amountView, animated: true)
+            self.present(amountView, animated: true)
         }
         
         let noAction = UIAlertAction(title: "아니요", style: .default)
