@@ -11,64 +11,65 @@ struct JuiceMaker {
     private var fruitStore = FruitStore()
     
     func makeJuice(of juiceType: FruitStore.FruitJuice) {
-//        switch juiceType {
-//        case .strawberry:
-//            fruitStore.decreaseStock(strawberry: 16)
-//        case .banana:
-//            fruitStore.decreaseStock(banana: 2)
-//        case .pineapple:
-//            fruitStore.decreaseStock(pineapple: 2)
-//        case .kiwi:
-//            fruitStore.decreaseStock(kiwi: 3)
-//        case .mango:
-//            fruitStore.decreaseStock(mango: 3)
-//        case .strawberryBanana:
-//            fruitStore.decreaseStock(strawberry: 10, banana: 1)
-//        case .mangoKiwi:
-//            fruitStore.decreaseStock(kiwi: 1, mango: 2)
-//        }
+        switch juiceType {
+        case .strawberry:
+            fruitStore.decreaseStock(fruit: .strawberry, stock: 16)
+        case .banana:
+            fruitStore.decreaseStock(fruit: .banana, stock: 2)
+        case .pineapple:
+            fruitStore.decreaseStock(fruit: .pineapple, stock: 2)
+        case .kiwi:
+            fruitStore.decreaseStock(fruit: .kiwi, stock: 3)
+        case .mango:
+            fruitStore.decreaseStock(fruit: .mango, stock: 3)
+        case .strawberryBanana:
+            fruitStore.decreaseStock(fruit: .strawberry, stock: 10)
+            fruitStore.decreaseStock(fruit: .banana, stock: 1)
+        case .mangoKiwi:
+            fruitStore.decreaseStock(fruit: .mango, stock: 2)
+            fruitStore.decreaseStock(fruit: .kiwi, stock: 1)
+        }
     }
     
     func canMakeJuice(of juiceType: FruitStore.FruitJuice) -> Bool {
         var canMakeJuice = true
-        
-//        switch juiceType {
-//        case .strawberry:
-//            if fruitStore.strawberry < 16 {
-//                print("딸기 재고가 부족합니다.")
-//                canMakeJuice = false
-//            }
-//        case .banana:
-//            if fruitStore.banana < 2 {
-//                print("바나나 재고가 부족합니다.")
-//                canMakeJuice = false
-//            }
-//        case .pineapple:
-//            if fruitStore.pineapple < 2 {
-//                print("파인애플 재고가 부족합니다.")
-//                canMakeJuice = false
-//            }
-//        case .kiwi:
-//            if fruitStore.kiwi < 3 {
-//                print("키위 재고가 부족합니다.")
-//                canMakeJuice = false
-//            }
-//        case .mango:
-//            if fruitStore.mango < 3 {
-//                print("망고 재고가 부족합니다.")
-//                canMakeJuice = false
-//            }
-//        case .strawberryBanana:
-//            if fruitStore.strawberry < 10 && fruitStore.banana < 1 {
-//                print("딸바 재고가 부족합니다.")
-//                canMakeJuice = false
-//            }
-//        case .mangoKiwi:
-//            if fruitStore.mango < 2 && fruitStore.kiwi < 1 {
-//                print("망키 재고가 부족합니다.")
-//                canMakeJuice = false
-//            }
-//        }
+        switch juiceType {
+        case .strawberry:
+            if fruitStore.fruits[FruitStore.Fruit.strawberry]! < 16 {
+                print("딸기 재고가 부족합니다.")
+                canMakeJuice = false
+            }
+        case .banana:
+            if fruitStore.banana < 2 {
+                print("바나나 재고가 부족합니다.")
+                canMakeJuice = false
+            }
+        case .pineapple:
+            if fruitStore.pineapple < 2 {
+                print("파인애플 재고가 부족합니다.")
+                canMakeJuice = false
+            }
+        case .kiwi:
+            if fruitStore.kiwi < 3 {
+                print("키위 재고가 부족합니다.")
+                canMakeJuice = false
+            }
+        case .mango:
+            if fruitStore.mango < 3 {
+                print("망고 재고가 부족합니다.")
+                canMakeJuice = false
+            }
+        case .strawberryBanana:
+            if fruitStore.strawberry < 10 && fruitStore.banana < 1 {
+                print("딸바 재고가 부족합니다.")
+                canMakeJuice = false
+            }
+        case .mangoKiwi:
+            if fruitStore.mango < 2 && fruitStore.kiwi < 1 {
+                print("망키 재고가 부족합니다.")
+                canMakeJuice = false
+            }
+        }
         
         return canMakeJuice
     }

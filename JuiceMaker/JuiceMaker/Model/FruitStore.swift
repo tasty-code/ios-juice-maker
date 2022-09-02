@@ -57,12 +57,18 @@ class FruitStore {
     var fruits = [Fruit : Int]()
 
     
-    func addStock(fruit : Fruit, stock: Int) {
-        fruits[fruit]! += stock
+    func addStock(fruit : Fruit, stock addedStock: Int) {
+        if let currentStock = fruits[fruit] {
+            let changedStock: Int = currentStock + addedStock
+            fruits[fruit] = changedStock
+        }
     }
     
-    func decreaseStock(fruit : Fruit, stock: Int) {
-        fruits[fruit]! -= stock
+    func decreaseStock(fruit : Fruit, stock decreasedStock: Int) {
+        if let currentStock = fruits[fruit] {
+            let changedStock: Int = currentStock - decreasedStock
+            fruits[fruit] = changedStock
+        }
     }
     
     
