@@ -7,7 +7,6 @@
 import Foundation
 import UIKit
 
-
 class FruitStore {
     enum Fruit: CaseIterable {
         case strawberry

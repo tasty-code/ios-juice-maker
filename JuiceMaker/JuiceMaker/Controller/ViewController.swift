@@ -18,11 +18,23 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         juiceMaker = JuiceMaker(viewController: self)
-        updateFruitsAmount(sender: juiceMaker?.fruitStore)
+        updateFruitsAmount()
     }
     
-    func updateFruitsAmount(sender: Any) {
+    func updateFruitsAmount() {
+        strawberryCountLabel.text = getFruitAmountToString(of: .strawberry)
+        bananaCountLabel.text = getFruitAmountToString(of: .banana)
+        pineappleCountLabel.text = getFruitAmountToString(of: .pineapple)
+        kiwiCountLabel.text = getFruitAmountToString(of: .kiwi)
+        mangoCountLabel.text = getFruitAmountToString(of: .mango)
+    }
+    
+    private func getFruitAmountToString(of name: FruitStore.Fruit) -> String {
+        guard let unwrapJuiceMaker = juiceMaker else {
+            return "0"
+        }
         
+        return String(unwrapJuiceMaker.fruitStore.getAmount(of: name))
     }
     
     @IBAction func strawberryBananaJuiceButton(_ sender: Any) {
@@ -52,6 +64,5 @@ class ViewController: UIViewController {
     @IBAction func mangoJuiceButton(_ sender: Any) {
         juiceMaker?.makeJuice(to: .mango)
     }
-    
 }
 
