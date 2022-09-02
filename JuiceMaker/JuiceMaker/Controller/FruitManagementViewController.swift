@@ -67,18 +67,22 @@ class FruitManagementViewController: UIViewController {
     }
 
     func updateAllFluitLabel() {
-        strawberryLabel.text = String((try? juiceMaker.getQuantity(of: .strawberry)) ?? 0)
-        bananaLabel.text = String((try? juiceMaker.getQuantity(of: .banana)) ?? 0)
-        pineappleLabel.text = String((try? juiceMaker.getQuantity(of: .pineapple)) ?? 0)
-        kiwiLabel.text = String((try? juiceMaker.getQuantity(of: .kiwi)) ?? 0)
-        mangoLabel.text = String((try? juiceMaker.getQuantity(of: .mango)) ?? 0)
+        strawberryLabel.text = String(self.getQuantity(of: .strawberry))
+        bananaLabel.text = String(self.getQuantity(of: .banana))
+        pineappleLabel.text = String(self.getQuantity(of: .pineapple))
+        kiwiLabel.text = String(self.getQuantity(of: .kiwi))
+        mangoLabel.text = String(self.getQuantity(of: .mango))
     }
     
     func updateStepperValue() {
-        strawberryStepper.value = Double((try? juiceMaker.getQuantity(of: .strawberry)) ?? 0)
-        bananaStepper.value = Double((try? juiceMaker.getQuantity(of: .banana)) ?? 0)
-        pineappleStepper.value = Double((try? juiceMaker.getQuantity(of: .pineapple)) ?? 0)
-        kiwiStepper.value = Double((try? juiceMaker.getQuantity(of: .kiwi)) ?? 0)
-        mangoStepper.value = Double((try? juiceMaker.getQuantity(of: .mango)) ?? 0)
+        strawberryStepper.value = Double(self.getQuantity(of: .strawberry))
+        bananaStepper.value = Double(self.getQuantity(of: .banana))
+        pineappleStepper.value = Double(self.getQuantity(of: .pineapple))
+        kiwiStepper.value = Double(self.getQuantity(of: .kiwi))
+        mangoStepper.value = Double(self.getQuantity(of: .mango))
+    }
+    
+    func getQuantity(of fruit: Fruit) -> Int {
+      return (try? juiceMaker.getQuantity(of: fruit)) ?? 0
     }
 }
