@@ -42,7 +42,7 @@ struct JuiceMaker {
     
     func canMakeJuice(of juiceType: FruitStore.FruitJuice) -> Bool {
         var canMakeJuice = true
-        var fruits = FruitStore.Fruit.self
+        let fruits = FruitStore.Fruit.self
         
         switch juiceType {
         case .strawberry:
