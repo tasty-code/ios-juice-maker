@@ -27,9 +27,13 @@ class OrderViewController: UIViewController {
         guard let value = optionalValue else { return "nil" }
         return String(value)
     }
+    
     private func updateAmount() {
         strawberryAmount.text = convert(optionalValue: juiceMaker.fruitStore.fruits[.strawberry])
-        
+        bananaAmount.text = convert(optionalValue: juiceMaker.fruitStore.fruits[.banana])
+        kiwiAmount.text = convert(optionalValue: juiceMaker.fruitStore.fruits[.kiwi])
+        pineappleAmount.text = convert(optionalValue: juiceMaker.fruitStore.fruits[.pineapple])
+        mangoAmount.text = convert(optionalValue: juiceMaker.fruitStore.fruits[.mango])
     }
     
     @IBAction func clickOrderButton(_ sender: orderButton) {
