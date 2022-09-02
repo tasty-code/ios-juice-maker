@@ -7,21 +7,21 @@
 import UIKit
 
 class OrderViewController: UIViewController {
-    let juiceMaker = JuiceMaker()
+    private let juiceMaker = JuiceMaker()
     
-    @IBOutlet weak var strawberryAmount: UILabel!
-    @IBOutlet weak var bananaAmount: UILabel!
-    @IBOutlet weak var kiwiAmount: UILabel!
-    @IBOutlet weak var pineappleAmount: UILabel!
-    @IBOutlet weak var mangoAmount: UILabel!
+    @IBOutlet weak private var strawberryAmount: UILabel!
+    @IBOutlet weak private var bananaAmount: UILabel!
+    @IBOutlet weak private var kiwiAmount: UILabel!
+    @IBOutlet weak private var pineappleAmount: UILabel!
+    @IBOutlet weak private var mangoAmount: UILabel!
     
-    @IBOutlet weak var strawberryBananaOrderButton: orderButton!
-    @IBOutlet weak var strawberryOrderButton: orderButton!
-    @IBOutlet weak var bananaOrderButton: orderButton!
-    @IBOutlet weak var pineappleOrderButton: orderButton!
-    @IBOutlet weak var mangoKiwiOrderButton: orderButton!
-    @IBOutlet weak var kiwiOrderButton: orderButton!
-    @IBOutlet weak var mangoOrderButton: orderButton!
+    @IBOutlet weak private var strawberryBananaOrderButton: orderButton!
+    @IBOutlet weak private var strawberryOrderButton: orderButton!
+    @IBOutlet weak private var bananaOrderButton: orderButton!
+    @IBOutlet weak private var pineappleOrderButton: orderButton!
+    @IBOutlet weak private var mangoKiwiOrderButton: orderButton!
+    @IBOutlet weak private var kiwiOrderButton: orderButton!
+    @IBOutlet weak private var mangoOrderButton: orderButton!
     
     private func updateAmount() {
         if let strawberryAmountInt = juiceMaker.fruitStore.fruits[.strawberry] {
