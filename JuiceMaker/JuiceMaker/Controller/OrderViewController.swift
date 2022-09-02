@@ -23,22 +23,13 @@ class OrderViewController: UIViewController {
     @IBOutlet weak private var kiwiOrderButton: orderButton!
     @IBOutlet weak private var mangoOrderButton: orderButton!
     
+    private func convert(optionalValue: Int?) -> String{
+        guard let value = optionalValue else { return "nil" }
+        return String(value)
+    }
     private func updateAmount() {
-        if let strawberryAmountInt = juiceMaker.fruitStore.fruits[.strawberry] {
-            strawberryAmount.text = String(strawberryAmountInt)
-        }
-        if let bananaAmountInt = juiceMaker.fruitStore.fruits[.banana] {
-            bananaAmount.text = String(bananaAmountInt)
-        }
-        if let kiwiAmountInt = juiceMaker.fruitStore.fruits[.kiwi] {
-            kiwiAmount.text = String(kiwiAmountInt)
-        }
-        if let pineappleAmountInt = juiceMaker.fruitStore.fruits[.pineapple] {
-            pineappleAmount.text = String(pineappleAmountInt)
-        }
-        if let mangoAmountInt = juiceMaker.fruitStore.fruits[.mango] {
-            mangoAmount.text = String(mangoAmountInt)
-        }
+        strawberryAmount.text = convert(optionalValue: juiceMaker.fruitStore.fruits[.strawberry])
+        
     }
     
     @IBAction func clickOrderButton(_ sender: orderButton) {
