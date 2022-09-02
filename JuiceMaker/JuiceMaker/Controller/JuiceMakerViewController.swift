@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MakeJuiceController: UIViewController {
+class JuiceMakerViewController: UIViewController {
     @IBOutlet weak var strawberryLabel: UILabel!
     @IBOutlet weak var bananaLabel: UILabel!
     @IBOutlet weak var pineappleLabel: UILabel!
@@ -30,36 +30,36 @@ class MakeJuiceController: UIViewController {
         fruitsObserver()
     }
     
-    @IBAction func hitStrawberryBananaJuiceButton(_ sender: Any) {
-        makeJuice(of: .strawberryBanana)
+    @IBAction func tapStrawberryBananaJuiceButton(_ sender: Any) {
+        self.makeJuice(of: .strawberryBanana)
     }
     
-    @IBAction func hitMangoKiwiJuice(_ sender: Any) {
-        makeJuice(of: .mangoKiwi)
+    @IBAction func tapMangoKiwiJuice(_ sender: Any) {
+        self.makeJuice(of: .mangoKiwi)
     }
     
-    @IBAction func hitStrawberryJuiceButton(_ sender: Any) {
-        makeJuice(of: .strawberry)
+    @IBAction func tapStrawberryJuiceButton(_ sender: Any) {
+        self.makeJuice(of: .strawberry)
     }
     
-    @IBAction func hitBananaJuiceButton(_ sender: Any) {
-        makeJuice(of: .banana)
+    @IBAction func tapBananaJuiceButton(_ sender: Any) {
+        self.makeJuice(of: .banana)
     }
     
-    @IBAction func hitPineappleJuiceButton(_ sender: Any) {
-        makeJuice(of: .pineapple)
+    @IBAction func tapPineappleJuiceButton(_ sender: Any) {
+        self.makeJuice(of: .pineapple)
     }
     
-    @IBAction func hitKiwiJuiceButton(_ sender: Any) {
-        makeJuice(of: .kiwi)
+    @IBAction func tapKiwiJuiceButton(_ sender: Any) {
+        self.makeJuice(of: .kiwi)
     }
     
-    @IBAction func hiwMangoJuiceButton(_ sender: Any) {
-        makeJuice(of: .mango)
+    @IBAction func tapMangoJuiceButton(_ sender: Any) {
+        self.makeJuice(of: .mango)
     }
     
-    @IBAction func hitFruitManagementButton(_ sender: Any) {
-        pushFruitManagement()
+    @IBAction func tapFruitManagementButton(_ sender: Any) {
+        self.pushFruitManagement()
     }
     
     func showAlert(message: String, confirmText: String, confirmHandler: ((UIAlertAction) -> Void)? = nil, cancelText: String = "") {
@@ -79,15 +79,15 @@ class MakeJuiceController: UIViewController {
         let juiceStatus = juiceMaker.makeJuice(of: juice)
         
         if juiceStatus.status == .lackOfFruit {
-            showAlert(message: juiceStatus.message, confirmText: "예", confirmHandler: { _ in self.pushFruitManagement() }, cancelText: "아니오")
+            showAlert(message: juiceStatus.message, confirmText: JuiceMakerViewControllerText.yes, confirmHandler: { _ in self.pushFruitManagement() }, cancelText: JuiceMakerViewControllerText.no)
         } else {
-            showAlert(message: juiceStatus.message, confirmText: "확인")
+            showAlert(message: juiceStatus.message, confirmText: JuiceMakerViewControllerText.confirm)
         }
     }
     
     func pushFruitManagement() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let fruitManagementVC = storyboard.instantiateViewController(identifier: "FruitManagement") as FruitManagementController
+        let fruitManagementVC = storyboard.instantiateViewController(identifier: "FruitManagement") as FruitManagementViewController
         
         fruitManagementVC.juiceMaker = juiceMaker
     
