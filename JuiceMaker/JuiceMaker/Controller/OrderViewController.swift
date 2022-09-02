@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class OrderViewController: UIViewController {
     let juiceMaker = JuiceMaker()
     
     @IBOutlet weak var strawberryAmount: UILabel!
@@ -60,10 +60,12 @@ class ViewController: UIViewController {
         kiwiOrderButton.juice = JuiceMaker.Juice.kiwi
         mangoOrderButton.juice = JuiceMaker.Juice.mango
     }
+    
     private func initialSetting() {
         updateAmount()
         settingOrderButton()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetting()
