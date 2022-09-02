@@ -37,38 +37,32 @@ enum Juice {
     var needFruitQuantity: [Fruit: Int] {
         switch self {
         case .strawberry:
-            return [ .strawberry: 16 ]
+            return [.strawberry: 16]
         case .banana:
-            return [ .banana: 2 ]
+            return [.banana: 2]
         case .kiwi:
-            return [ .kiwi: 3 ]
+            return [.kiwi: 3]
         case .pineapple:
-            return [ .pineapple: 2 ]
+            return [.pineapple: 2]
         case .strawberryBanana:
-            return [ .strawberry: 10, .banana: 1 ]
+            return [.strawberry: 10, .banana: 1]
         case .mango:
-            return [ .mango: 3 ]
+            return [.mango: 3]
         case .mangoKiwi:
-            return [ .mango: 2, .kiwi: 1 ]
+            return [.mango: 2, .kiwi: 1]
         }
     }
     
 }
 
-enum Text {
-    static let noneFruit = "없는 과일입니다."
-    static let lackOfFruit = "재료가 모자라요. 재고를 수정할까요?"
-    static let makeComplet = " 나왔습니다! 맛있게 드세요!"
-}
-
-enum MakeJuiceStatus {
+enum JuiceStatus {
     case noneFruit
     case lackOfFruit
     case makeComplet
 }
 
 struct MakeJuice {
-    var status: MakeJuiceStatus
+    var status: JuiceStatus
     var message: String
 }
 
@@ -87,12 +81,12 @@ class JuiceMaker: FruitStore {
                 do {
                     self.setQuantity(of: value.key, at: try self.getQuantity(of: value.key) - value.value)
                 } catch {
-                    return MakeJuice(status: .noneFruit, message: Text.noneFruit)
+                    return MakeJuice(status: .noneFruit, message: JuiceMakerText.noneFruit)
                 }
             }
-            return MakeJuice(status: .makeComplet, message: juice.name + Text.makeComplet)
+            return MakeJuice(status: .makeComplet, message: juice.name + JuiceMakerText.makeComplet)
         } else {
-            return MakeJuice(status: .lackOfFruit, message: Text.lackOfFruit)
+            return MakeJuice(status: .lackOfFruit, message: JuiceMakerText.lackOfFruit)
         }
     }
 }
