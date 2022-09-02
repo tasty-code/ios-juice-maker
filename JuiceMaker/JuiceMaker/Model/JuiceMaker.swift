@@ -96,6 +96,7 @@ struct JuiceMaker {
     private func orderSuccessAlert(of juice: Juice) {
         let alert = UIAlertController(title: "\(juice.name) 나왔습니다!", message: "맛있게 드세요!", preferredStyle: UIAlertController.Style.alert)
         let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
+        
         alert.addAction(ok)
         viewController.present(alert, animated: true)
     }
@@ -103,7 +104,7 @@ struct JuiceMaker {
     private func orderFailedAlert() {
         let alert = UIAlertController(title:"재료가 모자라요. 재고를 수정할까요?",message: "",preferredStyle: UIAlertController.Style.alert)
         let ok = UIAlertAction(title: "예", style: .default, handler: { action in
-            guard let nextVC = viewController.storyboard?.instantiateViewController(identifier: "ingredientCheangedView") else { return }
+            guard let nextVC = viewController.storyboard?.instantiateViewController(identifier: "ingredientCheangeVC") else { return }
             viewController.present(nextVC, animated: true)
         })
         let cancle = UIAlertAction(title: "아니오", style: .destructive, handler: nil)

@@ -39,30 +39,37 @@ class ViewController: UIViewController {
     
     @IBAction func strawberryBananaJuiceButton(_ sender: Any) {
         juiceMaker?.makeJuice(to: .strawberryBanana)
+        updateFruitsAmount()
     }
     
     @IBAction func mangoKiwiJuiceButton(_ sender: Any) {
         juiceMaker?.makeJuice(to: .mangoKiwi)
+        updateFruitsAmount()
     }
     
     @IBAction func strawberryJuiceButton(_ sender: Any) {
         juiceMaker?.makeJuice(to: .strawberry)
+        updateFruitsAmount()
     }
     
     @IBAction func bananaJuiceButton(_ sender: Any) {
         juiceMaker?.makeJuice(to: .banana)
+        updateFruitsAmount()
     }
     
     @IBAction func pineappleJuiceButton(_ sender: Any) {
         juiceMaker?.makeJuice(to: .pineapple)
+        updateFruitsAmount()
     }
     
     @IBAction func kiwiJuiceButton(_ sender: Any) {
         juiceMaker?.makeJuice(to: .kiwi)
+        updateFruitsAmount()
     }
     
     @IBAction func mangoJuiceButton(_ sender: Any) {
         juiceMaker?.makeJuice(to: .mango)
+        updateFruitsAmount()
     }
 }
 
