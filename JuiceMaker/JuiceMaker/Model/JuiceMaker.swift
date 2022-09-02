@@ -31,41 +31,52 @@ struct JuiceMaker {
         }
     }
     
+    func getCurrentStock(of fruit: FruitStore.Fruit) -> Int {
+        var currentStockOfFruit = 0
+        if let currentStock = fruitStore.fruits[fruit] {
+            currentStockOfFruit = currentStock
+        }
+        
+        return currentStockOfFruit
+    }
+    
     func canMakeJuice(of juiceType: FruitStore.FruitJuice) -> Bool {
         var canMakeJuice = true
+        var fruits = FruitStore.Fruit.self
+        
         switch juiceType {
         case .strawberry:
-            if fruitStore.fruits[FruitStore.Fruit.strawberry]! < 16 {
+            if getCurrentStock(of: fruits.strawberry) < 16 {
                 print("딸기 재고가 부족합니다.")
                 canMakeJuice = false
             }
         case .banana:
-            if fruitStore.banana < 2 {
+            if getCurrentStock(of: fruits.banana) < 2 {
                 print("바나나 재고가 부족합니다.")
                 canMakeJuice = false
             }
         case .pineapple:
-            if fruitStore.pineapple < 2 {
+            if getCurrentStock(of: fruits.pineapple) < 2 {
                 print("파인애플 재고가 부족합니다.")
                 canMakeJuice = false
             }
         case .kiwi:
-            if fruitStore.kiwi < 3 {
+            if getCurrentStock(of: fruits.kiwi) < 3 {
                 print("키위 재고가 부족합니다.")
                 canMakeJuice = false
             }
         case .mango:
-            if fruitStore.mango < 3 {
+            if getCurrentStock(of: fruits.mango) < 3 {
                 print("망고 재고가 부족합니다.")
                 canMakeJuice = false
             }
         case .strawberryBanana:
-            if fruitStore.strawberry < 10 && fruitStore.banana < 1 {
+            if getCurrentStock(of: fruits.strawberry) < 10 && getCurrentStock(of: fruits.banana) < 1 {
                 print("딸바 재고가 부족합니다.")
                 canMakeJuice = false
             }
         case .mangoKiwi:
-            if fruitStore.mango < 2 && fruitStore.kiwi < 1 {
+            if getCurrentStock(of: fruits.mango) < 2 && getCurrentStock(of: fruits.kiwi) < 1 {
                 print("망키 재고가 부족합니다.")
                 canMakeJuice = false
             }
