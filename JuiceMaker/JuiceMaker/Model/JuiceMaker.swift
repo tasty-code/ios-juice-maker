@@ -17,16 +17,15 @@ enum Juice: String {
 }
 
 enum JuiceRecipe {
-    static let strawberryRecipe: [Fruit: Int] = [Fruit.strawberry : 16]
-    static let bananaRecipe: [Fruit: Int] = [Fruit.banana: 2]
-    static let kiwiRecipe: [Fruit: Int] = [Fruit.kiwi: 3]
-    static let pineappleRecipe: [Fruit: Int] = [Fruit.pineapple: 2]
-    static let strawberryBananaRecipe: [Fruit: Int] = [Fruit.strawberry: 10, Fruit.banana: 1]
-    static let mangoRecipe: [Fruit: Int] = [Fruit.mango: 3]
-    static let mangoKiwiRecipe: [Fruit: Int] = [Fruit.mango: 2, Fruit.kiwi: 1]
+    static let strawberryRecipe = [Fruit.strawberry : 16]
+    static let bananaRecipe = [Fruit.banana: 2]
+    static let kiwiRecipe = [Fruit.kiwi: 3]
+    static let pineappleRecipe = [Fruit.pineapple: 2]
+    static let strawberryBananaRecipe = [Fruit.strawberry: 10, Fruit.banana: 1]
+    static let mangoRecipe = [Fruit.mango: 3]
+    static let mangoKiwiRecipe = [Fruit.mango: 2, Fruit.kiwi: 1]
 }
 
-// 쥬스 메이커 타입
 struct JuiceMaker {
     let fruitStore = FruitStore()
     
@@ -57,7 +56,7 @@ struct JuiceMaker {
         }
     }
     
-    func makeJuice(_ juice: Juice) {
+    func makeJuice(juice: Juice) {
         switch juice {
         case .strawberryJuice:
             compareFruitStock(JuiceRecipe.strawberryRecipe)
