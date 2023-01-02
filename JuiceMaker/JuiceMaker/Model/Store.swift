@@ -8,7 +8,7 @@
 import Foundation
 
 protocol Store {
-    func add()
+    func add(과일: Fruit, 개수: Int) throws
     func subtract()
     func check()
 }
