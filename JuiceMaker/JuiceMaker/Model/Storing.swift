@@ -12,5 +12,6 @@ protocol Storing {
     var items: [Element: Int] { get set }
     func add(item: Element, 개수: Int) throws
     func subtract(item: Element, 개수: Int) throws
-    func check()
+    func isEnough(item: Element, 개수: Int) -> Bool
+    func isEnough(itemz: [(item: Element, 개수: Int)]) -> Bool
 }

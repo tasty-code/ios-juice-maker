@@ -32,8 +32,18 @@ class FruitStore: Storing {
         items.updateValue(재고 - 개수, forKey: item)
     }
     
-    func check() {
-        return
+    func isEnough(item: Fruit, 개수: Int) -> Bool {
+        guard let 재고 = items[item],
+              재고 >= 개수 else {
+            return false
+        }
+        return true
+    }
+    
+    func isEnough(itemz: [(item: Fruit, 개수: Int)]) -> Bool {
+        return itemz.allSatisfy { (item: Fruit, 개수: Int) in
+            (items[item] ?? 0) >= 개수
+        }
     }
     
 }
