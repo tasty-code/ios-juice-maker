@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Fruit {
+enum Fruit: CaseIterable {
     case 딸기
     case 바나나
     case 파인애플
