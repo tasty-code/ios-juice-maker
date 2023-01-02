@@ -45,5 +45,4 @@ class FruitStore: Storing {
             (items[item] ?? 0) >= 개수
         }
     }
-    
 }

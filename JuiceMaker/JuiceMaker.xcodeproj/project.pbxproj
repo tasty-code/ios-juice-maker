@@ -17,7 +17,18 @@
 		C73DAF40255D0CDE00020D38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C73DAF3F255D0CDE00020D38 /* Assets.xcassets */; };
 		C73DAF43255D0CDF00020D38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C73DAF41255D0CDF00020D38 /* LaunchScreen.storyboard */; };
 		C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */; };
+		EB4CAEFA2962DABB00B30C7A /* JuiceMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4CAEF92962DABB00B30C7A /* JuiceMakerTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EB4CAEFB2962DABB00B30C7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C73DAF2B255D0CDC00020D38 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C73DAF32255D0CDC00020D38;
+			remoteInfo = JuiceMaker;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		40D5D84E2962C22F0006B8A3 /* Fruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
@@ -32,10 +43,19 @@
 		C73DAF42255D0CDF00020D38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C73DAF44255D0CDF00020D38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMaker.swift; sourceTree = "<group>"; };
+		EB4CAEF72962DABA00B30C7A /* JuiceMakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JuiceMakerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB4CAEF92962DABB00B30C7A /* JuiceMakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMakerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		C73DAF30255D0CDC00020D38 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB4CAEF42962DABA00B30C7A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -80,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				C73DAF35255D0CDD00020D38 /* JuiceMaker */,
+				EB4CAEF82962DABB00B30C7A /* JuiceMakerTests */,
 				C73DAF34255D0CDD00020D38 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				C73DAF33255D0CDD00020D38 /* JuiceMaker.app */,
+				EB4CAEF72962DABA00B30C7A /* JuiceMakerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,6 +123,14 @@
 				C73DAF44255D0CDF00020D38 /* Info.plist */,
 			);
 			path = JuiceMaker;
+			sourceTree = "<group>";
+		};
+		EB4CAEF82962DABB00B30C7A /* JuiceMakerTests */ = {
+			isa = PBXGroup;
+			children = (
+				EB4CAEF92962DABB00B30C7A /* JuiceMakerTests.swift */,
+			);
+			path = JuiceMakerTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,17 +153,39 @@
 			productReference = C73DAF33255D0CDD00020D38 /* JuiceMaker.app */;
 			productType = "com.apple.product-type.application";
 		};
+		EB4CAEF62962DABA00B30C7A /* JuiceMakerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB4CAEFF2962DABB00B30C7A /* Build configuration list for PBXNativeTarget "JuiceMakerTests" */;
+			buildPhases = (
+				EB4CAEF32962DABA00B30C7A /* Sources */,
+				EB4CAEF42962DABA00B30C7A /* Frameworks */,
+				EB4CAEF52962DABA00B30C7A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EB4CAEFC2962DABB00B30C7A /* PBXTargetDependency */,
+			);
+			name = JuiceMakerTests;
+			productName = JuiceMakerTests;
+			productReference = EB4CAEF72962DABA00B30C7A /* JuiceMakerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		C73DAF2B255D0CDC00020D38 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1200;
+				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
 					C73DAF32255D0CDC00020D38 = {
 						CreatedOnToolsVersion = 12.0;
+					};
+					EB4CAEF62962DABA00B30C7A = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = C73DAF32255D0CDC00020D38;
 					};
 				};
 			};
@@ -151,6 +203,7 @@
 			projectRoot = "";
 			targets = (
 				C73DAF32255D0CDC00020D38 /* JuiceMaker */,
+				EB4CAEF62962DABA00B30C7A /* JuiceMakerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -163,6 +216,13 @@
 				C73DAF43255D0CDF00020D38 /* LaunchScreen.storyboard in Resources */,
 				C73DAF40255D0CDE00020D38 /* Assets.xcassets in Resources */,
 				C73DAF3E255D0CDD00020D38 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB4CAEF52962DABA00B30C7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,7 +243,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EB4CAEF32962DABA00B30C7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB4CAEFA2962DABB00B30C7A /* JuiceMakerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EB4CAEFC2962DABB00B30C7A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C73DAF32255D0CDC00020D38 /* JuiceMaker */;
+			targetProxy = EB4CAEFB2962DABB00B30C7A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C73DAF3C255D0CDD00020D38 /* Main.storyboard */ = {
@@ -357,6 +433,44 @@
 			};
 			name = Release;
 		};
+		EB4CAEFD2962DABB00B30C7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jojo.JuiceMakerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JuiceMaker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/JuiceMaker";
+			};
+			name = Debug;
+		};
+		EB4CAEFE2962DABB00B30C7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jojo.JuiceMakerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JuiceMaker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/JuiceMaker";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -374,6 +488,15 @@
 			buildConfigurations = (
 				C73DAF48255D0CDF00020D38 /* Debug */,
 				C73DAF49255D0CDF00020D38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB4CAEFF2962DABB00B30C7A /* Build configuration list for PBXNativeTarget "JuiceMakerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB4CAEFD2962DABB00B30C7A /* Debug */,
+				EB4CAEFE2962DABB00B30C7A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
