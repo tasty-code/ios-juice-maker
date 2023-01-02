@@ -7,25 +7,29 @@
 import Foundation
 
 // 과일 저장소 타입
-class FruitStore {
-    var fruits: [Fruit: Int] = [:]
+class FruitStore: Storing {
+    var items: [Fruit : Int] = [:]
     
     init(개수: Int) {
         for fruit in Fruit.allCases {
-            fruits[fruit] = 개수
+            items[fruit] = 개수
         }
     }
     
-    func add(과일: Fruit, 개수: Int) throws {
-        guard let 재고 = fruits[과일] else {
+    func add(item: Fruit, 개수: Int) throws {
+        guard let 재고 = items[item] else {
             // 에러 처리 필요
             return
         }
-        fruits.updateValue(재고 + 개수, forKey: 과일)
+        items.updateValue(재고 + 개수, forKey: item)
     }
     
-    func subtract() {
-        return
+    func subtract(item: Fruit, 개수: Int) throws {
+        guard let 재고 = items[item] else {
+            // 에러 처리 필요
+            return
+        }
+        items.updateValue(재고 - 개수, forKey: item)
     }
     
     func check() {

@@ -11,6 +11,6 @@ protocol Storing {
     associatedtype Element: Hashable, CaseIterable
     var items: [Element: Int] { get set }
     func add(item: Element, 개수: Int) throws
-    func subtract()
+    func subtract(item: Element, 개수: Int) throws
     func check()
 }
