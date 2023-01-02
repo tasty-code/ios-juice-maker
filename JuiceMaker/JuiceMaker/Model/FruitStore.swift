@@ -10,6 +10,12 @@ import Foundation
 class FruitStore {
     private(set) var stock: [Fruit: Int] = [:]
     
+    init() {
+        Fruit.allCases.forEach { fruit in
+            stock[fruit] = 10
+        }
+    }
+    
     func changeStock(of fruit: Fruit, by number: Int) {
         guard let result = stock[fruit] else {
             return
