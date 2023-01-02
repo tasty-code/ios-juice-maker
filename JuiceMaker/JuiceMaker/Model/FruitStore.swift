@@ -18,7 +18,10 @@ class FruitStore {
     
     func changeStock(of fruit: Fruit, by number: Int) {
         guard let result = stock[fruit] else {
-            return
+            return print("해당하는 과일이 존재하지 않습니다.")
+        }
+        guard result + number > 0 else {
+            return print("재고가 부족합니다.")
         }
         
         stock[fruit] = result + number
