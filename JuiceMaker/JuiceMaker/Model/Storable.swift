@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Store {
+protocol Storable {
     func add(과일: Fruit, 개수: Int) throws
     func subtract()
     func check()
