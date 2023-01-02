@@ -8,5 +8,5 @@ import Foundation
 
 // 과일 저장소 타입
 class FruitStore {
-    
+    private(set) var stock: [Fruit: Int] = [:]
 }
