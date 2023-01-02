@@ -7,8 +7,10 @@
 
 import Foundation
 
-protocol Storable {
-    func add(과일: Fruit, 개수: Int) throws
+protocol Storing {
+    associatedtype Element: Hashable, CaseIterable
+    var items: [Element: Int] { get set }
+    func add(item: Element, 개수: Int) throws
     func subtract()
     func check()
 }

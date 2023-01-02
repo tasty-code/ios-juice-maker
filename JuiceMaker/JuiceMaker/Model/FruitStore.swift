@@ -7,7 +7,7 @@
 import Foundation
 
 // 과일 저장소 타입
-class FruitStore: Storable {
+class FruitStore {
     var fruits: [Fruit: Int] = [:]
     
     init(개수: Int) {
