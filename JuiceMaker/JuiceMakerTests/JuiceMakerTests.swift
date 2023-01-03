@@ -21,7 +21,7 @@ final class JuiceMakerTests: XCTestCase {
     }
     
     func testFruitStore_더하기() {
-        try? sut.add(item: .망고, 개수: 8)
+        sut.add(item: .망고, 개수: 8)
         XCTAssertEqual(sut.items[.망고]!, 18)
     }
     

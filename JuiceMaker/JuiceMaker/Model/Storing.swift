@@ -8,12 +8,13 @@
 import Foundation
 
 protocol Storing {
-    associatedtype Element: Hashable, CaseIterable
+    typealias Storeable = Hashable & CaseIterable
+    associatedtype Element: Storeable
     
     var items: [Element: Int] { get set }
     
-    func add(item: Element, 개수: Int) throws
-    func subtract(item: Element, 개수: Int) throws
+    mutating func add(item: Element, 개수: Int)
+    mutating func subtract(item: Element, 개수: Int) throws
     func isEnough(item: Element, 개수: Int) -> Bool
     func isEnough(itemz: [(item: Element, 개수: Int)]) -> Bool
 }
