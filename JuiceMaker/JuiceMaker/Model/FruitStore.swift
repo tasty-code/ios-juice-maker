@@ -8,16 +8,7 @@ import Foundation
 
 // 과일 저장소 타입
 class FruitStore {
-    
     static var shared = FruitStore(initiallStock: 10)
-    
-    enum Fruits: CaseIterable {
-        case strawberries
-        case bananas
-        case kiwis
-        case pineapples
-        case mangos
-    }
     
     var stocks = [Fruits: Int]()
     
