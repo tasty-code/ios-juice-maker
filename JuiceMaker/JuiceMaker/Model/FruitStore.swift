@@ -10,7 +10,7 @@ import Foundation
 class FruitStore {
     static let shared = FruitStore()
     
-    var fruits: [String: Fruit] = [:]
+    var fruits: [Fruit] = Fruits.makeFruitArray()
     
     private init() {}
 }
