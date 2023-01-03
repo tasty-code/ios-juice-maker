@@ -10,7 +10,9 @@ import Foundation
 struct JuiceMaker {
     
     private let fruitStore = FruitStore.shared
-    
+
+    typealias Ingredients = [FruitStore.Fruits: Int]
+
     enum Juice {
         case strawberry
         case banana
@@ -39,7 +41,7 @@ struct JuiceMaker {
             }
         }
         
-        var receipe: [FruitStore.Fruits: Int] {
+        var receipe: Ingredients {
             switch self {
             case .strawberry:
                 return [.strawberries: 16]
@@ -60,8 +62,16 @@ struct JuiceMaker {
         
     }
     
+    func checkOrderable(of ingredients: Ingredients) -> Bool {
+        for ingredient in ingredients {
+            let eachStock = fruitStore.checkStock(of: ingredient.key)
+            guard eachStock >= ingredient.value else { return false }
+        }
+        return true
+    }
+    
     // 쥬스 제조 -> 과일 저장소 재고 확인을 먼저하고, 재고 감소를 호출함
-    func startBlending () {
+    func startBlending() {
         //fruitStore.checkStock() //쥬스 종류에 따라 매개변수 입력 (분기처리)
         fruitStore.decrease()
     }
