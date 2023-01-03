@@ -8,7 +8,9 @@ import Foundation
 
 // 과일 저장소 타입
 class FruitStore {
-    func test() {
-        print("test")
-    }
+    static let shared = FruitStore()
+    
+    var fruits: [String: Fruit] = [:]
+    
+    private init() {}
 }
