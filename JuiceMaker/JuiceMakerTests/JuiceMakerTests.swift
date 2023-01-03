@@ -32,13 +32,13 @@ final class JuiceMakerTests: XCTestCase {
     
     func testFruitStore_충분() {
         let itemz = [(Fruit.바나나, 3), (Fruit.딸기, 3)]
-        let result = sut.isEnough(itemz: itemz)
+        let result = sut.isEnough(pairOfItems: itemz)
         XCTAssertTrue(result)
     }
     
     func testFruitStore_충분하지_않은_경우() {
         let itemz = [(Fruit.바나나, 3), (Fruit.키위, 20)]
-        let result = sut.isEnough(itemz: itemz)
+        let result = sut.isEnough(pairOfItems: itemz)
         XCTAssertFalse(result)
     }
     

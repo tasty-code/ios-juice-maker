@@ -12,7 +12,7 @@ class FruitStore: Storing {
     
     init(개수: Int) {
         for fruit in Fruit.allCases {
-            items[fruit] = 개수
+            add(item: fruit, 개수: 개수)
         }
     }
     
@@ -28,13 +28,19 @@ class FruitStore: Storing {
         items.updateValue(재고 - 개수, forKey: item)
     }
     
-    func isEnough(item: Fruit, 개수: Int) -> Bool {
+    func subtract(pairOfItems: [Fruit: Int]) throws {
+        for (fruit, 사용량) in pairOfItems {
+            try subtract(item: fruit, 개수: 사용량)
+        }
+    }
+    
+    func hasEnough(item: Fruit, 개수: Int) -> Bool {
         return items[item, default: 0] >= 개수
     }
     
-    func isEnough(itemz: [(item: Fruit, 개수: Int)]) -> Bool {
-        return itemz.allSatisfy { (item: Fruit, 개수: Int) in
-           isEnough(item: item, 개수: 개수)
+    func hasEnough(pairOfItems: [Fruit: Int]) -> Bool {
+        return pairOfItems.allSatisfy { (item: Fruit, 개수: Int) in
+           hasEnough(item: item, 개수: 개수)
         }
     }
 }
