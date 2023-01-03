@@ -21,23 +21,23 @@ final class JuiceMakerTests: XCTestCase {
     }
     
     func testFruitStore_더하기() {
-        sut.add(item: .망고, 개수: 8)
-        XCTAssertEqual(sut.items[.망고]!, 18)
+        sut.add(item: .mango, 개수: 8)
+        XCTAssertEqual(sut.items[.mango]!, 18)
     }
     
     func testFruitStore_빼기() {
-        try? sut.subtract(item: .딸기, 개수: 3)
-        XCTAssertEqual(sut.items[.딸기]!, 7)
+        try? sut.subtract(item: .strawberry, 개수: 3)
+        XCTAssertEqual(sut.items[.strawberry]!, 7)
     }
     
     func testFruitStore_충분() {
-        let itemz = [Fruit.바나나: 3, Fruit.딸기: 3]
+        let itemz = [Fruit.banana: 3, Fruit.strawberry: 3]
         let result = sut.hasEnough(pairOfItems: itemz)
         XCTAssertTrue(result)
     }
     
     func testFruitStore_충분하지_않은_경우() {
-        let itemz = [Fruit.바나나: 3, Fruit.키위: 20]
+        let itemz = [Fruit.banana: 3, Fruit.kiwi: 20]
         let result = sut.hasEnough(pairOfItems: itemz)
         XCTAssertFalse(result)
     }

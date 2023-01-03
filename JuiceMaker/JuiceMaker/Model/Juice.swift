@@ -7,31 +7,31 @@
 
 import Foundation
 
-enum Juice: String {
-    case strawberryJuice = "딸기쥬스"
-    case bananaJuice = "바나나쥬스"
-    case kiwiJuice = "키위쥬스"
-    case pineappleJuice = "파인애플쥬스"
-    case ddalbaJuice = "딸바쥬스"
-    case mangoJuice = "망고쥬스"
-    case mangkiJuice = "망고키위쥬스"
+enum Juice {
+    case strawberryJuice
+    case bananaJuice
+    case kiwiJuice
+    case pineappleJuice
+    case ddalbaJuice
+    case mangoJuice
+    case mangkiJuice
     
-    var 재료: [Fruit: Int] {
+    var ingredients: [Fruit: Int] {
         switch self {
         case .strawberryJuice:
-            return [Fruit.딸기: 16]
+            return [.strawberry: 16]
         case .bananaJuice:
-            return [Fruit.바나나: 2]
+            return [.banana: 2]
         case .kiwiJuice:
-            return [Fruit.키위: 3]
+            return [.kiwi: 3]
         case .pineappleJuice:
-            return [Fruit.파인애플: 2]
+            return [.pineapple: 2]
         case .ddalbaJuice:
-            return [Fruit.딸기: 10, Fruit.바나나: 1]
+            return [.strawberry: 10, .banana: 1]
         case .mangoJuice:
-            return [Fruit.망고: 3]
+            return [.mango: 3]
         case .mangkiJuice:
-            return [Fruit.망고: 2, Fruit.키위: 1]
+            return [.mango: 2, .kiwi: 1]
         }
     }
 }

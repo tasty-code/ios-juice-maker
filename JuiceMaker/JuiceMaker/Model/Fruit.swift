@@ -8,9 +8,9 @@
 import Foundation
 
 enum Fruit: CaseIterable {
-    case 딸기
-    case 바나나
-    case 파인애플
-    case 키위
-    case 망고
+    case strawberry
+    case banana
+    case pineapple
+    case kiwi
+    case mango
 }

@@ -6,37 +6,36 @@
 
 import Foundation
 
-// 과일 저장소 타입
 class FruitStore: Storing {
     var items: [Fruit : Int] = [:]
     
-    init(개수: Int) {
+    init(defaultStock count: Int) {
         for fruit in Fruit.allCases {
-            add(item: fruit, 개수: 개수)
+            add(item: fruit, count: count)
         }
     }
     
-    func add(item: Fruit, 개수: Int) {
-        items[item, default: 0] += 개수
+    func add(item: Fruit, count: Int) {
+        items[item, default: 0] += count
     }
     
-    func subtract(item: Fruit, 개수: Int) {
-        items[item]? -= 개수
+    func subtract(item: Fruit, count: Int) {
+        items[item]? -= count
     }
     
     func subtract(pairOfItems: [Fruit: Int]) {
-        for (fruit, 사용량) in pairOfItems {
-            subtract(item: fruit, 개수: 사용량)
+        for (fruit, usedAmount) in pairOfItems {
+            subtract(item: fruit, count: usedAmount)
         }
     }
     
-    func hasEnough(item: Fruit, 개수: Int) -> Bool {
-        return items[item, default: 0] >= 개수
+    func hasEnough(item: Fruit, count: Int) -> Bool {
+        return items[item, default: 0] >= count
     }
     
     func hasEnough(pairOfItems: [Fruit: Int]) -> Bool {
-        return pairOfItems.allSatisfy { (item: Fruit, 개수: Int) in
-           hasEnough(item: item, 개수: 개수)
+        return pairOfItems.allSatisfy { (item: Fruit, count: Int) in
+           hasEnough(item: item, count: count)
         }
     }
 }
