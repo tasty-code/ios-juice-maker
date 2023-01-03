@@ -7,7 +7,7 @@
 import Foundation
 
 struct JuiceMaker {
-    var fruitStore: FruitStore
+    private var fruitStore: FruitStore
     
     func make(juice: Juice) throws -> Juice {
         let ingredients: [Fruit: Int] = juice.ingredients

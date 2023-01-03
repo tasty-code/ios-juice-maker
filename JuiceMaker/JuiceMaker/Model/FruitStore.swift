@@ -6,8 +6,8 @@
 
 import Foundation
 
-class FruitStore: Storing {
-    var items: [Fruit : Int] = [:]
+final class FruitStore: Storing {
+    private(set) var items: [Fruit : Int] = [:]
     
     init(defaultStock count: Int) {
         for fruit in Fruit.allCases {
@@ -19,7 +19,7 @@ class FruitStore: Storing {
         items[item, default: 0] += count
     }
     
-    func subtract(item: Fruit, count: Int) {
+    private func subtract(item: Fruit, count: Int) {
         items[item]? -= count
     }
     
@@ -29,7 +29,7 @@ class FruitStore: Storing {
         }
     }
     
-    func hasEnough(item: Fruit, count: Int) -> Bool {
+    private func hasEnough(item: Fruit, count: Int) -> Bool {
         return items[item, default: 0] >= count
     }
     
