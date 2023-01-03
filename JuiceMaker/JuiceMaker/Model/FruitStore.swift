@@ -11,8 +11,7 @@ import Foundation
 /// singleton 적용하기
 
 class FruitStore {
-    
-    static var shared = FruitStore()
+    static var shared = FruitStore(defaultStock: 10)
     
     // TODO:- 열거형들 재고 딕셔너리 만들기 [key: value] = [fruit: Int]
     enum Fruits: CaseIterable {
@@ -22,6 +21,8 @@ class FruitStore {
         case pineapples
         case mangos
     }
+    
+    var overallStock = [Fruits: Int]()
     
     // 재고 확인용
     func checkStock() {}
@@ -33,6 +34,7 @@ class FruitStore {
     func decrease() {}
     
     // TODO:- init에 기본값 넣기, 10개씩 초기화
-    private init() {}
-    
+    private init(defaultStock: Int) {
+        Fruits.allCases.forEach { overallStock[$0] = defaultStock }
+    }
 }
