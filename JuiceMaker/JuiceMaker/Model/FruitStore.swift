@@ -12,5 +12,6 @@ class FruitStore {
     
     var fruits: [Fruit] = Fruits.makeFruitArray()
     
+    
     private init() {}
 }
