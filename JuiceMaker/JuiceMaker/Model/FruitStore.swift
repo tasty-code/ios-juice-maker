@@ -25,7 +25,10 @@ class FruitStore {
     var overallStock = [Fruits: Int]()
     
     // 재고 확인용
-    func checkStock() {}
+    func checkStock(of fruit: Fruits) -> Int {
+        guard let stock = overallStock[fruit] else { return 0 }
+        return stock
+    }
     
     // 과일 재고 n개 증가
     func increase() {}
