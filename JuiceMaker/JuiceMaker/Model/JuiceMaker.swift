@@ -10,12 +10,16 @@ struct JuiceMaker {
     let fruitStore = FruitStore.shared
 
     func order(juice: Menu) {
-        make(juice: juice)
+        do {
+            try make(juice: juice)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 
-    func make(juice order: Menu) {
-        order.recipe.forEach { (fruit, quantity) in
-            fruitStore.remove(fruit: fruit, quantity: quantity)
+    func make(juice order: Menu) throws {
+        try order.recipe.forEach { (fruit, quantity) in
+            try fruitStore.remove(fruit: fruit, quantity: quantity)
         }
     }
 }

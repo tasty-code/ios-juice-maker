@@ -34,9 +34,12 @@ final class FruitStore {
         fruitBasket.updateValue(stock + quantity, forKey: fruit)
     }
   
-    func remove(fruit: Fruits, quantity: Quantity) {
+    func remove(fruit: Fruits, quantity: Quantity) throws {
         guard let stock = fruitBasket[fruit] else {
             return
+        }
+        guard stock.isNegative(subtraction: quantity) else {
+            throw JuiceError.negativeQuantity(fruit: fruit)
         }
         fruitBasket.updateValue(stock - quantity, forKey: fruit)
     }
