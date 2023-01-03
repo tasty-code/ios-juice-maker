@@ -18,6 +18,7 @@
 		F06506342962CC45007228F5 /* VendingMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06506332962CC45007228F5 /* VendingMachine.swift */; };
 		F06506362962CCE2007228F5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06506352962CCE2007228F5 /* Product.swift */; };
 		F13008F82963B79A00E7467F /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13008F72963B79A00E7467F /* Fruit.swift */; };
+		F13008FB2963E3A500E7467F /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13008FA2963E3A500E7467F /* Errors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		F06506332962CC45007228F5 /* VendingMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendingMachine.swift; sourceTree = "<group>"; };
 		F06506352962CCE2007228F5 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		F13008F72963B79A00E7467F /* Fruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
+		F13008FA2963E3A500E7467F /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 		C73DAF2A255D0CDC00020D38 = {
 			isa = PBXGroup;
 			children = (
+				F13008F92963E39300E7467F /* Enum */,
 				C73DAF35255D0CDD00020D38 /* JuiceMaker */,
 				C73DAF34255D0CDD00020D38 /* Products */,
 			);
@@ -104,6 +107,14 @@
 				F06506352962CCE2007228F5 /* Product.swift */,
 			);
 			path = JuiceMaker;
+			sourceTree = "<group>";
+		};
+		F13008F92963E39300E7467F /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				F13008FA2963E3A500E7467F /* Errors.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +194,7 @@
 				C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */,
 				C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */,
 				F06506342962CC45007228F5 /* VendingMachine.swift in Sources */,
+				F13008FB2963E3A500E7467F /* Errors.swift in Sources */,
 				F06506362962CCE2007228F5 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
