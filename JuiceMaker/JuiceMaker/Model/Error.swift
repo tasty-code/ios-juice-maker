@@ -15,7 +15,7 @@ extension JuiceError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .negativeQuantity(let fruit):
-            return "\(fruit)의 재고가 부족합니다."
+            return "\(fruit.koreanName)의 재고가 부족합니다."
         }
     }
 }

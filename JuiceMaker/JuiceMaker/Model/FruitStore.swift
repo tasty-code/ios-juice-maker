@@ -6,14 +6,6 @@
 
 import Foundation
 
-enum Fruits: CaseIterable {
-    case strawberry
-    case banana
-    case kiwi
-    case pineapple
-    case mango
-}
-
 typealias Quantity = Int
 
 final class FruitStore {
