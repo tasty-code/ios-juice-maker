@@ -62,19 +62,17 @@ struct JuiceMaker {
         
     }
     
-    func checkOrderable(of ingredients: Ingredients) -> Bool {
+    private func checkOrderable(of ingredients: Ingredients) -> Bool {
         for ingredient in ingredients {
-            let eachStock = fruitStore.checkStock(of: ingredient.key)
+            let eachStock = fruitStore.countStock(of: ingredient.key)
             guard eachStock >= ingredient.value else { return false }
         }
         return true
     }
     
-    // 쥬스 제조 -> 과일 저장소 재고 확인을 먼저하고, 재고 감소를 호출함
-    func startBlending(of juice: Juice) {
+    private func startBlending(of juice: Juice) {
         juice.receipe.forEach {
             fruitStore.decrease(of: $0.key, amount: $0.value)
         }
     }
-    
 }
