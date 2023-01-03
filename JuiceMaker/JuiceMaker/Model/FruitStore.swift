@@ -14,16 +14,33 @@ enum Fruits: CaseIterable {
     case mango
 }
 
+enum State {
+    case warehosing
+    case forwarding
+}
+
 typealias Quantity = Int
 
 final class FruitStore {
     static let shared = FruitStore()
 
-    var fruitBasket: [Fruits: Quantity] = [:]
+    private var fruitBasket: [Fruits: Quantity] = [:]
 
     private init() {
         Fruits.allCases.forEach { fruit in
             fruitBasket[fruit] = 10
+        }
+    }
+    
+    func manageFruits(fruit: Fruits, quantity: Quantity, state: State) {
+        guard let stock = fruitBasket[fruit] else {
+            return
+        }
+        switch state {
+        case .warehosing:
+            fruitBasket.updateValue(stock - quantity, forKey: fruit)
+        case .forwarding:
+            fruitBasket.updateValue(stock + quantity, forKey: fruit)
         }
     }
 }
