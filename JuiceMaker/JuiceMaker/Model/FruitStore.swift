@@ -6,7 +6,24 @@
 
 import Foundation
 
-// 과일 저장소 타입
-class FruitStore {
-    
+enum Fruits: CaseIterable {
+    case strawberry
+    case banana
+    case kiwi
+    case pineapple
+    case mango
+}
+
+typealias Quantity = Int
+
+final class FruitStore {
+    static let shared = FruitStore()
+
+    var fruitBasket: [Fruits: Quantity] = [:]
+
+    private init() {
+        Fruits.allCases.forEach { fruit in
+            fruitBasket[fruit] = 10
+        }
+    }
 }
