@@ -14,7 +14,7 @@ protocol Storing {
     var items: [Element: Int] { get set }
     
     mutating func add(item: Element, 개수: Int)
-    mutating func subtract(item: Element, 개수: Int) throws
+    mutating func subtract(item: Element, 개수: Int)
     func hasEnough(item: Element, 개수: Int) -> Bool
     func hasEnough(pairOfItems: [Element: Int]) -> Bool
 }

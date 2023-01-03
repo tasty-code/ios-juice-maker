@@ -10,13 +10,12 @@ import Foundation
 struct JuiceMaker {
     var fruitStore: FruitStore
     
-    func make(juice: Juice) throws -> Juice? {
+    func make(juice: Juice) throws -> Juice {
         let 재료 = juice.재료
         guard fruitStore.hasEnough(pairOfItems: 재료) else {
-            // 에러 처리
-            return nil
+            throw InvalidError.outOfStock
         }
-        try fruitStore.subtract(pairOfItems: 재료)
+        fruitStore.subtract(pairOfItems: 재료)
         
         return juice
     }

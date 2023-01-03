@@ -20,17 +20,13 @@ class FruitStore: Storing {
         items[item, default: 0] += 개수
     }
     
-    func subtract(item: Fruit, 개수: Int) throws {
-        guard let 재고 = items[item] else {
-            // 에러 처리 필요
-            return
-        }
-        items.updateValue(재고 - 개수, forKey: item)
+    func subtract(item: Fruit, 개수: Int) {
+        items[item]? -= 개수
     }
     
-    func subtract(pairOfItems: [Fruit: Int]) throws {
+    func subtract(pairOfItems: [Fruit: Int]) {
         for (fruit, 사용량) in pairOfItems {
-            try subtract(item: fruit, 개수: 사용량)
+            subtract(item: fruit, 개수: 사용량)
         }
     }
     
