@@ -21,11 +21,8 @@ struct JuiceMaker {
     }
     
     private func hasEnoughStock(for fruitJuice: FruitJuice) -> Bool {
-        fruitJuice.recipe.allSatisfy { fruit, numberOfUse in
-            guard let fruitStock = fruitStore.stock[fruit] else {
-                return false
-            }
-            return fruitStock >= numberOfUse
+        return fruitJuice.recipe.allSatisfy { fruit, numberOfUse in
+            (fruitStore.stock[fruit] ?? 0) >= numberOfUse
         }
     }
 }
