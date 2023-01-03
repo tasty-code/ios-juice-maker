@@ -14,11 +14,6 @@ enum Fruits: CaseIterable {
     case mango
 }
 
-enum State {
-    case warehosing
-    case forwarding
-}
-
 typealias Quantity = Int
 
 final class FruitStore {
