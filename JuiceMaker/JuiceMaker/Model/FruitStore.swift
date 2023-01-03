@@ -30,11 +30,11 @@ class FruitStore {
         return stock
     }
     
-    // 과일 재고 n개 증가
-    func increase() {}
-    
     // 과일 재고 n개 감소
-    func decrease() {}
+    func decrease(of fruit: Fruits, amount: Int) {
+        guard let stock = overallStock[fruit] else { return }
+        overallStock.updateValue(stock - amount, forKey: fruit)
+    }
     
     // TODO:- init에 기본값 넣기, 10개씩 초기화
     private init(defaultStock: Int) {

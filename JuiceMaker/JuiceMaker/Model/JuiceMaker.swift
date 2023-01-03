@@ -71,9 +71,10 @@ struct JuiceMaker {
     }
     
     // 쥬스 제조 -> 과일 저장소 재고 확인을 먼저하고, 재고 감소를 호출함
-    func startBlending() {
-        //fruitStore.checkStock() //쥬스 종류에 따라 매개변수 입력 (분기처리)
-        fruitStore.decrease()
+    func startBlending(of juice: Juice) {
+        juice.receipe.forEach {
+            fruitStore.decrease(of: $0.key, amount: $0.value)
+        }
     }
     
 }
