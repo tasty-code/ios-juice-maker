@@ -12,7 +12,7 @@ struct JuiceMaker {
     func make(juice: Juice) throws -> Juice {
         let ingredients: [Fruit: Int] = juice.ingredients
         guard fruitStore.hasEnough(pairOfItems: ingredients) else {
-            throw JuiceMakerError.outOfStock
+            throw JMError.outOfStock
         }
         fruitStore.subtract(pairOfItems: ingredients)
         
