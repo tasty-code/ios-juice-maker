@@ -32,15 +32,17 @@ final class FruitStore {
         }
     }
     
-    func manageFruits(fruit: Fruits, quantity: Quantity, state: State) {
+    func add(fruit: Fruits, quantity: Quantity) {
         guard let stock = fruitBasket[fruit] else {
             return
         }
-        switch state {
-        case .warehosing:
-            fruitBasket.updateValue(stock - quantity, forKey: fruit)
-        case .forwarding:
-            fruitBasket.updateValue(stock + quantity, forKey: fruit)
+        fruitBasket.updateValue(stock + quantity, forKey: fruit)
+    }
+  
+    func remove(fruit: Fruits, quantity: Quantity) {
+        guard let stock = fruitBasket[fruit] else {
+            return
         }
+        fruitBasket.updateValue(stock - quantity, forKey: fruit)
     }
 }
