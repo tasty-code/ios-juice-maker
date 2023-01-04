@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 struct OrderMessage {
     let fruitName : String
     let amount: Int

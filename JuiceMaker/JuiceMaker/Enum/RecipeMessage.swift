@@ -17,7 +17,6 @@ enum RecipeMessage: String {
     case mangoKiwiJuice = "Mg2+Kw1"
     
     static func translate(recipeMessage :String) -> [OrderMessage] {
-        
         var convertedString: [OrderMessage] = []
         
         let splitedString = recipeMessage.split(separator: "+")
@@ -28,8 +27,6 @@ enum RecipeMessage: String {
             
             convertedString.append(OrderMessage(fruitName: fruitCode, amount: amountCode))
         }
-        
         return convertedString
     }
-    
 }
