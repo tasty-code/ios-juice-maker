@@ -10,6 +10,12 @@ import Foundation
 struct JuiceMaker: Makeable {
     let fruitStore = FruitStore.shared
     
+    let calculator: Computable
+    
+    init(calculator: Computable) {
+        self.calculator = calculator
+    }
+    
     func requestTo(strawberry juice: FruitList, number: Int) {
         fruitStore.store.updateValue(number, forKey: juice)
     }
