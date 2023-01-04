@@ -8,7 +8,7 @@ import Foundation
 
 // 과일 저장소 타입
 class FruitStore {
-    static var shared = FruitStore(initiallStock: 10)
+    static var shared = FruitStore(initialStock: 10)
     
     var stocks = [Fruits: Int]()
     
@@ -22,7 +22,7 @@ class FruitStore {
         stocks.updateValue(stock - amount, forKey: fruit)
     }
     
-    private init(initiallStock: Int) {
-        Fruits.allCases.forEach { stocks[$0] = initiallStock }
+    private init(initialStock: Int) {
+        Fruits.allCases.forEach { stocks[$0] = initialStock }
     }
 }
