@@ -10,14 +10,24 @@ import Foundation
 class FruitStore {
     static let defaultStock: UInt = 10
     private(set) var stockByFruit = [Fruit: UInt]()
-
+    
     enum Fruit: CaseIterable {
         case strawberry, banana, pineapple, kiwi, mango
     }
-
+    
     init(stock: UInt = defaultStock) {
         for fruit in Fruit.allCases {
             stockByFruit[fruit] = stock
         }
+    }
+    
+    func subtractStock(fruitType: Fruit, quantity: UInt) {
+        guard let fruitStock: UInt = self.stockByFruit[fruitType] else {
+            return
+        }
+        guard fruitStock >= quantity else {
+            return
+        }
+        self.stockByFruit[fruitType] = fruitStock - quantity
     }
 }
