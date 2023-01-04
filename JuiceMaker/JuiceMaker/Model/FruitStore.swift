@@ -6,8 +6,14 @@
 
 import Foundation
 
-// 과일 저장소 타입
 class FruitStore {
-    // Step1 브랜치 확인을 위한 커밋
+    static let shared = FruitStore()
+    var store = [FruitList:Int]()
+    
+    private init() {
+        for fruit in FruitList.allCases {
+            store[fruit] = 10
+        }
+    }
     
 }
