@@ -10,13 +10,13 @@ import Foundation
 struct JuiceMaker {
     private let fruitStore = FruitStore()
     
-    func makeJuice(of fruitJuice: FruitJuice) {
+    func makeJuice(of fruitJuice: FruitJuice) throws {
         guard hasEnoughStock(for: fruitJuice) else {
-            return print("쥬스를 만들기 위한 재고가 부족합니다.")
+            throw StockError.notEnoughToMakeJuice
         }
         
-        fruitJuice.recipe.forEach { fruit, numberOfUse in
-            fruitStore.changeStock(of: fruit, by: -numberOfUse)
+        try fruitJuice.recipe.forEach { fruit, numberOfUse in
+            try fruitStore.changeStock(of: fruit, by: -numberOfUse)
         }
     }
     

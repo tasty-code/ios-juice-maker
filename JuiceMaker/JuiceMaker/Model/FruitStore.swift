@@ -16,12 +16,12 @@ final class FruitStore {
         }
     }
     
-    func changeStock(of fruit: Fruit, by number: Int) {
+    func changeStock(of fruit: Fruit, by number: Int) throws {
         guard let fruitStock = stock[fruit] else {
-            return print("해당하는 과일이 존재하지 않습니다.")
+            throw StockError.noCorrespondingFruit
         }
         guard fruitStock + number >= 0 else {
-            return print("재고가 부족합니다.")
+            throw StockError.notEnoughToChange
         }
         
         stock[fruit] = fruitStock + number
