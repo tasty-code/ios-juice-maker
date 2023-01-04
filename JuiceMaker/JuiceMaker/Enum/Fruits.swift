@@ -8,15 +8,16 @@
 import Foundation
 
 enum Fruits: String, CaseIterable {
-    case strawberry
-    case banana
-    case kiwi
-    case pineapple
-    case mango
+    case strawberry = "Sb"
+    case banana = "Bn"
+    case kiwi = "Kw"
+    case pineapple = "Pa"
+    case mango = "Mg"
     
-    static func makeFruitArray() -> [Fruit] {
-        let initializedFruitArray = Fruits.allCases.map {
-            Fruit(name: $0.rawValue, amount: 10)
+    static func makeFruitArray() -> [String:Fruit] {
+        var initializedFruitArray = [String:Fruit]()
+        Fruits.allCases.forEach {
+            initializedFruitArray[$0.rawValue] = Fruit(name: $0.rawValue, amount: 10)
         }
         return initializedFruitArray
     }

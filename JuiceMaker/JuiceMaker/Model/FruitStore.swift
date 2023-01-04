@@ -10,8 +10,20 @@ import Foundation
 class FruitStore {
     static let shared = FruitStore()
     
-    var fruits: [Fruit] = Fruits.makeFruitArray()
+    var fruits: [String:Fruit] = Fruits.makeFruitArray()
     
+    func increaseStock(of fruit: String) {
+        guard fruits.keys.contains(fruit) else { return }
+        
+        fruits[fruit]?.amount += 1
+    }
+    
+    func decreaseStock(of fruit: String) {
+        guard fruits.keys.contains(fruit) else { return }
+        guard fruits[fruit]?.amount ?? 0 > 0 else { return }
+        
+        fruits[fruit]?.amount -= 1
+    }
     
     private init() {}
 }
