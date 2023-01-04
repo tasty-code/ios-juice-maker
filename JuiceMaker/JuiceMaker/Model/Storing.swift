@@ -7,8 +7,10 @@
 
 import Foundation
 
+typealias Storeable = Hashable & CaseIterable
+
 protocol Storing {
-    typealias Storeable = Hashable & CaseIterable
+    
     associatedtype Element: Storeable
     
     var items: [Element: Int] { get }
@@ -16,4 +18,12 @@ protocol Storing {
     mutating func add(item: Element, count: Int)
     mutating func subtract(pairOfItems: [Element: Int])
     func hasEnough(pairOfItems: [Element: Int]) -> Bool
+}
+
+extension Storing {
+    func hasEnough(pairOfItems: [Element: Int]) -> Bool {
+        return pairOfItems.allSatisfy { (item: Element, count: Int) in
+            items[item, default: 0] >= count
+        }
+    }
 }

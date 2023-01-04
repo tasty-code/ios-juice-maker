@@ -13,7 +13,7 @@ final class JuiceMakerTests: XCTestCase {
     var sut: FruitStore!
 
     override func setUpWithError() throws {
-        sut = FruitStore(개수: 10)
+        sut = FruitStore(defaultStock: 10)
     }
 
     override func tearDownWithError() throws {
@@ -21,12 +21,12 @@ final class JuiceMakerTests: XCTestCase {
     }
     
     func testFruitStore_더하기() {
-        sut.add(item: .mango, 개수: 8)
+//        sut.add(item: .mango, 개수: 8)
         XCTAssertEqual(sut.items[.mango]!, 18)
     }
     
     func testFruitStore_빼기() {
-        try? sut.subtract(item: .strawberry, 개수: 3)
+//        try? sut.subtract(item: .strawberry, 개수: 3)
         XCTAssertEqual(sut.items[.strawberry]!, 7)
     }
     

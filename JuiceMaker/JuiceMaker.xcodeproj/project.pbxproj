@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		409C6D45296424B500E47C80 /* Maker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409C6D44296424B500E47C80 /* Maker.swift */; };
 		40D5D84F2962C22F0006B8A3 /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D5D84E2962C22F0006B8A3 /* Fruit.swift */; };
 		40D5D8512962C32F0006B8A3 /* Storing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D5D8502962C32F0006B8A3 /* Storing.swift */; };
 		40D5D853296417710006B8A3 /* JMError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D5D852296417710006B8A3 /* JMError.swift */; };
@@ -34,7 +33,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		409C6D44296424B500E47C80 /* Maker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maker.swift; sourceTree = "<group>"; };
 		40D5D84E2962C22F0006B8A3 /* Fruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
 		40D5D8502962C32F0006B8A3 /* Storing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storing.swift; sourceTree = "<group>"; };
 		40D5D852296417710006B8A3 /* JMError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMError.swift; sourceTree = "<group>"; };
@@ -85,7 +83,6 @@
 			isa = PBXGroup;
 			children = (
 				C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */,
-				409C6D44296424B500E47C80 /* Maker.swift */,
 				C71CD66A266C7ACB0038B9CB /* FruitStore.swift */,
 				40D5D84E2962C22F0006B8A3 /* Fruit.swift */,
 				40D5D8502962C32F0006B8A3 /* Storing.swift */,
@@ -244,7 +241,6 @@
 			files = (
 				40D5D8512962C32F0006B8A3 /* Storing.swift in Sources */,
 				40D5D84F2962C22F0006B8A3 /* Fruit.swift in Sources */,
-				409C6D45296424B500E47C80 /* Maker.swift in Sources */,
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
 				C73DAF3B255D0CDD00020D38 /* ViewController.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,

@@ -6,16 +6,17 @@
 
 import Foundation
 
-struct JuiceMaker {
-    private var fruitStore: FruitStore
+struct JuiceMaker<T:Storing> where T.Element == Fruit {
+    private var fruitStore: T
     
-    func make(juice: Juice) throws -> Juice {
+    mutating func make(juice: Juice) throws -> Juice {
         let ingredients: [Fruit: Int] = juice.ingredients
         guard fruitStore.hasEnough(pairOfItems: ingredients) else {
             throw JMError.outOfStock
         }
-        fruitStore.subtract(pairOfItems: ingredients)
+        self.fruitStore.subtract(pairOfItems: ingredients)
         
         return juice
     }
 }
+

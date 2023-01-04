@@ -8,7 +8,7 @@
 import Foundation
 
 protocol Maker {
-    associatedtype Element
+    associatedtype Element: Makeable
     var store: any Storing { get }
     
     func make(item: Element) throws -> Element
