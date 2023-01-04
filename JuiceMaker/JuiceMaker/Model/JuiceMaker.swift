@@ -17,7 +17,16 @@ struct JuiceMaker: Makeable {
     }
     
     func requestTo(strawberry juice: FruitList, number: Int) {
-        fruitStore.store.updateValue(number, forKey: juice)
+        guard let currentStock = fruitStore.store[.strawberry] else{
+            return
+        }
+        if juice == FruitList.strawberry {
+            let calculationResult = calculator.subtract(number1: currentStock, number2: number)
+            guard calculationResult >= 0 else{
+                return
+            }
+            fruitStore.store.updateValue(calculator.subtract(number1: calculationResult, number2: number), forKey: .strawberry)
+        }
     }
     
     func requestTo(banana juice: FruitList, number: Int) {
