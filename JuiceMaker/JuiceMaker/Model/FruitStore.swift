@@ -30,4 +30,34 @@ final class FruitStore {
             store.updateValue(number, forKey: .mango)
         }
     }
+    
+    func isPossibleMakeSingle(juice: FruitList, stockNumber: Int) -> Bool {
+        switch juice {
+        case .strawberry:
+            guard stockNumber < 16 else {
+                return false
+            }
+            return true
+        case .banana:
+            guard stockNumber  < 2 else {
+                return false
+            }
+            return true
+        case .kiwi:
+            guard stockNumber  < 3 else {
+                return false
+            }
+            return true
+        case .pineApple:
+            guard stockNumber  < 2 else {
+                return false
+            }
+            return true
+        case .mango:
+            guard stockNumber  < 3 else {
+                return false
+            }
+            return true
+        }
+    }
 }
