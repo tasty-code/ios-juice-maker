@@ -6,7 +6,7 @@
 
 import Foundation
 
-class FruitStore {
+final class FruitStore {
     static let shared = FruitStore()
     var store = [FruitList:Int]()
     
@@ -16,4 +16,18 @@ class FruitStore {
         }
     }
     
+    func changeStock(fruit: FruitList, number: Int) {
+        switch fruit {
+        case .strawberry:
+            store.updateValue(number, forKey: .strawberry)
+        case .banana:
+            store.updateValue(number, forKey: .banana)
+        case .pineApple:
+            store.updateValue(number, forKey: .pineApple)
+        case .kiwi:
+            store.updateValue(number, forKey: .kiwi)
+        case .mango:
+            store.updateValue(number, forKey: .mango)
+        }
+    }
 }
