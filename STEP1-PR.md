@@ -6,8 +6,8 @@
 저희의 코드가 아직 많이 부족하지만 리뷰해주시는 부분 열심히 보강해서 Step이 진행될때마다 성장하는 모습 보여드리겠습니다 🔥
 
 
-## 요구 사항 및 구현 사항
-### 각 객체 별 책임
+## ‼️ 요구 사항 및 구현 사항
+### 🙋‍♂️ 각 객체 별 책임
 | Name | Type | 책임 |
 | -- | -- | -- |
 | Fruit | enum | FruitStore가 저장하는 Element이자 Juice의 재료인 과일 목록 |
@@ -18,7 +18,7 @@
 | JMError | enum | JuiceMaker 관련 Error 목록 |
 
 > **FruitStore는 다음의 조건을 충족해야합니다**
-### Fruit
+### 🍎 Fruit
 > **FruitStore가 관리하는 과일의 종류 : 딸기, 바나나, 파인애플, 키위, 망고**
 ```swift
 enum Fruit: CaseIterable {
@@ -31,7 +31,7 @@ enum Fruit: CaseIterable {
 
 > **각 과일의 초기 재고 : 10개** \
 > **각 과일의 수량 n개를 변경하는 기능이 있습니다**
-### Storing
+### 📦 Storing
 ```swift
 typealias Storeable = Hashable & CaseIterable
 
@@ -58,7 +58,7 @@ extension Storing {
 - 특정 아이템의 재고가 충분한지 확인하는 hasEnough method는 Storing을 conform한 구체 타입의 저장 프로퍼티를 수정하지 않기 때문에 extension의 default implementation으로 구현할 수 있다고 생각했어요
 - FruitStore의 Fruit이 CaseIterable이기 때문에 Storeable은 Hashable & CaseIterable한 타입으로 설정했어요
 
-### FruitStore
+### 🏬 FruitStore
 ```swift
 final class FruitStore: Storing {
     private(set) var items: [Fruit : Int] = [:]
@@ -85,7 +85,7 @@ final class FruitStore: Storing {
 >   - 딸바쥬스 : 딸기 10개 + 바나나 1개 소모
 >   - 망고 쥬스 : 망고 3개 소모
 >   - 망고키위 쥬스 : 망고 2개 + 키위 1개 소모
-### Juice
+### 🥤 Juice
 ```swift
 enum Juice {
     case strawberryJuice
@@ -103,10 +103,8 @@ enum Juice {
 > 과일의 재고가 부족하면 과일쥬스를 제조할 수 없습니다 \
 > JuiceMaker는 FruitStore를 소유하고 있습니다    
 
-### JuiceMaker
+### 👩‍🌾 JuiceMaker
 ```swift
-import Foundation
-
 struct JuiceMaker<T:Storing> where T.Element == Fruit {
     private(set) var fruitStore: T
     
@@ -122,6 +120,8 @@ struct JuiceMaker<T:Storing> where T.Element == Fruit {
 }
 ```
 - JuiceMaker의 make함수는 다음과 같아요
+  - Juice 타입 매개 변수인 juice를 받아요 
+    - juice는 viewController에서 눌린 버튼에 따라 만들어서 던질 예정이예요
   - Fruit만 저장할 수 있는 Storing 프로토콜을 conform하는 fruitStore를 소유하고 있어요
   - 싱글톤이 아니라 그 대안 중 하나인 의존성 주입을 사용 및 공부해보고 싶어서 Protocol과 Generic을 이용했어요
   - juice의 재료를 확인한 후 창고에서 재료들이 충분한지 확인해요
