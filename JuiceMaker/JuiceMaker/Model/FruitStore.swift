@@ -28,14 +28,4 @@ final class FruitStore: Storing {
             subtract(item: fruit, count: usedAmount)
         }
     }
-    
-//    private func hasEnough(item: Fruit, count: Int) -> Bool {
-//        return items[item, default: 0] >= count
-//    }
-//
-//    func hasEnough(pairOfItems: [Fruit: Int]) -> Bool {
-//        return pairOfItems.allSatisfy { (item: Fruit, count: Int) in
-//           hasEnough(item: item, count: count)
-//        }
-//    }
 }
