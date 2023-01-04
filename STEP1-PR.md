@@ -6,7 +6,7 @@
 저희의 코드가 아직 많이 부족하지만 리뷰해주시는 부분 열심히 보강해서 Step이 진행될때마다 성장하고 싶어요🔥\
 어떤 생각이든 피드백이라면 무조건 좋아하니까 편하게 리뷰해주세요!!
 
-
+ㅤ
 ## ‼️ 요구 사항 및 구현 사항
 ### 🙋‍♂️ 각 객체 별 책임
 | Name | Type | 책임 |
@@ -18,7 +18,8 @@
 | JuiceMaker | struct | Juice를 만드는 객체 |
 | JMError | enum | JuiceMaker 관련 Error 목록 |
 
-> **FruitStore는 다음의 조건을 충족해야합니다**
+> **FruitStore는 다음의 조건을 충족해야합니다**ㅤ
+ 
 ### 🍎 Fruit
 > **FruitStore가 관리하는 과일의 종류 : 딸기, 바나나, 파인애플, 키위, 망고**
 ```swift
@@ -59,6 +60,7 @@ extension Storing {
 - 특정 아이템의 재고가 충분한지 확인하는 hasEnough method는 Storing을 conform한 구체 타입의 저장 프로퍼티를 수정하지 않기 때문에 extension의 default implementation으로 구현할 수 있다고 생각했어요
 - FruitStore의 Fruit이 CaseIterable이기 때문에 Storeable은 Hashable & CaseIterable한 타입으로 설정했어요
 
+ 
 ### 🏬 FruitStore
 ```swift
 final class FruitStore: Storing {
@@ -86,6 +88,7 @@ final class FruitStore: Storing {
 >   - 딸바쥬스 : 딸기 10개 + 바나나 1개 소모
 >   - 망고 쥬스 : 망고 3개 소모
 >   - 망고키위 쥬스 : 망고 2개 + 키위 1개 소모
+ 
 ### 🥤 Juice
 ```swift
 enum Juice {
@@ -103,7 +106,7 @@ enum Juice {
 
 > 과일의 재고가 부족하면 과일쥬스를 제조할 수 없습니다 \
 > JuiceMaker는 FruitStore를 소유하고 있습니다    
-
+ 
 ### 👩‍🌾 JuiceMaker
 ```swift
 struct JuiceMaker<T:Storing> where T.Element == Fruit {
@@ -129,9 +132,12 @@ struct JuiceMaker<T:Storing> where T.Element == Fruit {
     - 충분하지 않으면 재고 없다는 오류를,
     - 충분하다면 창고에서 재료를 줄인 후 쥬스를 반환해요
 
-
+ 
+ 
+ㅤ
+ㅤ
 ## 고민한 부분
-
+ 
 ### FruitStore
 - 과일 재고 관리
   - 과일과 과일수량의 값을 매칭하여 관리하기 위해 Dictionary를 사용하였습니다.
@@ -139,8 +145,20 @@ struct JuiceMaker<T:Storing> where T.Element == Fruit {
 - 과일수량 초기값 설정
   - 과일별로 초기값을 지정하기 위해 `CaseIterable`프로토콜의 `allCases`를 활용하여 설정하였습니다.
 - add 함수 관련
-  - Dictionary의 subsript의 반환값이 `oprional`로 반환되어 초기에는 `guard let` 바인딩을 통해 해결했습니다.
-  - 하지만, guard let 바인딩으로 처리하면 else 구문을 처리하여야 하는데 앞선 input값을 check함수를 통해 정제하므로 실행될 일이 없다고 판단하였습니다.
-  - 다른 방법을 찾던중 `default` 구문을 발견하여 적용하여 봤습니다.
+  - Dictionary의 subscript의 반환값이 `optional`로 반환되어 초기에는 `guard let` 바인딩을 통해 해결했습니다.
+  - 하지만, guard let 바인딩으로 처리하면 else 구문을 처리하여야 하는데 앞선 input값을 hasEnough함수를 통해 정제하므로 실행될 일이 없다고 판단하였습니다.
+  - 다른 방법을 찾던중 `default` 구문을 발견하였으며, `enum`으로 정의해둔 `Fruit`만 들어오므로 사용해도 무방할 것이라 판단하였습니다..
 - subtract 함수 관련
-  - 
+  - 이전 add함수와 같이 subscript 반환값 `optional`값을 해결하기 위해 `?` 붙였습니다. `hasEnough`함수를 통해 정제함으로 nil이 나올 가능성이 없으므로, 따로 nil값 처리는 하지 않았습니다.
+ 
+### Storing
+ - Storing을 프로토콜로 정의한 이유는 2가지 입니다.
+   1. Storing 프로토콜을 인터페이스로 활용하여 `JuiceMaker`의 `FruitStore`에 의존성을 없앤다.
+   2. 향후 `Store`의 확장성을 높인다. -> 확장성을 위해 `Generic`을 활용했습니다.
+ - Naming : Store 프로토콜 명칭을 고민하던 중 프로토콜 명칭은 지속적으로 소유하고 있음을 나타내는 `Storing`을 사용하였고, 그 안에서 Hashable&CaseIterable을 채택한 `Storealbe`을 제너릭 타입명칭으로 활용하였습니다.
+ - `add`는 `1개의 함수`만 두었지만 `subtract`는 `2개의 함수`로 나눈 이유
+   - View의 내용을 보았을 때 add는 1개의 과일에 1개씩만 추가할 수 있도록 구성되어 있다고 생각하였으며, 
+   - subtract는 juice를 만들면서 1개 이상의 과일에 1개 이상의 차감이 진행될 수 있다고 판단하여 `단수`와 `복수` 처리를 나누게 되었습니다.
+ 
+### 의존성 주입
+  - 해당 과제의 모델링을 논의하면서 `Singleton`, `상위객체(JuiceMaker)-하위객체(FruitStore)`, `의존관계역전원칙을 적용한 의존성 주입` 등 다양한 방법을 하였으며, 함께 스터디를 진행한 결과 의존성 주입을 활용하면 확장성을 추가로 가져갈 수 있다고 판단하여 이와 같이 구성하게 되었습니다.
