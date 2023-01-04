@@ -17,7 +17,7 @@ enum Fruits: String, CaseIterable {
     static func makeFruitArray() -> [String:Fruit] {
         var initializedFruitArray = [String:Fruit]()
         Fruits.allCases.forEach {
-            initializedFruitArray[$0.rawValue] = Fruit(name: $0.rawValue, amount: 10)
+            initializedFruitArray[$0.rawValue] = Fruit(name: $0.rawValue, stock: 10)
         }
         return initializedFruitArray
     }

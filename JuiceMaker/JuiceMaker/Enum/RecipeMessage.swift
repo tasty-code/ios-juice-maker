@@ -16,9 +16,9 @@ enum RecipeMessage: String {
     case mangoJuice = "Mg3"
     case mangoKiwiJuice = "Mg2+Kw1"
     
-    static func translate(recipeMessage :String) -> [(String,Int)] {
+    static func translate(recipeMessage :String) -> [OrderMessage] {
         
-        var convertedString: [(String, Int)] = []
+        var convertedString: [OrderMessage] = []
         
         let splitedString = recipeMessage.split(separator: "+")
         splitedString.forEach{
@@ -26,10 +26,10 @@ enum RecipeMessage: String {
             let amountStartIndex = $0.index($0.startIndex, offsetBy: 2)
             let amountCode = Int($0[amountStartIndex...]) ?? 0
             
-            convertedString.append((fruitCode, amountCode))
+            convertedString.append(OrderMessage(fruitName: fruitCode, amount: amountCode))
         }
         
-        return [(String,Int)]()
+        return convertedString
     }
     
 }

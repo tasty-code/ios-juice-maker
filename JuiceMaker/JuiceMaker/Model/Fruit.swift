@@ -9,5 +9,5 @@ import Foundation
 
 struct Fruit {
     let name: String
-    var amount: Int
+    var stock: Int
 }

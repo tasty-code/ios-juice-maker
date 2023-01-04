@@ -15,11 +15,10 @@
 		C73DAF40255D0CDE00020D38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C73DAF3F255D0CDE00020D38 /* Assets.xcassets */; };
 		C73DAF43255D0CDF00020D38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C73DAF41255D0CDF00020D38 /* LaunchScreen.storyboard */; };
 		C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */; };
-		F06506342962CC45007228F5 /* VendingMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06506332962CC45007228F5 /* VendingMachine.swift */; };
-		F06506362962CCE2007228F5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06506352962CCE2007228F5 /* Product.swift */; };
 		F0FDFED22963F38600AD4DB7 /* Fruits.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FDFED12963F38600AD4DB7 /* Fruits.swift */; };
 		F13008F82963B79A00E7467F /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13008F72963B79A00E7467F /* Fruit.swift */; };
 		F13008FB2963E3A500E7467F /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13008FA2963E3A500E7467F /* Errors.swift */; };
+		F18963FA29651D2100B3A9CF /* OrderMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18963F929651D2100B3A9CF /* OrderMessage.swift */; };
 		F1B39502296403F500800CE4 /* RecipeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B39501296403F500800CE4 /* RecipeMessage.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,11 +33,10 @@
 		C73DAF42255D0CDF00020D38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C73DAF44255D0CDF00020D38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMaker.swift; sourceTree = "<group>"; };
-		F06506332962CC45007228F5 /* VendingMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendingMachine.swift; sourceTree = "<group>"; };
-		F06506352962CCE2007228F5 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		F0FDFED12963F38600AD4DB7 /* Fruits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruits.swift; sourceTree = "<group>"; };
 		F13008F72963B79A00E7467F /* Fruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
 		F13008FA2963E3A500E7467F /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		F18963F929651D2100B3A9CF /* OrderMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMessage.swift; sourceTree = "<group>"; };
 		F1B39501296403F500800CE4 /* RecipeMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				F13008F72963B79A00E7467F /* Fruit.swift */,
+				F18963F929651D2100B3A9CF /* OrderMessage.swift */,
 				C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */,
 				C71CD66A266C7ACB0038B9CB /* FruitStore.swift */,
 			);
@@ -107,8 +106,6 @@
 				C71CD66F266C7B500038B9CB /* Model */,
 				C71CD671266C7B570038B9CB /* View */,
 				C73DAF44255D0CDF00020D38 /* Info.plist */,
-				F06506332962CC45007228F5 /* VendingMachine.swift */,
-				F06506352962CCE2007228F5 /* Product.swift */,
 			);
 			path = JuiceMaker;
 			sourceTree = "<group>";
@@ -195,15 +192,14 @@
 			files = (
 				F0FDFED22963F38600AD4DB7 /* Fruits.swift in Sources */,
 				F13008F82963B79A00E7467F /* Fruit.swift in Sources */,
+				F18963FA29651D2100B3A9CF /* OrderMessage.swift in Sources */,
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
 				C73DAF3B255D0CDD00020D38 /* ViewController.swift in Sources */,
 				F1B39502296403F500800CE4 /* RecipeMessage.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
 				C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */,
 				C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */,
-				F06506342962CC45007228F5 /* VendingMachine.swift in Sources */,
 				F13008FB2963E3A500E7467F /* Errors.swift in Sources */,
-				F06506362962CCE2007228F5 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
