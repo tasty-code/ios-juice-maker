@@ -7,17 +7,33 @@
 import Foundation
 
 // 쥬스 메이커 타입
-struct JuiceMaker {
+struct JuiceMaker: Makeable {
     let fruitStore = FruitStore.shared
     
-    func requestToMakeJuice(fruitName: FruitList, numToConsume: Int){
-        guard var currentStock = fruitStore.store[fruitName] else{
-            return
-        }
-        guard currentStock - numToConsume >= 0 else {
-            return
-        }
-        currentStock -= numToConsume
-        fruitStore.store[fruitName] = currentStock
+    func requestTo(strawberry juice: FruitList, number: Int) {
+        fruitStore.store.updateValue(number, forKey: juice)
+    }
+    
+    func requestTo(banana juice: FruitList, number: Int) {
+        fruitStore.store.updateValue(number, forKey: juice)
+    }
+    
+    func requestTo(kiwi juice: FruitList, number: Int) {
+        fruitStore.store.updateValue(number, forKey: juice)
+    }
+    
+    func requestTo(pineApple juice: FruitList, number: Int) {
+        fruitStore.store.updateValue(number, forKey: juice)
+    }
+    
+    func requestTo(mango juice: FruitList, number: Int) {
+        fruitStore.store.updateValue(number, forKey: juice)
+    }
+    
+    func requestTo(mixed juice: (FruitList, FruitList), numbers: (Int, Int)) -> Int {
+        fruitStore.store.updateValue(numbers.0, forKey: juice.0)
+        fruitStore.store.updateValue(numbers.1, forKey: juice.1)
+        
+        return 0
     }
 }
