@@ -266,16 +266,19 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0yV-kn-zaT">
-                                                <rect key="frame" x="74.666666666666671" y="93.666666666666671" width="13.333333333333329" height="26.333333333333329"/>
+                                                <rect key="frame" x="43.666666666666657" y="93.666666666666671" width="75" height="26.333333333333329"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZQk-f4-zrz">
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="kaL-OR-GFg">
                                                 <rect key="frame" x="34.333333333333343" y="130" width="94" height="32"/>
                                             </stepper>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="0yV-kn-zaT" firstAttribute="leading" secondItem="dCK-AJ-zGU" secondAttribute="leading" id="L0W-kz-Amh"/>
+                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cq2-pt-5V5">
                                         <rect key="frame" x="162.33333333333331" y="73.666666666666686" width="162.33333333333331" height="162"/>
@@ -287,7 +290,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gKu-86-RhI">
-                                                <rect key="frame" x="74.666666666666657" y="93.666666666666671" width="13.333333333333329" height="26.333333333333329"/>
+                                                <rect key="frame" x="43.666666666666657" y="93.666666666666671" width="75" height="26.333333333333329"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
@@ -297,6 +300,9 @@
                                                 <rect key="frame" x="34.333333333333314" y="130" width="94" height="32"/>
                                             </stepper>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="gKu-86-RhI" firstAttribute="leading" secondItem="y33-ND-gz2" secondAttribute="leading" id="siN-AP-wDZ"/>
+                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="P66-xD-LN6">
                                         <rect key="frame" x="324.66666666666669" y="73.666666666666686" width="162.66666666666669" height="162"/>
@@ -308,7 +314,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MpT-VW-hCb">
-                                                <rect key="frame" x="74.666666666666629" y="93.666666666666671" width="13.333333333333329" height="26.333333333333329"/>
+                                                <rect key="frame" x="44" y="93.666666666666671" width="75" height="26.333333333333329"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
@@ -318,6 +324,9 @@
                                                 <rect key="frame" x="34.333333333333314" y="130" width="94" height="32"/>
                                             </stepper>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="MpT-VW-hCb" firstAttribute="leading" secondItem="rac-Ji-vZK" secondAttribute="leading" id="Jos-63-vtc"/>
+                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lUJ-do-4OL">
                                         <rect key="frame" x="487.33333333333331" y="73.666666666666686" width="162.33333333333331" height="162"/>
@@ -329,7 +338,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZDv-1m-HBY">
-                                                <rect key="frame" x="74.333333333333314" y="93.666666666666671" width="13.333333333333329" height="26.333333333333329"/>
+                                                <rect key="frame" x="43.666666666666686" y="93.666666666666671" width="75" height="26.333333333333329"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
@@ -339,6 +348,9 @@
                                                 <rect key="frame" x="34.000000000000057" y="130" width="94" height="32"/>
                                             </stepper>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="ZDv-1m-HBY" firstAttribute="leading" secondItem="EHe-D1-1xN" secondAttribute="leading" id="eJ0-ot-fHC"/>
+                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="c5b-Xl-xoe">
                                         <rect key="frame" x="649.66666666666663" y="73.666666666666686" width="162.33333333333337" height="162"/>
@@ -350,7 +362,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YJI-ER-LJR">
-                                                <rect key="frame" x="74.333333333333371" y="93.666666666666671" width="13.333333333333329" height="26.333333333333329"/>
+                                                <rect key="frame" x="43.666666666666742" y="93.666666666666671" width="75" height="26.333333333333329"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
@@ -360,6 +372,9 @@
                                                 <rect key="frame" x="34" y="130" width="94" height="32"/>
                                             </stepper>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="YJI-ER-LJR" firstAttribute="leading" secondItem="w1F-9o-qJR" secondAttribute="leading" id="HX6-pO-DL4"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                             </stackView>
