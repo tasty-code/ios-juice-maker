@@ -8,9 +8,9 @@
 import Foundation
 
 enum Fruits: CaseIterable {
-    case strawberries
-    case bananas
-    case kiwis
-    case pineapples
-    case mangos
+    case strawberry
+    case banana
+    case kiwi
+    case pineapple
+    case mango
 }

@@ -23,19 +23,19 @@ enum Juice: String {
     var recipe: [Fruits: Int] {
         switch self {
         case .strawberry:
-            return [.strawberries: 16]
+            return [.strawberry: 16]
         case .banana:
-            return [.bananas: 2]
+            return [.banana: 2]
         case .kiwi:
-            return [.kiwis: 3]
+            return [.kiwi: 3]
         case .pineapple:
-            return [.pineapples: 2]
+            return [.pineapple: 2]
         case .strawberryBanana:
-            return [.strawberries: 10, .bananas: 1]
+            return [.strawberry: 10, .banana: 1]
         case .mango:
-            return [.mangos: 3]
+            return [.mango: 3]
         case .mangoKiwi:
-            return [.mangos: 2, .kiwis: 1]
+            return [.mango: 2, .kiwi: 1]
         }
     }
 }
