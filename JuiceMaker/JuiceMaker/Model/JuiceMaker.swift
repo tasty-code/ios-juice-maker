@@ -32,4 +32,20 @@ struct JuiceMaker {
             }
         }
     }
+    
+    func isEnoughStock(fruit: FruitStore.Fruit, requiredQuantity: UInt) throws -> Bool {
+        guard let stock = self.fruitStore.stockByFruit[fruit] else {
+            throw JuiceMakerError.notExistFruit
+        }
+        return stock >= requiredQuantity
+    }
+
+    func makeJuice(_ juice: Juice) throws {
+        for (fruit, requiredQuantity) in juice.recipe where try !isEnoughStock(fruit: fruit, requiredQuantity: requiredQuantity) {
+            throw JuiceMakerError.outOfStock
+        }
+        for (fruit, quantity) in juice.recipe {
+            try self.fruitStore.subtractStock(fruitType: fruit, quantity: quantity)
+        }
+    }
 }
