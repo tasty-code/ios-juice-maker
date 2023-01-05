@@ -12,7 +12,7 @@ class FruitStore {
     
     var stocks = [Fruits: Int]()
     
-    func countStock(of fruit: Fruits) -> Int {
+    func count(of fruit: Fruits) -> Int {
         guard let stock = stocks[fruit] else { return 0 }
         return stock
     }

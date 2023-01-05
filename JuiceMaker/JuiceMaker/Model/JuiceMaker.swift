@@ -10,9 +10,10 @@ import Foundation
 struct JuiceMaker {
     private let fruitStore = FruitStore.shared
     
-    private func checkOrderable(of ingredients: [Fruits: Int]) -> Bool {
+    private func checkOrderable(of menu: Juice) -> Bool {
+        let ingredients = menu.recipe
         for ingredient in ingredients {
-            let eachStock = fruitStore.countStock(of: ingredient.key)
+            let eachStock = fruitStore.count(of: ingredient.key)
             guard eachStock >= ingredient.value else { return false }
         }
         return true
