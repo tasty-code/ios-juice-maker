@@ -7,6 +7,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    let juiceMaker = JuiceMaker()
     @IBOutlet weak var strawberryStock: UILabel!
     @IBOutlet weak var bananaStock: UILabel!
     @IBOutlet weak var pineappleStock: UILabel!
@@ -15,10 +16,15 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        strawberryStock.text = String(FruitStore.defaultStock)
+        bananaStock.text = String(FruitStore.defaultStock)
+        pineappleStock.text = String(FruitStore.defaultStock)
+        kiwiStock.text = String(FruitStore.defaultStock)
+        mangoStock.text = String(FruitStore.defaultStock)
     }
     
     @IBAction func orderButton(_ sender: UIButton) {
+        
     }
 }
 
