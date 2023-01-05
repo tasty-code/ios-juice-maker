@@ -8,13 +8,6 @@ import UIKit
 
 final class JuiceViewController: UIViewController {
     private let juiceMaker = JuiceMaker()
-    private let buttonTag: [Int: FruitJuice] = [1: .strawberryBanana,
-                                                2: .strawberry,
-                                                3: .banana,
-                                                4: .pineapple,
-                                                5: .mangoKiwi,
-                                                6: .kiwi,
-                                                7: .mango]
 
     @IBOutlet weak var strawberryStockLabel: UILabel!
     @IBOutlet weak var bananaStockLabel: UILabel!
@@ -42,9 +35,9 @@ final class JuiceViewController: UIViewController {
     }
 
     @IBAction func juiceOrderButtonTapped(_ sender: UIButton) {
-        guard let juice = buttonTag[sender.tag] else { return }
+        guard let fruitJuice = FruitJuice(rawValue: sender.tag) else { return }
         do {
-            try juiceMaker.makeJuice(of: juice)
+            try juiceMaker.makeJuice(of: fruitJuice)
             configureStock()
         } catch {
             print(error.localizedDescription)
