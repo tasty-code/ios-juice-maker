@@ -7,10 +7,10 @@
 import Foundation
 
 // 과일 저장소 타입
-class FruitStore {
-    static var shared = FruitStore(initialStock: 10)
+final class FruitStore {
+    static let shared = FruitStore(initialStock: 10)
     
-    var stocks = [Fruits: Int]()
+    private var stocks = [Fruits: Int]()
     
     func count(of fruit: Fruits) -> Int {
         guard let stock = stocks[fruit] else { return 0 }
