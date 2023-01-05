@@ -11,5 +11,7 @@ class StockViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = "과일 재고 수정"
     }
 }
