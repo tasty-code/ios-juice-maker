@@ -18,7 +18,7 @@ final class JuiceMakerTests: XCTestCase {
         let stock: UInt = 10
         let fruitStore = FruitStore()
         let quantity: UInt = 5
-        fruitStore.subtractStock(fruitType: .banana, quantity: quantity)
+        XCTAssertNoThrow(try fruitStore.subtractStock(fruitType: .banana, quantity: quantity))
         XCTAssertEqual(fruitStore.stockByFruit, [.strawberry: stock, .banana: stock - quantity, .pineapple: stock, .kiwi: stock, .mango: stock])
     }
     
@@ -26,7 +26,7 @@ final class JuiceMakerTests: XCTestCase {
         let stock: UInt = 10
         let fruitStore = FruitStore()
         let quantity: UInt = 15
-        fruitStore.subtractStock(fruitType: .banana, quantity: quantity)
+        XCTAssertThrowsError(try fruitStore.subtractStock(fruitType: .banana, quantity: quantity))
         XCTAssertEqual(fruitStore.stockByFruit, [.strawberry: stock, .banana: stock, .pineapple: stock, .kiwi: stock, .mango: stock])
     }
 }

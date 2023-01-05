@@ -21,12 +21,12 @@ class FruitStore {
         }
     }
     
-    func subtractStock(fruitType: Fruit, quantity: UInt) {
+    func subtractStock(fruitType: Fruit, quantity: UInt) throws {
         guard let fruitStock: UInt = self.stockByFruit[fruitType] else {
-            return
+            throw JuiceMakerError.notExistFruit
         }
         guard fruitStock >= quantity else {
-            return
+            throw JuiceMakerError.outOfStock
         }
         self.stockByFruit[fruitType] = fruitStock - quantity
     }
