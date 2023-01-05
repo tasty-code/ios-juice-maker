@@ -7,7 +7,7 @@
 import Foundation
 
 // 과일 저장소 타입
-class FruitStore {
+final class FruitStore {
     static let defaultStock: UInt = 10
     private(set) var stockByFruit = [Fruit: UInt]()
     
