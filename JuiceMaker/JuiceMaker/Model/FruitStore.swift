@@ -30,4 +30,11 @@ class FruitStore {
         }
         self.stockByFruit[fruitType] = fruitStock - quantity
     }
+    
+    func addStock(fruitType: Fruit, quantity: UInt) throws {
+        guard let fruitStock: UInt = self.stockByFruit[fruitType] else {
+            throw JuiceMakerError.notExistFruit
+        }
+        self.stockByFruit[fruitType] = fruitStock + quantity
+    }
 }
