@@ -15,7 +15,7 @@ struct JuiceMaker {
             throw StockError.notEnoughToMakeJuice
         }
         
-        try fruitJuice.recipe.forEach { fruit, numberOfUse in
+        for (fruit, numberOfUse) in fruitJuice.recipe {
             try fruitStore.changeStock(of: fruit, by: -numberOfUse)
         }
     }
