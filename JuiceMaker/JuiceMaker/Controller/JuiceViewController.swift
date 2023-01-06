@@ -31,7 +31,7 @@ final class JuiceViewController: UIViewController {
     }
     
     // 해당 과일만 레이블 업데이트
-    func updateStockLabel(of fruit: Fruit) {
+    private func updateStockLabel(of fruit: Fruit) {
         guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
         guard let stockLabel = stockLabelByFruit[fruit] else { return }
         
@@ -56,7 +56,7 @@ final class JuiceViewController: UIViewController {
         moveToStockVC()
     }
     
-    func showMakeJuiceCompletedAlert(of fruitJuice: FruitJuice) {
+    private func showMakeJuiceCompletedAlert(of fruitJuice: FruitJuice) {
         let alert = UIAlertController(title: "\(fruitJuice.name) 나왔습니다!",
                                       message: "맛있게 드세요!",
                                       preferredStyle: .alert)
@@ -65,7 +65,7 @@ final class JuiceViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
-    func showMakeJuiceFailedAlert(of error: Error) {
+    private func showMakeJuiceFailedAlert(of error: Error) {
         guard let stockError = error as? StockError else { return }
         let alert = UIAlertController(title: stockError.localizedDescription,
                                       message: stockError.userMessage,
@@ -79,7 +79,7 @@ final class JuiceViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
-    func moveToStockVC() {
+    private func moveToStockVC() {
         guard let stockVC = storyboard?.instantiateViewController(withIdentifier: "StockVC") else { return }
         navigationController?.pushViewController(stockVC, animated: true)
     }
