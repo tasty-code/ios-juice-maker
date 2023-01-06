@@ -10,22 +10,22 @@ typealias Quantity = Int
 
 final class FruitStore {
     static let shared = FruitStore()
-
-    private var fruitBasket: [Fruits: Quantity] = [:]
-
+    
+    private var fruits: [Fruits: Quantity] = [:]
+    
     private init() {
         Fruits.allCases.forEach { fruit in
-            fruitBasket[fruit] = 10
+            fruits[fruit] = 10
         }
     }
     
     func add(fruit: Fruits, quantity: Quantity) {
-        guard let stock = fruitBasket[fruit] else {
+        guard let stock = fruits[fruit] else {
             return
         }
-        fruitBasket.updateValue(stock + quantity, forKey: fruit)
+        fruits.updateValue(stock + quantity, forKey: fruit)
     }
-  
+    
     func remove(according recipe: [Fruits: Quantity]) throws {
         try checkFruit(according: recipe)
         for (fruit, quantity) in recipe {
@@ -35,7 +35,7 @@ final class FruitStore {
             fruitBasket.updateValue(stock - quantity, forKey: fruit)
         }
     }
-
+    
     private func checkFruit(according recipe: [Fruits: Quantity]) throws {
         for (fruit, quantity) in recipe {
             guard let stock = fruitBasket[fruit] else {
@@ -45,5 +45,12 @@ final class FruitStore {
                 throw JuiceError.negativeQuantity(fruit: fruit)
             }
         }
+    }
+}
+
+private extension Int {
+    func isNegative(subtraction sub: Int) -> Bool {
+        let result = (self - sub) >= 0
+        return result
     }
 }
