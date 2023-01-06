@@ -63,7 +63,13 @@ class StockViewController: UIViewController {
     }
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
-        print(sender.value)
+        guard let fruit = Fruit(rawValue: sender.tag) else { return }
+        let changedStock = Int(sender.value)
+        
+        FruitStore.shared.setStock(of: fruit, to: changedStock)
+        
+        guard let stockLabel = stockLabelByFruit[fruit] else { return }
+        stockLabel.text = String(changedStock)
     }
     
 }

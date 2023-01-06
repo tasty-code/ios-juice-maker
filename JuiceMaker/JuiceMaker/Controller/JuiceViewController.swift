@@ -30,6 +30,13 @@ final class JuiceViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        for fruit in Fruit.allCases {
+            updateStockLabel(of: fruit)
+        }
+    }
+    
     private func updateStockLabel(of fruit: Fruit) {
         guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
         guard let stockLabel = stockLabelByFruit[fruit] else { return }
