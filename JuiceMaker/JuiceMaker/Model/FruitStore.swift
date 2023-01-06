@@ -10,7 +10,7 @@ import Foundation
 final class FruitStore {
     static let shared = FruitStore(initialStock: 10)
     
-    private var stocks = [Fruits: Int]()
+    private(set) var stocks = [Fruits: Int]()
     
     func count(of fruit: Fruits) -> Int {
         guard let stock = stocks[fruit] else { return 0 }
@@ -20,6 +20,11 @@ final class FruitStore {
     func decrease(of fruit: Fruits, amount: Int) {
         guard let stock = stocks[fruit] else { return }
         stocks.updateValue(stock - amount, forKey: fruit)
+    }
+    
+    func increase(of fruit: Fruits, amount: Int) {
+        guard let stock = stocks[fruit] else { return }
+        stocks.updateValue(stock + amount, forKey: fruit)
     }
     
     private init(initialStock: Int) {
