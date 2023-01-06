@@ -55,14 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5BDA3EEE2965045700D7CDBC /* FruitList */ = {
+		5BDA3EEE2965045700D7CDBC /* FruitInformation */ = {
 			isa = PBXGroup;
 			children = (
 				5BDA3EEF2965049E00D7CDBC /* FruitList.swift */,
 				D918A08F2967BC4F005A6B26 /* FruitSingleJuice.swift */,
 				D918A0912967BE03005A6B26 /* FruitMixJuice.swift */,
 			);
-			path = FruitList;
+			path = FruitInformation;
 			sourceTree = "<group>";
 		};
 		5BDA3EF6296513CB00D7CDBC /* Protocol */ = {
@@ -88,7 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				5BDA3EF6296513CB00D7CDBC /* Protocol */,
-				5BDA3EEE2965045700D7CDBC /* FruitList */,
+				5BDA3EEE2965045700D7CDBC /* FruitInformation */,
 				C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */,
 				C71CD66A266C7ACB0038B9CB /* FruitStore.swift */,
 				5BDA3EFB29651AA500D7CDBC /* Calculator.swift */,
