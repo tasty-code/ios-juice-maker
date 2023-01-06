@@ -112,42 +112,42 @@ struct JuiceMaker: Makeable {
     } 
     
     func currentNumber(fruit juice: FruitMixJuice) -> ([Int], [Int]) {
-        var storeItem = [Int]()
-        var needItem = [Int]()
+        var storeItemsCount = [Int]()
+        var consumeItemsCount = [Int]()
         
         for _ in 0..<juice.recipe.count {
             juice.recipe.forEach { (key: FruitList, value: Int) in
-                var temp: Int?
-                var temp2: Int?
+                var storeItem: Int?
+                var consumeItem: Int?
                 
                 switch key {
                 case .strawberry:
-                    temp = fruitStore.storeValue(fruit: .strawberry)
-                    temp2 = juice.recipe[.strawberry]
+                    storeItem = fruitStore.storeValue(fruit: .strawberry)
+                    consumeItem = juice.recipe[.strawberry]
                 case .banana:
-                    temp = fruitStore.storeValue(fruit: .banana)
-                    temp2 = juice.recipe[.banana]
+                    storeItem = fruitStore.storeValue(fruit: .banana)
+                    consumeItem = juice.recipe[.banana]
                 case .kiwi:
-                    temp = fruitStore.storeValue(fruit: .kiwi)
-                    temp2 = juice.recipe[.kiwi]
+                    storeItem = fruitStore.storeValue(fruit: .kiwi)
+                    consumeItem = juice.recipe[.kiwi]
                 case .pineApple:
-                    temp = fruitStore.storeValue(fruit: .pineApple)
-                    temp2 = juice.recipe[.pineApple]
+                    storeItem = fruitStore.storeValue(fruit: .pineApple)
+                    consumeItem = juice.recipe[.pineApple]
                 case .mango:
-                    temp = fruitStore.storeValue(fruit: .mango)
-                    temp2 = juice.recipe[.mango]
+                    storeItem = fruitStore.storeValue(fruit: .mango)
+                    consumeItem = juice.recipe[.mango]
                 }
-                guard let storeFruitNumber = temp else {
+                guard let storeFruitNumber = storeItem else {
                     return
                 }
-                guard let needFruitNumber = temp2 else {
+                guard let needFruitNumber = consumeItem else {
                     return
                 }
-                storeItem.append(storeFruitNumber)
-                needItem.append(needFruitNumber)
+                storeItemsCount.append(storeFruitNumber)
+                consumeItemsCount.append(needFruitNumber)
             }
             break
         }
-        return (storeItem, needItem)
+        return (storeItemsCount, consumeItemsCount)
     }
 }
