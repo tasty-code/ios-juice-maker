@@ -15,7 +15,6 @@ class ViewController: UIViewController {
     }
 
     func test() {
-        
         var storeTest = FruitStore(defaultStock: 10)
         var makerTest = JuiceMaker(fruitStore: storeTest)
         do {

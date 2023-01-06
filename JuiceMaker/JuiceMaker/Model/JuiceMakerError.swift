@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum JMError: Error {
+enum JuiceMakerError: Error {
     case outOfStock
 }

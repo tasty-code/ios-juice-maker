@@ -28,7 +28,7 @@ final class FruitStore: Storing {
     private func subtract(item: Fruit, count: Int) throws {
         guard let stock = items[item],
               stock >= count else {
-            throw JMError.outOfStock
+            throw JuiceMakerError.outOfStock
         }
         items[item]? -= count
     }
