@@ -67,44 +67,44 @@ struct JuiceMaker: Makeable {
     }
     
     func requestTo(mix juice: FruitMixJuice) {
-        var storeItem = ([Int](), [Int]())
-        var firstDetermine = false
-        var secondDetermine = false
+        var allOfMixJuiceCount = ([Int](), [Int]())
+        var firstFruitStoreDetermine = false
+        var secondFruitStoreDetermine = false
         
         juice.caseList.forEach { key in
             if key == juice {
-                storeItem = currentNumber(fruit: key)
-                let currentStoreFruitValue = storeItem.0
-                let needFruitValue = storeItem.1
+                allOfMixJuiceCount = currentNumber(fruit: key)
+                let currentMixJuiceCount = allOfMixJuiceCount.0
+                let needMixJuiceCount = allOfMixJuiceCount.1
                 
-                var firstMixFruitRemainCount = calculator.subtract(number1: currentStoreFruitValue[0], number2: needFruitValue[0])
-                var secondMixFruitRemainCount = calculator.subtract(number1: currentStoreFruitValue[1], number2: needFruitValue[1])
-                if firstMixFruitRemainCount < 0 || secondMixFruitRemainCount < 0 {
-                    firstMixFruitRemainCount = currentStoreFruitValue[0]
-                    secondMixFruitRemainCount = currentStoreFruitValue[1]
+                var firstMixJuiceRemainCount = calculator.subtract(number1: currentMixJuiceCount[0], number2: needMixJuiceCount[0])
+                var secondMixJuiceRemainCount = calculator.subtract(number1: currentMixJuiceCount[1], number2: needMixJuiceCount[1])
+                if firstMixJuiceRemainCount < 0 || secondMixJuiceRemainCount < 0 {
+                    firstMixJuiceRemainCount = currentMixJuiceCount[0]
+                    secondMixJuiceRemainCount = currentMixJuiceCount[1]
                 }
                 
-                let determine = fruitStore.isPossibleMakeMix(juice: key, stockNumber: (currentStoreFruitValue[0], currentStoreFruitValue[1]))
+                let determine = fruitStore.isPossibleMakeMix(juice: key, stockNumber: (currentMixJuiceCount[0], currentMixJuiceCount[1]))
                 
                 juice.recipe.forEach { (key: FruitList, value: Int) in
                     switch key {
                     case .strawberry:
-                        firstDetermine = calculator.compare(type: .strawberry, isRemainCount: determine)
-                        fruitStore.store.updateValue(firstMixFruitRemainCount, forKey: .strawberry)
+                        firstFruitStoreDetermine = calculator.compare(type: .strawberry, isRemainCount: determine)
+                        fruitStore.store.updateValue(firstMixJuiceRemainCount, forKey: .strawberry)
                     case .banana:
-                        secondDetermine = calculator.compare(type: .banana, isRemainCount: determine)
-                        fruitStore.store.updateValue(secondMixFruitRemainCount, forKey: .banana)
+                        secondFruitStoreDetermine = calculator.compare(type: .banana, isRemainCount: determine)
+                        fruitStore.store.updateValue(secondMixJuiceRemainCount, forKey: .banana)
                     case .kiwi:
-                        secondDetermine = calculator.compare(type: .kiwi, isRemainCount: determine)
-                        fruitStore.store.updateValue(secondMixFruitRemainCount, forKey: .kiwi)
+                        secondFruitStoreDetermine = calculator.compare(type: .kiwi, isRemainCount: determine)
+                        fruitStore.store.updateValue(secondMixJuiceRemainCount, forKey: .kiwi)
                     case .pineApple:
                         return
                     case .mango:
-                        firstDetermine = calculator.compare(type: .mango, isRemainCount: determine)
-                        fruitStore.store.updateValue(firstMixFruitRemainCount, forKey: .mango)
+                        firstFruitStoreDetermine = calculator.compare(type: .mango, isRemainCount: determine)
+                        fruitStore.store.updateValue(firstMixJuiceRemainCount, forKey: .mango)
                     }
                 }
-                guard firstDetermine == true || secondDetermine == true else {
+                guard firstFruitStoreDetermine == true || secondFruitStoreDetermine == true else {
                     return
                 }
             }
