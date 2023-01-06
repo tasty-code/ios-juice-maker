@@ -14,7 +14,7 @@ final class StockViewController: UIViewController {
     @IBOutlet weak private var pineappleStockLabel: UILabel!
     @IBOutlet weak private var kiwiStockLabel: UILabel!
     @IBOutlet weak private var mangoStockLabel: UILabel!
-
+    
     @IBOutlet weak private var strawberryStockStepper: UIStepper!
     @IBOutlet weak private var bananaStockStepper: UIStepper!
     @IBOutlet weak private var pineappleStockStepper: UIStepper!
@@ -40,11 +40,15 @@ final class StockViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureUI()
+    }
+    
+    func configureUI() {
         navigationItem.title = "과일 재고 수정"
         
         for fruit in Fruit.allCases {
             updateStockLabel(of: fruit)
-            initializeStepperValue(of: fruit)
+            updateStepperValue(of: fruit)
         }
     }
     
@@ -55,7 +59,7 @@ final class StockViewController: UIViewController {
         stockLabel.text = String(fruitStock)
     }
     
-    private func initializeStepperValue(of fruit: Fruit) {
+    private func updateStepperValue(of fruit: Fruit) {
         guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
         guard let stockStepper = stockStepperByFruit[fruit] else { return }
         

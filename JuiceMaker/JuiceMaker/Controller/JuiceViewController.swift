@@ -25,13 +25,14 @@ final class JuiceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        for fruit in Fruit.allCases {
-            updateStockLabel(of: fruit)
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        configureUI()
+    }
+    
+    private func configureUI() {
         for fruit in Fruit.allCases {
             updateStockLabel(of: fruit)
         }
