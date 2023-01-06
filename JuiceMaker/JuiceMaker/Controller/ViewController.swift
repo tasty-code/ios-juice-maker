@@ -30,13 +30,22 @@ class ViewController: UIViewController {
             mangoStock: .mango
         ]
         updateStockValue()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-            self.test()
-            self.updateStockValue()
-        }
     }
 
+    @IBAction func orderButtonTapped(_ sender: UIButton) {
+        let orderName = sender.currentTitle
+        let juiceName = orderName?.replacingOccurrences(of: " 주문", with: "")
+        guard let juice = Juice(rawValue: juiceName ?? "") else {
+            print("팔 수 없음")
+            return
+        }
+        do {
+            _ = try juiceMaker.make(juice: juice)
+        } catch {
+            print(error)
+        }
+    }
+    
     func test() {
         do {
             let juice = try juiceMaker.make(juice: .strawberryJuice)
@@ -51,4 +60,6 @@ class ViewController: UIViewController {
             label.text = String(fruitStore.items[fruit, default: 0])
         }
     }
+    
+//    "딸바쥬스" = Juice(
 }
