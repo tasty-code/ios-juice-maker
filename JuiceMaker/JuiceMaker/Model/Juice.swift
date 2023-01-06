@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Juice: String {
+enum Juice: String, CaseIterable {
     case strawberry = "딸기"
     case banana = "바나나"
     case kiwi = "키위"
@@ -37,5 +37,13 @@ enum Juice: String {
         case .mangoKiwi:
             return [.mango: 2, .kiwi: 1]
         }
+    }
+    
+    init?(order: String) {
+        for juice in Self.allCases {
+            guard order == juice.orderTitle else { continue }
+            self = juice
+        }
+        return nil
     }
 }
