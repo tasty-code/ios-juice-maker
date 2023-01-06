@@ -18,8 +18,6 @@ struct JuiceMaker {
     }
 
     func make(juice order: Menu) throws {
-        try order.recipe.forEach { (fruit, quantity) in
-            try fruitStore.remove(fruit: fruit, quantity: quantity)
-        }
+        try fruitStore.remove(according: order.recipe)
     }
 }
