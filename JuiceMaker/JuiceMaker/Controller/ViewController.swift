@@ -12,5 +12,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+
+    @IBAction func orderJuice(_ sender: UIButton) {
+    }
 }
 
