@@ -67,8 +67,49 @@ struct JuiceMaker: Makeable {
     }
     
     func requestTo(mix juice: FruitMixJuice) {
-        <#code#>
-    }
+        var storeItem = ([Int](), [Int]())
+        var firstDetermine = false
+        var secondDetermine = false
+        
+        juice.caseList.forEach { key in
+            if key == juice {
+                storeItem = currentNumber(fruit: key)
+                let currentStoreFruitValue = storeItem.0
+                let needFruitValue = storeItem.1
+                
+                var firstMixFruitRemainCount = calculator.subtract(number1: currentStoreFruitValue[0], number2: needFruitValue[0])
+                var secondMixFruitRemainCount = calculator.subtract(number1: currentStoreFruitValue[1], number2: needFruitValue[1])
+                if firstMixFruitRemainCount < 0 || secondMixFruitRemainCount < 0 {
+                    firstMixFruitRemainCount = currentStoreFruitValue[0]
+                    secondMixFruitRemainCount = currentStoreFruitValue[1]
+                }
+                
+                let determine = fruitStore.isPossibleMakeMix(juice: key, stockNumber: (currentStoreFruitValue[0], currentStoreFruitValue[1]))
+                
+                juice.recipe.forEach { (key: FruitList, value: Int) in
+                    switch key {
+                    case .strawberry:
+                        firstDetermine = calculator.compare(type: .strawberry, isRemainCount: determine)
+                        fruitStore.store.updateValue(firstMixFruitRemainCount, forKey: .strawberry)
+                    case .banana:
+                        secondDetermine = calculator.compare(type: .banana, isRemainCount: determine)
+                        fruitStore.store.updateValue(secondMixFruitRemainCount, forKey: .banana)
+                    case .kiwi:
+                        secondDetermine = calculator.compare(type: .kiwi, isRemainCount: determine)
+                        fruitStore.store.updateValue(secondMixFruitRemainCount, forKey: .kiwi)
+                    case .pineApple:
+                        return
+                    case .mango:
+                        firstDetermine = calculator.compare(type: .mango, isRemainCount: determine)
+                        fruitStore.store.updateValue(firstMixFruitRemainCount, forKey: .mango)
+                    }
+                }
+                guard firstDetermine == true || secondDetermine == true else {
+                    return
+                }
+            }
+        }
+    } 
     
     func currentNumber(fruit juice: FruitMixJuice) -> ([Int], [Int]) {
         var storeItem = [Int]()
