@@ -34,4 +34,23 @@ enum FruitJuice: Int {
             return [Fruit.mango: 3]
         }
     }
+    
+    var name: String {
+        switch self {
+        case .strawberryBanana:
+            return "딸바쥬스"
+        case .strawberry:
+            return "딸기쥬스"
+        case .banana:
+            return "바나나쥬스"
+        case .pineapple:
+            return "파인애플쥬스"
+        case .mangoKiwi:
+            return "망키쥬스"
+        case .kiwi:
+            return "키위쥬스"
+        case .mango:
+            return "망고쥬스"
+        }
+    }
 }

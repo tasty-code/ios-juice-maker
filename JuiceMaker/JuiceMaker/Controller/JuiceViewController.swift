@@ -42,7 +42,7 @@ final class JuiceViewController: UIViewController {
         guard let fruitJuice = FruitJuice(rawValue: sender.tag) else { return }
         do {
             try juiceMaker.makeJuice(of: fruitJuice)
-            
+            showMakeJuiceCompletedAlert(of: fruitJuice)
             for fruit in fruitJuice.recipe.keys {
                 updateStockLabel(of: fruit)
             }
@@ -54,6 +54,13 @@ final class JuiceViewController: UIViewController {
     @IBAction func changeStockButtonTapped(_ sender: UIBarButtonItem) {
         guard let stockVC = storyboard?.instantiateViewController(withIdentifier: "StockVC") else { return }
         navigationController?.pushViewController(stockVC, animated: true)
+    }
+    
+    func showMakeJuiceCompletedAlert(of fruitJuice: FruitJuice) {
+        let alert = UIAlertController(title: "\(fruitJuice.name) 나왔습니다!", message: "맛있게 드세요!", preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "잘 먹을게요", style: .default)
+        alert.addAction(confirmAction)
+        self.present(alert, animated: true)
     }
 }
 
