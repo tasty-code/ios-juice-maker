@@ -15,6 +15,11 @@ class ViewController: UIViewController {
     }
 
     @IBAction func orderJuice(_ sender: UIButton) {
+        guard let juice = Menu(rawValue: sender.tag) else {
+            return
+        }
+        JuiceMaker().order(juice: juice)
+        updateLabelText(labels: fruitLabels)
     }
 
     private func updateLabelText(labels: [UILabel]) {
