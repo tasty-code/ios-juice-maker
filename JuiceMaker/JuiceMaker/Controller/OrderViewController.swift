@@ -6,7 +6,7 @@
 
 import UIKit
 
-class OrderViewController: UIViewController {
+final class OrderViewController: UIViewController {
     let fruitStore = FruitStore.shared
     let juiceMaker = JuiceMaker()
     

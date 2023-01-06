@@ -6,7 +6,7 @@
 
 import UIKit
 
-class StoreViewController: UIViewController {
+final class StoreViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
