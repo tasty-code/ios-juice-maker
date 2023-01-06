@@ -26,7 +26,7 @@ final class JuiceViewController: UIViewController {
         }
     }
     
-    func stockLabel(of fruit: Fruit) -> UILabel? {
+    private func stockLabel(of fruit: Fruit) -> UILabel? {
         return fruitStockLabels.first { $0.tag == fruit.rawValue }
     }
     

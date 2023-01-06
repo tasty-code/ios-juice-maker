@@ -8,34 +8,9 @@
 import UIKit
 
 final class StockViewController: UIViewController {
-    
-    @IBOutlet weak private var strawberryStockLabel: UILabel!
-    @IBOutlet weak private var bananaStockLabel: UILabel!
-    @IBOutlet weak private var pineappleStockLabel: UILabel!
-    @IBOutlet weak private var kiwiStockLabel: UILabel!
-    @IBOutlet weak private var mangoStockLabel: UILabel!
-    
-    @IBOutlet weak private var strawberryStockStepper: UIStepper!
-    @IBOutlet weak private var bananaStockStepper: UIStepper!
-    @IBOutlet weak private var pineappleStockStepper: UIStepper!
-    @IBOutlet weak private var kiwiStockStepper: UIStepper!
-    @IBOutlet weak private var mangoStockStepper: UIStepper!
-    
-    private lazy var stockLabelByFruit: [Fruit: UILabel] = [
-        .strawberry: strawberryStockLabel,
-        .banana: bananaStockLabel,
-        .pineapple: pineappleStockLabel,
-        .kiwi: kiwiStockLabel,
-        .mango: mangoStockLabel
-    ]
-    
-    private lazy var stockStepperByFruit: [Fruit: UIStepper] = [
-        .strawberry: strawberryStockStepper,
-        .banana: bananaStockStepper,
-        .pineapple: pineappleStockStepper,
-        .kiwi: kiwiStockStepper,
-        .mango: mangoStockStepper,
-    ]
+
+    @IBOutlet var fruitStockLabels: [UILabel]!
+    @IBOutlet var FruitStockSteppers: [UIStepper]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,16 +27,24 @@ final class StockViewController: UIViewController {
         }
     }
     
+    private func stockLabel(of fruit: Fruit) -> UILabel? {
+        return fruitStockLabels.first { $0.tag == fruit.rawValue }
+    }
+    
+    private func stockStepper(of fruit: Fruit) -> UIStepper? {
+        return FruitStockSteppers.first { $0.tag == fruit.rawValue }
+    }
+    
     private func updateStockLabel(of fruit: Fruit) {
         guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
-        guard let stockLabel = stockLabelByFruit[fruit] else { return }
+        guard let stockLabel = stockLabel(of: fruit) else { return }
         
         stockLabel.text = String(fruitStock)
     }
     
     private func updateStepperValue(of fruit: Fruit) {
         guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
-        guard let stockStepper = stockStepperByFruit[fruit] else { return }
+        guard let stockStepper = stockStepper(of: fruit) else { return }
         
         stockStepper.value = Double(fruitStock)
     }
@@ -72,7 +55,7 @@ final class StockViewController: UIViewController {
         
         FruitStore.shared.setStock(of: fruit, to: changedStock)
         
-        guard let stockLabel = stockLabelByFruit[fruit] else { return }
+        guard let stockLabel = stockLabel(of: fruit) else { return }
         stockLabel.text = String(changedStock)
     }
     

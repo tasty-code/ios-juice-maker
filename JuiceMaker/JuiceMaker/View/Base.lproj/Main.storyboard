@@ -300,7 +300,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stepper opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="kaL-OR-GFg">
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="kaL-OR-GFg">
                                                 <rect key="frame" x="34.333333333333343" y="130" width="94" height="32"/>
                                                 <connections>
                                                     <action selector="stepperValueChanged:" destination="Yu1-lM-nqp" eventType="valueChanged" id="FmN-6t-jeC"/>
@@ -320,14 +320,14 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gKu-86-RhI">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gKu-86-RhI">
                                                 <rect key="frame" x="43.666666666666657" y="93.666666666666671" width="75" height="26.333333333333329"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stepper opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="O5s-2N-3iP">
+                                            <stepper opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="O5s-2N-3iP">
                                                 <rect key="frame" x="34.333333333333314" y="130" width="94" height="32"/>
                                                 <connections>
                                                     <action selector="stepperValueChanged:" destination="Yu1-lM-nqp" eventType="valueChanged" id="UWd-hB-RwO"/>
@@ -347,14 +347,14 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MpT-VW-hCb">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MpT-VW-hCb">
                                                 <rect key="frame" x="44" y="93.666666666666671" width="75" height="26.333333333333329"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stepper opaque="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="Rcr-xr-eqz">
+                                            <stepper opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="Rcr-xr-eqz">
                                                 <rect key="frame" x="34.333333333333314" y="130" width="94" height="32"/>
                                                 <connections>
                                                     <action selector="stepperValueChanged:" destination="Yu1-lM-nqp" eventType="valueChanged" id="kDT-W0-W42"/>
@@ -374,14 +374,14 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZDv-1m-HBY">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZDv-1m-HBY">
                                                 <rect key="frame" x="43.666666666666686" y="93.666666666666671" width="75" height="26.333333333333329"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stepper opaque="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="klA-59-Nu4">
+                                            <stepper opaque="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="klA-59-Nu4">
                                                 <rect key="frame" x="34.000000000000057" y="130" width="94" height="32"/>
                                                 <connections>
                                                     <action selector="stepperValueChanged:" destination="Yu1-lM-nqp" eventType="valueChanged" id="QuQ-OL-kxO"/>
@@ -401,14 +401,14 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YJI-ER-LJR">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YJI-ER-LJR">
                                                 <rect key="frame" x="43.666666666666742" y="93.666666666666671" width="75" height="26.333333333333329"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stepper opaque="NO" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="xbn-6P-grO">
+                                            <stepper opaque="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="xbn-6P-grO">
                                                 <rect key="frame" x="34" y="130" width="94" height="32"/>
                                                 <connections>
                                                     <action selector="stepperValueChanged:" destination="Yu1-lM-nqp" eventType="valueChanged" id="Srd-h4-bPi"/>
@@ -433,16 +433,16 @@
                     </view>
                     <navigationItem key="navigationItem" id="g4W-fY-l7r"/>
                     <connections>
-                        <outlet property="bananaStockLabel" destination="gKu-86-RhI" id="J37-m3-EZf"/>
-                        <outlet property="bananaStockStepper" destination="O5s-2N-3iP" id="hzb-xa-Fvn"/>
-                        <outlet property="kiwiStockLabel" destination="ZDv-1m-HBY" id="2Vg-hU-oyM"/>
-                        <outlet property="kiwiStockStepper" destination="klA-59-Nu4" id="kWT-13-BKy"/>
-                        <outlet property="mangoStockLabel" destination="YJI-ER-LJR" id="phE-kc-oWP"/>
-                        <outlet property="mangoStockStepper" destination="xbn-6P-grO" id="Cg8-Bw-7Ef"/>
-                        <outlet property="pineappleStockLabel" destination="MpT-VW-hCb" id="iEf-L7-BcV"/>
-                        <outlet property="pineappleStockStepper" destination="Rcr-xr-eqz" id="ixF-bF-7je"/>
-                        <outlet property="strawberryStockLabel" destination="0yV-kn-zaT" id="R9Z-RD-QmG"/>
-                        <outlet property="strawberryStockStepper" destination="kaL-OR-GFg" id="EzX-5Q-Tzm"/>
+                        <outletCollection property="fruitStockLabels" destination="0yV-kn-zaT" collectionClass="NSMutableArray" id="rBd-RC-oD6"/>
+                        <outletCollection property="fruitStockLabels" destination="gKu-86-RhI" collectionClass="NSMutableArray" id="cIZ-Ig-WSI"/>
+                        <outletCollection property="fruitStockLabels" destination="MpT-VW-hCb" collectionClass="NSMutableArray" id="1Pm-F4-u7z"/>
+                        <outletCollection property="fruitStockLabels" destination="ZDv-1m-HBY" collectionClass="NSMutableArray" id="zuL-5J-f4T"/>
+                        <outletCollection property="fruitStockLabels" destination="YJI-ER-LJR" collectionClass="NSMutableArray" id="Wkg-Tl-n98"/>
+                        <outletCollection property="FruitStockSteppers" destination="kaL-OR-GFg" collectionClass="NSMutableArray" id="JLZ-ni-Pm7"/>
+                        <outletCollection property="FruitStockSteppers" destination="O5s-2N-3iP" collectionClass="NSMutableArray" id="BB6-7s-xNB"/>
+                        <outletCollection property="FruitStockSteppers" destination="Rcr-xr-eqz" collectionClass="NSMutableArray" id="xfM-gd-0pT"/>
+                        <outletCollection property="FruitStockSteppers" destination="klA-59-Nu4" collectionClass="NSMutableArray" id="wwm-99-j45"/>
+                        <outletCollection property="FruitStockSteppers" destination="xbn-6P-grO" collectionClass="NSMutableArray" id="Lf7-qD-BbE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
