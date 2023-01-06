@@ -17,16 +17,16 @@ final class JuiceMakerTests: XCTestCase {
     func test정상적인재고사용() {
         let stock: UInt = 10
         let fruitStore = FruitStore()
-        let quantity: UInt = 5
-        XCTAssertNoThrow(try fruitStore.subtractStock(fruitType: .banana, quantity: quantity))
-        XCTAssertEqual(fruitStore.stockByFruit, [.strawberry: stock, .banana: stock - quantity, .pineapple: stock, .kiwi: stock, .mango: stock])
+        let count: UInt = 5
+        XCTAssertNoThrow(try fruitStore.subtractStock(fruit: .banana, count: count))
+        XCTAssertEqual(fruitStore.stockByFruit, [.strawberry: stock, .banana: stock - count, .pineapple: stock, .kiwi: stock, .mango: stock])
     }
     
     func test재고부족() {
         let stock: UInt = 10
         let fruitStore = FruitStore()
-        let quantity: UInt = 15
-        XCTAssertThrowsError(try fruitStore.subtractStock(fruitType: .banana, quantity: quantity))
+        let count: UInt = 15
+        XCTAssertThrowsError(try fruitStore.subtractStock(fruit: .banana, count: count))
         XCTAssertEqual(fruitStore.stockByFruit, [.strawberry: stock, .banana: stock, .pineapple: stock, .kiwi: stock, .mango: stock])
     }
 }
