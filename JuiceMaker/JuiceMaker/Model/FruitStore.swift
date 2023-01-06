@@ -31,6 +31,28 @@ final class FruitStore {
         }
     }
     
+    func storeValue(fruit type: FruitList) -> Int? {
+        var currentStoreValue: Int?
+        
+        store.forEach { (key: FruitList, value: Int) in
+            if key == type {
+                switch key {
+                case .strawberry:
+                    currentStoreValue = store[.strawberry]
+                case .banana:
+                    currentStoreValue = store[.banana]
+                case .kiwi:
+                    currentStoreValue = store[.kiwi]
+                case .pineApple:
+                    currentStoreValue = store[.pineApple]
+                case .mango:
+                    currentStoreValue = store[.mango]
+                }
+            }
+        }
+        return currentStoreValue
+    }
+    
     func isPossibleMakeSingle(juice: FruitList, stockNumber: Int) -> Bool {
         switch juice {
         case .strawberry:
