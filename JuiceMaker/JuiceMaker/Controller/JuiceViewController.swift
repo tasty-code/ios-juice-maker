@@ -53,8 +53,9 @@ final class JuiceViewController: UIViewController {
             for fruit in fruitJuice.recipe.keys {
                 updateStockLabel(of: fruit)
             }
+        } catch StockError.notEnoughToMakeJuice {
+            showMakeJuiceFailedAlert()
         } catch {
-            showMakeJuiceFailedAlert(of: error)
             print(error.localizedDescription)
         }
     }
@@ -72,8 +73,9 @@ final class JuiceViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
-    private func showMakeJuiceFailedAlert(of error: Error) {
-        guard let stockError = error as? StockError else { return }
+    private func showMakeJuiceFailedAlert() {
+        let stockError = StockError.notEnoughToMakeJuice
+        
         let alert = UIAlertController(title: stockError.localizedDescription,
                                       message: stockError.userMessage,
                                       preferredStyle: .alert)
