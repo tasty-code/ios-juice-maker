@@ -8,47 +8,51 @@ import UIKit
 
 final class JuiceViewController: UIViewController {
     private let juiceMaker = JuiceMaker()
-
+    
     @IBOutlet weak var strawberryStockLabel: UILabel!
     @IBOutlet weak var bananaStockLabel: UILabel!
     @IBOutlet weak var pineappleStockLabel: UILabel!
     @IBOutlet weak var kiwiStockLabel: UILabel!
     @IBOutlet weak var mangoStockLabel: UILabel!
     
+    lazy var stockLabelByFruit: [Fruit: UILabel] = [
+        .strawberry: strawberryStockLabel,
+        .banana: bananaStockLabel,
+        .pineapple: pineappleStockLabel,
+        .kiwi: kiwiStockLabel,
+        .mango: mangoStockLabel
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureStock()
+        for fruit in Fruit.allCases {
+            updateStockLabel(of: fruit)
+        }
     }
     
-    func configureStock() {
-        guard let strawberryStock = FruitStore.shared.stock[.strawberry] else { return }
-        guard let bananaStock = FruitStore.shared.stock[.banana] else { return }
-        guard let pineappleStock = FruitStore.shared.stock[.pineapple] else { return }
-        guard let kiwiStock = FruitStore.shared.stock[.kiwi] else { return }
-        guard let mangoStock = FruitStore.shared.stock[.mango] else { return }
+    // 해당 과일만 레이블 업데이트
+    func updateStockLabel(of fruit: Fruit) {
+        guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
+        guard let stockLabel = stockLabelByFruit[fruit] else { return }
         
-        strawberryStockLabel.text = String(strawberryStock)
-        bananaStockLabel.text = String(bananaStock)
-        pineappleStockLabel.text = String(pineappleStock)
-        kiwiStockLabel.text = String(kiwiStock)
-        mangoStockLabel.text = String(mangoStock)
+        stockLabel.text = String(fruitStock)
     }
-
+    
     @IBAction func juiceOrderButtonTapped(_ sender: UIButton) {
         guard let fruitJuice = FruitJuice(rawValue: sender.tag) else { return }
         do {
             try juiceMaker.makeJuice(of: fruitJuice)
-            configureStock()
+            
+            for fruit in fruitJuice.recipe.keys {
+                updateStockLabel(of: fruit)
+            }
         } catch {
             print(error.localizedDescription)
         }
     }
     
-    
     @IBAction func changeStockButtonTapped(_ sender: UIBarButtonItem) {
-        guard let stockVC = storyboard?.instantiateViewController(withIdentifier: "StockVC") else {
-            return
-        }
+        guard let stockVC = storyboard?.instantiateViewController(withIdentifier: "StockVC") else { return }
         navigationController?.pushViewController(stockVC, animated: true)
     }
 }
