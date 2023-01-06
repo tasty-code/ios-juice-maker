@@ -29,16 +29,16 @@ final class FruitStore {
     func remove(according recipe: [Fruits: Quantity]) throws {
         try checkFruit(according: recipe)
         for (fruit, quantity) in recipe {
-            guard let stock = fruitBasket[fruit] else {
+            guard let stock = fruits[fruit] else {
                 return
             }
-            fruitBasket.updateValue(stock - quantity, forKey: fruit)
+            fruits.updateValue(stock - quantity, forKey: fruit)
         }
     }
     
     private func checkFruit(according recipe: [Fruits: Quantity]) throws {
         for (fruit, quantity) in recipe {
-            guard let stock = fruitBasket[fruit] else {
+            guard let stock = fruits[fruit] else {
                 return
             }
             guard stock.isNegative(subtraction: quantity) else {
