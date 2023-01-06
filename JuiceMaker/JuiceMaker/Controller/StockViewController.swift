@@ -10,7 +10,7 @@ import UIKit
 final class StockViewController: UIViewController {
 
     @IBOutlet var fruitStockLabels: [UILabel]!
-    @IBOutlet var FruitStockSteppers: [UIStepper]!
+    @IBOutlet var fruitStockSteppers: [UIStepper]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,9 +21,16 @@ final class StockViewController: UIViewController {
     func configureUI() {
         navigationItem.title = "과일 재고 수정"
         
-        for fruit in Fruit.allCases {
-            updateStockLabel(of: fruit)
-            updateStepperValue(of: fruit)
+        for stockLabel in fruitStockLabels {
+            guard let fruit = Fruit(rawValue: stockLabel.tag) else { return }
+            guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
+            stockLabel.text = String(fruitStock)
+        }
+        
+        for stockStepper in fruitStockSteppers {
+            guard let fruit = Fruit(rawValue: stockStepper.tag) else { return }
+            guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
+            stockStepper.value = Double(fruitStock)
         }
     }
     
@@ -32,7 +39,7 @@ final class StockViewController: UIViewController {
     }
     
     private func stockStepper(of fruit: Fruit) -> UIStepper? {
-        return FruitStockSteppers.first { $0.tag == fruit.rawValue }
+        return fruitStockSteppers.first { $0.tag == fruit.rawValue }
     }
     
     private func updateStockLabel(of fruit: Fruit) {

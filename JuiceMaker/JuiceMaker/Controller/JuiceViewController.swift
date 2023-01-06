@@ -21,8 +21,10 @@ final class JuiceViewController: UIViewController {
     }
     
     private func configureUI() {
-        for fruit in Fruit.allCases {
-            updateStockLabel(of: fruit)
+        for stockLabel in fruitStockLabels {
+            guard let fruit = Fruit(rawValue: stockLabel.tag) else { return }
+            guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
+            stockLabel.text = String(fruitStock)
         }
     }
     
