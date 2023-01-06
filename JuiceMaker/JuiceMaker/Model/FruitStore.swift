@@ -22,9 +22,7 @@ final class FruitStore {
     }
     
     func subtractStock(fruitType: Fruit, quantity: UInt) throws {
-        guard let fruitStock: UInt = self.stockByFruit[fruitType] else {
-            throw JuiceMakerError.notExistFruit
-        }
+        let fruitStock = try isExist(fruit: fruitType)
         guard fruitStock >= quantity else {
             throw JuiceMakerError.outOfStock
         }
@@ -32,9 +30,14 @@ final class FruitStore {
     }
     
     func addStock(fruitType: Fruit, quantity: UInt) throws {
-        guard let fruitStock: UInt = self.stockByFruit[fruitType] else {
+        let fruitStock = try isExist(fruit: fruitType)
+        self.stockByFruit[fruitType] = fruitStock + quantity
+    }
+
+    func isExist(fruit: Fruit) throws -> UInt {
+        guard let fruitStock = stockByFruit[fruit] else {
             throw JuiceMakerError.notExistFruit
         }
-        self.stockByFruit[fruitType] = fruitStock + quantity
+        return fruitStock
     }
 }

@@ -11,9 +11,7 @@ struct JuiceMaker {
     let fruitStore = FruitStore()
     
     func isEnoughStock(fruit: FruitStore.Fruit, requiredQuantity: UInt) throws -> Bool {
-        guard let stock = self.fruitStore.stockByFruit[fruit] else {
-            throw JuiceMakerError.notExistFruit
-        }
+        let stock = try fruitStore.isExist(fruit: fruit)
         return stock >= requiredQuantity
     }
 
