@@ -14,26 +14,24 @@ class FruitStore {
     
     func increaseStock(of fruit: Fruits, by amount: Int = 1) {
         guard fruits.keys.contains(fruit) else { return }
-        
+        print(#function, " amount: \(amount)")
         fruits[fruit]?.stock += amount
     }
     
-    func decreaseStock(of fruit: Fruits, by amount: Int = 1) {
+    func decreaseStock(of fruit: Fruits, by amount: Int = -1) {
         guard fruits.keys.contains(fruit) else { return }
         guard fruits[fruit]?.stock ?? 0 > 0 else { return }
-        
-        fruits[fruit]?.stock -= amount
+        print(#function, " amount: \(amount)")
+        fruits[fruit]?.stock += amount
     }
     
     func changeStock(of fruit: Fruits, by amount: Int) {
-        if amount.signum() == 1 {
+        print(#function, " amount: \(amount)")
+        if amount >= 0 {
             increaseStock(of: fruit, by: amount)
             return
-        } else if amount.signum() == -1 {
-            decreaseStock(of: fruit, by: amount)
-            return
         } else {
-            print("Error")
+            decreaseStock(of: fruit, by: amount)
             return
         }
     }
