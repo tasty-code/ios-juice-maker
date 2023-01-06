@@ -69,4 +69,44 @@ struct JuiceMaker: Makeable {
     func requestTo(mix juice: FruitMixJuice) {
         <#code#>
     }
+    
+    func currentNumber(fruit juice: FruitMixJuice) -> ([Int], [Int]) {
+        var storeItem = [Int]()
+        var needItem = [Int]()
+        
+        for _ in 0..<juice.recipe.count {
+            juice.recipe.forEach { (key: FruitList, value: Int) in
+                var temp: Int?
+                var temp2: Int?
+                
+                switch key {
+                case .strawberry:
+                    temp = fruitStore.storeValue(fruit: .strawberry)
+                    temp2 = juice.recipe[.strawberry]
+                case .banana:
+                    temp = fruitStore.storeValue(fruit: .banana)
+                    temp2 = juice.recipe[.banana]
+                case .kiwi:
+                    temp = fruitStore.storeValue(fruit: .kiwi)
+                    temp2 = juice.recipe[.kiwi]
+                case .pineApple:
+                    temp = fruitStore.storeValue(fruit: .pineApple)
+                    temp2 = juice.recipe[.pineApple]
+                case .mango:
+                    temp = fruitStore.storeValue(fruit: .mango)
+                    temp2 = juice.recipe[.mango]
+                }
+                guard let storeFruitNumber = temp else {
+                    return
+                }
+                guard let needFruitNumber = temp2 else {
+                    return
+                }
+                storeItem.append(storeFruitNumber)
+                needItem.append(needFruitNumber)
+            }
+            break
+        }
+        return (storeItem, needItem)
+    }
 }
