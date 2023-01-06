@@ -236,7 +236,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="맛있는 쥬스를 만들어 드려요!" id="Eal-fj-o4N">
-                        <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT"/>
+                        <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT">
+                            <connections>
+                                <segue destination="Yu1-lM-nqp" kind="show" id="7YG-Xk-pcI"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outletCollection property="stockLabels" destination="Qas-vP-td6" collectionClass="NSMutableArray" id="7Fa-NY-AZ3"/>
@@ -244,11 +248,12 @@
                         <outletCollection property="stockLabels" destination="ccQ-Dk-PuY" collectionClass="NSMutableArray" id="zht-fJ-vnd"/>
                         <outletCollection property="stockLabels" destination="FZq-de-TJG" collectionClass="NSMutableArray" id="V3H-23-oJh"/>
                         <outletCollection property="stockLabels" destination="3Ce-SU-JeH" collectionClass="NSMutableArray" id="aEw-0X-Bzw"/>
+                        <segue destination="Yu1-lM-nqp" kind="show" id="cJJ-d2-GWW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="762.72321428571422" y="92.753623188405811"/>
+            <point key="canvasLocation" x="806" y="65"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LzN-aE-P5w">
@@ -271,7 +276,7 @@
         <!--View Controller-->
         <scene sceneID="fkG-vv-hpE">
             <objects>
-                <viewController id="Yu1-lM-nqp" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addStockVC" id="Yu1-lM-nqp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tKV-4l-Vtc">
                         <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -400,6 +405,9 @@
             <point key="canvasLocation" x="1637" y="21"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="cJJ-d2-GWW"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
