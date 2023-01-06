@@ -8,13 +8,13 @@
 import Foundation
 
 enum FruitJuice: Int {
-    case strawberryBanana = 1
-    case strawberry = 2
-    case banana = 3
-    case pineapple = 4
-    case mangoKiwi = 5
-    case kiwi = 6
-    case mango = 7
+    case strawberryBanana
+    case strawberry
+    case banana
+    case pineapple
+    case mangoKiwi
+    case kiwi
+    case mango
     
     var recipe: [Fruit: Int] {
         switch self {

@@ -9,19 +9,7 @@ import UIKit
 final class JuiceViewController: UIViewController {
     private let juiceMaker = JuiceMaker()
     
-    @IBOutlet weak private var strawberryStockLabel: UILabel!
-    @IBOutlet weak private var bananaStockLabel: UILabel!
-    @IBOutlet weak private var pineappleStockLabel: UILabel!
-    @IBOutlet weak private var kiwiStockLabel: UILabel!
-    @IBOutlet weak private var mangoStockLabel: UILabel!
-    
-    private lazy var stockLabelByFruit: [Fruit: UILabel] = [
-        .strawberry: strawberryStockLabel,
-        .banana: bananaStockLabel,
-        .pineapple: pineappleStockLabel,
-        .kiwi: kiwiStockLabel,
-        .mango: mangoStockLabel
-    ]
+    @IBOutlet var fruitStockLabels: [UILabel]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +26,13 @@ final class JuiceViewController: UIViewController {
         }
     }
     
+    func stockLabel(of fruit: Fruit) -> UILabel? {
+        return fruitStockLabels.first { $0.tag == fruit.rawValue }
+    }
+    
     private func updateStockLabel(of fruit: Fruit) {
         guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
-        guard let stockLabel = stockLabelByFruit[fruit] else { return }
+        guard let stockLabel = stockLabel(of: fruit) else { return }
         
         stockLabel.text = String(fruitStock)
     }
