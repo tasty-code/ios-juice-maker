@@ -238,7 +238,7 @@
                     <navigationItem key="navigationItem" title="맛있는 쥬스를 만들어 드려요!" id="Eal-fj-o4N">
                         <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT">
                             <connections>
-                                <segue destination="Yu1-lM-nqp" kind="presentation" id="cB8-Xt-Oom"/>
+                                <action selector="editStockButtonDidTap:" destination="BYZ-38-t0r" id="rW1-fa-5CT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -279,7 +279,7 @@
             </objects>
             <point key="canvasLocation" x="19.419642857142858" y="92.753623188405811"/>
         </scene>
-        <!--Store View Controller-->
+        <!--재고 수정-->
         <scene sceneID="fkG-vv-hpE">
             <objects>
                 <viewController storyboardIdentifier="StoreViewController" id="Yu1-lM-nqp" customClass="StoreViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
@@ -288,7 +288,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="SmF-Nr-DLo">
-                                <rect key="frame" x="16" y="67" width="812" height="158"/>
+                                <rect key="frame" x="16" y="99" width="812" height="158"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uJz-Qh-00U">
                                         <rect key="frame" x="0.0" y="0.0" width="149.66666666666666" height="158"/>
@@ -468,9 +468,6 @@
             <point key="canvasLocation" x="1637" y="21"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="cB8-Xt-Oom"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
