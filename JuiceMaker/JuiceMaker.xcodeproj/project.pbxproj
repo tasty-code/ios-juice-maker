@@ -20,6 +20,7 @@
 		C73DAF43255D0CDF00020D38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C73DAF41255D0CDF00020D38 /* LaunchScreen.storyboard */; };
 		C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */; };
 		D918A0902967BC4F005A6B26 /* FruitSingleJuice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D918A08F2967BC4F005A6B26 /* FruitSingleJuice.swift */; };
+		D918A0922967BE03005A6B26 /* FruitMixJuice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D918A0912967BE03005A6B26 /* FruitMixJuice.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		C73DAF44255D0CDF00020D38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMaker.swift; sourceTree = "<group>"; };
 		D918A08F2967BC4F005A6B26 /* FruitSingleJuice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitSingleJuice.swift; sourceTree = "<group>"; };
+		D918A0912967BE03005A6B26 /* FruitMixJuice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitMixJuice.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				5BDA3EEF2965049E00D7CDBC /* FruitList.swift */,
 				D918A08F2967BC4F005A6B26 /* FruitSingleJuice.swift */,
+				D918A0912967BE03005A6B26 /* FruitMixJuice.swift */,
 			);
 			path = FruitList;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				5BDA3EF8296513DA00D7CDBC /* Makeable.swift in Sources */,
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
 				C73DAF3B255D0CDD00020D38 /* ViewController.swift in Sources */,
+				D918A0922967BE03005A6B26 /* FruitMixJuice.swift in Sources */,
 				5BDA3EF02965049E00D7CDBC /* FruitList.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
 				5BDA3EFC29651AA500D7CDBC /* Calculator.swift in Sources */,
