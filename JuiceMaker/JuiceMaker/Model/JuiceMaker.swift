@@ -8,7 +8,6 @@ import Foundation
 
 // 쥬스 메이커 타입
 struct JuiceMaker {
-    
     func makeJuice(of fruitJuice: FruitJuice) throws {
         guard hasEnoughStock(for: fruitJuice) else {
             throw StockError.notEnoughToMakeJuice

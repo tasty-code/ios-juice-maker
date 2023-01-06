@@ -28,4 +28,8 @@ final class FruitStore {
         
         stock[fruit] = fruitStock + number
     }
+    
+    func setStock(of fruit: Fruit, to number: UInt) {
+        stock[fruit] = Int(number)
+    }
 }

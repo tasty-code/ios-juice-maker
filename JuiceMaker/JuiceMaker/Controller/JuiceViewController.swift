@@ -30,7 +30,6 @@ final class JuiceViewController: UIViewController {
         }
     }
     
-    // 해당 과일만 레이블 업데이트
     private func updateStockLabel(of fruit: Fruit) {
         guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
         guard let stockLabel = stockLabelByFruit[fruit] else { return }
