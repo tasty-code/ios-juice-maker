@@ -17,12 +17,9 @@ final class OrderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         syncFruitStocks()
-            let stock = fruitStore.count(of: Fruits(rawValue: $0)!)
-            fruitCountLabels[$0].text = String(stock)
-        }
     }
     
     @IBAction func orderButtonDidTap(_ sender: UIButton) {
@@ -33,6 +30,18 @@ final class OrderViewController: UIViewController {
         }
         juiceMaker.startBlending(of: juice)
         syncFruitStocks()
+    }
+    
+    @IBAction func editStockButtonDidTap(_ sender: Any) {
+        guard let storeVC = self.storyboard?.instantiateViewController(identifier: "StoreViewController") as? StoreViewController else { return }
+        navigationController?.pushViewController(storeVC, animated: true)
+    }
+    
+    private func syncFruitStocks() {
+        (0...4).forEach {
+            let stock = fruitStore.count(of: Fruits(rawValue: $0)!)
+            fruitCountLabels[$0].text = String(stock)
+        }
     }
 }
 
