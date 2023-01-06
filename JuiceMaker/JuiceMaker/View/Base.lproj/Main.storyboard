@@ -239,11 +239,11 @@
                         <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="bananaStock" destination="gvk-pA-Lw5" id="PE7-dE-Uhd"/>
-                        <outlet property="kiwiStock" destination="FZq-de-TJG" id="hSf-X2-uLP"/>
-                        <outlet property="mangoStock" destination="3Ce-SU-JeH" id="cw8-Nu-cQb"/>
-                        <outlet property="pineappleStock" destination="ccQ-Dk-PuY" id="Irq-dz-HCc"/>
-                        <outlet property="strawberryStock" destination="Qas-vP-td6" id="UD9-5c-Iu4"/>
+                        <outletCollection property="stockLabels" destination="Qas-vP-td6" collectionClass="NSMutableArray" id="7Fa-NY-AZ3"/>
+                        <outletCollection property="stockLabels" destination="gvk-pA-Lw5" collectionClass="NSMutableArray" id="2ts-Fe-Mfx"/>
+                        <outletCollection property="stockLabels" destination="ccQ-Dk-PuY" collectionClass="NSMutableArray" id="zht-fJ-vnd"/>
+                        <outletCollection property="stockLabels" destination="FZq-de-TJG" collectionClass="NSMutableArray" id="V3H-23-oJh"/>
+                        <outletCollection property="stockLabels" destination="3Ce-SU-JeH" collectionClass="NSMutableArray" id="aEw-0X-Bzw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
