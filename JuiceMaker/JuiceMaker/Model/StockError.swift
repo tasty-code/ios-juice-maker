@@ -17,9 +17,20 @@ enum StockError: LocalizedError {
         case .noCorrespondingFruit:
             return "일치하는 과일이 없습니다."
         case .notEnoughToMakeJuice:
-            return "쥬스를 만들기에 재고가 부족합니다."
+            return "재료가 모자라요."
         case .notEnoughToChange:
-            return "수량을 변경하기에 재고가 충분하지 않습니다."
+            return "더 이상 변경할 수 없어요."
+        }
+    }
+    
+    var userMessage: String {
+        switch self {
+        case .noCorrespondingFruit:
+            return "관리자에게 문의하세요."
+        case .notEnoughToMakeJuice:
+            return "재고를 수정할까요?"
+        case .notEnoughToChange:
+            return "과일이 이미 0개랍니다."
         }
     }
 }

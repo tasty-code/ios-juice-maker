@@ -47,6 +47,7 @@ final class JuiceViewController: UIViewController {
                 updateStockLabel(of: fruit)
             }
         } catch {
+            showMakeJuiceFailedAlert(of: error)
             print(error.localizedDescription)
         }
     }
@@ -57,9 +58,26 @@ final class JuiceViewController: UIViewController {
     }
     
     func showMakeJuiceCompletedAlert(of fruitJuice: FruitJuice) {
-        let alert = UIAlertController(title: "\(fruitJuice.name) 나왔습니다!", message: "맛있게 드세요!", preferredStyle: .alert)
+        let alert = UIAlertController(title: "\(fruitJuice.name) 나왔습니다!",
+                                      message: "맛있게 드세요!",
+                                      preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: "잘 먹을게요", style: .default)
         alert.addAction(confirmAction)
+        self.present(alert, animated: true)
+    }
+    
+    func showMakeJuiceFailedAlert(of error: Error) {
+        guard let stockError = error as? StockError else { return }
+        let alert = UIAlertController(title: stockError.localizedDescription,
+                                      message: stockError.userMessage,
+                                      preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "네", style: .default) { _ in
+            guard let stockVC = self.storyboard?.instantiateViewController(withIdentifier: "StockVC") else { return }
+            self.navigationController?.pushViewController(stockVC, animated: true)
+        }
+        let cancelAction = UIAlertAction(title: "아니요", style: .cancel)
+        alert.addAction(confirmAction)
+        alert.addAction(cancelAction)
         self.present(alert, animated: true)
     }
 }
