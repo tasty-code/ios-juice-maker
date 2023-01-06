@@ -44,6 +44,7 @@ class ViewController: UIViewController {
         } catch {
             print(error)
         }
+        updateStockValue()
     }
     
     func test() {
