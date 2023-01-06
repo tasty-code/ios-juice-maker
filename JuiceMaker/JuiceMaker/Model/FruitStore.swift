@@ -11,7 +11,7 @@ final class FruitStore {
     static let defaultStock: UInt = 10
     private(set) var stockByFruit = [Fruit: UInt]()
     
-    enum Fruit: CaseIterable {
+    enum Fruit: Int, CaseIterable {
         case strawberry, banana, pineapple, kiwi, mango
     }
     
