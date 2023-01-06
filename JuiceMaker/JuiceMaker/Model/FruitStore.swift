@@ -18,6 +18,13 @@ final class FruitStore {
             fruits[fruit] = 10
         }
     }
+
+    func stock(fruit: Fruits) -> String {
+        guard let stock = fruits[fruit] else {
+            return String()
+        }
+        return String(stock)
+    }
     
     func add(fruit: Fruits, quantity: Quantity) {
         guard let stock = fruits[fruit] else {
