@@ -15,12 +15,26 @@ class StockViewController: UIViewController {
     @IBOutlet weak var kiwiStockLabel: UILabel!
     @IBOutlet weak var mangoStockLabel: UILabel!
     
+    @IBOutlet weak var strawberryStockStepper: UIStepper!
+    @IBOutlet weak var bananaStockStepper: UIStepper!
+    @IBOutlet weak var pineappleStockStepper: UIStepper!
+    @IBOutlet weak var kiwiStockStepper: UIStepper!
+    @IBOutlet weak var mangoStockStepper: UIStepper!
+    
     lazy var stockLabelByFruit: [Fruit: UILabel] = [
         .strawberry: strawberryStockLabel,
         .banana: bananaStockLabel,
         .pineapple: pineappleStockLabel,
         .kiwi: kiwiStockLabel,
         .mango: mangoStockLabel
+    ]
+    
+    lazy var stockStepperByFruit: [Fruit: UIStepper] = [
+        .strawberry: strawberryStockStepper,
+        .banana: bananaStockStepper,
+        .pineapple: pineappleStockStepper,
+        .kiwi: kiwiStockStepper,
+        .mango: mangoStockStepper,
     ]
     
     override func viewDidLoad() {
@@ -30,6 +44,7 @@ class StockViewController: UIViewController {
         
         for fruit in Fruit.allCases {
             updateStockLabel(of: fruit)
+            initializeStepperValue(of: fruit)
         }
     }
     
@@ -38,6 +53,13 @@ class StockViewController: UIViewController {
         guard let stockLabel = stockLabelByFruit[fruit] else { return }
         
         stockLabel.text = String(fruitStock)
+    }
+    
+    private func initializeStepperValue(of fruit: Fruit) {
+        guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
+        guard let stockStepper = stockStepperByFruit[fruit] else { return }
+        
+        stockStepper.value = Double(fruitStock)
     }
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
