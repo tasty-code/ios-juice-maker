@@ -9,19 +9,19 @@ import UIKit
 
 class StockViewController: UIViewController {
     
-    @IBOutlet weak var strawberryStockLabel: UILabel!
-    @IBOutlet weak var bananaStockLabel: UILabel!
-    @IBOutlet weak var pineappleStockLabel: UILabel!
-    @IBOutlet weak var kiwiStockLabel: UILabel!
-    @IBOutlet weak var mangoStockLabel: UILabel!
+    @IBOutlet weak private var strawberryStockLabel: UILabel!
+    @IBOutlet weak private var bananaStockLabel: UILabel!
+    @IBOutlet weak private var pineappleStockLabel: UILabel!
+    @IBOutlet weak private var kiwiStockLabel: UILabel!
+    @IBOutlet weak private var mangoStockLabel: UILabel!
+
+    @IBOutlet weak private var strawberryStockStepper: UIStepper!
+    @IBOutlet weak private var bananaStockStepper: UIStepper!
+    @IBOutlet weak private var pineappleStockStepper: UIStepper!
+    @IBOutlet weak private var kiwiStockStepper: UIStepper!
+    @IBOutlet weak private var mangoStockStepper: UIStepper!
     
-    @IBOutlet weak var strawberryStockStepper: UIStepper!
-    @IBOutlet weak var bananaStockStepper: UIStepper!
-    @IBOutlet weak var pineappleStockStepper: UIStepper!
-    @IBOutlet weak var kiwiStockStepper: UIStepper!
-    @IBOutlet weak var mangoStockStepper: UIStepper!
-    
-    lazy var stockLabelByFruit: [Fruit: UILabel] = [
+    private lazy var stockLabelByFruit: [Fruit: UILabel] = [
         .strawberry: strawberryStockLabel,
         .banana: bananaStockLabel,
         .pineapple: pineappleStockLabel,
@@ -29,7 +29,7 @@ class StockViewController: UIViewController {
         .mango: mangoStockLabel
     ]
     
-    lazy var stockStepperByFruit: [Fruit: UIStepper] = [
+    private lazy var stockStepperByFruit: [Fruit: UIStepper] = [
         .strawberry: strawberryStockStepper,
         .banana: bananaStockStepper,
         .pineapple: pineappleStockStepper,
@@ -62,7 +62,7 @@ class StockViewController: UIViewController {
         stockStepper.value = Double(fruitStock)
     }
     
-    @IBAction func stepperValueChanged(_ sender: UIStepper) {
+    @IBAction private func stepperValueChanged(_ sender: UIStepper) {
         guard let fruit = Fruit(rawValue: sender.tag) else { return }
         let changedStock = Int(sender.value)
         

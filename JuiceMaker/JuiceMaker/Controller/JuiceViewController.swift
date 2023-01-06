@@ -9,13 +9,13 @@ import UIKit
 final class JuiceViewController: UIViewController {
     private let juiceMaker = JuiceMaker()
     
-    @IBOutlet weak var strawberryStockLabel: UILabel!
-    @IBOutlet weak var bananaStockLabel: UILabel!
-    @IBOutlet weak var pineappleStockLabel: UILabel!
-    @IBOutlet weak var kiwiStockLabel: UILabel!
-    @IBOutlet weak var mangoStockLabel: UILabel!
+    @IBOutlet weak private var strawberryStockLabel: UILabel!
+    @IBOutlet weak private var bananaStockLabel: UILabel!
+    @IBOutlet weak private var pineappleStockLabel: UILabel!
+    @IBOutlet weak private var kiwiStockLabel: UILabel!
+    @IBOutlet weak private var mangoStockLabel: UILabel!
     
-    lazy var stockLabelByFruit: [Fruit: UILabel] = [
+    private lazy var stockLabelByFruit: [Fruit: UILabel] = [
         .strawberry: strawberryStockLabel,
         .banana: bananaStockLabel,
         .pineapple: pineappleStockLabel,
@@ -44,7 +44,7 @@ final class JuiceViewController: UIViewController {
         stockLabel.text = String(fruitStock)
     }
     
-    @IBAction func juiceOrderButtonTapped(_ sender: UIButton) {
+    @IBAction private func juiceOrderButtonTapped(_ sender: UIButton) {
         guard let fruitJuice = FruitJuice(rawValue: sender.tag) else { return }
         do {
             try juiceMaker.makeJuice(of: fruitJuice)
@@ -58,7 +58,7 @@ final class JuiceViewController: UIViewController {
         }
     }
     
-    @IBAction func changeStockButtonTapped(_ sender: UIBarButtonItem) {
+    @IBAction private func changeStockButtonTapped(_ sender: UIBarButtonItem) {
         moveToStockVC()
     }
     
