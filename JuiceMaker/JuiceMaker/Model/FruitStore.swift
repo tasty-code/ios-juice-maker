@@ -15,17 +15,27 @@ final class FruitStore: Storing {
         }
     }
     
+    init(pairOfItems: [Fruit: Int]) {
+        for (fruit, count) in pairOfItems {
+            add(item: fruit, count: count)
+        }
+    }
+    
     func add(item: Fruit, count: Int) {
         items[item, default: 0] += count
     }
     
-    private func subtract(item: Fruit, count: Int) {
+    private func subtract(item: Fruit, count: Int) throws {
+        guard let stock = items[item],
+              stock >= count else {
+            throw JMError.outOfStock
+        }
         items[item]? -= count
     }
     
-    func subtract(pairOfItems: [Fruit: Int]) {
+    func subtract(pairOfItems: [Fruit: Int]) throws {
         for (fruit, usedAmount) in pairOfItems {
-            subtract(item: fruit, count: usedAmount)
+            try subtract(item: fruit, count: usedAmount)
         }
     }
 }
