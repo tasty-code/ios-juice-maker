@@ -16,16 +16,15 @@ final class OrderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        syncFruitStocks()
     }
 
-    func syncFruitStocks() {
-        (0...4).forEach {
+    override func viewWillAppear(_ animated: Bool) {
+        syncFruitStocks()
             let stock = fruitStore.count(of: Fruits(rawValue: $0)!)
             fruitCountLabels[$0].text = String(stock)
         }
     }
-
+    
     @IBAction func orderButtonDidTap(_ sender: UIButton) {
         let juice = Juice.allCases[sender.tag]
         guard juiceMaker.checkOrderable(of: juice) else {
