@@ -8,7 +8,7 @@ import Foundation
 
 final class FruitStore {
     static let shared = FruitStore()
-    var store = [FruitList:Int]()
+    var store = [FruitList: Int]()
     
     private init() {
         for fruit in FruitList.allCases {
@@ -51,6 +51,20 @@ final class FruitStore {
             }
         case .mango:
             guard stockNumber >= 3 else {
+                return false
+            }
+        }
+        return true
+    }
+    
+    func isPossibleMakeMix(juice: FruitMixJuice, stockNumber: (Int, Int)) -> Bool {
+        switch juice {
+        case .strawberryAndBanana:
+            guard stockNumber.0 >= 10, stockNumber.1 >= 1 else {
+                return false
+            }
+        case .mangoAndKiwi:
+            guard stockNumber.0 >= 2, stockNumber.1 >= 1 else {
                 return false
             }
         }
