@@ -7,7 +7,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var strawberryStock: UILabel!
     @IBOutlet weak var bananaStock: UILabel!
     @IBOutlet weak var pineappleStock: UILabel!
@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         juiceMaker = JuiceMaker(fruitStore: fruitStore)
-
+        
         fruitLabelFruitMap = [
             strawberryStock: .strawberry,
             bananaStock: .banana,
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         ]
         updateStockValue()
     }
-
+    
     @IBAction func orderButtonTapped(_ sender: UIButton) {
         let orderName = sender.currentTitle
         let juiceName = orderName?.replacingOccurrences(of: " 주문", with: "")
@@ -54,12 +54,10 @@ class ViewController: UIViewController {
             print(error)
         }
     }
-
+    
     func updateStockValue() {
         for (label, fruit) in fruitLabelFruitMap {
             label.text = String(fruitStore.items[fruit, default: 0])
         }
     }
-    
-//    "딸바쥬스" = Juice(
 }
