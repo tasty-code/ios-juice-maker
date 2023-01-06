@@ -53,8 +53,7 @@ final class JuiceViewController: UIViewController {
     }
     
     @IBAction func changeStockButtonTapped(_ sender: UIBarButtonItem) {
-        guard let stockVC = storyboard?.instantiateViewController(withIdentifier: "StockVC") else { return }
-        navigationController?.pushViewController(stockVC, animated: true)
+        moveToStockVC()
     }
     
     func showMakeJuiceCompletedAlert(of fruitJuice: FruitJuice) {
@@ -72,13 +71,17 @@ final class JuiceViewController: UIViewController {
                                       message: stockError.userMessage,
                                       preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: "네", style: .default) { _ in
-            guard let stockVC = self.storyboard?.instantiateViewController(withIdentifier: "StockVC") else { return }
-            self.navigationController?.pushViewController(stockVC, animated: true)
+            self.moveToStockVC()
         }
         let cancelAction = UIAlertAction(title: "아니요", style: .cancel)
         alert.addAction(confirmAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true)
+    }
+    
+    func moveToStockVC() {
+        guard let stockVC = storyboard?.instantiateViewController(withIdentifier: "StockVC") else { return }
+        navigationController?.pushViewController(stockVC, animated: true)
     }
 }
 
