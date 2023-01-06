@@ -7,8 +7,9 @@
 import UIKit
 
 final class OrderViewController: UIViewController {
-    let fruitStore = FruitStore.shared
-    let juiceMaker = JuiceMaker()
+    
+    private let fruitStore = FruitStore.shared
+    private let juiceMaker = JuiceMaker()
     
     @IBOutlet var fruitCountLabels: [UILabel]!
     @IBOutlet var juiceOrderButtons: [UIButton]!
