@@ -47,7 +47,23 @@ struct JuiceMaker: Makeable {
     }
     
     func requestTo(single juice: FruitSingleJuice) {
-        <#code#>
+        juice.recipe.forEach { (key: FruitList, value: Int) in
+            guard let storeOfFruitCount = fruitStore.storeValue(fruit: key) else {
+                return
+            }
+            
+            var remainFruitCount = calculator.subtract(number1: storeOfFruitCount, number2: value)
+            if remainFruitCount < 0 {
+                remainFruitCount = storeOfFruitCount
+            }
+            
+            let determine = fruitStore.isPossibleMakeSingle(juice: key, stockNumber: storeOfFruitCount)
+            fruitStore.store.updateValue(remainFruitCount, forKey: key)
+            
+            guard calculator.compare(type: key, isRemainCount: determine) == true else {
+                return
+            }
+        }
     }
     
     func requestTo(mix juice: FruitMixJuice) {
