@@ -8,16 +8,29 @@
 import UIKit
 
 final class StockViewController: UIViewController {
-
+    // MARK: - Properties
     @IBOutlet var fruitStockLabels: [UILabel]!
     @IBOutlet var fruitStockSteppers: [UIStepper]!
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
     }
     
+    // MARK: - Actions
+    @IBAction private func stepperValueChanged(_ sender: UIStepper) {
+        guard let fruit = Fruit(rawValue: sender.tag) else { return }
+        let changedStock = Int(sender.value)
+        
+        FruitStore.shared.setStock(of: fruit, to: changedStock)
+        
+        guard let stockLabel = stockLabel(of: fruit) else { return }
+        stockLabel.text = String(changedStock)
+    }
+    
+    // MARK: - Helpers
     func configureUI() {
         navigationItem.title = "과일 재고 수정"
         
@@ -48,15 +61,4 @@ final class StockViewController: UIViewController {
             stockStepper.value = Double(fruitStock)
         }
     }
-    
-    @IBAction private func stepperValueChanged(_ sender: UIStepper) {
-        guard let fruit = Fruit(rawValue: sender.tag) else { return }
-        let changedStock = Int(sender.value)
-        
-        FruitStore.shared.setStock(of: fruit, to: changedStock)
-        
-        guard let stockLabel = stockLabel(of: fruit) else { return }
-        stockLabel.text = String(changedStock)
-    }
-    
 }

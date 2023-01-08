@@ -7,10 +7,12 @@
 import UIKit
 
 final class JuiceViewController: UIViewController {
+    // MARK: - Properties
     private let juiceMaker = JuiceMaker()
     
     @IBOutlet var fruitStockLabels: [UILabel]!
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -20,25 +22,7 @@ final class JuiceViewController: UIViewController {
         updateAllStockLabels()
     }
     
-    private func stockLabel(of fruit: Fruit) -> UILabel? {
-        return fruitStockLabels.first { $0.tag == fruit.rawValue }
-    }
-    
-    private func updateStockLabel(of fruit: Fruit) {
-        guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
-        guard let stockLabel = stockLabel(of: fruit) else { return }
-        
-        stockLabel.text = String(fruitStock)
-    }
-    
-    private func updateAllStockLabels() {
-        for stockLabel in fruitStockLabels {
-            guard let fruit = Fruit(rawValue: stockLabel.tag) else { return }
-            guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
-            stockLabel.text = String(fruitStock)
-        }
-    }
-    
+    // MARK: - Actions
     @IBAction private func juiceOrderButtonTapped(_ sender: UIButton) {
         guard let fruitJuice = FruitJuice(rawValue: sender.tag) else { return }
         do {
@@ -56,6 +40,26 @@ final class JuiceViewController: UIViewController {
     
     @IBAction private func changeStockButtonTapped(_ sender: UIBarButtonItem) {
         moveToStockVC()
+    }
+    
+    // MARK: - Helpers
+    private func stockLabel(of fruit: Fruit) -> UILabel? {
+        return fruitStockLabels.first { $0.tag == fruit.rawValue }
+    }
+    
+    private func updateStockLabel(of fruit: Fruit) {
+        guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
+        guard let stockLabel = stockLabel(of: fruit) else { return }
+        
+        stockLabel.text = String(fruitStock)
+    }
+    
+    private func updateAllStockLabels() {
+        for stockLabel in fruitStockLabels {
+            guard let fruit = Fruit(rawValue: stockLabel.tag) else { return }
+            guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
+            stockLabel.text = String(fruitStock)
+        }
     }
     
     private func showMakeJuiceCompletedAlert(of fruitJuice: FruitJuice) {
