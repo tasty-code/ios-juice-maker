@@ -21,25 +21,32 @@ final class StockViewController: UIViewController {
     func configureUI() {
         navigationItem.title = "과일 재고 수정"
         
-        for stockLabel in fruitStockLabels {
-            guard let fruit = Fruit(rawValue: stockLabel.tag) else { return }
-            guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
-            stockLabel.text = String(fruitStock)
-        }
-        
-        for stockStepper in fruitStockSteppers {
-            guard let fruit = Fruit(rawValue: stockStepper.tag) else { return }
-            guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
-            stockStepper.value = Double(fruitStock)
-        }
+        initializeAllStockLabels()
+        initializeAllStockSteppers()
     }
     
     private func stockLabel(of fruit: Fruit) -> UILabel? {
         return fruitStockLabels.first { $0.tag == fruit.rawValue }
     }
     
+    private func initializeAllStockLabels() {
+        for stockLabel in fruitStockLabels {
+            guard let fruit = Fruit(rawValue: stockLabel.tag) else { return }
+            guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
+            stockLabel.text = String(fruitStock)
+        }
+    }
+    
     private func stockStepper(of fruit: Fruit) -> UIStepper? {
         return fruitStockSteppers.first { $0.tag == fruit.rawValue }
+    }
+    
+    private func initializeAllStockSteppers() {
+        for stockStepper in fruitStockSteppers {
+            guard let fruit = Fruit(rawValue: stockStepper.tag) else { return }
+            guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
+            stockStepper.value = Double(fruitStock)
+        }
     }
     
     @IBAction private func stepperValueChanged(_ sender: UIStepper) {
