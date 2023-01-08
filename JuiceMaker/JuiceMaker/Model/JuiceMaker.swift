@@ -6,7 +6,13 @@
 
 import Foundation
 
-// 쥬스 메이커 타입
-struct JuiceMaker {
+struct JuiceMaker<T: Storing> where T.Element == Fruit {
+    private(set) var fruitStore: T
     
+    mutating func make(juice: Juice) throws -> Juice {
+        let ingredients: [Fruit: Int] = juice.ingredients
+        try self.fruitStore.subtract(pairOfItems: ingredients)
+        return juice
+    }
 }
+
