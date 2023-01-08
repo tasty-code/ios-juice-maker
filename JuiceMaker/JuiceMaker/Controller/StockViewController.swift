@@ -32,7 +32,7 @@ final class StockViewController: UIViewController {
     
     // MARK: - Helpers
     func configureUI() {
-        navigationItem.title = "과일 재고 수정"
+        navigationItem.title = Constants.Design.stockViewControllerNavigationTitle
         
         initializeAllStockLabels()
         initializeAllStockSteppers()

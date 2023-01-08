@@ -53,4 +53,8 @@ enum FruitJuice: Int {
             return "망고쥬스"
         }
     }
+    
+    var servingMessage: String {
+        return "\(self.name) 나왔습니다!"
+    }
 }

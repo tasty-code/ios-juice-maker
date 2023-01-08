@@ -14,7 +14,7 @@ final class FruitStore {
     
     private init() {
         Fruit.allCases.forEach { fruit in
-            stock[fruit] = 10
+            stock[fruit] = Constants.Number.initialFruitStockQuantity
         }
     }
     

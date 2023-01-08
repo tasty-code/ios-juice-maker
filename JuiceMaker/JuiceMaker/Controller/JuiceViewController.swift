@@ -63,10 +63,11 @@ final class JuiceViewController: UIViewController {
     }
     
     private func showMakeJuiceCompletedAlert(of fruitJuice: FruitJuice) {
-        let alert = UIAlertController(title: "\(fruitJuice.name) 나왔습니다!",
-                                      message: "맛있게 드세요!",
+        let alert = UIAlertController(title: fruitJuice.servingMessage,
+                                      message: Constants.UserMessage.servingJuiceExtra,
                                       preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: "잘 먹을게요", style: .default)
+        let confirmAction = UIAlertAction(title: Constants.UserMessage.servingJuiceConfirm,
+                                          style: .default)
         alert.addAction(confirmAction)
         self.present(alert, animated: true)
     }
@@ -77,17 +78,17 @@ final class JuiceViewController: UIViewController {
         let alert = UIAlertController(title: stockError.localizedDescription,
                                       message: stockError.userMessage,
                                       preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: "네", style: .default) { _ in
+        let confirmAction = UIAlertAction(title: Constants.UserMessage.failedJuiceConfirm, style: .default) { _ in
             self.moveToStockVC()
         }
-        let cancelAction = UIAlertAction(title: "아니요", style: .cancel)
+        let cancelAction = UIAlertAction(title: Constants.UserMessage.failedJuiceCancel, style: .cancel)
         alert.addAction(confirmAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true)
     }
     
     private func moveToStockVC() {
-        guard let stockVC = storyboard?.instantiateViewController(withIdentifier: "StockVC") else { return }
+        guard let stockVC = storyboard?.instantiateViewController(withIdentifier: Constants.Identifier.stockViewController) else { return }
         navigationController?.pushViewController(stockVC, animated: true)
     }
 }
