@@ -42,20 +42,6 @@ final class StockViewController: UIViewController {
         return fruitStockSteppers.first { $0.tag == fruit.rawValue }
     }
     
-    private func updateStockLabel(of fruit: Fruit) {
-        guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
-        guard let stockLabel = stockLabel(of: fruit) else { return }
-        
-        stockLabel.text = String(fruitStock)
-    }
-    
-    private func updateStepperValue(of fruit: Fruit) {
-        guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
-        guard let stockStepper = stockStepper(of: fruit) else { return }
-        
-        stockStepper.value = Double(fruitStock)
-    }
-    
     @IBAction private func stepperValueChanged(_ sender: UIStepper) {
         guard let fruit = Fruit(rawValue: sender.tag) else { return }
         let changedStock = Int(sender.value)
