@@ -17,15 +17,7 @@ final class JuiceViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configureUI()
-    }
-    
-    private func configureUI() {
-        for stockLabel in fruitStockLabels {
-            guard let fruit = Fruit(rawValue: stockLabel.tag) else { return }
-            guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
-            stockLabel.text = String(fruitStock)
-        }
+        updateAllStockLabels()
     }
     
     private func stockLabel(of fruit: Fruit) -> UILabel? {
@@ -37,6 +29,14 @@ final class JuiceViewController: UIViewController {
         guard let stockLabel = stockLabel(of: fruit) else { return }
         
         stockLabel.text = String(fruitStock)
+    }
+    
+    private func updateAllStockLabels() {
+        for stockLabel in fruitStockLabels {
+            guard let fruit = Fruit(rawValue: stockLabel.tag) else { return }
+            guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
+            stockLabel.text = String(fruitStock)
+        }
     }
     
     @IBAction private func juiceOrderButtonTapped(_ sender: UIButton) {
