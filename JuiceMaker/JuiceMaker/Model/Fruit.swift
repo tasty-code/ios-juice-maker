@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Fruit {
-    let name: String
+struct Fruit: Hashable {
+    let name: Fruits
     var stock: Int
 }

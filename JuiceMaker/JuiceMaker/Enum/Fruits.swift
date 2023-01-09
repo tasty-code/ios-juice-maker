@@ -7,17 +7,19 @@
 
 import Foundation
 
-enum Fruits: String, CaseIterable {
-    case strawberry = "Sb"
-    case banana = "Bn"
-    case kiwi = "Kw"
-    case pineapple = "Pa"
-    case mango = "Mg"
-    
-    static func makeFruitArray() -> [String:Fruit] {
-        var initializedFruitArray = [String:Fruit]()
+enum Fruits: CaseIterable {
+    case strawberry
+    case banana
+    case kiwi
+    case pineapple
+    case mango
+}
+
+extension Fruits {
+    static func makeFruitArray() -> [Fruits:Fruit] {
+        var initializedFruitArray = [Fruits:Fruit]()
         Fruits.allCases.forEach {
-            initializedFruitArray[$0.rawValue] = Fruit(name: $0.rawValue, stock: 10)
+            initializedFruitArray[$0] = Fruit(name: $0, stock: 10)
         }
         return initializedFruitArray
     }

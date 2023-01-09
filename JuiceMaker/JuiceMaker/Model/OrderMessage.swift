@@ -8,6 +8,6 @@
 import Foundation
 
 struct OrderMessage {
-    let fruitName : String
+    let fruitName : Fruits
     let amount: Int
 }

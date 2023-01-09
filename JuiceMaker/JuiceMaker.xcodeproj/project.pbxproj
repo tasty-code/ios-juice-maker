@@ -19,7 +19,9 @@
 		F13008F82963B79A00E7467F /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13008F72963B79A00E7467F /* Fruit.swift */; };
 		F13008FB2963E3A500E7467F /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13008FA2963E3A500E7467F /* Errors.swift */; };
 		F18963FA29651D2100B3A9CF /* OrderMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18963F929651D2100B3A9CF /* OrderMessage.swift */; };
-		F1B39502296403F500800CE4 /* RecipeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B39501296403F500800CE4 /* RecipeMessage.swift */; };
+		F1B39502296403F500800CE4 /* Juices.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B39501296403F500800CE4 /* Juices.swift */; };
+		F1C6D513296BDCE00068D350 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C6D512296BDCE00068D350 /* Messages.swift */; };
+		F1EA1A042967C0AD008F58F2 /* EditStockVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EA1A032967C0AD008F58F2 /* EditStockVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +39,9 @@
 		F13008F72963B79A00E7467F /* Fruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
 		F13008FA2963E3A500E7467F /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		F18963F929651D2100B3A9CF /* OrderMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMessage.swift; sourceTree = "<group>"; };
-		F1B39501296403F500800CE4 /* RecipeMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeMessage.swift; sourceTree = "<group>"; };
+		F1B39501296403F500800CE4 /* Juices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Juices.swift; sourceTree = "<group>"; };
+		F1C6D512296BDCE00068D350 /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
+		F1EA1A032967C0AD008F58F2 /* EditStockVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStockVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,9 +58,10 @@
 		C71CD66D266C7B470038B9CB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C73DAF3A255D0CDD00020D38 /* ViewController.swift */,
+				F1EA1A032967C0AD008F58F2 /* EditStockVC.swift */,
 				C73DAF36255D0CDD00020D38 /* AppDelegate.swift */,
 				C73DAF38255D0CDD00020D38 /* SceneDelegate.swift */,
-				C73DAF3A255D0CDD00020D38 /* ViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -115,7 +120,8 @@
 			children = (
 				F13008FA2963E3A500E7467F /* Errors.swift */,
 				F0FDFED12963F38600AD4DB7 /* Fruits.swift */,
-				F1B39501296403F500800CE4 /* RecipeMessage.swift */,
+				F1B39501296403F500800CE4 /* Juices.swift */,
+				F1C6D512296BDCE00068D350 /* Messages.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -191,14 +197,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0FDFED22963F38600AD4DB7 /* Fruits.swift in Sources */,
+				F1C6D513296BDCE00068D350 /* Messages.swift in Sources */,
 				F13008F82963B79A00E7467F /* Fruit.swift in Sources */,
 				F18963FA29651D2100B3A9CF /* OrderMessage.swift in Sources */,
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
 				C73DAF3B255D0CDD00020D38 /* ViewController.swift in Sources */,
-				F1B39502296403F500800CE4 /* RecipeMessage.swift in Sources */,
+				F1B39502296403F500800CE4 /* Juices.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
 				C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */,
 				C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */,
+				F1EA1A042967C0AD008F58F2 /* EditStockVC.swift in Sources */,
 				F13008FB2963E3A500E7467F /* Errors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
