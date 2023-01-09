@@ -60,7 +60,7 @@ final class OrderViewController: UIViewController {
     }
     
     private func alert(failed menu: Juice) {
-        let alert = UIAlertController(title: "\(menu.orderTitle)이 마감되었습니다.",
+        let alert = UIAlertController(title: nil,
                                       message: "재료가 모자라요.\n재고를 수정할까요?",
                                       preferredStyle: .alert)
         let confirm = UIAlertAction(title: "예", style: .default, handler: nil)
