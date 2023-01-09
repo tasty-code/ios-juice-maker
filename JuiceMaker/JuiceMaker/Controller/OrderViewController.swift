@@ -7,7 +7,6 @@
 import UIKit
 
 final class OrderViewController: UIViewController {
-    
     private let fruitStore = FruitStore.shared
     private let juiceMaker = JuiceMaker()
     
@@ -50,7 +49,7 @@ final class OrderViewController: UIViewController {
     }
     
     private func alert(succeed menu: Juice) {
-        let alert = UIAlertController(title: "\(menu.rawValue)쥬스 나왔습니다!",
+        let alert = UIAlertController(title: "\(menu.rawValue) 나왔습니다!",
                                       message: "맛있게 드세요!",
                                       preferredStyle: .alert)
         let action = UIAlertAction(title: "확인", style: .default)

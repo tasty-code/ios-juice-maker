@@ -8,17 +8,13 @@
 import Foundation
 
 enum Juice: String, CaseIterable {
-    case strawberry = "딸기"
-    case banana = "바나나"
-    case kiwi = "키위"
-    case pineapple = "파인애플"
-    case strawberryBanana = "딸바"
-    case mango = "망고"
-    case mangoKiwi = "망키"
-    
-    var orderTitle: String {
-        return self.rawValue + "쥬스 주문"
-    }
+    case strawberry = "딸기쥬스"
+    case banana = "바나나쥬스"
+    case kiwi = "키위쥬스"
+    case pineapple = "파인애플쥬스"
+    case strawberryBanana = "딸바쥬스"
+    case mango = "망고쥬스"
+    case mangoKiwi = "망키쥬스"
     
     var recipe: [Fruits: Int] {
         switch self {
@@ -37,13 +33,5 @@ enum Juice: String, CaseIterable {
         case .mangoKiwi:
             return [.mango: 2, .kiwi: 1]
         }
-    }
-    
-    init?(order: String) {
-        for juice in Self.allCases {
-            guard order == juice.orderTitle else { continue }
-            self = juice
-        }
-        return nil
     }
 }
