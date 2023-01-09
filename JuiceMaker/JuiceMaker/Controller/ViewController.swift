@@ -38,26 +38,38 @@ class ViewController: UIViewController {
     @IBAction func orderButtonTapped(_ sender: UIButton) {
         guard let userSelect = Juices(rawValue: sender.tag) else { return }
         let recipe = userSelect.recipe
-        switch userSelect {
-        case .strawBanana:
+        do{
+            try FruitStore.shared.checkStock(message: recipe)
             juiceMaker.makeJuice(by: recipe)
-        case .mangoKiwi:
-            juiceMaker.makeJuice(by: recipe)
-        case .strawberry:
-            juiceMaker.makeJuice(by:recipe)
-        case .banana:
-            juiceMaker.makeJuice(by: recipe)
-        case .pineapple:
-            juiceMaker.makeJuice(by: recipe)
-        case .kiwi:
-            juiceMaker.makeJuice(by: recipe)
-        case .mango:
-            juiceMaker.makeJuice(by: recipe)
+            popOneAlertOver(message: Messages.enjoyYourSelf.descripsion)
+        } catch {
+            popAlertOver(message: error.localizedDescription)
         }
+        
         setFruitLabel()
+    }
+
+    func popAlertOver(message: String) {
+        let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "예", style: .default, handler: { _ in
+            self.moveToEditStockView()}))
+        alert.addAction(UIAlertAction(title: "아니오", style: .destructive, handler: nil))
+        present(alert, animated: true)
+    }
+    
+    func popOneAlertOver(message: String) {
+        let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "예", style: .default, handler: nil))
+        present(alert, animated: true)
     }
     
     @IBAction func EditStockButton(_ sender: UIBarButtonItem) {
+        moveToEditStockView()
+    }
+    
+    private func moveToEditStockView(){
         guard let editStockVC = storyboard?.instantiateViewController(withIdentifier: "IDEditStockVC") as? EditStockVC else{ return }
         
         editStockVC.modalPresentationStyle = .automatic

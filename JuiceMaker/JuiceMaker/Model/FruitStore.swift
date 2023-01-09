@@ -26,7 +26,6 @@ class FruitStore {
     }
     
     func changeStock(of fruit: Fruits, by amount: Int) {
-        print(#function, " amount: \(amount)")
         if amount >= 0 {
             increaseStock(of: fruit, by: amount)
             return
