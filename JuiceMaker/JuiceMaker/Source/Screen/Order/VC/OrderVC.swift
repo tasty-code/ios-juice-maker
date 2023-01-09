@@ -1,12 +1,12 @@
 //
-//  JuiceMaker - OrderViewController.swift
+//  JuiceMaker - OrderVC.swift
 //  Created by yagom. 
 //  Copyright © yagom academy. All rights reserved.
 // 
 
 import UIKit
 
-final class OrderViewController: UIViewController {
+final class OrderVC: UIViewController {
     private let fruitStore = FruitStore.shared
     private let juiceMaker = JuiceMaker()
     
@@ -72,7 +72,7 @@ final class OrderViewController: UIViewController {
     }
     
     private func pushToStoreViewController() {
-        guard let storeVC = self.storyboard?.instantiateViewController(identifier: "StoreViewController") as? StoreViewController else { return }
+        guard let storeVC = UIStoryboard(name: "Store", bundle: nil).instantiateViewController(withIdentifier:"StoreVC") as? StoreVC else { return }
         navigationController?.pushViewController(storeVC, animated: true)
     }
 }
