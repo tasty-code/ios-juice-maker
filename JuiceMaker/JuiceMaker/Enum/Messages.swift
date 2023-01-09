@@ -9,7 +9,9 @@ import Foundation
 
 enum Messages: String {
     case enjoyYourSelf
-    
+}
+
+extension Messages {
     var descripsion: String {
         switch self {
         case .enjoyYourSelf:

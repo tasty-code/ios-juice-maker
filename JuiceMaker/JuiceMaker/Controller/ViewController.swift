@@ -40,15 +40,15 @@ class ViewController: UIViewController {
         do{
             try FruitStore.shared.checkStock(message: recipe)
             juiceMaker.makeJuice(by: recipe)
-            popOneAlertOver(message: Messages.enjoyYourSelf.descripsion)
+            popSingleChooseAlert(with: Messages.enjoyYourSelf.descripsion)
         } catch {
-            popAlertOver(message: error.localizedDescription)
+            popDefaultAlert(with: error.localizedDescription)
         }
         
         setFruitLabel()
     }
 
-    func popAlertOver(message: String) {
+    private func popDefaultAlert(with message: String) {
         let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "예", style: .default, handler: {_ in
@@ -57,8 +57,8 @@ class ViewController: UIViewController {
         present(alert, animated: true)
     }
     
-    func popOneAlertOver(message: String) {
-        let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
+    private func popSingleChooseAlert(with message: String) {
+        let alert = UIAlertController(title:  message, message: nil, preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "예", style: .default, handler: nil))
         present(alert, animated: true)

@@ -11,7 +11,9 @@ enum Errors: LocalizedError {
     case ouOfStock
     case notEnuoghCoin
     case outOfExchanges
-    
+}
+
+extension Errors {
     var errorDescription: String? {
         switch self {
         case .ouOfStock:

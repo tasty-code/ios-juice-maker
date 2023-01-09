@@ -13,7 +13,9 @@ enum Fruits: CaseIterable {
     case kiwi
     case pineapple
     case mango
-    
+}
+
+extension Fruits {
     static func makeFruitArray() -> [Fruits:Fruit] {
         var initializedFruitArray = [Fruits:Fruit]()
         Fruits.allCases.forEach {
