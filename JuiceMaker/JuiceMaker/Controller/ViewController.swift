@@ -32,6 +32,19 @@ class ViewController: UIViewController {
         updateStockValue()
     }
     
+    func showStoreView() {
+        guard let storeNaviVC = storyboard?.instantiateViewController(withIdentifier: "storeNavi") as? UINavigationController else { return }
+        
+        storeNaviVC.modalPresentationStyle = .fullScreen
+        storeNaviVC.modalTransitionStyle = .coverVertical
+        
+        present(storeNaviVC, animated: true)
+    }
+    
+    @IBAction func ModifyStockButtonTapped(_ sender: UIBarButtonItem) {
+        showStoreView()
+    }
+    
     @IBAction func orderButtonTapped(_ sender: UIButton) {
         let orderName = sender.currentTitle
         let juiceName = orderName?.replacingOccurrences(of: " 주문", with: "")

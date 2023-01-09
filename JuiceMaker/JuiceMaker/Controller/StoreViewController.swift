@@ -14,7 +14,10 @@ class StoreViewController: UIViewController {
         
     }
     
-
+    @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 

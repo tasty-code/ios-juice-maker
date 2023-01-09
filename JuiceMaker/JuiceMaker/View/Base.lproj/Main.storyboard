@@ -236,7 +236,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="맛있는 쥬스를 만들어 드려요!" id="Eal-fj-o4N">
-                        <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT"/>
+                        <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT">
+                            <connections>
+                                <action selector="ModifyStockButtonTapped:" destination="BYZ-38-t0r" id="GOL-75-reM"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="bananaStock" destination="gvk-pA-Lw5" id="PFY-oI-6Hi"/>
@@ -375,7 +379,15 @@
                         <viewLayoutGuide key="safeArea" id="gcO-Xb-kNs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="g4W-fY-l7r"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="g4W-fY-l7r">
+                        <barButtonItem key="rightBarButtonItem" title="닫기" id="9JN-oe-mSm">
+                            <connections>
+                                <action selector="backButtonTapped:" destination="Yu1-lM-nqp" id="igk-es-rj4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
             </objects>
@@ -384,11 +396,12 @@
         <!--Navigation Controller-->
         <scene sceneID="cAf-jL-tPK">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WwV-Td-3Bn" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="storeNavi" automaticallyAdjustsScrollViewInsets="NO" id="WwV-Td-3Bn" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ufw-7J-6hD">
                         <rect key="frame" x="0.0" y="47" width="844" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="scrollEdgeAppearance"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
