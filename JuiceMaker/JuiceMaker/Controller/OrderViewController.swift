@@ -25,7 +25,7 @@ final class OrderViewController: UIViewController {
     @IBAction func orderButtonDidTap(_ sender: UIButton) {
         let juice = Juice.allCases[sender.tag]
         guard juiceMaker.checkOrderable(of: juice) else {
-            print("\(juice.orderTitle)이 마감되었습니다.")    //MARK: - 에러발생으로 수정
+            showAlart(menu: juice.orderTitle)
             return
         }
         juiceMaker.startBlending(of: juice)
@@ -42,6 +42,16 @@ final class OrderViewController: UIViewController {
             let stock = fruitStore.count(of: Fruits(rawValue: $0)!)
             fruitCountLabels[$0].text = String(stock)
         }
+    }
+    
+    private func showAlart(menu: String) {
+        let alert = UIAlertController(title: "주의", message: "\(menu) 주문이 마감되었습니다.", preferredStyle: .alert)
+        let confirm = UIAlertAction(title: "확인", style: .default, handler: nil)
+        let close = UIAlertAction(title: "닫기", style: .destructive, handler: nil)
+        
+        alert.addAction(confirm)
+        alert.addAction(close)
+        present(alert, animated: true, completion: nil)
     }
 }
 
