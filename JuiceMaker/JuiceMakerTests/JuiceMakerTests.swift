@@ -18,12 +18,21 @@ final class JuiceMakerTests: XCTestCase {
         sut = JuiceMaker()
     }
     
-    func test_기본재고시_딸기쥬스_제조에_실패한다() {
-        XCTAssertThrowsError(try sut.makeJuice(of: .strawberry))
-    }
-
     override func tearDownWithError() throws {
         try super.tearDownWithError()
         sut = nil
+    }
+    
+    func test_기본재고시_딸기쥬스_제조에_실패한다() {
+        XCTAssertThrowsError(try sut.makeJuice(of: .strawberry))
+    }
+    
+    func test_망고쥬스_제조후에_재고가_3만큼_줄어든다() throws {
+        let initialStock = FruitStore.shared.stock[.mango]!
+        try sut.makeJuice(of: .mango)
+        let changedStock = FruitStore.shared.stock[.mango]!
+        let expectation = 3
+        
+        XCTAssertEqual(initialStock - changedStock, expectation)
     }
 }
