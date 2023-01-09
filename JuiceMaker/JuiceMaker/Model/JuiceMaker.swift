@@ -9,12 +9,14 @@ import Foundation
 struct JuiceMaker {
     let fruitStore = FruitStore.shared
 
-    func order(juice: Menu) {
+    func order(juice: Menu) -> Bool {
         do {
             try make(juice: juice)
         } catch {
             print(error.localizedDescription)
+            return false
         }
+        return true
     }
 
     func make(juice order: Menu) throws {
