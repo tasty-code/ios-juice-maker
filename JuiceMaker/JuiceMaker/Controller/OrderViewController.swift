@@ -25,11 +25,12 @@ final class OrderViewController: UIViewController {
     @IBAction func orderButtonDidTap(_ sender: UIButton) {
         let juice = Juice.allCases[sender.tag]
         guard juiceMaker.isMakable(menu: juice) else {
-            showAlart(menu: juice.orderTitle)
+            alert(failed: juice)
             return
         }
         juiceMaker.startBlending(of: juice)
         syncFruitStocks()
+        alert(succeed: juice)
     }
     
     @IBAction func editStockButtonDidTap(_ sender: Any) {
@@ -49,10 +50,21 @@ final class OrderViewController: UIViewController {
         }
     }
     
-    private func showAlart(menu: String) {
-        let alert = UIAlertController(title: "주의", message: "\(menu) 주문이 마감되었습니다.", preferredStyle: .alert)
-        let confirm = UIAlertAction(title: "확인", style: .default, handler: nil)
-        let close = UIAlertAction(title: "닫기", style: .destructive, handler: nil)
+    private func alert(succeed menu: Juice) {
+        let alert = UIAlertController(title: "*\(menu.rawValue)쥬스 나왔습니다!",
+                                      message: "맛있게 드세요!",
+                                      preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func alert(failed menu: Juice) {
+        let alert = UIAlertController(title: "\(menu.orderTitle)이 마감되었습니다.",
+                                      message: "재료가 모자라요.\n재고를 수정할까요?",
+                                      preferredStyle: .alert)
+        let confirm = UIAlertAction(title: "예", style: .default, handler: nil)
+        let close = UIAlertAction(title: "아니요", style: .destructive)
         
         alert.addAction(confirm)
         alert.addAction(close)
