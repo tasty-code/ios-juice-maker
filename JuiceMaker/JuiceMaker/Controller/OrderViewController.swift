@@ -34,8 +34,7 @@ final class OrderViewController: UIViewController {
     }
     
     @IBAction func editStockButtonDidTap(_ sender: Any) {
-        guard let storeVC = self.storyboard?.instantiateViewController(identifier: "StoreViewController") as? StoreViewController else { return }
-        navigationController?.pushViewController(storeVC, animated: true)
+        pushToStoreViewController()
     }
     
     private func syncFruitStocks() {
@@ -51,7 +50,7 @@ final class OrderViewController: UIViewController {
     }
     
     private func alert(succeed menu: Juice) {
-        let alert = UIAlertController(title: "*\(menu.rawValue)쥬스 나왔습니다!",
+        let alert = UIAlertController(title: "\(menu.rawValue)쥬스 나왔습니다!",
                                       message: "맛있게 드세요!",
                                       preferredStyle: .alert)
         let action = UIAlertAction(title: "확인", style: .default)
@@ -63,11 +62,18 @@ final class OrderViewController: UIViewController {
         let alert = UIAlertController(title: nil,
                                       message: "재료가 모자라요.\n재고를 수정할까요?",
                                       preferredStyle: .alert)
-        let confirm = UIAlertAction(title: "예", style: .default, handler: nil)
+        let confirm = UIAlertAction(title: "예", style: .default, handler: { _ in
+            self.pushToStoreViewController()
+        })
         let close = UIAlertAction(title: "아니요", style: .destructive)
         
         alert.addAction(confirm)
         alert.addAction(close)
         present(alert, animated: true, completion: nil)
+    }
+    
+    private func pushToStoreViewController() {
+        guard let storeVC = self.storyboard?.instantiateViewController(identifier: "StoreViewController") as? StoreViewController else { return }
+        navigationController?.pushViewController(storeVC, animated: true)
     }
 }
