@@ -29,7 +29,8 @@ final class FruitStore {
         stock[fruit] = fruitStock + number
     }
     
-    func setStock(of fruit: Fruit, to number: Int) {
+    func setStock(of fruit: Fruit, to number: Int) throws {
+        guard number >= 0 else { throw StockError.notEnoughToChange }
         stock[fruit] = Int(number)
     }
 }

@@ -24,7 +24,12 @@ final class StockViewController: UIViewController {
         guard let fruit = Fruit(rawValue: sender.tag) else { return }
         let changedStock = Int(sender.value)
         
-        FruitStore.shared.setStock(of: fruit, to: changedStock)
+        do {
+            try FruitStore.shared.setStock(of: fruit, to: changedStock)
+        } catch {
+            sender.value = 0
+            return
+        }
         
         guard let stockLabel = stockLabel(of: fruit) else { return }
         stockLabel.text = String(changedStock)
