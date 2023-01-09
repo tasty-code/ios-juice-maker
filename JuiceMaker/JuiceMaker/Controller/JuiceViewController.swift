@@ -28,9 +28,7 @@ final class JuiceViewController: UIViewController {
         do {
             try juiceMaker.makeJuice(of: fruitJuice)
             showMakeJuiceCompletedAlert(of: fruitJuice)
-            for fruit in fruitJuice.recipe.keys {
-                updateStockLabel(of: fruit)
-            }
+            updateStockLabels(of: fruitJuice)
         } catch StockError.notEnoughToMakeJuice {
             showMakeJuiceFailedAlert()
         } catch {
@@ -52,6 +50,12 @@ final class JuiceViewController: UIViewController {
         guard let stockLabel = stockLabel(of: fruit) else { return }
         
         stockLabel.text = String(fruitStock)
+    }
+    
+    private func updateStockLabels(of fruitJuice: FruitJuice) {
+        for fruit in fruitJuice.recipe.keys {
+            updateStockLabel(of: fruit)
+        }
     }
     
     private func updateAllStockLabels() {
