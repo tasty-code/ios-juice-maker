@@ -52,7 +52,7 @@ class ViewController: UIViewController {
     func popAlertOver(message: String) {
         let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "예", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: "예", style: .default, handler: {_ in
             self.moveToEditStockView()}))
         alert.addAction(UIAlertAction(title: "아니오", style: .destructive, handler: nil))
         present(alert, animated: true)

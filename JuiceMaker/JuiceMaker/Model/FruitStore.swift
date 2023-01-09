@@ -14,14 +14,12 @@ class FruitStore {
     
     func increaseStock(of fruit: Fruits, by amount: Int = 1) {
         guard fruits.keys.contains(fruit) else { return }
-        print(#function, " amount: \(amount)")
         fruits[fruit]?.stock += amount
     }
     
     func decreaseStock(of fruit: Fruits, by amount: Int = -1) {
         guard fruits.keys.contains(fruit) else { return }
         guard fruits[fruit]?.stock ?? 0 >= abs(amount) else { return }
-        print(#function, " amount: \(amount)")
         fruits[fruit]?.stock += amount
     }
     
@@ -37,9 +35,7 @@ class FruitStore {
     
     func checkStock(message: [OrderMessage]) throws {
         for recipe in message {
-            print(#function)
             guard abs(recipe.amount) <= fruits[recipe.fruitName]?.stock ?? 0 else {
-                print(fruits[recipe.fruitName]?.stock ?? 0)
                 throw Errors.ouOfStock
             }
         }
