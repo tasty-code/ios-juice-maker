@@ -39,8 +39,13 @@ final class OrderViewController: UIViewController {
     
     private func syncFruitStocks() {
         (0...4).forEach {
-            let stock = fruitStore.count(of: Fruits(rawValue: $0)!)
+            let stock = fruitStore.count(of: Fruits.allCases[$0])
             fruitCountLabels[$0].text = String(stock)
+        }
+        (0...6).forEach {
+            if !juiceMaker.isMakable(menu: Juice.allCases[$0]) {
+                juiceOrderButtons[$0].backgroundColor = .lightGray
+            }
         }
     }
     
