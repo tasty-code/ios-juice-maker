@@ -11,11 +11,15 @@ import XCTest
 
 final class JuiceMakerTests: XCTestCase {
     
-    var sut: FruitStore! // 1
+    var sut: JuiceMaker!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-
+        sut = JuiceMaker()
+    }
+    
+    func test_기본재고시_딸기쥬스_제조에_실패한다() {
+        XCTAssertThrowsError(try sut.makeJuice(of: .strawberry))
     }
 
     override func tearDownWithError() throws {

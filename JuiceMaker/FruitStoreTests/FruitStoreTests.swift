@@ -11,6 +11,7 @@ import XCTest
 final class FruitStoreTests: XCTestCase {
     
     override func setUpWithError() throws {
+        try super.setUpWithError()
         for fruit in Fruit.allCases {
             try FruitStore.shared.setStock(of: fruit, to: 10)
         }
