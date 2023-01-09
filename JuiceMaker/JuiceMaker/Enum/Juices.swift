@@ -16,7 +16,6 @@ enum Juices: Int {
     case kiwi
     case mango
     
-    
     var recipe: [OrderMessage] {
         switch self {
         case .strawberry:

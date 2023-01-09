@@ -34,7 +34,6 @@ class ViewController: UIViewController {
         mangoLabel.text = String(FruitStore.shared.fruits[.mango]?.stock ?? 0)
     }
     
-    
     @IBAction func orderButtonTapped(_ sender: UIButton) {
         guard let userSelect = Juices(rawValue: sender.tag) else { return }
         let recipe = userSelect.recipe
