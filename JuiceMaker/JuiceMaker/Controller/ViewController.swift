@@ -9,9 +9,13 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet var fruitLabels: [UILabel]!
+    
+    let fruitStore = FruitStore.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateLabelText(labels: fruitLabels)
+        setupLabel(labels: fruitLabels)
+        fruitStore.textUpdateDelegate = self
     }
 
     @IBAction func orderJuice(_ sender: UIButton) {
@@ -19,17 +23,29 @@ class ViewController: UIViewController {
             return
         }
         JuiceMaker().order(juice: juice)
-        updateLabelText(labels: fruitLabels)
     }
 
-    private func updateLabelText(labels: [UILabel]) {
-        let fruitStore = FruitStore.shared
-        for label in labels {
+    private func setupLabel(labels: [UILabel]) {
+        fruitLabels.forEach { label in
             guard let fruit = Fruits(rawValue: label.tag) else {
                 return
             }
-            label.text = fruitStore.stock(fruit: fruit)
+            let quantity = fruitStore.stock(fruit: fruit)
+            label.text = String(quantity)
         }
     }
 }
 
+extension ViewController: textUpdateDelegate {
+    func updateLabel(fruit: Fruits, quantity: Quantity) {
+        fruitLabels.forEach { label in
+            if label.tag == fruit.rawValue {
+                label.text = String(quantity)
+            }
+        }
+    }
+}
+
+protocol textUpdateDelegate: AnyObject {
+    func updateLabel(fruit: Fruits, quantity: Quantity)
+}

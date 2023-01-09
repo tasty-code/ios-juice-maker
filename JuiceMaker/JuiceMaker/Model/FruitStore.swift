@@ -13,17 +13,19 @@ final class FruitStore {
     
     private var fruits: [Fruits: Quantity] = [:]
     
+    weak var textUpdateDelegate: textUpdateDelegate?
+    
     private init() {
         Fruits.allCases.forEach { fruit in
             fruits[fruit] = 10
         }
     }
 
-    func stock(fruit: Fruits) -> String {
+    func stock(fruit: Fruits) -> Quantity {
         guard let stock = fruits[fruit] else {
-            return String()
+            return Int()
         }
-        return String(stock)
+        return stock
     }
     
     func add(fruit: Fruits, quantity: Quantity) {
@@ -39,7 +41,9 @@ final class FruitStore {
             guard let stock = fruits[fruit] else {
                 return
             }
-            fruits.updateValue(stock - quantity, forKey: fruit)
+            let newQuantity = stock - quantity
+            fruits.updateValue(newQuantity, forKey: fruit)
+            textUpdateDelegate?.updateLabel(fruit: fruit, quantity: newQuantity)
         }
     }
     
