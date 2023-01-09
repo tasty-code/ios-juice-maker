@@ -24,7 +24,7 @@ final class OrderViewController: UIViewController {
     
     @IBAction func orderButtonDidTap(_ sender: UIButton) {
         let juice = Juice.allCases[sender.tag]
-        guard juiceMaker.checkOrderable(of: juice) else {
+        guard juiceMaker.isMakable(menu: juice) else {
             showAlart(menu: juice.orderTitle)
             return
         }
