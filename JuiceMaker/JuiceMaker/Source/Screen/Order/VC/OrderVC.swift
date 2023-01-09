@@ -33,7 +33,7 @@ final class OrderVC: UIViewController {
     }
     
     @IBAction func editStockButtonDidTap(_ sender: Any) {
-        pushToStoreViewController()
+        pushToStoreVC()
     }
     
     private func syncFruitStocks() {
@@ -62,7 +62,7 @@ final class OrderVC: UIViewController {
                                       message: "재료가 모자라요.\n재고를 수정할까요?",
                                       preferredStyle: .alert)
         let confirm = UIAlertAction(title: "예", style: .default, handler: { _ in
-            self.pushToStoreViewController()
+            self.pushToStoreVC()
         })
         let close = UIAlertAction(title: "아니요", style: .destructive)
         
@@ -71,7 +71,7 @@ final class OrderVC: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    private func pushToStoreViewController() {
+    private func pushToStoreVC() {
         guard let storeVC = UIStoryboard(name: "Store", bundle: nil).instantiateViewController(withIdentifier:"StoreVC") as? StoreVC else { return }
         navigationController?.pushViewController(storeVC, animated: true)
     }
