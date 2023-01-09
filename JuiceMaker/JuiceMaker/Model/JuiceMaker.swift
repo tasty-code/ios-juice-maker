@@ -20,8 +20,7 @@ struct JuiceMaker {
     
     private func isEnoughFruit(of juiceName: FruitJuice) -> Bool {
         for (fruit, neededNumber) in juiceName.recipe {
-            guard let currentStock = fruitStore.fruitStock[fruit] else { return false }
-            guard currentStock >= neededNumber else { return false }
+            guard let currentStock = fruitStore.fruitStock[fruit], currentStock >= neededNumber else { return false }
         }
         return true
     }

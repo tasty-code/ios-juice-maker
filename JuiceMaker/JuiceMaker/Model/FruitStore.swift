@@ -1,10 +1,10 @@
 import Foundation
 
 class FruitStore {
-    private let defaultStock: UInt = 10
-
-    private(set) lazy var fruitStock: [Fruit : UInt] = {
-        var stock: [Fruit : UInt] = [:]
+    private(set) var fruitStock: [Fruit: UInt] = {
+        let defaultStock: UInt = 10
+        
+        var stock: [Fruit: UInt] = [:]
         Fruit.allCases.forEach { fruit in
             stock[fruit] = defaultStock
         }
