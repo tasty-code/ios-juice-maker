@@ -7,13 +7,13 @@
 import Foundation
 
 struct JuiceMaker {
-    private let fruitStore = FruitStore()
+    let fruitStore = FruitStore()
     
-    func make(juiceName: FruitJuice) {
+    func make(juiceName: FruitJuice) throws {
         guard isEnoughFruit(of: juiceName) else {
-            print(InfoMessage.noStock.rawValue)
-            return
+            throw InfoMessage.noStock
         }
+        
         
         bringFruit(for: juiceName)
     }
