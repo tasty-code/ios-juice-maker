@@ -15,7 +15,7 @@ extension Messages {
     var descripsion: String {
         switch self {
         case .enjoyYourSelf:
-            return "쥬스 나왔습니다! 맛있게 드세요!"
+            return " 나왔습니다! 맛있게 드세요!"
         }
     }
 }

@@ -36,11 +36,14 @@ final class ViewController: UIViewController {
     
     @IBAction func orderButtonTapped(_ sender: UIButton) {
         guard let userSelect = Juices(rawValue: sender.tag) else { return }
+        guard let buttoneCallName = sender.titleLabel?.text else { return }
+        
+        let orderedJuiceName = buttoneCallName.replacingOccurrences(of: " 주문", with: "")
         let recipe = userSelect.recipe
         do{
             try FruitStore.shared.checkStock(message: recipe)
             juiceMaker.makeJuice(by: recipe)
-            popSingleChooseAlert(with: Messages.enjoyYourSelf.descripsion)
+            popSingleChooseAlert(with: orderedJuiceName + Messages.enjoyYourSelf.descripsion)
         } catch {
             popDefaultAlert(with: error.localizedDescription)
         }
