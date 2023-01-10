@@ -68,10 +68,9 @@ class ViewController: UIViewController {
         do {
             try juiceMaker.make(juiceName: fruitJuice)
         } catch {
-            
             let failAlert = UIAlertController(title: "재료 부족",
-                                          message: "재료가 모자라요. 재고를 수정할까요?",
-                                          preferredStyle: UIAlertController.Style.alert)
+                                              message: "재료가 모자라요. 재고를 수정할까요?",
+                                              preferredStyle: UIAlertController.Style.alert)
             
             failAlert.addAction(UIAlertAction(title: "예",
                                               style: UIAlertAction.Style.default,
@@ -80,20 +79,20 @@ class ViewController: UIViewController {
             }))
             
             failAlert.addAction(UIAlertAction(title: "아니오",
-                                          style: UIAlertAction.Style.default,
-                                          handler: {(_: UIAlertAction!) in }))
+                                              style: UIAlertAction.Style.default,
+                                              handler: {(_: UIAlertAction!) in }))
             
             self.present(failAlert, animated: true, completion: nil)
         }
         
         let successAlert = UIAlertController(title: "쥬스 완성!",
-                                      message: "\(fruitJuice.rawValue) 나왔습니다! 맛있게 드세요!",
-                                      preferredStyle: UIAlertController.Style.alert)
+                                             message: "\(fruitJuice.rawValue) 나왔습니다! 맛있게 드세요!",
+                                             preferredStyle: UIAlertController.Style.alert)
         
-        self.present(successAlert, animated: true, completion: nil)
+        self.present(successAlert, animated: true)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            successAlert.dismiss(animated: true, completion: nil)
+            successAlert.dismiss(animated: true)
         }
         
         refreshCurrentStockLabel()

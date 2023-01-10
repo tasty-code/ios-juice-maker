@@ -16,6 +16,7 @@ class FruitStore {
         guard let currentStock = fruitStock[fruit] else {
             throw InfoMessage.noFruit
         }
+        
         return currentStock
     }
     
