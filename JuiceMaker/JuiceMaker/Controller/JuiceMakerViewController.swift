@@ -42,8 +42,8 @@ final class JuiceMakerViewController: UIViewController {
         for (fruit, _) in recipe {
             let fruitStock = try juiceMaker.fruitStore.isExist(fruit: fruit)
             stockLabels[fruit.rawValue].text = String(fruitStock)
-            makeJuiceAlert(juiceName: juice.rawValue)
         }
+        makeJuiceAlert(juiceName: juice.rawValue)
     }
 
     func order(juice: Juice) {
