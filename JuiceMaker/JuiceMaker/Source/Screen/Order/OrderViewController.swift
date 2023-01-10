@@ -7,12 +7,13 @@
 import UIKit
 
 protocol OrderDelegate: AnyObject {
-    func syncAddedStocks()
+    func syncFruitStocks()
 }
 
 final class OrderViewController: UIViewController, OrderDelegate {
     private let fruitStore = FruitStore.shared
     private let juiceMaker = JuiceMaker()
+    weak var delegate: OrderDelegate?
     
     @IBOutlet private var fruitCountLabels: [UILabel]!
     @IBOutlet private var juiceOrderButtons: [UIButton]!
@@ -20,6 +21,7 @@ final class OrderViewController: UIViewController, OrderDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         syncFruitStocks()
+        fruitStore.orderDelegate = self
     }
     
     @IBAction private func orderButtonDidTap(_ sender: UIButton) {
@@ -31,7 +33,6 @@ final class OrderViewController: UIViewController, OrderDelegate {
             return
         }
         juiceMaker.startBlending(of: juice)
-        syncFruitStocks()
         presentSuccessAlert(menu: menu)
     }
     
@@ -39,7 +40,7 @@ final class OrderViewController: UIViewController, OrderDelegate {
         pushToStoreViewController()
     }
     
-    private func syncFruitStocks() {
+    func syncFruitStocks() {
         Fruits.allCases.enumerated().forEach {
             guard let label = fruitCountLabels[safe: $0.0] else { return }
             label.text = String(fruitStore.count(of: $0.1))
@@ -77,11 +78,6 @@ final class OrderViewController: UIViewController, OrderDelegate {
     
     private func pushToStoreViewController() {
         guard let storeVC = UIStoryboard(name: "Store", bundle: nil).instantiateViewController(withIdentifier:"StoreViewController") as? StoreViewController else { return }
-        storeVC.delegate = self
         navigationController?.pushViewController(storeVC, animated: true)
-    }
-    
-    func syncAddedStocks() {
-        syncFruitStocks()
     }
 }

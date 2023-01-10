@@ -9,12 +9,23 @@ import Foundation
 // 과일 저장소 타입
 final class FruitStore {
     static let shared = FruitStore(initialStock: 10)
+    weak var orderDelegate: OrderDelegate?
+    weak var storeDelegate: StoreDelegate?
     
-    private var stocks = [Fruits: Int]()
+    private var stocks = [Fruits: Int]() {
+        didSet {
+            storeDelegate?.syncFruitStocks()
+            orderDelegate?.syncFruitStocks()
+        }
+    }
     
     func count(of fruit: Fruits) -> Int {
         guard let stock = stocks[fruit] else { return 0 }
         return stock
+    }
+    
+    func changeStock(of fruit: Fruits, count: Int) {
+        stocks.updateValue(count, forKey: fruit)
     }
     
     func decrease(of fruit: Fruits, amount: Int) {
