@@ -10,7 +10,7 @@ import Foundation
 final class FruitStore {
     static let shared = FruitStore(initialStock: 10)
     
-    private(set) var stocks = [Fruits: Int]()
+    private var stocks = [Fruits: Int]()
     
     func count(of fruit: Fruits) -> Int {
         guard let stock = stocks[fruit] else { return 0 }
