@@ -11,6 +11,7 @@
 		3B0495D1296D049000C2094F /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 3B0495D0296D049000C2094F /* .gitkeep */; };
 		3B7BD54229640C4A00023831 /* Fruits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7BD54129640C4A00023831 /* Fruits.swift */; };
 		3B7BD5442964103300023831 /* Juice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7BD5432964103300023831 /* Juice.swift */; };
+		3BCF756B296D3F6A003FEFDB /* StockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF756A296D3F6A003FEFDB /* StockDelegate.swift */; };
 		3BF47E902967B1BB005D2805 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF47E8F2967B1BB005D2805 /* StoreViewController.swift */; };
 		8E160F71296BEC4800B060C1 /* Order.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E160F70296BEC4800B060C1 /* Order.storyboard */; };
 		8E160F73296BECA300B060C1 /* Store.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E160F72296BECA300B060C1 /* Store.storyboard */; };
@@ -28,6 +29,7 @@
 		3B0495D0296D049000C2094F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		3B7BD54129640C4A00023831 /* Fruits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruits.swift; sourceTree = "<group>"; };
 		3B7BD5432964103300023831 /* Juice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Juice.swift; sourceTree = "<group>"; };
+		3BCF756A296D3F6A003FEFDB /* StockDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDelegate.swift; sourceTree = "<group>"; };
 		3BF47E8F2967B1BB005D2805 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		8E160F70296BEC4800B060C1 /* Order.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Order.storyboard; sourceTree = "<group>"; };
 		8E160F72296BECA300B060C1 /* Store.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Store.storyboard; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				3B0495D0296D049000C2094F /* .gitkeep */,
+				3BCF756A296D3F6A003FEFDB /* StockDelegate.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				3B0495CF296CF9D800C2094F /* Array+.swift in Sources */,
 				C73DAF3B255D0CDD00020D38 /* OrderViewController.swift in Sources */,
 				3B7BD5442964103300023831 /* Juice.swift in Sources */,
+				3BCF756B296D3F6A003FEFDB /* StockDelegate.swift in Sources */,
 				3B7BD54229640C4A00023831 /* Fruits.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
 				C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */,

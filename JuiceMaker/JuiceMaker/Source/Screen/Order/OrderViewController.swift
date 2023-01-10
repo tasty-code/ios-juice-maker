@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class OrderViewController: UIViewController {
+final class OrderViewController: UIViewController, StockDelegate {
     private let fruitStore = FruitStore.shared
     private let juiceMaker = JuiceMaker()
     
@@ -73,6 +73,11 @@ final class OrderViewController: UIViewController {
     
     private func pushToStoreViewController() {
         guard let storeVC = UIStoryboard(name: "Store", bundle: nil).instantiateViewController(withIdentifier:"StoreViewController") as? StoreViewController else { return }
+        storeVC.delegate = self
         navigationController?.pushViewController(storeVC, animated: true)
+    }
+    
+    func syncAddedStocks() {
+        syncFruitStocks()
     }
 }

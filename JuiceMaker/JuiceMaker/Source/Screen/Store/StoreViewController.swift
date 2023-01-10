@@ -8,6 +8,7 @@ import UIKit
 
 final class StoreViewController: UIViewController {
     private let fruitStore = FruitStore.shared
+    weak var delegate: StockDelegate?
     
     @IBOutlet private var fruitStockLabels: [UILabel]!
     @IBOutlet private var fruitStockSteppers: [UIStepper]!
@@ -25,6 +26,7 @@ final class StoreViewController: UIViewController {
     
     @IBAction private func confirmChangedStockButtonDidTap(_ sender: UIBarButtonItem) {
         addStocks()
+        delegate?.syncAddedStocks()
         navigationController?.popViewController(animated: true)
     }
     
