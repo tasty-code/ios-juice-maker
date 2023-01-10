@@ -15,7 +15,7 @@ class JuiceMakerViewController: UIViewController {
     @IBOutlet private weak var mangoStock: UILabel!
     
     private var fruitLabelFruitMap: [UILabel: Fruit]!
-    private var fruitStore = FruitStore(defaultStock: 20)
+    private var fruitStore = FruitStore(defaultStock: 10)
     private var juiceMaker: JuiceMaker<FruitStore>!
     
     override func viewDidLoad() {
