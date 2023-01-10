@@ -24,8 +24,9 @@ class ViewController: UIViewController {
         refreshCurrentStockLabel()
     }
     
+    
     @IBAction func changeStockButtonTapped(_ sender: Any) {
-        print("재고수정버튼")
+        moveToChangeStockView()
     }
     
     @IBAction func JuiceOrderButtonTapped(_ sender: UIButton) {
@@ -68,34 +69,39 @@ class ViewController: UIViewController {
             try juiceMaker.make(juiceName: fruitJuice)
         } catch {
             
-            let alert = UIAlertController(title: "재료 부족",
+            let failAlert = UIAlertController(title: "재료 부족",
                                           message: "재료가 모자라요. 재고를 수정할까요?",
                                           preferredStyle: UIAlertController.Style.alert)
             
-            alert.addAction(UIAlertAction(title: "예",
-                                          style: UIAlertAction.Style.default,
-                                          handler: { _ in
-                // 재고 수정 화면으로 이동 코드
+            failAlert.addAction(UIAlertAction(title: "예",
+                                              style: UIAlertAction.Style.default,
+                                              handler: { _ in
+                self.moveToChangeStockView()
             }))
             
-            alert.addAction(UIAlertAction(title: "아니오",
+            failAlert.addAction(UIAlertAction(title: "아니오",
                                           style: UIAlertAction.Style.default,
                                           handler: {(_: UIAlertAction!) in }))
             
-            self.present(alert, animated: true, completion: nil)
+            self.present(failAlert, animated: true, completion: nil)
         }
         
-        let alert = UIAlertController(title: "쥬스 완성!",
+        let successAlert = UIAlertController(title: "쥬스 완성!",
                                       message: "\(fruitJuice.rawValue) 나왔습니다! 맛있게 드세요!",
                                       preferredStyle: UIAlertController.Style.alert)
         
-        self.present(alert, animated: true, completion: nil)
+        self.present(successAlert, animated: true, completion: nil)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            alert.dismiss(animated: true, completion: nil)
+            successAlert.dismiss(animated: true, completion: nil)
         }
         
         refreshCurrentStockLabel()
+    }
+    
+    func moveToChangeStockView() {
+        guard let viewController = self.storyboard?.instantiateViewController(identifier: "ChangeStockViewController") else { return }
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
 }

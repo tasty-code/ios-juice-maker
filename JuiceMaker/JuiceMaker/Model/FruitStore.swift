@@ -2,7 +2,7 @@ import Foundation
 
 class FruitStore {
     private(set) var fruitStock: [Fruit: UInt] = {
-        let defaultStock: UInt = 100
+        let defaultStock: UInt = 10
         
         var stock: [Fruit: UInt] = [:]
         Fruit.allCases.forEach { fruit in
