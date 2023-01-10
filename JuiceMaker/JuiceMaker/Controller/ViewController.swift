@@ -58,11 +58,12 @@ extension ViewController: juiceAlertDelegate {
         )
         let checkAction = UIAlertAction(title: "확인", style: .default)
         alert.addAction(checkAction)
-        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true)
     }
 
     func shortOfStockAlert(message: String) {
-        guard let modifiedStockVC = self.storyboard?.instantiateViewController(identifier: "ModifiedStock") else { return }
+        guard let modifiedStockVC = self.storyboard?.instantiateViewController(identifier: "ModifiedStock") else { return
+        }
         let alert = UIAlertController(
             title: "\(message)",
             message: "재료가 모자라요. 재고를 수정할까요?",
@@ -71,11 +72,11 @@ extension ViewController: juiceAlertDelegate {
         let cancelAction = UIAlertAction(title: "아니오", style: .default)
         let modifiedAction = UIAlertAction(title: "예", style: .destructive) { _ in
             self.present(modifiedStockVC, animated: true)
-            }
+        }
         alert.addAction(cancelAction)
         alert.addAction(modifiedAction)
         alert.preferredAction = modifiedAction
-        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true)
     }
 }
 
