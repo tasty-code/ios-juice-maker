@@ -1,12 +1,12 @@
 //
-//  JuiceMaker - OrderVC.swift
+//  JuiceMaker - OrderViewController.swift
 //  Created by yagom. 
 //  Copyright © yagom academy. All rights reserved.
 // 
 
 import UIKit
 
-final class OrderVC: UIViewController {
+final class OrderViewController: UIViewController {
     private let fruitStore = FruitStore.shared
     private let juiceMaker = JuiceMaker()
     
@@ -33,7 +33,7 @@ final class OrderVC: UIViewController {
     }
     
     @IBAction func editStockButtonDidTap(_ sender: Any) {
-        pushToStoreVC()
+        pushToStoreViewController()
     }
     
     private func syncFruitStocks() {
@@ -62,7 +62,7 @@ final class OrderVC: UIViewController {
                                       message: "재료가 모자라요.\n재고를 수정할까요?",
                                       preferredStyle: .alert)
         let confirm = UIAlertAction(title: "예", style: .default, handler: { _ in
-            self.pushToStoreVC()
+            self.pushToStoreViewController()
         })
         let close = UIAlertAction(title: "아니요", style: .destructive)
         
@@ -71,8 +71,8 @@ final class OrderVC: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    private func pushToStoreVC() {
-        guard let storeVC = UIStoryboard(name: "Store", bundle: nil).instantiateViewController(withIdentifier:"StoreVC") as? StoreVC else { return }
+    private func pushToStoreViewController() {
+        guard let storeVC = UIStoryboard(name: "Store", bundle: nil).instantiateViewController(withIdentifier:"StoreViewController") as? StoreViewController else { return }
         navigationController?.pushViewController(storeVC, animated: true)
     }
 }
