@@ -8,15 +8,15 @@ import Foundation
 
 struct JuiceMaker {
     let fruitStore = FruitStore.shared
+    weak var juiceAlertDelegate: juiceAlertDelegate?
 
-    func order(juice: Menu) -> Bool {
+    func order(juice: Menu) {
         do {
             try make(juice: juice)
+            juiceAlertDelegate?.madeJuiceAlert(juice: juice)
         } catch {
-            print(error.localizedDescription)
-            return false
+            juiceAlertDelegate?.shortOfStockAlert(message: error.localizedDescription)
         }
-        return true
     }
 
     func make(juice order: Menu) throws {
