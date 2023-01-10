@@ -14,7 +14,6 @@ struct JuiceMaker {
             throw InfoMessage.noStock
         }
         
-        
         bringFruit(for: juiceName)
     }
     
@@ -22,6 +21,7 @@ struct JuiceMaker {
         for (fruit, neededNumber) in juiceName.recipe {
             guard let currentStock = fruitStore.fruitStock[fruit], currentStock >= neededNumber else { return false }
         }
+        
         return true
     }
     
