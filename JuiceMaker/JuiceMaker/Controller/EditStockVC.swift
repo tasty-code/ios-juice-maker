@@ -15,13 +15,23 @@ class EditStockVC: UIViewController {
     @IBOutlet weak var kiwiLabel: UILabel!
     @IBOutlet weak var mangoLabel: UILabel!
     
+    
+    @IBOutlet weak var editStockViewTitleLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
     }
     
     private func setUI() {
+        editStockViewTitleLabel.text = "재고 추가"
         setFruitLabel()
+    }
+    
+    
+    @IBAction func closeButtonTapped(_ sender: UIButton) {
+        
     }
     
     private func setFruitLabel() {
