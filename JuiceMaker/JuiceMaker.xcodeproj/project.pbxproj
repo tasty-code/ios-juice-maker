@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B0495CF296CF9D800C2094F /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0495CE296CF9D800C2094F /* Array+.swift */; };
 		3B7BD54229640C4A00023831 /* Fruits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7BD54129640C4A00023831 /* Fruits.swift */; };
 		3B7BD5442964103300023831 /* Juice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7BD5432964103300023831 /* Juice.swift */; };
 		3BF47E902967B1BB005D2805 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF47E8F2967B1BB005D2805 /* StoreViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B0495CE296CF9D800C2094F /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		3B7BD54129640C4A00023831 /* Fruits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruits.swift; sourceTree = "<group>"; };
 		3B7BD5432964103300023831 /* Juice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Juice.swift; sourceTree = "<group>"; };
 		3BF47E8F2967B1BB005D2805 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
@@ -49,9 +51,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B0495CC296CF92D00C2094F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3B0495CE296CF9D800C2094F /* Array+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		3B0495CD296CF93800C2094F /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		8E160F62296BEB8700B060C1 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				3B0495CD296CF93800C2094F /* Protocol */,
+				3B0495CC296CF92D00C2094F /* Extension */,
 				8E160F63296BEB8E00B060C1 /* Application */,
 				8E160F64296BEB9800B060C1 /* Supporting Files */,
 				8E160F65296BEBA700B060C1 /* Resource */,
@@ -238,6 +257,7 @@
 			files = (
 				3BF47E902967B1BB005D2805 /* StoreViewController.swift in Sources */,
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
+				3B0495CF296CF9D800C2094F /* Array+.swift in Sources */,
 				C73DAF3B255D0CDD00020D38 /* OrderViewController.swift in Sources */,
 				3B7BD5442964103300023831 /* Juice.swift in Sources */,
 				3B7BD54229640C4A00023831 /* Fruits.swift in Sources */,
