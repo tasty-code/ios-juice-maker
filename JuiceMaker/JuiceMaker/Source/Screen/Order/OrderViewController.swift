@@ -6,7 +6,11 @@
 
 import UIKit
 
-final class OrderViewController: UIViewController, StockDelegate {
+protocol OrderDelegate: AnyObject {
+    func syncAddedStocks()
+}
+
+final class OrderViewController: UIViewController, OrderDelegate {
     private let fruitStore = FruitStore.shared
     private let juiceMaker = JuiceMaker()
     

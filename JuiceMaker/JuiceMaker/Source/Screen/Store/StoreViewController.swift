@@ -8,7 +8,7 @@ import UIKit
 
 final class StoreViewController: UIViewController {
     private let fruitStore = FruitStore.shared
-    weak var delegate: StockDelegate?
+    weak var delegate: OrderDelegate?
     
     @IBOutlet private var fruitStockLabels: [UILabel]!
     @IBOutlet private var fruitStockSteppers: [UIStepper]!
