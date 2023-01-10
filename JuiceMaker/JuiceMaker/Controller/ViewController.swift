@@ -21,11 +21,10 @@ final class ViewController: UIViewController {
         
         setConfigure()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        setFruitLabel()
+    }
     private func setConfigure() {
-        let DidDismissEditStockVC: Notification.Name = Notification.Name("DidDismissEditStockVC")
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.setFruitLabel), name: DidDismissEditStockVC, object: nil)
         setFruitLabel()
     }
     
@@ -76,7 +75,7 @@ final class ViewController: UIViewController {
     private func moveToEditStockView(){
         guard let editStockVC = storyboard?.instantiateViewController(withIdentifier: "IDEditStockVC") as? EditStockVC else{ return }
         
-        editStockVC.modalPresentationStyle = .automatic
+        editStockVC.modalPresentationStyle = .fullScreen
         present(editStockVC, animated: true, completion: nil)
     }
 }

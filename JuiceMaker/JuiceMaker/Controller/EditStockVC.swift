@@ -9,8 +9,6 @@ import UIKit
 
 class EditStockVC: UIViewController {
     
-    let DidDismissEditStockVC: Notification.Name = Notification.Name("DidDismissEditStockVC")
-    
     @IBOutlet var fruitStockLabels: [UILabel]!
     @IBOutlet var StepperButtons: [UIStepper]!
     @IBOutlet weak var editStockViewTitleLabel: UILabel!
@@ -53,8 +51,6 @@ class EditStockVC: UIViewController {
             FruitStore.shared.fruits[fruit]?.stock = changedFruitStock
         }
         print(FruitStore.shared.fruits)
-        
-        NotificationCenter.default.post(name: DidDismissEditStockVC, object: nil, userInfo: nil)
         dismiss(animated: true)
     }
     
