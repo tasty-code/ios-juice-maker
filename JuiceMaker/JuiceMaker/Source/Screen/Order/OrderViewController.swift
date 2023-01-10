@@ -34,13 +34,12 @@ final class OrderViewController: UIViewController {
     }
     
     private func syncFruitStocks() {
-        (0...4).forEach {
-            let stock = fruitStore.count(of: Fruits.allCases[$0])
-            fruitCountLabels[$0].text = String(stock)
+        Fruits.allCases.enumerated().forEach {
+            fruitCountLabels[$0.0].text = String(fruitStore.count(of: $0.1))
         }
-        (0...6).forEach {
-            if !juiceMaker.isMakable(menu: Juice.allCases[$0]) {
-                juiceOrderButtons[$0].backgroundColor = .lightGray
+        Juice.allCases.enumerated().forEach {
+            if !juiceMaker.isMakable(menu: $0.1) {
+                juiceOrderButtons[$0.0].backgroundColor = .lightGray
             }
         }
     }
