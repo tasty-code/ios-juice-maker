@@ -21,12 +21,12 @@ final class OrderViewController: UIViewController {
     @IBAction func orderButtonDidTap(_ sender: UIButton) {
         let juice = Juice.allCases[sender.tag]
         guard juiceMaker.isMakable(menu: juice) else {
-            alert(failed: juice)
+            presentAlert(failed: juice)
             return
         }
         juiceMaker.startBlending(of: juice)
         syncFruitStocks()
-        alert(succeed: juice)
+        presentAlert()
     }
     
     @IBAction func editStockButtonDidTap(_ sender: Any) {
@@ -45,8 +45,8 @@ final class OrderViewController: UIViewController {
         }
     }
     
-    private func alert(succeed menu: Juice) {
-        let alert = UIAlertController(title: "\(menu.rawValue) 나왔습니다!",
+    private func presentAlert() {
+        let alert = UIAlertController(title: "쥬스 나왔습니다!",
                                       message: "맛있게 드세요!",
                                       preferredStyle: .alert)
         let action = UIAlertAction(title: "확인", style: .default)
@@ -54,7 +54,7 @@ final class OrderViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    private func alert(failed menu: Juice) {
+    private func presentAlert(failed menu: Juice) {
         let alert = UIAlertController(title: nil,
                                       message: "재료가 모자라요.\n재고를 수정할까요?",
                                       preferredStyle: .alert)
