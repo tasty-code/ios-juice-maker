@@ -40,7 +40,7 @@ final class JuiceMakerViewController: UIViewController {
     func changeStockLabel(juice: Juice) throws {
         let recipe = juice.recipe
         for (fruit, _) in recipe {
-            let fruitStock = try juiceMaker.fruitStore.isExist(fruit: fruit)
+            let fruitStock = juiceMaker.fruitStore.stock(byFruit: fruit)
             stockLabels[fruit.rawValue].text = String(fruitStock)
         }
         makeJuiceAlert(juiceName: juice.rawValue)

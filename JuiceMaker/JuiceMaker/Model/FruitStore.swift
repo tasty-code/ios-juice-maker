@@ -21,7 +21,7 @@ final class FruitStore {
     }
 
     func subtractStock(fruit: Fruit, count: UInt) throws {
-        let fruitStock = try isExist(fruit: fruit)
+        let fruitStock = stock(byFruit: fruit)
         guard fruitStock >= count else {
             throw JuiceMakerError.outOfStock
         }
@@ -29,14 +29,11 @@ final class FruitStore {
     }
 
     func addStock(fruit: Fruit, count: UInt) throws {
-        let fruitStock = try isExist(fruit: fruit)
+        let fruitStock = stock(byFruit: fruit)
         self.stockByFruit[fruit] = fruitStock + count
     }
-
-    func isExist(fruit: Fruit) throws -> UInt {
-        guard let fruitStock = stockByFruit[fruit] else {
-            throw JuiceMakerError.notExistFruit
-        }
-        return fruitStock
+    
+    func stock(byFruit fruit: Fruit) -> UInt {
+        return stockByFruit.filter { $0.key == fruit }[0].value
     }
 }

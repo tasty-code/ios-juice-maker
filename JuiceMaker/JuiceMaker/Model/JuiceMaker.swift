@@ -11,9 +11,7 @@ struct JuiceMaker {
     let fruitStore = FruitStore()
 
     func hasEnoughStock(fruit: FruitStore.Fruit, count: UInt) throws {
-        guard let stock = fruitStore.stockByFruit[fruit] else {
-            throw JuiceMakerError.notExistFruit
-        }
+        let stock = fruitStore.stock(byFruit: fruit)
         guard stock >= count else {
             throw JuiceMakerError.outOfStock
         }
