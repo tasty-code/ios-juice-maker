@@ -23,12 +23,12 @@ final class OrderViewController: UIViewController {
         let menu = String(sender.titleLabel?.text?.dropLast(5) ?? "")
         guard let juice,
               juiceMaker.isMakable(menu: juice) else {
-            presentFailedAlert()
+            presentFailAlert()
             return
         }
         juiceMaker.startBlending(of: juice)
         syncFruitStocks()
-        presentSucceedAlert(menu: menu)
+        presentSuccessAlert(menu: menu)
     }
     
     @IBAction private func editStockButtonDidTap(_ sender: Any) {
@@ -48,7 +48,7 @@ final class OrderViewController: UIViewController {
         }
     }
     
-    private func presentSucceedAlert(menu: String) {
+    private func presentSuccessAlert(menu: String) {
         let alert = UIAlertController(title: "\(menu)쥬스 나왔습니다!",
                                       message: "맛있게 드세요!",
                                       preferredStyle: .alert)
@@ -57,7 +57,7 @@ final class OrderViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    private func presentFailedAlert() {
+    private func presentFailAlert() {
         let alert = UIAlertController(title: nil,
                                       message: "재료가 모자라요.\n재고를 수정할까요?",
                                       preferredStyle: .alert)
