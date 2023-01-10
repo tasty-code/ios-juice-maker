@@ -88,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				C71CD66F266C7B500038B9CB /* Model */,
+				8ECE1751296CF1510028DE45 /* Service */,
 				8E160F67296BEBB700B060C1 /* Screen */,
 			);
 			path = Source;
@@ -105,8 +106,8 @@
 		8E160F68296BEBC700B060C1 /* Order */ = {
 			isa = PBXGroup;
 			children = (
-				8E160F6C296BEBEF00B060C1 /* View */,
-				8E160F6B296BEBEB00B060C1 /* VC */,
+				8E160F70296BEC4800B060C1 /* Order.storyboard */,
+				C73DAF3A255D0CDD00020D38 /* OrderVC.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -114,42 +115,19 @@
 		8E160F69296BEBCA00B060C1 /* Store */ = {
 			isa = PBXGroup;
 			children = (
-				8E160F6E296BEBF600B060C1 /* View */,
-				8E160F6D296BEBF400B060C1 /* VC */,
+				8E160F72296BECA300B060C1 /* Store.storyboard */,
+				3BF47E8F2967B1BB005D2805 /* StoreVC.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
 		};
-		8E160F6B296BEBEB00B060C1 /* VC */ = {
+		8ECE1751296CF1510028DE45 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				C73DAF3A255D0CDD00020D38 /* OrderVC.swift */,
+				C71CD66A266C7ACB0038B9CB /* FruitStore.swift */,
+				C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */,
 			);
-			path = VC;
-			sourceTree = "<group>";
-		};
-		8E160F6C296BEBEF00B060C1 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				8E160F70296BEC4800B060C1 /* Order.storyboard */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		8E160F6D296BEBF400B060C1 /* VC */ = {
-			isa = PBXGroup;
-			children = (
-				3BF47E8F2967B1BB005D2805 /* StoreVC.swift */,
-			);
-			path = VC;
-			sourceTree = "<group>";
-		};
-		8E160F6E296BEBF600B060C1 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				8E160F72296BECA300B060C1 /* Store.storyboard */,
-			);
-			path = View;
+			path = Service;
 			sourceTree = "<group>";
 		};
 		C71CD66F266C7B500038B9CB /* Model */ = {
@@ -157,8 +135,6 @@
 			children = (
 				3B7BD54129640C4A00023831 /* Fruits.swift */,
 				3B7BD5432964103300023831 /* Juice.swift */,
-				C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */,
-				C71CD66A266C7ACB0038B9CB /* FruitStore.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
