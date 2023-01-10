@@ -1,11 +1,11 @@
 import Foundation
 
-enum InfoMessage: LocalizedError {
+enum InfoMessageError: LocalizedError {
     case noStock
     case noFruit
 
         
-    
+
     var errorDescription: String? {
         switch self {
         case .noStock:

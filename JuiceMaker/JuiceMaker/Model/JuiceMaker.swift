@@ -11,7 +11,7 @@ struct JuiceMaker {
     
     func make(juiceName: FruitJuice) throws {
         guard isEnoughFruit(of: juiceName) else {
-            throw InfoMessage.noStock
+            throw InfoMessageError.noStock
         }
         
         bringFruit(for: juiceName)

@@ -14,7 +14,7 @@ class FruitStore {
     
     func numberOf(fruit: Fruit) throws -> UInt {
         guard let currentStock = fruitStock[fruit] else {
-            throw InfoMessage.noFruit
+            throw InfoMessageError.noFruit
         }
         
         return currentStock
@@ -28,7 +28,7 @@ class FruitStore {
     func consumeStock(for fruit: Fruit, number: UInt) {
         guard let currentNumber = fruitStock[fruit] else { return }
         guard currentNumber >= number else {
-            print(InfoMessage.noStock,
+            print(InfoMessageError.noStock,
                   "현재 재고: \(currentNumber)",
                   "레시피 수량 : \(number)",
                   "부족한 수량: \(number - currentNumber)" )
