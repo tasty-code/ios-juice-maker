@@ -10,15 +10,15 @@ final class OrderViewController: UIViewController {
     private let fruitStore = FruitStore.shared
     private let juiceMaker = JuiceMaker()
     
-    @IBOutlet var fruitCountLabels: [UILabel]!
-    @IBOutlet var juiceOrderButtons: [UIButton]!
+    @IBOutlet private var fruitCountLabels: [UILabel]!
+    @IBOutlet private var juiceOrderButtons: [UIButton]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         syncFruitStocks()
     }
     
-    @IBAction func orderButtonDidTap(_ sender: UIButton) {
+    @IBAction private func orderButtonDidTap(_ sender: UIButton) {
         let juice = Juice.allCases[sender.tag]
         guard juiceMaker.isMakable(menu: juice) else {
             presentAlert(failed: juice)
@@ -29,7 +29,7 @@ final class OrderViewController: UIViewController {
         presentAlert()
     }
     
-    @IBAction func editStockButtonDidTap(_ sender: Any) {
+    @IBAction private func editStockButtonDidTap(_ sender: Any) {
         pushToStoreViewController()
     }
     
