@@ -14,7 +14,9 @@ struct JuiceMaker {
         let ingredients = menu.recipe
         for ingredient in ingredients {
             let eachStock = fruitStore.count(of: ingredient.key)
-            guard eachStock >= ingredient.value else { return false }
+            if eachStock < ingredient.value {
+                return false
+            }
         }
         return true
     }
