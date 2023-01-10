@@ -37,11 +37,11 @@ final class OrderViewController: UIViewController {
     
     private func syncFruitStocks() {
         Fruits.allCases.enumerated().forEach {
-            guard let label = fruitCountLabels[safe: $0.0] else { print("label nil나옴"); return }
+            guard let label = fruitCountLabels[safe: $0.0] else { return }
             label.text = String(fruitStore.count(of: $0.1))
         }
         Juice.allCases.enumerated().forEach {
-            guard let button = juiceOrderButtons[safe: $0.0] else { print("button nil나옴"); return }
+            guard let button = juiceOrderButtons[safe: $0.0] else { return }
             if !juiceMaker.isMakable(menu: $0.1) {
                 button.backgroundColor = .lightGray
             }
