@@ -8,18 +8,18 @@ import Foundation
 
 struct JuiceMaker {
     let fruitStore = FruitStore.shared
+    weak var juiceAlertDelegate: juiceAlertDelegate?
 
     func order(juice: Menu) {
         do {
             try make(juice: juice)
+            juiceAlertDelegate?.madeJuiceAlert(juice: juice)
         } catch {
-            print(error.localizedDescription)
+            juiceAlertDelegate?.shortOfStockAlert(message: error.localizedDescription)
         }
     }
 
-    private func make(juice order: Menu) throws {
-        try order.recipe.forEach { (fruit, quantity) in
-            try fruitStore.remove(fruit: fruit, quantity: quantity)
-        }
+    func make(juice order: Menu) throws {
+        try fruitStore.remove(according: order.recipe)
     }
 }

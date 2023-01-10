@@ -10,13 +10,22 @@ typealias Quantity = Int
 
 final class FruitStore {
     static let shared = FruitStore()
-
+    
     private var fruits: [Fruits: Quantity] = [:]
-
+    
+    weak var textUpdateDelegate: textUpdateDelegate?
+    
     private init() {
         Fruits.allCases.forEach { fruit in
             fruits[fruit] = 10
         }
+    }
+
+    func stock(fruit: Fruits) -> Quantity {
+        guard let stock = fruits[fruit] else {
+            return Int()
+        }
+        return stock
     }
     
     func add(fruit: Fruits, quantity: Quantity) {
@@ -25,15 +34,28 @@ final class FruitStore {
         }
         fruits.updateValue(stock + quantity, forKey: fruit)
     }
-  
-    func remove(fruit: Fruits, quantity: Quantity) throws {
-        guard let stock = fruits[fruit] else {
-            return
+    
+    func remove(according recipe: [Fruits: Quantity]) throws {
+        try checkFruit(according: recipe)
+        for (fruit, quantity) in recipe {
+            guard let stock = fruits[fruit] else {
+                return
+            }
+            let newQuantity = stock - quantity
+            fruits.updateValue(newQuantity, forKey: fruit)
+            textUpdateDelegate?.updateLabel(fruit: fruit)
         }
-        guard stock.isNegative(subtraction: quantity) else {
-            throw JuiceError.negativeQuantity(fruit: fruit)
+    }
+    
+    private func checkFruit(according recipe: [Fruits: Quantity]) throws {
+        for (fruit, quantity) in recipe {
+            guard let stock = fruits[fruit] else {
+                return
+            }
+            guard stock.isNegative(subtraction: quantity) else {
+                throw JuiceError.negativeQuantity(fruit: fruit)
+            }
         }
-        fruits.updateValue(stock - quantity, forKey: fruit)
     }
 }
 
