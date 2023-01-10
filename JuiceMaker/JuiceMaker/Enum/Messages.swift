@@ -8,13 +8,13 @@
 import Foundation
 
 enum Messages: String {
-    case enjoyYourSelf
+    case orderSuccess
 }
 
 extension Messages {
     var descripsion: String {
         switch self {
-        case .enjoyYourSelf:
+        case .orderSuccess:
             return " 나왔습니다! 맛있게 드세요!"
         }
     }

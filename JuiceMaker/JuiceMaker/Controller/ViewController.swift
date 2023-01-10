@@ -43,7 +43,7 @@ final class ViewController: UIViewController {
         do{
             try FruitStore.shared.checkStock(message: recipe)
             juiceMaker.makeJuice(by: recipe)
-            popSingleChooseAlert(with: orderedJuiceName + Messages.enjoyYourSelf.descripsion)
+            popSingleChooseAlert(with: orderedJuiceName + Messages.orderSuccess.descripsion)
         } catch {
             popDefaultAlert(with: error.localizedDescription)
         }
