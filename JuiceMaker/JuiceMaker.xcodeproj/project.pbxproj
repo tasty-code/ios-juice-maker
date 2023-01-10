@@ -13,6 +13,7 @@
 		3BF47E902967B1BB005D2805 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF47E8F2967B1BB005D2805 /* StoreViewController.swift */; };
 		8E160F71296BEC4800B060C1 /* Order.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E160F70296BEC4800B060C1 /* Order.storyboard */; };
 		8E160F73296BECA300B060C1 /* Store.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E160F72296BECA300B060C1 /* Store.storyboard */; };
+		8ECE1753296D04140028DE45 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 8ECE1752296D04140028DE45 /* .gitkeep */; };
 		C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71CD66A266C7ACB0038B9CB /* FruitStore.swift */; };
 		C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DAF36255D0CDD00020D38 /* AppDelegate.swift */; };
 		C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DAF38255D0CDD00020D38 /* SceneDelegate.swift */; };
@@ -29,6 +30,7 @@
 		3BF47E8F2967B1BB005D2805 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		8E160F70296BEC4800B060C1 /* Order.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Order.storyboard; sourceTree = "<group>"; };
 		8E160F72296BECA300B060C1 /* Store.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Store.storyboard; sourceTree = "<group>"; };
+		8ECE1752296D04140028DE45 /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitkeep; path = "../../../../../../../SOPT/31st_IN_SOPT/APP-JAM/Peekabook-iOS/Peekabook/Peekabook/Network/Config/.gitkeep"; sourceTree = "<group>"; };
 		C71CD66A266C7ACB0038B9CB /* FruitStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitStore.swift; sourceTree = "<group>"; };
 		C73DAF33255D0CDD00020D38 /* JuiceMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JuiceMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C73DAF36255D0CDD00020D38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 		3B0495CD296CF93800C2094F /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				8ECE1752296D04140028DE45 /* .gitkeep */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 			files = (
 				C73DAF43255D0CDF00020D38 /* LaunchScreen.storyboard in Resources */,
 				C73DAF40255D0CDE00020D38 /* Assets.xcassets in Resources */,
+				8ECE1753296D04140028DE45 /* .gitkeep in Resources */,
 				8E160F73296BECA300B060C1 /* Store.storyboard in Resources */,
 				8E160F71296BEC4800B060C1 /* Order.storyboard in Resources */,
 			);
