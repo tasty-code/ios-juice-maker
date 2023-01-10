@@ -18,15 +18,18 @@ final class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        setUI()
+        
+        setConfigure()
     }
     
-    private func setUI() {
+    private func setConfigure() {
+        let DidDismissEditStockVC: Notification.Name = Notification.Name("DidDismissEditStockVC")
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.setFruitLabel), name: DidDismissEditStockVC, object: nil)
         setFruitLabel()
     }
     
-    private func setFruitLabel() {
+   @objc private func setFruitLabel() {
         strawberryLabel.text = String(FruitStore.shared.fruits[.strawberry]?.stock ?? 0)
         bananaLabel.text = String(FruitStore.shared.fruits[.banana]?.stock ?? 0)
         pineappleLabel.text = String(FruitStore.shared.fruits[.pineapple]?.stock ?? 0)
@@ -47,7 +50,6 @@ final class ViewController: UIViewController {
         } catch {
             popDefaultAlert(with: error.localizedDescription)
         }
-        
         setFruitLabel()
     }
 

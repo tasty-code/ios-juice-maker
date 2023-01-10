@@ -9,14 +9,16 @@ import UIKit
 
 class EditStockVC: UIViewController {
     
+    let DidDismissEditStockVC: Notification.Name = Notification.Name("DidDismissEditStockVC")
+    
     @IBOutlet var fruitStockLabels: [UILabel]!
     @IBOutlet var StepperButtons: [UIStepper]!
     @IBOutlet weak var editStockViewTitleLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
-        setSteppersValues()
+        setConfigure()
+        
     }
     
     private func setSteppersValues() {
@@ -28,9 +30,10 @@ class EditStockVC: UIViewController {
         }
     }
     
-    private func setUI() {
+    private func setConfigure() {
         editStockViewTitleLabel.text = "재고 추가"
         setFruitLabels()
+        setSteppersValues()
     }
     
     private func setFruitLabels() {
@@ -50,6 +53,9 @@ class EditStockVC: UIViewController {
             FruitStore.shared.fruits[fruit]?.stock = changedFruitStock
         }
         print(FruitStore.shared.fruits)
+        
+        NotificationCenter.default.post(name: DidDismissEditStockVC, object: nil, userInfo: nil)
+        dismiss(animated: true)
     }
     
     @IBAction func stepperPressed(_ sender: UIStepper) {
@@ -57,5 +63,4 @@ class EditStockVC: UIViewController {
         let pairedLabel = fruitStockLabels[selectedButtonTag]
         pairedLabel.text = String(Int(sender.value))
     }
-    
 }
