@@ -8,37 +8,54 @@
 import UIKit
 
 class EditStockVC: UIViewController {
-
-    @IBOutlet weak var strawberryLabel: UILabel!
-    @IBOutlet weak var bananaLabel: UILabel!
-    @IBOutlet weak var pineappleLabel: UILabel!
-    @IBOutlet weak var kiwiLabel: UILabel!
-    @IBOutlet weak var mangoLabel: UILabel!
     
-    
+    @IBOutlet var fruitStockLabels: [UILabel]!
+    @IBOutlet var StepperButtons: [UIStepper]!
     @IBOutlet weak var editStockViewTitleLabel: UILabel!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        setSteppersValues()
+    }
+    
+    private func setSteppersValues() {
+        for stepper in StepperButtons {
+            guard let fruit = Fruits(rawValue: stepper.tag),
+                  let fruitStock = FruitStore.shared.fruits[fruit]?.stock else { return }
+            let fruitStockDouble = Double(fruitStock)
+            stepper.value = fruitStockDouble
+        }
     }
     
     private func setUI() {
         editStockViewTitleLabel.text = "재고 추가"
-        setFruitLabel()
+        setFruitLabels()
     }
     
+    private func setFruitLabels() {
+        for fruitStockLabel in fruitStockLabels {
+            guard let fruit = Fruits(rawValue: fruitStockLabel.tag),
+                  let fruitStock = FruitStore.shared.fruits[fruit]?.stock else { return }
+            let fruitStockDouble = String(fruitStock)
+            fruitStockLabel.text = fruitStockDouble
+        }
+    }
     
     @IBAction func closeButtonTapped(_ sender: UIButton) {
-        
+        for changedFruitStock in fruitStockLabels {
+            guard let fruit = Fruits(rawValue: changedFruitStock.tag),
+                  let fruitStock = changedFruitStock.text,
+                  let changedFruitStock = Int(fruitStock) else { return }
+            FruitStore.shared.fruits[fruit]?.stock = changedFruitStock
+        }
+        print(FruitStore.shared.fruits)
     }
     
-    private func setFruitLabel() {
-        strawberryLabel.text = String(FruitStore.shared.fruits[.strawberry]?.stock ?? 0)
-        bananaLabel.text = String(FruitStore.shared.fruits[.banana]?.stock ?? 0)
-        pineappleLabel.text = String(FruitStore.shared.fruits[.pineapple]?.stock ?? 0)
-        kiwiLabel.text = String(FruitStore.shared.fruits[.kiwi]?.stock ?? 0)
-        mangoLabel.text = String(FruitStore.shared.fruits[.mango]?.stock ?? 0)
+    @IBAction func stepperPressed(_ sender: UIStepper) {
+        let selectedButtonTag = sender.tag
+        let pairedLabel = fruitStockLabels[selectedButtonTag]
+        pairedLabel.text = String(Int(sender.value))
     }
+    
 }
