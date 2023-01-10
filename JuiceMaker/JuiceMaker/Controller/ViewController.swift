@@ -7,8 +7,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    
     @IBOutlet weak var strawberryCurrentStock: UILabel!
     @IBOutlet weak var bananaCurrentStock: UILabel!
     @IBOutlet weak var pineappleCurrentStock: UILabel!
@@ -30,11 +28,9 @@ class ViewController: UIViewController {
         mangoCurrentStock.text = String(juiceMaker.fruitStore.numberOf(fruit: .mango))
     }
     
-    
     @IBAction func changeStockButtonTapped(_ sender: Any) {
         print("재고수정버튼")
     }
-    
     
     @IBAction func JuiceOrderButtonTapped(_ sender: UIButton) {
         switch sender.currentTitle {
@@ -79,15 +75,12 @@ class ViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "예",
                                           style: UIAlertAction.Style.default,
                                           handler: { _ in
-                //Cancel Action
-                //재고 수정 화면으로 이동할 것
+                // 재고 수정 화면으로 이동 코드
             }))
             
             alert.addAction(UIAlertAction(title: "아니오",
                                           style: UIAlertAction.Style.default,
-                                          handler: {(_: UIAlertAction!) in
-                // nothing to do
-            }))
+                                          handler: {(_: UIAlertAction!) in }))
             
             self.present(alert, animated: true, completion: nil)
         }
