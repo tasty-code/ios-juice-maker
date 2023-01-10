@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NUB-eZ-xga">
     <device id="retina6_12" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Store View Controller-->
+        <!--재고 수정-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="StoreViewController" id="Y6W-OH-hqX" customClass="StoreViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="pxR-2g-z9C">
-                                <rect key="frame" x="16" y="79" width="820" height="158"/>
+                                <rect key="frame" x="16" y="111" width="820" height="158"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="C8K-DK-u3I">
                                         <rect key="frame" x="0.0" y="0.0" width="151.33333333333334" height="158"/>
@@ -38,6 +38,9 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="MnR-hs-VkW">
                                                 <rect key="frame" x="28.666666666666657" y="126" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="stockStepperDidTap:" destination="Y6W-OH-hqX" eventType="valueChanged" id="2XX-FI-zOS"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                         <constraints>
@@ -57,15 +60,18 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Skf-nd-yeg">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Skf-nd-yeg">
                                                 <rect key="frame" x="28.333333333333314" y="91.666666666666657" width="94" height="26.333333333333329"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="IZ6-dK-cHt">
+                                            <stepper opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="IZ6-dK-cHt">
                                                 <rect key="frame" x="28.333333333333314" y="126" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="stockStepperDidTap:" destination="Y6W-OH-hqX" eventType="valueChanged" id="kbb-ex-3ka"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                         <constraints>
@@ -85,15 +91,18 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="s2u-af-3fQ">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="s2u-af-3fQ">
                                                 <rect key="frame" x="28.666666666666686" y="91.666666666666657" width="94" height="26.333333333333329"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="VcE-hL-IZT">
+                                            <stepper opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="VcE-hL-IZT">
                                                 <rect key="frame" x="28.666666666666686" y="126" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="stockStepperDidTap:" destination="Y6W-OH-hqX" eventType="valueChanged" id="PnZ-R1-07P"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                         <constraints>
@@ -113,15 +122,18 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Shn-S9-oet">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Shn-S9-oet">
                                                 <rect key="frame" x="28.666666666666742" y="91.666666666666657" width="94" height="26.333333333333329"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Zte-vD-EYH">
+                                            <stepper opaque="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Zte-vD-EYH">
                                                 <rect key="frame" x="28.666666666666742" y="126" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="stockStepperDidTap:" destination="Y6W-OH-hqX" eventType="valueChanged" id="uzG-bf-gZD"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                         <constraints>
@@ -141,15 +153,18 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oId-k5-j2Q">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oId-k5-j2Q">
                                                 <rect key="frame" x="28.666666666666742" y="91.666666666666657" width="94" height="26.333333333333329"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="rC9-2X-3XB">
+                                            <stepper opaque="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="rC9-2X-3XB">
                                                 <rect key="frame" x="28.666666666666742" y="126" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="stockStepperDidTap:" destination="Y6W-OH-hqX" eventType="valueChanged" id="fvg-IA-yzN"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                         <constraints>
@@ -173,10 +188,48 @@
                             <constraint firstItem="pxR-2g-z9C" firstAttribute="leading" secondItem="Zt7-5E-zuS" secondAttribute="leading" constant="16" id="mkS-Mz-yDq"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="재고 수정" leftItemsSupplementBackButton="YES" id="7Y8-2I-otm">
+                        <barButtonItem key="backBarButtonItem" title="돌아가기" id="zMR-Ya-IZg"/>
+                        <barButtonItem key="rightBarButtonItem" title="완료" id="6jP-TY-T6w">
+                            <connections>
+                                <action selector="confirmChangedStockButtonDidTap:" destination="Y6W-OH-hqX" id="Viu-dF-G3v"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outletCollection property="fruitStockSteppers" destination="MnR-hs-VkW" collectionClass="NSMutableArray" id="LLD-WT-2FJ"/>
+                        <outletCollection property="fruitStockLabels" destination="hSg-99-icS" collectionClass="NSMutableArray" id="hFH-vE-lqr"/>
+                        <outletCollection property="fruitStockLabels" destination="Skf-nd-yeg" collectionClass="NSMutableArray" id="7j6-Wu-n9N"/>
+                        <outletCollection property="fruitStockLabels" destination="s2u-af-3fQ" collectionClass="NSMutableArray" id="WNh-yW-zPM"/>
+                        <outletCollection property="fruitStockLabels" destination="Shn-S9-oet" collectionClass="NSMutableArray" id="wjz-wm-BxB"/>
+                        <outletCollection property="fruitStockLabels" destination="oId-k5-j2Q" collectionClass="NSMutableArray" id="Eb2-jF-oBC"/>
+                        <outletCollection property="fruitStockSteppers" destination="IZ6-dK-cHt" collectionClass="NSMutableArray" id="Au4-ma-2rd"/>
+                        <outletCollection property="fruitStockSteppers" destination="VcE-hL-IZT" collectionClass="NSMutableArray" id="TIi-Ff-eVt"/>
+                        <outletCollection property="fruitStockSteppers" destination="Zte-vD-EYH" collectionClass="NSMutableArray" id="tWt-sp-VRd"/>
+                        <outletCollection property="fruitStockSteppers" destination="rC9-2X-3XB" collectionClass="NSMutableArray" id="vWo-5h-0bY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="29" y="-2"/>
+            <point key="canvasLocation" x="779.57746478873241" y="-2.2900763358778624"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="pXG-yo-GBL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NUB-eZ-xga" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dgV-gV-kdE">
+                        <rect key="frame" x="0.0" y="59" width="852" height="32"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="BJo-cX-n4u"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="flS-0l-BRn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="28.87323943661972" y="-2.2900763358778624"/>
         </scene>
     </scenes>
     <resources>
