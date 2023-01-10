@@ -22,7 +22,7 @@ final class JuiceMakerViewController: UIViewController {
         let alert = UIAlertController(title: nil, message: "\(juiceName) 나왔습니다! 맛있게 드세요!", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .cancel, handler : nil)
         alert.addAction(okAction)
-        present(alert, animated: false, completion: nil)
+        present(alert, animated: false)
     }
 
     func outOfStockAlert() {
@@ -34,12 +34,11 @@ final class JuiceMakerViewController: UIViewController {
         alert.addAction(okAction)
         let noAction = UIAlertAction(title: "아니오", style: .default, handler : nil)
         alert.addAction(noAction)
-        present(alert, animated: false, completion: nil)
+        present(alert, animated: false)
     }
 
-    func changeStockLabel(juice: Juice) throws {
-        let recipe = juice.recipe
-        for (fruit, _) in recipe {
+    func changeStockLabel(juice: Juice) {
+        for (fruit, _) in juice.recipe {
             let fruitStock = juiceMaker.fruitStore.stock(byFruit: fruit)
             stockLabels[fruit.rawValue].text = String(fruitStock)
         }
@@ -49,7 +48,7 @@ final class JuiceMakerViewController: UIViewController {
     func order(juice: Juice) {
         do {
             try juiceMaker.make(juice: juice)
-            try changeStockLabel(juice: juice)
+            changeStockLabel(juice: juice)
         } catch JuiceMakerError.outOfStock {
             outOfStockAlert()
         } catch {
@@ -62,9 +61,8 @@ final class JuiceMakerViewController: UIViewController {
             return
         }
         let juiceName = buttonName.components(separatedBy: " ")[0]
-        for juice in Juice.allCases where juiceName == juice.rawValue {
-            order(juice: juice)
-        }
+        let juice = Juice.allCases.filter { $0.rawValue == juiceName }[0]
+        order(juice: juice)
     }
 }
 

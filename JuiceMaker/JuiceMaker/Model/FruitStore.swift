@@ -29,8 +29,7 @@ final class FruitStore {
     }
 
     func addStock(fruit: Fruit, count: UInt) throws {
-        let fruitStock = stock(byFruit: fruit)
-        self.stockByFruit[fruit] = fruitStock + count
+        self.stockByFruit[fruit] = stock(byFruit: fruit) + count
     }
     
     func stock(byFruit fruit: Fruit) -> UInt {
