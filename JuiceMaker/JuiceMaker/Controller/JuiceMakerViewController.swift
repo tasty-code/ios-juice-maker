@@ -6,17 +6,17 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class JuiceMakerViewController: UIViewController {
     
-    @IBOutlet weak var strawberryStock: UILabel!
-    @IBOutlet weak var bananaStock: UILabel!
-    @IBOutlet weak var pineappleStock: UILabel!
-    @IBOutlet weak var kiwiStock: UILabel!
-    @IBOutlet weak var mangoStock: UILabel!
+    @IBOutlet private weak var strawberryStock: UILabel!
+    @IBOutlet private weak var bananaStock: UILabel!
+    @IBOutlet private weak var pineappleStock: UILabel!
+    @IBOutlet private weak var kiwiStock: UILabel!
+    @IBOutlet private weak var mangoStock: UILabel!
     
-    var fruitLabelFruitMap: [UILabel: Fruit]!
-    var fruitStore = FruitStore(defaultStock: 20)
-    var juiceMaker: JuiceMaker<FruitStore>!
+    private var fruitLabelFruitMap: [UILabel: Fruit]!
+    private var fruitStore = FruitStore(defaultStock: 20)
+    private var juiceMaker: JuiceMaker<FruitStore>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +29,7 @@ class ViewController: UIViewController {
             kiwiStock: .kiwi,
             mangoStock: .mango
         ]
+        
         updateStockValue()
     }
     
@@ -40,22 +41,23 @@ class ViewController: UIViewController {
         let orderName = sender.currentTitle
         let juiceName = orderName?.replacingOccurrences(of: " 주문", with: "")
         guard let juice = Juice(rawValue: juiceName ?? "") else {
-            print("팔 수 없음")
+            showAlert(message: "팔 수 없습니다.")
             return
         }
+        
         do {
-            _ = try juiceMaker.make(juice: juice)
-            showSuccessAlert(juice: juice)
+            try juiceMaker.make(juice: juice)
+            showAlert(message: "\(juice.rawValue) 나왔습니다! 맛있게 드세요!")
         } catch is JuiceMakerError {
             showFailAlert()
         } catch {
-            print(error)
+            showAlert(message: "\(error)")
         }
+        
         updateStockValue()
     }
     
-    
-    func showStoreView() {
+    private func showStoreView() {
         guard let storeNaviVC = storyboard?.instantiateViewController(withIdentifier: "storeNavi") as? UINavigationController else { return }
         
         storeNaviVC.modalPresentationStyle = .fullScreen
@@ -64,17 +66,7 @@ class ViewController: UIViewController {
         present(storeNaviVC, animated: true)
     }
     
-    
-    func test() {
-        do {
-            let juice = try juiceMaker.make(juice: .strawberryJuice)
-            print(juice)
-        } catch {
-            print(error)
-        }
-    }
-    
-    func updateStockValue() {
+    private func updateStockValue() {
         for (label, fruit) in fruitLabelFruitMap {
             label.text = String(fruitStore.items[fruit, default: 0])
         }
@@ -82,20 +74,8 @@ class ViewController: UIViewController {
 }
 
 //MARK: - Alert 구현
-extension ViewController {
-    func showSuccessAlert(juice: Juice) {
-        let successAlert = UIAlertController(title: nil,
-                                             message: "\(juice.rawValue) 나왔습니다! 맛있게 드세요!",
-                                             preferredStyle: .alert)
-        
-        let confirmAction = UIAlertAction(title: "확인",
-                                          style: .default)
-        
-        successAlert.addAction(confirmAction)
-        present(successAlert, animated: true)
-    }
-    
-    func showFailAlert() {
+extension JuiceMakerViewController {
+    private func showFailAlert() {
         let failAlert = UIAlertController(title: nil,
                                           message: "재고가 모자라요. 재고를 수정할까요?",
                                           preferredStyle: .alert)
@@ -109,5 +89,17 @@ extension ViewController {
         failAlert.addAction(confirmAction)
         failAlert.addAction(cancelAction)
         present(failAlert, animated: true)
+    }
+    
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: nil,
+                                             message: message,
+                                             preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "확인",
+                                          style: .default)
+        
+        alert.addAction(confirmAction)
+        present(alert, animated: true)
     }
 }
