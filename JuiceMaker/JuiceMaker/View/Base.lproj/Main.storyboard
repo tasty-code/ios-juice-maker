@@ -248,7 +248,6 @@
                         <outletCollection property="stockLabels" destination="ccQ-Dk-PuY" collectionClass="NSMutableArray" id="zht-fJ-vnd"/>
                         <outletCollection property="stockLabels" destination="FZq-de-TJG" collectionClass="NSMutableArray" id="V3H-23-oJh"/>
                         <outletCollection property="stockLabels" destination="3Ce-SU-JeH" collectionClass="NSMutableArray" id="aEw-0X-Bzw"/>
-                        <segue destination="Yu1-lM-nqp" kind="show" id="cJJ-d2-GWW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -406,7 +405,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cJJ-d2-GWW"/>
+        <segue reference="7YG-Xk-pcI"/>
     </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="AccentColor">
