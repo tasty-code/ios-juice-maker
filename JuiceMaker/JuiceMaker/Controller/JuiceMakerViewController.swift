@@ -13,8 +13,8 @@ final class JuiceMakerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        for stock in stockLabels {
-            stock.text = String(FruitStore.defaultStock)
+        for stockLabel in stockLabels {
+            stockLabel.text = String(10)
         }
     }
 
