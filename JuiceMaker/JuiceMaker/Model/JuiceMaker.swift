@@ -10,16 +10,9 @@ import Foundation
 struct JuiceMaker {
     let fruitStore = FruitStore()
 
-    func hasEnoughStock(fruit: FruitStore.Fruit, count: UInt) throws {
-        let stock = fruitStore.stock(byFruit: fruit)
-        guard stock >= count else {
-            throw JuiceMakerError.outOfStock
-        }
-    }
-
     func make(juice: Juice) throws {
-        for (fruit, count) in juice.recipe {
-            try hasEnoughStock(fruit: fruit, count: count)
+        if !fruitStore.hasEnoughStock(countByFruit: juice.recipe) {
+            throw JuiceMakerError.outOfStock
         }
         for (fruit, count) in juice.recipe {
             try fruitStore.subtractStock(fruit: fruit, count: count)

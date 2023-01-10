@@ -36,4 +36,9 @@ final class FruitStore {
     func stock(byFruit fruit: Fruit) -> UInt {
         return stockByFruit.filter { $0.key == fruit }[0].value
     }
+
+    func hasEnoughStock(countByFruit: [Fruit: UInt]) -> Bool {
+        let notEnoughStock = countByFruit.filter { $0.value > stock(byFruit: $0.key) }
+        return notEnoughStock.isEmpty
+    }
 }
