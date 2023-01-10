@@ -46,8 +46,6 @@ final class JuiceMakerTests: XCTestCase {
     }
 
     func test_제조가능_JuiceMaker() {
-        let juice: Juice!
-        juice = try? JMsut.make(juice: .bananaJuice)
-        XCTAssertEqual(juice, Juice.bananaJuice)
+        XCTAssertNoThrow(try JMsut.make(juice: .bananaJuice))
     }
 }
