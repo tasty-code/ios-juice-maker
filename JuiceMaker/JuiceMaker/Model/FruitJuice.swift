@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum FruitJuice: Int {
+enum FruitJuice {
     case strawberryBanana
     case strawberry
     case banana
@@ -15,6 +15,27 @@ enum FruitJuice: Int {
     case mangoKiwi
     case kiwi
     case mango
+    
+    init?(tag: Int) {
+        switch tag {
+        case 0:
+            self = .strawberryBanana
+        case 1:
+            self = .strawberry
+        case 2:
+            self = .banana
+        case 3:
+            self = .pineapple
+        case 4:
+            self = .mangoKiwi
+        case 5:
+            self = .kiwi
+        case 6:
+            self = .mango
+        default:
+            return nil
+        }
+    }
     
     var recipe: [Fruit: Int] {
         switch self {

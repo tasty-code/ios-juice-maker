@@ -24,7 +24,7 @@ final class JuiceViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction private func juiceOrderButtonTapped(_ sender: UIButton) {
-        guard let fruitJuice = FruitJuice(rawValue: sender.tag) else { return }
+        guard let fruitJuice = FruitJuice(tag: sender.tag) else { return }
         
         do {
             try juiceMaker.makeJuice(of: fruitJuice)
@@ -44,7 +44,7 @@ final class JuiceViewController: UIViewController {
     
     // MARK: - Helpers
     private func stockLabel(of fruit: Fruit) -> UILabel? {
-        return fruitStockLabels.first { $0.tag == fruit.rawValue }
+        return fruitStockLabels.first { Fruit(tag: $0.tag) == fruit }
     }
     
     private func updateStockLabel(of fruit: Fruit) {
@@ -62,7 +62,7 @@ final class JuiceViewController: UIViewController {
     
     private func updateAllStockLabels() {
         for stockLabel in fruitStockLabels {
-            guard let fruit = Fruit(rawValue: stockLabel.tag) else { return }
+            guard let fruit = Fruit(tag: stockLabel.tag) else { return }
             guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
             stockLabel.text = String(fruitStock)
         }

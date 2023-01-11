@@ -21,7 +21,7 @@ final class StockViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction private func stepperValueChanged(_ sender: UIStepper) {
-        guard let fruit = Fruit(rawValue: sender.tag) else { return }
+        guard let fruit = Fruit(tag: sender.tag) else { return }
         let changedStock = Int(sender.value)
         
         do {
@@ -44,24 +44,24 @@ final class StockViewController: UIViewController {
     }
     
     private func stockLabel(of fruit: Fruit) -> UILabel? {
-        return fruitStockLabels.first { $0.tag == fruit.rawValue }
+        return fruitStockLabels.first { Fruit(tag: $0.tag) == fruit }
     }
     
     private func initializeAllStockLabels() {
         for stockLabel in fruitStockLabels {
-            guard let fruit = Fruit(rawValue: stockLabel.tag) else { return }
+            guard let fruit = Fruit(tag: stockLabel.tag) else { return }
             guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
             stockLabel.text = String(fruitStock)
         }
     }
     
     private func stockStepper(of fruit: Fruit) -> UIStepper? {
-        return fruitStockSteppers.first { $0.tag == fruit.rawValue }
+        return fruitStockSteppers.first { Fruit(tag: $0.tag) == fruit }
     }
     
     private func initializeAllStockSteppers() {
         for stockStepper in fruitStockSteppers {
-            guard let fruit = Fruit(rawValue: stockStepper.tag) else { return }
+            guard let fruit = Fruit(tag: stockStepper.tag) else { return }
             guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
             stockStepper.value = Double(fruitStock)
         }
