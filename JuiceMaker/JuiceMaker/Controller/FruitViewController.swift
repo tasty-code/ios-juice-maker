@@ -5,7 +5,7 @@
 //  Created by Jason on 2023/01/11.
 //
 
-import Foundation
+import UIKit
 
 class FruitViewController: UIViewController {
     
