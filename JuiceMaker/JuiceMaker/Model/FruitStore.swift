@@ -13,6 +13,10 @@ final class FruitStore {
     private(set) var stock: [Fruit: Int] = [:]
     
     private init() {
+        resetStockValue()
+    }
+    
+    func resetStockValue() {
         Fruit.allCases.forEach { fruit in
             stock[fruit] = Constants.Number.initialFruitStockQuantity
         }

@@ -12,9 +12,7 @@ final class FruitStoreTests: XCTestCase {
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        for fruit in Fruit.allCases {
-            try FruitStore.shared.setStock(of: fruit, to: 10)
-        }
+        FruitStore.shared.resetStockValue()
     }
      
     func test_망고_재고를_10만큼_변경했을때_재고가_20이된다() throws {

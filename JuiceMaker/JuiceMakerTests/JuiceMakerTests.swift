@@ -16,6 +16,7 @@ final class JuiceMakerTests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         sut = JuiceMaker()
+        FruitStore.shared.resetStockValue()
     }
     
     override func tearDownWithError() throws {
