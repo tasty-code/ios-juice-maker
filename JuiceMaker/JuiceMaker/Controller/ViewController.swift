@@ -54,11 +54,11 @@ class ViewController: UIViewController {
     
     func refreshCurrentStockLabel() {
         do {
-            strawberryCurrentStock.text = String(try juiceMaker.fruitStore.numberOf(fruit: .strawberry))
-            bananaCurrentStock.text = String(try juiceMaker.fruitStore.numberOf(fruit: .banana))
-            pineappleCurrentStock.text = String(try juiceMaker.fruitStore.numberOf(fruit: .pineapple))
-            kiwiCurrentStock.text = String(try juiceMaker.fruitStore.numberOf(fruit: .kiwi))
-            mangoCurrentStock.text = String(try juiceMaker.fruitStore.numberOf(fruit: .mango))
+            strawberryCurrentStock.text = String(try juiceMaker.fruitStore.quantity(of: .strawberry))
+            bananaCurrentStock.text = String(try juiceMaker.fruitStore.quantity(of: .banana))
+            pineappleCurrentStock.text = String(try juiceMaker.fruitStore.quantity(of: .pineapple))
+            kiwiCurrentStock.text = String(try juiceMaker.fruitStore.quantity(of: .kiwi))
+            mangoCurrentStock.text = String(try juiceMaker.fruitStore.quantity(of: .mango))
         } catch {
             print(error.localizedDescription)
         }

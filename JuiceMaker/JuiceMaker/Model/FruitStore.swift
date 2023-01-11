@@ -12,7 +12,7 @@ class FruitStore {
         return stock
     }()
     
-    func numberOf(fruit: Fruit) throws -> UInt {
+    func quantity(of fruit: Fruit) throws -> UInt {
         guard let currentStock = fruitStock[fruit] else {
             throw InfoMessageError.noFruit
         }
