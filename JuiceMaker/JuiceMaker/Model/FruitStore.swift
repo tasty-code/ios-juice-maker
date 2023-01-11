@@ -8,11 +8,17 @@ import Foundation
 
 // 과일 저장소 타입
 final class FruitStore {
+    static let shared = FruitStore()
+    
     private(set) var stock: [Fruit: Int] = [:]
     
-    init() {
+    private init() {
+        resetStockValue()
+    }
+    
+    func resetStockValue() {
         Fruit.allCases.forEach { fruit in
-            stock[fruit] = 10
+            stock[fruit] = Constants.Number.initialFruitStockQuantity
         }
     }
     
@@ -25,5 +31,10 @@ final class FruitStore {
         }
         
         stock[fruit] = fruitStock + number
+    }
+    
+    func setStock(of fruit: Fruit, to number: Int) throws {
+        guard number >= 0 else { throw StockError.notEnoughToChange }
+        stock[fruit] = Int(number)
     }
 }
