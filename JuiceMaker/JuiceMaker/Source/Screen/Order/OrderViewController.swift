@@ -13,7 +13,6 @@ protocol OrderDelegate: AnyObject {
 final class OrderViewController: UIViewController, OrderDelegate {
     private let fruitStore = FruitStore.shared
     private let juiceMaker = JuiceMaker()
-    weak var delegate: OrderDelegate?
     
     @IBOutlet private var fruitCountLabels: [UILabel]!
     @IBOutlet private var juiceOrderButtons: [UIButton]!

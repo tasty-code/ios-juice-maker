@@ -12,7 +12,6 @@ protocol StoreDelegate: AnyObject {
 
 final class StoreViewController: UIViewController, StoreDelegate {
     private let fruitStore = FruitStore.shared
-    weak var delegate: StoreDelegate?
     
     @IBOutlet private var fruitStockLabels: [UILabel]!
     @IBOutlet private var fruitStockSteppers: [UIStepper]!
