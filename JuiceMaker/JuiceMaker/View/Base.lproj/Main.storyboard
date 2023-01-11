@@ -376,8 +376,12 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ePK-nE-zDV">
                                 <rect key="frame" x="0.0" y="59" width="852" height="32"/>
                                 <items>
-                                    <navigationItem title="Title" id="d2C-N4-xrC">
-                                        <barButtonItem key="rightBarButtonItem" title="닫기" style="plain" id="Fh5-RJ-PZZ"/>
+                                    <navigationItem title="재고 추가" id="d2C-N4-xrC">
+                                        <barButtonItem key="rightBarButtonItem" title="닫기" style="plain" id="Fh5-RJ-PZZ">
+                                            <connections>
+                                                <action selector="backButtonTapped:" destination="Yu1-lM-nqp" id="kG5-N1-71u"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -394,6 +398,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="재고 관리" id="g4W-fY-l7r"/>
+                    <connections>
+                        <outletCollection property="fruitLabels" destination="0yV-kn-zaT" collectionClass="NSMutableArray" id="UkJ-GR-rqP"/>
+                        <outletCollection property="fruitLabels" destination="gKu-86-RhI" collectionClass="NSMutableArray" id="ZdQ-n4-AT9"/>
+                        <outletCollection property="fruitLabels" destination="MpT-VW-hCb" collectionClass="NSMutableArray" id="mwA-17-6fo"/>
+                        <outletCollection property="fruitLabels" destination="ZDv-1m-HBY" collectionClass="NSMutableArray" id="eyb-XU-BVT"/>
+                        <outletCollection property="fruitLabels" destination="YJI-ER-LJR" collectionClass="NSMutableArray" id="yRy-7k-nLN"/>
+                        <outletCollection property="fruitSteppers" destination="jdK-2Q-htI" collectionClass="NSMutableArray" id="dQn-Xu-x6x"/>
+                        <outletCollection property="fruitSteppers" destination="bKL-L7-1sl" collectionClass="NSMutableArray" id="hWa-bE-0L1"/>
+                        <outletCollection property="fruitSteppers" destination="Id1-hc-dOg" collectionClass="NSMutableArray" id="2Ov-is-9GC"/>
+                        <outletCollection property="fruitSteppers" destination="QzU-2t-TQM" collectionClass="NSMutableArray" id="oGj-uB-Oeg"/>
+                        <outletCollection property="fruitSteppers" destination="mBG-0f-seD" collectionClass="NSMutableArray" id="uNn-KP-BOq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
             </objects>
