@@ -7,14 +7,14 @@
 
 import Foundation
 
-enum FruitSingleJuice: CaseIterable {
+enum SingleFruitJuice: CaseIterable {
     case strawberry
     case banana
     case kiwi
     case pineApple
     case mango
     
-    var recipe: [FruitList: Int]{
+    var recipe: [Fruit: Int]{
         switch self {
         case .strawberry:
             return [.strawberry: 16]
