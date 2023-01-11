@@ -25,15 +25,17 @@ final class JuiceViewController: UIViewController {
     // MARK: - Actions
     @IBAction private func juiceOrderButtonTapped(_ sender: UIButton) {
         guard let fruitJuice = FruitJuice(rawValue: sender.tag) else { return }
+        
         do {
             try juiceMaker.makeJuice(of: fruitJuice)
-            showMakeJuiceCompletedAlert(of: fruitJuice)
-            updateStockLabels(of: fruitJuice)
         } catch StockError.notEnoughToMakeJuice {
             showMakeJuiceFailedAlert()
         } catch {
             print(error.localizedDescription)
         }
+        
+        showMakeJuiceCompletedAlert(of: fruitJuice)
+        updateStockLabels(of: fruitJuice)
     }
     
     @IBAction private func changeStockButtonTapped(_ sender: UIBarButtonItem) {
