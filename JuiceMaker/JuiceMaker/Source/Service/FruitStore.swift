@@ -22,6 +22,11 @@ final class FruitStore {
         stocks.updateValue(stock - amount, forKey: fruit)
     }
     
+    func increase(of fruit: Fruits, amount: Int) {
+        guard let stock = stocks[fruit] else { return }
+        stocks.updateValue(stock + amount, forKey: fruit)
+    }
+    
     private init(initialStock: Int) {
         Fruits.allCases.forEach { stocks[$0] = initialStock }
     }
