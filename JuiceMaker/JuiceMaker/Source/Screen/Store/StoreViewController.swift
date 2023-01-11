@@ -26,7 +26,7 @@ final class StoreViewController: UIViewController, StoreDelegate {
     @IBAction private func stockStepperDidTap(_ sender: UIStepper) {
         guard let stepper = fruitStockSteppers[safe: sender.tag] else { return }
         guard let fruit = Fruits.allCases[safe: stepper.tag] else { return }
-        fruitStore.changeStock(of: fruit, count: Int(stepper.value))
+        fruitStore.update(fruit, count: Int(stepper.value))
     }
     
     @IBAction private func closeButtonDidTap(_ sender: UIBarButtonItem) {

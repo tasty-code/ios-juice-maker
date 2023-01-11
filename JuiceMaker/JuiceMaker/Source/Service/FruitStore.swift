@@ -24,7 +24,7 @@ final class FruitStore {
         return stock
     }
     
-    func changeStock(of fruit: Fruits, count: Int) {
+    func update(_ fruit: Fruits, count: Int) {
         stocks.updateValue(count, forKey: fruit)
     }
     
