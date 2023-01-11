@@ -7,16 +7,16 @@
 import Foundation
 
 final class FruitStore {
-    static let shared = FruitStore()
-    var store = [FruitList: Int]()
+    static let shared = FruitStore(initialStock: 10)
+    var store = [Fruit: Int]()
     
-    private init() {
-        for fruit in FruitList.allCases {
-            store[fruit] = 10
+    private init(initialStock: Int) {
+        Fruit.allCases.forEach {
+            store[$0] = initialStock
         }
     }
     
-    func changeStock(fruit: FruitList, number: Int) {
+    func changeStock(fruit: Fruit, number: Int) {
         switch fruit {
         case .strawberry:
             store.updateValue(number, forKey: .strawberry)
@@ -31,10 +31,10 @@ final class FruitStore {
         }
     }
     
-    func storeValue(fruit type: FruitList) -> Int? {
+    func storeValue(fruit type: Fruit) -> Int? {
         var currentStoreValue: Int?
         
-        store.forEach { (key: FruitList, value: Int) in
+        store.forEach { (key: Fruit, value: Int) in
             if key == type {
                 switch key {
                 case .strawberry:
@@ -53,7 +53,7 @@ final class FruitStore {
         return currentStoreValue
     }
     
-    func isPossibleMakeSingle(juice: FruitList, stockNumber: Int) -> Bool {
+    func isPossibleMakeSingle(juice: Fruit, stockNumber: Int) -> Bool {
         switch juice {
         case .strawberry:
             guard stockNumber >= 16 else {
@@ -79,7 +79,7 @@ final class FruitStore {
         return true
     }
     
-    func isPossibleMakeMix(juice: FruitMixJuice, stockNumber: (Int, Int)) -> Bool {
+    func isPossibleMakeMix(juice: MixFruitJuice, stockNumber: (Int, Int)) -> Bool {
         switch juice {
         case .strawberryAndBanana:
             guard stockNumber.0 >= 10, stockNumber.1 >= 1 else {
