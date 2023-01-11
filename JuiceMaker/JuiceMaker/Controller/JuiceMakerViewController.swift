@@ -14,6 +14,10 @@ final class JuiceMakerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateStockLabel()
+    }
+    
+    func updateStockLabel() {
         for (stockLabel, stock) in zip(stockLabels, fruitStore.stockByFruit.values) {
             stockLabel.text = String(stock)
         }

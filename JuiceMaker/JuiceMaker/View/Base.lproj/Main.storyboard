@@ -252,7 +252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="806" y="65"/>
+            <point key="canvasLocation" x="799" y="92"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LzN-aE-P5w">
@@ -383,30 +383,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1637" y="901"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="cAf-jL-tPK">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WwV-Td-3Bn" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ufw-7J-6hD">
-                        <rect key="frame" x="0.0" y="47" width="844" height="32"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Yu1-lM-nqp" kind="relationship" relationship="rootViewController" id="wH1-3A-cBm"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2s5-lS-967" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1637" y="21"/>
+            <point key="canvasLocation" x="1624" y="92"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="7YG-Xk-pcI"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
