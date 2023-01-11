@@ -21,26 +21,11 @@ final class FruitStore {
         store.updateValue(originStock - stock, forKey: fruit)
     }
     
-    func storeValue(fruit type: Fruit) -> Int? {
-        var currentStoreValue: Int?
-        
-        store.forEach { (key: Fruit, value: Int) in
-            if key == type {
-                switch key {
-                case .strawberry:
-                    currentStoreValue = store[.strawberry]
-                case .banana:
-                    currentStoreValue = store[.banana]
-                case .kiwi:
-                    currentStoreValue = store[.kiwi]
-                case .pineApple:
-                    currentStoreValue = store[.pineApple]
-                case .mango:
-                    currentStoreValue = store[.mango]
-                }
-            }
+    func sendBackToAvailableStock(fruit type: Fruit) -> Int {
+        guard let availableStock = store[type] else {
+            return 0
         }
-        return currentStoreValue
+        return availableStock
     }
     
     func isPossibleMakeSingle(juice: Fruit, stockNumber: Int) -> Bool {
