@@ -13,19 +13,19 @@ struct JuiceMaker: Makeable {
     func make(single juice: SingleFruitJuice) {
         switch juice {
         case .strawberry:
-            requestTo(single: .strawberry)
+            blending(juice: .strawberry)
             break
         case .banana:
-            requestTo(single: .banana)
+            blending(juice: .banana)
             break
         case .kiwi:
-            requestTo(single: .kiwi)
+            blending(juice: .kiwi)
             break
         case .pineApple:
-            requestTo(single: .pineApple)
+            blending(juice: .pineApple)
             break
         case .mango:
-            requestTo(single: .mango)
+            blending(juice: .mango)
             break
         }
     }
