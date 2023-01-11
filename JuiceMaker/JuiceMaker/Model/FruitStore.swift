@@ -25,7 +25,7 @@ class FruitStore {
     func checkStock(message: [OrderMessage]) throws {
         for recipe in message {
             guard recipe.amount <= fruits[recipe.fruitName]?.stock ?? 0 else {
-                throw Errors.ouOfStock
+                throw Errors.outOfStock
             }
         }
     }

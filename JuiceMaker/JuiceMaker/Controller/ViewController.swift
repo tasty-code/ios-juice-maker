@@ -28,7 +28,7 @@ final class ViewController: UIViewController {
         setFruitLabel()
     }
     
-   @objc private func setFruitLabel() {
+    @objc private func setFruitLabel() {
         strawberryLabel.text = String(FruitStore.shared.fruits[.strawberry]?.stock ?? 0)
         bananaLabel.text = String(FruitStore.shared.fruits[.banana]?.stock ?? 0)
         pineappleLabel.text = String(FruitStore.shared.fruits[.pineapple]?.stock ?? 0)
@@ -45,28 +45,33 @@ final class ViewController: UIViewController {
         do{
             try FruitStore.shared.checkStock(message: recipe)
             juiceMaker.makeJuice(by: recipe)
-            popSingleChooseAlert(with: orderedJuiceName + Messages.orderSuccess.descripsion)
+            popAlert(with: orderedJuiceName + Messages.orderSuccess.descripsion, error: nil)
         } catch {
-            popDefaultAlert(with: error.localizedDescription)
+            popAlert(with: nil, error: error)
         }
         setFruitLabel()
     }
-
-    private func popDefaultAlert(with message: String) {
-        let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
+    
+    private func popAlert(with message: String?, error: Error?) {
+        if message != nil && error != nil { return }
         
-        alert.addAction(UIAlertAction(title: "예", style: .default, handler: {_ in
-            self.moveToEditStockView()}))
-        alert.addAction(UIAlertAction(title: "아니오", style: .destructive, handler: nil))
-        present(alert, animated: true)
+        if let message {
+            let alert = UIAlertController(title:  message, message: nil, preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "예", style: .default, handler: nil))
+            present(alert, animated: true)
+        }
+        if let error {
+            let alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "예", style: .default, handler: {_ in
+                self.moveToEditStockView()}))
+            alert.addAction(UIAlertAction(title: "아니오", style: .destructive, handler: nil))
+            present(alert, animated: true)
+        }
     }
     
-    private func popSingleChooseAlert(with message: String) {
-        let alert = UIAlertController(title:  message, message: nil, preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "예", style: .default, handler: nil))
-        present(alert, animated: true)
-    }
+    
     
     @IBAction func EditStockButton(_ sender: UIBarButtonItem) {
         moveToEditStockView()
