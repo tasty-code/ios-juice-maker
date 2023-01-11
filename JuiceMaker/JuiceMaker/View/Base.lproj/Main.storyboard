@@ -373,13 +373,24 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ePK-nE-zDV">
+                                <rect key="frame" x="0.0" y="59" width="852" height="32"/>
+                                <items>
+                                    <navigationItem title="Title" id="d2C-N4-xrC">
+                                        <barButtonItem key="rightBarButtonItem" title="닫기" style="plain" id="Fh5-RJ-PZZ"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gcO-Xb-kNs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Hic-Xg-slQ" firstAttribute="centerY" secondItem="tKV-4l-Vtc" secondAttribute="centerY" id="28d-Gp-xZa"/>
+                            <constraint firstItem="ePK-nE-zDV" firstAttribute="centerX" secondItem="gcO-Xb-kNs" secondAttribute="centerX" id="NgA-HD-McA"/>
                             <constraint firstItem="Hic-Xg-slQ" firstAttribute="leading" secondItem="gcO-Xb-kNs" secondAttribute="leading" constant="16" id="OpM-nx-QZT"/>
                             <constraint firstItem="gcO-Xb-kNs" firstAttribute="trailing" secondItem="Hic-Xg-slQ" secondAttribute="trailing" constant="16" id="Z6j-Ng-pDp"/>
+                            <constraint firstItem="gcO-Xb-kNs" firstAttribute="top" secondItem="ePK-nE-zDV" secondAttribute="top" id="o3d-08-CNs"/>
+                            <constraint firstItem="ePK-nE-zDV" firstAttribute="width" secondItem="tKV-4l-Vtc" secondAttribute="width" id="zDL-xN-X9O"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="재고 관리" id="g4W-fY-l7r"/>
