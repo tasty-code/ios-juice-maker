@@ -34,19 +34,19 @@ class ViewController: UIViewController {
         case .none:
             break
         case "딸바쥬스 주문":
-            makeJuice(fruitJuice: .strawberryBanana)
+            order(fruitJuice: .strawberryBanana)
         case "딸기쥬스 주문":
-            makeJuice(fruitJuice: .strawberry)
+            order(fruitJuice: .strawberry)
         case "바나나쥬스 주문":
-            makeJuice(fruitJuice: .banana)
+            order(fruitJuice: .banana)
         case "파인애플쥬스 주문":
-            makeJuice(fruitJuice: .pineapple)
+            order(fruitJuice: .pineapple)
         case "망키쥬스 주문":
-            makeJuice(fruitJuice: .mangoKiwi)
+            order(fruitJuice: .mangoKiwi)
         case "키위쥬스 주문":
-            makeJuice(fruitJuice: .kiwi)
+            order(fruitJuice: .kiwi)
         case "망고쥬스 주문":
-            makeJuice(fruitJuice: .mango)
+            order(fruitJuice: .mango)
         default:
             break
         }
@@ -64,43 +64,48 @@ class ViewController: UIViewController {
         }
     }
     
-    func makeJuice(fruitJuice: FruitJuice) {
+    func order(fruitJuice: FruitJuice) {
         do {
             try juiceMaker.make(juiceName: fruitJuice)
         } catch {
-            let failAlert = UIAlertController(title: StringConstatns.failAlertTitle,
-                                              message: StringConstatns.failAlertMessage,
-                                              preferredStyle: UIAlertController.Style.alert)
-            
-            failAlert.addAction(UIAlertAction(title: StringConstatns.yes,
-                                              style: UIAlertAction.Style.default,
-                                              handler: { _ in
-                self.moveToChangeStockView()
-            }))
-            
-            failAlert.addAction(UIAlertAction(title: StringConstatns.no,
-                                              style: UIAlertAction.Style.default,
-                                              handler: {(_: UIAlertAction!) in }))
-            
-            self.present(failAlert, animated: true, completion: nil)
+            showOrderFailAlert()
         }
+        showOrderSucessAlert(fruitJuice: fruitJuice)
         
+        refreshCurrentStockLabel()
+    }
+    
+    func showOrderSucessAlert(fruitJuice: FruitJuice) {
         let successAlert = UIAlertController(title: StringConstatns.successAlertTitle,
                                              message: fruitJuice.rawValue + StringConstatns.successAlertMessage,
                                              preferredStyle: UIAlertController.Style.alert)
-        
         self.present(successAlert, animated: true)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             successAlert.dismiss(animated: true)
         }
+    }
+    
+    func showOrderFailAlert() {
+        let failAlert = UIAlertController(title: StringConstatns.failAlertTitle,
+                                          message: StringConstatns.failAlertMessage,
+                                          preferredStyle: UIAlertController.Style.alert)
         
-        refreshCurrentStockLabel()
+        failAlert.addAction(UIAlertAction(title: StringConstatns.yes,
+                                          style: UIAlertAction.Style.default,
+                                          handler: { _ in
+            self.moveToChangeStockView()
+        }))
+        
+        failAlert.addAction(UIAlertAction(title: StringConstatns.no,
+                                          style: UIAlertAction.Style.default,
+                                          handler: {(_: UIAlertAction!) in }))
+        
+        self.present(failAlert, animated: true, completion: nil)
     }
     
     func moveToChangeStockView() {
         guard let viewController = self.storyboard?.instantiateViewController(identifier: StringConstatns.changeStockViewController) else { return }
         self.navigationController?.pushViewController(viewController, animated: true)
     }
-    
 }
