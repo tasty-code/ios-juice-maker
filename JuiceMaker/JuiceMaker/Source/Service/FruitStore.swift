@@ -28,14 +28,9 @@ final class FruitStore {
         stocks.updateValue(count, forKey: fruit)
     }
     
-    func decrease(of fruit: Fruits, amount: Int) {
+    func consume(_ fruit: Fruits, amount: Int) {
         guard let stock = stocks[fruit] else { return }
         stocks.updateValue(stock - amount, forKey: fruit)
-    }
-    
-    func increase(of fruit: Fruits, amount: Int) {
-        guard let stock = stocks[fruit] else { return }
-        stocks.updateValue(stock + amount, forKey: fruit)
     }
     
     private init(initialStock: Int) {

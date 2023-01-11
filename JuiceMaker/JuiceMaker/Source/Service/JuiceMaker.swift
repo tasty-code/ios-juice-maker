@@ -23,7 +23,7 @@ struct JuiceMaker {
     
     func startBlending(of juice: Juice) {
         juice.recipe.forEach {
-            fruitStore.decrease(of: $0.key, amount: $0.value)
+            fruitStore.consume($0.key, amount: $0.value)
         }
     }
 }
