@@ -36,29 +36,32 @@ class JuiceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        currentStockDisplay(label: juiceStoreCountBundle)
+        currentStockDisplay(on: juiceEmojiBundle, change: juiceStoreCountBundle)
     }
     
-    func currentStockDisplay(label: [UILabel]) {
-        label.forEach { fruitLabel in
-            switch fruitLabel.text {
+    func currentStockDisplay(on emojiLabels: [UILabel], change countLabels: [UILabel]) {
+        for (emojiLabel, countLabel) in zip(emojiLabels, countLabels) {
+            guard let checkTest = emojiLabel.text else {
+                return
+            }
+            
+            switch checkTest {
             case "🍓":
-                label[0].text = currentStock(fruitName: .strawberry)
+                countLabel.text = currentStock(fruitName: .strawberry)
             case "🍌":
-                label[1].text = currentStock(fruitName: .banana)
+                countLabel.text = currentStock(fruitName: .banana)
             case "🍍":
-                label[2].text = currentStock(fruitName: .pineApple)
+                countLabel.text = currentStock(fruitName: .pineApple)
             case "🥝":
-                label[3].text = currentStock(fruitName: .kiwi)
+                countLabel.text = currentStock(fruitName: .kiwi)
             case "🥭":
-                label[4].text = currentStock(fruitName: .mango)
+                countLabel.text = currentStock(fruitName: .mango)
             default:
                 return
             }
         }
-        
     }
-    
+
     func currentStock(fruitName: Fruit) -> String {
         guard let fruitStock = juiceMaker.fruitStore.store[fruitName] else {
             return ""
