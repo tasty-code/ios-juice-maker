@@ -8,8 +8,6 @@
 import Foundation
 
 protocol Makeable {
-    func startMake(single juice: FruitSingleJuice)
-    func startMake(mix juice: FruitMixJuice)
-    func requestTo(single juice: FruitSingleJuice)
-    func requestTo(mix juice: FruitMixJuice)
+    func make(single juice: FruitSingleJuice)
+    func make(mix juice: FruitMixJuice)
 }
