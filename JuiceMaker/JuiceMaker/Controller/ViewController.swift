@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         setup()
     }
     
-    func setup() {
+    private func setup() {
         refreshCurrentStockLabel()
     }
     
