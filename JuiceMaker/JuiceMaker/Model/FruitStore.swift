@@ -28,43 +28,17 @@ final class FruitStore {
         return availableStock
     }
     
-    func isPossibleMakeSingle(juice: Fruit, stockNumber: Int) -> Bool {
-        switch juice {
-        case .strawberry:
-            guard stockNumber >= 16 else {
-                return false
-            }
-        case .banana:
-            guard stockNumber >= 2 else {
-                return false
-            }
-        case .kiwi:
-            guard stockNumber >= 3 else {
-                return false
-            }
-        case .pineApple:
-            guard stockNumber >= 2 else {
-                return false
-            }
-        case .mango:
-            guard stockNumber >= 3 else {
-                return false
+    func isRemainFruit(type: Fruit, count: Int) -> Bool {
+        var discern = false
+        
+        store.forEach { fruit in
+            if fruit.key == type {
+                guard fruit.value >= count else {
+                    return
+                }
+                discern = true
             }
         }
-        return true
-    }
-    
-    func isPossibleMakeMix(juice: MixFruitJuice, stockNumber: (Int, Int)) -> Bool {
-        switch juice {
-        case .strawberryAndBanana:
-            guard stockNumber.0 >= 10, stockNumber.1 >= 1 else {
-                return false
-            }
-        case .mangoAndKiwi:
-            guard stockNumber.0 >= 2, stockNumber.1 >= 1 else {
-                return false
-            }
-        }
-        return true
+        return discern
     }
 }
