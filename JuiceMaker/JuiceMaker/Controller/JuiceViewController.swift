@@ -24,7 +24,8 @@ final class JuiceViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction private func juiceOrderButtonTapped(_ sender: UIButton) {
-        guard let fruitJuice = FruitJuice(tag: sender.tag) else { return }
+        guard let button = sender as? JuiceMakableButton else { return }
+        let fruitJuice = button.fruitJuice
         
         do {
             try juiceMaker.makeJuice(of: fruitJuice)
