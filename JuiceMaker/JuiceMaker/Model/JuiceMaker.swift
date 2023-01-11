@@ -41,6 +41,38 @@ struct JuiceMaker: Makeable {
         }
     }
     
+    private func isMakeable(_ juice: SingleFruitJuice, send consume: Int) -> Bool {
+        var isContinue = false
+        
+        juice.recipe.forEach { fruit in
+            isContinue = fruitStore.isRemainFruit(type: fruit.key, count: consume)
+            
+            if !isContinue {
+                print("\(fruit.key) 재고가 없습니다!")
+            }
+        }
+        return isContinue
+    }
+    
+    private func isMakeable(_ juice: MixFruitJuice, send consumes: [Int]) -> Bool {
+        var isContinue = false
+        var needCounts = consumes
+        
+        juice.recipe.forEach { fruit in
+            guard let extractCount = needCounts.first else {
+                return
+            }
+            let discern = fruitStore.isRemainFruit(type: fruit.key, count: extractCount)
+            isContinue = discern
+            
+            if !isContinue {
+                print("\(fruit.key) 재고가 없습니다!")
+            }
+            needCounts.removeFirst()
+        }
+        return isContinue
+    }
+    
     func requestTo(single juice: SingleFruitJuice) {
         juice.recipe.forEach { (key: Fruit, value: Int) in
             guard let storeOfFruitCount = fruitStore.storeValue(fruit: key) else {
