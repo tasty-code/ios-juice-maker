@@ -9,13 +9,8 @@ import Foundation
 // 쥬스 메이커 타입
 struct JuiceMaker: Makeable {
     let fruitStore = FruitStore.shared
-    let calculator: Computable
     
-    init(calculator: Computable) {
-        self.calculator = calculator
-    }
-    
-    func startMake(single juice: FruitSingleJuice) {
+    func make(single juice: SingleFruitJuice) {
         switch juice {
         case .strawberry:
             requestTo(single: .strawberry)
@@ -35,7 +30,7 @@ struct JuiceMaker: Makeable {
         }
     }
     
-    func startMake(mix juice: FruitMixJuice) {
+    func make(mix juice: MixFruitJuice) {
         switch juice {
         case .strawberryAndBanana:
             requestTo(mix: .strawberryAndBanana)
@@ -46,8 +41,8 @@ struct JuiceMaker: Makeable {
         }
     }
     
-    func requestTo(single juice: FruitSingleJuice) {
-        juice.recipe.forEach { (key: FruitList, value: Int) in
+    func requestTo(single juice: SingleFruitJuice) {
+        juice.recipe.forEach { (key: Fruit, value: Int) in
             guard let storeOfFruitCount = fruitStore.storeValue(fruit: key) else {
                 return
             }
@@ -66,7 +61,7 @@ struct JuiceMaker: Makeable {
         }
     }
     
-    func requestTo(mix juice: FruitMixJuice) {
+    func requestTo(mix juice: MixFruitJuice) {
         var allOfMixJuiceCount = ([Int](), [Int]())
         var firstFruitStoreDetermine = false
         var secondFruitStoreDetermine = false
@@ -111,12 +106,12 @@ struct JuiceMaker: Makeable {
         }
     } 
     
-    func currentNumber(fruit juice: FruitMixJuice) -> ([Int], [Int]) {
+    func currentNumber(fruit juice: MixFruitJuice) -> ([Int], [Int]) {
         var storeItemsCount = [Int]()
         var consumeItemsCount = [Int]()
         
         for _ in 0..<juice.recipe.count {
-            juice.recipe.forEach { (key: FruitList, value: Int) in
+            juice.recipe.forEach { (key: Fruit, value: Int) in
                 var storeItem: Int?
                 var consumeItem: Int?
                 
