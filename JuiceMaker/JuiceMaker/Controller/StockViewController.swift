@@ -27,7 +27,7 @@ final class StockViewController: UIViewController {
         do {
             try FruitStore.shared.setStock(of: fruit, to: changedStock)
         } catch {
-            sender.value = 0
+            print(error.localizedDescription)
             return
         }
         
