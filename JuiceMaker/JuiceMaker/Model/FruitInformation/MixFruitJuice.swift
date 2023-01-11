@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum FruitMixJuice: CaseIterable {
+enum MixFruitJuice: CaseIterable {
     case strawberryAndBanana
     case mangoAndKiwi
     
@@ -17,15 +17,6 @@ enum FruitMixJuice: CaseIterable {
             return [.strawberry: 10, .banana: 1]
         case .mangoAndKiwi:
             return [.mango: 2, .kiwi: 1]
-        }
-    }
-    
-    var caseList: [FruitMixJuice] {
-        switch self {
-        case .strawberryAndBanana:
-            return [.strawberryAndBanana]
-        case .mangoAndKiwi:
-            return [.mangoAndKiwi]
         }
     }
 }
