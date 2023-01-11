@@ -1,12 +1,12 @@
 //
-//  JuiceMaker - ViewController.swift
+//  JuiceMaker - JuiceMakerViewController.swift
 //  Created by yagom. 
 //  Copyright © yagom academy. All rights reserved.
 // 
 
 import UIKit
 
-class ViewController: UIViewController {
+class JuiceMakerViewController: UIViewController {
 
     @IBOutlet var fruitLabels: [UILabel]!
     
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: textUpdateDelegate {
+extension JuiceMakerViewController: textUpdateDelegate {
     func updateLabel(fruit: Fruits) {
         fruitLabels.forEach { label in
             if label.tag == fruit.rawValue {
@@ -49,7 +49,7 @@ extension ViewController: textUpdateDelegate {
     }
 }
 
-extension ViewController: juiceAlertDelegate {
+extension JuiceMakerViewController: juiceAlertDelegate {
     func madeJuiceAlert(juice: Menu) {
         let alert = UIAlertController(
             title: "\(juice.koreanName) 나왔습니다! 맛있게 드세요",
