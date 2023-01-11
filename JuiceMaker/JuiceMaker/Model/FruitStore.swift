@@ -28,6 +28,30 @@ final class FruitStore {
         return availableStock
     }
     
+    func needCountOfMake(to juiceType: SingleFruitJuice) -> Int {
+        var needCountValue = 0
+        
+        juiceType.recipe.forEach { fruit in
+            guard let needCount = juiceType.recipe[fruit.key] else {
+                return
+            }
+            needCountValue = needCount
+        }
+        return needCountValue
+    }
+    
+    func needCountOfMake(to juiceType: MixFruitJuice) -> [Int] {
+        var needCountValues = [Int]()
+        
+        juiceType.recipe.forEach { fruit in
+            guard let needCount = juiceType.recipe[fruit.key] else {
+                return
+            }
+            needCountValues.append(needCount)
+        }
+        return needCountValues
+    }
+    
     func isRemainFruit(type: Fruit, count: Int) -> Bool {
         var discern = false
         
