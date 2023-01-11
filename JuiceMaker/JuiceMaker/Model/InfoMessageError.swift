@@ -3,9 +3,7 @@ import Foundation
 enum InfoMessageError: LocalizedError {
     case noStock
     case noFruit
-
-        
-
+    
     var errorDescription: String? {
         switch self {
         case .noStock:
