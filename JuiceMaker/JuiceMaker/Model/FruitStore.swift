@@ -16,19 +16,9 @@ final class FruitStore {
         }
     }
     
-    func changeStock(fruit: Fruit, number: Int) {
-        switch fruit {
-        case .strawberry:
-            store.updateValue(number, forKey: .strawberry)
-        case .banana:
-            store.updateValue(number, forKey: .banana)
-        case .pineApple:
-            store.updateValue(number, forKey: .pineApple)
-        case .kiwi:
-            store.updateValue(number, forKey: .kiwi)
-        case .mango:
-            store.updateValue(number, forKey: .mango)
-        }
+    func update(_ fruit: Fruit, stock: Int) {
+        let originStock = sendBackToAvailableStock(fruit: fruit)
+        store.updateValue(originStock - stock, forKey: fruit)
     }
     
     func storeValue(fruit type: Fruit) -> Int? {
