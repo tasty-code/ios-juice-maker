@@ -189,9 +189,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="재고 수정" leftItemsSupplementBackButton="YES" id="7Y8-2I-otm">
                         <barButtonItem key="backBarButtonItem" title="돌아가기" id="zMR-Ya-IZg"/>
-                        <barButtonItem key="rightBarButtonItem" title="완료" id="6jP-TY-T6w">
+                        <barButtonItem key="rightBarButtonItem" title="닫기" id="6jP-TY-T6w">
                             <connections>
-                                <action selector="confirmChangedStockButtonDidTap:" destination="Y6W-OH-hqX" id="Viu-dF-G3v"/>
+                                <action selector="closeButtonDidTap:" destination="Y6W-OH-hqX" id="cuz-zi-8rJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

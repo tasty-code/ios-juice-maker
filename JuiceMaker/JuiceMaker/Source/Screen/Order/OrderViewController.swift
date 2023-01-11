@@ -37,7 +37,7 @@ final class OrderViewController: UIViewController, OrderDelegate {
     }
     
     @IBAction private func editStockButtonDidTap(_ sender: Any) {
-        pushToStoreViewController()
+        presentStockViewController()
     }
     
     func syncFruitStocks() {
@@ -67,7 +67,7 @@ final class OrderViewController: UIViewController, OrderDelegate {
                                       message: "재료가 모자라요.\n재고를 수정할까요?",
                                       preferredStyle: .alert)
         let confirm = UIAlertAction(title: "예", style: .default, handler: { _ in
-            self.pushToStoreViewController()
+            self.presentStockViewController()
         })
         let close = UIAlertAction(title: "아니요", style: .destructive)
         alert.addAction(confirm)
@@ -75,8 +75,9 @@ final class OrderViewController: UIViewController, OrderDelegate {
         present(alert, animated: true, completion: nil)
     }
     
-    private func pushToStoreViewController() {
+    private func presentStockViewController() {
         guard let storeVC = UIStoryboard(name: "Store", bundle: nil).instantiateViewController(withIdentifier:"StoreViewController") as? StoreViewController else { return }
-        navigationController?.pushViewController(storeVC, animated: true)
+        let storeNav = UINavigationController(rootViewController: storeVC)
+        self.present(storeNav, animated: true)
     }
 }

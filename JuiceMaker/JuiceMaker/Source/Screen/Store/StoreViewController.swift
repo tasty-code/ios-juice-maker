@@ -29,8 +29,8 @@ final class StoreViewController: UIViewController, StoreDelegate {
         fruitStore.changeStock(of: fruit, count: Int(stepper.value))
     }
     
-    @IBAction private func confirmChangedStockButtonDidTap(_ sender: UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
+    @IBAction private func closeButtonDidTap(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
     }
     
     func syncFruitStocks() {
