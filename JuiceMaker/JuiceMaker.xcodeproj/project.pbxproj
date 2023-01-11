@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8608A23E2966BAA300E8296A /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8608A23D2966BAA300E8296A /* Fruit.swift */; };
 		8608A2402966BCBF00E8296A /* InfoMessageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8608A23F2966BCBF00E8296A /* InfoMessageError.swift */; };
+		86C4D837296E9BA700D07F13 /* StringConstatns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C4D836296E9BA700D07F13 /* StringConstatns.swift */; };
 		C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71CD66A266C7ACB0038B9CB /* FruitStore.swift */; };
 		C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DAF36255D0CDD00020D38 /* AppDelegate.swift */; };
 		C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DAF38255D0CDD00020D38 /* SceneDelegate.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		8608A23D2966BAA300E8296A /* Fruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
 		8608A23F2966BCBF00E8296A /* InfoMessageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoMessageError.swift; sourceTree = "<group>"; };
+		86C4D836296E9BA700D07F13 /* StringConstatns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstatns.swift; sourceTree = "<group>"; };
 		C71CD66A266C7ACB0038B9CB /* FruitStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitStore.swift; sourceTree = "<group>"; };
 		C73DAF33255D0CDD00020D38 /* JuiceMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JuiceMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C73DAF36255D0CDD00020D38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				8608A23D2966BAA300E8296A /* Fruit.swift */,
 				E7F2DBAA2966BBD7000B06A0 /* FruitJuice.swift */,
 				C71CD66A266C7ACB0038B9CB /* FruitStore.swift */,
+				86C4D836296E9BA700D07F13 /* StringConstatns.swift */,
 				C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */,
 				8608A23F2966BCBF00E8296A /* InfoMessageError.swift */,
 			);
@@ -180,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8608A23E2966BAA300E8296A /* Fruit.swift in Sources */,
+				86C4D837296E9BA700D07F13 /* StringConstatns.swift in Sources */,
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
 				C73DAF3B255D0CDD00020D38 /* ViewController.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,

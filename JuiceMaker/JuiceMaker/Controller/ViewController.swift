@@ -68,25 +68,25 @@ class ViewController: UIViewController {
         do {
             try juiceMaker.make(juiceName: fruitJuice)
         } catch {
-            let failAlert = UIAlertController(title: "재료 부족",
-                                              message: "재료가 모자라요. 재고를 수정할까요?",
+            let failAlert = UIAlertController(title: StringConstatns.failAlertTitle,
+                                              message: StringConstatns.failAlertMessage,
                                               preferredStyle: UIAlertController.Style.alert)
             
-            failAlert.addAction(UIAlertAction(title: "예",
+            failAlert.addAction(UIAlertAction(title: StringConstatns.yes,
                                               style: UIAlertAction.Style.default,
                                               handler: { _ in
                 self.moveToChangeStockView()
             }))
             
-            failAlert.addAction(UIAlertAction(title: "아니오",
+            failAlert.addAction(UIAlertAction(title: StringConstatns.no,
                                               style: UIAlertAction.Style.default,
                                               handler: {(_: UIAlertAction!) in }))
             
             self.present(failAlert, animated: true, completion: nil)
         }
         
-        let successAlert = UIAlertController(title: "쥬스 완성!",
-                                             message: "\(fruitJuice.rawValue) 나왔습니다! 맛있게 드세요!",
+        let successAlert = UIAlertController(title: StringConstatns.successAlertTitle,
+                                             message: fruitJuice.rawValue + StringConstatns.successAlertMessage,
                                              preferredStyle: UIAlertController.Style.alert)
         
         self.present(successAlert, animated: true)
@@ -99,7 +99,7 @@ class ViewController: UIViewController {
     }
     
     func moveToChangeStockView() {
-        guard let viewController = self.storyboard?.instantiateViewController(identifier: "ChangeStockViewController") else { return }
+        guard let viewController = self.storyboard?.instantiateViewController(identifier: StringConstatns.changeStockViewController) else { return }
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
