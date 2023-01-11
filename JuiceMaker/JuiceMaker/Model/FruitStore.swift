@@ -10,8 +10,23 @@ import Foundation
 final class FruitStore {
     private(set) var stockByFruit = [Fruit: UInt]()
 
-    enum Fruit: Int, CaseIterable {
+    enum Fruit: CaseIterable {
         case strawberry, banana, pineapple, kiwi, mango
+
+        var sequence: Int {
+            switch self {
+            case .strawberry:
+                return 0
+            case .banana:
+                return 1
+            case .pineapple:
+                return 2
+            case .kiwi:
+                return 3
+            case .mango:
+                return 4
+            }
+        }
     }
 
     init(stock: UInt = 10) {
@@ -32,12 +47,16 @@ final class FruitStore {
         self.stockByFruit[fruit] = stock(byFruit: fruit) + count
     }
     
-    func stock(byFruit fruit: Fruit) -> UInt {
-        return stockByFruit.filter { $0.key == fruit }[0].value
+    func stock(byFruit: Fruit) -> UInt {
+        return stockByFruit.filter { (fruit, _) in
+            fruit == byFruit
+        }[0].value
     }
 
     func hasEnoughStock(recipe: [Fruit: UInt]) -> Bool {
-        let notEnoughStock = recipe.filter { $0.value > stock(byFruit: $0.key) }
+        let notEnoughStock = recipe.filter { (fruit, count) in
+            count > stock(byFruit: fruit)
+        }
         return notEnoughStock.isEmpty
     }
 }

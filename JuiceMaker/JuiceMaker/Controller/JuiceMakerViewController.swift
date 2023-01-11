@@ -14,19 +14,19 @@ final class JuiceMakerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        for stockLabel in stockLabels {
-            stockLabel.text = String(10)
+        for (stockLabel, stock) in zip(stockLabels, fruitStore.stockByFruit.values) {
+            stockLabel.text = String(stock)
         }
     }
 
-    func makeJuiceAlert(juiceName: String) {
+    func alertJuiceReady(juiceName: String) {
         let alert = UIAlertController(title: nil, message: "\(juiceName) 나왔습니다! 맛있게 드세요!", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .cancel, handler : nil)
         alert.addAction(okAction)
         present(alert, animated: false)
     }
 
-    func outOfStockAlert() {
+    func alertOutOfStock() {
         let alert = UIAlertController(title: nil, message: "재료가 모자라요. 재고를 수정할까요?", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "예", style: .default, handler : {_ in
             guard let addStockVC = self.storyboard?.instantiateViewController(withIdentifier: "addStockVC") else { return }
@@ -41,9 +41,9 @@ final class JuiceMakerViewController: UIViewController {
     func changeStockLabel(juice: Juice) {
         for (fruit, _) in juice.recipe {
             let fruitStock = juiceMaker.fruitStore.stock(byFruit: fruit)
-            stockLabels[fruit.rawValue].text = String(fruitStock)
+            stockLabels[fruit.sequence].text = String(fruitStock)
         }
-        makeJuiceAlert(juiceName: juice.rawValue)
+        alertJuiceReady(juiceName: juice.juiceName)
     }
 
     func order(juice: Juice) {
@@ -51,7 +51,7 @@ final class JuiceMakerViewController: UIViewController {
             try juiceMaker.make(juice: juice)
             changeStockLabel(juice: juice)
         } catch JuiceMakerError.outOfStock {
-            outOfStockAlert()
+            alertOutOfStock()
         } catch {
             print(error.localizedDescription)
         }
@@ -62,7 +62,9 @@ final class JuiceMakerViewController: UIViewController {
             return
         }
         let juiceName = buttonName.components(separatedBy: " ")[0]
-        let juice = Juice.allCases.filter { $0.rawValue == juiceName }[0]
+        let juice = Juice.allCases.filter {
+            $0.juiceName == juiceName
+        }[0]
         order(juice: juice)
     }
 }
