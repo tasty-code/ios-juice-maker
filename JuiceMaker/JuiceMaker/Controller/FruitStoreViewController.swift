@@ -16,20 +16,27 @@ final class FruitStoreViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLabel()
+        initialSetting()
     }
 
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true)
     }
-
-    private func setupLabel() {
+    
+    @IBAction func stepperTapped(_ sender: UIStepper) {
         fruitLabels.forEach { label in
-            guard let fruit = Fruits(rawValue: label.tag) else {
-                return
+            if label.tag == sender.tag {
+                label.text = Int(sender.value).description
             }
+        }
+    }
+    
+    private func initialSetting() {
+        Fruits.allCases.forEach { fruit in
             let quantity = fruitStore.stock(fruit: fruit)
-            label.text = String(quantity)
+            let tag = fruit.rawValue
+            fruitLabels[tag].text = String(quantity)
+            fruitSteppers[tag].value = Double(quantity)
         }
     }
 }

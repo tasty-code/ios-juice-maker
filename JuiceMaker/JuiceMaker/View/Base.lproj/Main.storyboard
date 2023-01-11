@@ -284,6 +284,9 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="jdK-2Q-htI">
                                                 <rect key="frame" x="35" y="154" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="stepperTapped:" destination="Yu1-lM-nqp" eventType="valueChanged" id="MYV-Tb-xo4"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                     </stackView>
@@ -305,6 +308,9 @@
                                             </label>
                                             <stepper opaque="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="bKL-L7-1sl">
                                                 <rect key="frame" x="35" y="154" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="stepperTapped:" destination="Yu1-lM-nqp" eventType="valueChanged" id="nHv-Co-hVd"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                     </stackView>
@@ -326,6 +332,9 @@
                                             </label>
                                             <stepper opaque="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Id1-hc-dOg">
                                                 <rect key="frame" x="35" y="154" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="stepperTapped:" destination="Yu1-lM-nqp" eventType="valueChanged" id="z2T-yA-Rr6"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                     </stackView>
@@ -347,6 +356,9 @@
                                             </label>
                                             <stepper opaque="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="QzU-2t-TQM">
                                                 <rect key="frame" x="35" y="154" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="stepperTapped:" destination="Yu1-lM-nqp" eventType="valueChanged" id="FFL-y3-wTL"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                     </stackView>
@@ -368,6 +380,9 @@
                                             </label>
                                             <stepper opaque="NO" tag="4" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="mBG-0f-seD">
                                                 <rect key="frame" x="35" y="154" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="stepperTapped:" destination="Yu1-lM-nqp" eventType="valueChanged" id="mwo-yp-x4a"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                     </stackView>
@@ -377,7 +392,7 @@
                                 <rect key="frame" x="0.0" y="59" width="852" height="32"/>
                                 <items>
                                     <navigationItem title="재고 추가" id="d2C-N4-xrC">
-                                        <barButtonItem key="rightBarButtonItem" title="닫기" style="plain" id="Fh5-RJ-PZZ">
+                                        <barButtonItem key="rightBarButtonItem" title="닫기" style="done" id="Fh5-RJ-PZZ">
                                             <connections>
                                                 <action selector="backButtonTapped:" destination="Yu1-lM-nqp" id="kG5-N1-71u"/>
                                             </connections>
