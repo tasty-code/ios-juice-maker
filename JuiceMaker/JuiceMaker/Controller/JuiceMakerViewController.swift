@@ -7,7 +7,8 @@
 import UIKit
 
 final class JuiceMakerViewController: UIViewController {
-    let juiceMaker = JuiceMaker()
+    let fruitStore = FruitStore()
+    lazy var juiceMaker = JuiceMaker(fruitStore: fruitStore)
 
     @IBOutlet var stockLabels: [UILabel]!
     
@@ -65,4 +66,3 @@ final class JuiceMakerViewController: UIViewController {
         order(juice: juice)
     }
 }
-
