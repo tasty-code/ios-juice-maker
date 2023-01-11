@@ -32,7 +32,7 @@ final class JuiceMakerViewController: UIViewController {
 
     func alertOutOfStock() {
         let alert = UIAlertController(title: nil, message: "재료가 모자라요. 재고를 수정할까요?", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "예", style: .default, handler : {_ in
+        let okAction = UIAlertAction(title: "예", style: .default, handler : { _ in
             guard let addStockVC = self.storyboard?.instantiateViewController(withIdentifier: "addStockVC") else { return }
             self.navigationController?.pushViewController(addStockVC, animated: true)
         })
@@ -44,7 +44,7 @@ final class JuiceMakerViewController: UIViewController {
 
     func changeStockLabel(juice: Juice) {
         for (fruit, _) in juice.recipe {
-            let fruitStock = juiceMaker.fruitStore.stock(byFruit: fruit)
+            let fruitStock = fruitStore.stock(byFruit: fruit)
             stockLabels[fruit.sequence].text = String(fruitStock)
         }
         alertJuiceReady(juiceName: juice.juiceName)
@@ -62,9 +62,7 @@ final class JuiceMakerViewController: UIViewController {
     }
 
     @IBAction func orderButton(_ sender: UIButton) {
-        guard let buttonName = sender.currentTitle else {
-            return
-        }
+        guard let buttonName = sender.currentTitle else { return }
         let juiceName = buttonName.components(separatedBy: " ")[0]
         let juice = Juice.allCases.filter {
             $0.juiceName == juiceName
