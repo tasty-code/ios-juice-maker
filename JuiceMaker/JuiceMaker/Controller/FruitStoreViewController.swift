@@ -20,6 +20,7 @@ final class FruitStoreViewController: UIViewController {
     }
 
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true)
     }
 
     private func setupLabel() {
