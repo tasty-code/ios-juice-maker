@@ -32,11 +32,11 @@ struct JuiceMaker: Makeable {
     
     func make(mix juice: MixFruitJuice) {
         switch juice {
-        case .strawberryAndBanana:
-            requestTo(mix: .strawberryAndBanana)
+        case .strawberryBanana:
+            blending(juice: .strawberryBanana)
             break
-        case .mangoAndKiwi:
-            requestTo(mix: .mangoAndKiwi)
+        case .mangoKiwi:
+            blending(juice: .mangoKiwi)
             break
         }
     }

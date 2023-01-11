@@ -8,14 +8,14 @@
 import Foundation
 
 enum MixFruitJuice: CaseIterable {
-    case strawberryAndBanana
-    case mangoAndKiwi
+    case strawberryBanana
+    case mangoKiwi
     
     var recipe: [Fruit: Int] {
         switch self{
-        case .strawberryAndBanana:
+        case .strawberryBanana:
             return [.strawberry: 10, .banana: 1]
-        case .mangoAndKiwi:
+        case .mangoKiwi:
             return [.mango: 2, .kiwi: 1]
         }
     }
