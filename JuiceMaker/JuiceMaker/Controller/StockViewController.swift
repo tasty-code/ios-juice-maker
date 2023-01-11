@@ -21,7 +21,8 @@ final class StockViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction private func stepperValueChanged(_ sender: UIStepper) {
-        guard let fruit = Fruit(tag: sender.tag) else { return }
+        guard let fruitStepper = sender as? FruitStepperProtocol else { return }
+        let fruit = fruitStepper.fruit
         let changedStock = Int(sender.value)
         
         do {
@@ -44,24 +45,36 @@ final class StockViewController: UIViewController {
     }
     
     private func stockLabel(of fruit: Fruit) -> UILabel? {
-        return fruitStockLabels.first { Fruit(tag: $0.tag) == fruit }
+        return fruitStockLabels.first { stockLabel in
+            guard let fruitLabel = stockLabel as? FruitLabelProtocol else {
+                return false
+            }
+            return fruitLabel.fruit == fruit
+        }
     }
     
     private func initializeAllStockLabels() {
         for stockLabel in fruitStockLabels {
-            guard let fruit = Fruit(tag: stockLabel.tag) else { return }
+            guard let fruitLabel = stockLabel as? FruitLabelProtocol else { return }
+            let fruit = fruitLabel.fruit
             guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
             stockLabel.text = String(fruitStock)
         }
     }
     
     private func stockStepper(of fruit: Fruit) -> UIStepper? {
-        return fruitStockSteppers.first { Fruit(tag: $0.tag) == fruit }
+        return fruitStockSteppers.first { stockStepper in
+            guard let fruitLabel = stockStepper as? FruitStepperProtocol else {
+                return false
+            }
+            return fruitLabel.fruit == fruit
+        }
     }
     
     private func initializeAllStockSteppers() {
         for stockStepper in fruitStockSteppers {
-            guard let fruit = Fruit(tag: stockStepper.tag) else { return }
+            guard let fruitStepper = stockStepper as? FruitStepperProtocol else { return }
+            let fruit = fruitStepper.fruit
             guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
             stockStepper.value = Double(fruitStock)
         }

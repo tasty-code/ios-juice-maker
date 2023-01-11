@@ -7,30 +7,34 @@
 
 import UIKit
 
-protocol JuiceMakableButton {
+protocol JuiceButtonProtocol {
     var fruitJuice: FruitJuice { get }
 }
 
-class StrawberryBananaButton: UIButton, JuiceMakableButton {
+class StrawberryButton: UIButton, JuiceButtonProtocol {
+    var fruitJuice: FruitJuice = .strawberry
+}
+
+class StrawberryBananaButton: UIButton, JuiceButtonProtocol {
     var fruitJuice: FruitJuice = .strawberryBanana
 }
 
-class BananaButton: UIButton, JuiceMakableButton {
+class BananaButton: UIButton, JuiceButtonProtocol {
     var fruitJuice: FruitJuice = .banana
 }
 
-class PineappleButton: UIButton, JuiceMakableButton {
+class PineappleButton: UIButton, JuiceButtonProtocol {
     var fruitJuice: FruitJuice = .pineapple
 }
 
-class MangoKiwiButton: UIButton, JuiceMakableButton {
+class MangoKiwiButton: UIButton, JuiceButtonProtocol {
     var fruitJuice: FruitJuice = .mangoKiwi
 }
 
-class KiwiButton: UIButton, JuiceMakableButton {
+class KiwiButton: UIButton, JuiceButtonProtocol {
     var fruitJuice: FruitJuice = .kiwi
 }
 
-class MangoButton: UIButton, JuiceMakableButton {
+class MangoButton: UIButton, JuiceButtonProtocol {
     var fruitJuice: FruitJuice = .mango
 }

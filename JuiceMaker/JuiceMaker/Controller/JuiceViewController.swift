@@ -24,7 +24,7 @@ final class JuiceViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction private func juiceOrderButtonTapped(_ sender: UIButton) {
-        guard let button = sender as? JuiceMakableButton else { return }
+        guard let button = sender as? JuiceButtonProtocol else { return }
         let fruitJuice = button.fruitJuice
         
         do {
@@ -45,7 +45,12 @@ final class JuiceViewController: UIViewController {
     
     // MARK: - Helpers
     private func stockLabel(of fruit: Fruit) -> UILabel? {
-        return fruitStockLabels.first { Fruit(tag: $0.tag) == fruit }
+        return fruitStockLabels.first { stockLabel in
+            guard let fruitLabel = stockLabel as? FruitLabelProtocol else {
+                return false
+            }
+            return fruitLabel.fruit == fruit
+        }
     }
     
     private func updateStockLabel(of fruit: Fruit) {
@@ -63,7 +68,8 @@ final class JuiceViewController: UIViewController {
     
     private func updateAllStockLabels() {
         for stockLabel in fruitStockLabels {
-            guard let fruit = Fruit(tag: stockLabel.tag) else { return }
+            guard let fruitLabel = stockLabel as? FruitLabelProtocol else { return }
+            let fruit = fruitLabel.fruit
             guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
             stockLabel.text = String(fruitStock)
         }
