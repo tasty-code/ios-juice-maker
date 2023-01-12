@@ -17,11 +17,13 @@ class JuiceViewController: UIViewController {
         guard let juiceType = sender.currentTitle else {
             return
         }
-        switch juiceType {
-        case "딸바쥬스 주문":
+        switch MixFruitJuice(rawValue: juiceType) {
+        case .strawberryBanana:
             order(juiceType: .strawberryBanana)
-        case "망키쥬스 주문":
+            successAlert(juiceType: "🍓🍌")
+        case .mangoKiwi:
             order(juiceType: .mangoKiwi)
+            successAlert(juiceType: "🥭🥝")
         default:
             break
         }
