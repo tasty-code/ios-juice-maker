@@ -19,7 +19,7 @@ final class JuiceViewController: UIViewController {
     }
     
     // MARK: - Actions
-    @IBAction private func juiceOrderButtonTapped(_ sender: UIButton) {
+    @IBAction private func tappedJuiceOrderButton(_ sender: UIButton) {
         guard let button = sender as? JuiceButtonProtocol else { return }
         let fruitJuice = button.fruitJuice
         
@@ -35,7 +35,7 @@ final class JuiceViewController: UIViewController {
         updateStockLabels(of: fruitJuice)
     }
     
-    @IBAction private func changeStockButtonTapped(_ sender: UIBarButtonItem) {
+    @IBAction private func tappedChangeStockButton(_ sender: UIBarButtonItem) {
         moveToStockVC()
     }
     

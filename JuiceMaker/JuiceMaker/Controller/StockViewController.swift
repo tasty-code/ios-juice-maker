@@ -27,7 +27,7 @@ final class StockViewController: UIViewController {
     }
     
     // MARK: - Actions
-    @IBAction private func stepperValueChanged(_ sender: UIStepper) {
+    @IBAction private func changedStepperValue(_ sender: UIStepper) {
         guard let fruitStepper = sender as? FruitStepperProtocol else { return }
         let fruit = fruitStepper.fruit
         let changedStock = Int(sender.value)
@@ -45,7 +45,7 @@ final class StockViewController: UIViewController {
         isStockChanged = true
     }
     
-    @IBAction private func closeButtonTapped(_ sender: UIBarButtonItem) {
+    @IBAction private func tappedCloseButton(_ sender: UIBarButtonItem) {
         if isStockChanged {
             delegate?.didChangeStock()
         }
