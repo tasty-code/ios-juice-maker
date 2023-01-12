@@ -1,5 +1,5 @@
 //
-//  FruitList.swift
+//  Fruit.swift
 //  JuiceMaker
 //
 //  Created by Jason on 2023/01/04.
