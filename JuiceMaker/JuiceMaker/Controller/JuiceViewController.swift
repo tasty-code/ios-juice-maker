@@ -10,7 +10,7 @@ final class JuiceViewController: UIViewController {
     // MARK: - Properties
     private let juiceMaker = JuiceMaker()
     
-    @IBOutlet var fruitStockLabels: [UILabel]!
+    @IBOutlet private var fruitStockLabels: [UILabel]!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {

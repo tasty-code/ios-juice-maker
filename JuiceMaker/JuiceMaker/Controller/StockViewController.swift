@@ -7,17 +7,17 @@
 
 import UIKit
 
-protocol StockViewControllerDelegate {
+protocol StockViewControllerDelegate: AnyObject {
     func didChangeStock()
 }
 
 final class StockViewController: UIViewController {
     // MARK: - Properties
-    @IBOutlet var fruitStockLabels: [UILabel]!
-    @IBOutlet var fruitStockSteppers: [UIStepper]!
+    @IBOutlet private var fruitStockLabels: [UILabel]!
+    @IBOutlet private var fruitStockSteppers: [UIStepper]!
     
     weak var delegate: StockViewControllerDelegate?
-    var isStockChanged: Bool = false
+    private var isStockChanged: Bool = false
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -45,7 +45,7 @@ final class StockViewController: UIViewController {
         isStockChanged = true
     }
     
-    @IBAction func closeButtonTapped(_ sender: UIBarButtonItem) {
+    @IBAction private func closeButtonTapped(_ sender: UIBarButtonItem) {
         if isStockChanged {
             delegate?.didChangeStock()
         }
@@ -54,7 +54,7 @@ final class StockViewController: UIViewController {
     }
     
     // MARK: - Helpers
-    func configureUI() {
+    private func configureUI() {
         initializeAllStockLabels()
         initializeAllStockSteppers()
     }
