@@ -19,10 +19,6 @@ enum Constants {
         static let failedJuiceCancel = "아니요"
     }
     
-    enum Design {
-        static let stockViewControllerNavigationTitle = "과일 재고 수정"
-    }
-    
     enum Number {
         static let initialFruitStockQuantity = 10
     }

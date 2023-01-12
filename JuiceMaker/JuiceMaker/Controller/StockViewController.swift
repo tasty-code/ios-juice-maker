@@ -55,8 +55,6 @@ final class StockViewController: UIViewController {
     
     // MARK: - Helpers
     func configureUI() {
-        navigationItem.title = Constants.Design.stockViewControllerNavigationTitle
-        
         initializeAllStockLabels()
         initializeAllStockSteppers()
     }
