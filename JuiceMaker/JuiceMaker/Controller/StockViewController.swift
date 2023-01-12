@@ -7,16 +7,31 @@
 
 import UIKit
 
+protocol StockViewControllerDelegate {
+    func didChangeStock()
+}
+
 final class StockViewController: UIViewController {
     // MARK: - Properties
     @IBOutlet var fruitStockLabels: [UILabel]!
     @IBOutlet var fruitStockSteppers: [UIStepper]!
+    
+    var delegate: StockViewControllerDelegate?
+    var isStockChanged: Bool = false
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if isStockChanged {
+            delegate?.didChangeStock()
+        }
     }
     
     // MARK: - Actions
@@ -34,6 +49,8 @@ final class StockViewController: UIViewController {
         
         guard let stockLabel = stockLabel(of: fruit) else { return }
         stockLabel.text = String(changedStock)
+        
+        isStockChanged = true
     }
     
     // MARK: - Helpers

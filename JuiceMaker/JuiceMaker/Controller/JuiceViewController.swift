@@ -15,10 +15,6 @@ final class JuiceViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         updateAllStockLabels()
     }
     
@@ -101,8 +97,18 @@ final class JuiceViewController: UIViewController {
     }
     
     private func moveToStockVC() {
-        guard let stockVC = storyboard?.instantiateViewController(withIdentifier: Constants.Identifier.stockViewController) else { return }
+        guard let stockVC = storyboard?
+            .instantiateViewController(withIdentifier: Constants.Identifier.stockViewController)
+                as? StockViewController else { return }
+        stockVC.delegate = self
         navigationController?.pushViewController(stockVC, animated: true)
+    }
+}
+
+// MARK: - StockViewControllerDelegate
+extension JuiceViewController: StockViewControllerDelegate {
+    func didChangeStock() {
+        updateAllStockLabels()
     }
 }
 
