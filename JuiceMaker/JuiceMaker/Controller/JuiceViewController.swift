@@ -55,6 +55,7 @@ class JuiceViewController: UIViewController {
     }
     
     private let juiceMaker = JuiceMaker()
+    var sendCount: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,7 +114,6 @@ class JuiceViewController: UIViewController {
         juiceMaker.make(mix: juiceType)
         currentStockDisplay(on: juiceEmojiBundle, change: juiceStoreCountBundle)
     }
-    
 }
 
 extension JuiceViewController {
@@ -130,6 +130,10 @@ extension JuiceViewController {
         let successAction = UIAlertAction(title: "예", style: .default, handler: { action in
             guard let fruitNavigationController = self.storyboard?.instantiateViewController(identifier: "FruitNavi") as? UINavigationController else { return }
             fruitNavigationController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            
+//            self.juiceStoreCountBundle = ???
+//            self.sendCount = self.juiceStoreCountBundl
+            
             self.present(fruitNavigationController, animated: true, completion: nil)
         })
         let cancleAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
