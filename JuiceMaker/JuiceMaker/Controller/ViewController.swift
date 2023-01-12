@@ -15,13 +15,15 @@ class ViewController: UIViewController {
     
     let juiceMaker = JuiceMaker()
     
+    private var currentFruitStock:(strawberry: UInt, banana: UInt, pineapple: UInt, kiwi: UInt, mango: UInt) = (strawberry: 0, banana: 0, pineapple: 0, kiwi: 0, mango: 0)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
     }
     
     private func setup() {
-        refreshCurrentStockLabel()
+        refreshLabels()
     }
     
     
@@ -51,18 +53,53 @@ class ViewController: UIViewController {
             break
         }
     }
-    
-    func refreshCurrentStockLabel() {
-        do {
-            strawberryCurrentStock.text = String(try juiceMaker.fruitStore.quantity(of: .strawberry))
-            bananaCurrentStock.text = String(try juiceMaker.fruitStore.quantity(of: .banana))
-            pineappleCurrentStock.text = String(try juiceMaker.fruitStore.quantity(of: .pineapple))
-            kiwiCurrentStock.text = String(try juiceMaker.fruitStore.quantity(of: .kiwi))
-            mangoCurrentStock.text = String(try juiceMaker.fruitStore.quantity(of: .mango))
-        } catch {
-            print(error.localizedDescription)
-        }
+
+    func checkCurrentStock() {
+        guard let currentStrawberry = juiceMaker.fruitStore.quantity(of: .strawberry) else {
+            registerFailAlert()
+            print("\(Fruit.strawberry)의 재고에 문제가 생겼습니다.")
+            return }
+        currentFruitStock.strawberry = currentStrawberry
+        
+        guard let currentBanana = juiceMaker.fruitStore.quantity(of: .banana) else {
+            registerFailAlert()
+            print("\(Fruit.banana)의 재고에 문제가 생겼습니다.")
+            return }
+        currentFruitStock.banana = currentBanana
+        
+        guard let currentPineapple = juiceMaker.fruitStore.quantity(of: .pineapple) else {
+            registerFailAlert()
+            print("\(Fruit.pineapple)의 재고에 문제가 생겼습니다.")
+            return }
+        currentFruitStock.pineapple = currentPineapple
+        
+        guard let currentKiwi = juiceMaker.fruitStore.quantity(of: .kiwi) else {
+            registerFailAlert()
+            print("\(Fruit.kiwi)의 재고에 문제가 생겼습니다.")
+            return }
+        currentFruitStock.kiwi = currentKiwi
+        
+        guard let currentMango = juiceMaker.fruitStore.quantity(of: .mango) else {
+            registerFailAlert()
+            print("\(Fruit.mango)의 재고에 문제가 생겼습니다.")
+            return }
+        currentFruitStock.mango = currentMango
     }
+    
+    func changeFruitLabels() {
+        strawberryCurrentStock.text = String(currentFruitStock.strawberry)
+        bananaCurrentStock.text = String(currentFruitStock.banana)
+        pineappleCurrentStock.text = String(currentFruitStock.pineapple)
+        kiwiCurrentStock.text = String(currentFruitStock.kiwi)
+        mangoCurrentStock.text = String(currentFruitStock.mango)
+    }
+    
+    func refreshLabels() {
+        checkCurrentStock()
+        changeFruitLabels()
+    }
+    
+    
     
     func order(fruitJuice: FruitJuice) {
         do {
@@ -72,7 +109,7 @@ class ViewController: UIViewController {
         }
         showOrderSucessAlert(fruitJuice: fruitJuice)
         
-        refreshCurrentStockLabel()
+        refreshLabels()
     }
     
     func showOrderSucessAlert(fruitJuice: FruitJuice) {
@@ -104,8 +141,21 @@ class ViewController: UIViewController {
         self.present(failAlert, animated: true, completion: nil)
     }
     
-    func moveToChangeStockView() {
-        guard let viewController = self.storyboard?.instantiateViewController(identifier: StringConstatns.changeStockViewController) else { return }
-        self.navigationController?.pushViewController(viewController, animated: true)
+    func registerFailAlert() {
+        let registerFailAlert = UIAlertController(title: StringConstatns.registerFailAlertTitle,
+                                                  message: StringConstatns.registerFailAlertMessage,
+                                                  preferredStyle: UIAlertController.Style.alert)
+        
+        self.present(registerFailAlert, animated: true, completion: nil)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            registerFailAlert.dismiss(animated: true)
+        }
     }
-}
+        
+        func moveToChangeStockView() {
+            guard let viewController = self.storyboard?.instantiateViewController(identifier: StringConstatns.changeStockViewController) else { return }
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+
