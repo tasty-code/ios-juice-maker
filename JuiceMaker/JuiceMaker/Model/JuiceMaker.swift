@@ -8,7 +8,7 @@ import Foundation
 
 struct JuiceMaker {
     let fruitStore = FruitStore.shared
-    weak var juiceAlertDelegate: juiceAlertDelegate?
+    weak var juiceAlertDelegate: JuiceAlertDelegate?
 
     func order(juice: Menu) {
         do {

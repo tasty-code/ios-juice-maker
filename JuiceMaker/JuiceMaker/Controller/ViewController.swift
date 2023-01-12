@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLabel()
-        fruitStore.textUpdateDelegate = self
+        fruitStore.updateDelegate = self
         juiceMaker.juiceAlertDelegate = self
     }
 
@@ -29,27 +29,29 @@ class ViewController: UIViewController {
 
     private func setupLabel() {
         fruitLabels.forEach { label in
-            guard let fruit = Fruits(rawValue: label.tag) else {
+            guard let fruit = Fruits(rawValue: label.tag),
+                  let quantity = fruitStore.stock(fruit: fruit) else {
                 return
             }
-            let quantity = fruitStore.stock(fruit: fruit)
             label.text = String(quantity)
         }
     }
 }
 
-extension ViewController: textUpdateDelegate {
+extension ViewController: UpdateDelegate {
     func updateLabel(fruit: Fruits) {
         fruitLabels.forEach { label in
             if label.tag == fruit.rawValue {
-                let quantity = fruitStore.stock(fruit: fruit)
+                guard let quantity = fruitStore.stock(fruit: fruit) else {
+                    return
+                }
                 label.text = String(quantity)
             }
         }
     }
 }
 
-extension ViewController: juiceAlertDelegate {
+extension ViewController: JuiceAlertDelegate {
     func madeJuiceAlert(juice: Menu) {
         let alert = UIAlertController(
             title: "\(juice.koreanName) 나왔습니다! 맛있게 드세요",
@@ -80,11 +82,11 @@ extension ViewController: juiceAlertDelegate {
     }
 }
 
-protocol textUpdateDelegate: AnyObject {
+protocol UpdateDelegate: AnyObject {
     func updateLabel(fruit: Fruits)
 }
 
-protocol juiceAlertDelegate: AnyObject {
+protocol JuiceAlertDelegate: AnyObject {
     func madeJuiceAlert(juice: Menu)
     func shortOfStockAlert(message: String)
 }
