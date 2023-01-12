@@ -89,9 +89,15 @@ class JuiceViewController: UIViewController {
     }
     
     func order(juiceType: SingleFruitJuice) {
+        
+        let needCount = juiceMaker.fruitStore.needCountOfMake(to: juiceType)
+        let isContinue = juiceMaker.isMakeable(juiceType, send: needCount)
+        
+        if isContinue == false {
+            failiureAlert()
+        }
         juiceMaker.make(single: juiceType)
-        let choiceAlert = currentStockDisplay(on: juiceEmojiBundle, change: juiceStoreCountBundle)
-        return choiceAlert
+        currentStockDisplay(on: juiceEmojiBundle, change: juiceStoreCountBundle)
     }
     
     func order(juiceType: MixFruitJuice) {
