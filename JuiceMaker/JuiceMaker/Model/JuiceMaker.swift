@@ -55,7 +55,7 @@ struct JuiceMaker: Makeable {
     }
     
     private func isMakeable(_ juice: MixFruitJuice, send consumes: [Int]) -> Bool {
-        var isContinue = false
+        var isContinue = [true]
         var needCounts = consumes
         
         juice.recipe.forEach { fruit in
@@ -63,14 +63,17 @@ struct JuiceMaker: Makeable {
                 return
             }
             let discern = fruitStore.isRemainFruit(type: fruit.key, count: extractCount)
-            isContinue = discern
+            isContinue.append(discern)
             
-            if !isContinue {
+            if !discern {
                 print("\(fruit.key) 재고가 없습니다!")
             }
             needCounts.removeFirst()
         }
-        return isContinue
+        guard isContinue.contains(false) else {
+            return true
+        }
+        return false
     }
     
     private func blending(juice: SingleFruitJuice) {
