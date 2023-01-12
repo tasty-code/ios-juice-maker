@@ -16,7 +16,7 @@ final class StockViewController: UIViewController {
     @IBOutlet var fruitStockLabels: [UILabel]!
     @IBOutlet var fruitStockSteppers: [UIStepper]!
     
-    var delegate: StockViewControllerDelegate?
+    weak var delegate: StockViewControllerDelegate?
     var isStockChanged: Bool = false
     
     // MARK: - Lifecycle
