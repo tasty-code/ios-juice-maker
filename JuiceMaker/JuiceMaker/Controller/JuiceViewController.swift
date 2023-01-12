@@ -60,29 +60,27 @@ class JuiceViewController: UIViewController {
         currentStockDisplay(on: juiceEmojiBundle, change: juiceStoreCountBundle)
     }
     
-    func currentStockDisplay(on emojiLabels: [UILabel], change countLabels: [UILabel]) -> Bool {
+    func currentStockDisplay(on emojiLabels: [UILabel], change countLabels: [UILabel]) {
         for (emojiLabel, countLabel) in zip(emojiLabels, countLabels) {
             guard let checkTest = emojiLabel.text else {
-                return false
+                return
             }
             
             switch checkTest {
             case "🍓":
-                countLabel.text = convertToStringStock(fruit count: .strawberry)
+                countLabel.text = convertToStringStock(fruit: .strawberry)
             case "🍌":
-                countLabel.text = convertToStringStock(fruit count: .banana)
+                countLabel.text = convertToStringStock(fruit: .banana)
             case "🍍":
-                countLabel.text = convertToStringStock(fruit count: .pineApple)
+                countLabel.text = convertToStringStock(fruit: .pineApple)
             case "🥝":
-                countLabel.text = convertToStringStock(fruit count: .kiwi)
+                countLabel.text = convertToStringStock(fruit: .kiwi)
             case "🥭":
-                countLabel.text = convertToStringStock(fruit count: .mango)
+                countLabel.text = convertToStringStock(fruit: .mango)
             default:
-                return false
+                return
             }
         }
-//        if countLabel.text == "0" { return false }
-        return true
     }
     
     func convertToStringStock(fruit count: Fruit) -> String {
