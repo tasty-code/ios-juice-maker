@@ -19,9 +19,9 @@ class JuiceViewController: UIViewController {
         }
         switch juiceType {
         case "딸바쥬스 주문":
-            makeAndUpdate(juiceType: .strawberryBanana)
+            order(juiceType: .strawberryBanana)
         case "망키쥬스 주문":
-            makeAndUpdate(juiceType: .mangoKiwi)
+            order(juiceType: .mangoKiwi)
         default:
             break
         }
@@ -88,13 +88,13 @@ class JuiceViewController: UIViewController {
         return String(fruitStock)
     }
     
-    func makeAndUpdate(juiceType: SingleFruitJuice) -> Bool {
+    func order(juiceType: SingleFruitJuice) -> Bool {
         juiceMaker.make(single: juiceType)
         let choiceAlert = currentStockDisplay(on: juiceEmojiBundle, change: juiceStoreCountBundle)
         return choiceAlert
     }
     
-    func makeAndUpdate(juiceType: MixFruitJuice) {
+    func order(juiceType: MixFruitJuice) {
         juiceMaker.make(mix: juiceType)
         currentStockDisplay(on: juiceEmojiBundle, change: juiceStoreCountBundle)
     }
