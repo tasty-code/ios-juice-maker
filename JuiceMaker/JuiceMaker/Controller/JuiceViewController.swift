@@ -128,9 +128,9 @@ extension JuiceViewController {
     func failiureAlert() {
         let alert = UIAlertController(title: "재료가 모자라요.", message: "재고를 수정할까요?", preferredStyle: .alert)
         let successAction = UIAlertAction(title: "예", style: .default, handler: { action in
-            if let BViewController = self.storyboard?.instantiateViewController(identifier: "FruitView") as? FruitViewController {
-                self.present(BViewController, animated: true, completion: nil)
-            }
+            guard let fruitNavigationController = self.storyboard?.instantiateViewController(identifier: "FruitNavi") as? UINavigationController else { return }
+            fruitNavigationController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            self.present(fruitNavigationController, animated: true, completion: nil)
         })
         let cancleAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
         
