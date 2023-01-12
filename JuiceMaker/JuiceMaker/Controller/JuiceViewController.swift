@@ -68,15 +68,15 @@ class JuiceViewController: UIViewController {
             
             switch checkTest {
             case "🍓":
-                countLabel.text = currentStock(fruitName: .strawberry)
+                countLabel.text = convertToStringStock(fruit count: .strawberry)
             case "🍌":
-                countLabel.text = currentStock(fruitName: .banana)
+                countLabel.text = convertToStringStock(fruit count: .banana)
             case "🍍":
-                countLabel.text = currentStock(fruitName: .pineApple)
+                countLabel.text = convertToStringStock(fruit count: .pineApple)
             case "🥝":
-                countLabel.text = currentStock(fruitName: .kiwi)
+                countLabel.text = convertToStringStock(fruit count: .kiwi)
             case "🥭":
-                countLabel.text = currentStock(fruitName: .mango)
+                countLabel.text = convertToStringStock(fruit count: .mango)
             default:
                 return false
             }
@@ -85,10 +85,8 @@ class JuiceViewController: UIViewController {
         return true
     }
     
-    func currentStock(fruitName: Fruit) -> String {
-        guard let fruitStock = juiceMaker.fruitStore.store[fruitName] else {
-            return ""
-        }
+    func convertToStringStock(fruit count: Fruit) -> String {
+        let fruitStock = juiceMaker.fruitStore.sendBackToAvailableStock(fruit: count)
         return String(fruitStock)
     }
     
