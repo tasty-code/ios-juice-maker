@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddStockViewController: UIViewController {
+final class UpdateStockViewController: UIViewController {
     var fruitStore: FruitStore!
 
     @IBOutlet weak var strawberryStockLabel: UILabel!
@@ -15,7 +15,6 @@ class AddStockViewController: UIViewController {
     @IBOutlet weak var pineappleStockLabel: UILabel!
     @IBOutlet weak var kiwiStockLabel: UILabel!
     @IBOutlet weak var mangoStockLabel: UILabel!
-
 
     @IBOutlet weak var strawberryStepper: UIStepper!
     @IBOutlet weak var bananaStepper: UIStepper!

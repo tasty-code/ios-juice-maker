@@ -47,12 +47,8 @@ final class FruitStore {
         stockByFruit[fruit] = fruitStock - count
     }
 
-    func addStock(fruit: Fruit, count: UInt) throws {
-        self.stockByFruit[fruit] = stock(byFruit: fruit) + count
-    }
-    
-    func stock(byFruit: Fruit) -> UInt {
-        return stockByFruit[byFruit] ?? 0
+    func stock(byFruit fruit: Fruit) -> UInt {
+        return stockByFruit[fruit] ?? 0
     }
 
     func hasEnoughStock(recipe: [Fruit: UInt]) -> Bool {
