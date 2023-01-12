@@ -88,7 +88,7 @@ class JuiceViewController: UIViewController {
         return String(fruitStock)
     }
     
-    func order(juiceType: SingleFruitJuice) -> Bool {
+    func order(juiceType: SingleFruitJuice) {
         juiceMaker.make(single: juiceType)
         let choiceAlert = currentStockDisplay(on: juiceEmojiBundle, change: juiceStoreCountBundle)
         return choiceAlert
@@ -99,6 +99,9 @@ class JuiceViewController: UIViewController {
         currentStockDisplay(on: juiceEmojiBundle, change: juiceStoreCountBundle)
     }
     
+}
+
+extension JuiceViewController {
     func successAlert(juiceType: String) {
         let success = UIAlertAction(title: "OK", style: .default, handler: nil)
         let alert = UIAlertController(title: nil, message: "\(juiceType)쥬스 나왔습니다! 맛있게 드세요!", preferredStyle: .alert)
