@@ -87,10 +87,12 @@ final class JuiceViewController: UIViewController {
         let alert = UIAlertController(title: stockError.localizedDescription,
                                       message: stockError.userMessage,
                                       preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: Constants.UserMessage.failedJuiceConfirm, style: .default) { _ in
+        let confirmAction = UIAlertAction(title: Constants.UserMessage.failedJuiceConfirm,
+                                          style: .default) { _ in
             self.moveToStockVC()
         }
-        let cancelAction = UIAlertAction(title: Constants.UserMessage.failedJuiceCancel, style: .cancel)
+        let cancelAction = UIAlertAction(title: Constants.UserMessage.failedJuiceCancel,
+                                         style: .cancel)
         alert.addAction(confirmAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true)
@@ -101,7 +103,7 @@ final class JuiceViewController: UIViewController {
             .instantiateViewController(withIdentifier: Constants.Identifier.stockViewController)
                 as? StockViewController else { return }
         stockVC.delegate = self
-//        navigationController?.pushViewController(stockVC, animated: true)
+
         present(stockVC, animated: true)
     }
 }
