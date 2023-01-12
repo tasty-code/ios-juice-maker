@@ -27,40 +27,8 @@ final class FruitStore {
         return stock
     }
     
-    func add(fruit: Fruits, quantity: Quantity) {
-        guard let stock = fruits[fruit] else {
-            return
-        }
-        fruits.updateValue(stock + quantity, forKey: fruit)
-    }
-    
-    func remove(according recipe: [Fruits: Quantity]) throws {
-        try checkFruit(according: recipe)
-        for (fruit, quantity) in recipe {
-            guard let stock = fruits[fruit] else {
-                return
-            }
-            let newQuantity = stock - quantity
-            fruits.updateValue(newQuantity, forKey: fruit)
-            updateDelegate?.updateLabel(fruit: fruit)
-        }
-    }
-    
-    private func checkFruit(according recipe: [Fruits: Quantity]) throws {
-        for (fruit, quantity) in recipe {
-            guard let stock = fruits[fruit] else {
-                return
-            }
-            guard stock.isNegative(subtraction: quantity) else {
-                throw JuiceError.negativeQuantity(fruit: fruit)
-            }
-        }
-    }
-}
-
-private extension Int {
-    func isNegative(subtraction sub: Int) -> Bool {
-        let result = (self - sub) >= 0
-        return result
+    func update(fruit: Fruits, quantity: Quantity) {
+        fruits.updateValue(quantity, forKey: fruit)
+        updateDelegate?.updateLabel(fruit: fruit)
     }
 }

@@ -17,14 +17,18 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setupLabel()
         fruitStore.updateDelegate = self
-        juiceMaker.juiceAlertDelegate = self
     }
 
     @IBAction func orderJuice(_ sender: UIButton) {
         guard let juice = Menu(rawValue: sender.tag) else {
             return
         }
-        juiceMaker.order(juice: juice)
+        do {
+            try juiceMaker.make(juice: juice)
+            madeJuiceAlert(juice: juice)
+        } catch {
+            shortOfStockAlert(message: error.localizedDescription)
+        }
     }
 
     private func setupLabel() {
@@ -51,7 +55,7 @@ extension ViewController: UpdateDelegate {
     }
 }
 
-extension ViewController: JuiceAlertDelegate {
+extension ViewController {
     func madeJuiceAlert(juice: Menu) {
         let alert = UIAlertController(
             title: "\(juice.koreanName) 나왔습니다! 맛있게 드세요",
@@ -84,9 +88,4 @@ extension ViewController: JuiceAlertDelegate {
 
 protocol UpdateDelegate: AnyObject {
     func updateLabel(fruit: Fruits)
-}
-
-protocol JuiceAlertDelegate: AnyObject {
-    func madeJuiceAlert(juice: Menu)
-    func shortOfStockAlert(message: String)
 }
