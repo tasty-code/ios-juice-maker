@@ -101,7 +101,8 @@ final class JuiceViewController: UIViewController {
             .instantiateViewController(withIdentifier: Constants.Identifier.stockViewController)
                 as? StockViewController else { return }
         stockVC.delegate = self
-        navigationController?.pushViewController(stockVC, animated: true)
+//        navigationController?.pushViewController(stockVC, animated: true)
+        present(stockVC, animated: true)
     }
 }
 

@@ -26,14 +26,6 @@ final class StockViewController: UIViewController {
         configureUI()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        if isStockChanged {
-            delegate?.didChangeStock()
-        }
-    }
-    
     // MARK: - Actions
     @IBAction private func stepperValueChanged(_ sender: UIStepper) {
         guard let fruitStepper = sender as? FruitStepperProtocol else { return }
@@ -51,6 +43,14 @@ final class StockViewController: UIViewController {
         stockLabel.text = String(changedStock)
         
         isStockChanged = true
+    }
+    
+    @IBAction func closeButtonTapped(_ sender: UIBarButtonItem) {
+        if isStockChanged {
+            delegate?.didChangeStock()
+        }
+        
+        dismiss(animated: true)
     }
     
     // MARK: - Helpers

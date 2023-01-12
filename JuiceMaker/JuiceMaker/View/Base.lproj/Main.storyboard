@@ -421,6 +421,18 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jRn-IS-pbv">
+                                <rect key="frame" x="0.0" y="0.0" width="852" height="32"/>
+                                <items>
+                                    <navigationItem title="재고 추가" id="UQ1-Cu-g6p">
+                                        <barButtonItem key="rightBarButtonItem" title="닫기" id="Zpi-TQ-52L">
+                                            <connections>
+                                                <action selector="closeButtonTapped:" destination="Yu1-lM-nqp" id="TMg-f2-NHf"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gcO-Xb-kNs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -428,6 +440,9 @@
                             <constraint firstItem="qSa-XC-tAi" firstAttribute="top" secondItem="gcO-Xb-kNs" secondAttribute="top" id="XsD-xk-KUQ"/>
                             <constraint firstItem="gcO-Xb-kNs" firstAttribute="trailing" secondItem="qSa-XC-tAi" secondAttribute="trailing" constant="16" id="YA3-1M-Vxy"/>
                             <constraint firstItem="qSa-XC-tAi" firstAttribute="leading" secondItem="gcO-Xb-kNs" secondAttribute="leading" constant="16" id="dVJ-7h-iTr"/>
+                            <constraint firstItem="jRn-IS-pbv" firstAttribute="leading" secondItem="tKV-4l-Vtc" secondAttribute="leading" id="lhE-Qm-jHS"/>
+                            <constraint firstAttribute="trailing" secondItem="jRn-IS-pbv" secondAttribute="trailing" id="pbi-ba-LSd"/>
+                            <constraint firstItem="jRn-IS-pbv" firstAttribute="top" secondItem="tKV-4l-Vtc" secondAttribute="top" id="rKi-BE-QqF"/>
                             <constraint firstItem="gcO-Xb-kNs" firstAttribute="bottom" secondItem="qSa-XC-tAi" secondAttribute="bottom" id="vPX-e2-e86"/>
                         </constraints>
                     </view>
