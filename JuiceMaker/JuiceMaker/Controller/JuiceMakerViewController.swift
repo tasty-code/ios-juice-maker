@@ -7,30 +7,30 @@
 import UIKit
 
 final class JuiceMakerViewController: UIViewController {
-    let fruitStore = FruitStore()
-    lazy var juiceMaker = JuiceMaker(fruitStore: fruitStore)
+    private let fruitStore = FruitStore()
+    private lazy var juiceMaker = JuiceMaker(fruitStore: fruitStore)
 
-    @IBOutlet var stockLabels: [UILabel]!
+    @IBOutlet private var stockLabels: [UILabel]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateStockLabel()
+        updateStockLabels()
     }
     
-    func updateStockLabel() {
+    private func updateStockLabels() {
         for (stockLabel, stock) in zip(stockLabels, fruitStore.stockByFruit.values) {
             stockLabel.text = String(stock)
         }
     }
 
-    func alertJuiceReady(juiceName: String) {
+    private func alertJuiceReady(juiceName: String) {
         let alert = UIAlertController(title: nil, message: "\(juiceName) 나왔습니다! 맛있게 드세요!", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .cancel, handler : nil)
         alert.addAction(okAction)
         present(alert, animated: false)
     }
 
-    func alertOutOfStock() {
+    private func alertOutOfStock() {
         let alert = UIAlertController(title: nil, message: "재료가 모자라요. 재고를 수정할까요?", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "예", style: .default, handler : { _ in
             guard let addStockVC = self.storyboard?.instantiateViewController(withIdentifier: "addStockVC") else { return }
@@ -42,15 +42,15 @@ final class JuiceMakerViewController: UIViewController {
         present(alert, animated: false)
     }
 
-    func changeStockLabel(juice: Juice) {
+    private func changeStockLabel(juice: Juice) {
         for (fruit, _) in juice.recipe {
             let fruitStock = fruitStore.stock(byFruit: fruit)
             stockLabels[fruit.sequence].text = String(fruitStock)
         }
-        alertJuiceReady(juiceName: juice.juiceName)
+        alertJuiceReady(juiceName: juice.name)
     }
 
-    func order(juice: Juice) {
+    private func order(juice: Juice) {
         do {
             try juiceMaker.make(juice: juice)
             changeStockLabel(juice: juice)
@@ -61,11 +61,11 @@ final class JuiceMakerViewController: UIViewController {
         }
     }
 
-    @IBAction func orderButton(_ sender: UIButton) {
+    @IBAction private func orderButton(_ sender: UIButton) {
         guard let buttonName = sender.currentTitle else { return }
         let juiceName = buttonName.components(separatedBy: " ")[0]
         let juice = Juice.allCases.filter {
-            $0.juiceName == juiceName
+            $0.name == juiceName
         }[0]
         order(juice: juice)
     }

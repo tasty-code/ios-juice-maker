@@ -29,7 +29,7 @@ enum Juice: CaseIterable {
         }
     }
 
-    var juiceName: String {
+    var name: String {
         switch self {
         case .strawberry:
             return "딸기쥬스"

@@ -48,9 +48,7 @@ final class FruitStore {
     }
     
     func stock(byFruit: Fruit) -> UInt {
-        return stockByFruit.filter { (fruit, _) in
-            fruit == byFruit
-        }[0].value
+        return stockByFruit[byFruit] ?? 0
     }
 
     func hasEnoughStock(recipe: [Fruit: UInt]) -> Bool {
