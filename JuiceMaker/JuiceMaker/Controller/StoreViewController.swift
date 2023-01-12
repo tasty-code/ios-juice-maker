@@ -9,11 +9,13 @@ import UIKit
 
 class StoreViewController: UIViewController {
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
+    @IBAction func touchesBackButton(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
 

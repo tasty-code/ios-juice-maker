@@ -8,11 +8,11 @@ import UIKit
 
 class JuiceMakerViewController: UIViewController {
     
-    @IBOutlet private weak var strawberryStock: UILabel!
-    @IBOutlet private weak var bananaStock: UILabel!
-    @IBOutlet private weak var pineappleStock: UILabel!
-    @IBOutlet private weak var kiwiStock: UILabel!
-    @IBOutlet private weak var mangoStock: UILabel!
+    @IBOutlet private weak var strawberryStockLabel: UILabel!
+    @IBOutlet private weak var bananaStockLabel: UILabel!
+    @IBOutlet private weak var pineappleStockLabel: UILabel!
+    @IBOutlet private weak var kiwiStockLabel: UILabel!
+    @IBOutlet private weak var mangoStockLabel: UILabel!
     
     private var fruitLabelFruitMap: [UILabel: Fruit]!
     private var fruitStore = FruitStore(defaultStock: 10)
@@ -23,38 +23,41 @@ class JuiceMakerViewController: UIViewController {
         juiceMaker = JuiceMaker(fruitStore: fruitStore)
         
         fruitLabelFruitMap = [
-            strawberryStock: .strawberry,
-            bananaStock: .banana,
-            pineappleStock: .pineapple,
-            kiwiStock: .kiwi,
-            mangoStock: .mango
+            strawberryStockLabel: .strawberry,
+            bananaStockLabel: .banana,
+            pineappleStockLabel: .pineapple,
+            kiwiStockLabel: .kiwi,
+            mangoStockLabel: .mango
         ]
         
         updateStockValue()
     }
     
-    @IBAction func ModifyStockButtonTapped(_ sender: UIBarButtonItem) {
+    @IBAction func touchesModifyStockButton(_ sender: UIBarButtonItem) {
         showStoreView()
     }
     
-    @IBAction func orderButtonTapped(_ sender: UIButton) {
+    @IBAction func touchesOrderButton(_ sender: UIButton) {
         let orderName = sender.currentTitle
         let juiceName = orderName?.replacingOccurrences(of: " 주문", with: "")
         guard let juice = Juice(rawValue: juiceName ?? "") else {
-            showAlert(message: "팔 수 없습니다.")
+            showMessageAlert("팔 수 없습니다.")
             return
         }
-        
+        // 고민해보기
+        showResult(juice: juice)
+        updateStockValue()
+    }
+    
+    func showResult(juice: Juice) {
         do {
             try juiceMaker.make(juice: juice)
-            showAlert(message: "\(juice.rawValue) 나왔습니다! 맛있게 드세요!")
+            showMessageAlert("\(juice.rawValue) 나왔습니다! 맛있게 드세요!")
         } catch is JuiceMakerError {
             showFailAlert()
         } catch {
-            showAlert(message: "\(error)")
+            showMessageAlert("\(error)")
         }
-        
-        updateStockValue()
     }
     
     private func showStoreView() {
@@ -91,7 +94,7 @@ extension JuiceMakerViewController {
         present(failAlert, animated: true)
     }
     
-    private func showAlert(message: String) {
+    private func showMessageAlert(_ message: String) {
         let alert = UIAlertController(title: nil,
                                              message: message,
                                              preferredStyle: .alert)
