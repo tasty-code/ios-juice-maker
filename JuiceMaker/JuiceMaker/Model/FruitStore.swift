@@ -18,7 +18,9 @@ final class FruitStore {
     
     func update(_ fruit: Fruit, stock: Int) {
         let originStock = sendBackToAvailableStock(fruit: fruit)
-        store.updateValue(originStock - stock, forKey: fruit)
+        if originStock - stock >= 0 {
+            store.updateValue(originStock - stock, forKey: fruit)
+        }
     }
     
     func sendBackToAvailableStock(fruit type: Fruit) -> Int {
