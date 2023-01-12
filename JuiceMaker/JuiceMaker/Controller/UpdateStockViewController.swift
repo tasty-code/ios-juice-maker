@@ -10,24 +10,24 @@ import UIKit
 final class UpdateStockViewController: UIViewController {
     var fruitStore: FruitStore!
 
-    @IBOutlet weak var strawberryStockLabel: UILabel!
-    @IBOutlet weak var bananaStockLabel: UILabel!
-    @IBOutlet weak var pineappleStockLabel: UILabel!
-    @IBOutlet weak var kiwiStockLabel: UILabel!
-    @IBOutlet weak var mangoStockLabel: UILabel!
+    @IBOutlet private weak var strawberryStockLabel: UILabel!
+    @IBOutlet private weak var bananaStockLabel: UILabel!
+    @IBOutlet private weak var pineappleStockLabel: UILabel!
+    @IBOutlet private weak var kiwiStockLabel: UILabel!
+    @IBOutlet private weak var mangoStockLabel: UILabel!
 
-    @IBOutlet weak var strawberryStepper: UIStepper!
-    @IBOutlet weak var bananaStepper: UIStepper!
-    @IBOutlet weak var pineappleStepper: UIStepper!
-    @IBOutlet weak var kiwiStepper: UIStepper!
-    @IBOutlet weak var mangoStepper: UIStepper!
+    @IBOutlet private weak var strawberryStepper: UIStepper!
+    @IBOutlet private weak var bananaStepper: UIStepper!
+    @IBOutlet private weak var pineappleStepper: UIStepper!
+    @IBOutlet private weak var kiwiStepper: UIStepper!
+    @IBOutlet private weak var mangoStepper: UIStepper!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         initLabels()
     }
 
-    func initLabels() {
+    private func initLabels() {
         let strawberryStock = fruitStore.stock(byFruit: .strawberry)
         strawberryStockLabel.text = String(strawberryStock)
         strawberryStepper.value = Double(strawberryStock)
@@ -50,27 +50,27 @@ final class UpdateStockViewController: UIViewController {
     }
 
 
-    @IBAction func strawberryStepperButton(_ sender: UIStepper) {
+    @IBAction private func strawberryStepperButton(_ sender: UIStepper) {
         strawberryStockLabel.text = String(format: "%.0f",strawberryStepper.value)
     }
 
-    @IBAction func bananaStepperButton(_ sender: UIStepper) {
+    @IBAction private func bananaStepperButton(_ sender: UIStepper) {
         bananaStockLabel.text = String(format: "%.0f", bananaStepper.value)
     }
 
-    @IBAction func pineappleStepperButton(_ sender: UIStepper) {
+    @IBAction private func pineappleStepperButton(_ sender: UIStepper) {
         pineappleStockLabel.text = String(format: "%.0f", pineappleStepper.value)
     }
 
-    @IBAction func kiwiStepperButton(_ sender: UIStepper) {
+    @IBAction private func kiwiStepperButton(_ sender: UIStepper) {
         kiwiStockLabel.text = String(format: "%.0f", kiwiStepper.value)
     }
 
-    @IBAction func mangoStepperButton(_ sender: UIStepper) {
+    @IBAction private func mangoStepperButton(_ sender: UIStepper) {
         mangoStockLabel.text = String(format: "%.0f", mangoStepper.value)
     }
 
-    @IBAction func closeButton(_ sender: UIBarButtonItem) {
+    @IBAction private func closeButton(_ sender: UIBarButtonItem) {
         fruitStore.updateStock(fruit: .strawberry, count: UInt(strawberryStepper.value))
         fruitStore.updateStock(fruit: .banana, count: UInt(bananaStepper.value))
         fruitStore.updateStock(fruit: .pineapple, count: UInt(pineappleStepper.value))

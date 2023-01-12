@@ -10,11 +10,11 @@ final class JuiceMakerViewController: UIViewController {
     private let fruitStore = FruitStore()
     private lazy var juiceMaker = JuiceMaker(fruitStore: fruitStore)
 
-    @IBOutlet weak var strawberryStockLabel: UILabel!
-    @IBOutlet weak var bananaStockLabel: UILabel!
-    @IBOutlet weak var pineappleStockLabel: UILabel!
-    @IBOutlet weak var kiwiStockLabel: UILabel!
-    @IBOutlet weak var mangoStockLabel: UILabel!
+    @IBOutlet private weak var strawberryStockLabel: UILabel!
+    @IBOutlet private weak var bananaStockLabel: UILabel!
+    @IBOutlet private weak var pineappleStockLabel: UILabel!
+    @IBOutlet private weak var kiwiStockLabel: UILabel!
+    @IBOutlet private weak var mangoStockLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,14 +64,14 @@ final class JuiceMakerViewController: UIViewController {
         }
     }
 
-    func presentUpdateStockViewController() {
+    private func presentUpdateStockViewController() {
         guard let updateStockViewController = self.storyboard?.instantiateViewController(withIdentifier: "UpdateStockViewController") as? UpdateStockViewController else { return }
         updateStockViewController.fruitStore = self.fruitStore
         updateStockViewController.modalPresentationStyle = .fullScreen
         self.present(updateStockViewController, animated: true)
     }
 
-    @IBAction func addStockButton(_ sender: UIBarButtonItem) {
+    @IBAction private func addStockButton(_ sender: UIBarButtonItem) {
         presentUpdateStockViewController()
     }
 
