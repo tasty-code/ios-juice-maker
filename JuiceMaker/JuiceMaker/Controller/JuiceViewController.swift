@@ -31,27 +31,21 @@ class JuiceViewController: UIViewController {
         guard let juiceType = sender.currentTitle else {
             return
         }
-        switch juiceType {
-        case "딸기쥬스 주문":
-            let choiceAlert = makeAndUpdate(juiceType: .strawberry)
-            guard choiceAlert else {
-                return failiureAlert()
-            }
+        switch SingleFruitJuice(rawValue: juiceType) {
+        case .strawberry:
+            order(juiceType: .strawberry)
             successAlert(juiceType: "🍓")
-        case "바나나쥬스 주문":
-            let choiceAlert = makeAndUpdate(juiceType: .banana)
-            guard choiceAlert else {
-                return failiureAlert()
-            }
+        case .banana:
+            order(juiceType: .banana)
             successAlert(juiceType: "🍌")
-        case "파인애플쥬스 주문":
-            makeAndUpdate(juiceType: .pineApple)
+        case .pineApple:
+            order(juiceType: .pineApple)
             successAlert(juiceType: "🍍")
-        case "키위쥬스 주문":
-            makeAndUpdate(juiceType: .kiwi)
+        case .kiwi:
+            order(juiceType: .kiwi)
             successAlert(juiceType: "🥝")
-        case "망고쥬스 주문":
-            makeAndUpdate(juiceType: .mango)
+        case .mango:
+            order(juiceType: .mango)
             successAlert(juiceType: "🥭")
         default:
             break
