@@ -26,11 +26,11 @@ final class ViewController: UIViewController {
     }
     
     private func setFruitLabel() {
-        for label in fruitStockLabels {
-            guard let fruitStockLabel = label as? FruitStockManagable else { return }
-            guard let stockInt = FruitStore.shared.fruits[fruitStockLabel.fruitName]?.stock else { return }
-            let changeIntToString = String(stockInt)
-            label.text = changeIntToString
+        for fruitStockLabel in fruitStockLabels {
+            guard let label = fruitStockLabel as? FruitStockManagable,
+                  let stockInt = FruitStore.shared.fruits[label.fruitName]?.stock else { return }
+            let changeStockIntToString = String(stockInt)
+            fruitStockLabel.text = changeStockIntToString
         }
     }
     

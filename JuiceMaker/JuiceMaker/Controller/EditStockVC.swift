@@ -21,8 +21,8 @@ class EditStockVC: UIViewController {
     
     private func setSteppersValues() {
         for stepper in StepperButtons {
-            guard let fruit = Fruits(rawValue: stepper.tag),
-                  let fruitStock = FruitStore.shared.fruits[fruit]?.stock else { return }
+            guard let stepperButton = stepper as? FruitStockManagable,
+            let fruitStock = FruitStore.shared.fruits[stepperButton.fruitName]?.stock else { return }
             let fruitStockDouble = Double(fruitStock)
             stepper.value = fruitStockDouble
         }
@@ -36,21 +36,20 @@ class EditStockVC: UIViewController {
     
     private func setFruitLabels() {
         for fruitStockLabel in fruitStockLabels {
-            guard let fruit = Fruits(rawValue: fruitStockLabel.tag),
-                  let fruitStock = FruitStore.shared.fruits[fruit]?.stock else { return }
-            let fruitStockDouble = String(fruitStock)
-            fruitStockLabel.text = fruitStockDouble
+            guard let label = fruitStockLabel as? FruitStockManagable,
+                  let fruitStock = FruitStore.shared.fruits[label.fruitName]?.stock else { return }
+            let changeStockIntToString = String(fruitStock)
+            fruitStockLabel.text = changeStockIntToString
         }
     }
     
     @IBAction func closeButtonTapped(_ sender: UIButton) {
         for changedFruitStock in fruitStockLabels {
-            guard let fruit = Fruits(rawValue: changedFruitStock.tag),
-                  let fruitStock = changedFruitStock.text,
-                  let changedFruitStock = Int(fruitStock) else { return }
-            FruitStore.shared.fruits[fruit]?.stock = changedFruitStock
+            guard let fruitStock = changedFruitStock as? FruitStockManagable,
+                  let fruitStockLabel = changedFruitStock.text,
+                  let changedFruitStock = Int(fruitStockLabel) else { return }
+            FruitStore.shared.fruits[fruitStock.fruitName]?.stock = changedFruitStock
         }
-        print(FruitStore.shared.fruits)
         dismiss(animated: true)
     }
     
