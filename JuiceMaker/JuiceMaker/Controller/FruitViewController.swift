@@ -13,6 +13,16 @@ class FruitViewController: UIViewController {
         dismiss(animated: true)
     }
     
+    @IBOutlet var fruitEmojiBundle: [UILabel]!
+    @IBOutlet var fruitStoreCountBundle: [UILabel]!
+    @IBOutlet var stepperBundle: [UIStepper]!
+    
+    @IBAction func stepperAction(_ sender: UIStepper) {
+        
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

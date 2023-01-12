@@ -310,6 +310,9 @@
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="xbn-6P-grO">
                                 <rect key="frame" x="580" y="187" width="94" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="stepperAction:" destination="Yu1-lM-nqp" eventType="valueChanged" id="aQL-p6-glD"/>
+                                </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="🥝" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EHe-D1-1xN">
                                 <rect key="frame" x="429" y="65" width="75" height="83.666666666666671"/>
@@ -329,6 +332,9 @@
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="klA-59-Nu4">
                                 <rect key="frame" x="410" y="187" width="94" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="stepperAction:" destination="Yu1-lM-nqp" eventType="valueChanged" id="ckc-Yu-ZdW"/>
+                                </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="🍍" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rac-Ji-vZK">
                                 <rect key="frame" x="271" y="65" width="75" height="83.666666666666671"/>
@@ -348,6 +354,9 @@
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Rcr-xr-eqz">
                                 <rect key="frame" x="261" y="187" width="94" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="stepperAction:" destination="Yu1-lM-nqp" eventType="valueChanged" id="3gC-De-66Y"/>
+                                </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="🍌" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="y33-ND-gz2">
                                 <rect key="frame" x="165" y="73" width="75" height="83.666666666666671"/>
@@ -359,6 +368,9 @@
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="O5s-2N-3iP">
                                 <rect key="frame" x="154" y="187" width="94" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="stepperAction:" destination="Yu1-lM-nqp" eventType="valueChanged" id="H5l-Wr-NsA"/>
+                                </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0yV-kn-zaT">
                                 <rect key="frame" x="98" y="161" width="11.666666666666664" height="23"/>
@@ -386,6 +398,9 @@
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZQk-f4-zrz">
                                 <rect key="frame" x="50" y="192" width="94" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="stepperAction:" destination="Yu1-lM-nqp" eventType="valueChanged" id="u9k-dh-kY0"/>
+                                </connections>
                             </stepper>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gcO-Xb-kNs"/>
@@ -398,6 +413,23 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outletCollection property="fruitEmojiBundle" destination="dCK-AJ-zGU" collectionClass="NSMutableArray" id="1VP-IW-geK"/>
+                        <outletCollection property="fruitEmojiBundle" destination="y33-ND-gz2" collectionClass="NSMutableArray" id="feG-eV-shi"/>
+                        <outletCollection property="fruitEmojiBundle" destination="rac-Ji-vZK" collectionClass="NSMutableArray" id="dla-A0-DDk"/>
+                        <outletCollection property="fruitEmojiBundle" destination="EHe-D1-1xN" collectionClass="NSMutableArray" id="yb1-Eb-DNO"/>
+                        <outletCollection property="fruitEmojiBundle" destination="w1F-9o-qJR" collectionClass="NSMutableArray" id="6DL-qZ-12n"/>
+                        <outletCollection property="fruitStoreCountBundle" destination="0yV-kn-zaT" collectionClass="NSMutableArray" id="aoF-FQ-qMr"/>
+                        <outletCollection property="fruitStoreCountBundle" destination="gKu-86-RhI" collectionClass="NSMutableArray" id="Mjj-9q-R5z"/>
+                        <outletCollection property="fruitStoreCountBundle" destination="MpT-VW-hCb" collectionClass="NSMutableArray" id="NFj-fe-KqZ"/>
+                        <outletCollection property="fruitStoreCountBundle" destination="ZDv-1m-HBY" collectionClass="NSMutableArray" id="IkU-QQ-ui0"/>
+                        <outletCollection property="fruitStoreCountBundle" destination="YJI-ER-LJR" collectionClass="NSMutableArray" id="5Si-Bi-Nip"/>
+                        <outletCollection property="stepperBundle" destination="ZQk-f4-zrz" collectionClass="NSMutableArray" id="QTX-Bf-EZ3"/>
+                        <outletCollection property="stepperBundle" destination="O5s-2N-3iP" collectionClass="NSMutableArray" id="uoQ-c2-xPL"/>
+                        <outletCollection property="stepperBundle" destination="Rcr-xr-eqz" collectionClass="NSMutableArray" id="Cjx-SX-RJe"/>
+                        <outletCollection property="stepperBundle" destination="klA-59-Nu4" collectionClass="NSMutableArray" id="YhB-1e-sv0"/>
+                        <outletCollection property="stepperBundle" destination="xbn-6P-grO" collectionClass="NSMutableArray" id="unm-cz-Asg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
             </objects>
