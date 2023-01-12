@@ -33,8 +33,7 @@ final class JuiceMakerViewController: UIViewController {
     private func alertOutOfStock() {
         let alert = UIAlertController(title: nil, message: "재료가 모자라요. 재고를 수정할까요?", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "예", style: .default, handler : { _ in
-            guard let addStockVC = self.storyboard?.instantiateViewController(withIdentifier: "addStockVC") else { return }
-            self.navigationController?.pushViewController(addStockVC, animated: true)
+            self.presentAddStockViewController()
         })
         alert.addAction(okAction)
         let noAction = UIAlertAction(title: "아니오", style: .default, handler : nil)
@@ -60,6 +59,18 @@ final class JuiceMakerViewController: UIViewController {
             print(error.localizedDescription)
         }
     }
+
+    func presentAddStockViewController() {
+        guard let addStockViewController = self.storyboard?.instantiateViewController(withIdentifier: "AddStockViewController") as? AddStockViewController else { return }
+        addStockViewController.fruitStore = self.fruitStore
+        addStockViewController.modalPresentationStyle = .fullScreen
+        self.present(addStockViewController, animated: true)
+    }
+
+    @IBAction func addStockButton(_ sender: UIBarButtonItem) {
+        presentAddStockViewController()
+    }
+
 
     @IBAction private func orderButton(_ sender: UIButton) {
         guard let buttonName = sender.currentTitle else { return }
