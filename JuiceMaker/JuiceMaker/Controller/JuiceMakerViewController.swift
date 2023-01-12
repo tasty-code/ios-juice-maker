@@ -10,8 +10,12 @@ final class JuiceMakerViewController: UIViewController {
     private let fruitStore = FruitStore()
     private lazy var juiceMaker = JuiceMaker(fruitStore: fruitStore)
 
-    @IBOutlet private var stockLabels: [UILabel]!
-    
+    @IBOutlet weak var strawberryStockLabel: UILabel!
+    @IBOutlet weak var bananaStockLabel: UILabel!
+    @IBOutlet weak var pineappleStockLabel: UILabel!
+    @IBOutlet weak var kiwiStockLabel: UILabel!
+    @IBOutlet weak var mangoStockLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         updateStockLabels()
@@ -23,9 +27,11 @@ final class JuiceMakerViewController: UIViewController {
     }
 
     private func updateStockLabels() {
-        for (stockLabel, stock) in zip(stockLabels, fruitStore.stockByFruit.values) {
-            stockLabel.text = String(stock)
-        }
+        strawberryStockLabel.text = String(fruitStore.stock(byFruit: .strawberry))
+        bananaStockLabel.text = String(fruitStore.stock(byFruit: .banana))
+        pineappleStockLabel.text = String(fruitStore.stock(byFruit: .pineapple))
+        kiwiStockLabel.text = String(fruitStore.stock(byFruit: .kiwi))
+        mangoStockLabel.text = String(fruitStore.stock(byFruit: .mango))
     }
 
     private func alertJuiceReady(juiceName: String) {
@@ -46,18 +52,11 @@ final class JuiceMakerViewController: UIViewController {
         present(alert, animated: false)
     }
 
-    private func changeStockLabel(juice: Juice) {
-        for (fruit, _) in juice.recipe {
-            let fruitStock = fruitStore.stock(byFruit: fruit)
-            stockLabels[fruit.sequence].text = String(fruitStock)
-        }
-        alertJuiceReady(juiceName: juice.name)
-    }
-
     private func order(juice: Juice) {
         do {
             try juiceMaker.make(juice: juice)
-            changeStockLabel(juice: juice)
+            updateStockLabels()
+            alertJuiceReady(juiceName: juice.name)
         } catch JuiceMakerError.outOfStock {
             alertOutOfStock()
         } catch {
@@ -75,7 +74,6 @@ final class JuiceMakerViewController: UIViewController {
     @IBAction func addStockButton(_ sender: UIBarButtonItem) {
         presentAddStockViewController()
     }
-
 
     @IBAction private func orderButton(_ sender: UIButton) {
         guard let buttonName = sender.currentTitle else { return }
