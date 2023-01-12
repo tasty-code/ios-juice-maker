@@ -35,6 +35,10 @@ final class FruitStore {
         }
     }
 
+    func updateStock(fruit: Fruit, count: UInt) {
+        stockByFruit[fruit] = count
+    }
+
     func subtractStock(fruit: Fruit, count: UInt) throws {
         let fruitStock = stock(byFruit: fruit)
         guard fruitStock >= count else {

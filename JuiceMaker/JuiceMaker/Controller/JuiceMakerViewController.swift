@@ -16,7 +16,12 @@ final class JuiceMakerViewController: UIViewController {
         super.viewDidLoad()
         updateStockLabels()
     }
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateStockLabels()
+    }
+
     private func updateStockLabels() {
         for (stockLabel, stock) in zip(stockLabels, fruitStore.stockByFruit.values) {
             stockLabel.text = String(stock)
