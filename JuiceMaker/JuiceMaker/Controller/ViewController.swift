@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func orderJuice(_ sender: UIButton) {
-        guard let juice = Menu(rawValue: sender.tag) else {
+        guard let juice = (sender as? MenuObject)?.juice else {
             return
         }
         do {
@@ -33,11 +33,11 @@ class ViewController: UIViewController {
 
     private func setupLabel() {
         fruitLabels.forEach { label in
-            guard let fruit = Fruits(rawValue: label.tag),
-                  let quantity = fruitStore.stock(fruit: fruit) else {
+            guard let label = label as? FruitObject,
+                  let stock = fruitStore.stock(fruit: label.fruit) else {
                 return
             }
-            label.text = String(quantity)
+            (label as! UILabel).text = stock.description
         }
     }
 }
@@ -45,12 +45,12 @@ class ViewController: UIViewController {
 extension ViewController: UpdateDelegate {
     func updateLabel(fruit: Fruits) {
         fruitLabels.forEach { label in
-            if label.tag == fruit.rawValue {
-                guard let quantity = fruitStore.stock(fruit: fruit) else {
-                    return
-                }
-                label.text = String(quantity)
+            guard let label = label as? FruitObject,
+                  label.fruit == fruit,
+                  let quantity = fruitStore.stock(fruit: fruit) else {
+                return
             }
+            (label as! UILabel).text = quantity.description
         }
     }
 }
