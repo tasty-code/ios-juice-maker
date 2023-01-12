@@ -18,11 +18,11 @@ struct JuiceMaker: Makeable {
         case .banana:
             blending(juice: .banana)
             break
-        case .kiwi:
-            blending(juice: .kiwi)
-            break
         case .pineApple:
             blending(juice: .pineApple)
+            break
+        case .kiwi:
+            blending(juice: .kiwi)
             break
         case .mango:
             blending(juice: .mango)
@@ -41,7 +41,7 @@ struct JuiceMaker: Makeable {
         }
     }
     
-    private func isMakeable(_ juice: SingleFruitJuice, send consume: Int) -> Bool {
+    func isMakeable(_ juice: SingleFruitJuice, send consume: Int) -> Bool {
         var isContinue = false
         
         juice.recipe.forEach { fruit in
@@ -78,11 +78,6 @@ struct JuiceMaker: Makeable {
     
     private func blending(juice: SingleFruitJuice) {
         let needToMakeJuiceCount = fruitStore.needCountOfMake(to: juice)
-        let isContinue = isMakeable(juice, send: needToMakeJuiceCount)
-        if !isContinue {
-            print("음료 제조 불가")
-            return
-        }
         
         juice.recipe.forEach { fruit in
             fruitStore.update(fruit.key, stock: needToMakeJuiceCount)
@@ -91,11 +86,6 @@ struct JuiceMaker: Makeable {
     
     private func blending(juice: MixFruitJuice) {
         var needCounts = fruitStore.needCountOfMake(to: juice)
-        let isContinue = isMakeable(juice, send: needCounts)
-        if !isContinue {
-            print("혼합음료 제조 불가")
-            return
-        }
         
         juice.recipe.forEach { fruit in
             guard let extractCount = needCounts.first else {
