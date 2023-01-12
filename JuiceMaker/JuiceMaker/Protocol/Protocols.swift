@@ -10,3 +10,7 @@ import Foundation
 protocol FruitStockManagable {
     var fruitName: Fruits { get }
 }
+
+protocol JuiceOrderable {
+    var juice: Juices { get }
+}
