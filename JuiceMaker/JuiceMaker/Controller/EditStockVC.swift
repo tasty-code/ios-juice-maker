@@ -16,14 +16,15 @@ class EditStockVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setConfigure()
-        
     }
     
     private func setSteppersValues() {
         StepperButtons.forEach{
             guard let stepperButton = $0 as? FruitStockManagable,
                   let fruitStock = FruitStore.shared.fruits[stepperButton.fruitName]?.stock else { return }
+            
             let fruitStockDouble = Double(fruitStock)
+            
             $0.value = fruitStockDouble
         }
     }
@@ -38,9 +39,10 @@ class EditStockVC: UIViewController {
         for fruitStockLabel in fruitStockLabels {
             guard let label = fruitStockLabel as? FruitStockManagable,
                   let fruitStock = FruitStore.shared.fruits[label.fruitName]?.stock else { return }
-            let changeStockIntToString = String(fruitStock)
-            fruitStockLabel.text = changeStockIntToString
             
+            let changeStockIntToString = String(fruitStock)
+            
+            fruitStockLabel.text = changeStockIntToString
         }
     }
     
@@ -49,15 +51,19 @@ class EditStockVC: UIViewController {
             guard let fruitStock = changedFruitStock as? FruitStockManagable,
                   let fruitStockLabel = changedFruitStock.text,
                   let changedFruitStock = Int(fruitStockLabel) else { return }
+            
             FruitStore.shared.fruits[fruitStock.fruitName]?.stock = changedFruitStock
         }
+        
         dismiss(animated: true)
     }
     
     @IBAction func stepperPressed(_ sender: UIStepper) {
         guard let tappedStepper = sender as? FruitStockManagable else { return }
+        
         fruitStockLabels.forEach { label in
             guard let pairedLabel = label as? FruitStockManagable else { return }
+            
             if pairedLabel.fruitName == tappedStepper.fruitName {
                 label.text = String(Int(sender.value))
             }
