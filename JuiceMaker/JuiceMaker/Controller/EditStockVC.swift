@@ -10,7 +10,7 @@ import UIKit
 class EditStockVC: UIViewController {
     
     @IBOutlet var fruitStockLabels: [UILabel]!
-    @IBOutlet var StepperButtons: [UIStepper]!
+    @IBOutlet var Steppers: [UIStepper]!
     @IBOutlet weak var editStockViewTitleLabel: UILabel!
     
     override func viewDidLoad() {
@@ -19,13 +19,13 @@ class EditStockVC: UIViewController {
     }
     
     private func setSteppersValues() {
-        StepperButtons.forEach{
-            guard let stepperButton = $0 as? FruitStockManagable,
-                  let fruitStock = FruitStore.shared.fruits[stepperButton.fruitName]?.stock else { return }
+        Steppers.forEach{
+            guard let stepper = $0 as? FruitStockManagable,
+                  let fruitStock = FruitStore.shared.fruits[stepper.fruitName]?.stock else { return }
             
-            let fruitStockDouble = Double(fruitStock)
+            let changeStockIntToDouble = Double(fruitStock)
             
-            $0.value = fruitStockDouble
+            $0.value = changeStockIntToDouble
         }
     }
     
@@ -58,7 +58,7 @@ class EditStockVC: UIViewController {
         dismiss(animated: true)
     }
     
-    @IBAction func stepperPressed(_ sender: UIStepper) {
+    @IBAction func stepperTapped(_ sender: UIStepper) {
         guard let tappedStepper = sender as? FruitStockManagable else { return }
         
         fruitStockLabels.forEach { label in

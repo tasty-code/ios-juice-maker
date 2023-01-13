@@ -9,8 +9,6 @@ import Foundation
 
 enum Errors: LocalizedError {
     case outOfStock
-    case notEnuoghCoin
-    case outOfExchanges
 }
 
 extension Errors {

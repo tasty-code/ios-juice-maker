@@ -427,13 +427,13 @@
                                         <rect key="frame" x="691" y="0.0" width="93" height="155"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🥭" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="w1F-9o-qJR">
-                                                <rect key="frame" x="0.0" y="0.0" width="93" height="83"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="93" height="83.666666666666671"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="70"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YJI-ER-LJR" customClass="MangoStockLabel" customModule="JuiceMaker" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="87.999999999999986" width="93" height="30"/>
+                                                <rect key="frame" x="0.0" y="88.666666666666671" width="93" height="30"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="K8r-cF-uKg"/>
@@ -443,7 +443,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="xbn-6P-grO" customClass="MangoStepper" customModule="JuiceMaker" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="123" width="93" height="32"/>
+                                                <rect key="frame" x="0.0" y="123.66666666666667" width="93" height="31.333333333333329"/>
                                                 <connections>
                                                     <action selector="stepperPressed:" destination="Yu1-lM-nqp" eventType="valueChanged" id="Tw0-JR-69r"/>
                                                 </connections>
@@ -472,11 +472,11 @@
                     <navigationItem key="navigationItem" id="g4W-fY-l7r"/>
                     <connections>
                         <outlet property="editStockViewTitleLabel" destination="ta6-TG-k5N" id="xAs-td-cMl"/>
-                        <outletCollection property="StepperButtons" destination="ZQk-f4-zrz" collectionClass="NSMutableArray" id="T1W-mc-cal"/>
-                        <outletCollection property="StepperButtons" destination="O5s-2N-3iP" collectionClass="NSMutableArray" id="zrP-If-xpN"/>
-                        <outletCollection property="StepperButtons" destination="Rcr-xr-eqz" collectionClass="NSMutableArray" id="rAg-bh-Evb"/>
-                        <outletCollection property="StepperButtons" destination="klA-59-Nu4" collectionClass="NSMutableArray" id="wvl-VP-tyV"/>
-                        <outletCollection property="StepperButtons" destination="xbn-6P-grO" collectionClass="NSMutableArray" id="uDf-EZ-yYs"/>
+                        <outletCollection property="Steppers" destination="ZQk-f4-zrz" collectionClass="NSMutableArray" id="T1W-mc-cal"/>
+                        <outletCollection property="Steppers" destination="O5s-2N-3iP" collectionClass="NSMutableArray" id="zrP-If-xpN"/>
+                        <outletCollection property="Steppers" destination="Rcr-xr-eqz" collectionClass="NSMutableArray" id="rAg-bh-Evb"/>
+                        <outletCollection property="Steppers" destination="klA-59-Nu4" collectionClass="NSMutableArray" id="wvl-VP-tyV"/>
+                        <outletCollection property="Steppers" destination="xbn-6P-grO" collectionClass="NSMutableArray" id="uDf-EZ-yYs"/>
                         <outletCollection property="fruitStockLabels" destination="0yV-kn-zaT" collectionClass="NSMutableArray" id="0hm-BV-NyW"/>
                         <outletCollection property="fruitStockLabels" destination="gKu-86-RhI" collectionClass="NSMutableArray" id="Sfr-Hl-3Bg"/>
                         <outletCollection property="fruitStockLabels" destination="MpT-VW-hCb" collectionClass="NSMutableArray" id="6oH-cz-Wce"/>
