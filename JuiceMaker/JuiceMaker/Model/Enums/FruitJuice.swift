@@ -35,7 +35,6 @@ enum FruitJuice: Makable {
 }
 
 //MARK: - 문자열 표현
-
 extension FruitJuice: CustomStringConvertible {
     var description: String {
         switch self {

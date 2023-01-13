@@ -5,7 +5,7 @@
 //
 
 final class FruitStore: Storing {
-    private(set) var items: [Fruit : Int] = [:]
+    private(set) var items: [Fruit: Int] = [:]
     
     init(count: Int) {
         Fruit.allCases.forEach { add(item: $0, count: count) }

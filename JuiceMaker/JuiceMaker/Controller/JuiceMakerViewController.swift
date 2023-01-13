@@ -6,8 +6,8 @@
 
 import UIKit
 
-class JuiceMakerViewController: UIViewController {
-    
+final class JuiceMakerViewController: UIViewController {
+
     @IBOutlet private var fruitStockLabels: [UILabel]!
     
     private let fruitStore = FruitStore(count: FruitStock.initial)
@@ -43,7 +43,6 @@ class JuiceMakerViewController: UIViewController {
     }
 }
 
-
 //MARK: - Update Labels
 extension JuiceMakerViewController: FruitView {
     func updateLabels(of fruits:[Fruit]){
@@ -54,9 +53,7 @@ extension JuiceMakerViewController: FruitView {
     }
 }
 
-
 //MARK: - StoreView로 전환
-
 extension JuiceMakerViewController {
     private func showStoreView() {
         guard let storeNavi = buildStoreNavigationContoller(),

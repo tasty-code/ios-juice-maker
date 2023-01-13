@@ -18,6 +18,7 @@ extension FruitView {
             .reduce(into: [:]){ partialResult, component in
                 partialResult[component.fruit] = component
             }
+        
         stocks.forEach { (fruit, count) in
             var component = fruitCompDict[fruit]
             component?.stock = count

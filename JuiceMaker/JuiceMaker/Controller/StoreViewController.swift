@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StoreViewController: UIViewController {
+final class StoreViewController: UIViewController {
     
     @IBOutlet private var fruitStockLabels: [UILabel]!
     @IBOutlet private var fruitSteppers: [UIStepper]!
@@ -42,9 +42,7 @@ class StoreViewController: UIViewController {
     }
 }
 
-
 //MARK: - Initailize and Update FruitComponent
-
 extension StoreViewController: FruitView {
     private func initializeLabelsAndSteppers() {
         guard let labels = fruitStockLabels as? [FruitComponent],
@@ -68,6 +66,5 @@ extension StoreViewController: FruitView {
         
         update(targets: labels, with: stocks)
     }
-    
 }
 
