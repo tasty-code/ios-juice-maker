@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4FCF503D29640DAA00CA262F /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCF503C29640DAA00CA262F /* Error.swift */; };
+		90D12A55296FE94F001A79E4 /* MenuObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D12A54296FE94F001A79E4 /* MenuObject.swift */; };
+		90D12A572970F70E001A79E4 /* FruitLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D12A562970F70E001A79E4 /* FruitLabel.swift */; };
 		90F84B30296402C300E86F4C /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F84B2F296402C300E86F4C /* Menu.swift */; };
 		90F84B322964155300E86F4C /* Fruits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F84B312964155300E86F4C /* Fruits.swift */; };
 		C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71CD66A266C7ACB0038B9CB /* FruitStore.swift */; };
@@ -22,6 +24,8 @@
 
 /* Begin PBXFileReference section */
 		4FCF503C29640DAA00CA262F /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		90D12A54296FE94F001A79E4 /* MenuObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuObject.swift; sourceTree = "<group>"; };
+		90D12A562970F70E001A79E4 /* FruitLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitLabel.swift; sourceTree = "<group>"; };
 		90F84B2F296402C300E86F4C /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		90F84B312964155300E86F4C /* Fruits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruits.swift; sourceTree = "<group>"; };
 		C71CD66A266C7ACB0038B9CB /* FruitStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitStore.swift; sourceTree = "<group>"; };
@@ -75,6 +79,8 @@
 				C73DAF3C255D0CDD00020D38 /* Main.storyboard */,
 				C73DAF3F255D0CDE00020D38 /* Assets.xcassets */,
 				C73DAF41255D0CDF00020D38 /* LaunchScreen.storyboard */,
+				90D12A54296FE94F001A79E4 /* MenuObject.swift */,
+				90D12A562970F70E001A79E4 /* FruitLabel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -181,6 +187,8 @@
 				C73DAF3B255D0CDD00020D38 /* ViewController.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
 				C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */,
+				90D12A572970F70E001A79E4 /* FruitLabel.swift in Sources */,
+				90D12A55296FE94F001A79E4 /* MenuObject.swift in Sources */,
 				90F84B322964155300E86F4C /* Fruits.swift in Sources */,
 				4FCF503D29640DAA00CA262F /* Error.swift in Sources */,
 				C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */,
