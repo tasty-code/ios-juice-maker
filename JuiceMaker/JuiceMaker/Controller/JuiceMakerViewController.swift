@@ -68,9 +68,10 @@ extension JuiceMakerViewController {
         storeNaviVC.modalPresentationStyle = .fullScreen
         storeNaviVC.modalTransitionStyle = .coverVertical
         
-        guard let storeVC = storeNaviVC.viewControllers.filter({$0 is StoreViewController}).first as? StoreViewController else { return }
-        
+        guard let storeVC = storyboard?.instantiateViewController(withIdentifier: "storeView") as? StoreViewController else { return }
         storeVC.fruitStore = fruitStore
+        storeNaviVC.setViewControllers([storeVC], animated: true)
+        
         present(storeNaviVC, animated: true)
     }
 }
