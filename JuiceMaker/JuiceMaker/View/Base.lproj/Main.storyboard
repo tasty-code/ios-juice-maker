@@ -13,7 +13,7 @@
         <!--맛있는 쥬스를 만들어 드려요!-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="JuiceViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JuiceView" id="BYZ-38-t0r" customClass="JuiceViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -238,6 +238,7 @@
                     <navigationItem key="navigationItem" title="맛있는 쥬스를 만들어 드려요!" id="Eal-fj-o4N">
                         <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT">
                             <connections>
+                                <action selector="sceneChange:" destination="BYZ-38-t0r" id="QsW-xM-YIm"/>
                                 <segue destination="WwV-Td-3Bn" kind="presentation" id="ygO-2T-a2J"/>
                             </connections>
                         </barButtonItem>
@@ -269,7 +270,7 @@
         <!--Navigation Controller-->
         <scene sceneID="LzN-aE-P5w">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DCG-dP-Fms" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="JuiceNavi" automaticallyAdjustsScrollViewInsets="NO" id="DCG-dP-Fms" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wpg-nM-F9y">
                         <rect key="frame" x="0.0" y="47" width="844" height="32"/>
@@ -300,7 +301,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YJI-ER-LJR">
-                                <rect key="frame" x="622" y="156" width="11.666666666666664" height="23"/>
+                                <rect key="frame" x="598" y="156" width="35" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
@@ -322,7 +323,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZDv-1m-HBY">
-                                <rect key="frame" x="461" y="156" width="11.666666666666664" height="23"/>
+                                <rect key="frame" x="440" y="156" width="32" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
@@ -344,7 +345,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MpT-VW-hCb">
-                                <rect key="frame" x="303" y="155" width="11.666666666666664" height="23"/>
+                                <rect key="frame" x="279" y="155" width="36" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
@@ -373,7 +374,7 @@
                                 </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0yV-kn-zaT">
-                                <rect key="frame" x="98" y="161" width="11.666666666666664" height="23"/>
+                                <rect key="frame" x="69" y="161" width="40" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
@@ -388,7 +389,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gKu-86-RhI">
-                                <rect key="frame" x="196" y="158" width="11.666666666666664" height="23"/>
+                                <rect key="frame" x="171" y="158" width="36" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>

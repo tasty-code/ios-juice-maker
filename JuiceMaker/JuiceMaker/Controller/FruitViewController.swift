@@ -31,8 +31,8 @@ class FruitViewController: UIViewController, SendDataDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        FruitStore.shared.delegate = self
         syncFruitStocks()
+        fruitStore.delegate = self
     }
     
 //    func recevieFromJuiceViewController(fruit: [UILabel], text: [String]) {
