@@ -99,8 +99,6 @@ class ViewController: UIViewController {
         changeFruitLabels()
     }
     
-    
-    
     func order(fruitJuice: FruitJuice) {
         do {
             try juiceMaker.make(juiceName: fruitJuice)
@@ -153,9 +151,10 @@ class ViewController: UIViewController {
         }
     }
         
-        func moveToChangeStockView() {
-            guard let viewController = self.storyboard?.instantiateViewController(identifier: StringConstatns.changeStockViewController) else { return }
-            self.navigationController?.pushViewController(viewController, animated: true)
-        }
+    func moveToChangeStockView() {
+        guard let viewController = self.storyboard?.instantiateViewController(identifier:
+                                                                                String(describing: ChangeStockViewController.self)) else { return }
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
+}
 
