@@ -7,8 +7,7 @@
 
 import Foundation
 
-protocol Ingredientable: Hashable {
-}
+protocol Ingredientable: Hashable { }
 
 protocol Makable {
     associatedtype Ingredient: Ingredientable

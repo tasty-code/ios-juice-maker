@@ -8,10 +8,19 @@
 import Foundation
 
 protocol Storing {
-    associatedtype Element: Ingredientable
+    associatedtype Item: Ingredientable
     
-    var items: [Element: Int] { get }
+    var items: [Item: Int] { get }
     
-    mutating func add(item: Element, count: Int)
-    mutating func subtract(pairOfItems: [Element: Int]) throws
+    mutating func add(item: Item, count: Int)
+    mutating func subtract(pairOfItems: [Item: Int]) -> Bool
+    func hasEnough(pairOfItems: [Item: Int]) -> Bool
+}
+
+extension Storing {
+    func hasEnough(pairOfItems stocks: [Item: Int]) -> Bool {
+        return stocks.allSatisfy { (item: Item, count: Int) in
+            items[item, default: 0] >= count
+        }
+    }
 }

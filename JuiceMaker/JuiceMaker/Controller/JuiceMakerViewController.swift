@@ -16,7 +16,7 @@ class JuiceMakerViewController: UIViewController {
     
     private var fruitLabelFruitMap: [UILabel: Fruit]!
     private var fruitStore = FruitStore(defaultStock: 10)
-    private var juiceMaker: JuiceMaker<FruitStore>!
+    private var juiceMaker: JuiceMaker<FruitStore, Juice>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,19 +44,16 @@ class JuiceMakerViewController: UIViewController {
             showMessageAlert("팔 수 없습니다.")
             return
         }
-        // 고민해보기
-        showResult(juice: juice)
+        let isSucceed = juiceMaker.make(juice: juice)
+        showResult(order: juice, result: isSucceed)
         updateStockValue()
     }
     
-    func showResult(juice: Juice) {
-        do {
-            try juiceMaker.make(juice: juice)
+    func showResult(order juice: Juice, result: Bool) {
+        if result {
             showMessageAlert("\(juice.rawValue) 나왔습니다! 맛있게 드세요!")
-        } catch is JuiceMakerError {
+        } else {
             showFailAlert()
-        } catch {
-            showMessageAlert("\(error)")
         }
     }
     

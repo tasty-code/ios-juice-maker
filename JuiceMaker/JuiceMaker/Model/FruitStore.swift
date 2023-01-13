@@ -25,17 +25,22 @@ final class FruitStore: Storing {
         items[item, default: 0] += count
     }
     
-    private func subtract(item: Fruit, count: Int) throws {
+    private func subtract(item: Fruit, count: Int) -> Bool {
         guard let stock = items[item],
               stock >= count else {
-            throw JuiceMakerError.outOfStock
+            return false
         }
-        items[item]? -= count
+        items.updateValue(stock - count, forKey: item)
+        return true
     }
     
-    func subtract(pairOfItems: [Fruit: Int]) throws {
-        for (fruit, usedAmount) in pairOfItems {
-            try subtract(item: fruit, count: usedAmount)
+    func subtract(pairOfItems neededAmount: [Fruit: Int]) -> Bool{
+        guard self.hasEnough(pairOfItems: neededAmount) else {
+            return false
         }
+        neededAmount.forEach({ (fruit: Fruit, usedAmount: Int) in
+            _ = subtract(item: fruit, count: usedAmount)
+        })
+        return true
     }
 }
