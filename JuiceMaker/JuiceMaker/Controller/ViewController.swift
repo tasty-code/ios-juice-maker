@@ -10,13 +10,12 @@ class ViewController: UIViewController {
 
     @IBOutlet var fruitLabels: [UILabel]!
     
-    let fruitStore = FruitStore.shared
     var juiceMaker = JuiceMaker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLabel()
-        fruitStore.updateDelegate = self
+        FruitStore.shared.updateDelegate = self
     }
 
     @IBAction func orderJuice(_ sender: UIButton) {
@@ -34,7 +33,7 @@ class ViewController: UIViewController {
     private func setupLabel() {
         fruitLabels.forEach { label in
             guard let label = label as? FruitObject,
-                  let stock = fruitStore.stock(fruit: label.fruit) else {
+                  let stock = FruitStore.shared.stock(fruit: label.fruit) else {
                 return
             }
             (label as! UILabel).text = stock.description
@@ -47,7 +46,7 @@ extension ViewController: UpdateDelegate {
         fruitLabels.forEach { label in
             guard let label = label as? FruitObject,
                   label.fruit == fruit,
-                  let quantity = fruitStore.stock(fruit: fruit) else {
+                  let quantity = FruitStore.shared.stock(fruit: fruit) else {
                 return
             }
             (label as! UILabel).text = quantity.description

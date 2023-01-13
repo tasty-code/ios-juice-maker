@@ -15,50 +15,50 @@ protocol MenuObject {
     var juice: Menu { get }
 }
 
-class strawberryLabel: UILabel, FruitObject {
+class StrawberryLabel: UILabel, FruitObject {
     var fruit: Fruits = .strawberry
 }
 
-class bananaLabel: UILabel, FruitObject {
+class BananaLabel: UILabel, FruitObject {
     var fruit: Fruits = .banana
 }
 
-class pineappleLabel: UILabel, FruitObject {
+class PineappleLabel: UILabel, FruitObject {
     var fruit: Fruits = .pineapple
 }
 
-class kiwiLabel: UILabel, FruitObject {
+class KiwiLabel: UILabel, FruitObject {
     var fruit: Fruits = .kiwi
 }
 
-class mangoLabel: UILabel, FruitObject {
+class MangoLabel: UILabel, FruitObject {
     var fruit: Fruits = .mango
 }
 
-class strawberryBananaButton: UIButton, MenuObject {
+class StrawberryBananaButton: UIButton, MenuObject {
     var juice: Menu = .strawberryBananaJuice
 }
 
-class strawberryButton: UIButton, MenuObject {
+class StrawberryButton: UIButton, MenuObject {
     var juice: Menu = .strawberryJuice
 }
 
-class bananaButton: UIButton, MenuObject {
+class BananaButton: UIButton, MenuObject {
     var juice: Menu = .bananaJuice
 }
 
-class pineappleButton: UIButton, MenuObject {
+class PineappleButton: UIButton, MenuObject {
     var juice: Menu = .pineappleJuice
 }
 
-class mangoKiwiButton: UIButton, MenuObject {
+class MangoKiwiButton: UIButton, MenuObject {
     var juice: Menu = .mangoKiwiJuice
 }
 
-class kiwiButton: UIButton, MenuObject {
+class KiwiButton: UIButton, MenuObject {
     var juice: Menu = .kiwiJuice
 }
 
-class mangoButton: UIButton, MenuObject {
+class MangoButton: UIButton, MenuObject {
     var juice: Menu = .mangoJuice
 }
