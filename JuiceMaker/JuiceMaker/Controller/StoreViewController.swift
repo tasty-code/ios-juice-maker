@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StoreViewController: UIViewController, FruitView {
+class StoreViewController: UIViewController {
     
     @IBOutlet var fruitStockLabels: [UILabel]!
     
@@ -21,10 +21,11 @@ class StoreViewController: UIViewController, FruitView {
     @IBAction func touchesBackButton(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
-    
 }
 
-extension StoreViewController {
+
+//MARK: - Update Labels
+extension StoreViewController: FruitView {
     func updateLabels(of fruits:[Fruit]){
         guard let labels = fruitStockLabels as? [FruitComponent],
               let stocks = fruitStore?.stockInfo(of: fruits) else { return }

@@ -6,11 +6,11 @@
 
 import UIKit
 
-class JuiceMakerViewController: UIViewController, FruitView {
+class JuiceMakerViewController: UIViewController {
     
     @IBOutlet var fruitStockLabels: [UILabel]!
     
-    private var fruitStore = FruitStore(defaultStock: 10)
+    private let fruitStore = FruitStore(defaultStock: 10)
     private var juiceMaker: JuiceMaker<FruitStore, Juice>!
     
     override func viewDidLoad() {
@@ -46,16 +46,35 @@ class JuiceMakerViewController: UIViewController, FruitView {
             showFailAlert()
         }
     }
-    
+}
+
+
+//MARK: - Update Labels
+extension JuiceMakerViewController: FruitView {
+    func updateLabels(of fruits:[Fruit]){
+        guard let labels = fruitStockLabels as? [FruitComponent] else { return }
+        let stocks = fruitStore.stockInfo(of: fruits)
+        
+        update(targets: labels, with: stocks)
+    }
+}
+
+
+//MARK: - StoreView로 전환
+extension JuiceMakerViewController {
     private func showStoreView() {
         guard let storeNaviVC = storyboard?.instantiateViewController(withIdentifier: "storeNavi") as? UINavigationController else { return }
         
         storeNaviVC.modalPresentationStyle = .fullScreen
         storeNaviVC.modalTransitionStyle = .coverVertical
         
+        guard let storeVC = storeNaviVC.viewControllers.filter({$0 is StoreViewController}).first as? StoreViewController else { return }
+        
+        storeVC.fruitStore = fruitStore
         present(storeNaviVC, animated: true)
     }
 }
+
 
 //MARK: - Alert 구현
 extension JuiceMakerViewController {
@@ -85,13 +104,5 @@ extension JuiceMakerViewController {
         
         alert.addAction(confirmAction)
         present(alert, animated: true)
-    }
-}
-
-extension JuiceMakerViewController {
-    func updateLabels(of fruits:[Fruit]){
-        guard let labels = fruitStockLabels as? [FruitComponent] else { return }
-        let stocks = fruitStore.stockInfo(of: fruits)
-        update(targets: labels, with: stocks)
     }
 }
