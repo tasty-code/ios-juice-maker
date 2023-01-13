@@ -7,7 +7,7 @@
 final class FruitStore: Storing {
     private(set) var items: [Fruit : Int] = [:]
     
-    init(defaultStock count: Int) {
+    init(count: Int) {
         Fruit.allCases.forEach { add(item: $0, count: count) }
     }
     
@@ -18,7 +18,7 @@ final class FruitStore: Storing {
     }
     
     func add(item: Fruit, count: Int) {
-        items[item, default: 0] += count
+        items[item, default: .zero] += count
     }
     
     private func subtract(item: Fruit, count: Int) -> Bool {

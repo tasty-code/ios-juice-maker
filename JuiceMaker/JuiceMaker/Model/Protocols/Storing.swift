@@ -26,7 +26,7 @@ extension Storing {
     
     func hasEnough(pairOfItems stocks: [Item: Int]) -> Bool {
         return stocks.allSatisfy { (item: Item, count: Int) in
-            items[item, default: 0] >= count
+            items[item, default: .zero] >= count
         }
     }
     

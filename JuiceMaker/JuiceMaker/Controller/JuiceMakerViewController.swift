@@ -10,7 +10,7 @@ class JuiceMakerViewController: UIViewController {
     
     @IBOutlet private var fruitStockLabels: [UILabel]!
     
-    private let fruitStore = FruitStore(defaultStock: 10)
+    private let fruitStore = FruitStore(count: FruitStock.initial)
     private var juiceMaker: JuiceMaker<FruitStore, FruitJuice>!
     
     override func viewDidLoad() {
@@ -67,7 +67,7 @@ extension JuiceMakerViewController {
     }
     
     private func buildStoreNavigationContoller() -> UINavigationController? {
-        guard let storeNavigationContoller = storyboard?.instantiateViewController(withIdentifier: "storeNavi")
+        guard let storeNavigationContoller = storyboard?.instantiateViewController(withIdentifier: ViewController.storeNavi)
                 as? UINavigationController else { return nil }
         
         storeNavigationContoller.modalPresentationStyle = .fullScreen
@@ -76,7 +76,7 @@ extension JuiceMakerViewController {
     }
     
     private func buildStoreViewController() -> StoreViewController? {
-        guard let storeViewController = storyboard?.instantiateViewController(withIdentifier: "storeView")
+        guard let storeViewController = storyboard?.instantiateViewController(withIdentifier: ViewController.store)
                 as? StoreViewController else { return nil }
         
         storeViewController.fruitStore = fruitStore
@@ -91,13 +91,13 @@ extension JuiceMakerViewController {
 extension JuiceMakerViewController {
     private func showFailAlert() {
         let failAlert = UIAlertController(title: nil,
-                                          message: "재고가 모자라요. 재고를 수정할까요?",
+                                          message: Alert.Message.emptyStock,
                                           preferredStyle: .alert)
         
-        let confirmAction = UIAlertAction(title: "예",
+        let confirmAction = UIAlertAction(title: Alert.ButtonTitle.yes,
                                           style: .default,
                                           handler: { _ in self.showStoreView() })
-        let cancelAction = UIAlertAction(title: "아니오",
+        let cancelAction = UIAlertAction(title: Alert.ButtonTitle.no,
                                          style: .cancel)
         
         failAlert.addAction(confirmAction)
@@ -107,10 +107,10 @@ extension JuiceMakerViewController {
     
     private func showDoneAlert(juice: FruitJuice) {
         let alert = UIAlertController(title: nil,
-                                      message: "\(juice) 나왔습니다! 맛있게 드세요!",
+                                      message: Alert.Message.done(juice),
                                       preferredStyle: .alert)
         
-        let confirmAction = UIAlertAction(title: "확인",
+        let confirmAction = UIAlertAction(title: Alert.ButtonTitle.confirm,
                                           style: .default)
         
         alert.addAction(confirmAction)
