@@ -5,10 +5,11 @@
 //  Created by sei on 2023/01/13.
 //
 
-import Foundation
+import UIKit
 
 protocol FruitView {
     func update(targets: [FruitComponent], with: [Fruit: Int])
+    func updateLabels(of:[Fruit])
 }
 
 extension FruitView {

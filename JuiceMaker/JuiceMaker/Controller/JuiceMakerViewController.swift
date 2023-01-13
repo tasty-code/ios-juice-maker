@@ -7,7 +7,7 @@
 import UIKit
 
 class JuiceMakerViewController: UIViewController, FruitView {
-        
+    
     @IBOutlet var fruitStockLabels: [UILabel]!
     
     private var fruitStore = FruitStore(defaultStock: 10)
@@ -17,7 +17,7 @@ class JuiceMakerViewController: UIViewController, FruitView {
         super.viewDidLoad()
         juiceMaker = JuiceMaker(fruitStore: fruitStore)
 
-        updateAllLabels()
+        updateLabels(of: Fruit.allCases)
     }
     
     @IBAction func touchesModifyStockButton(_ sender: UIBarButtonItem) {
@@ -89,15 +89,9 @@ extension JuiceMakerViewController {
 }
 
 extension JuiceMakerViewController {
-    func updateAllLabels(){
-        guard let labels = fruitStockLabels as? [FruitComponent] else { return }
-        update(targets: labels, with: fruitStore.items)
-    }
-    
     func updateLabels(of fruits:[Fruit]){
         guard let labels = fruitStockLabels as? [FruitComponent] else { return }
         let stocks = fruitStore.stockInfo(of: fruits)
         update(targets: labels, with: stocks)
     }
-    
 }
