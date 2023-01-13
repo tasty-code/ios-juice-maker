@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Juice: String, Makable {
+enum FruitJuice: String, Makable {
     case strawberryJuice = "딸기쥬스"
     case bananaJuice = "바나나쥬스"
     case kiwiJuice = "키위쥬스"
