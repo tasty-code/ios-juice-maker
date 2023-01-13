@@ -35,11 +35,11 @@ final class ViewController: UIViewController {
     }
     
     @IBAction func orderButtonTapped(_ sender: UIButton) {
-        guard let userSelect = Juices(rawValue: sender.tag) else { return }
+        guard let selectedButton = sender as? JuiceOrderable else { return }
         guard let buttoneCallName = sender.titleLabel?.text else { return }
         
         let orderedJuiceName = buttoneCallName.replacingOccurrences(of: " 주문", with: "")
-        let recipe = userSelect.recipe
+        let recipe = selectedButton.juice.recipe
         do{
             try FruitStore.shared.checkStock(message: recipe)
             juiceMaker.makeJuice(by: recipe)
