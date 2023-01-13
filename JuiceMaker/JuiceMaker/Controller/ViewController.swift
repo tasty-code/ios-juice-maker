@@ -14,7 +14,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLabel()
         FruitStore.shared.updateDelegate = self
     }
 
@@ -29,27 +28,14 @@ class ViewController: UIViewController {
             shortOfStockAlert(message: error.localizedDescription)
         }
     }
-
-    private func setupLabel() {
-        fruitLabels.forEach { label in
-            guard let label = label as? FruitObject,
-                  let stock = FruitStore.shared.stock(fruit: label.fruit) else {
-                return
-            }
-            (label as! UILabel).text = stock.description
-        }
-    }
 }
 
 extension ViewController: UpdateDelegate {
     func updateLabel(fruit: Fruits) {
         fruitLabels.forEach { label in
-            guard let label = label as? FruitObject,
-                  label.fruit == fruit,
-                  let quantity = FruitStore.shared.stock(fruit: fruit) else {
-                return
-            }
-            (label as! UILabel).text = quantity.description
+            guard let label = label as? FruitLabel,
+                  label.fruit == fruit else { return }
+            label.setting()
         }
     }
 }
