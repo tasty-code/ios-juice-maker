@@ -13,8 +13,8 @@
         <!--맛있는 쥬스를 만들어 드려요!-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="JuiceMaker" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="viewController" customModule="JuiceMaker">
                         <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -272,16 +272,16 @@
             </objects>
             <point key="canvasLocation" x="19.419642857142858" y="92.753623188405811"/>
         </scene>
-        <!--재고 추가-->
+        <!--Change Stock View Controller-->
         <scene sceneID="fkG-vv-hpE">
             <objects>
                 <viewController storyboardIdentifier="ChangeStockViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yu1-lM-nqp" customClass="ChangeStockViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="tKV-4l-Vtc" customClass="viewcon">
+                    <view key="view" contentMode="scaleToFill" id="tKV-4l-Vtc" customClass="viewcon" customModule="JuiceMaker" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="38" translatesAutoresizingMaskIntoConstraints="NO" id="xFh-NH-LpI">
-                                <rect key="frame" x="111" y="89" width="622" height="156"/>
+                                <rect key="frame" x="111" y="117" width="622" height="156"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="C3g-i5-FkI">
                                         <rect key="frame" x="0.0" y="0.0" width="94" height="156"/>
@@ -390,41 +390,38 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBx-yv-Z7p">
+                                <rect key="frame" x="790.33333333333337" y="47" width="53.666666666666629" height="34.333333333333343"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="닫기"/>
+                                <buttonConfiguration key="configuration" style="plain" title="닫기"/>
+                                <connections>
+                                    <action selector="closeButtonTapped:" destination="Yu1-lM-nqp" eventType="touchUpInside" id="EBl-iD-BW1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTz-AK-yok">
+                                <rect key="frame" x="395.33333333333331" y="293" width="53.666666666666686" height="34.333333333333314"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="저장"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gcO-Xb-kNs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="CTz-AK-yok" firstAttribute="centerX" secondItem="tKV-4l-Vtc" secondAttribute="centerX" id="38V-XC-ciU"/>
                             <constraint firstItem="xFh-NH-LpI" firstAttribute="centerX" secondItem="tKV-4l-Vtc" secondAttribute="centerX" id="3PO-xj-m9H"/>
-                            <constraint firstItem="xFh-NH-LpI" firstAttribute="top" secondItem="gcO-Xb-kNs" secondAttribute="top" constant="10" id="KMh-hA-cyI"/>
+                            <constraint firstItem="aBx-yv-Z7p" firstAttribute="top" secondItem="gcO-Xb-kNs" secondAttribute="top" id="D5h-tw-01e"/>
+                            <constraint firstItem="gcO-Xb-kNs" firstAttribute="trailing" secondItem="aBx-yv-Z7p" secondAttribute="trailing" id="Q8u-Rd-Qw2"/>
+                            <constraint firstItem="xFh-NH-LpI" firstAttribute="centerY" secondItem="tKV-4l-Vtc" secondAttribute="centerY" id="XGG-qA-ju7"/>
+                            <constraint firstItem="CTz-AK-yok" firstAttribute="top" secondItem="xFh-NH-LpI" secondAttribute="bottom" constant="20" id="vYs-Ml-DUa"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="재고 추가" id="g4W-fY-l7r">
-                        <barButtonItem key="rightBarButtonItem" title="닫기" id="KAj-1t-EPq"/>
-                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1636.4928909952605" y="900"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="cAf-jL-tPK">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WwV-Td-3Bn" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ufw-7J-6hD">
-                        <rect key="frame" x="0.0" y="47" width="844" height="32"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Yu1-lM-nqp" kind="relationship" relationship="rootViewController" id="wH1-3A-cBm"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2s5-lS-967" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1637" y="21"/>
         </scene>
     </scenes>
     <resources>

@@ -15,7 +15,10 @@ class ChangeStockViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func closeButtonTapped(_ sender: UIButton) {
+        self.presentingViewController?.dismiss(animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 

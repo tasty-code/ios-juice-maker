@@ -152,9 +152,10 @@ class ViewController: UIViewController {
     }
         
     func moveToChangeStockView() {
-        guard let viewController = self.storyboard?.instantiateViewController(identifier:
-                                                                                String(describing: ChangeStockViewController.self)) else { return }
-        self.navigationController?.pushViewController(viewController, animated: true)
+        let changeStockViewController = String(describing: ChangeStockViewController.self)
+        guard let viewController = self.storyboard?.instantiateViewController(identifier: changeStockViewController) else { return }
+
+        self.present(viewController, animated: true)
     }
 }
 
