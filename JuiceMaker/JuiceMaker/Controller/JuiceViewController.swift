@@ -116,8 +116,9 @@ class JuiceViewController: UIViewController {
     }
 }
 
+//MARK: - Alert
 extension JuiceViewController {
-    func successAlert(juiceType: String) {
+    private func successAlert(juiceType: String) {
         let success = UIAlertAction(title: "OK", style: .default, handler: nil)
         let alert = UIAlertController(title: nil, message: "\(juiceType)쥬스 나왔습니다! 맛있게 드세요!", preferredStyle: .alert)
         
@@ -125,22 +126,22 @@ extension JuiceViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func failiureAlert() {
+    private func failiureAlert() {
         let alert = UIAlertController(title: "재료가 모자라요.", message: "재고를 수정할까요?", preferredStyle: .alert)
         let successAction = UIAlertAction(title: "예", style: .default, handler: { action in
-            guard let fruitNavigationController = self.storyboard?.instantiateViewController(identifier: "FruitNavi") as? UINavigationController else { return }
-            fruitNavigationController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-            
-//            self.juiceStoreCountBundle = ???
-//            self.sendCount = self.juiceStoreCountBundl
-            
-            self.present(fruitNavigationController, animated: true, completion: nil)
+            self.presentModally()
         })
         let cancleAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
         
         alert.addAction(successAction)
         alert.addAction(cancleAction)
         present(alert, animated: true, completion: nil)
+    }
+    
+    private func presentModally() {
+        guard let fruitNavigationController = self.storyboard?.instantiateViewController(identifier: "FruitNavi") as? UINavigationController else { return }
+        fruitNavigationController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        self.present(fruitNavigationController, animated: true, completion: nil)
     }
 }
 
