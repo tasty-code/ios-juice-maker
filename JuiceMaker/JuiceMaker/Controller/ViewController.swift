@@ -153,13 +153,6 @@ class ViewController: UIViewController {
     
     func moveToChangeStockView() {
         if let nextVC = self.storyboard?.instantiateViewController(withIdentifier: String(describing: ChangeStockViewController.self)) as? ChangeStockViewController {
-            
-            nextVC.strawberryLabel = self.strawberryCurrentStock
-            nextVC.bananaLabel = self.bananaCurrentStock
-            nextVC.pineappleLabel = self.pineappleCurrentStock
-            nextVC.mangoLabel = self.mangoCurrentStock
-            nextVC.kiwiLabel = self.kiwiCurrentStock
-            
             nextVC.vcon = self
             self.present(nextVC, animated: true)
         }

@@ -80,11 +80,7 @@ class ChangeStockViewController: UIViewController {
         FruitStore.shared.changeQuantity(of: .kiwi, num: UInt(kiwiStepper.value))
         FruitStore.shared.changeQuantity(of: .mango, num: UInt(mangoStepper.value))
         
-        vcon?.strawberryCurrentStock.text = String(Int(strawberryStepper.value))
-        vcon?.bananaCurrentStock.text = String(Int(bananaStepper.value))
-        vcon?.pineappleCurrentStock.text = String(Int(pineappleStepper.value))
-        vcon?.kiwiCurrentStock.text = String(Int(kiwiStepper.value))
-        vcon?.mangoCurrentStock.text = String(Int(mangoStepper.value))
+        vcon?.refreshLabels()
         
         self.presentingViewController?.dismiss(animated: true)
     }
