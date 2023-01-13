@@ -7,10 +7,8 @@
 
 import Foundation
 
-typealias Storeable = Hashable
-
 protocol Storing {
-    associatedtype Element: Storeable
+    associatedtype Element: Ingredientable
     
     var items: [Element: Int] { get }
     
