@@ -7,7 +7,14 @@
 
 import UIKit
 
-class FruitViewController: UIViewController {
+class FruitViewController: UIViewController, SendDataDelegate {
+    func syncFruitStocks() {
+        Fruit.allCases.enumerated().forEach { fruit in
+            guard let label = fruitStoreCountBundle[safe: fruit.offset] else { return }
+            label.text = String(fruitStore.sendBackToAvailableStock(fruit: fruit.element))
+            
+        }
+    }
     
     @IBAction func touchUpDismissButton(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
@@ -20,15 +27,12 @@ class FruitViewController: UIViewController {
     @IBAction func stepperAction(_ sender: UIStepper) {
     }
     
-    var receiveCount: [String] = []
+    private let fruitStore = FruitStore.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.fruitStoreCountBundle.forEach { label in
-            label.text = receiveCount.first
-            print(receiveCount)
-        }
+        FruitStore.shared.delegate = self
+        syncFruitStocks()
     }
     
 //    func recevieFromJuiceViewController(fruit: [UILabel], text: [String]) {
