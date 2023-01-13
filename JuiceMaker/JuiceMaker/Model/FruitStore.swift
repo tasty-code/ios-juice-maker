@@ -10,13 +10,11 @@ final class FruitStore: Storing {
     private(set) var items: [Fruit : Int] = [:]
     
     init(defaultStock count: Int) {
-        for fruit in Fruit.allCases {
-            add(item: fruit, count: count)
-        }
+        Fruit.allCases.forEach { add(item: $0, count: count) }
     }
     
     init(pairOfItems: [Fruit: Int]) {
-        for (fruit, count) in pairOfItems {
+        pairOfItems.forEach { (fruit, count) in
             add(item: fruit, count: count)
         }
     }
@@ -30,25 +28,20 @@ final class FruitStore: Storing {
               stock >= count else {
             return false
         }
+        
         items.updateValue(stock - count, forKey: item)
         return true
     }
     
     func subtract(pairOfItems neededAmount: [Fruit: Int]) -> Bool{
-        guard self.hasEnough(pairOfItems: neededAmount) else {
-            return false
-        }
-        neededAmount.forEach({ (fruit: Fruit, usedAmount: Int) in
-            _ = subtract(item: fruit, count: usedAmount)
+        guard self.hasEnough(pairOfItems: neededAmount) else { return false }
+        
+        return neededAmount.allSatisfy({ (fruit, usedAmount) in
+            subtract(item: fruit, count: usedAmount)
         })
-        return true
     }
-}
-
-extension FruitStore {
-    func stockInfo(of fruits: [Fruit]) -> [Fruit: Int] {
-        let fruitSet = Set(fruits)
-        let info = items.filter { (fruit, _) in fruitSet.contains(fruit) }
-        return info
+    
+    func setStocks(pairOfItems stocks: [Fruit: Int]) {
+        items.merge(stocks) { (_, new) in new }
     }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol FruitView {
+protocol FruitView: AnyObject {
     func update(targets: [FruitComponent], with: [Fruit: Int])
     func updateLabels(of:[Fruit])
 }

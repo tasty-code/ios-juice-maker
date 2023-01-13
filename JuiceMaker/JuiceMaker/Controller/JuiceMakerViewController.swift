@@ -16,19 +16,14 @@ class JuiceMakerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         juiceMaker = JuiceMaker(fruitStore: fruitStore)
-
-        updateLabels(of: Fruit.allCases)
-    }
-    
-    @IBAction func touchesModifyStockButton(_ sender: UIBarButtonItem) {
-        showStoreView()
+        updateLabels(of: fruitStore.itemList)
     }
     
     @IBAction func touchesOrderButton(_ sender: UIButton) {
         let orderName = sender.currentTitle
         let juiceName = orderName?.replacingOccurrences(of: " 주문", with: "")
         guard let juice = Juice(rawValue: juiceName ?? "") else {
-            showMessageAlert("팔 수 없습니다.")
+//            showMessageAlert("팔 수 없습니다.")
             return
         }
         
@@ -39,9 +34,13 @@ class JuiceMakerViewController: UIViewController {
         updateLabels(of: fruits)
     }
     
+    @IBAction func touchesModifyStockButton(_ sender: UIBarButtonItem) {
+        showStoreView()
+    }
+    
     func showResult(order juice: Juice, result: Bool) {
         if result {
-            showMessageAlert("\(juice.rawValue) 나왔습니다! 맛있게 드세요!")
+            showDoneAlert(juice: juice)
         } else {
             showFailAlert()
         }
@@ -53,26 +52,41 @@ class JuiceMakerViewController: UIViewController {
 extension JuiceMakerViewController: FruitView {
     func updateLabels(of fruits:[Fruit]){
         guard let labels = fruitStockLabels as? [FruitComponent] else { return }
-        let stocks = fruitStore.stockInfo(of: fruits)
         
+        let stocks = fruitStore.stockInfo(of: fruits)
         update(targets: labels, with: stocks)
     }
 }
 
 
 //MARK: - StoreView로 전환
+
 extension JuiceMakerViewController {
     private func showStoreView() {
-        guard let storeNaviVC = storyboard?.instantiateViewController(withIdentifier: "storeNavi") as? UINavigationController else { return }
+        guard let storeNavi = buildStoreNavigationContoller(),
+              let storeVC = buildStoreViewController() else { return }
         
-        storeNaviVC.modalPresentationStyle = .fullScreen
-        storeNaviVC.modalTransitionStyle = .coverVertical
+        storeNavi.setViewControllers([storeVC], animated: true)
+        present(storeNavi, animated: true)
+    }
+    
+    private func buildStoreNavigationContoller() -> UINavigationController? {
+        guard let storeNavigationContoller = storyboard?.instantiateViewController(withIdentifier: "storeNavi")
+                as? UINavigationController else { return nil }
         
-        guard let storeVC = storyboard?.instantiateViewController(withIdentifier: "storeView") as? StoreViewController else { return }
-        storeVC.fruitStore = fruitStore
-        storeNaviVC.setViewControllers([storeVC], animated: true)
+        storeNavigationContoller.modalPresentationStyle = .fullScreen
+        storeNavigationContoller.modalTransitionStyle = .coverVertical
+        return storeNavigationContoller
+    }
+    
+    private func buildStoreViewController() -> StoreViewController? {
+        guard let storeViewController = storyboard?.instantiateViewController(withIdentifier: "storeView")
+                as? StoreViewController else { return nil }
         
-        present(storeNaviVC, animated: true)
+        storeViewController.fruitStore = fruitStore
+        storeViewController.delegate = self
+        
+        return storeViewController
     }
 }
 
@@ -95,10 +109,10 @@ extension JuiceMakerViewController {
         present(failAlert, animated: true)
     }
     
-    private func showMessageAlert(_ message: String) {
+    private func showDoneAlert(juice: Juice) {
         let alert = UIAlertController(title: nil,
-                                             message: message,
-                                             preferredStyle: .alert)
+                                      message: "\(juice.rawValue) 나왔습니다! 맛있게 드세요!",
+                                      preferredStyle: .alert)
         
         let confirmAction = UIAlertAction(title: "확인",
                                           style: .default)
