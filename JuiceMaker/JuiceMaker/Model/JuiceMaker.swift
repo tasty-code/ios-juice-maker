@@ -7,7 +7,7 @@
 import Foundation
 
 struct JuiceMaker {
-    let fruitStore = FruitStore()
+    let fruitStore = FruitStore.shared
     
     func make(juiceName: FruitJuice) throws {
         guard isEnoughFruit(of: juiceName) else {
