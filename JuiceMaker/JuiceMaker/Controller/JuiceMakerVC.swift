@@ -1,12 +1,12 @@
 //
-//  JuiceMaker - ViewController.swift
+//  JuiceMaker - JuiceMakerVC.swift
 //  Created by yagom. 
 //  Copyright © yagom academy. All rights reserved.
 // 
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class JuiceMakerVC: UIViewController {
   
     @IBOutlet var fruitStockLabels: [UILabel]!
     
