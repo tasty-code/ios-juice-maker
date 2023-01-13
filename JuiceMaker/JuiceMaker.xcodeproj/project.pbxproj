@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F3A22D7297121EA0041E7B2 /* FruitStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3A22D6297121EA0041E7B2 /* FruitStepper.swift */; };
 		4FCF503D29640DAA00CA262F /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCF503C29640DAA00CA262F /* Error.swift */; };
 		4FCF5041296E419800CA262F /* FruitStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCF5040296E419800CA262F /* FruitStoreViewController.swift */; };
 		90D12A55296FE94F001A79E4 /* MenuObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D12A54296FE94F001A79E4 /* MenuObject.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F3A22D6297121EA0041E7B2 /* FruitStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitStepper.swift; sourceTree = "<group>"; };
 		4FCF503C29640DAA00CA262F /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		4FCF5040296E419800CA262F /* FruitStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitStoreViewController.swift; sourceTree = "<group>"; };
 		90D12A54296FE94F001A79E4 /* MenuObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuObject.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				C73DAF41255D0CDF00020D38 /* LaunchScreen.storyboard */,
 				90D12A54296FE94F001A79E4 /* MenuObject.swift */,
 				90D12A562970F70E001A79E4 /* FruitLabel.swift */,
+				4F3A22D6297121EA0041E7B2 /* FruitStepper.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 			files = (
 				90F84B30296402C300E86F4C /* Menu.swift in Sources */,
 				4FCF5041296E419800CA262F /* FruitStoreViewController.swift in Sources */,
+				4F3A22D7297121EA0041E7B2 /* FruitStepper.swift in Sources */,
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
 				C73DAF3B255D0CDD00020D38 /* JuiceMakerViewController.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
