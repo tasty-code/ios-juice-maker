@@ -4,8 +4,6 @@
 //  Copyright © yagom academy. All rights reserved.
 //
 
-import Foundation
-
 final class FruitStore: Storing {
     private(set) var items: [Fruit : Int] = [:]
     
@@ -33,12 +31,13 @@ final class FruitStore: Storing {
         return true
     }
     
-    func subtract(pairOfItems neededAmount: [Fruit: Int]) -> Bool{
-        guard self.hasEnough(pairOfItems: neededAmount) else { return false }
-        
-        return neededAmount.allSatisfy({ (fruit, usedAmount) in
-            subtract(item: fruit, count: usedAmount)
-        })
+    func subtract(pairOfItems neededAmounts: [Fruit: Int]) -> Bool{
+        if self.hasEnough(pairOfItems: neededAmounts) {
+            return neededAmounts.allSatisfy({ (fruit, usedAmount) in
+                subtract(item: fruit, count: usedAmount)
+            })
+        }
+        return false
     }
     
     func setStocks(pairOfItems stocks: [Fruit: Int]) {

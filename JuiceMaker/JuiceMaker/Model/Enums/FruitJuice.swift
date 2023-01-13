@@ -1,11 +1,9 @@
 //
-//  Juice.swift
+//  FruitJuice.swift
 //  JuiceMaker
 //
 //  Created by 조용현 on 2023/01/03.
 //
-
-import Foundation
 
 enum FruitJuice: Makable {
     case strawberryJuice
@@ -36,6 +34,7 @@ enum FruitJuice: Makable {
     }
 }
 
+//MARK: - 문자열 표현
 
 extension FruitJuice: CustomStringConvertible {
     var description: String {

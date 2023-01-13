@@ -4,8 +4,6 @@
 //  Copyright © yagom academy. All rights reserved.
 // 
 
-import Foundation
-
 struct JuiceMaker<Store: Storing, Juice: Makable> where Store.Item == Juice.Ingredient {
     private(set) var fruitStore: Store
     

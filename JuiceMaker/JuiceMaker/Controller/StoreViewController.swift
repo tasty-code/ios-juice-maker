@@ -9,8 +9,8 @@ import UIKit
 
 class StoreViewController: UIViewController {
     
-    @IBOutlet var fruitStockLabels: [UILabel]!
-    @IBOutlet var fruitSteppers: [UIStepper]!
+    @IBOutlet private var fruitStockLabels: [UILabel]!
+    @IBOutlet private var fruitSteppers: [UIStepper]!
     
     var fruitStore: FruitStore?
     weak var delegate: FruitView?
@@ -28,14 +28,14 @@ class StoreViewController: UIViewController {
         initializeLabelsAndSteppers()
     }
     
-    @IBAction func touchesStepper(_ sender: UIStepper) {
+    @IBAction private func touchesStepper(_ sender: UIStepper) {
         guard let stepper = sender as? FruitComponent else { return }
         
         updateLabel(of: stepper.fruit,
                     to: stepper.stock)
     }
     
-    @IBAction func touchesBackButton(_ sender: UIBarButtonItem) {
+    @IBAction private func touchesBackButton(_ sender: UIBarButtonItem) {
         fruitStore?.setStocks(pairOfItems: newStocks)
         delegate?.updateLabels(of: fruitStore?.itemList ?? [])
         dismiss(animated: true)
@@ -46,13 +46,20 @@ class StoreViewController: UIViewController {
 //MARK: - Initailize and Update FruitComponent
 
 extension StoreViewController: FruitView {
-    func initializeLabelsAndSteppers() {
+    private func initializeLabelsAndSteppers() {
         guard let labels = fruitStockLabels as? [FruitComponent],
               let steppers = fruitSteppers as? [FruitComponent],
               let stocks = fruitStore?.items else { return }
         
         update(targets: labels, with: stocks)
         update(targets: steppers, with: stocks)
+    }
+    
+    private func updateLabel(of fruit: Fruit, to stock: Int) {
+        guard let fruitLabels = fruitStockLabels as? [FruitComponent],
+              var label = fruitLabels.filter({$0.fruit == fruit}).first else { return }
+        
+        label.stock = stock
     }
     
     func updateLabels(of fruits:[Fruit]){
@@ -62,11 +69,5 @@ extension StoreViewController: FruitView {
         update(targets: labels, with: stocks)
     }
     
-    func updateLabel(of fruit: Fruit, to stock: Int) {
-        guard let fruitLabels = fruitStockLabels as? [FruitComponent],
-              var label = fruitLabels.filter({$0.fruit == fruit}).first else { return }
-        
-        label.stock = stock
-    }
 }
 

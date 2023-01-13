@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 protocol FruitJuiceButton {
     var juice: FruitJuice { get }
 }

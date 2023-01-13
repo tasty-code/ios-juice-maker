@@ -8,7 +8,7 @@ import UIKit
 
 class JuiceMakerViewController: UIViewController {
     
-    @IBOutlet var fruitStockLabels: [UILabel]!
+    @IBOutlet private var fruitStockLabels: [UILabel]!
     
     private let fruitStore = FruitStore(defaultStock: 10)
     private var juiceMaker: JuiceMaker<FruitStore, FruitJuice>!
@@ -19,22 +19,22 @@ class JuiceMakerViewController: UIViewController {
         updateLabels(of: fruitStore.itemList)
     }
     
-    @IBAction func touchesOrderButton(_ sender: UIButton) {
+    @IBAction private func touchesOrderButton(_ sender: UIButton) {
         guard let button = sender as? FruitJuiceButton else { return }
         
         let juice = button.juice
         let isSucceed = juiceMaker.make(juice: juice)
-        showResult(order: juice, result: isSucceed)
+        showResultAlert(order: juice, result: isSucceed)
         
         let fruits = Array(juice.ingredients)
         updateLabels(of: fruits)
     }
     
-    @IBAction func touchesModifyStockButton(_ sender: UIBarButtonItem) {
+    @IBAction private func touchesModifyStockButton(_ sender: UIBarButtonItem) {
         showStoreView()
     }
     
-    func showResult(order juice: FruitJuice, result: Bool) {
+    private func showResultAlert(order juice: FruitJuice, result: Bool) {
         if result {
             showDoneAlert(juice: juice)
         } else {

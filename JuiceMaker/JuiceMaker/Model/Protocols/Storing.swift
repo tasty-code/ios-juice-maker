@@ -5,8 +5,6 @@
 //  Created by sei_dev on 1/2/23.
 //
 
-import Foundation
-
 protocol Storing {
     associatedtype Item: Ingredientable
     
@@ -34,7 +32,9 @@ extension Storing {
     
     func stockInfo(of itemList: [Item]) -> [Item: Int] {
         let itemSet = Set(itemList)
-        let info = items.filter { (item, _) in itemSet.contains(item) }
+        let info = items.filter { (item, _) in
+            itemSet.contains(item)
+        }
         return info
     }
 }
