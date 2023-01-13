@@ -7,19 +7,33 @@
 import Foundation
 
 struct JuiceMaker {
-    let fruitStore = FruitStore.shared
-    weak var juiceAlertDelegate: juiceAlertDelegate?
-
-    func order(juice: Menu) {
-        do {
-            try make(juice: juice)
-            juiceAlertDelegate?.madeJuiceAlert(juice: juice)
-        } catch {
-            juiceAlertDelegate?.shortOfStockAlert(message: error.localizedDescription)
+    func make(juice: Menu) throws {
+        try checkFruit(according: juice.recipe)
+        
+        for (fruit, quantity) in juice.recipe {
+            guard let stock = FruitStore.shared.stock(fruit: fruit) else {
+                return
+            }
+            let newQuantity = stock - quantity
+            FruitStore.shared.update(fruit: fruit, quantity: newQuantity)
         }
     }
+    
+    private func checkFruit(according recipe: [Fruits: Quantity]) throws {
+        for (fruit, quantity) in recipe {
+            guard let stock = FruitStore.shared.stock(fruit: fruit) else {
+                return
+            }
+            guard stock.isNegative(subtraction: quantity) else {
+                throw JuiceError.negativeQuantity(fruit: fruit)
+            }
+        }
+    }
+}
 
-    func make(juice order: Menu) throws {
-        try fruitStore.remove(according: order.recipe)
+private extension Int {
+    func isNegative(subtraction sub: Int) -> Bool {
+        let result = (self - sub) >= 0
+        return result
     }
 }

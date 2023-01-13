@@ -10,10 +10,10 @@ typealias Quantity = Int
 
 final class FruitStore {
     static let shared = FruitStore()
-    
+
     private var fruits: [Fruits: Quantity] = [:]
     
-    weak var textUpdateDelegate: textUpdateDelegate?
+    weak var updateDelegate: UpdateDelegate?
     
     private init() {
         Fruits.allCases.forEach { fruit in
@@ -21,9 +21,9 @@ final class FruitStore {
         }
     }
 
-    func stock(fruit: Fruits) -> Quantity {
+    func stock(fruit: Fruits) -> Quantity? {
         guard let stock = fruits[fruit] else {
-            return Int()
+            return nil
         }
         return stock
     }

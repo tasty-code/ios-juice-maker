@@ -7,8 +7,8 @@
 
 import Foundation
 
-enum Menu: Int {
-    case strawberryBananaJuice = 0
+enum Menu {
+    case strawberryBananaJuice
     case strawberryJuice
     case bananaJuice
     case pineappleJuice

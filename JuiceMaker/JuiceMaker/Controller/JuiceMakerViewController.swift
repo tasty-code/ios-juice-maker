@@ -10,30 +10,22 @@ class JuiceMakerViewController: UIViewController {
 
     @IBOutlet var fruitLabels: [UILabel]!
     
-    let fruitStore = FruitStore.shared
     var juiceMaker = JuiceMaker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLabel()
-        fruitStore.textUpdateDelegate = self
-        juiceMaker.juiceAlertDelegate = self
+        FruitStore.shared.updateDelegate = self
     }
 
     @IBAction func orderJuice(_ sender: UIButton) {
-        guard let juice = Menu(rawValue: sender.tag) else {
+        guard let juice = (sender as? MenuObject)?.juice else {
             return
         }
-        juiceMaker.order(juice: juice)
-    }
-
-    private func setupLabel() {
-        fruitLabels.forEach { label in
-            guard let fruit = Fruits(rawValue: label.tag) else {
-                return
-            }
-            let quantity = fruitStore.stock(fruit: fruit)
-            label.text = String(quantity)
+        do {
+            try juiceMaker.make(juice: juice)
+            madeJuiceAlert(juice: juice)
+        } catch {
+            shortOfStockAlert(message: error.localizedDescription)
         }
     }
 }
@@ -41,10 +33,9 @@ class JuiceMakerViewController: UIViewController {
 extension JuiceMakerViewController: textUpdateDelegate {
     func updateLabel(fruit: Fruits) {
         fruitLabels.forEach { label in
-            if label.tag == fruit.rawValue {
-                let quantity = fruitStore.stock(fruit: fruit)
-                label.text = String(quantity)
-            }
+            guard let label = label as? FruitLabel,
+                  label.fruit == fruit else { return }
+            label.setting()
         }
     }
 }
@@ -80,11 +71,6 @@ extension JuiceMakerViewController: juiceAlertDelegate {
     }
 }
 
-protocol textUpdateDelegate: AnyObject {
+protocol UpdateDelegate: AnyObject {
     func updateLabel(fruit: Fruits)
-}
-
-protocol juiceAlertDelegate: AnyObject {
-    func madeJuiceAlert(juice: Menu)
-    func shortOfStockAlert(message: String)
 }
