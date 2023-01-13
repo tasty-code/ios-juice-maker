@@ -63,7 +63,8 @@ class JuiceViewController: UIViewController {
         currentStockDisplay(on: juiceEmojiBundle, change: juiceStoreCountBundle)
     }
     
-    func currentStockDisplay(on emojiLabels: [UILabel], change countLabels: [UILabel]) {
+    //MARK: - initialization Stock Display
+    private func currentStockDisplay(on emojiLabels: [UILabel], change countLabels: [UILabel]) {
         for (emojiLabel, countLabel) in zip(emojiLabels, countLabels) {
             guard let checkTest = emojiLabel.text else {
                 return
@@ -86,12 +87,13 @@ class JuiceViewController: UIViewController {
         }
     }
     
-    func convertToStringStock(fruit count: Fruit) -> String {
+    private func convertToStringStock(fruit count: Fruit) -> String {
         let fruitStock = juiceMaker.fruitStore.sendBackToAvailableStock(fruit: count)
         return String(fruitStock)
     }
     
-    func order(juiceType: SingleFruitJuice) {
+    //MARK: - Juice Make Order
+    private func order(juiceType: SingleFruitJuice) {
         let needCount = juiceMaker.fruitStore.needCountOfMake(to: juiceType)
         let isContinue = juiceMaker.isMakeable(juiceType, send: needCount)
         
@@ -103,7 +105,7 @@ class JuiceViewController: UIViewController {
         currentStockDisplay(on: juiceEmojiBundle, change: juiceStoreCountBundle)
     }
     
-    func order(juiceType: MixFruitJuice) {
+    private func order(juiceType: MixFruitJuice) {
         let needCounts = juiceMaker.fruitStore.needCountOfMake(to: juiceType)
         let isContinue = juiceMaker.isMakeable(juiceType, send: needCounts)
         
