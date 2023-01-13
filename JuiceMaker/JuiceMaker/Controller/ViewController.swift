@@ -152,6 +152,7 @@ class ViewController: UIViewController {
     }
     
     func moveToChangeStockView() {
+<<<<<<< Updated upstream
         if let nextVC = self.storyboard?/instantiateViewController(withIdentifier: String(describing: ChangeStockViewController.self)) as? ChangeStockViewController {
             
             nextVC.strawberryLabel = self.strawberryCurrentStock
@@ -163,5 +164,17 @@ class ViewController: UIViewController {
             nextVC.vCon = self
             self.present(nextVC, animated: true)
         }
+=======
+        let changeStockViewController = String(describing: ChangeStockViewController.self)
+        guard let changeStockVC = self.storyboard?.instantiateViewController(identifier: changeStockViewController) as? ChangeStockViewController else { return }
+        
+//        changeStockVC.strawberryLabel = self.strawberryCurrentStock
+//        changeStockVC.bananaLabel = self.bananaCurrentStock
+//        changeStockVC.pineappleLabel = self.pineappleCurrentStock
+//        changeStockVC.kiwiLabel = self.kiwiCurrentStock
+//        changeStockVC.mangoLabel = self.mangoCurrentStock
+        
+        self.present(changeStockVC, animated: true)
+>>>>>>> Stashed changes
     }
 }
