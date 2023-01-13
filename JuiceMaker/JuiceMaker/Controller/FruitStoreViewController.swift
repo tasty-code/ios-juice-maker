@@ -16,7 +16,6 @@ final class FruitStoreViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        initialSetting()
     }
 
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
@@ -28,15 +27,6 @@ final class FruitStoreViewController: UIViewController {
             if label.tag == sender.tag {
                 label.text = Int(sender.value).description
             }
-        }
-    }
-    
-    private func initialSetting() {
-        Fruits.allCases.forEach { fruit in
-            let quantity = fruitStore.stock(fruit: fruit)
-            let tag = fruit.rawValue
-            fruitLabels[tag].text = String(quantity)
-            fruitSteppers[tag].value = Double(quantity)
         }
     }
 }

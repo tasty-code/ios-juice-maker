@@ -30,7 +30,7 @@ class JuiceMakerViewController: UIViewController {
     }
 }
 
-extension JuiceMakerViewController: textUpdateDelegate {
+extension JuiceMakerViewController: UpdateDelegate {
     func updateLabel(fruit: Fruits) {
         fruitLabels.forEach { label in
             guard let label = label as? FruitLabel,
@@ -40,7 +40,7 @@ extension JuiceMakerViewController: textUpdateDelegate {
     }
 }
 
-extension JuiceMakerViewController: juiceAlertDelegate {
+extension JuiceMakerViewController {
     func madeJuiceAlert(juice: Menu) {
         let alert = UIAlertController(
             title: "\(juice.koreanName) 나왔습니다! 맛있게 드세요",

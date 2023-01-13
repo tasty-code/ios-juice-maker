@@ -41,7 +41,7 @@ final class FruitStore {
 
     func update(fruit: Fruits, quantity: Quantity) {
         fruits.updateValue(quantity, forKey: fruit)
-        textUpdateDelegate?.updateLabel(fruit: fruit)
+        updateDelegate?.updateLabel(fruit: fruit)
     }
 
     private func checkFruit(according recipe: [Fruits: Quantity]) throws {
