@@ -6,31 +6,18 @@
 
 import UIKit
 
-class JuiceMakerViewController: UIViewController {
+class JuiceMakerViewController: UIViewController, FruitView {
+        
+    @IBOutlet var fruitStockLabels: [UILabel]!
     
-    @IBOutlet private weak var strawberryStockLabel: UILabel!
-    @IBOutlet private weak var bananaStockLabel: UILabel!
-    @IBOutlet private weak var pineappleStockLabel: UILabel!
-    @IBOutlet private weak var kiwiStockLabel: UILabel!
-    @IBOutlet private weak var mangoStockLabel: UILabel!
-    
-    private var fruitLabelFruitMap: [UILabel: Fruit]!
     private var fruitStore = FruitStore(defaultStock: 10)
     private var juiceMaker: JuiceMaker<FruitStore, Juice>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         juiceMaker = JuiceMaker(fruitStore: fruitStore)
-        
-        fruitLabelFruitMap = [
-            strawberryStockLabel: .strawberry,
-            bananaStockLabel: .banana,
-            pineappleStockLabel: .pineapple,
-            kiwiStockLabel: .kiwi,
-            mangoStockLabel: .mango
-        ]
-        
-        updateStockValue()
+
+        updateAllLabels()
     }
     
     @IBAction func touchesModifyStockButton(_ sender: UIBarButtonItem) {
@@ -44,9 +31,12 @@ class JuiceMakerViewController: UIViewController {
             showMessageAlert("팔 수 없습니다.")
             return
         }
+        
         let isSucceed = juiceMaker.make(juice: juice)
         showResult(order: juice, result: isSucceed)
-        updateStockValue()
+        
+        let fruits = Array(juice.recipe.keys)
+        updateLabels(of: fruits)
     }
     
     func showResult(order juice: Juice, result: Bool) {
@@ -64,12 +54,6 @@ class JuiceMakerViewController: UIViewController {
         storeNaviVC.modalTransitionStyle = .coverVertical
         
         present(storeNaviVC, animated: true)
-    }
-    
-    private func updateStockValue() {
-        for (label, fruit) in fruitLabelFruitMap {
-            label.text = String(fruitStore.items[fruit, default: 0])
-        }
     }
 }
 
@@ -102,4 +86,18 @@ extension JuiceMakerViewController {
         alert.addAction(confirmAction)
         present(alert, animated: true)
     }
+}
+
+extension JuiceMakerViewController {
+    func updateAllLabels(){
+        guard let labels = fruitStockLabels as? [FruitComponent] else { return }
+        update(targets: labels, with: fruitStore.items)
+    }
+    
+    func updateLabels(of fruits:[Fruit]){
+        guard let labels = fruitStockLabels as? [FruitComponent] else { return }
+        let stocks = fruitStore.stockInfo(of: fruits)
+        update(targets: labels, with: stocks)
+    }
+    
 }

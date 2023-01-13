@@ -44,3 +44,11 @@ final class FruitStore: Storing {
         return true
     }
 }
+
+extension FruitStore {
+    func stockInfo(of fruits: [Fruit]) -> [Fruit: Int] {
+        let fruitSet = Set(fruits)
+        let info = items.filter { (fruit, _) in fruitSet.contains(fruit) }
+        return info
+    }
+}
