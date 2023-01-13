@@ -8,6 +8,8 @@ import Foundation
 
 final class FruitStore {
     static let shared = FruitStore(initialStock: 10)
+    var delegate: SendDataDelegate?
+    
     var store = [Fruit: Int]()
     
     private init(initialStock: Int) {
