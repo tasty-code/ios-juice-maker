@@ -18,7 +18,6 @@ final class JuiceMakerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateStockLabels()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -44,7 +43,7 @@ final class JuiceMakerViewController: UIViewController {
     private func alertOutOfStock() {
         let alert = UIAlertController(title: nil, message: "재료가 모자라요. 재고를 수정할까요?", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "예", style: .default, handler : { _ in
-            self.presentUpdateStockViewController()
+            self.presentStockViewController()
         })
         alert.addAction(okAction)
         let noAction = UIAlertAction(title: "아니오", style: .default, handler : nil)
@@ -64,18 +63,21 @@ final class JuiceMakerViewController: UIViewController {
         }
     }
 
-    private func presentUpdateStockViewController() {
-        guard let updateStockViewController = self.storyboard?.instantiateViewController(withIdentifier: "UpdateStockViewController") as? UpdateStockViewController else { return }
-        updateStockViewController.fruitStore = self.fruitStore
-        updateStockViewController.modalPresentationStyle = .fullScreen
-        self.present(updateStockViewController, animated: true)
+    private func presentStockViewController() {
+        let nextVC = String(describing: type(of: StockViewController()))
+        guard let stockViewController = storyboard?.instantiateViewController(withIdentifier: nextVC) as? StockViewController else {
+            return
+        }
+        stockViewController.fruitStore = self.fruitStore
+        stockViewController.modalPresentationStyle = .fullScreen
+        present(stockViewController, animated: true)
     }
 
-    @IBAction private func addStockButton(_ sender: UIBarButtonItem) {
-        presentUpdateStockViewController()
+    @IBAction func addStockButtonDidTap(_ sender: UIBarButtonItem) {
+        presentStockViewController()
     }
 
-    @IBAction private func orderButton(_ sender: UIButton) {
+    @IBAction func orderButtonDidTap(_ sender: UIButton) {
         guard let buttonName = sender.currentTitle else { return }
         let juiceName = buttonName.components(separatedBy: " ")[0]
         let juice = Juice.allCases.filter {

@@ -7,8 +7,8 @@
 
 import UIKit
 
-final class UpdateStockViewController: UIViewController {
-    var fruitStore: FruitStore!
+final class StockViewController: UIViewController {
+    var fruitStore = FruitStore()
 
     @IBOutlet private weak var strawberryStockLabel: UILabel!
     @IBOutlet private weak var bananaStockLabel: UILabel!
@@ -49,34 +49,32 @@ final class UpdateStockViewController: UIViewController {
         mangoStepper.value = Double(mangoStock)
     }
 
-
-    @IBAction private func strawberryStepperButton(_ sender: UIStepper) {
-        strawberryStockLabel.text = String(format: "%.0f",strawberryStepper.value)
-    }
-
-    @IBAction private func bananaStepperButton(_ sender: UIStepper) {
-        bananaStockLabel.text = String(format: "%.0f", bananaStepper.value)
-    }
-
-    @IBAction private func pineappleStepperButton(_ sender: UIStepper) {
-        pineappleStockLabel.text = String(format: "%.0f", pineappleStepper.value)
-    }
-
-    @IBAction private func kiwiStepperButton(_ sender: UIStepper) {
-        kiwiStockLabel.text = String(format: "%.0f", kiwiStepper.value)
-    }
-
-    @IBAction private func mangoStepperButton(_ sender: UIStepper) {
-        mangoStockLabel.text = String(format: "%.0f", mangoStepper.value)
-    }
-
-    @IBAction private func closeButton(_ sender: UIBarButtonItem) {
+    @IBAction private func strawberryStepperDidTap(_ sender: UIStepper) {
         fruitStore.updateStock(fruit: .strawberry, count: UInt(strawberryStepper.value))
+        strawberryStockLabel.text = String(fruitStore.stock(byFruit: .strawberry))
+    }
+
+    @IBAction private func bananaStepperDidTap(_ sender: UIStepper) {
         fruitStore.updateStock(fruit: .banana, count: UInt(bananaStepper.value))
+        bananaStockLabel.text = String(fruitStore.stock(byFruit: .banana))
+    }
+
+    @IBAction func pineappleStepperDidTap(_ sender: UIStepper) {
         fruitStore.updateStock(fruit: .pineapple, count: UInt(pineappleStepper.value))
+        pineappleStockLabel.text = String(fruitStore.stock(byFruit: .pineapple))
+    }
+
+    @IBAction private func kiwiStepperDidTap(_ sender: UIStepper) {
         fruitStore.updateStock(fruit: .kiwi, count: UInt(kiwiStepper.value))
+        kiwiStockLabel.text = String(fruitStore.stock(byFruit: .kiwi))
+    }
+
+    @IBAction private func mangoStepperDidTap(_ sender: UIStepper) {
         fruitStore.updateStock(fruit: .mango, count: UInt(mangoStepper.value))
-        self.presentingViewController?.dismiss(animated: true)
-        self.presentingViewController?.viewWillAppear(false)
+        mangoStockLabel.text = String(fruitStore.stock(byFruit: .mango))
+    }
+
+    @IBAction func closeButtonDidTap(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
     }
 }

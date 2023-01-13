@@ -127,7 +127,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="orderButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VnS-3M-tMX"/>
+                                                    <action selector="orderButtonDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EOO-3M-ktN"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9E2-H9-FXr">
@@ -142,7 +142,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="orderButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xWj-WN-MUE"/>
+                                                    <action selector="orderButtonDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="r4g-2l-tgd"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -161,7 +161,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="orderButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Oe-pG-CUM"/>
+                                                            <action selector="orderButtonDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C05-fc-VKx"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y2A-PH-DJY">
@@ -172,7 +172,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="orderButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2j6-jp-L5q"/>
+                                                            <action selector="orderButtonDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X2r-vH-ssl"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFb-ka-wGA">
@@ -183,7 +183,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="orderButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Syk-7d-bpo"/>
+                                                            <action selector="orderButtonDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tLA-nV-ELf"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcW-7H-RXw">
@@ -194,7 +194,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="orderButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6kI-vC-2BJ"/>
+                                                            <action selector="orderButtonDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BKZ-ab-xtw"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6G-4X-bVm">
@@ -205,7 +205,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="orderButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0L1-wg-1yz"/>
+                                                            <action selector="orderButtonDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JLa-oD-GSu"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -238,7 +238,7 @@
                     <navigationItem key="navigationItem" title="맛있는 쥬스를 만들어 드려요!" id="Eal-fj-o4N">
                         <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT">
                             <connections>
-                                <action selector="addStockButton:" destination="BYZ-38-t0r" id="g38-OC-iZL"/>
+                                <action selector="addStockButtonDidTap:" destination="BYZ-38-t0r" id="V6p-mG-23v"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -272,10 +272,10 @@
             </objects>
             <point key="canvasLocation" x="19.419642857142858" y="92.753623188405811"/>
         </scene>
-        <!--Update Stock View Controller-->
+        <!--Stock View Controller-->
         <scene sceneID="fkG-vv-hpE">
             <objects>
-                <viewController storyboardIdentifier="UpdateStockViewController" id="Yu1-lM-nqp" customClass="UpdateStockViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StockViewController" id="Yu1-lM-nqp" customClass="StockViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tKV-4l-Vtc">
                         <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -302,7 +302,7 @@
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZQk-f4-zrz">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
                                                 <connections>
-                                                    <action selector="strawberryStepperButton:" destination="Yu1-lM-nqp" eventType="valueChanged" id="sNA-VY-JSP"/>
+                                                    <action selector="strawberryStepperDidTap:" destination="Yu1-lM-nqp" eventType="valueChanged" id="7WU-se-XhF"/>
                                                 </connections>
                                             </stepper>
                                         </subviews>
@@ -326,7 +326,7 @@
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="O5s-2N-3iP">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
                                                 <connections>
-                                                    <action selector="bananaStepperButton:" destination="Yu1-lM-nqp" eventType="valueChanged" id="Yph-Iy-wlJ"/>
+                                                    <action selector="bananaStepperDidTap:" destination="Yu1-lM-nqp" eventType="valueChanged" id="SaY-Q3-i5V"/>
                                                 </connections>
                                             </stepper>
                                         </subviews>
@@ -350,7 +350,7 @@
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Rcr-xr-eqz">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
                                                 <connections>
-                                                    <action selector="pineappleStepperButton:" destination="Yu1-lM-nqp" eventType="valueChanged" id="kMc-3y-qo4"/>
+                                                    <action selector="pineappleStepperDidTap:" destination="Yu1-lM-nqp" eventType="valueChanged" id="SST-qX-6qg"/>
                                                 </connections>
                                             </stepper>
                                         </subviews>
@@ -374,7 +374,7 @@
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="klA-59-Nu4">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
                                                 <connections>
-                                                    <action selector="kiwiStepperButton:" destination="Yu1-lM-nqp" eventType="valueChanged" id="9YT-Jq-Tzr"/>
+                                                    <action selector="kiwiStepperDidTap:" destination="Yu1-lM-nqp" eventType="valueChanged" id="ouk-zz-lYU"/>
                                                 </connections>
                                             </stepper>
                                         </subviews>
@@ -398,7 +398,7 @@
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="xbn-6P-grO">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
                                                 <connections>
-                                                    <action selector="mangoStepperButton:" destination="Yu1-lM-nqp" eventType="valueChanged" id="dZV-CY-rgb"/>
+                                                    <action selector="mangoStepperDidTap:" destination="Yu1-lM-nqp" eventType="valueChanged" id="fsu-iJ-skL"/>
                                                 </connections>
                                             </stepper>
                                         </subviews>
@@ -406,13 +406,13 @@
                                 </subviews>
                             </stackView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XvK-P2-YvP">
-                                <rect key="frame" x="-2" y="0.0" width="844" height="44"/>
+                                <rect key="frame" x="-3" y="0.0" width="844" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="재고 추가" id="d6s-CB-DlB">
                                         <barButtonItem key="rightBarButtonItem" title="닫기" id="skg-Jf-jcg">
                                             <connections>
-                                                <action selector="closeButton:" destination="Yu1-lM-nqp" id="xo4-jC-ArA"/>
+                                                <action selector="closeButtonDidTap:" destination="Yu1-lM-nqp" id="hRX-S8-eWu"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
