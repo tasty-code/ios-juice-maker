@@ -22,7 +22,7 @@
 | JuiceViewController | final class | 과일쥬스 제조의 역할을 하는 뷰컨트롤러 (JuiceMaker를 가짐) |
 | StockViewController | final class | 과일의 재고를 관리하는 뷰컨트롤러 (싱글턴 FruitStore를 참조) |
 
-![JuiceMaker_클래스다이어그램-2](https://user-images.githubusercontent.com/59835351/212240345-69011047-1fcf-44bb-a639-27d530c1f5fd.jpg)
+![JuiceMaker_클래스다이어그램-최종-2](https://user-images.githubusercontent.com/59835351/212346337-e4bbbb69-59c4-478d-87e4-503b62133017.jpg)
 
 
 
