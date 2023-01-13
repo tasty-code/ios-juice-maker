@@ -77,15 +77,6 @@ final class StockViewController: UIViewController {
         }
     }
     
-    private func stockStepper(of fruit: Fruit) -> UIStepper? {
-        return fruitStockSteppers.first { stockStepper in
-            guard let fruitLabel = stockStepper as? FruitStepperProtocol else {
-                return false
-            }
-            return fruitLabel.fruit == fruit
-        }
-    }
-    
     private func initializeAllStockSteppers() {
         for stockStepper in fruitStockSteppers {
             guard let fruitStepper = stockStepper as? FruitStepperProtocol else { return }
