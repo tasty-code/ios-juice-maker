@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B8FFF342970F827000712EA /* SendDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8FFF332970F827000712EA /* SendDataDelegate.swift */; };
+		5B8FFF372970FD5B000712EA /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8FFF362970FD5B000712EA /* Collection.swift */; };
 		5BCF7A1B296E969500328B7C /* FruitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF7A1A296E969500328B7C /* FruitViewController.swift */; };
 		5BDA3EF02965049E00D7CDBC /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA3EEF2965049E00D7CDBC /* Fruit.swift */; };
 		5BDA3EF8296513DA00D7CDBC /* Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA3EF7296513DA00D7CDBC /* Makeable.swift */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		5B8FFF332970F827000712EA /* SendDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendDataDelegate.swift; sourceTree = "<group>"; };
+		5B8FFF362970FD5B000712EA /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		5BCF7A1A296E969500328B7C /* FruitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitViewController.swift; sourceTree = "<group>"; };
 		5BDA3EEF2965049E00D7CDBC /* Fruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
 		5BDA3EF7296513DA00D7CDBC /* Makeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Makeable.swift; sourceTree = "<group>"; };
@@ -53,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B8FFF352970FD36000712EA /* Subscript */ = {
+			isa = PBXGroup;
+			children = (
+				5B8FFF362970FD5B000712EA /* Collection.swift */,
+			);
+			path = Subscript;
+			sourceTree = "<group>";
+		};
 		5BDA3EEE2965045700D7CDBC /* FruitInformation */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +96,7 @@
 		C71CD66F266C7B500038B9CB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5B8FFF352970FD36000712EA /* Subscript */,
 				5BDA3EF6296513CB00D7CDBC /* Protocol */,
 				5BDA3EEE2965045700D7CDBC /* FruitInformation */,
 				C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */,
@@ -204,6 +215,7 @@
 				5BDA3EF8296513DA00D7CDBC /* Makeable.swift in Sources */,
 				5BCF7A1B296E969500328B7C /* FruitViewController.swift in Sources */,
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
+				5B8FFF372970FD5B000712EA /* Collection.swift in Sources */,
 				C73DAF3B255D0CDD00020D38 /* JuiceViewController.swift in Sources */,
 				5B8FFF342970F827000712EA /* SendDataDelegate.swift in Sources */,
 				D918A0922967BE03005A6B26 /* MixFruitJuice.swift in Sources */,
