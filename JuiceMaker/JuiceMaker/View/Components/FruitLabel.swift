@@ -19,21 +19,21 @@ extension FruitComponent where Self:UILabel {
 }
 
 final class StrawberryLabel: UILabel, FruitComponent {
-    var fruit:Fruit { .strawberry }
+    var fruit: Fruit { .strawberry }
 }
 
 final class BananaLabel: UILabel, FruitComponent {
-    var fruit:Fruit { .banana }
+    var fruit: Fruit { .banana }
 }
 
 final class PineappleLabel: UILabel, FruitComponent {
-    var fruit:Fruit { .pineapple }
+    var fruit: Fruit { .pineapple }
 }
 
 final class KiwiLabel: UILabel, FruitComponent {
-    var fruit:Fruit { .kiwi }
+    var fruit: Fruit { .kiwi }
 }
 
 final class MangoLabel: UILabel, FruitComponent {
-    var fruit:Fruit { .mango }
+    var fruit: Fruit { .mango }
 }

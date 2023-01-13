@@ -19,21 +19,21 @@ extension FruitComponent where Self:UIStepper {
 }
 
 final class StrawberryStepper: UIStepper, FruitComponent {
-    var fruit:Fruit { .strawberry }
+    var fruit: Fruit { .strawberry }
 }
 
 final class BananaStepper: UIStepper, FruitComponent {
-    var fruit:Fruit { .banana }
+    var fruit: Fruit { .banana }
 }
 
 final class PineappleStepper: UIStepper, FruitComponent {
-    var fruit:Fruit { .pineapple }
+    var fruit: Fruit { .pineapple }
 }
 
 final class KiwiStepper: UIStepper, FruitComponent {
-    var fruit:Fruit { .kiwi }
+    var fruit: Fruit { .kiwi }
 }
 
 final class MangoStepper: UIStepper, FruitComponent {
-    var fruit:Fruit { .mango }
+    var fruit: Fruit { .mango }
 }
