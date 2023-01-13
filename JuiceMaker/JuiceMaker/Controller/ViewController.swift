@@ -53,7 +53,7 @@ class ViewController: UIViewController {
             break
         }
     }
-
+    
     func checkCurrentStock() {
         guard let currentStrawberry = juiceMaker.fruitStore.quantity(of: .strawberry) else {
             registerFailAlert()
@@ -150,12 +150,18 @@ class ViewController: UIViewController {
             registerFailAlert.dismiss(animated: true)
         }
     }
-        
+    
     func moveToChangeStockView() {
-        let changeStockViewController = String(describing: ChangeStockViewController.self)
-        guard let viewController = self.storyboard?.instantiateViewController(identifier: changeStockViewController) else { return }
-
-        self.present(viewController, animated: true)
+        if let nextVC = self.storyboard?/instantiateViewController(withIdentifier: String(describing: ChangeStockViewController.self)) as? ChangeStockViewController {
+            
+            nextVC.strawberryLabel = self.strawberryCurrentStock
+            nextVC.bananaLabel = self.bananaCurrentStock
+            nextVC.pineappleLabel = self.pineappleCurrentStock
+            nextVC.mangoLabel = self.mangoCurrentStock
+            nextVC.kiwiLabel = self.kiwiCurrentStock
+            
+            nextVC.vCon = self
+            self.present(nextVC, animated: true)
+        }
     }
 }
-
