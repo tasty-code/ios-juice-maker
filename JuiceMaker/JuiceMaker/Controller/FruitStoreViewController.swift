@@ -18,7 +18,9 @@ final class FruitStoreViewController: UIViewController {
 
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
         fruitSteppers.forEach { stepper in
-            guard let fruit = (stepper as? FruitStepper)?.fruit else { return }
+            guard let fruit = (stepper as? FruitStepper)?.fruit else {
+                return
+            }
             FruitStore.shared.update(fruit: fruit, quantity: Int(stepper.value))
         }
         self.dismiss(animated: true)
@@ -26,11 +28,12 @@ final class FruitStoreViewController: UIViewController {
     
     @IBAction func stepperTapped(_ sender: UIStepper) {
         fruitLabels.forEach { label in
-            guard let label = label as? FruitLabel, let stepper = sender as? FruitStepper else { return }
-            
-            if label.fruit == stepper.fruit {
-                label.text = Int(sender.value).description
+            guard let label = label as? FruitLabel,
+                  let stepper = sender as? FruitStepper,
+                  label.fruit == stepper.fruit else {
+                return
             }
+            label.text = Int(sender.value).description
         }
     }
 }

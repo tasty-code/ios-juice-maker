@@ -34,7 +34,9 @@ extension JuiceMakerViewController: UpdateDelegate {
     func updateLabel(fruit: Fruits) {
         fruitLabels.forEach { label in
             guard let label = label as? FruitLabel,
-                  label.fruit == fruit else { return }
+                  label.fruit == fruit else {
+                return
+            }
             label.setting()
         }
     }
@@ -53,7 +55,8 @@ extension JuiceMakerViewController {
     }
 
     func shortOfStockAlert(message: String) {
-        guard let modifiedStockVC = self.storyboard?.instantiateViewController(identifier: "ModifiedStock") else { return
+        guard let modifiedStockVC = self.storyboard?.instantiateViewController(identifier: "ModifiedStock") else {
+            return
         }
         let alert = UIAlertController(
             title: "\(message)",

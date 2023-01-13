@@ -11,7 +11,9 @@ class FruitLabel: UILabel {
     var fruit: Fruits?
 
     func setting() {
-        guard let fruit = self.fruit else { return }
+        guard let fruit = self.fruit else {
+            return
+        }
         text = FruitStore.shared.stock(fruit: fruit)?.description
     }
 }

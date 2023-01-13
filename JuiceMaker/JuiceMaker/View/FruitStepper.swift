@@ -11,7 +11,10 @@ class FruitStepper: UIStepper {
     var fruit: Fruits?
 
     func setting() {
-        guard let fruit = self.fruit, let stock = FruitStore.shared.stock(fruit: fruit) else { return }
+        guard let fruit = self.fruit,
+              let stock = FruitStore.shared.stock(fruit: fruit) else {
+            return
+        }
         value = Double(stock)
     }
 }
