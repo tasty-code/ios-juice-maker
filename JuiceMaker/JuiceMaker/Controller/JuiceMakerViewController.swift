@@ -11,7 +11,7 @@ class JuiceMakerViewController: UIViewController {
     @IBOutlet var fruitStockLabels: [UILabel]!
     
     private let fruitStore = FruitStore(defaultStock: 10)
-    private var juiceMaker: JuiceMaker<FruitStore, Juice>!
+    private var juiceMaker: JuiceMaker<FruitStore, FruitJuice>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,17 +20,13 @@ class JuiceMakerViewController: UIViewController {
     }
     
     @IBAction func touchesOrderButton(_ sender: UIButton) {
-        let orderName = sender.currentTitle
-        let juiceName = orderName?.replacingOccurrences(of: " 주문", with: "")
-        guard let juice = Juice(rawValue: juiceName ?? "") else {
-//            showMessageAlert("팔 수 없습니다.")
-            return
-        }
+        guard let button = sender as? FruitJuiceButton else { return }
         
+        let juice = button.juice
         let isSucceed = juiceMaker.make(juice: juice)
         showResult(order: juice, result: isSucceed)
         
-        let fruits = Array(juice.recipe.keys)
+        let fruits = Array(juice.ingredients)
         updateLabels(of: fruits)
     }
     
@@ -38,7 +34,7 @@ class JuiceMakerViewController: UIViewController {
         showStoreView()
     }
     
-    func showResult(order juice: Juice, result: Bool) {
+    func showResult(order juice: FruitJuice, result: Bool) {
         if result {
             showDoneAlert(juice: juice)
         } else {
@@ -109,9 +105,9 @@ extension JuiceMakerViewController {
         present(failAlert, animated: true)
     }
     
-    private func showDoneAlert(juice: Juice) {
+    private func showDoneAlert(juice: FruitJuice) {
         let alert = UIAlertController(title: nil,
-                                      message: "\(juice.rawValue) 나왔습니다! 맛있게 드세요!",
+                                      message: "\(juice) 나왔습니다! 맛있게 드세요!",
                                       preferredStyle: .alert)
         
         let confirmAction = UIAlertAction(title: "확인",

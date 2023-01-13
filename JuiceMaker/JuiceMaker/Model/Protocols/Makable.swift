@@ -13,4 +13,11 @@ protocol Makable {
     associatedtype Ingredient: Ingredientable
     
     var recipe: [Ingredient: Int] { get }
+    var ingredients: [Ingredient] { get }
+}
+
+extension Makable {
+    var ingredients: [Ingredient] {
+        Array(self.recipe.keys)
+    }
 }

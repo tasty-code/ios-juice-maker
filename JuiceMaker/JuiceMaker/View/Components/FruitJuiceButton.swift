@@ -6,15 +6,34 @@
 //
 
 import UIKit
+protocol FruitJuiceButton {
+    var juice: FruitJuice { get }
+}
 
-class FruitJuiceButton: UIButton {
+final class StrawberryJuiceButton: UIButton, FruitJuiceButton {
+    var juice: FruitJuice { .strawberryJuice }
+}
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+final class BananaJuiceButton: UIButton, FruitJuiceButton {
+    var juice: FruitJuice { .bananaJuice }
+}
 
+final class KiwiJuiceButton: UIButton, FruitJuiceButton {
+    var juice: FruitJuice { .kiwiJuice }
+}
+
+final class PineappleJuiceButton: UIButton, FruitJuiceButton {
+    var juice: FruitJuice { .pineappleJuice }
+}
+
+final class DdalbaJuiceButton: UIButton, FruitJuiceButton {
+    var juice: FruitJuice { .ddalbaJuice }
+}
+
+final class MangoJuiceButton: UIButton, FruitJuiceButton {
+    var juice: FruitJuice { .mangoJuice }
+}
+
+final class MangkiJuiceButton: UIButton, FruitJuiceButton {
+    var juice: FruitJuice { .mangkiJuice }
 }

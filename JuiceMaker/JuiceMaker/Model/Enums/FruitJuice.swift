@@ -7,14 +7,14 @@
 
 import Foundation
 
-enum FruitJuice: String, Makable {
-    case strawberryJuice = "딸기쥬스"
-    case bananaJuice = "바나나쥬스"
-    case kiwiJuice = "키위쥬스"
-    case pineappleJuice = "파인애플쥬스"
-    case ddalbaJuice = "딸바쥬스"
-    case mangoJuice = "망고쥬스"
-    case mangkiJuice = "망키쥬스"
+enum FruitJuice: Makable {
+    case strawberryJuice
+    case bananaJuice
+    case kiwiJuice
+    case pineappleJuice
+    case ddalbaJuice
+    case mangoJuice
+    case mangkiJuice
     
     var recipe: [Fruit: Int] {
         switch self {
@@ -32,6 +32,28 @@ enum FruitJuice: String, Makable {
             return [.mango: 3]
         case .mangkiJuice:
             return [.mango: 2, .kiwi: 1]
+        }
+    }
+}
+
+
+extension FruitJuice: CustomStringConvertible {
+    var description: String {
+        switch self {
+        case .strawberryJuice:
+            return "딸기쥬스"
+        case .bananaJuice:
+            return "바나나쥬스"
+        case .kiwiJuice:
+            return "키위쥬스"
+        case .pineappleJuice:
+            return "파인애플쥬스"
+        case .ddalbaJuice:
+            return "딸바쥬스"
+        case .mangoJuice:
+            return "망고쥬스"
+        case .mangkiJuice:
+            return "망키쥬스"
         }
     }
 }
