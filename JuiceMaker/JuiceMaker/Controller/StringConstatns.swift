@@ -8,7 +8,6 @@
 import Foundation
 
 enum StringConstatns {
-    static let changeStockViewController = "ChangeStockViewController"
     static let yes = "예"
     static let no = "아니오"
     static let failAlertTitle = "제조 불가"
