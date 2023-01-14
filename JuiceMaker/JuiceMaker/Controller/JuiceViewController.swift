@@ -10,20 +10,16 @@ final class JuiceViewController: UIViewController {
     // MARK: - Properties
     private let juiceMaker = JuiceMaker()
     
-    @IBOutlet var fruitStockLabels: [UILabel]!
+    @IBOutlet private var fruitStockLabels: [UILabel]!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         updateAllStockLabels()
     }
     
     // MARK: - Actions
-    @IBAction private func juiceOrderButtonTapped(_ sender: UIButton) {
+    @IBAction private func tappedJuiceOrderButton(_ sender: UIButton) {
         guard let button = sender as? JuiceButtonProtocol else { return }
         let fruitJuice = button.fruitJuice
         
@@ -39,7 +35,7 @@ final class JuiceViewController: UIViewController {
         updateStockLabels(of: fruitJuice)
     }
     
-    @IBAction private func changeStockButtonTapped(_ sender: UIBarButtonItem) {
+    @IBAction private func tappedChangeStockButton(_ sender: UIBarButtonItem) {
         moveToStockVC()
     }
     
@@ -91,18 +87,31 @@ final class JuiceViewController: UIViewController {
         let alert = UIAlertController(title: stockError.localizedDescription,
                                       message: stockError.userMessage,
                                       preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: Constants.UserMessage.failedJuiceConfirm, style: .default) { _ in
+        let confirmAction = UIAlertAction(title: Constants.UserMessage.failedJuiceConfirm,
+                                          style: .default) { _ in
             self.moveToStockVC()
         }
-        let cancelAction = UIAlertAction(title: Constants.UserMessage.failedJuiceCancel, style: .cancel)
+        let cancelAction = UIAlertAction(title: Constants.UserMessage.failedJuiceCancel,
+                                         style: .cancel)
         alert.addAction(confirmAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true)
     }
     
     private func moveToStockVC() {
-        guard let stockVC = storyboard?.instantiateViewController(withIdentifier: Constants.Identifier.stockViewController) else { return }
-        navigationController?.pushViewController(stockVC, animated: true)
+        guard let stockVC = storyboard?
+            .instantiateViewController(withIdentifier: Constants.Identifier.stockViewController)
+                as? StockViewController else { return }
+        stockVC.delegate = self
+
+        present(stockVC, animated: true)
+    }
+}
+
+// MARK: - StockViewControllerDelegate
+extension JuiceViewController: StockViewControllerDelegate {
+    func didChangeStock() {
+        updateAllStockLabels()
     }
 }
 

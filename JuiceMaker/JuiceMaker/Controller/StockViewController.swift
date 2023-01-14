@@ -7,10 +7,17 @@
 
 import UIKit
 
+protocol StockViewControllerDelegate: AnyObject {
+    func didChangeStock()
+}
+
 final class StockViewController: UIViewController {
     // MARK: - Properties
-    @IBOutlet var fruitStockLabels: [UILabel]!
-    @IBOutlet var fruitStockSteppers: [UIStepper]!
+    @IBOutlet private var fruitStockLabels: [UILabel]!
+    @IBOutlet private var fruitStockSteppers: [UIStepper]!
+    
+    weak var delegate: StockViewControllerDelegate?
+    private var isStockChanged: Bool = false
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -20,7 +27,7 @@ final class StockViewController: UIViewController {
     }
     
     // MARK: - Actions
-    @IBAction private func stepperValueChanged(_ sender: UIStepper) {
+    @IBAction private func changedStepperValue(_ sender: UIStepper) {
         guard let fruitStepper = sender as? FruitStepperProtocol else { return }
         let fruit = fruitStepper.fruit
         let changedStock = Int(sender.value)
@@ -34,12 +41,20 @@ final class StockViewController: UIViewController {
         
         guard let stockLabel = stockLabel(of: fruit) else { return }
         stockLabel.text = String(changedStock)
+        
+        isStockChanged = true
+    }
+    
+    @IBAction private func tappedCloseButton(_ sender: UIBarButtonItem) {
+        if isStockChanged {
+            delegate?.didChangeStock()
+        }
+        
+        dismiss(animated: true)
     }
     
     // MARK: - Helpers
-    func configureUI() {
-        navigationItem.title = Constants.Design.stockViewControllerNavigationTitle
-        
+    private func configureUI() {
         initializeAllStockLabels()
         initializeAllStockSteppers()
     }
@@ -59,15 +74,6 @@ final class StockViewController: UIViewController {
             let fruit = fruitLabel.fruit
             guard let fruitStock = FruitStore.shared.stock[fruit] else { return }
             stockLabel.text = String(fruitStock)
-        }
-    }
-    
-    private func stockStepper(of fruit: Fruit) -> UIStepper? {
-        return fruitStockSteppers.first { stockStepper in
-            guard let fruitLabel = stockStepper as? FruitStepperProtocol else {
-                return false
-            }
-            return fruitLabel.fruit == fruit
         }
     }
     

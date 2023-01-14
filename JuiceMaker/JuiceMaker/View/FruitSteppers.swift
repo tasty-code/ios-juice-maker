@@ -11,18 +11,22 @@ protocol FruitStepperProtocol {
     var fruit: Fruit { get }
 }
 
-class StrawberryStepper: UIStepper, FruitStepperProtocol {
+final class StrawberryStepper: UIStepper, FruitStepperProtocol {
     var fruit: Fruit = .strawberry
 }
-class BananaStepper: UIStepper, FruitStepperProtocol {
+
+final class BananaStepper: UIStepper, FruitStepperProtocol {
     var fruit: Fruit = .banana
 }
-class PineappleStepper: UIStepper, FruitStepperProtocol {
+
+final class PineappleStepper: UIStepper, FruitStepperProtocol {
     var fruit: Fruit = .pineapple
 }
-class KiwiStepper: UIStepper, FruitStepperProtocol {
+
+final class KiwiStepper: UIStepper, FruitStepperProtocol {
     var fruit: Fruit = .kiwi
 }
-class MangoStepper: UIStepper, FruitStepperProtocol {
+
+final class MangoStepper: UIStepper, FruitStepperProtocol {
     var fruit: Fruit = .mango
 }

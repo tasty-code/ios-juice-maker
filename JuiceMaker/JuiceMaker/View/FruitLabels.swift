@@ -11,18 +11,22 @@ protocol FruitLabelProtocol {
     var fruit: Fruit { get }
 }
 
-class StrawberryLabel: UILabel, FruitLabelProtocol {
+final class StrawberryLabel: UILabel, FruitLabelProtocol {
     var fruit: Fruit = .strawberry
 }
-class BananaLabel: UILabel, FruitLabelProtocol {
+
+final class BananaLabel: UILabel, FruitLabelProtocol {
     var fruit: Fruit = .banana
 }
-class PineappleLabel: UILabel, FruitLabelProtocol {
+
+final class PineappleLabel: UILabel, FruitLabelProtocol {
     var fruit: Fruit = .pineapple
 }
-class KiwiLabel: UILabel, FruitLabelProtocol {
+
+final class KiwiLabel: UILabel, FruitLabelProtocol {
     var fruit: Fruit = .kiwi
 }
-class MangoLabel: UILabel, FruitLabelProtocol {
+
+final class MangoLabel: UILabel, FruitLabelProtocol {
     var fruit: Fruit = .mango
 }

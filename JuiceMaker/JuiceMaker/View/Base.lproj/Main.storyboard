@@ -127,7 +127,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="juiceOrderButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TdA-tU-dtd"/>
+                                                    <action selector="tappedJuiceOrderButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eYh-aF-0M3"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9E2-H9-FXr">
@@ -142,7 +142,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="juiceOrderButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b0k-lY-s7c"/>
+                                                    <action selector="tappedJuiceOrderButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t2v-j7-fw4"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -161,7 +161,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="juiceOrderButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ku2-vm-o4k"/>
+                                                            <action selector="tappedJuiceOrderButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RN3-CA-ZGM"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y2A-PH-DJY" customClass="BananaButton" customModule="JuiceMaker" customModuleProvider="target">
@@ -172,7 +172,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="juiceOrderButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cWG-BJ-AhF"/>
+                                                            <action selector="tappedJuiceOrderButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AdH-fd-Q10"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFb-ka-wGA" customClass="PineappleButton" customModule="JuiceMaker" customModuleProvider="target">
@@ -183,7 +183,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="juiceOrderButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="v5g-KM-S8E"/>
+                                                            <action selector="tappedJuiceOrderButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ghd-dH-rQd"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcW-7H-RXw" customClass="KiwiButton" customModule="JuiceMaker" customModuleProvider="target">
@@ -194,7 +194,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="juiceOrderButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S7O-j7-tcJ"/>
+                                                            <action selector="tappedJuiceOrderButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nG5-zf-k6e"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6G-4X-bVm" customClass="MangoButton" customModule="JuiceMaker" customModuleProvider="target">
@@ -205,7 +205,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="juiceOrderButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XwU-eA-Bdh"/>
+                                                            <action selector="tappedJuiceOrderButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uJi-yA-z8a"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -239,7 +239,7 @@
                         <barButtonItem key="backBarButtonItem" title="돌아가기" id="7JL-Le-HuO"/>
                         <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT">
                             <connections>
-                                <action selector="changeStockButtonTapped:" destination="BYZ-38-t0r" id="7L6-c9-BBq"/>
+                                <action selector="tappedChangeStockButton:" destination="BYZ-38-t0r" id="gfg-jz-jbC"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -303,7 +303,7 @@
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="kaL-OR-GFg" customClass="StrawberryStepper" customModule="JuiceMaker" customModuleProvider="target">
                                                 <rect key="frame" x="35" y="130" width="94" height="32"/>
                                                 <connections>
-                                                    <action selector="stepperValueChanged:" destination="Yu1-lM-nqp" eventType="valueChanged" id="FmN-6t-jeC"/>
+                                                    <action selector="changedStepperValue:" destination="Yu1-lM-nqp" eventType="valueChanged" id="qVN-3n-dnb"/>
                                                 </connections>
                                             </stepper>
                                         </subviews>
@@ -330,7 +330,7 @@
                                             <stepper opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="O5s-2N-3iP" customClass="BananaStepper" customModule="JuiceMaker" customModuleProvider="target">
                                                 <rect key="frame" x="35" y="130" width="94" height="32"/>
                                                 <connections>
-                                                    <action selector="stepperValueChanged:" destination="Yu1-lM-nqp" eventType="valueChanged" id="UWd-hB-RwO"/>
+                                                    <action selector="changedStepperValue:" destination="Yu1-lM-nqp" eventType="valueChanged" id="xaT-BD-pPC"/>
                                                 </connections>
                                             </stepper>
                                         </subviews>
@@ -357,7 +357,7 @@
                                             <stepper opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="Rcr-xr-eqz" customClass="PineappleStepper" customModule="JuiceMaker" customModuleProvider="target">
                                                 <rect key="frame" x="35" y="130" width="94" height="32"/>
                                                 <connections>
-                                                    <action selector="stepperValueChanged:" destination="Yu1-lM-nqp" eventType="valueChanged" id="kDT-W0-W42"/>
+                                                    <action selector="changedStepperValue:" destination="Yu1-lM-nqp" eventType="valueChanged" id="YIw-nQ-P86"/>
                                                 </connections>
                                             </stepper>
                                         </subviews>
@@ -384,7 +384,7 @@
                                             <stepper opaque="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="klA-59-Nu4" customClass="KiwiStepper" customModule="JuiceMaker" customModuleProvider="target">
                                                 <rect key="frame" x="35" y="130" width="94" height="32"/>
                                                 <connections>
-                                                    <action selector="stepperValueChanged:" destination="Yu1-lM-nqp" eventType="valueChanged" id="QuQ-OL-kxO"/>
+                                                    <action selector="changedStepperValue:" destination="Yu1-lM-nqp" eventType="valueChanged" id="f2g-y0-TmN"/>
                                                 </connections>
                                             </stepper>
                                         </subviews>
@@ -411,7 +411,7 @@
                                             <stepper opaque="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="xbn-6P-grO" customClass="MangoStepper" customModule="JuiceMaker" customModuleProvider="target">
                                                 <rect key="frame" x="35" y="130" width="94" height="32"/>
                                                 <connections>
-                                                    <action selector="stepperValueChanged:" destination="Yu1-lM-nqp" eventType="valueChanged" id="Srd-h4-bPi"/>
+                                                    <action selector="changedStepperValue:" destination="Yu1-lM-nqp" eventType="valueChanged" id="r9Q-rJ-y6r"/>
                                                 </connections>
                                             </stepper>
                                         </subviews>
@@ -421,6 +421,18 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jRn-IS-pbv">
+                                <rect key="frame" x="0.0" y="0.0" width="852" height="32"/>
+                                <items>
+                                    <navigationItem title="재고 추가" id="UQ1-Cu-g6p">
+                                        <barButtonItem key="rightBarButtonItem" title="닫기" id="Zpi-TQ-52L">
+                                            <connections>
+                                                <action selector="tappedCloseButton:" destination="Yu1-lM-nqp" id="wCk-J1-tzy"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gcO-Xb-kNs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -428,6 +440,9 @@
                             <constraint firstItem="qSa-XC-tAi" firstAttribute="top" secondItem="gcO-Xb-kNs" secondAttribute="top" id="XsD-xk-KUQ"/>
                             <constraint firstItem="gcO-Xb-kNs" firstAttribute="trailing" secondItem="qSa-XC-tAi" secondAttribute="trailing" constant="16" id="YA3-1M-Vxy"/>
                             <constraint firstItem="qSa-XC-tAi" firstAttribute="leading" secondItem="gcO-Xb-kNs" secondAttribute="leading" constant="16" id="dVJ-7h-iTr"/>
+                            <constraint firstItem="jRn-IS-pbv" firstAttribute="leading" secondItem="tKV-4l-Vtc" secondAttribute="leading" id="lhE-Qm-jHS"/>
+                            <constraint firstAttribute="trailing" secondItem="jRn-IS-pbv" secondAttribute="trailing" id="pbi-ba-LSd"/>
+                            <constraint firstItem="jRn-IS-pbv" firstAttribute="top" secondItem="tKV-4l-Vtc" secondAttribute="top" id="rKi-BE-QqF"/>
                             <constraint firstItem="gcO-Xb-kNs" firstAttribute="bottom" secondItem="qSa-XC-tAi" secondAttribute="bottom" id="vPX-e2-e86"/>
                         </constraints>
                     </view>

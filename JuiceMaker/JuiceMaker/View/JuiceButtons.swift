@@ -11,27 +11,27 @@ protocol JuiceButtonProtocol {
     var fruitJuice: FruitJuice { get }
 }
 
-class StrawberryButton: UIButton, JuiceButtonProtocol {
+final class StrawberryButton: UIButton, JuiceButtonProtocol {
     var fruitJuice: FruitJuice = .strawberry
 }
 
-class StrawberryBananaButton: UIButton, JuiceButtonProtocol {
+final class StrawberryBananaButton: UIButton, JuiceButtonProtocol {
     var fruitJuice: FruitJuice = .strawberryBanana
 }
 
-class BananaButton: UIButton, JuiceButtonProtocol {
+final class BananaButton: UIButton, JuiceButtonProtocol {
     var fruitJuice: FruitJuice = .banana
 }
 
-class PineappleButton: UIButton, JuiceButtonProtocol {
+final class PineappleButton: UIButton, JuiceButtonProtocol {
     var fruitJuice: FruitJuice = .pineapple
 }
 
-class MangoKiwiButton: UIButton, JuiceButtonProtocol {
+final class MangoKiwiButton: UIButton, JuiceButtonProtocol {
     var fruitJuice: FruitJuice = .mangoKiwi
 }
 
-class KiwiButton: UIButton, JuiceButtonProtocol {
+final class KiwiButton: UIButton, JuiceButtonProtocol {
     var fruitJuice: FruitJuice = .kiwi
 }
 
