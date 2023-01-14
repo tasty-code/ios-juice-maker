@@ -7,12 +7,17 @@
 
 ## 📲 실행 화면
 ![iPhone14 실행 화면](https://user-images.githubusercontent.com/71758542/212254842-103d29d2-aee5-4df5-9095-7ef586578b8b.gif)
+<br>
+<br>
 
+## 🔖 UML
+<img width="3392" alt="JuiceMakerUML" src="https://user-images.githubusercontent.com/29590768/212476131-db8100cd-9b2d-4487-9f7c-023ab0ca2bd3.png">
+<br>
 <br>
 
 ## 📂 폴더 구조
 ![](https://i.imgur.com/EBqz4IP.png)
-
+<br>
 <br>
 
 ## ❗️ 타입별 역할 분배
