@@ -34,3 +34,4 @@ class FruitViewController: UIViewController, SendDataDelegate {
         syncFruitStocks()
         fruitStore.delegate = self
     }
+}
