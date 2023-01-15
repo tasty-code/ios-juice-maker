@@ -28,7 +28,6 @@ class JuiceViewController: UIViewController {
             break
         }
     }
-    
     @IBAction func singleJuiceOrder(_ sender: UIButton) {
         guard let juiceType = sender.currentTitle else {
             return

@@ -436,18 +436,13 @@
                     <connections>
                         <outletCollection property="fruitStoreCountBundle" destination="0yV-kn-zaT" collectionClass="NSMutableArray" id="aoF-FQ-qMr"/>
                         <outletCollection property="stepperBundle" destination="ZQk-f4-zrz" collectionClass="NSMutableArray" id="QTX-Bf-EZ3"/>
-                        <outletCollection property="fruitEmojiBundle" destination="dCK-AJ-zGU" collectionClass="NSMutableArray" id="1VP-IW-geK"/>
-                        <outletCollection property="fruitEmojiBundle" destination="y33-ND-gz2" collectionClass="NSMutableArray" id="feG-eV-shi"/>
                         <outletCollection property="fruitStoreCountBundle" destination="gKu-86-RhI" collectionClass="NSMutableArray" id="Mjj-9q-R5z"/>
                         <outletCollection property="stepperBundle" destination="O5s-2N-3iP" collectionClass="NSMutableArray" id="uoQ-c2-xPL"/>
                         <outletCollection property="fruitStoreCountBundle" destination="MpT-VW-hCb" collectionClass="NSMutableArray" id="NFj-fe-KqZ"/>
-                        <outletCollection property="fruitEmojiBundle" destination="rac-Ji-vZK" collectionClass="NSMutableArray" id="dla-A0-DDk"/>
                         <outletCollection property="stepperBundle" destination="Rcr-xr-eqz" collectionClass="NSMutableArray" id="Cjx-SX-RJe"/>
-                        <outletCollection property="fruitEmojiBundle" destination="EHe-D1-1xN" collectionClass="NSMutableArray" id="yb1-Eb-DNO"/>
                         <outletCollection property="stepperBundle" destination="klA-59-Nu4" collectionClass="NSMutableArray" id="YhB-1e-sv0"/>
                         <outletCollection property="fruitStoreCountBundle" destination="ZDv-1m-HBY" collectionClass="NSMutableArray" id="IkU-QQ-ui0"/>
                         <outletCollection property="fruitStoreCountBundle" destination="YJI-ER-LJR" collectionClass="NSMutableArray" id="5Si-Bi-Nip"/>
-                        <outletCollection property="fruitEmojiBundle" destination="w1F-9o-qJR" collectionClass="NSMutableArray" id="6DL-qZ-12n"/>
                         <outletCollection property="stepperBundle" destination="xbn-6P-grO" collectionClass="NSMutableArray" id="unm-cz-Asg"/>
                     </connections>
                 </viewController>
