@@ -63,6 +63,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B22CAA02974879F00491ECC /* UI Model */ = {
+			isa = PBXGroup;
+			children = (
+				5BC28DD92973D56300994893 /* stepperAttribute.swift */,
+				5BC28DDD2973D77E00994893 /* lableAttribte.swift */,
+				5BC28DDF2974640400994893 /* buttonAttruibute.swift */,
+			);
+			path = "UI Model";
+			sourceTree = "<group>";
+		};
 		5B8FFF352970FD36000712EA /* Subscript */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,9 +120,6 @@
 				5BDA3EEE2965045700D7CDBC /* FruitInformation */,
 				C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */,
 				C71CD66A266C7ACB0038B9CB /* FruitStore.swift */,
-				5BC28DD92973D56300994893 /* stepperAttribute.swift */,
-				5BC28DDD2973D77E00994893 /* lableAttribte.swift */,
-				5BC28DDF2974640400994893 /* buttonAttruibute.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -120,6 +127,7 @@
 		C71CD671266C7B570038B9CB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5B22CAA02974879F00491ECC /* UI Model */,
 				C73DAF3C255D0CDD00020D38 /* Main.storyboard */,
 				C73DAF3F255D0CDE00020D38 /* Assets.xcassets */,
 				C73DAF41255D0CDF00020D38 /* LaunchScreen.storyboard */,
