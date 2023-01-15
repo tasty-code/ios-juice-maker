@@ -238,7 +238,7 @@
                     <navigationItem key="navigationItem" title="맛있는 쥬스를 만들어 드려요!" id="Eal-fj-o4N">
                         <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT">
                             <connections>
-                                <action selector="sceneChange:" destination="BYZ-38-t0r" id="QsW-xM-YIm"/>
+                                <action selector="tappedChangeToFruitView:" destination="BYZ-38-t0r" id="sTD-SC-WoF"/>
                                 <segue destination="WwV-Td-3Bn" kind="presentation" id="ygO-2T-a2J"/>
                             </connections>
                         </barButtonItem>

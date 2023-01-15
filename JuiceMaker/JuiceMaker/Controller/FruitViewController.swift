@@ -10,7 +10,10 @@ import UIKit
 class FruitViewController: UIViewController {
     //MARK: - Storyboard UI Outlet, Action
     @IBAction private func touchUpDismissButton(_ sender: UIBarButtonItem) {
-        fruitStore.delegate?.syncFruitStocks()
+        if isStockChange {
+            fruitStore.delegate?.syncFruitStocks()
+        }
+        
         dismiss(animated: true)
     }
     
@@ -29,13 +32,16 @@ class FruitViewController: UIViewController {
         guard let countLabel = countLabel(of: senderFruit) else {
             return
         }
-        
+        fruitStore.updateStepper(of: senderFruit, to: changeStock)
         sender.autorepeat = false
         countLabel.text = String(changeStock)
+        
+        isStockChange = true
     }
     
     //MARK: - FruitViewController Property
     private let fruitStore = FruitStore.shared
+    private var isStockChange = false
     
     //MARK: - View LifeCycle
     override func viewDidLoad() {
@@ -53,7 +59,7 @@ class FruitViewController: UIViewController {
         }
     }
     
-    //MARK: - 재고 업데이트
+    //MARK: - Stock Update
     private func configureUI() {
         updateOfStockCountLabels()
         updateOfStockSteppers()
@@ -76,16 +82,6 @@ class FruitViewController: UIViewController {
             
             guard let fruitStock = FruitStore.shared.store[fruit] else { return }
             stockStepper.value = Double(fruitStock)
-        }
-    }
-}
-
-//MARK: - SendDataDelegate Method
-extension FruitViewController: SendDataDelegate {
-    func syncFruitStocks() {
-        Fruit.allCases.enumerated().forEach { fruit in
-            guard let label = fruitStoreCountBundle[safe: fruit.offset] else { return }
-            label.text = String(fruitStore.sendBackToAvailableStock(fruit: fruit.element))
         }
     }
 }

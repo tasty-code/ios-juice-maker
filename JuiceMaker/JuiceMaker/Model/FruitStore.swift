@@ -30,6 +30,13 @@ final class FruitStore {
         }
     }
     
+    func updateStepper(of fruit: Fruit, to userCount: Int) {
+        guard userCount >= 0 else {
+            return
+        }
+        store[fruit] = Int(userCount)
+    }
+    
     func sendBackToAvailableStock(fruit type: Fruit) -> Int {
         guard let availableStock = store[type] else {
             return 0
