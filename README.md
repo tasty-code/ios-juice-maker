@@ -1,9 +1,9 @@
-# ios-juice-maker
+# iOS_juice_maker
 ----
 
-<a href ="#1-Step1---쥬스 메이커 타입 정의">Step1 - 쥬스 메이커 타입 정의</a>   
-<a href ="#2-Step2---초기화면 기능구현">Step2 - 초기화면 기능구현</a>   
-<a href ="#3-Step3---재고 수정 기능구현">Step3 - 재고 수정 기능구현</a>   
+<a href ="#1-Step1---쥬스 메이커 타입 정의">Step1 - 쥬스 메이커 타입 정의</a>
+<a href ="#2-Step2---초기화면 기능구현">Step2 - 초기화면 기능구현</a>
+<a href ="#3-Step3---재고 수정 기능구현">Step3 - 재고 수정 기능구현</a>
 
 ----
 ## 🗂️ 프로젝트 파일 구조
@@ -13,21 +13,27 @@
 ## 🔖 역할 분배
 |enum|역할|
 |:---|:---|
-|`FruitList`|과일 리스트를 Case별로 나누었습니다.|
-|`FruitSingleJuice`|한 가지 종류의 과일 쥬스를 만들 수 있는 Case별로 나누었습니다.|
-|`FruitMixJuice`|두 가지 종류의 과일 쥬스를 만들 수 있는 Case별로 나누었습니다.|
+|`Fruit`|과일 리스트를 Case별로 나누었습니다.|
+|`SingleFruitJuice`|한 가지 종류의 과일 쥬스를 만들 수 있는 Case별로 나누었습니다.|
+|`MixFruitJuice`|두 가지 종류의 과일 쥬스를 만들 수 있는 Case별로 나누었습니다.|
 |`StockError`|재고가 없을 때 에러메세지를 출력할 수 있도록 Case별로 나누었습니다.|
 
 |protocol|역할|
 |:---|:---|
 |Makeable|`JuiceMacker`가 제조하는 역할만 할 수 있도록 메서드를 정의하였습니다.|
 |Computable|`Calculator`가 계산기처럼 사칙연산의 역할만 할 수 있도록 메서드를 정의하였습니다.|
+|SendDataDelegate|`FruitViewController`에서 초기 재고 값을 보여줄 수 있도록 메서드를 정의하였습니다.|
 
 |struct & Class|역할|
 |:---|:---|
 |`JuiceMaker`|제일 상위 모듈로 ViewController에서 요청하는 행위를 진행할 수 있도록</br> 구현하였습니다.|
 |`FruitStore`|Singleton 패턴을 적용하여 재고관리를 진행하는 클래스 타입의 모델입니다.|
 |`Calculator`|SOLID의 DIP에 맞추어 계산기 역할을 할 수 있도록 구현된 클래스 타입의 모델입니다.|
+
+|Controller|역할|
+|:---|:---|
+|`JuiceViewController`|`JuiceMaker` 실행 시 보이는 `View`를 핸들링하는 `Controller` 입니다. 각 과일별 재고수량을 보여주고, 쥬스를 제조할 수 있는 버튼을 갖고 있습니다.|
+|`FruitViewController`|쥬스를 만들 과일의 수량이 부족하거나 재고의 수정이 필요할 때 사용하는 `View`를 핸들링하는 `Controller` 입니다. 각 과일의 현재 재고수량을 확인하고, `Stepper`를 통해 그 수를 조정할 수 있습니다.|
 
 ---
 
@@ -78,24 +84,21 @@ JuiceMaker의 requestTo 메서드는 처음에 각 Single Fruit Juice, 각 Mix F
 BarButtonItem의 `RightButton`을 통해 `Action Segue` 형식을 `Present Modally`방법을
 사용해서 전환이 이루어지도록 하였다.
 
-쥬스 주문 버튼을 통해 필요한 갯수만큼 소모되고 이후 Alert으로 쥬스가 나왔음을 표시한다.   
-재고가 더이상 쥬스를 제조할 수 없을만큼 존재하면 쥬스를 제조할 수 없다는 Alert을 표시하며   
-주문을 취소할지(`아니오` 버튼) 재고를 수정할지(`예` 버튼) 선택할 수 있도록 하였고 재고를 수정한다면    
+쥬스 주문 버튼을 통해 필요한 갯수만큼 소모되고 이후 Alert으로 쥬스가 나왔음을 표시한다.
+재고가 더이상 쥬스를 제조할 수 없을만큼 존재하면 쥬스를 제조할 수 없다는 Alert을 표시하며
+주문을 취소할지(`아니오` 버튼) 재고를 수정할지(`예` 버튼) 선택할 수 있도록 하였고 재고를 수정한다면
 NavigationController에 사용했던 방식과 동일하게 작동하여 화면을 전환한다.
-
 ### 🚀 적용해보려고 노력해본 점
 NavigationController에서 화면 전환을 어떤 방식으로 할지 총 5가지의 방법이 있다.
 - Show
 - ShowDetail
 - Present
 - Presetn Modally
-- Custom   
-
-하나씩 연결해 보았을 때 제일 많이 사용되는 `Show` 방식을 채택하여 화면을 뒤로갈 수 있는 버튼이 자동생성되는것을 확인하였다.   
-그 다음 Step3에서 진행되는 방식을 확인했을 때 Modal 형식으로 되어있었고 하여   
-`Present Modally`를 선택하였고 이후 쥬스 주문 버튼에서 `예` 버튼을 사용하였을 때 Alert의   
-Present 방식을 Modally로 사용하여 동일한 화면전환을 이루게하였다.
-
+- Custom
+하나씩 연결해 보았을 때 제일 많이 사용되는 `Show` 방식을 채택하여 화면을 뒤로갈 수 있는 버튼이
+자동생성되는것을 확인하였다. 그 다음 Step3에서 진행되는 방식을 확인했을 때 Modal 형식으로 되어있었고
+하여 `Present Modally`를 선택하였고 이후 쥬스 주문 버튼에서 `예` 버튼을 사용하였을 때
+Alert의 Present 방식을 Modally로 사용하여 동일한 화면전환을 이루게하였다.
 ```Swift
 private func presentModally() {
         guard let fruitNavigationController = self.storyboard?.instantiateViewController(identifier: "FruitNavi") as? UINavigationController else { return }
@@ -109,8 +112,28 @@ private func presentModally() {
 ## Step3 - 재고 수정 기능구현
 [PR #40 | Step3 - 재고 수정 기능구현](https://github.com/tasty-code/ios-juice-maker/pull/40)
 - NavigationBar의 Title을 `재고 추가`로 구현하고 `BarButtonItem`으로 `닫기`버튼 구현
-- Storyboard에서 Auto Layout을 사용하여 화면 배치를 하였다.
+- Storyboard에서 Auto Layout을 사용하여 화면 배치
 - Stepper를 이용하여 재고 수량을 조절할 수 있도록 구현
+
+각각의 과일 이미지를 보여주는 `UILabel`과 재고수량을 보여주는 `UILabel`을 `Outlet Collection`으로, 스텝퍼는 하나의 `IBAction`으로 그룹화 하여 작업을 시작했다.
+`Delegate`에 `FruitViewController`의 재고 label initialize를 진행하는 `syncFruitStocks` 메서드를 담아 화면 전환이 되었을 때 기존 재고가 표시되도록 하였다.
+이후 `Stepper`로 증감한 수를 재고에 업데이트 할 수 있었다.
+
+### 🚀 적용해보려고 노력해본 점
+- Delegate (Jason)
+ViewController간에 데이터를 전송하는 기본적인 방식으로 present 메서드와 Segue를 이용하여 전송하는 방법으로 진행해보려고 했다.
+구현과정 중 실제로 재고수정 버튼을 푸쉬하였을 때 값이 잘 넘어갔었지만 Label의 레이아웃이 잡히지 않아서 값을 확인하는 과정에 오해가 있었고 이후 Delegate를 사용하여 잘풀어냈다.
+
+- modalPresentationStyle (Jason)
+화면 전환 시 NavigationController를 사용하여 화면 전환을 할 때와 마찬가지로 Alert을 이용하였을 때도 동일한 방법으로 전환되지 않았던 문제를 아래와 같은 코드로 구현하여 해결하였다.
+(NavigationController를 사용할 때 present Modally 방식으로 Action Segue를 주었다.)
+```swift
+private func presentModally() {
+        guard let fruitNavigationController = self.storyboard?.instantiateViewController(identifier: "FruitNavi") as? UINavigationController else { return }
+        fruitNavigationController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        self.present(fruitNavigationController, animated: true, completion: nil)
+    }
+```
 
 
 ---
@@ -125,3 +148,6 @@ private func presentModally() {
 
 <img src="https://user-images.githubusercontent.com/45708630/212287423-e50cccac-9140-4886-979a-f9a9174853c3.png" width="360">
 
+## Step3 실행화면
+<img width="360" alt="image" src="https://user-images.githubusercontent.com/45708630/212287517-9f7c9235-beb9-4360-8893-5be8266be212.png">
+<img width="360" alt="image" src="https://user-images.githubusercontent.com/45708630/212287656-23d80fbf-3ebc-4e1e-a222-7d04d87955a5.png">
