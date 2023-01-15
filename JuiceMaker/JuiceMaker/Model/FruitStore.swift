@@ -6,16 +6,21 @@
 
 import Foundation
 
+//MARK: - 재고 관리 책임자
 final class FruitStore {
     static let shared = FruitStore(initialStock: 10)
-    var delegate: SendDataDelegate?
-    
     var store = [Fruit: Int]()
     
     private init(initialStock: Int) {
         Fruit.allCases.forEach {
             store[$0] = initialStock
         }
+    }
+    
+    weak var delegate: SendDataDelegate?
+    
+    func syncFruitStock() {
+        self.delegate?.syncFruitStocks()
     }
     
     func update(_ fruit: Fruit, stock: Int) {
