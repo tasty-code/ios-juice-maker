@@ -7,15 +7,7 @@
 
 import UIKit
 
-class FruitViewController: UIViewController, SendDataDelegate {
-    //MARK: - SendDataDelegate Method
-    func syncFruitStocks() {
-        Fruit.allCases.enumerated().forEach { fruit in
-            guard let label = fruitStoreCountBundle[safe: fruit.offset] else { return }
-            label.text = String(fruitStore.sendBackToAvailableStock(fruit: fruit.element))
-        }
-    }
-    
+class FruitViewController: UIViewController {
     //MARK: - Storyboard UI Outlet, Action
     @IBAction private func touchUpDismissButton(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
@@ -86,6 +78,16 @@ class FruitViewController: UIViewController, SendDataDelegate {
             
             guard let fruitStock = FruitStore.shared.store[fruit] else { return }
             stockStepper.value = Double(fruitStock)
+        }
+    }
+}
+
+//MARK: - SendDataDelegate Method
+extension FruitViewController: SendDataDelegate {
+    func syncFruitStocks() {
+        Fruit.allCases.enumerated().forEach { fruit in
+            guard let label = fruitStoreCountBundle[safe: fruit.offset] else { return }
+            label.text = String(fruitStore.sendBackToAvailableStock(fruit: fruit.element))
         }
     }
 }
