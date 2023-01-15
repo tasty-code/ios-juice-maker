@@ -7,7 +7,7 @@
 import UIKit
 
 class JuiceViewController: UIViewController {
-    
+    //MARK: - Storyboard UI Outlet, Action
     @IBOutlet var juiceEmojiBundle: [UILabel]!
     @IBOutlet var juiceStoreCountBundle: [UILabel]!
     @IBOutlet var mixJuiceOrderBundle: [UIButton]!
@@ -54,9 +54,11 @@ class JuiceViewController: UIViewController {
         }
     }
     
+    //MARK: - JuiceViewController Property
     private let juiceMaker = JuiceMaker()
     var sendCount: [String] = []
     
+    //MARK: - View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
