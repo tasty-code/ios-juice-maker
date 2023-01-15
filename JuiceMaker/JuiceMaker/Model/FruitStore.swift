@@ -6,10 +6,9 @@
 
 import Foundation
 
+//MARK: - 재고 관리 책임자
 final class FruitStore {
     static let shared = FruitStore(initialStock: 10)
-    var delegate: SendDataDelegate?
-    
     var store = [Fruit: Int]()
     
     private init(initialStock: Int) {
@@ -18,11 +17,24 @@ final class FruitStore {
         }
     }
     
+    weak var delegate: SendDataDelegate?
+    
+    func syncFruitStock() {
+        self.delegate?.syncFruitStocks()
+    }
+    
     func update(_ fruit: Fruit, stock: Int) {
         let originStock = sendBackToAvailableStock(fruit: fruit)
         if originStock - stock >= 0 {
             store.updateValue(originStock - stock, forKey: fruit)
         }
+    }
+    
+    func updateStepper(of fruit: Fruit, to userCount: Int) {
+        guard userCount >= 0 else {
+            return
+        }
+        store[fruit] = Int(userCount)
     }
     
     func sendBackToAvailableStock(fruit type: Fruit) -> Int {

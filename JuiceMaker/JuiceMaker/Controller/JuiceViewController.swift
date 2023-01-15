@@ -7,89 +7,82 @@
 import UIKit
 
 class JuiceViewController: UIViewController {
+    //MARK: - Storyboard UI Outlet, Action
+    @IBOutlet private var juiceEmojiBundle: [UILabel]!
+    @IBOutlet private var juiceStoreCountBundle: [UILabel]!
+    @IBOutlet private var mixJuiceOrderBundle: [UIButton]!
+    @IBOutlet private var singleJuiceOrderBundle: [UIButton]!
     
-    @IBOutlet var juiceEmojiBundle: [UILabel]!
-    @IBOutlet var juiceStoreCountBundle: [UILabel]!
-    @IBOutlet var mixJuiceOrderBundle: [UIButton]!
-    @IBOutlet var singleJuiceOrderBundle: [UIButton]!
-    
-    @IBAction func mixJuiceOrder(_ sender: UIButton) {
-        guard let juiceType = sender.currentTitle else {
-            return
-        }
-        switch MixFruitJuice(rawValue: juiceType) {
-        case .strawberryBanana:
-            order(juiceType: .strawberryBanana)
-            successAlert(juiceType: "🍓🍌")
-        case .mangoKiwi:
-            order(juiceType: .mangoKiwi)
-            successAlert(juiceType: "🥭🥝")
-        default:
-            break
-        }
+    @IBAction private func mixJuiceOrder(_ sender: UIButton) {
+        guard let button = sender as? MixJuiceGettable else { return }
+        let juiceType = button.mixFruitJuice
+        
+        guard let juiceText = sender.currentTitle else { return }
+        order(juiceType: juiceType)
+        successAlert(juiceType: juiceText)
     }
     
-    @IBAction func singleJuiceOrder(_ sender: UIButton) {
-        guard let juiceType = sender.currentTitle else {
-            return
-        }
-        switch SingleFruitJuice(rawValue: juiceType) {
-        case .strawberry:
-            order(juiceType: .strawberry)
-            successAlert(juiceType: "🍓")
-        case .banana:
-            order(juiceType: .banana)
-            successAlert(juiceType: "🍌")
-        case .pineApple:
-            order(juiceType: .pineApple)
-            successAlert(juiceType: "🍍")
-        case .kiwi:
-            order(juiceType: .kiwi)
-            successAlert(juiceType: "🥝")
-        case .mango:
-            order(juiceType: .mango)
-            successAlert(juiceType: "🥭")
-        default:
-            break
-        }
+    @IBAction private func singleJuiceOrder(_ sender: UIButton) {
+        guard let button = sender as? SingleJuiceGettable else { return }
+        let juiceType = button.singleFruitJuice
+        
+        guard let juiceText = sender.currentTitle else { return }
+        order(juiceType: juiceType)
+        successAlert(juiceType: juiceText)
     }
     
+    @IBAction func tappedChangeToFruitView(_ sender: UIBarButtonItem) {
+        presentModally()
+    }
+    
+    //MARK: - JuiceViewController Property
     private let juiceMaker = JuiceMaker()
-    var sendCount: [String] = []
     
+    //MARK: - View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        currentStockDisplay(on: juiceEmojiBundle, change: juiceStoreCountBundle)
+        initializeAllCountLabels()
     }
     
     //MARK: - initialization Stock Display
-    private func currentStockDisplay(on emojiLabels: [UILabel], change countLabels: [UILabel]) {
-        for (emojiLabel, countLabel) in zip(emojiLabels, countLabels) {
-            guard let checkTest = emojiLabel.text else {
-                return
+    private func countLabel(of fruit: Fruit) -> UILabel? {
+        return juiceStoreCountBundle.first { countLabel in
+            guard let label = countLabel as? Gettable else {
+                return false
             }
-            
-            switch checkTest {
-            case "🍓":
-                countLabel.text = convertToStringStock(fruit: .strawberry)
-            case "🍌":
-                countLabel.text = convertToStringStock(fruit: .banana)
-            case "🍍":
-                countLabel.text = convertToStringStock(fruit: .pineApple)
-            case "🥝":
-                countLabel.text = convertToStringStock(fruit: .kiwi)
-            case "🥭":
-                countLabel.text = convertToStringStock(fruit: .mango)
-            default:
-                return
-            }
+            return label.fruit == fruit
         }
     }
     
-    private func convertToStringStock(fruit count: Fruit) -> String {
-        let fruitStock = juiceMaker.fruitStore.sendBackToAvailableStock(fruit: count)
-        return String(fruitStock)
+    private func updateCountLabel(of fruit: Fruit) {
+        guard let fruitStock = FruitStore.shared.store[fruit] else { return }
+        guard let countLabel = countLabel(of: fruit) else { return }
+        
+        countLabel.text = String(fruitStock)
+    }
+    
+    private func updateCountLabels(of singleJuice: SingleFruitJuice) {
+        for fruit in singleJuice.recipe.keys {
+            updateCountLabel(of: fruit)
+        }
+    }
+    
+    private func updateCountLabels(of mixJuice: MixFruitJuice) {
+        for fruit in mixJuice.recipe.keys {
+            updateCountLabel(of: fruit)
+        }
+    }
+    
+    private func initializeAllCountLabels() {
+        for label in juiceStoreCountBundle {
+            guard let countLabel = label as? Gettable else { return }
+            let fruit = countLabel.fruit
+            
+            guard let fruitStock = FruitStore.shared.store[fruit] else {
+                return
+            }
+            label.text = String(fruitStock)
+        }
     }
     
     //MARK: - Juice Make Order
@@ -102,7 +95,7 @@ class JuiceViewController: UIViewController {
             return
         }
         juiceMaker.make(single: juiceType)
-        currentStockDisplay(on: juiceEmojiBundle, change: juiceStoreCountBundle)
+        updateCountLabels(of: juiceType)
     }
     
     private func order(juiceType: MixFruitJuice) {
@@ -114,7 +107,7 @@ class JuiceViewController: UIViewController {
             return
         }
         juiceMaker.make(mix: juiceType)
-        currentStockDisplay(on: juiceEmojiBundle, change: juiceStoreCountBundle)
+        updateCountLabels(of: juiceType)
     }
 }
 
@@ -143,7 +136,15 @@ extension JuiceViewController {
     private func presentModally() {
         guard let fruitNavigationController = self.storyboard?.instantiateViewController(identifier: "FruitNavi") as? UINavigationController else { return }
         fruitNavigationController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        
+        juiceMaker.fruitStore.delegate = self
         self.present(fruitNavigationController, animated: true, completion: nil)
     }
 }
 
+//MARK: - SendDataDelegate
+extension JuiceViewController: SendDataDelegate {
+    func syncFruitStocks() {
+        initializeAllCountLabels()
+    }
+}
