@@ -10,6 +10,7 @@ import UIKit
 class FruitViewController: UIViewController {
     //MARK: - Storyboard UI Outlet, Action
     @IBAction private func touchUpDismissButton(_ sender: UIBarButtonItem) {
+        fruitStore.delegate?.syncFruitStocks()
         dismiss(animated: true)
     }
     
@@ -39,9 +40,6 @@ class FruitViewController: UIViewController {
     //MARK: - View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        syncFruitStocks()
-        fruitStore.delegate = self
-        
         configureUI()
     }
     
