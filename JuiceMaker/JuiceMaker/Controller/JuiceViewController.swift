@@ -14,43 +14,21 @@ class JuiceViewController: UIViewController {
     @IBOutlet private var singleJuiceOrderBundle: [UIButton]!
     
     @IBAction private func mixJuiceOrder(_ sender: UIButton) {
-        guard let juiceType = sender.currentTitle else {
-            return
-        }
-        switch MixFruitJuice(rawValue: juiceType) {
-        case .strawberryBanana:
-            order(juiceType: .strawberryBanana)
-            successAlert(juiceType: "🍓🍌")
-        case .mangoKiwi:
-            order(juiceType: .mangoKiwi)
-            successAlert(juiceType: "🥭🥝")
-        default:
-            break
-        }
+        guard let button = sender as? MixJuiceGettable else { return }
+        let juiceType = button.mixFruitJuice
+        
+        guard let juiceText = sender.currentTitle else { return }
+        order(juiceType: juiceType)
+        successAlert(juiceType: juiceText)
     }
+    
     @IBAction private func singleJuiceOrder(_ sender: UIButton) {
-        guard let juiceType = sender.currentTitle else {
-            return
-        }
-        switch SingleFruitJuice(rawValue: juiceType) {
-        case .strawberry:
-            order(juiceType: .strawberry)
-            successAlert(juiceType: "🍓")
-        case .banana:
-            order(juiceType: .banana)
-            successAlert(juiceType: "🍌")
-        case .pineApple:
-            order(juiceType: .pineApple)
-            successAlert(juiceType: "🍍")
-        case .kiwi:
-            order(juiceType: .kiwi)
-            successAlert(juiceType: "🥝")
-        case .mango:
-            order(juiceType: .mango)
-            successAlert(juiceType: "🥭")
-        default:
-            break
-        }
+        guard let button = sender as? SingleJuiceGettable else { return }
+        let juiceType = button.singleFruitJuice
+        
+        guard let juiceText = sender.currentTitle else { return }
+        order(juiceType: juiceType)
+        successAlert(juiceType: juiceText)
     }
     
     //MARK: - JuiceViewController Property
@@ -61,7 +39,6 @@ class JuiceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeAllCountLabels()
-//        currentStockDisplay(on: juiceEmojiBundle, change: juiceStoreCountBundle)
     }
     
     //MARK: - initialization Stock Display
@@ -81,8 +58,14 @@ class JuiceViewController: UIViewController {
         countLabel.text = String(fruitStock)
     }
     
-    private func updateCountLabels(of juice: SingleFruitJuice) {
-        for fruit in juice.recipe.keys {
+    private func updateCountLabels(of singleJuice: SingleFruitJuice) {
+        for fruit in singleJuice.recipe.keys {
+            updateCountLabel(of: fruit)
+        }
+    }
+    
+    private func updateCountLabels(of mixJuice: MixFruitJuice) {
+        for fruit in mixJuice.recipe.keys {
             updateCountLabel(of: fruit)
         }
     }
@@ -107,7 +90,7 @@ class JuiceViewController: UIViewController {
             return
         }
         juiceMaker.make(single: juiceType)
-//        currentStockDisplay(on: juiceEmojiBundle, change: juiceStoreCountBundle)
+        updateCountLabels(of: juiceType)
     }
     
     private func order(juiceType: MixFruitJuice) {
@@ -119,7 +102,7 @@ class JuiceViewController: UIViewController {
             return
         }
         juiceMaker.make(mix: juiceType)
-//        currentStockDisplay(on: juiceEmojiBundle, change: juiceStoreCountBundle)
+        updateCountLabels(of: juiceType)
     }
 }
 
