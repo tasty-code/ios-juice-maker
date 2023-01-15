@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5B8FFF342970F827000712EA /* SendDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8FFF332970F827000712EA /* SendDataDelegate.swift */; };
 		5B8FFF372970FD5B000712EA /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8FFF362970FD5B000712EA /* Collection.swift */; };
+		5BC28DDA2973D56300994893 /* stepperAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC28DD92973D56300994893 /* stepperAttribute.swift */; };
+		5BC28DDC2973D5C500994893 /* Gettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC28DDB2973D5C500994893 /* Gettable.swift */; };
 		5BCF7A1B296E969500328B7C /* FruitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF7A1A296E969500328B7C /* FruitViewController.swift */; };
 		5BDA3EF02965049E00D7CDBC /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA3EEF2965049E00D7CDBC /* Fruit.swift */; };
 		5BDA3EF8296513DA00D7CDBC /* Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA3EF7296513DA00D7CDBC /* Makeable.swift */; };
@@ -27,6 +29,8 @@
 /* Begin PBXFileReference section */
 		5B8FFF332970F827000712EA /* SendDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendDataDelegate.swift; sourceTree = "<group>"; };
 		5B8FFF362970FD5B000712EA /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		5BC28DD92973D56300994893 /* stepperAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stepperAttribute.swift; sourceTree = "<group>"; };
+		5BC28DDB2973D5C500994893 /* Gettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gettable.swift; sourceTree = "<group>"; };
 		5BCF7A1A296E969500328B7C /* FruitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitViewController.swift; sourceTree = "<group>"; };
 		5BDA3EEF2965049E00D7CDBC /* Fruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
 		5BDA3EF7296513DA00D7CDBC /* Makeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Makeable.swift; sourceTree = "<group>"; };
@@ -78,6 +82,7 @@
 			children = (
 				5BDA3EF7296513DA00D7CDBC /* Makeable.swift */,
 				5B8FFF332970F827000712EA /* SendDataDelegate.swift */,
+				5BC28DDB2973D5C500994893 /* Gettable.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -101,6 +106,7 @@
 				5BDA3EEE2965045700D7CDBC /* FruitInformation */,
 				C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */,
 				C71CD66A266C7ACB0038B9CB /* FruitStore.swift */,
+				5BC28DD92973D56300994893 /* stepperAttribute.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -212,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BC28DDA2973D56300994893 /* stepperAttribute.swift in Sources */,
 				5BDA3EF8296513DA00D7CDBC /* Makeable.swift in Sources */,
 				5BCF7A1B296E969500328B7C /* FruitViewController.swift in Sources */,
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
@@ -222,6 +229,7 @@
 				5BDA3EF02965049E00D7CDBC /* Fruit.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
 				C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */,
+				5BC28DDC2973D5C500994893 /* Gettable.swift in Sources */,
 				D918A0902967BC4F005A6B26 /* SingleFruitJuice.swift in Sources */,
 				C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */,
 			);
