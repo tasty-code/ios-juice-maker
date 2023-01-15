@@ -50,14 +50,43 @@ class FruitViewController: UIViewController, SendDataDelegate {
         super.viewDidLoad()
         syncFruitStocks()
         fruitStore.delegate = self
+        
+        configureUI()
     }
     
+    //MARK: - Fruit: CountLabel 추출
     private func countLabel(of fruit: Fruit) -> UILabel? {
         return fruitStoreCountBundle.first { countLable in
             guard let fruitLabel = countLable as? Gettable else {
                 return false
             }
             return fruitLabel.fruit == fruit
+        }
+    }
+    
+    //MARK: - 재고 업데이트
+    private func configureUI() {
+        updateOfStockCountLabels()
+        updateOfStockSteppers()
+    }
+    
+    private func updateOfStockCountLabels() {
+        for countLabel in fruitStoreCountBundle {
+            guard let label = countLabel as? Gettable else { return }
+            let fruit = label.fruit
+            
+            guard let fruitStock = FruitStore.shared.store[fruit] else { return }
+            countLabel.text = String(fruitStock)
+        }
+    }
+    
+    private func updateOfStockSteppers() {
+        for stockStepper in stepperBundle {
+            guard let stepper = stockStepper as? Gettable else { return }
+            let fruit = stepper.fruit
+            
+            guard let fruitStock = FruitStore.shared.store[fruit] else { return }
+            stockStepper.value = Double(fruitStock)
         }
     }
 }
