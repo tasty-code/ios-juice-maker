@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B8FFF342970F827000712EA /* SendDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8FFF332970F827000712EA /* SendDataDelegate.swift */; };
-		5B8FFF372970FD5B000712EA /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8FFF362970FD5B000712EA /* Collection.swift */; };
+		5B8FFF372970FD5B000712EA /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8FFF362970FD5B000712EA /* Array.swift */; };
 		5BC28DDA2973D56300994893 /* stepperAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC28DD92973D56300994893 /* stepperAttribute.swift */; };
 		5BC28DDC2973D5C500994893 /* Gettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC28DDB2973D5C500994893 /* Gettable.swift */; };
 		5BC28DDE2973D77E00994893 /* countLableAttribte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC28DDD2973D77E00994893 /* countLableAttribte.swift */; };
@@ -29,7 +29,7 @@
 
 /* Begin PBXFileReference section */
 		5B8FFF332970F827000712EA /* SendDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendDataDelegate.swift; sourceTree = "<group>"; };
-		5B8FFF362970FD5B000712EA /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		5B8FFF362970FD5B000712EA /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		5BC28DD92973D56300994893 /* stepperAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stepperAttribute.swift; sourceTree = "<group>"; };
 		5BC28DDB2973D5C500994893 /* Gettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gettable.swift; sourceTree = "<group>"; };
 		5BC28DDD2973D77E00994893 /* countLableAttribte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = countLableAttribte.swift; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 		5B8FFF352970FD36000712EA /* Subscript */ = {
 			isa = PBXGroup;
 			children = (
-				5B8FFF362970FD5B000712EA /* Collection.swift */,
+				5B8FFF362970FD5B000712EA /* Array.swift */,
 			);
 			path = Subscript;
 			sourceTree = "<group>";
@@ -225,7 +225,7 @@
 				5BDA3EF8296513DA00D7CDBC /* Makeable.swift in Sources */,
 				5BCF7A1B296E969500328B7C /* FruitViewController.swift in Sources */,
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
-				5B8FFF372970FD5B000712EA /* Collection.swift in Sources */,
+				5B8FFF372970FD5B000712EA /* Array.swift in Sources */,
 				C73DAF3B255D0CDD00020D38 /* JuiceViewController.swift in Sources */,
 				5B8FFF342970F827000712EA /* SendDataDelegate.swift in Sources */,
 				D918A0922967BE03005A6B26 /* MixFruitJuice.swift in Sources */,
