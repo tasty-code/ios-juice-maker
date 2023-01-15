@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol SendDataDelegate {
+protocol SendDataDelegate: AnyObject {
     func syncFruitStocks()
 }
