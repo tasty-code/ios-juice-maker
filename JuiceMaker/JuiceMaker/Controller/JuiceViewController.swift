@@ -60,37 +60,41 @@ class JuiceViewController: UIViewController {
     //MARK: - View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        currentStockDisplay(on: juiceEmojiBundle, change: juiceStoreCountBundle)
+        initializeAllCountLabels()
+//        currentStockDisplay(on: juiceEmojiBundle, change: juiceStoreCountBundle)
     }
     
     //MARK: - initialization Stock Display
-    private func currentStockDisplay(on emojiLabels: [UILabel], change countLabels: [UILabel]) {
-        for (emojiLabel, countLabel) in zip(emojiLabels, countLabels) {
-            guard let checkTest = emojiLabel.text else {
-                return
+    private func countLabel(of fruit: Fruit) -> UILabel? {
+        return juiceStoreCountBundle.first { countLabel in
+            guard let label = countLabel as? Gettable else {
+                return false
             }
-            
-            switch checkTest {
-            case "🍓":
-                countLabel.text = convertToStringStock(fruit: .strawberry)
-            case "🍌":
-                countLabel.text = convertToStringStock(fruit: .banana)
-            case "🍍":
-                countLabel.text = convertToStringStock(fruit: .pineApple)
-            case "🥝":
-                countLabel.text = convertToStringStock(fruit: .kiwi)
-            case "🥭":
-                countLabel.text = convertToStringStock(fruit: .mango)
-            default:
-                return
-            }
+            return label.fruit == fruit
         }
     }
     
-    private func convertToStringStock(fruit count: Fruit) -> String {
-        let fruitStock = juiceMaker.fruitStore.sendBackToAvailableStock(fruit: count)
-        return String(fruitStock)
+    private func updateCountLabel(of fruit: Fruit) {
+        guard let fruitStock = FruitStore.shared.store[fruit] else { return }
+        guard let countLabel = countLabel(of: fruit) else { return }
+        
+        countLabel.text = String(fruitStock)
+    }
+    
+    private func updateCountLabels(of juice: SingleFruitJuice) {
+        for fruit in juice.recipe.keys {
+            updateCountLabel(of: fruit)
+        }
+    }
+    
+    private func initializeAllCountLabels() {
+        for label in juiceStoreCountBundle {
+            guard let countLabel = label as? Gettable else { return }
+            let fruit = countLabel.fruit
+            
+            guard let fruitStock = FruitStore.shared.store[fruit] else { return }
+            label.text = String(fruitStock)
+        }
     }
     
     //MARK: - Juice Make Order
@@ -103,7 +107,7 @@ class JuiceViewController: UIViewController {
             return
         }
         juiceMaker.make(single: juiceType)
-        currentStockDisplay(on: juiceEmojiBundle, change: juiceStoreCountBundle)
+//        currentStockDisplay(on: juiceEmojiBundle, change: juiceStoreCountBundle)
     }
     
     private func order(juiceType: MixFruitJuice) {
@@ -115,7 +119,7 @@ class JuiceViewController: UIViewController {
             return
         }
         juiceMaker.make(mix: juiceType)
-        currentStockDisplay(on: juiceEmojiBundle, change: juiceStoreCountBundle)
+//        currentStockDisplay(on: juiceEmojiBundle, change: juiceStoreCountBundle)
     }
 }
 
