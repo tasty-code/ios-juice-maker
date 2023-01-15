@@ -17,14 +17,14 @@ class FruitViewController: UIViewController, SendDataDelegate {
     }
     
     //MARK: - Storyboard UI Outlet, Action
-    @IBAction func touchUpDismissButton(_ sender: UIBarButtonItem) {
+    @IBAction private func touchUpDismissButton(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
     
-    @IBOutlet var fruitStoreCountBundle: [UILabel]!
-    @IBOutlet var stepperBundle: [UIStepper]!
+    @IBOutlet private var fruitStoreCountBundle: [UILabel]!
+    @IBOutlet private var stepperBundle: [UIStepper]!
     
-    @IBAction func stepperAction(_ sender: UIStepper) {
+    @IBAction private func stepperAction(_ sender: UIStepper) {
         // sender로 들어온 과일타입에 해당하는 stepper 추출
         guard let stepper = sender as? Gettable else {
             return

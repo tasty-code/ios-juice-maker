@@ -8,12 +8,12 @@ import UIKit
 
 class JuiceViewController: UIViewController {
     //MARK: - Storyboard UI Outlet, Action
-    @IBOutlet var juiceEmojiBundle: [UILabel]!
-    @IBOutlet var juiceStoreCountBundle: [UILabel]!
-    @IBOutlet var mixJuiceOrderBundle: [UIButton]!
-    @IBOutlet var singleJuiceOrderBundle: [UIButton]!
+    @IBOutlet private var juiceEmojiBundle: [UILabel]!
+    @IBOutlet private var juiceStoreCountBundle: [UILabel]!
+    @IBOutlet private var mixJuiceOrderBundle: [UIButton]!
+    @IBOutlet private var singleJuiceOrderBundle: [UIButton]!
     
-    @IBAction func mixJuiceOrder(_ sender: UIButton) {
+    @IBAction private func mixJuiceOrder(_ sender: UIButton) {
         guard let juiceType = sender.currentTitle else {
             return
         }
@@ -28,7 +28,7 @@ class JuiceViewController: UIViewController {
             break
         }
     }
-    @IBAction func singleJuiceOrder(_ sender: UIButton) {
+    @IBAction private func singleJuiceOrder(_ sender: UIButton) {
         guard let juiceType = sender.currentTitle else {
             return
         }
