@@ -21,7 +21,6 @@ class FruitViewController: UIViewController, SendDataDelegate {
         dismiss(animated: true)
     }
     
-    @IBOutlet var fruitEmojiBundle: [UILabel]!
     @IBOutlet var fruitStoreCountBundle: [UILabel]!
     @IBOutlet var stepperBundle: [UIStepper]!
     
