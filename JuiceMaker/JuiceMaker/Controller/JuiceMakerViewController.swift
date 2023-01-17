@@ -6,84 +6,95 @@
 
 import UIKit
 
-class JuiceMakerViewController: UIViewController {
+final class JuiceMakerViewController: UIViewController {
+
+    @IBOutlet private var fruitStockLabels: [UILabel]!
     
-    @IBOutlet private weak var strawberryStock: UILabel!
-    @IBOutlet private weak var bananaStock: UILabel!
-    @IBOutlet private weak var pineappleStock: UILabel!
-    @IBOutlet private weak var kiwiStock: UILabel!
-    @IBOutlet private weak var mangoStock: UILabel!
-    
-    private var fruitLabelFruitMap: [UILabel: Fruit]!
-    private var fruitStore = FruitStore(defaultStock: 20)
-    private var juiceMaker: JuiceMaker<FruitStore>!
+    private let fruitStore = FruitStore(count: FruitStock.initial)
+    private var juiceMaker: JuiceMaker<FruitStore, FruitJuice>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         juiceMaker = JuiceMaker(fruitStore: fruitStore)
-        
-        fruitLabelFruitMap = [
-            strawberryStock: .strawberry,
-            bananaStock: .banana,
-            pineappleStock: .pineapple,
-            kiwiStock: .kiwi,
-            mangoStock: .mango
-        ]
-        
-        updateStockValue()
+        updateLabels(of: fruitStore.itemList)
     }
     
-    @IBAction func ModifyStockButtonTapped(_ sender: UIBarButtonItem) {
+    @IBAction private func touchesOrderButton(_ sender: UIButton) {
+        guard let button = sender as? FruitJuiceButton else { return }
+        
+        let juice = button.juice
+        let isSucceed = juiceMaker.make(juice: juice)
+        showResultAlert(order: juice, result: isSucceed)
+        
+        let fruits = Array(juice.ingredients)
+        updateLabels(of: fruits)
+    }
+    
+    @IBAction private func touchesModifyStockButton(_ sender: UIBarButtonItem) {
         showStoreView()
     }
     
-    @IBAction func orderButtonTapped(_ sender: UIButton) {
-        let orderName = sender.currentTitle
-        let juiceName = orderName?.replacingOccurrences(of: " 주문", with: "")
-        guard let juice = Juice(rawValue: juiceName ?? "") else {
-            showAlert(message: "팔 수 없습니다.")
-            return
-        }
-        
-        do {
-            try juiceMaker.make(juice: juice)
-            showAlert(message: "\(juice.rawValue) 나왔습니다! 맛있게 드세요!")
-        } catch is JuiceMakerError {
+    private func showResultAlert(order juice: FruitJuice, result: Bool) {
+        if result {
+            showDoneAlert(juice: juice)
+        } else {
             showFailAlert()
-        } catch {
-            showAlert(message: "\(error)")
-        }
-        
-        updateStockValue()
-    }
-    
-    private func showStoreView() {
-        guard let storeNaviVC = storyboard?.instantiateViewController(withIdentifier: "storeNavi") as? UINavigationController else { return }
-        
-        storeNaviVC.modalPresentationStyle = .fullScreen
-        storeNaviVC.modalTransitionStyle = .coverVertical
-        
-        present(storeNaviVC, animated: true)
-    }
-    
-    private func updateStockValue() {
-        for (label, fruit) in fruitLabelFruitMap {
-            label.text = String(fruitStore.items[fruit, default: 0])
         }
     }
 }
+
+//MARK: - Update Labels
+extension JuiceMakerViewController: FruitView {
+    func updateLabels(of fruits:[Fruit]){
+        guard let labels = fruitStockLabels as? [FruitComponent] else { return }
+        
+        let stocks = fruitStore.stockInfo(of: fruits)
+        update(targets: labels, with: stocks)
+    }
+}
+
+//MARK: - StoreView로 전환
+extension JuiceMakerViewController {
+    private func showStoreView() {
+        guard let storeNavi = buildStoreNavigationContoller(),
+              let storeVC = buildStoreViewController() else { return }
+        
+        storeNavi.setViewControllers([storeVC], animated: true)
+        present(storeNavi, animated: true)
+    }
+    
+    private func buildStoreNavigationContoller() -> UINavigationController? {
+        guard let storeNavigationContoller = storyboard?.instantiateViewController(withIdentifier: ViewController.storeNavi)
+                as? UINavigationController else { return nil }
+        
+        storeNavigationContoller.modalPresentationStyle = .fullScreen
+        storeNavigationContoller.modalTransitionStyle = .coverVertical
+        return storeNavigationContoller
+    }
+    
+    private func buildStoreViewController() -> StoreViewController? {
+        guard let storeViewController = storyboard?.instantiateViewController(withIdentifier: ViewController.store)
+                as? StoreViewController else { return nil }
+        
+        storeViewController.fruitStore = fruitStore
+        storeViewController.delegate = self
+        
+        return storeViewController
+    }
+}
+
 
 //MARK: - Alert 구현
 extension JuiceMakerViewController {
     private func showFailAlert() {
         let failAlert = UIAlertController(title: nil,
-                                          message: "재고가 모자라요. 재고를 수정할까요?",
+                                          message: Alert.Message.emptyStock,
                                           preferredStyle: .alert)
         
-        let confirmAction = UIAlertAction(title: "예",
+        let confirmAction = UIAlertAction(title: Alert.ButtonTitle.yes,
                                           style: .default,
                                           handler: { _ in self.showStoreView() })
-        let cancelAction = UIAlertAction(title: "아니오",
+        let cancelAction = UIAlertAction(title: Alert.ButtonTitle.no,
                                          style: .cancel)
         
         failAlert.addAction(confirmAction)
@@ -91,12 +102,12 @@ extension JuiceMakerViewController {
         present(failAlert, animated: true)
     }
     
-    private func showAlert(message: String) {
+    private func showDoneAlert(juice: FruitJuice) {
         let alert = UIAlertController(title: nil,
-                                             message: message,
-                                             preferredStyle: .alert)
+                                      message: Alert.Message.done(juice),
+                                      preferredStyle: .alert)
         
-        let confirmAction = UIAlertAction(title: "확인",
+        let confirmAction = UIAlertAction(title: Alert.ButtonTitle.confirm,
                                           style: .default)
         
         alert.addAction(confirmAction)
