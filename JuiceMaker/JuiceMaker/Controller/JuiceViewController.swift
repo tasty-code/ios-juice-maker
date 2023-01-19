@@ -78,9 +78,7 @@ class JuiceViewController: UIViewController {
             guard let countLabel = label as? Gettable else { return }
             let fruit = countLabel.fruit
             
-            guard let fruitStock = FruitStore.shared.store[fruit] else {
-                return
-            }
+            guard let fruitStock = FruitStore.shared.store[fruit] else { return}
             label.text = String(fruitStock)
         }
     }
@@ -137,7 +135,10 @@ extension JuiceViewController {
         guard let fruitNavigationController = self.storyboard?.instantiateViewController(identifier: "FruitNavi") as? UINavigationController else { return }
         fruitNavigationController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
         
-        juiceMaker.fruitStore.delegate = self
+        guard let fruitVC = self.storyboard?.instantiateViewController(withIdentifier: "FruitView") as? FruitViewController else { return }
+        fruitNavigationController.pushViewController(fruitVC, animated: true)
+        fruitVC.delegate = self
+        
         self.present(fruitNavigationController, animated: true, completion: nil)
     }
 }

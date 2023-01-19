@@ -11,9 +11,8 @@ class FruitViewController: UIViewController {
     //MARK: - Storyboard UI Outlet, Action
     @IBAction private func touchUpDismissButton(_ sender: UIBarButtonItem) {
         if isStockChange {
-            fruitStore.delegate?.syncFruitStocks()
+            delegate?.syncFruitStocks()
         }
-        
         dismiss(animated: true)
     }
     
@@ -42,6 +41,7 @@ class FruitViewController: UIViewController {
     //MARK: - FruitViewController Property
     private let fruitStore = FruitStore.shared
     private var isStockChange = false
+    weak var delegate: SendDataDelegate?
     
     //MARK: - View LifeCycle
     override func viewDidLoad() {

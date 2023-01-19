@@ -17,12 +17,6 @@ final class FruitStore {
         }
     }
     
-    weak var delegate: SendDataDelegate?
-    
-    func syncFruitStock() {
-        self.delegate?.syncFruitStocks()
-    }
-    
     func update(_ fruit: Fruit, stock: Int) {
         let originStock = sendBackToAvailableStock(fruit: fruit)
         if originStock - stock >= 0 {
