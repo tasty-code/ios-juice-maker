@@ -1,9 +1,9 @@
 # iOS_juice_maker
 ----
 
-<a href ="#1-Step1---쥬스 메이커 타입 정의">Step1 - 쥬스 메이커 타입 정의</a>
-<a href ="#2-Step2---초기화면 기능구현">Step2 - 초기화면 기능구현</a>
-<a href ="#3-Step3---재고 수정 기능구현">Step3 - 재고 수정 기능구현</a>
+<a href ="#1-Step1---쥬스 메이커 타입 정의">Step1 - 쥬스 메이커 타입 정의</a>   
+<a href ="#2-Step2---초기화면 기능구현">Step2 - 초기화면 기능구현</a>   
+<a href ="#3-Step3---재고 수정 기능구현">Step3 - 재고 수정 기능구현</a>   
 
 ----
 ## 🗂️ 프로젝트 파일 구조
@@ -135,6 +135,27 @@ private func presentModally() {
     }
 ```
 
+### 🎯 트러블슈팅
+delegate를 프로퍼티로 갖게 되는 부분이 SecondViewController(FruitViewController)
+```Swift
+weak var delegate: SendDataDelegate?
+```
+-> 일을 시키는 쪽(First View)에서는 IBAction과 같이 present로 화면 전환을 이루는 코드 영역에서 delegate를 연결해준다.   
+
+SecondViewController → delegate 변수를 갖고있어서
+```
+delegate.메서드명 → 이렇게 프로토콜에 정의된 메서드를 사용할 수 있다.
+```
+
+🤔 FirstView가 Delegate 프로토콜을 채택하는 이유?   
+FirstView의 형변환을 통해 self 키워드를 사용해서 연결해준다.   
+Delegate 프로토콜을 채택한 FirstView에는 SecondView에서 delegate를 포함하는 메서드가 있고,   
+delegate가 프로토콜 메서드를 호출할 때 실행되어야 할 프로토콜에 정의된 메서드를 작성해야한다.
+
+→ 이렇게 FirstView에서 작성한 함수를 통해 SecondView에서 delegate를 포함한 메서드가 실행되어 일을 시키면   
+FirstView가 그 일을 대신해서 일을 수행하게된다.
+
+→ SecondView의 위임자는 일을 시킬 뿐 어떤 일을 하는지에 대한 구체적인 내용을 모른다!
 
 ---
 
@@ -149,5 +170,4 @@ private func presentModally() {
 <img src="https://user-images.githubusercontent.com/45708630/212287423-e50cccac-9140-4886-979a-f9a9174853c3.png" width="360">
 
 ## Step3 실행화면
-<img width="360" alt="image" src="https://user-images.githubusercontent.com/45708630/212287517-9f7c9235-beb9-4360-8893-5be8266be212.png">
-<img width="360" alt="image" src="https://user-images.githubusercontent.com/45708630/212287656-23d80fbf-3ebc-4e1e-a222-7d04d87955a5.png">
+<img src = "https://user-images.githubusercontent.com/92699723/215018499-6606d950-f473-4f24-a008-b8cdc79eded6.gif" width="360">
