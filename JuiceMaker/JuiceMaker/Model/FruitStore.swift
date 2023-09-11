@@ -7,6 +7,22 @@
 import Foundation
 
 // 과일 저장소 타입
-class FruitStore {
+final class FruitStore {
     
+    // MARK: - Properties
+    
+    var fruitNames = ["딸기", "바나나", "파인애플", "키위", "망고"]
+    var fruitDictionary: [String: Int] = [:]
+    
+    // MARK: - Init
+    
+    init() {
+        for name in fruitNames {
+            fruitDictionary[name] = 10
+        }
+    }
+    
+    func useFruit() {
+        fruitDictionary["딸기", default: 10] -= 2
+    }
 }
