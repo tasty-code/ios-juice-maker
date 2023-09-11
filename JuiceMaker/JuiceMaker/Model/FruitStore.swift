@@ -30,7 +30,7 @@ class FruitStore {
         self.init(count: 10)
     }
     
-    func update(fruits: Fruit..., as option: ((UInt, UInt) -> UInt)) {
+    func update(fruits: [Fruit], as option: ((UInt, UInt) -> UInt)) {
         for fruit in fruits {
             update(fruit, as: option)
         }
@@ -40,6 +40,7 @@ class FruitStore {
         switch fruit.fruitType {
         case .strawberry:
             strawberry = option(strawberry, fruit.count)
+            print(strawberry)
         case .banana:
             banana = option(banana, fruit.count)
         case .pineapple:
