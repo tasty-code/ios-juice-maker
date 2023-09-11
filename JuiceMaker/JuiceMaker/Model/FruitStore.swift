@@ -41,13 +41,13 @@ class FruitStore {
         case .strawberry:
             strawberry = option(strawberry, fruit.count)
         case .banana:
-            banana = fruit.count
+            banana = option(banana, fruit.count)
         case .pineapple:
-            pineapple = fruit.count
+            pineapple = option(pineapple, fruit.count)
         case .mango:
-            mango = fruit.count
+            mango = option(mango, fruit.count)
         case .kiwi:
-            kiwi = fruit.count
+            kiwi = option(kiwi, fruit.count)
         }
     }
 }
