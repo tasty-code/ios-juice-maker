@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0DC9C0152AAEABC700EC2897 /* FruitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9C0142AAEABC700EC2897 /* FruitType.swift */; };
+		0DC9C0192AAEECB000EC2897 /* JuiceMakerException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC9C0182AAEECB000EC2897 /* JuiceMakerException.swift */; };
 		A698925D2AAEB4B8005110B0 /* JuiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A698925C2AAEB4B8005110B0 /* JuiceType.swift */; };
 		C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71CD66A266C7ACB0038B9CB /* FruitStore.swift */; };
 		C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DAF36255D0CDD00020D38 /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		0DC9C0142AAEABC700EC2897 /* FruitType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitType.swift; sourceTree = "<group>"; };
+		0DC9C0182AAEECB000EC2897 /* JuiceMakerException.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMakerException.swift; sourceTree = "<group>"; };
 		A698925C2AAEB4B8005110B0 /* JuiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceType.swift; sourceTree = "<group>"; };
 		C71CD66A266C7ACB0038B9CB /* FruitStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitStore.swift; sourceTree = "<group>"; };
 		C73DAF33255D0CDD00020D38 /* JuiceMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JuiceMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +64,7 @@
 				C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */,
 				C71CD66A266C7ACB0038B9CB /* FruitStore.swift */,
 				0DC9C0142AAEABC700EC2897 /* FruitType.swift */,
+				0DC9C0182AAEECB000EC2897 /* JuiceMakerException.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
 				C73DAF3B255D0CDD00020D38 /* ViewController.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
+				0DC9C0192AAEECB000EC2897 /* JuiceMakerException.swift in Sources */,
 				C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */,
 				A698925D2AAEB4B8005110B0 /* JuiceType.swift in Sources */,
 				0DC9C0152AAEABC700EC2897 /* FruitType.swift in Sources */,
