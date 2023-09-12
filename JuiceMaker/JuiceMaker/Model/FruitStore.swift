@@ -18,8 +18,8 @@ class FruitStore {
     case mango
   }
   
-  let initValue = 10
-  var inventory = ["strawberry": 0, "pineapple": 0, "banana": 0, "kiwi": 0, "mango": 0]
+  private let initValue = 10
+  private var inventory = ["strawberry": 0, "pineapple": 0, "banana": 0, "kiwi": 0, "mango": 0]
   
   init() {
     for fruitList in inventory {
