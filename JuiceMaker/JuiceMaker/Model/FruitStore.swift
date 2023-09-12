@@ -27,9 +27,12 @@ class FruitStore {
     
     func updateFruitStock(inputFruit: Fruit, count: Int) {
         
-        guard let index = fruitList.firstIndex(where: {$0 == inputFruit}) else { return }
+        guard let index = fruitList.firstIndex(where: {$0.name == inputFruit.name}) else {
+            print("여기서 걸림")
+            return }
         
-        fruitList[index].stock = inputFruit.stock + count
+        fruitList[index].stock += count
+        print("\(fruitList[index].stock)")
         
     }
     
