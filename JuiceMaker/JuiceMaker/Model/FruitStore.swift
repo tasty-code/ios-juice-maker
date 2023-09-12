@@ -29,4 +29,13 @@ class FruitStore {
         guard let remainedCount = fruitInventory[fruit] else { throw InventoryError.invalidMenuError }
         return remainedCount
     }
+    
+    func setFruitCount(of fruit: Fruit,_ count: UInt) {
+        fruitInventory[fruit] = count
+    }
+    
+    func increaseFruitCount(of fruit: Fruit) {
+        guard var reamainedCount = fruitInventory[fruit] else { return }
+        fruitInventory[fruit] = (reamainedCount + 1)
+    }
 }
