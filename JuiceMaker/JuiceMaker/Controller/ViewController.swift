@@ -29,18 +29,17 @@ final class ViewController: UIViewController {
     // MARK: - Methods
     
     private func displayFruitQuantity() {
-        let fruitQuantityLabels = [strawberryQuantityLabel,
-                                   bananaQuantityLabel,
-                                   pineappleQuantityLabel,
-                                   kiwiQuantityLabel,
-                                   mangoQuantityLabel]
+        let fruitQuantityLabels: [UILabel] = [strawberryQuantityLabel,
+                                              bananaQuantityLabel,
+                                              pineappleQuantityLabel,
+                                              kiwiQuantityLabel,
+                                              mangoQuantityLabel]
         
-        let fruitDictionary = juiceMaker.fruitStore.fruitDictionary
-        
-        for i in 0..<fruitQuantityLabels.count {
-            let name = juiceMaker.fruitStore.fruitNames[i]
+        for label in fruitQuantityLabels {
+            guard let name = FruitJuice(rawValue: label.tag) else { return }
             
-            fruitQuantityLabels[i]?.text = String(fruitDictionary[name, default: .defaultStock])
+            let fruitQuantity = juiceMaker.fruitStore.fruitDictionary[name, default: 10]
+            label.text = String(fruitQuantity)
         }
     }
     
