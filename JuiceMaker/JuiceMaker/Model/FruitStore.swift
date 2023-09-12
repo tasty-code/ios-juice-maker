@@ -55,5 +55,31 @@ class FruitStore {
             kiwi.currentStock -= kiwiConsumption
         }
     }
+    
+    func stockManager(_ fruit: String) {
+        switch fruit {
+        case "strawberryAdd":
+            strawberry.currentStock += 1
+        case "strawberrySubtract":
+            strawberry.currentStock -= 1
+        case "bananaAdd":
+            banana.currentStock += 1
+        case "bananaSubtract":
+            banana.currentStock -= 1
+        case "pineappleAdd":
+            pineapple.currentStock += 1
+        case "pineappleSubtract":
+            pineapple.currentStock -= 1
+        case "mangoAdd":
+            mango.currentStock += 1
+        case "mangoSubtract":
+            mango.currentStock -= 1
+        case "kiwiAdd":
+            kiwi.currentStock += 1
+        case "kiwiSubtract":
+            kiwi.currentStock -= 1
+        default:
+            break
+        }
+    }
 }
-
