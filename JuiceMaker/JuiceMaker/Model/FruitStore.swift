@@ -7,53 +7,81 @@
 import Foundation
 
 final class FruitStore {
-    private var fruits: [Fruit] = [
-        Fruit(.strawberry, 10),
-        Fruit(.banana, 10),
-        Fruit(.kiwi, 10),
-        Fruit(.pineapple, 10),
-        Fruit(.mango, 10)
+    // Properties
+    private var inventory: [FruitType: Int] = [
+        .strawberry: 10, .banana: 10, .kiwi: 10, .pineapple: 10, .mango: 10
     ]
     
-    func receiveOrder(juiceType: JuiceType) {
-        let requiredFruit: [Fruit] = juiceType.recipe
+    func receiveOrder(juiceName: String) throws {
+        guard let juice = JuiceType(rawValue: juiceName) else { throw JuiceMakerError.invalidSelection }
+        let recipe = juice.recipe
         
-        do {
-            let integrityFruits = try makeIntegrityFruitArray(requiredFruits: requiredFruit)
-            try updateFruitsQuantity(for: integrityFruits)
-        } catch {
-            // Add error handling logic here later
+        // 레시피 대로 재고 확인
+        for ingredient in recipe {
+            try validateStock(with: ingredient)
+        }
+        
+        // 이상 없으면 재고 감산
+        for ingredient in recipe {
+            try updateInventoryStock(with: ingredient)
         }
     }
     
-    private func makeIntegrityFruitArray(requiredFruits fruits: [Fruit]) throws -> [Fruit] {
-        var resultArr: [Fruit] = []
+    // 현재 재고 확인, 요구 수량을 빼고도 0 이상이면 통과, 아니면 outOfStock 에러 전파
+    private func validateStock(with fruit: Fruit) throws {
+        guard let stock = self.inventory[fruit.fruitType], stock - fruit.quantity >= 0 else { throw JuiceMakerError.outOfStock }
+    }
+    
+    // 지정된 요구 수량 만큼 빼고 변경된 값으로 재고 갱신
+    private func updateInventoryStock(with fruit: Fruit) throws {
+        guard let stock = self.inventory[fruit.fruitType] else { throw JuiceMakerError.invalidSelection }
+        let remainStock = stock - fruit.quantity
+        self.inventory[fruit.fruitType] = remainStock
+    }
+    
+    // 원하는 값으로 해당 재료의 재고 갱신
+    private func updateInventoryStock(with fruit: Fruit, _ quantity: Int = 1) throws {
+        guard let stock = self.inventory[fruit.fruitType] else { throw JuiceMakerError.invalidSelection }
+        let newStock = stock + quantity
+        self.inventory[fruit.fruitType] = newStock
+    }
+}
+
+// MARK: Nested Types
+extension FruitStore {
+    @frozen enum JuiceType: String {
+        case strawberryJuice = "딸기쥬스"
+        case bananaJuice = "바나나쥬스"
+        case kiwiJuice = "키위쥬스"
+        case pineappleJuice = "파인애플쥬스"
+        case strawberryBananaMixJuice = "딸바쥬스"
+        case mangoJuice = "망고쥬스"
+        case mangokiwiJuice = "망키쥬스"
         
-        for fruit in fruits {
-            resultArr.append(try validateQuantity(with: fruit))
+        var recipe: [Fruit] {
+            switch self {
+            case .strawberryJuice: return [Fruit(.strawberry, 16)]
+            case .bananaJuice: return [Fruit(.banana, 2)]
+            case .kiwiJuice: return [Fruit(.kiwi, 3)]
+            case .pineappleJuice: return [Fruit(.pineapple, 2)]
+            case .strawberryBananaMixJuice: return [Fruit(.strawberry, 10), Fruit(.banana, 1)]
+            case .mangoJuice: return [Fruit(.mango, 3)]
+            case .mangokiwiJuice: return [Fruit(.mango, 2), Fruit(.kiwi, 1)]
+            }
         }
-        
-        return resultArr
     }
     
-    private func validateQuantity(with fruit: Fruit) throws -> Fruit {
-        guard let inventoryFruit = self.fruits.filter({ $0.showFruitType() == fruit.showFruitType() }).first else { throw Exception.fruitNotFound }
-        
-        let quantityDistance: Int = inventoryFruit.quantityDistance(target: fruit)
-        guard quantityDistance >= 0 else { throw Exception.outOfQuantity }
-        
-        return Fruit(fruit.showFruitType(), quantityDistance)
+    @frozen enum FruitType: CaseIterable {
+        case strawberry, banana, kiwi, pineapple, mango
     }
     
-    private func updateFruitsQuantity(for fruits: [Fruit]) throws {
-        for fruit in fruits {
-            let index = try findFruitFirstIndex(target: fruit)
-            self.fruits[index] = fruit.updateFruit(for: fruit.showQuantity())
+    struct Fruit {
+        let fruitType: FruitType
+        let quantity: Int
+        
+        init(_ fruitType: FruitType, _ quantity: Int) {
+            self.fruitType = fruitType
+            self.quantity = quantity
         }
-    }
-    
-    private func findFruitFirstIndex(target: Fruit) throws -> Int {
-        guard let index = self.fruits.firstIndex(where: { $0.showFruitType() == target.showFruitType() }) else { throw Exception.fruitNotFound }
-        return index
     }
 }

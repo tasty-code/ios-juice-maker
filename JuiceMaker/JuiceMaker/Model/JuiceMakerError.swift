@@ -7,6 +7,7 @@
 
 import Foundation
 
-@frozen enum Exception: Error {
-    case outOfQuantity, fruitNotFound
+@frozen enum JuiceMakerError: Error {
+    case invalidSelection
+    case outOfStock
 }
