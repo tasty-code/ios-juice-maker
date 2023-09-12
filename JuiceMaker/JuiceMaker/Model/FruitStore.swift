@@ -6,28 +6,6 @@
 
 import Foundation
 
-@frozen enum JuiceType {
-    case strawberryJuice, bananaJuice, kiwiJuice, pineappleJuice, strawberryBananaMixJuice, mangoJuice, mangokiwiJuice
-}
-
-@frozen enum FruitType {
-    case strawberry, banana, kiwi, pineapple, mango
-}
-
-struct Fruit {
-    let fruitType: FruitType
-    let quantity: Int
-    
-    init(_ fruitType: FruitType, _ quantity: Int) {
-        self.fruitType = fruitType
-        self.quantity = quantity
-    }
-    
-    func updateQuantity(to quantity: Int) -> Fruit {
-        return Fruit(self.fruitType, quantity)
-    }
-}
-
 final class FruitStore {
     private var fruits: [Fruit] = [
         Fruit(.strawberry, 10),
@@ -38,47 +16,44 @@ final class FruitStore {
     ]
     
     func receiveOrder(juiceType: JuiceType) {
-        switch juiceType {
-        case .strawberryJuice:
-            makeJuice(Fruit(.strawberry, 16))
-        case .strawberryBananaMixJuice:
-            makeJuice(Fruit(.strawberry, 10),Fruit(.banana, 1))
-        case .bananaJuice:
-            makeJuice(Fruit(.banana, 2))
-        case .kiwiJuice:
-            makeJuice(Fruit(.kiwi, 3))
-        case .pineappleJuice:
-            makeJuice(Fruit(.pineapple, 2))
-        case .mangoJuice:
-            makeJuice(Fruit(.mango, 3))
-        case .mangokiwiJuice:
-            makeJuice(Fruit(.mango, 2), Fruit(.kiwi, 1))
+        let requiredFruit: [Fruit] = juiceType.recipe
+        
+        do {
+            let integrityFruits = try makeIntegrityFruitArray(requiredFruits: requiredFruit)
+            try updateFruitsQuantity(for: integrityFruits)
+        } catch {
+            // Add error handling logic here later
         }
     }
-}
-
-// MARK: Private methods
-extension FruitStore {
-    private func makeJuice(_ ingredient: Fruit) {
-        guard validateQuantity(ingredient: ingredient) else { return }
-        updateFruit(fruit: ingredient)
+    
+    private func makeIntegrityFruitArray(requiredFruits fruits: [Fruit]) throws -> [Fruit] {
+        var resultArr: [Fruit] = []
+        
+        for fruit in fruits {
+            resultArr.append(try validateQuantity(with: fruit))
+        }
+        
+        return resultArr
     }
     
-    private func makeJuice(_ firstIngredient: Fruit, _ secondIngredient: Fruit) {
-        guard validateQuantity(ingredient: firstIngredient), validateQuantity(ingredient: secondIngredient) else { return }
-        updateFruit(fruit: firstIngredient)
-        updateFruit(fruit: secondIngredient)
+    private func validateQuantity(with fruit: Fruit) throws -> Fruit {
+        guard let inventoryFruit = self.fruits.filter({ $0.showFruitType() == fruit.showFruitType() }).first else { throw Exception.fruitNotFound }
+        
+        let quantityDistance: Int = inventoryFruit.quantityDistance(target: fruit)
+        guard quantityDistance >= 0 else { throw Exception.outOfQuantity }
+        
+        return Fruit(fruit.showFruitType(), quantityDistance)
     }
     
-    private func validateQuantity(ingredient: Fruit) -> Bool {
-        guard let fruit = fruits.filter({$0.fruitType == ingredient.fruitType}).first else { return false }
-        return fruit.quantity - ingredient.quantity >= 0
+    private func updateFruitsQuantity(for fruits: [Fruit]) throws {
+        for fruit in fruits {
+            let index = try findFruitFirstIndex(target: fruit)
+            self.fruits[index] = fruit.updateFruit(for: fruit.showQuantity())
+        }
     }
     
-    private func updateFruit(fruit: Fruit) {
-        guard let index = fruits.firstIndex(where: {$0.fruitType == fruit.fruitType}) else { return }
-        let target = fruits[index]
-        let newQuantity = target.quantity - fruit.quantity
-        fruits[index] = target.updateQuantity(to: newQuantity)
+    private func findFruitFirstIndex(target: Fruit) throws -> Int {
+        guard let index = self.fruits.firstIndex(where: { $0.showFruitType() == target.showFruitType() }) else { throw Exception.fruitNotFound }
+        return index
     }
 }
