@@ -11,12 +11,14 @@ final class FruitStore {
     
     // MARK: - Properties
     
+    static let shared = FruitStore()
+    
     var fruitNames = ["딸기", "바나나", "파인애플", "키위", "망고"]
     var fruitDictionary: [String: Int] = [:]
     
     // MARK: - Init
     
-    init() {
+    private init() {
         for name in fruitNames {
             fruitDictionary[name] = 10
         }
