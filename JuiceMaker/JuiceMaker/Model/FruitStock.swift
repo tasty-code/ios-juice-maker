@@ -12,13 +12,9 @@ class FruitStock {
     var singleConsumption: Int
     var combineConsumption: Int?
     
-    init(currentStock: Int, singleConsumption: Int, combineConsumption: Int) {
+    init(currentStock: Int, singleConsumption: Int, combineConsumption: Int? = nil) {
         self.currentStock = currentStock
         self.singleConsumption = singleConsumption
         self.combineConsumption = combineConsumption
-    }
-    
-    convenience init(currentStock: Int, singleConsumption: Int) {
-        self.init(currentStock: currentStock, singleConsumption: singleConsumption)
     }
 }

@@ -8,6 +8,7 @@ import Foundation
 
 // 과일 저장소 타입
 class FruitStore {
+    
     var strawberry: FruitStock
     var banana: FruitStock
     var pineapple: FruitStock
