@@ -12,4 +12,12 @@ struct JuiceMaker {
     func make(juice: JuiceType) throws {
         try fruitStore.update(fruits: juice.ingredients, as: +)
     }
+
+    func add(fruit: Fruit) throws {
+        try fruitStore.update(fruit, as: +)
+    }
+
+    func sub(fruit: Fruit) throws {
+        try fruitStore.update(fruit, as: -)
+    }
 }
