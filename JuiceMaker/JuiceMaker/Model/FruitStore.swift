@@ -35,16 +35,18 @@ class FruitStore {
   
   func subtract(fruitName: Fruit, num: Int) {
     guard let currentNum = getNum(fruitName: fruitName) else { return }
-    if currentNum < num {
-      print("재고가 없습니다")
-      return
-    }
     let result = currentNum - num
     inventory.updateValue(result, forKey: fruitName.rawValue)
   }
   
   func getNum(fruitName: Fruit) -> Int? {
     guard let currentNum = inventory[fruitName.rawValue] else { return nil }
+    print(currentNum)
     return currentNum
+  }
+  
+  func checkInventory(fruitName: Fruit, num: Int) -> Bool {
+    guard let currentNum = getNum(fruitName: fruitName) else { return false }
+    return currentNum >= num
   }
 }

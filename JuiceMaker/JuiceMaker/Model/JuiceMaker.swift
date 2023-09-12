@@ -23,21 +23,35 @@ struct JuiceMaker {
   func makeJuice(type: JuiceType) {
     switch type {
     case .strawberry:
-      store.subtract(fruitName: .strawberry, num: 16)
+      if store.checkInventory(fruitName: .strawberry, num: 16) {
+        store.subtract(fruitName: .strawberry, num: 16)
+      }
     case .banana:
-      store.subtract(fruitName: .banana, num: 2)
+      if store.checkInventory(fruitName: .banana, num: 2) {
+        store.subtract(fruitName: .banana, num: 2)
+      }
     case .kiwi:
-      store.subtract(fruitName: .kiwi, num: 3)
+      if store.checkInventory(fruitName: .kiwi, num: 3) {
+        store.subtract(fruitName: .kiwi, num: 3)
+      }
     case .pineapple:
-      store.subtract(fruitName: .pineapple, num: 2)
+      if store.checkInventory(fruitName: .pineapple, num: 2) {
+        store.subtract(fruitName: .pineapple, num: 2)
+      }
     case .strawberryBanana:
-      store.subtract(fruitName: .strawberry, num: 10)
-      store.subtract(fruitName: .banana, num: 1)
+      if store.checkInventory(fruitName: .strawberry, num: 10) && store.checkInventory(fruitName: .banana, num: 1) {
+        store.subtract(fruitName: .strawberry, num: 10)
+        store.subtract(fruitName: .banana, num: 1)
+      }
     case .mango:
-      store.subtract(fruitName: .mango, num: 3)
+      if store.checkInventory(fruitName: .mango, num: 3) {
+        store.subtract(fruitName: .mango, num: 3)
+      }
     case .mangoKiwi:
-      store.subtract(fruitName: .mango, num: 2)
-      store.subtract(fruitName: .kiwi, num: 1)
+      if store.checkInventory(fruitName: .mango, num: 2) && store.checkInventory(fruitName: .kiwi, num: 1) {
+        store.subtract(fruitName: .mango, num: 2)
+        store.subtract(fruitName: .kiwi, num: 1)
+      }
     }
   }
 }
