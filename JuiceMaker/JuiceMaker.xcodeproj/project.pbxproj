@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		98FAC71B2AB0520800F222F5 /* Int+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FAC71A2AB0520800F222F5 /* Int+Extention.swift */; };
+		98FAC71D2AB054CD00F222F5 /* StockError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FAC71C2AB054CD00F222F5 /* StockError.swift */; };
 		C38A0FF12AB01BB800D7F1AF /* FruitJuice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38A0FF02AB01BB800D7F1AF /* FruitJuice.swift */; };
 		C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71CD66A266C7ACB0038B9CB /* FruitStore.swift */; };
 		C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DAF36255D0CDD00020D38 /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		98FAC71A2AB0520800F222F5 /* Int+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extention.swift"; sourceTree = "<group>"; };
+		98FAC71C2AB054CD00F222F5 /* StockError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockError.swift; sourceTree = "<group>"; };
 		C38A0FF02AB01BB800D7F1AF /* FruitJuice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitJuice.swift; sourceTree = "<group>"; };
 		C71CD66A266C7ACB0038B9CB /* FruitStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitStore.swift; sourceTree = "<group>"; };
 		C73DAF33255D0CDD00020D38 /* JuiceMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JuiceMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +69,7 @@
 				C38A0FF02AB01BB800D7F1AF /* FruitJuice.swift */,
 				C71CD66A266C7ACB0038B9CB /* FruitStore.swift */,
 				C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */,
+				98FAC71C2AB054CD00F222F5 /* StockError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
+				98FAC71D2AB054CD00F222F5 /* StockError.swift in Sources */,
 				C38A0FF12AB01BB800D7F1AF /* FruitJuice.swift in Sources */,
 				C73DAF3B255D0CDD00020D38 /* ViewController.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,

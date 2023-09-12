@@ -27,24 +27,35 @@ final class FruitStore {
     }
     
     func makeJuice(of name: FruitJuice) {
-        switch name {
-        case .strawberry:
-            fruitDictionary[name, default: .defaultStock] -= 13
-        case .banana:
-            fruitDictionary[name, default: .defaultStock] -= 2
-        case .pineapple:
-            fruitDictionary[name, default: .defaultStock] -= 2
-        case .kiwi:
-            fruitDictionary[name, default: .defaultStock] -= 3
-        case .mango:
-            fruitDictionary[name, default: .defaultStock] -= 3
-        case .strawberryBanana:
-            fruitDictionary[.strawberry, default: .defaultStock] -= 10
-            fruitDictionary[.banana, default: .defaultStock] -= 1
-        case .mangoKiwi:
-            fruitDictionary[.mango, default: .defaultStock] -= 2
-            fruitDictionary[.kiwi, default: .defaultStock] -= 1
+        do {
+            switch name {
+            case .strawberry:
+                try checkJuiceStock(name, necessaryCount: 13)
+            case .banana:
+                try checkJuiceStock(name, necessaryCount: 2)
+            case .pineapple:
+                try checkJuiceStock(name, necessaryCount: 2)
+            case .kiwi:
+                try checkJuiceStock(name, necessaryCount: 3)
+            case .mango:
+                try checkJuiceStock(name, necessaryCount: 3)
+            case .strawberryBanana:
+                try checkJuiceStock(.strawberry, necessaryCount: 10)
+                try checkJuiceStock(.banana, necessaryCount: 1)
+            case .mangoKiwi:
+                try checkJuiceStock(.mango, necessaryCount: 2)
+                try checkJuiceStock(.kiwi, necessaryCount: 1)
+            }
+            print("\(name)쥬스를 만들었습니다.")
+        } catch {
+            print("\(name)쥬스를 만들기 위한 \(error)")
         }
     }
+    
+    func checkJuiceStock(_ name: FruitJuice, necessaryCount: Int) throws {
+        if fruitDictionary[name, default: .defaultStock] < necessaryCount {
+            throw StockError.emptyStock
+        }
+        fruitDictionary[name, default: .defaultStock] -= necessaryCount
+    }
 }
-
