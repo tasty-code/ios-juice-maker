@@ -6,6 +6,7 @@
 
 import Foundation
 
+
 final class FruitStore {
     
     // MARK: - Properties
@@ -13,11 +14,15 @@ final class FruitStore {
     var fruitNames: [FruitJuice] = [.strawberry, .banana, .pineapple, .kiwi, .mango]
     var fruitDictionary: [FruitJuice: Int] = [:]
     
+    init() {
+        fillFruitStock()
+    }
+    
     // MARK: - Methods
     
-    func fetchFruitStock() {
+    private func fillFruitStock() {
         for name in fruitNames {
-            fruitDictionary[name] = 10
+            fruitDictionary[name] = .defaultStock
         }
     }
     

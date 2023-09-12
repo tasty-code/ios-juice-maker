@@ -22,17 +22,13 @@ final class ViewController: UIViewController {
     
     // MARK: - LifeCycle
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func viewWillAppear(_ animated: Bool) {
         displayFruitQuantity()
     }
-
+    
     // MARK: - Methods
     
     private func displayFruitQuantity() {
-        juiceMaker.fruitStore.fetchFruitStock()
-        
         let fruitQuantityLabels = [strawberryQuantityLabel,
                                    bananaQuantityLabel,
                                    pineappleQuantityLabel,
@@ -44,8 +40,15 @@ final class ViewController: UIViewController {
         for i in 0..<fruitQuantityLabels.count {
             let name = juiceMaker.fruitStore.fruitNames[i]
             
-            fruitQuantityLabels[i]?.text = String(fruitDictionary[name, default: 10])
+            fruitQuantityLabels[i]?.text = String(fruitDictionary[name, default: .defaultStock])
         }
+    }
+    
+    @IBAction func pressOrderButton(_ button: UIButton)  {
+        guard let fruitName = FruitJuice(rawValue: button.tag) else { return }
+        juiceMaker.fruitStore.makeJuice(of: fruitName)
+        
+        displayFruitQuantity()
     }
 }
 
