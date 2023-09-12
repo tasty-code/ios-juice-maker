@@ -34,6 +34,16 @@ struct JuiceMaker {
         
     }
     
+    func convertDecreaseCountArr(fruitDict: [FruitStore.Fruit: Int]) -> [Int] {
+        let decreaseCountArr: [Int] = fruitDict.map{$0.value}
+        return decreaseCountArr
+    }
+    
+    func convertFruitArr(fruitDict:[FruitStore.Fruit: Int]) -> [FruitStore.Fruit] {
+        let fruitArr: [FruitStore.Fruit] = fruitDict.map{$0.key}
+        return fruitArr
+    }
+    
     
     
     
