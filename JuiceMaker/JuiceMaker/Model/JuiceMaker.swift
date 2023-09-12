@@ -23,21 +23,21 @@ struct JuiceMaker {
   func makeJuice(type: JuiceType) {
     switch type {
     case .strawberry:
-      store.minus(fruitName: .strawberry, num: 16)
+      store.subtract(fruitName: .strawberry, num: 16)
     case .banana:
-      store.minus(fruitName: .banana, num: 2)
+      store.subtract(fruitName: .banana, num: 2)
     case .kiwi:
-      store.minus(fruitName: .kiwi, num: 3)
+      store.subtract(fruitName: .kiwi, num: 3)
     case .pineapple:
-      store.minus(fruitName: .pineapple, num: 2)
+      store.subtract(fruitName: .pineapple, num: 2)
     case .strawberryBanana:
-      store.minus(fruitName: .strawberry, num: 10)
-      store.minus(fruitName: .banana, num: 1)
+      store.subtract(fruitName: .strawberry, num: 10)
+      store.subtract(fruitName: .banana, num: 1)
     case .mango:
-      store.minus(fruitName: .mango, num: 3)
+      store.subtract(fruitName: .mango, num: 3)
     case .mangoKiwi:
-      store.minus(fruitName: .mango, num: 2)
-      store.minus(fruitName: .kiwi, num: 1)
+      store.subtract(fruitName: .mango, num: 2)
+      store.subtract(fruitName: .kiwi, num: 1)
     }
   }
 }

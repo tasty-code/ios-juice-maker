@@ -18,23 +18,29 @@ class FruitStore {
     case mango
   }
   
-  var inventory = ["strawberry": 10, "pineapple": 10, "banana": 10, "kiwi": 10, "mango": 10]
+  let initValue = 10
+  var inventory = ["strawberry": 0, "pineapple": 0, "banana": 0, "kiwi": 0, "mango": 0]
   
+  init() {
+    for fruitList in inventory {
+      inventory.updateValue(initValue, forKey: fruitList.key)
+    }
+  }
   
   func add(fruitName: Fruit, num: Int) {
     guard let currentNum = inventory[fruitName.rawValue] else { return }
-    let number = currentNum + num
-    inventory.updateValue(number, forKey: fruitName.rawValue)
+    let result = currentNum + num
+    inventory.updateValue(result, forKey: fruitName.rawValue)
   }
   
-  func minus(fruitName: Fruit, num: Int) {
+  func subtract(fruitName: Fruit, num: Int) {
     guard let currentNum = inventory[fruitName.rawValue] else { return }
     if currentNum < num {
       print("재고가 없습니다")
       return
     }
-    let number = currentNum - num
-    inventory.updateValue(number, forKey: fruitName.rawValue)
+    let result = currentNum - num
+    inventory.updateValue(result, forKey: fruitName.rawValue)
   }
   
   func getNum(fruitName: Fruit) -> Int? {
