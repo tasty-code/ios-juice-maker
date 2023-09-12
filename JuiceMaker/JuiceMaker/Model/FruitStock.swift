@@ -10,11 +10,15 @@ import Foundation
 class FruitStock {
     var currentStock: Int
     var singleConsumption: Int
-    var combineConsumption: Int
+    var combineConsumption: Int?
     
     init(currentStock: Int, singleConsumption: Int, combineConsumption: Int) {
         self.currentStock = currentStock
         self.singleConsumption = singleConsumption
         self.combineConsumption = combineConsumption
+    }
+    
+    convenience init(currentStock: Int, singleConsumption: Int) {
+        self.init(currentStock: currentStock, singleConsumption: singleConsumption)
     }
 }
