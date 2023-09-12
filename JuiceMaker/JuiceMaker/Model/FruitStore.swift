@@ -28,13 +28,13 @@ class FruitStore {
   }
   
   func add(fruitName: Fruit, num: Int) {
-    guard let currentNum = inventory[fruitName.rawValue] else { return }
+    guard let currentNum = getNum(fruitName: fruitName) else { return }
     let result = currentNum + num
     inventory.updateValue(result, forKey: fruitName.rawValue)
   }
   
   func subtract(fruitName: Fruit, num: Int) {
-    guard let currentNum = inventory[fruitName.rawValue] else { return }
+    guard let currentNum = getNum(fruitName: fruitName) else { return }
     if currentNum < num {
       print("재고가 없습니다")
       return
