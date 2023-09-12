@@ -29,7 +29,7 @@ struct JuiceMaker {
             guard let bananaConsumption = fruitStorage.banana.combineConsumption else{
                 return nil
             }
-            return fruitStorage.strawberry.currentStock < strawberryConsumption || fruitStorage.banana.currentStock < strawberryConsumption ? false : true
+            return fruitStorage.strawberry.currentStock < strawberryConsumption || fruitStorage.banana.currentStock < bananaConsumption ? false : true
         case .mangoKiwiJuice:
             guard let mangoConsumption = fruitStorage.mango.combineConsumption else{
                 return nil
