@@ -11,31 +11,49 @@ struct JuiceMaker {
     
     let fruitStore: FruitStore
     
-    func checkStock(fruits: [FruitStore.Fruit], decreaseCountArr: [Int]) throws{
+    func startOrder(juiceName: String) {
+        do {
+            let fruitDict: [FruitStore.Fruit: Int] = try orderConvertToDictionary(juice: juiceName)
+            
+            
+            let fruitArr: [FruitStore.Fruit] = convertFruitArr(fruitDict: fruitDict)
+            let decreaseCountArr: [Int] = convertDecreaseCountArr(fruitDict: fruitDict)
+            
+            
+            try checkStock(fruits: fruitArr, decreaseCountArr: decreaseCountArr)
+
+            
+            makeJuice(fruits: fruitArr, countArr: decreaseCountArr)
+        } catch {
+            print("\(error)")
+        }
+    }
+    
+    private func checkStock(fruits: [FruitStore.Fruit], decreaseCountArr: [Int]) throws{
         for index in 0 ..< fruits.count {
             guard fruits[index].stock > abs(decreaseCountArr[index]) - 1 else {throw Errorcase.outOfStock}
         }
     }
     
     
-    func makeJuice(fruits: [FruitStore.Fruit], countArr: [Int]) {
+    private func makeJuice(fruits: [FruitStore.Fruit], countArr: [Int]) {
         for index in 0 ..< fruits.count {
             fruitStore.updateFruitStock(inputFruit: fruits[index], count: countArr[index])
         }
     }
     
-   func orderConvertToDictionary(juice: String) throws -> [FruitStore.Fruit: Int] {
+    private func orderConvertToDictionary(juice: String) throws -> [FruitStore.Fruit: Int] {
         guard let confirmJuice = Recipe(rawValue: juice) else { throw Errorcase.canNotFound }
         return confirmJuice.dereaseDict
         
     }
     
-    func convertDecreaseCountArr(fruitDict: [FruitStore.Fruit: Int]) -> [Int] {
+    private func convertDecreaseCountArr(fruitDict: [FruitStore.Fruit: Int]) -> [Int] {
         let decreaseCountArr: [Int] = fruitDict.map{$0.value}
         return decreaseCountArr
     }
     
-    func convertFruitArr(fruitDict:[FruitStore.Fruit: Int]) -> [FruitStore.Fruit] {
+    private func convertFruitArr(fruitDict:[FruitStore.Fruit: Int]) -> [FruitStore.Fruit] {
         let fruitArr: [FruitStore.Fruit] = fruitDict.map{$0.key}
         return fruitArr
     }
