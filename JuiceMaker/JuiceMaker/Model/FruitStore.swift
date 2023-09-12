@@ -6,45 +6,41 @@
 
 import Foundation
 
-// 과일 저장소 타입
+typealias Fruit = (fruitType: FruitType, quantity: Int)
+
+@frozen enum JuiceType {
+    case strawberryJuice, strawberryBananaMixJuice
+}
+
+@frozen enum FruitType {
+    case strawberry, banana
+}
+
 final class FruitStore {
     // Fruits Properties
-    private var fruitsStorage: [FruitType:Int] = [
-        .strawberry : 10, .banana : 10, .kiwi : 10, .pineapple : 10, .mango : 10
-    ]
+    private var strawberry: Int = 10
+    private var banana: Int = 10
     
     // 주문 받은 것대로 재고 빼기
     func receiveOrder(juiceType: JuiceType) {
         switch juiceType {
-        case .strawberryJuice: break
+        case .strawberryJuice:
+            makeJuice(firstIngredientCount: 16)
+        case .strawberryBananaMixJuice:
+            makeJuice(firstIngredientCount: 10, secondIngredientCount: 1)
         }
     }
-}
-
-// MARK: Nested Types
-extension FruitStore {
-    @frozen enum JuiceType {
-        case strawberryJuice
-//        case bananaJuice, kiwiJuice, pineappleJuice, strawberryBananaMixJuice, mangoJuice, mangoKiwiMixJuice
-    }
     
-    @frozen enum FruitType {
-        case strawberry, banana, kiwi, pineapple, mango
-    }
     
-    struct Fruit {
-        let fruitType: FruitType
-        let quantity: Int
-    }
 }
 
 // MARK: Private methods
 extension FruitStore {
-    private func checkQuantity(_ firstIngredient: Fruit, _ secondIngredient: Fruit) throws {
+    private func makeJuice(firstIngredientCount: Int) {
         
     }
     
-    private func updateInventory(_ fruitType: FruitType, count: Int) {
+    private func makeJuice(firstIngredientCount: Int, secondIngredientCount: Int) {
         
     }
 }
