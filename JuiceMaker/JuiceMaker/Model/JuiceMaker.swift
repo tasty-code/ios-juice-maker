@@ -16,16 +16,10 @@ struct JuiceMaker {
     }
     
     
-    func makeJuice(recipeDict: [FruitStore.Fruit: Int]) {
-        let fruits = recipeDict.map{$0.key}
-        let decreaseCount = recipeDict.map{$0.value}
-        
-        guard fruits.count < 2 else {
-            fruitStore.updateFruitStock(inputFruit: fruits[0], count: decreaseCount[0])
-            fruitStore.updateFruitStock(inputFruit: fruits[1], count: decreaseCount[1])
-            return
+    func makeJuice(fruits: [FruitStore.Fruit], countArr: [Int]) {
+        for index in 0 ..< fruits.count {
+            fruitStore.updateFruitStock(inputFruit: fruits[index], count: countArr[index])
         }
-        fruitStore.updateFruitStock(inputFruit: fruits[0], count: decreaseCount[0])
     }
     
    func orderConvertToDictionary(juice: String) throws -> [FruitStore.Fruit: Int] {
