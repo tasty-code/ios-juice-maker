@@ -20,11 +20,6 @@ class FruitStore {
         var stock: Int = 10
     }
     
-    func containsFruits(inputFruit: Fruit) throws {
-        guard let fruit = fruitList.filter({ $0 == inputFruit }).first else { throw Errorcase.canNotFound }
-        
-    }
-    
     func updateFruitStock(inputFruit: Fruit, count: Int) {
         
         guard let index = fruitList.firstIndex(where: {$0.name == inputFruit.name}) else {
