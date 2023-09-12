@@ -13,6 +13,7 @@ final class FruitStore {
     ]
     
     func receiveOrder(juiceName: String) throws {
+        // 쥬스 이름을 가지고 어떤 쥬스인지 확인, 그런 쥬스가 있으면 그 쥬스의 레시피를 확인
         guard let juice = JuiceType(rawValue: juiceName) else { throw JuiceMakerError.invalidSelection }
         let recipe = juice.recipe
         
