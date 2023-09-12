@@ -8,13 +8,13 @@ import Foundation
 
 // 과일 저장소 타입
 class FruitStore {
-    var strawberry: Int = 10
-    var banana: Int = 10
-    var pineapple: Int = 10
-    var kiwi: Int = 10
-    var mango: Int = 10
+    var strawberry: FruitStock
+    var banana: FruitStock
+    var pineapple: FruitStock
+    var kiwi: FruitStock
+    var mango: FruitStock
     
-    init(strawberry: Int, banana: Int, pineapple: Int, kiwi: Int, mango: Int) {
+    init(strawberry: FruitStock, banana: FruitStock, pineapple: FruitStock, kiwi: FruitStock, mango: FruitStock) {
         self.strawberry = strawberry
         self.banana = banana
         self.pineapple = pineapple
