@@ -7,8 +7,8 @@
 import Foundation
 
 // 과일 저장소 타입
-class FruitStore {
-    var fruitList = [Fruit: Int]()
+final class FruitStore {
+    private var fruitList = [Fruit: Int]()
     
     init() {
         Fruit.allCases.forEach {
