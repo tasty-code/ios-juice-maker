@@ -20,5 +20,26 @@ final class FruitStore {
             fruitDictionary[name] = 10
         }
     }
+    
+    func makeJuice(of name: FruitJuice) {
+        switch name {
+        case .strawberry:
+            fruitDictionary[name, default: .defaultStock] -= 13
+        case .banana:
+            fruitDictionary[name, default: .defaultStock] -= 2
+        case .pineapple:
+            fruitDictionary[name, default: .defaultStock] -= 2
+        case .kiwi:
+            fruitDictionary[name, default: .defaultStock] -= 3
+        case .mango:
+            fruitDictionary[name, default: .defaultStock] -= 3
+        case .strawberryBanana:
+            fruitDictionary[.strawberry, default: .defaultStock] -= 10
+            fruitDictionary[.banana, default: .defaultStock] -= 1
+        case .mangoKiwi:
+            fruitDictionary[.mango, default: .defaultStock] -= 2
+            fruitDictionary[.kiwi, default: .defaultStock] -= 1
+        }
+    }
 }
 

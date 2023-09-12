@@ -8,7 +8,7 @@
 import Foundation
 
 @frozen
-enum FruitJuice: CustomStringConvertible {
+enum FruitJuice: Int, CustomStringConvertible {
     case strawberry
     case banana
     case pineapple
