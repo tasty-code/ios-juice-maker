@@ -27,25 +27,6 @@ final class FruitStore {
             try updateInventoryStock(with: ingredient)
         }
     }
-    
-    // 현재 재고 확인, 요구 수량을 빼고도 0 이상이면 통과, 아니면 outOfStock 에러 전파
-    private func validateStock(with fruit: Fruit) throws {
-        guard let stock = self.inventory[fruit.fruitType], stock - fruit.quantity >= 0 else { throw JuiceMakerError.outOfStock }
-    }
-    
-    // 지정된 요구 수량 만큼 빼고 변경된 값으로 재고 갱신
-    private func updateInventoryStock(with fruit: Fruit) throws {
-        guard let stock = self.inventory[fruit.fruitType] else { throw JuiceMakerError.invalidSelection }
-        let remainStock = stock - fruit.quantity
-        self.inventory[fruit.fruitType] = remainStock
-    }
-    
-    // 원하는 값으로 해당 재료의 재고 갱신
-    private func updateInventoryStock(with fruit: Fruit, _ quantity: Int = 1) throws {
-        guard let stock = self.inventory[fruit.fruitType] else { throw JuiceMakerError.invalidSelection }
-        let newStock = stock + quantity
-        self.inventory[fruit.fruitType] = newStock
-    }
 }
 
 // MARK: Nested Types
@@ -84,5 +65,27 @@ extension FruitStore {
             self.fruitType = fruitType
             self.quantity = quantity
         }
+    }
+}
+
+// MARK: Private Methods
+extension FruitStore {
+    // 현재 재고 확인, 요구 수량을 빼고도 0 이상이면 통과, 아니면 outOfStock 에러 전파
+    private func validateStock(with fruit: Fruit) throws {
+        guard let stock = self.inventory[fruit.fruitType], stock - fruit.quantity >= 0 else { throw JuiceMakerError.outOfStock }
+    }
+    
+    // 지정된 요구 수량 만큼 빼고 변경된 값으로 재고 갱신
+    private func updateInventoryStock(with fruit: Fruit) throws {
+        guard let stock = self.inventory[fruit.fruitType] else { throw JuiceMakerError.invalidSelection }
+        let remainStock = stock - fruit.quantity
+        self.inventory[fruit.fruitType] = remainStock
+    }
+    
+    // 원하는 값으로 해당 재료의 재고 갱신
+    private func updateInventoryStock(with fruit: Fruit, _ quantity: Int = 1) throws {
+        guard let stock = self.inventory[fruit.fruitType] else { throw JuiceMakerError.invalidSelection }
+        let newStock = stock + quantity
+        self.inventory[fruit.fruitType] = newStock
     }
 }
