@@ -7,11 +7,11 @@
 import Foundation
 
 @frozen enum JuiceType {
-    case strawberryJuice, strawberryBananaMixJuice
+    case strawberryJuice, bananaJuice, kiwiJuice, pineappleJuice, strawberryBananaMixJuice, mangoJuice, mangokiwiJuice
 }
 
 @frozen enum FruitType {
-    case strawberry, banana
+    case strawberry, banana, kiwi, pineapple, mango
 }
 
 struct Fruit {
@@ -29,20 +29,30 @@ struct Fruit {
 }
 
 final class FruitStore {
-    // Fruits Properties
     private var fruits: [Fruit] = [
         Fruit(.strawberry, 10),
         Fruit(.banana, 10),
+        Fruit(.kiwi, 10),
+        Fruit(.pineapple, 10),
+        Fruit(.mango, 10)
     ]
     
-    // 주문 받은 것대로 재고 빼기
     func receiveOrder(juiceType: JuiceType) {
         switch juiceType {
         case .strawberryJuice:
             makeJuice(Fruit(.strawberry, 16))
         case .strawberryBananaMixJuice:
-            break
-            
+            makeJuice(Fruit(.strawberry, 10),Fruit(.banana, 1))
+        case .bananaJuice:
+            makeJuice(Fruit(.banana, 2))
+        case .kiwiJuice:
+            makeJuice(Fruit(.kiwi, 3))
+        case .pineappleJuice:
+            makeJuice(Fruit(.pineapple, 2))
+        case .mangoJuice:
+            makeJuice(Fruit(.mango, 3))
+        case .mangokiwiJuice:
+            makeJuice(Fruit(.mango, 2), Fruit(.kiwi, 1))
         }
     }
 }
@@ -70,13 +80,5 @@ extension FruitStore {
         let target = fruits[index]
         let newQuantity = target.quantity - fruit.quantity
         fruits[index] = target.updateQuantity(to: newQuantity)
-    }
-    
-    private func addQuantity(fruit: Fruit, quantity: Int = 1) {
-        
-    }
-    
-    private func substractQuantity(fruit: Fruit, to quantity: Int = 1) {
-        
     }
 }
