@@ -16,25 +16,24 @@ class FruitStore {
         }
     }
     
-    func add(_ ingredient: [Fruit: Int]) -> Void {
-        for (fruit, amount) in ingredient {
-            self.fruitList.updateValue(fruitList[fruit]! + amount, forKey: fruit)
-        }
-    }
-
-    
-    func deduct(_ ingredient: [Fruit: Int]) -> Void {
-        for (fruit, amount) in ingredient {
-            self.fruitList.updateValue(fruitList[fruit]! - amount, forKey: fruit)
-        }
-    }
-    
-    func getRemain(_ ingredient: [Fruit]) -> [Fruit: Int] {
+    func getRemains(_ ingredient: Array<Fruit>) -> [Fruit: Int] {
         var remains = [Fruit: Int]()
         for fruit in ingredient {
             remains.updateValue(fruitList[fruit]!, forKey: fruit)
         }
         return remains
+    }
+    
+    func add(_ ingredient: [Fruit: Int]) -> Void {
+        for (fruit, amount) in ingredient {
+            self.fruitList.updateValue(fruitList[fruit]! + amount, forKey: fruit)
+        }
+    }
+    
+    func deduct(_ ingredient: [Fruit: Int]) -> Void {
+        for (fruit, amount) in ingredient {
+            self.fruitList.updateValue(fruitList[fruit]! - amount, forKey: fruit)
+        }
     }
 }
 
