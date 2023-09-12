@@ -12,7 +12,7 @@ struct JuiceMaker {
     let fruitStore: FruitStore
     
     func checkStock(inputFruit: FruitStore.Fruit, decreaseCount: Int) throws{
-        guard inputFruit.stock > decreaseCount else {throw Errorcase.outOfStock}
+        guard inputFruit.stock > abs(decreaseCount) - 1 else {throw Errorcase.outOfStock}
     }
     
     
@@ -28,11 +28,13 @@ struct JuiceMaker {
         fruitStore.updateFruitStock(inputFruit: fruits[0], count: decreaseCount[0])
     }
     
-    func recipeCount(juice: String) throws -> [FruitStore.Fruit: Int] {
+   func orderConvertToDictionary(juice: String) throws -> [FruitStore.Fruit: Int] {
         guard let confirmJuice = Recipe(rawValue: juice) else { throw Errorcase.canNotFound }
         return confirmJuice.dereaseDict
         
     }
+    
+    
     
     
     enum Recipe: String {
