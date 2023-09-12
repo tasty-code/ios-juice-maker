@@ -25,12 +25,12 @@ class FruitStore {
         fruitInventory[fruit] = (remainedCount - count)
     }
     
-    func getRemainedCount(of fruit: Fruit) throws -> UInt{
+    func getRemainedCount(of fruit: Fruit) throws -> UInt {
         guard let remainedCount = fruitInventory[fruit] else { throw InventoryError.invalidMenuError }
         return remainedCount
     }
     
-    func setFruitCount(of fruit: Fruit,_ count: UInt) {
+    func setFruitCount(of fruit: Fruit, _ count: UInt) {
         fruitInventory[fruit] = count
     }
     
