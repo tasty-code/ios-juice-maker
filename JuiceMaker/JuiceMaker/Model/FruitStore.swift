@@ -31,10 +31,10 @@ class FruitStore {
     }
     
     func update(fruits: [Fruit], as `operator`: ((Int, Int) -> Int)) throws {
-        try checkValidation(fruits: fruits, as: `operator`)
+        let checkedFruits = try checkValidation(fruits: fruits, as: `operator`)
         
-        for fruit in fruits {
-            try update(fruit, as: `operator`)
+        for fruit in checkedFruits {
+            checkedUpdate(fruit)
         }
     }
     
@@ -53,21 +53,40 @@ class FruitStore {
         }
     }
     
-    private func checkValidation(fruits: [Fruit], as `operator`: ((Int, Int) -> Int)) throws {
-        for fruit in fruits {
-            switch fruit.fruitType {
-            case .strawberry:
-                let _ = try checkValidation(fruitCount: `operator`(strawberry, fruit.count))
-            case .banana:
-                let _ = try checkValidation(fruitCount: `operator`(banana, fruit.count))
-            case .pineapple:
-                let _ = try checkValidation(fruitCount: `operator`(pineapple, fruit.count))
-            case .mango:
-                let _ = try checkValidation(fruitCount: `operator`(mango, fruit.count))
-            case .kiwi:
-                let _ = try checkValidation(fruitCount: `operator`(kiwi, fruit.count))
-            }
+    private func checkedUpdate(_ checkedFruit: Fruit) {
+        switch checkedFruit.fruitType {
+        case .strawberry:
+            strawberry = checkedFruit.count
+        case .banana:
+            banana = checkedFruit.count
+        case .pineapple:
+            pineapple = checkedFruit.count
+        case .mango:
+            mango = checkedFruit.count
+        case .kiwi:
+            kiwi = checkedFruit.count
         }
+    }
+    
+    private func checkValidation(fruits: [Fruit], as `operator`: ((Int, Int) -> Int)) throws -> [Fruit] {
+        var checkedFruits = [Fruit]()
+        for (fruitType, count) in fruits {
+            var checkedCount = 0
+            switch fruitType {
+            case .strawberry:
+                checkedCount = try checkValidation(fruitCount: `operator`(strawberry, count))
+            case .banana:
+                checkedCount = try checkValidation(fruitCount: `operator`(banana, count))
+            case .pineapple:
+                checkedCount = try checkValidation(fruitCount: `operator`(pineapple, count))
+            case .mango:
+                checkedCount = try checkValidation(fruitCount: `operator`(mango, count))
+            case .kiwi:
+                checkedCount = try checkValidation(fruitCount: `operator`(kiwi, count))
+            }
+            checkedFruits.append(Fruit(fruitType, checkedCount))
+        }
+        return checkedFruits
     }
     
     private func checkValidation(fruitCount: Int) throws -> Int {
