@@ -6,34 +6,45 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     
-    var fruitStore = FruitStore.shared
-
+    // MARK: - Properties
+    
+    private var juiceMaker = JuiceMaker()
+    
+    // MARK: - Views
+    
     @IBOutlet var strawberryQuantityLabel: UILabel!
     @IBOutlet var bananaQuantityLabel: UILabel!
     @IBOutlet var pineappleQuantityLabel: UILabel!
     @IBOutlet var kiwiQuantityLabel: UILabel!
     @IBOutlet var mangoQuantityLabel: UILabel!
     
+    // MARK: - LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         displayFruitQuantity()
     }
+
+    // MARK: - Methods
     
-    func displayFruitQuantity() {
-        if let strawberryQuantity = fruitStore.fruitDictionary["딸기"],
-           let bananaQuantity = fruitStore.fruitDictionary["바나나"],
-           let pineappleQuantity = fruitStore.fruitDictionary["파인애플"],
-           let kiwiQuantity = fruitStore.fruitDictionary["키위"],
-           let mangoQuantity = fruitStore.fruitDictionary["망고"]
-        {
-            strawberryQuantityLabel.text = String(strawberryQuantity)
-            bananaQuantityLabel.text = String(bananaQuantity)
-            pineappleQuantityLabel.text = String(pineappleQuantity)
-            kiwiQuantityLabel.text = String(kiwiQuantity)
-            mangoQuantityLabel.text = String(mangoQuantity)
+    private func displayFruitQuantity() {
+        juiceMaker.fruitStore.fetchFruitStock()
+        
+        let fruitQuantityLabels = [strawberryQuantityLabel,
+                                   bananaQuantityLabel,
+                                   pineappleQuantityLabel,
+                                   kiwiQuantityLabel,
+                                   mangoQuantityLabel]
+        
+        let fruitDictionary = juiceMaker.fruitStore.fruitDictionary
+        
+        for i in 0..<fruitQuantityLabels.count {
+            let name = juiceMaker.fruitStore.fruitNames[i]
+            
+            fruitQuantityLabels[i]?.text = String(fruitDictionary[name, default: 10])
         }
     }
 }
