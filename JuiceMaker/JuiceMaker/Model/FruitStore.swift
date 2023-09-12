@@ -15,7 +15,7 @@ class FruitStore {
         self.fruitList = fruits
     }
     
-    struct Fruit: Equatable {
+    struct Fruit: Hashable {
         var name: String
         var stock: Int = 10
     }
