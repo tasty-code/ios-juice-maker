@@ -9,10 +9,10 @@ import Foundation
 // 과일 저장소 타입
 class FruitStore {
     
-    var fruits: [Fruit]
+    var fruitList: [Fruit]
     
     init(fruits: [Fruit]) {
-        self.fruits = fruits
+        self.fruitList = fruits
     }
     
     struct Fruit: Equatable {
@@ -20,9 +20,17 @@ class FruitStore {
         var stock: Int = 10
     }
     
-    func containsFruits(inputFruit: Fruit) throws -> Fruit {
-        guard let fruit = fruits.filter({ $0 == inputFruit }).first else { throw Errorcase.canNotFound }
-        return fruit
+    func containsFruits(inputFruit: Fruit) throws {
+        guard let fruit = fruitList.filter({ $0 == inputFruit }).first else { throw Errorcase.canNotFound }
+        
+    }
+    
+    func updateFruitStock(inputFruit: Fruit, count: Int) {
+        
+        guard let index = fruitList.firstIndex(where: {$0 == inputFruit}) else { return }
+        
+        fruitList[index].stock = inputFruit.stock + count
+        
     }
     
     
