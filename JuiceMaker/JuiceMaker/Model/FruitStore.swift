@@ -20,11 +20,11 @@ class FruitStore {
         var stock: Int = 10
     }
     
-    func updateFruitStock(inputFruit: Fruit, count: Int) {
+    func updateFruitStock(inputFruit: Fruit, count: Int) throws {
         
         guard let index = fruitList.firstIndex(where: {$0.name == inputFruit.name}) else {
-            print("여기서 걸림")
-            return }
+            throw Errorcase.canNotFound
+        }
         
         fruitList[index].stock += count
         print("\(fruitList[index].stock)")
@@ -34,6 +34,14 @@ class FruitStore {
     
 }
 
-enum Errorcase: Error {
+enum Errorcase: Error, CustomDebugStringConvertible{
     case outOfStock, canNotFound
+    
+    var debugDescription: String {
+        switch self {
+        case .canNotFound: return "해당 과일을 찾을 수 없읍니다."
+        case .outOfStock: return "해당 과일의 재고가 부족합니다."
+        }
+    }
 }
+

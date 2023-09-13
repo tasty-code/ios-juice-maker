@@ -12,8 +12,9 @@ struct JuiceMaker {
     let fruitStore: FruitStore
     
     func startOrder(juiceName: String) {
+        
         do {
-            let fruitDict: [FruitStore.Fruit: Int] = try orderConvertToDictionary(juice: juiceName)
+            let fruitDict: [FruitStore.Fruit: Int] = try orderConvertToDict(juice: juiceName)
             
             
             let fruitArr: [FruitStore.Fruit] = convertFruitArr(fruitDict: fruitDict)
@@ -22,8 +23,7 @@ struct JuiceMaker {
             
             try checkStock(fruits: fruitArr, decreaseCountArr: decreaseCountArr)
 
-            
-            makeJuice(fruits: fruitArr, countArr: decreaseCountArr)
+            try makeJuice(fruits: fruitArr, decreaseCountArr: decreaseCountArr)
         } catch {
             print("\(error)")
         }
@@ -36,15 +36,17 @@ struct JuiceMaker {
     }
     
     
-    private func makeJuice(fruits: [FruitStore.Fruit], countArr: [Int]) {
+    private func makeJuice(fruits: [FruitStore.Fruit], decreaseCountArr: [Int]) throws {
+        
         for index in 0 ..< fruits.count {
-            fruitStore.updateFruitStock(inputFruit: fruits[index], count: countArr[index])
+            try fruitStore.updateFruitStock(inputFruit: fruits[index], count: decreaseCountArr[index])
         }
+        
     }
     
-    private func orderConvertToDictionary(juice: String) throws -> [FruitStore.Fruit: Int] {
+    private func orderConvertToDict(juice: String) throws -> [FruitStore.Fruit: Int] {
         guard let confirmJuice = Recipe(rawValue: juice) else { throw Errorcase.canNotFound }
-        return confirmJuice.dereaseDict
+        return confirmJuice.juiceIngredient
         
     }
     
@@ -54,8 +56,8 @@ struct JuiceMaker {
     }
     
     private func convertFruitArr(fruitDict:[FruitStore.Fruit: Int]) -> [FruitStore.Fruit] {
-        let fruitArr: [FruitStore.Fruit] = fruitDict.map{$0.key}
-        return fruitArr
+        let fruits: [FruitStore.Fruit] = fruitDict.map{$0.key}
+        return fruits
     }
     
     
@@ -71,17 +73,17 @@ struct JuiceMaker {
         case strawberryBananaJuice = "딸바 주스"
         case mangoKiwiJuice = "망키 주스"
         
-        var dereaseDict: [FruitStore.Fruit: Int] {
+        var juiceIngredient: [FruitStore.Fruit: Int] {
             switch self {
-            case .strawberryJuice: return [FruitStore.Fruit(name: "딸기"): 16]
-            case .bananaJuice: return [FruitStore.Fruit(name: "바나나"): 2]
-            case .pineappleJuice: return [FruitStore.Fruit(name: "파인애플"): 2]
-            case .mangoJuice: return [FruitStore.Fruit(name: "망고"): 3]
-            case .kiwiJuice: return [FruitStore.Fruit(name: "키위"): 3]
-            case .strawberryBananaJuice: return [FruitStore.Fruit(name: "딸기"): 10,
-                                                 FruitStore.Fruit(name: "바나나"): 1]
-            case .mangoKiwiJuice: return [FruitStore.Fruit(name: "망고"): 2,
-                                          FruitStore.Fruit(name: "키위"): 1]
+            case .strawberryJuice: return [FruitStore.Fruit(name: "딸기"): -16]
+            case .bananaJuice: return [FruitStore.Fruit(name: "바나나"): -2]
+            case .pineappleJuice: return [FruitStore.Fruit(name: "파인애플"): -2]
+            case .mangoJuice: return [FruitStore.Fruit(name: "망고"): -3]
+            case .kiwiJuice: return [FruitStore.Fruit(name: "키위"): -3]
+            case .strawberryBananaJuice: return [FruitStore.Fruit(name: "딸기"): -10,
+                                                 FruitStore.Fruit(name: "바나나"): -1]
+            case .mangoKiwiJuice: return [FruitStore.Fruit(name: "망고"): -2,
+                                          FruitStore.Fruit(name: "키위"): -1]
             }
         }
     }
