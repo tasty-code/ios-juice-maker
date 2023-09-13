@@ -13,13 +13,13 @@ struct JuiceMaker {
     func makeJuice(_ order: Juice) {
         do {
             let getOrder = try soldOutChecker(order)
-            fruitStorage.stockCalculater(getOrder)
+            fruitStorage.stockCalculator(getOrder)
         } catch {
             print(error)
         }
     }
     
-    private func soldOutChecker(_ menu: Juice) throws -> Juice? {
+    private func soldOutChecker(_ menu: Juice) throws -> Juice {
         let strawberry = fruitStorage.strawberry
         let banana = fruitStorage.banana
         let kiwi = fruitStorage.kiwi
@@ -93,6 +93,5 @@ struct JuiceMaker {
             }
             return .mangoKiwiJuice
         }
-        return nil
     }
 }
