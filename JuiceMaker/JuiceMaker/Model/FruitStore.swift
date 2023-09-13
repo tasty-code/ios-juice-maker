@@ -35,8 +35,8 @@ class FruitStore {
         return remainedCount
     }
     
-    func changeCount(storedFruit: Fruit, withCount: UInt) {
-        fruitInventory[storedFruit] = withCount
+    func changeCount(storedFruit: Fruit, newCount: UInt) {
+        fruitInventory[storedFruit] = newCount
     }
     
     func increaseCount(storedFruit: Fruit) {
