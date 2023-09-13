@@ -7,10 +7,10 @@
 
 import Foundation
 
-enum StockError: Error, CustomStringConvertible {
+enum StockError: Error, CustomDebugStringConvertible {
     case emptyStock
     
-    var description: String {
-        return "재고가 부족합니다."
+    var debugDescription: String {
+        return "쥬스를 만들기 위한 재고가 부족합니다"
     }
 }

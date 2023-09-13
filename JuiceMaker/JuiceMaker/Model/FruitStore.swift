@@ -46,7 +46,7 @@ final class FruitStore {
             }
             print("\(name)쥬스를 만들었습니다.")
         } catch {
-            print("\(name)쥬스를 만들기 위한 \(error)")
+            debugPrint(name, error)
         }
     }
     
