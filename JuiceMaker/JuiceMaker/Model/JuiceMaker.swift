@@ -29,7 +29,11 @@ struct JuiceMaker {
     private func checkStock(fruits: [FruitStore.Fruit], decreaseCountArr: [Int]) throws {
         
         for index in 0 ..< fruits.count {
-            guard fruitStore.fruitList[index].stock > abs(decreaseCountArr[index]) - 1 else { throw Errorcase.outOfStock }
+          
+            guard let listIndex = fruitStore.fruitList.firstIndex(where: {$0.name == fruits[index].name}) else {
+                throw Errorcase.outOfStock
+            }
+            guard fruitStore.fruitList[listIndex].stock > abs(decreaseCountArr[index]) - 1 else { throw Errorcase.outOfStock }
         }
     }
     
@@ -83,7 +87,7 @@ struct JuiceMaker {
             case .strawberryJuice: return [FruitStore.Fruit(name: "딸기"): -16]
             case .bananaJuice: return [FruitStore.Fruit(name: "바나나"): -2]
             case .pineappleJuice: return [FruitStore.Fruit(name: "파인애플"): -2]
-            case .mangoJuice: return [FruitStore.Fruit(name: "망고"): -3]
+            case .mangoJuice: return [FruitStore.Fruit(name: "망고"): -13]
             case .kiwiJuice: return [FruitStore.Fruit(name: "키위"): -3]
             case .strawberryBananaJuice: return [FruitStore.Fruit(name: "딸기"): -10,
                                                  FruitStore.Fruit(name: "바나나"): -1]
