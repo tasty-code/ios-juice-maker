@@ -10,20 +10,20 @@ import Foundation
 struct JuiceMaker {
     private let fruitStore = FruitStore()
     
-    func mixJuice(of menu: JuiceMenu) throws {
-        let fruitCheck = try IsEnoughFruit(of: menu)
+    func makeJuice(order: JuiceMenu) throws {
+        let fruitCheck = try isEnoughFruit(order: order)
         if fruitCheck == false {
             throw InventoryError.noLongerConsumeError
         }
         
-        let recipe = menu.recipe
+        let recipe = order.recipe
         for (fruit, count) in recipe {
             try fruitStore.consume(storedFruit: fruit, withCount: count)
         }
     }
     
-    private func IsEnoughFruit(of menu: JuiceMenu) throws -> Bool {
-        let recipe = menu.recipe
+    private func isEnoughFruit(order: JuiceMenu) throws -> Bool {
+        let recipe = order.recipe
         for (fruit, count) in recipe {
             let remainedFruit = try fruitStore.remainingCount(storedFruit: fruit)
             
