@@ -29,7 +29,7 @@ struct JuiceMaker {
     private func checkStock(fruits: [FruitStore.Fruit], decreaseCountArr: [Int]) throws {
         
         for index in 0 ..< fruits.count {
-            guard fruits[index].stock > abs(decreaseCountArr[index]) - 1 else { throw Errorcase.outOfStock }
+            guard fruitStore.fruitList[index].stock > abs(decreaseCountArr[index]) - 1 else { throw Errorcase.outOfStock }
         }
     }
     
