@@ -239,13 +239,7 @@
                         <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="bananaJuiceOrderButton" destination="y2A-PH-DJY" id="3kK-3q-yza"/>
-                        <outlet property="kiwiJuiceOrderButton" destination="wcW-7H-RXw" id="xnk-i0-MrY"/>
-                        <outlet property="mangoJuiceOrderButton" destination="q6G-4X-bVm" id="koK-cU-48V"/>
-                        <outlet property="mangoKiwiMixJuiceOrderButton" destination="zzl-05-bVq" id="Msf-pe-NrF"/>
-                        <outlet property="pineappleJuiceOrderButton" destination="BFb-ka-wGA" id="9d2-4A-DPG"/>
-                        <outlet property="strawberryBananaMixJuiceOrderButton" destination="zzl-05-bVq" id="gjn-CZ-i7l"/>
-                        <outlet property="strawberryJuiceOrderButton" destination="avd-o5-3JM" id="NUD-19-M37"/>
+                        <outlet property="orderJuiceButton" destination="q6G-4X-bVm" id="cBm-2Q-1FE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
