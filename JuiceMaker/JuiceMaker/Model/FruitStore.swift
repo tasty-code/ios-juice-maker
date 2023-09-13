@@ -31,7 +31,7 @@ final class FruitStore {
 
 // MARK: Nested Types
 extension FruitStore {
-    @frozen enum JuiceType: String {
+    @frozen private enum JuiceType: String {
         case strawberryJuice = "딸기쥬스"
         case bananaJuice = "바나나쥬스"
         case kiwiJuice = "키위쥬스"
@@ -53,11 +53,11 @@ extension FruitStore {
         }
     }
     
-    @frozen enum FruitType: CaseIterable {
+    @frozen private enum FruitType: CaseIterable {
         case strawberry, banana, kiwi, pineapple, mango
     }
     
-    struct Fruit {
+    private struct Fruit {
         let fruitType: FruitType
         let quantity: Int
         
