@@ -41,7 +41,6 @@ class FruitStore {
   
   func getNum(fruitName: Fruit) -> Int {
     let currentNum = inventory[fruitName] ?? 0
-    print(currentNum)
     return currentNum
   }
   
