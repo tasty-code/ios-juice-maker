@@ -1,5 +1,5 @@
 //
-//  FruitJuice.swift
+//  JuiceMenu.swift
 //  JuiceMaker
 //
 //  Created by 김경록 on 2023/09/12.
@@ -8,7 +8,7 @@
 import Foundation
 
 @frozen
-enum FruitJuice: Int, CustomStringConvertible {
+enum JuiceMenu: Int, CustomStringConvertible {
     case strawberry
     case banana
     case pineapple

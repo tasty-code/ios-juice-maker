@@ -36,15 +36,15 @@ final class ViewController: UIViewController {
                                               mangoQuantityLabel]
         
         for label in fruitQuantityLabels {
-            guard let name = FruitJuice(rawValue: label.tag) else { return }
+            guard let name = JuiceMenu(rawValue: label.tag) else { return }
             
             let fruitQuantity = juiceMaker.fruitStore.fruitDictionary[name, default: 10]
             label.text = String(fruitQuantity)
         }
     }
-    
+
     @IBAction func pressOrderButton(_ button: UIButton)  {
-        guard let fruitName = FruitJuice(rawValue: button.tag) else { return }
+        guard let fruitName = JuiceMenu(rawValue: button.tag) else { return }
         juiceMaker.fruitStore.makeJuice(of: fruitName)
         
         displayFruitQuantity()

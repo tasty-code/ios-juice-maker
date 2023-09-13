@@ -11,8 +11,10 @@ final class FruitStore {
     
     // MARK: - Properties
     
-    var fruitNames: [FruitJuice] = [.strawberry, .banana, .pineapple, .kiwi, .mango]
-    var fruitDictionary: [FruitJuice: Int] = [:]
+    private var fruitNames: [JuiceMenu] = [.strawberry, .banana, .pineapple, .kiwi, .mango]
+    var fruitDictionary: [JuiceMenu: Int] = [:]
+    
+    // MARK: - Init
     
     init() {
         fillFruitStock()
@@ -26,25 +28,21 @@ final class FruitStore {
         }
     }
     
-    func makeJuice(of name: FruitJuice) {
+    func makeJuice(of name: JuiceMenu) {
         do {
             switch name {
             case .strawberry:
-                try checkJuiceStock(name, necessaryCount: 13)
-            case .banana:
-                try checkJuiceStock(name, necessaryCount: 2)
-            case .pineapple:
-                try checkJuiceStock(name, necessaryCount: 2)
-            case .kiwi:
-                try checkJuiceStock(name, necessaryCount: 3)
-            case .mango:
-                try checkJuiceStock(name, necessaryCount: 3)
+                try calculateJuiceStock(name, necessaryCount: 13)
+            case .banana, .pineapple:
+                try calculateJuiceStock(name, necessaryCount: 2)
+            case .kiwi, .mango:
+                try calculateJuiceStock(name, necessaryCount: 3)
             case .strawberryBanana:
-                try checkJuiceStock(.strawberry, necessaryCount: 10)
-                try checkJuiceStock(.banana, necessaryCount: 1)
+                try calculateJuiceStock(.strawberry, necessaryCount: 10)
+                try calculateJuiceStock(.banana, necessaryCount: 1)
             case .mangoKiwi:
-                try checkJuiceStock(.mango, necessaryCount: 2)
-                try checkJuiceStock(.kiwi, necessaryCount: 1)
+                try calculateJuiceStock(.mango, necessaryCount: 2)
+                try calculateJuiceStock(.kiwi, necessaryCount: 1)
             }
             print("\(name)쥬스를 만들었습니다.")
         } catch {
@@ -52,10 +50,15 @@ final class FruitStore {
         }
     }
     
-    func checkJuiceStock(_ name: FruitJuice, necessaryCount: Int) throws {
+    func calculateJuiceStock(_ name: JuiceMenu, necessaryCount: Int) throws {
+        try checkJuiceStock(of: name, necessaryCount: necessaryCount)
+
+        fruitDictionary[name, default: .defaultStock] -= necessaryCount
+    }
+
+    private func checkJuiceStock(of name: JuiceMenu, necessaryCount: Int) throws {
         if fruitDictionary[name, default: .defaultStock] < necessaryCount {
             throw StockError.emptyStock
         }
-        fruitDictionary[name, default: .defaultStock] -= necessaryCount
     }
 }
