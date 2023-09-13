@@ -21,7 +21,7 @@ struct JuiceMaker {
             try checkStock(fruits: fruitArr, decreaseCountArr: decreaseCountArr)
             try makeJuice(fruits: fruitArr, decreaseCountArr: decreaseCountArr)
         } catch {
-            print("\(error)")
+            debugPrint(error)
         }
     }
     
@@ -31,9 +31,9 @@ struct JuiceMaker {
         for index in 0 ..< fruits.count {
           
             guard let listIndex = fruitStore.fruitList.firstIndex(where: {$0.name == fruits[index].name}) else {
-                throw Errorcase.outOfStock
+                throw ErrorCase.outOfStock
             }
-            guard fruitStore.fruitList[listIndex].stock > abs(decreaseCountArr[index]) - 1 else { throw Errorcase.outOfStock }
+            guard fruitStore.fruitList[listIndex].stock > decreaseCountArr[index] - 1 else { throw ErrorCase.outOfStock }
         }
     }
     
@@ -41,14 +41,14 @@ struct JuiceMaker {
     private func makeJuice(fruits: [FruitStore.Fruit], decreaseCountArr: [Int]) throws {
         
         for index in 0 ..< fruits.count {
-            try fruitStore.updateFruitStock(inputFruit: fruits[index], count: decreaseCountArr[index])
+            try subtractFruitStock(inputFruit: fruits[index], count: decreaseCountArr[index])
         }
     }
     
     
     private func orderConvertToDict(juice: String) throws -> [FruitStore.Fruit: Int] {
         
-        guard let confirmJuice = Recipe(rawValue: juice) else { throw Errorcase.canNotFound }
+        guard let confirmJuice = Recipe(rawValue: juice) else { throw ErrorCase.canNotFound }
         
         return confirmJuice.juiceIngredient
     }
@@ -70,9 +70,15 @@ struct JuiceMaker {
     }
     
     
+    private func subtractFruitStock(inputFruit: FruitStore.Fruit, count: Int) throws {
+        guard let index = fruitStore.fruitList.firstIndex(where: {$0.name == inputFruit.name}) else {
+            throw ErrorCase.canNotFound
+        }
+        
+        fruitStore.fruitList[index].stock -= count
+    }
     
-    
-    enum Recipe: String {
+    private enum Recipe: String {
         
         case strawberryJuice = "딸기 주스"
         case bananaJuice = "바나나 주스"
@@ -84,15 +90,28 @@ struct JuiceMaker {
         
         var juiceIngredient: [FruitStore.Fruit: Int] {
             switch self {
-            case .strawberryJuice: return [FruitStore.Fruit(name: "딸기"): -16]
-            case .bananaJuice: return [FruitStore.Fruit(name: "바나나"): -2]
-            case .pineappleJuice: return [FruitStore.Fruit(name: "파인애플"): -2]
-            case .mangoJuice: return [FruitStore.Fruit(name: "망고"): -13]
-            case .kiwiJuice: return [FruitStore.Fruit(name: "키위"): -3]
-            case .strawberryBananaJuice: return [FruitStore.Fruit(name: "딸기"): -10,
-                                                 FruitStore.Fruit(name: "바나나"): -1]
-            case .mangoKiwiJuice: return [FruitStore.Fruit(name: "망고"): -2,
-                                          FruitStore.Fruit(name: "키위"): -1]
+            case .strawberryJuice:
+                return [FruitStore.Fruit(name: "딸기"): 16]
+                
+            case .bananaJuice:
+                return [FruitStore.Fruit(name: "바나나"): 2]
+                
+            case .pineappleJuice:
+                return [FruitStore.Fruit(name: "파인애플"): 2]
+                
+            case .mangoJuice:
+                return [FruitStore.Fruit(name: "망고"): 3]
+                
+            case .kiwiJuice:
+                return [FruitStore.Fruit(name: "키위"): 3]
+                
+            case .strawberryBananaJuice:
+                return [FruitStore.Fruit(name: "딸기"): 10,
+                        FruitStore.Fruit(name: "바나나"): 1]
+                
+            case .mangoKiwiJuice:
+                return [FruitStore.Fruit(name: "망고"): 2,
+                        FruitStore.Fruit(name: "키위"): 1]
             }
         }
     }

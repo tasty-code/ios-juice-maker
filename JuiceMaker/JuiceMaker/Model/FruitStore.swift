@@ -11,15 +11,15 @@ class FruitStore {
     
     var fruitList: [Fruit]
     
-    init(fruits: [Fruit]) {
-        self.fruitList = fruits
+    init(fruitList: [Fruit]) {
+        self.fruitList = fruitList
     }
     
     
-    func updateFruitStock(inputFruit: Fruit, count: Int) throws {
+    func addFruitStock(inputFruit: Fruit, count: Int) throws {
         
         guard let index = fruitList.firstIndex(where: {$0.name == inputFruit.name}) else {
-            throw Errorcase.canNotFound
+            throw ErrorCase.canNotFound
         }
         
         fruitList[index].stock += count
