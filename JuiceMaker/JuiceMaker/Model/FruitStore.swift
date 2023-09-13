@@ -65,6 +65,8 @@ class FruitStore {
             mango.currentStock -= mangoConsumption
             kiwi.currentStock -= kiwiConsumption
         }
+        
+        print(getJuiceName.message)
     }
     
     func stockManager(_ fruit: String) {
