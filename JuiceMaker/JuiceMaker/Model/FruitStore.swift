@@ -6,7 +6,6 @@
 
 import Foundation
 
-// 과일 저장소 타입
 final class FruitStore {
     private var fruitList = [Fruit: Int]()
     
@@ -19,21 +18,18 @@ final class FruitStore {
     func getRemains(_ ingredient: Array<Fruit>) -> [Fruit: Int] {
         var remains = [Fruit: Int]()
         for fruit in ingredient {
-            remains.updateValue(fruitList[fruit]!, forKey: fruit)
+            remains[fruit] = fruitList[fruit]
         }
         return remains
     }
     
-    func add(_ ingredient: [Fruit: Int]) -> Void {
-        for (fruit, amount) in ingredient {
-            self.fruitList.updateValue(fruitList[fruit]! + amount, forKey: fruit)
-        }
+    func add(_ inStockList: [Fruit: Int]) -> Void {
+        fruitList.merge(inStockList) { stock, new in
+            return stock + new }
     }
     
-    func deduct(_ ingredient: [Fruit: Int]) -> Void {
-        for (fruit, amount) in ingredient {
-            self.fruitList.updateValue(fruitList[fruit]! - amount, forKey: fruit)
-        }
+    func deduct(_ usedList: [Fruit: Int]) -> Void {
+        fruitList.merge(usedList) { stock, used in
+            return stock - used }
     }
 }
-

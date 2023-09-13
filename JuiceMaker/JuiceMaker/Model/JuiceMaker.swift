@@ -26,7 +26,6 @@ struct JuiceMaker {
     
     func checkAvailable(_ choice: Menu) throws -> Menu {
         let recipe = getRecipe(choice)
-        // type casting
         let keys = Array(recipe.keys) as [Fruit]
         let remains = myFruitStore.getRemains(keys)
         
@@ -41,6 +40,6 @@ struct JuiceMaker {
     
     func makeJuice(_ menu: Menu) {
         myFruitStore.deduct(menu.recipe)
-        print("\(menu.rawValue) 완성")
+        print("\(menu.juice) 완성")
     }
 }
