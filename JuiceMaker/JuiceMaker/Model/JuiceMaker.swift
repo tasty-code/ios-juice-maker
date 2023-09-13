@@ -29,6 +29,7 @@ struct JuiceMaker {
     private func checkStock(fruits: [FruitStore.Fruit], decreaseCountArr: [Int]) throws {
         
         for index in 0 ..< fruits.count {
+          
             guard let listIndex = fruitStore.fruitList.firstIndex(where: {$0.name == fruits[index].name}) else {
                 throw Errorcase.outOfStock
             }
