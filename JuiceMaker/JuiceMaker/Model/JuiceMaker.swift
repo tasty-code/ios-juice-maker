@@ -15,23 +15,21 @@ struct JuiceMaker {
         
         do {
             let fruitDict: [FruitStore.Fruit: Int] = try orderConvertToDict(juice: juiceName)
-            
-            
             let fruitArr: [FruitStore.Fruit] = convertFruitArr(fruitDict: fruitDict)
             let decreaseCountArr: [Int] = convertDecreaseCountArr(fruitDict: fruitDict)
             
-            
             try checkStock(fruits: fruitArr, decreaseCountArr: decreaseCountArr)
-
             try makeJuice(fruits: fruitArr, decreaseCountArr: decreaseCountArr)
         } catch {
             print("\(error)")
         }
     }
     
-    private func checkStock(fruits: [FruitStore.Fruit], decreaseCountArr: [Int]) throws{
+    
+    private func checkStock(fruits: [FruitStore.Fruit], decreaseCountArr: [Int]) throws {
+        
         for index in 0 ..< fruits.count {
-            guard fruits[index].stock > abs(decreaseCountArr[index]) - 1 else {throw Errorcase.outOfStock}
+            guard fruits[index].stock > abs(decreaseCountArr[index]) - 1 else { throw Errorcase.outOfStock }
         }
     }
     
@@ -41,22 +39,29 @@ struct JuiceMaker {
         for index in 0 ..< fruits.count {
             try fruitStore.updateFruitStock(inputFruit: fruits[index], count: decreaseCountArr[index])
         }
-        
     }
+    
     
     private func orderConvertToDict(juice: String) throws -> [FruitStore.Fruit: Int] {
-        guard let confirmJuice = Recipe(rawValue: juice) else { throw Errorcase.canNotFound }
-        return confirmJuice.juiceIngredient
         
+        guard let confirmJuice = Recipe(rawValue: juice) else { throw Errorcase.canNotFound }
+        
+        return confirmJuice.juiceIngredient
     }
     
+    
     private func convertDecreaseCountArr(fruitDict: [FruitStore.Fruit: Int]) -> [Int] {
+        
         let decreaseCountArr: [Int] = fruitDict.map{$0.value}
+        
         return decreaseCountArr
     }
     
+    
     private func convertFruitArr(fruitDict:[FruitStore.Fruit: Int]) -> [FruitStore.Fruit] {
+
         let fruits: [FruitStore.Fruit] = fruitDict.map{$0.key}
+        
         return fruits
     }
     

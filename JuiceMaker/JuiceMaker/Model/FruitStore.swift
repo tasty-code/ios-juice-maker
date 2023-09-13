@@ -15,10 +15,6 @@ class FruitStore {
         self.fruitList = fruits
     }
     
-    struct Fruit: Hashable {
-        var name: String
-        var stock: Int = 10
-    }
     
     func updateFruitStock(inputFruit: Fruit, count: Int) throws {
         
@@ -27,21 +23,21 @@ class FruitStore {
         }
         
         fruitList[index].stock += count
-        print("\(fruitList[index].stock)")
-        
     }
-    
     
 }
 
-enum Errorcase: Error, CustomDebugStringConvertible{
-    case outOfStock, canNotFound
+
+
+extension FruitStore {
     
-    var debugDescription: String {
-        switch self {
-        case .canNotFound: return "해당 과일을 찾을 수 없읍니다."
-        case .outOfStock: return "해당 과일의 재고가 부족합니다."
-        }
+    struct Fruit: Hashable {
+        var name: String
+        var stock: Int = 10
     }
+    
 }
+
+
+
 
