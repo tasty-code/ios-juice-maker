@@ -8,9 +8,9 @@ import Foundation
 
 // 쥬스 메이커 타입
 struct JuiceMaker {
-    var fruitStorage: FruitStore = FruitStore(strawberry: FruitStock(currentStock: 10, singleConsumption: 16, combineConsumption: 10), banana: FruitStock(currentStock: 10, singleConsumption: 2, combineConsumption: 1), pineapple: FruitStock(currentStock: 10, singleConsumption: 2), kiwi: FruitStock(currentStock: 10, singleConsumption: 3, combineConsumption: 1), mango: FruitStock(currentStock: 10, singleConsumption: 3, combineConsumption: 2))
+    var fruitStorage = FruitStore.shared
     
-    func currentStockCheck(_ menu: Juice) {
+    func soldOutChecker(_ menu: Juice) -> Juice? {
         let strawberry = fruitStorage.strawberry
         let banana = fruitStorage.banana
         let kiwi = fruitStorage.kiwi
@@ -19,31 +19,21 @@ struct JuiceMaker {
         
         switch menu {
         case .strawberryJuice:
-            if strawberry.currentStock >= strawberry.singleConsumption {
-                fruitStorage.stockCalculater(.strawberryJuice)
-            }
+            return strawberry.currentStock >= strawberry.singleConsumption ? .strawberryJuice : nil
         case .bananaJuice:
-            if banana.currentStock >= banana.singleConsumption {
-                fruitStorage.stockCalculater(.bananaJuice)
-            }
+            return banana.currentStock >= banana.singleConsumption ? .bananaJuice : nil
         case .kiwiJuice:
-            if kiwi.currentStock >= kiwi.singleConsumption {
-                fruitStorage.stockCalculater(.kiwiJuice)
-            }
+            return  kiwi.currentStock >= kiwi.singleConsumption ? .kiwiJuice : nil
         case .pineappleJuice:
-            if pineapple.currentStock >= pineapple.singleConsumption {
-                fruitStorage.stockCalculater(.pineappleJuice)
-            }
+        return  pineapple.currentStock >= pineapple.singleConsumption ? .pineappleJuice : nil
         case .mangoJuice:
-            if mango.currentStock >= mango.singleConsumption {
-                fruitStorage.stockCalculater(.mangoJuice)
-            }
+            return  mango.currentStock >= mango.singleConsumption ? .mangoJuice : nil
         case .strawberryBananaJuice:
-            guard let strawberryConsumption = strawberry.combineConsumption else{
-                return
+            guard let strawberryConsumption = strawberry.combineConsumption else {
+                return nil
             }
-            guard let bananaConsumption = banana.combineConsumption else{
-                return
+            guard let bananaConsumption = banana.combineConsumption else {
+                return nil
             }
             if strawberry.currentStock < strawberryConsumption {
                 print("딸기 재고가 부족합니다.")
@@ -51,27 +41,26 @@ struct JuiceMaker {
             }
             if banana.currentStock < bananaConsumption {
                 print("바나나 재고가 부족합니다.")
-                break
+                return nil
             }
-            fruitStorage.stockCalculater(.strawberryBananaJuice)
+            return .strawberryBananaJuice
         case .mangoKiwiJuice:
-            guard let mangoConsumption = mango.combineConsumption else{
-                return
+            guard let mangoConsumption = mango.combineConsumption else {
+                return nil
             }
-            guard let kiwiConsumption = kiwi.combineConsumption else{
-                return
+            guard let kiwiConsumption = kiwi.combineConsumption else {
+                return nil
             }
             if mango.currentStock < mangoConsumption {
                 print("망고 재고가 부족합니다.")
                 break
             }
-                
             if kiwi.currentStock < kiwiConsumption {
                 print("키위 재고가 부족합니다.")
-                break
+                return nil
             }
-            fruitStorage.stockCalculater(.mangoKiwiJuice)
+            return .mangoKiwiJuice
         }
+        return nil
     }
 }
-

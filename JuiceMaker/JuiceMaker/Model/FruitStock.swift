@@ -8,12 +8,11 @@
 import Foundation
 
 class FruitStock {
-    var currentStock: Int
+    var currentStock: Int = 10
     var singleConsumption: Int
     var combineConsumption: Int?
     
-    init(currentStock: Int, singleConsumption: Int, combineConsumption: Int? = nil) {
-        self.currentStock = currentStock
+    init(singleConsumption: Int, combineConsumption: Int? = nil) {
         self.singleConsumption = singleConsumption
         self.combineConsumption = combineConsumption
     }

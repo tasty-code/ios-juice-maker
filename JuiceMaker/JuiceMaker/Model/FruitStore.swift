@@ -8,6 +8,13 @@ import Foundation
 
 // 과일 저장소 타입
 class FruitStore {
+    static let shared = FruitStore(
+        strawberry: FruitStock(singleConsumption: 16, combineConsumption: 10),
+        banana: FruitStock(singleConsumption: 2, combineConsumption: 1),
+        pineapple: FruitStock(singleConsumption: 2),
+        kiwi: FruitStock(singleConsumption: 3, combineConsumption: 1),
+        mango: FruitStock(singleConsumption: 3, combineConsumption: 2)
+    )
     
     var strawberry: FruitStock
     var banana: FruitStock
@@ -15,7 +22,7 @@ class FruitStore {
     var kiwi: FruitStock
     var mango: FruitStock
     
-    init(strawberry: FruitStock, banana: FruitStock, pineapple: FruitStock, kiwi: FruitStock, mango: FruitStock) {
+    private init(strawberry: FruitStock, banana: FruitStock, pineapple: FruitStock, kiwi: FruitStock, mango: FruitStock) {
         self.strawberry = strawberry
         self.banana = banana
         self.pineapple = pineapple
@@ -23,8 +30,12 @@ class FruitStore {
         self.mango = mango
     }
     
-    func stockCalculater(_ juiceName: Juice) {
-        switch juiceName {
+    func stockCalculater(_ juiceName: Juice?) {
+        guard let getJuiceName = juiceName else {
+            return
+        }
+        
+        switch getJuiceName {
         case .strawberryJuice:
             strawberry.currentStock -= strawberry.singleConsumption
         case .bananaJuice:
