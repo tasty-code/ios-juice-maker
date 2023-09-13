@@ -30,12 +30,8 @@ class FruitStore {
         self.mango = mango
     }
     
-    func stockCalculater(_ juiceName: Juice?) {
-        guard let getJuiceName = juiceName else {
-            return
-        }
-        
-        switch getJuiceName {
+    func stockCalculator(_ juiceName: Juice) {
+        switch juiceName {
         case .strawberryJuice:
             strawberry.currentStock -= strawberry.singleConsumption
         case .bananaJuice:
@@ -66,7 +62,7 @@ class FruitStore {
             kiwi.currentStock -= kiwiConsumption
         }
         
-        print(getJuiceName.message)
+        print(juiceName.message)
     }
     
     func stockManager(_ fruit: String) {
