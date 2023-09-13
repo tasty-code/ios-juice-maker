@@ -61,7 +61,7 @@ class FruitStore {
             mango.currentStock -= mangoConsumption
             kiwi.currentStock -= kiwiConsumption
         }
-        
+
         print(juiceName.message)
     }
     
