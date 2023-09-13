@@ -37,6 +37,16 @@ final class FruitStore {
             try updateInventoryStock(with: ingredient)
         }
     }
+    
+    func checkInventoryStock() -> [String: Int] {
+        var itemDict: [String: Int] = [:]
+
+        for item in self.inventory {
+            itemDict[item.key.rawValue] = item.value
+        }
+
+        return itemDict
+    }
 }
 
 // MARK: Nested Types
@@ -63,8 +73,12 @@ extension FruitStore {
         }
     }
     
-    @frozen private enum FruitType: CaseIterable {
-        case strawberry, banana, kiwi, pineapple, mango
+    @frozen private enum FruitType: String, CaseIterable {
+        case strawberry = "딸기"
+        case banana = "바나나"
+        case kiwi = "키위"
+        case pineapple = "파인애플"
+        case mango = "망고"
     }
     
     private struct Fruit {

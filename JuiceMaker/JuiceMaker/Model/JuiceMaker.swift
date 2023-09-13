@@ -13,4 +13,8 @@ struct JuiceMaker {
     func makeJuice(juiceName: String) throws {
         try fruitStore.receiveOrder(juiceName: juiceName)
     }
+    
+    func checkFruitStoreInventory() -> [String: Int] {
+        return fruitStore.checkInventoryStock()
+    }
 }
