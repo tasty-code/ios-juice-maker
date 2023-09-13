@@ -19,7 +19,7 @@ class FruitStore {
   }
   
   private let initValue = 10
-  private var inventory = ["strawberry": 0, "pineapple": 0, "banana": 0, "kiwi": 0, "mango": 0]
+  private var inventory = [Fruit.strawberry: 0, Fruit.pineapple: 0, Fruit.banana: 0, Fruit.kiwi: 0, Fruit.mango: 0]
   
   init() {
     for fruitList in inventory {
@@ -28,25 +28,28 @@ class FruitStore {
   }
   
   func add(fruitName: Fruit, num: Int) {
-    guard let currentNum = getNum(fruitName: fruitName) else { return }
+    let currentNum = getNum(fruitName: fruitName)
     let result = currentNum + num
-    inventory.updateValue(result, forKey: fruitName.rawValue)
+    inventory.updateValue(result, forKey: fruitName)
   }
   
   func subtract(fruitName: Fruit, num: Int) {
-    guard let currentNum = getNum(fruitName: fruitName) else { return }
+    let currentNum = getNum(fruitName: fruitName)
     let result = currentNum - num
-    inventory.updateValue(result, forKey: fruitName.rawValue)
+    inventory.updateValue(result, forKey: fruitName)
   }
   
-  func getNum(fruitName: Fruit) -> Int? {
-    guard let currentNum = inventory[fruitName.rawValue] else { return nil }
+  func getNum(fruitName: Fruit) -> Int {
+    let currentNum = inventory[fruitName] ?? 0
     print(currentNum)
     return currentNum
   }
   
-  func checkInventory(fruitName: Fruit, num: Int) -> Bool {
-    guard let currentNum = getNum(fruitName: fruitName) else { return false }
-    return currentNum >= num
+  func checkInventory(fruitName: Fruit, num: Int) throws -> Bool {
+    let currentNum = getNum(fruitName: fruitName)
+    if currentNum < num {
+      throw FruitStoreError.outOfStock
+    }
+    return true
   }
 }
