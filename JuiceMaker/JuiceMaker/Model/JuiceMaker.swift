@@ -10,7 +10,16 @@ import Foundation
 struct JuiceMaker {
     var fruitStorage = FruitStore.shared
     
-    func soldOutChecker(_ menu: Juice) -> Juice? {
+    func makeJuice(_ order: Juice) {
+        do {
+            let getOrder = try soldOutChecker(order)
+            fruitStorage.stockCalculater(getOrder)
+        } catch {
+            print(error)
+        }
+    }
+    
+    private func soldOutChecker(_ menu: Juice) throws -> Juice? {
         let strawberry = fruitStorage.strawberry
         let banana = fruitStorage.banana
         let kiwi = fruitStorage.kiwi
@@ -19,45 +28,68 @@ struct JuiceMaker {
         
         switch menu {
         case .strawberryJuice:
-            return strawberry.currentStock >= strawberry.singleConsumption ? .strawberryJuice : nil
+            guard strawberry.currentStock >= strawberry.singleConsumption else {
+                throw ErrorPrinter.stockInsufficient(["딸기"])
+            }
+            return .strawberryJuice
         case .bananaJuice:
-            return banana.currentStock >= banana.singleConsumption ? .bananaJuice : nil
+            guard banana.currentStock >= banana.singleConsumption else {
+                throw ErrorPrinter.stockInsufficient(["바나나"])
+            }
+            return .bananaJuice
         case .kiwiJuice:
-            return  kiwi.currentStock >= kiwi.singleConsumption ? .kiwiJuice : nil
+            guard kiwi.currentStock >= kiwi.singleConsumption else {
+                throw ErrorPrinter.stockInsufficient(["키위"])
+            }
+            return .kiwiJuice
         case .pineappleJuice:
-        return  pineapple.currentStock >= pineapple.singleConsumption ? .pineappleJuice : nil
+            guard pineapple.currentStock >= pineapple.singleConsumption else {
+                throw ErrorPrinter.stockInsufficient(["파인애플"])
+            }
+        return .pineappleJuice
         case .mangoJuice:
-            return  mango.currentStock >= mango.singleConsumption ? .mangoJuice : nil
+            guard mango.currentStock >= mango.singleConsumption else {
+                throw ErrorPrinter.stockInsufficient(["망고"])
+            }
+            return .mangoJuice
         case .strawberryBananaJuice:
             guard let strawberryConsumption = strawberry.combineConsumption else {
-                return nil
+                throw ErrorPrinter.invalidInput
             }
             guard let bananaConsumption = banana.combineConsumption else {
-                return nil
+                throw ErrorPrinter.invalidInput
             }
+            
+            var insufficient: [String] = []
+            
             if strawberry.currentStock < strawberryConsumption {
-                print("딸기 재고가 부족합니다.")
-                break
+                insufficient.append("딸기")
             }
             if banana.currentStock < bananaConsumption {
-                print("바나나 재고가 부족합니다.")
-                return nil
+                insufficient.append("바나나")
+            }
+            guard insufficient.isEmpty else {
+                throw ErrorPrinter.stockInsufficient(insufficient)
             }
             return .strawberryBananaJuice
         case .mangoKiwiJuice:
             guard let mangoConsumption = mango.combineConsumption else {
-                return nil
+                throw ErrorPrinter.invalidInput
             }
             guard let kiwiConsumption = kiwi.combineConsumption else {
-                return nil
+                throw ErrorPrinter.invalidInput
             }
+            
+            var insufficient: [String] = []
+            
             if mango.currentStock < mangoConsumption {
-                print("망고 재고가 부족합니다.")
-                break
+                insufficient.append("망고")
             }
             if kiwi.currentStock < kiwiConsumption {
-                print("키위 재고가 부족합니다.")
-                return nil
+                insufficient.append("키위")
+            }
+            guard insufficient.isEmpty else {
+                throw ErrorPrinter.stockInsufficient(insufficient)
             }
             return .mangoKiwiJuice
         }
