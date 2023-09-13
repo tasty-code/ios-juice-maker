@@ -8,9 +8,19 @@ import Foundation
 
 final class FruitStore {
     // Properties
-    private var inventory: [FruitType: Int] = [
-        .strawberry: 10, .banana: 10, .kiwi: 10, .pineapple: 10, .mango: 10
-    ]
+    private var inventory: [FruitType: Int]
+    
+    init() {
+        let initialQuantity: Int = 10
+        
+        var inventory: [FruitType: Int] = [:]
+        
+        for fruitType in FruitType.allCases {
+            inventory[fruitType] = initialQuantity
+        }
+        
+        self.inventory = inventory
+    }
     
     func receiveOrder(juiceName: String) throws {
         // 쥬스 이름을 가지고 어떤 쥬스인지 확인, 그런 쥬스가 있으면 그 쥬스의 레시피를 확인
@@ -31,7 +41,7 @@ final class FruitStore {
 
 // MARK: Nested Types
 extension FruitStore {
-    @frozen private enum JuiceType: String {
+    private enum JuiceType: String {
         case strawberryJuice = "딸기쥬스"
         case bananaJuice = "바나나쥬스"
         case kiwiJuice = "키위쥬스"
