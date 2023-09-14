@@ -15,33 +15,30 @@ struct JuiceMaker {
         
         do {
             let fruitDict: [FruitStore.Fruit: Int] = try orderConvertToDict(juice: juiceName)
-            let fruitArr: [FruitStore.Fruit] = convertFruitArr(fruitDict: fruitDict)
-            let decreaseCountArr: [Int] = convertDecreaseCountArr(fruitDict: fruitDict)
             
-            try checkStock(fruits: fruitArr, decreaseCountArr: decreaseCountArr)
-            try makeJuice(fruits: fruitArr, decreaseCountArr: decreaseCountArr)
+            try checkStock(juiceIngredient: fruitDict)
+            try makeJuice(juiceIngredient: fruitDict)
+            
         } catch {
             debugPrint(error)
         }
     }
     
     
-    private func checkStock(fruits: [FruitStore.Fruit], decreaseCountArr: [Int]) throws {
-        
-        for index in 0 ..< fruits.count {
-          
-            guard let listIndex = fruitStore.fruitList.firstIndex(where: {$0.name == fruits[index].name}) else {
-                throw ErrorCase.outOfStock
+    private func checkStock(juiceIngredient: [FruitStore.Fruit: Int]) throws {
+        try juiceIngredient.forEach { fruit, count in
+            guard let listIndex = fruitStore.fruitList.firstIndex(where: {$0.name == fruit.name}) else {
+                throw ErrorCase.canNotFound
             }
-            guard fruitStore.fruitList[listIndex].stock > decreaseCountArr[index] - 1 else { throw ErrorCase.outOfStock }
+            guard fruitStore.fruitList[listIndex].stock > count - 1 else {throw ErrorCase.outOfStock}
         }
+
     }
     
     
-    private func makeJuice(fruits: [FruitStore.Fruit], decreaseCountArr: [Int]) throws {
-        
-        for index in 0 ..< fruits.count {
-            try subtractFruitStock(inputFruit: fruits[index], count: decreaseCountArr[index])
+    private func makeJuice(juiceIngredient: [FruitStore.Fruit: Int]) throws {
+        try juiceIngredient.forEach { fruit, count in
+            try subtractFruitStock(inputFruit: fruit, count: count)
         }
     }
     
@@ -53,21 +50,6 @@ struct JuiceMaker {
         return confirmJuice.juiceIngredient
     }
     
-    
-    private func convertDecreaseCountArr(fruitDict: [FruitStore.Fruit: Int]) -> [Int] {
-        
-        let decreaseCountArr: [Int] = fruitDict.map{$0.value}
-        
-        return decreaseCountArr
-    }
-    
-    
-    private func convertFruitArr(fruitDict:[FruitStore.Fruit: Int]) -> [FruitStore.Fruit] {
-
-        let fruits: [FruitStore.Fruit] = fruitDict.map{$0.key}
-        
-        return fruits
-    }
     
     
     private func subtractFruitStock(inputFruit: FruitStore.Fruit, count: Int) throws {
