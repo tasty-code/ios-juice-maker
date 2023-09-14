@@ -13,6 +13,7 @@ final class FruitStore {
     
     private var fruitNames: [JuiceMenu] = [.strawberry, .banana, .pineapple, .kiwi, .mango]
     private(set) var fruitDictionary: [JuiceMenu: Int] = [:]
+    private let defaultStock: Int = 10
     
     // MARK: - Init
     
@@ -24,7 +25,8 @@ final class FruitStore {
     
     private func fillFruitStock() {
         for name in fruitNames {
-            fruitDictionary[name] = .defaultStock
+            fruitDictionary[name] =
+            defaultStock
         }
     }
     
@@ -53,11 +55,11 @@ final class FruitStore {
     func calculateJuiceStock(_ name: JuiceMenu, necessaryCount: Int) throws {
         try checkJuiceStock(of: name, necessaryCount: necessaryCount)
 
-        fruitDictionary[name, default: .defaultStock] -= necessaryCount
+        fruitDictionary[name, default: defaultStock] -= necessaryCount
     }
 
     private func checkJuiceStock(of name: JuiceMenu, necessaryCount: Int) throws {
-        if fruitDictionary[name, default: .defaultStock] < necessaryCount {
+        if fruitDictionary[name, default: defaultStock] < necessaryCount {
             throw StockError.emptyStock
         }
     }
