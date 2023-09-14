@@ -10,11 +10,11 @@ import Foundation
 class FruitStore {
     static let shared = FruitStore()
     
-    var strawberry: Int
-    var banana: Int
-    var pineapple: Int
-    var mango: Int
-    var kiwi: Int
+    private(set) var strawberry: Int
+    private(set) var banana: Int
+    private(set) var pineapple: Int
+    private(set) var mango: Int
+    private(set) var kiwi: Int
     
     private init(strawberry: Int, banana: Int, pineapple: Int, mango: Int, kiwi: Int) {
         self.strawberry = strawberry
