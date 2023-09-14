@@ -18,14 +18,14 @@ struct JuiceMaker {
         
         let recipe = order.recipe
         for (fruit, count) in recipe {
-            try fruitStore.consume(storedFruit: fruit, withCount: count)
+            try fruitStore.consume(fruit: fruit, withCount: count)
         }
     }
     
     private func isEnoughFruit(order: JuiceMenu) throws -> Bool {
         let recipe = order.recipe
         for (fruit, count) in recipe {
-            let remainedFruit = try fruitStore.remainingCount(storedFruit: fruit)
+            let remainedFruit = try fruitStore.remainingCount(fruit: fruit)
             
             if remainedFruit < count {
                 return false
