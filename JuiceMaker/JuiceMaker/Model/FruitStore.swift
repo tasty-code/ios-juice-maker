@@ -19,7 +19,7 @@ class FruitStore {
     func addFruitStock(inputFruit: Fruit, count: Int) throws {
         
         guard let index = fruitList.firstIndex(where: {$0.name == inputFruit.name}) else {
-            throw ErrorCase.canNotFound
+            throw MessageLog.ErrorCase.canNotFound
         }
         
         fruitList[index].stock += count

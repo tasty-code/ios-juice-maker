@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class JuiceMakerViewController: UIViewController {
     
     let juiceMaker: JuiceMaker = JuiceMaker(fruitStore: FruitStore(fruitList: [
         FruitStore.Fruit(name: "딸기"),
@@ -18,7 +18,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         updateUI()
     }
     
@@ -35,7 +34,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func orderJuice(_ sender: UIButton) {
-        guard let juiceName = sender.restorationIdentifier else {return}
+        guard let juiceName = sender.restorationIdentifier else { return }
         juiceMaker.startOrder(juiceName: juiceName)
         updateUI()
     }

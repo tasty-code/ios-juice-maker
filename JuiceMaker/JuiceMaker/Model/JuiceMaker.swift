@@ -28,9 +28,9 @@ struct JuiceMaker {
     private func checkStock(juiceIngredient: [FruitStore.Fruit: Int]) throws {
         try juiceIngredient.forEach { fruit, count in
             guard let listIndex = fruitStore.fruitList.firstIndex(where: {$0.name == fruit.name}) else {
-                throw ErrorCase.canNotFound
+                throw MessageLog.ErrorCase.canNotFound
             }
-            guard fruitStore.fruitList[listIndex].stock > count - 1 else {throw ErrorCase.outOfStock}
+            guard fruitStore.fruitList[listIndex].stock > count - 1 else {throw MessageLog.ErrorCase.outOfStock}
         }
 
     }
@@ -45,7 +45,7 @@ struct JuiceMaker {
     
     private func orderConvertToDict(juice: String) throws -> [FruitStore.Fruit: Int] {
         
-        guard let confirmJuice = Recipe(rawValue: juice) else { throw ErrorCase.canNotFound }
+        guard let confirmJuice = Recipe(rawValue: juice) else { throw MessageLog.ErrorCase.canNotFound }
         
         return confirmJuice.juiceIngredient
     }
@@ -54,7 +54,7 @@ struct JuiceMaker {
     
     private func subtractFruitStock(inputFruit: FruitStore.Fruit, count: Int) throws {
         guard let index = fruitStore.fruitList.firstIndex(where: {$0.name == inputFruit.name}) else {
-            throw ErrorCase.canNotFound
+            throw MessageLog.ErrorCase.canNotFound
         }
         
         fruitStore.fruitList[index].stock -= count
