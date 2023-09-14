@@ -8,11 +8,11 @@ import Foundation
 
 // 과일 저장소 타입
 class FruitStore {
-    var strawberry: FruitStock
-    var banana: FruitStock
-    var pineapple: FruitStock
-    var kiwi: FruitStock
-    var mango: FruitStock
+    private var strawberry: FruitStock
+    private var banana: FruitStock
+    private var pineapple: FruitStock
+    private var kiwi: FruitStock
+    private var mango: FruitStock
     
     init(strawberry: FruitStock = FruitStock(name: "딸기", singleConsumption: 16, combineConsumption: 10),
          banana: FruitStock = FruitStock(name: "바나나", singleConsumption: 2, combineConsumption: 1),
@@ -27,7 +27,30 @@ class FruitStore {
         self.mango = mango
     }
     
-    func stockCalculator(_ juiceName: Juice) {
+    func showStockList(_ fruit: Juice) -> [FruitStock] {
+        switch fruit {
+        case .strawberryJuice:
+            return [strawberry]
+        case .bananaJuice:
+            return [banana]
+        case .kiwiJuice:
+            return [kiwi]
+        case .pineappleJuice:
+            return [pineapple]
+        case .mangoJuice:
+            return [mango]
+        case .strawberryBananaJuice:
+            return [strawberry, banana]
+        case .mangoKiwiJuice:
+            return [mango, kiwi]
+        }
+    }
+    
+    func changeCurrentStock(_ juiceName: Juice) {
+        stockCalculator(juiceName)
+    }
+    
+    private func stockCalculator(_ juiceName: Juice) {
         switch juiceName {
         case .strawberryJuice:
             strawberry.currentStock -= strawberry.singleConsumption
@@ -61,7 +84,7 @@ class FruitStore {
         print(juiceName.description)
     }
     
-    func stockManager(_ fruit: String) {
+    private func stockManager(_ fruit: String) {
         switch fruit {
         case "strawberryAdd":
             strawberry.currentStock += 1
