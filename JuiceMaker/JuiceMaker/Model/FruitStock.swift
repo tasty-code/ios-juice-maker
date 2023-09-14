@@ -7,12 +7,14 @@
 
 import Foundation
 
-class FruitStock {
+struct FruitStock {
     var currentStock: Int = 10
     var singleConsumption: Int
     var combineConsumption: Int?
+    let name: String
     
-    init(singleConsumption: Int, combineConsumption: Int? = nil) {
+    init(name: String, singleConsumption: Int, combineConsumption: Int? = nil) {
+        self.name = name
         self.singleConsumption = singleConsumption
         self.combineConsumption = combineConsumption
     }
