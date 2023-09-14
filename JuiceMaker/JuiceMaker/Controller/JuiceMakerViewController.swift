@@ -7,7 +7,7 @@
 import UIKit
 
 class JuiceMakerViewController: UIViewController {
-    private let juiceMaker: JuiceMaker = JuiceMaker()
+    private let juiceMaker = JuiceMaker()
     
     @IBOutlet weak var strawberryStockLabel: UILabel!
     @IBOutlet weak var bananaStockLabel: UILabel!
@@ -21,28 +21,19 @@ class JuiceMakerViewController: UIViewController {
     }
 
     @IBAction func makeJuice(_ sender: UIButton) {
-        guard let buttonLabel = sender.titleLabel?.text else { return }
-        guard let juiceName = formatButtonTextToJuiceName(buttonLabel) else { return }
+        guard let buttonId = sender.accessibilityIdentifier else { return }
         do {
-            try juiceMaker.makeJuice(juiceName: juiceName)
+            try juiceMaker.makeJuice(juiceName: buttonId)
             manageFruitStock()
+            showAlertCompletionJuiceMaking(buttonId)
         } catch let error {
-            let alert = UIAlertController(title: "\(error)", message: nil, preferredStyle: .alert)
-            let yes = UIAlertAction(title: "예", style: .default) { _ in
-                self.moveAdjustStorageView()
-            }
-            let no = UIAlertAction(title: "아니오", style: .default, handler: nil)
-            alert.addAction(yes)
-            alert.addAction(no)
-            present(alert, animated: true, completion: nil)
+            showAlertOutOfStock(error)
         }
     }
-    
-    private func moveAdjustStorageView() {
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "AdjustStockViewController") else { return }
-        self.present(vc, animated: true)
-    }
-    
+}
+
+// MARK: Private Methods
+extension JuiceMakerViewController {
     private func manageFruitStock() {
         let inventory = juiceMaker.checkFruitStoreInventory()
         
@@ -53,9 +44,26 @@ class JuiceMakerViewController: UIViewController {
         mangoStockLabel.text = String(inventory["망고"] ?? 0)
     }
     
-    private func formatButtonTextToJuiceName(_ label: String) -> String? {
-        guard let juiceName = label.components(separatedBy: " ").first else { return nil }
-        return juiceName
+    private func showAlertCompletionJuiceMaking(_ juiceName: String) {
+        let alert = UIAlertController(title: "\(juiceName) 쥬스 나왔습니다! 맛있게 드세요!", message: nil, preferredStyle: .alert)
+        let yes = UIAlertAction(title: "감사합니다!", style: .default)
+        alert.addAction(yes)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func showAlertOutOfStock(_ error: Error) {
+        let alert = UIAlertController(title: "\(error)", message: nil, preferredStyle: .alert)
+        let yes = UIAlertAction(title: "예", style: .default) { _ in
+            self.moveAdjustStorageView()
+        }
+        let no = UIAlertAction(title: "아니오", style: .destructive, handler: nil)
+        alert.addAction(yes)
+        alert.addAction(no)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func moveAdjustStorageView() {
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "AdjustStockViewController") else { return }
+        self.present(vc, animated: true)
     }
 }
-
