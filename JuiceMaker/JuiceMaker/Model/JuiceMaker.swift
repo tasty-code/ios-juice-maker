@@ -26,28 +26,27 @@ struct JuiceMaker {
         return juice
     }
     
-    func combineJuiceSoldOutChecker(_ firstFruit: FruitStock, _secondFruit: FruitStock, _ juice: Juice) throws -> Juice {
+    func combineJuiceSoldOutChecker(_ firstFruit: FruitStock, _ secondFruit: FruitStock, _ juice: Juice) throws -> Juice {
         guard let firstConsumption = firstFruit.combineConsumption else {
             throw ErrorPrinter.invalidInput
         }
-        guard let secondConsumption = _secondFruit.combineConsumption else {
+        guard let secondConsumption = secondFruit.combineConsumption else {
             throw ErrorPrinter.invalidInput
         }
+        guard firstFruit.currentStock >= firstConsumption || secondFruit.currentStock >= secondConsumption else {
+            throw ErrorPrinter.stockInsufficients([firstFruit.name, secondFruit.name])
+        }
+        guard firstFruit.currentStock >= firstConsumption else {
+            throw ErrorPrinter.stockInsufficient(firstFruit.name)
+        }
+        guard secondFruit.currentStock >= secondConsumption else {
+            throw ErrorPrinter.stockInsufficient(secondFruit.name)
+        }
         
-        if firstFruit.currentStock < firstConsumption {
-        }
-        if _secondFruit.currentStock < secondConsumption {
-        }
         return juice
     }
 
     private func soldOutChecker(_ menu: Juice) throws -> Juice {
-        let strawberry = fruitStorage.strawberry
-        let banana = fruitStorage.banana
-        let kiwi = fruitStorage.kiwi
-        let pineapple = fruitStorage.pineapple
-        let mango = fruitStorage.mango
-        
         switch menu {
         case .strawberryJuice:
             return try juiceSoldOutChecker(fruitStorage.strawberry, .strawberryJuice)
@@ -60,44 +59,9 @@ struct JuiceMaker {
         case .mangoJuice:
             return try juiceSoldOutChecker(fruitStorage.mango, .mangoJuice)
         case .strawberryBananaJuice:
-            guard let strawberryConsumption = strawberry.combineConsumption else {
-                throw ErrorPrinter.invalidInput
-            }
-            guard let bananaConsumption = banana.combineConsumption else {
-                throw ErrorPrinter.invalidInput
-            }
-            
-           
-//            guard insufficient.isEmpty else {
-//                throw ErrorPrinter.stockInsufficient(insufficient)
-//            }
-            return .strawberryBananaJuice
+            return try combineJuiceSoldOutChecker(fruitStorage.strawberry, fruitStorage.banana, .strawberryBananaJuice)
         case .mangoKiwiJuice:
-            guard let mangoConsumption = mango.combineConsumption else {
-                throw ErrorPrinter.invalidInput
-            }
-            guard let kiwiConsumption = kiwi.combineConsumption else {
-                throw ErrorPrinter.invalidInput
-            }
-            
-            var insufficient: [String] = []
-            
-            if mango.currentStock < mangoConsumption {
-                insufficient.append("망고")
-            }
-            if kiwi.currentStock < kiwiConsumption {
-                insufficient.append("키위")
-            }
-//            guard insufficient.isEmpty else {
-//                throw ErrorPrinter.stockInsufficient(insufficient)
-//            }
-            return .mangoKiwiJuice
+            return try combineJuiceSoldOutChecker(fruitStorage.mango, fruitStorage.kiwi, .mangoKiwiJuice)
         }
     }
-    
-    
- 
-    
- 
-    
 }
