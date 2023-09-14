@@ -12,7 +12,7 @@ final class FruitStore {
     // MARK: - Properties
     
     private var fruitNames: [JuiceMenu] = [.strawberry, .banana, .pineapple, .kiwi, .mango]
-    var fruitDictionary: [JuiceMenu: Int] = [:]
+    private(set) var fruitDictionary: [JuiceMenu: Int] = [:]
     
     // MARK: - Init
     

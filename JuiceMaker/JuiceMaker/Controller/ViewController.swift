@@ -10,15 +10,15 @@ final class ViewController: UIViewController {
     
     // MARK: - Properties
     
-    private var juiceMaker = JuiceMaker()
+    private let juiceMaker = JuiceMaker()
     
     // MARK: - Views
     
-    @IBOutlet var strawberryQuantityLabel: UILabel!
-    @IBOutlet var bananaQuantityLabel: UILabel!
-    @IBOutlet var pineappleQuantityLabel: UILabel!
-    @IBOutlet var kiwiQuantityLabel: UILabel!
-    @IBOutlet var mangoQuantityLabel: UILabel!
+    @IBOutlet private var strawberryQuantityLabel: UILabel!
+    @IBOutlet private var bananaQuantityLabel: UILabel!
+    @IBOutlet private var pineappleQuantityLabel: UILabel!
+    @IBOutlet private var kiwiQuantityLabel: UILabel!
+    @IBOutlet private var mangoQuantityLabel: UILabel!
     
     // MARK: - LifeCycle
     
@@ -36,9 +36,9 @@ final class ViewController: UIViewController {
                                               mangoQuantityLabel]
         
         for label in fruitQuantityLabels {
-            guard let name = JuiceMenu(rawValue: label.tag) else { return }
+            guard let menu = JuiceMenu(rawValue: label.tag) else { continue }
             
-            let fruitQuantity = juiceMaker.fruitStore.fruitDictionary[name, default: 10]
+            let fruitQuantity = juiceMaker.fruitStore.fruitDictionary[menu, default: 10]
             label.text = String(fruitQuantity)
         }
     }
