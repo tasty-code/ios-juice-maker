@@ -56,16 +56,16 @@ class JuiceMenuViewController: UIViewController {
         mangoCountLabel.text = "\(FruitStore.shared.mango)"
     }
     
-    private func order(menu: JuiceType) {
+    private func order(menu selectedMenu: JuiceType) {
         do {
-            try juiceMaker.make(juice: menu)
-            getFinishedAlert(of: menu)
+            try juiceMaker.make(juice: selectedMenu)
+            alertOrderSuccess(of: selectedMenu)
         } catch {
-            getErrorAlert()
+            alertOrderFailed()
         }
     }
     
-    private func getFinishedAlert(of juice: JuiceType) {
+    private func alertOrderSuccess(of juice: JuiceType) {
         let alertController = UIAlertController(
             title: "제조 성공",
             message: "\(juice.name) 나왔습니다! 맛있게 드세요!",
@@ -76,7 +76,7 @@ class JuiceMenuViewController: UIViewController {
         present(alertController, animated: true)
     }
     
-    private func getErrorAlert() {
+    private func alertOrderFailed() {
         let alertController = UIAlertController(
             title: "재료 부족",
             message: "재료가 모자라요. 재고를 수정할까요?",
