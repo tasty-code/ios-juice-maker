@@ -13,8 +13,11 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         let juiceMaker = JuiceMaker()
         
-        juiceMaker.makeJuice(.strawberryBananaJuice)
-        juiceMaker.makeJuice(.strawberryBananaJuice)
+        
+        juiceMaker.makeJuice(.strawberryJuice)
+//        juiceMaker.makeJuice(.strawberryBananaJuice)
+//        juiceMaker.makeJuice(.strawberryBananaJuice)
+//        juiceMaker.makeJuice(.strawberryBananaJuice)
     }
 }
 

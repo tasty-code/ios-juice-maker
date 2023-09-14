@@ -8,8 +8,8 @@ import Foundation
 
 // 쥬스 메이커 타입
 struct JuiceMaker {
-    var fruitStorage = FruitStore.shared
-    
+    var fruitStorage = FruitStore()
+
     func makeJuice(_ order: Juice) {
         do {
             let getOrder = try soldOutChecker(order)
@@ -18,7 +18,29 @@ struct JuiceMaker {
             print(error)
         }
     }
+        
+    func juiceSoldOutChecker(_ fruit: FruitStock, _ juice: Juice) throws -> Juice {
+        guard fruit.currentStock >= fruit.singleConsumption else {
+            throw ErrorPrinter.stockInsufficient(fruit.name)
+        }
+        return juice
+    }
     
+    func combineJuiceSoldOutChecker(_ firstFruit: FruitStock, _secondFruit: FruitStock, _ juice: Juice) throws -> Juice {
+        guard let firstConsumption = firstFruit.combineConsumption else {
+            throw ErrorPrinter.invalidInput
+        }
+        guard let secondConsumption = _secondFruit.combineConsumption else {
+            throw ErrorPrinter.invalidInput
+        }
+        
+        if firstFruit.currentStock < firstConsumption {
+        }
+        if _secondFruit.currentStock < secondConsumption {
+        }
+        return juice
+    }
+
     private func soldOutChecker(_ menu: Juice) throws -> Juice {
         let strawberry = fruitStorage.strawberry
         let banana = fruitStorage.banana
@@ -28,30 +50,15 @@ struct JuiceMaker {
         
         switch menu {
         case .strawberryJuice:
-            guard strawberry.currentStock >= strawberry.singleConsumption else {
-                throw ErrorPrinter.stockInsufficient(["딸기"])
-            }
-            return .strawberryJuice
+            return try juiceSoldOutChecker(fruitStorage.strawberry, .strawberryJuice)
         case .bananaJuice:
-            guard banana.currentStock >= banana.singleConsumption else {
-                throw ErrorPrinter.stockInsufficient(["바나나"])
-            }
-            return .bananaJuice
+            return try juiceSoldOutChecker(fruitStorage.banana, .bananaJuice)
         case .kiwiJuice:
-            guard kiwi.currentStock >= kiwi.singleConsumption else {
-                throw ErrorPrinter.stockInsufficient(["키위"])
-            }
-            return .kiwiJuice
+            return try juiceSoldOutChecker(fruitStorage.kiwi, .kiwiJuice)
         case .pineappleJuice:
-            guard pineapple.currentStock >= pineapple.singleConsumption else {
-                throw ErrorPrinter.stockInsufficient(["파인애플"])
-            }
-        return .pineappleJuice
+            return try juiceSoldOutChecker(fruitStorage.pineapple, .pineappleJuice)
         case .mangoJuice:
-            guard mango.currentStock >= mango.singleConsumption else {
-                throw ErrorPrinter.stockInsufficient(["망고"])
-            }
-            return .mangoJuice
+            return try juiceSoldOutChecker(fruitStorage.mango, .mangoJuice)
         case .strawberryBananaJuice:
             guard let strawberryConsumption = strawberry.combineConsumption else {
                 throw ErrorPrinter.invalidInput
@@ -60,17 +67,10 @@ struct JuiceMaker {
                 throw ErrorPrinter.invalidInput
             }
             
-            var insufficient: [String] = []
-            
-            if strawberry.currentStock < strawberryConsumption {
-                insufficient.append("딸기")
-            }
-            if banana.currentStock < bananaConsumption {
-                insufficient.append("바나나")
-            }
-            guard insufficient.isEmpty else {
-                throw ErrorPrinter.stockInsufficient(insufficient)
-            }
+           
+//            guard insufficient.isEmpty else {
+//                throw ErrorPrinter.stockInsufficient(insufficient)
+//            }
             return .strawberryBananaJuice
         case .mangoKiwiJuice:
             guard let mangoConsumption = mango.combineConsumption else {
@@ -88,10 +88,16 @@ struct JuiceMaker {
             if kiwi.currentStock < kiwiConsumption {
                 insufficient.append("키위")
             }
-            guard insufficient.isEmpty else {
-                throw ErrorPrinter.stockInsufficient(insufficient)
-            }
+//            guard insufficient.isEmpty else {
+//                throw ErrorPrinter.stockInsufficient(insufficient)
+//            }
             return .mangoKiwiJuice
         }
     }
+    
+    
+ 
+    
+ 
+    
 }

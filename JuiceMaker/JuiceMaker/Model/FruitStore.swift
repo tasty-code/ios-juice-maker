@@ -8,21 +8,18 @@ import Foundation
 
 // 과일 저장소 타입
 class FruitStore {
-    static let shared = FruitStore(
-        strawberry: FruitStock(singleConsumption: 16, combineConsumption: 10),
-        banana: FruitStock(singleConsumption: 2, combineConsumption: 1),
-        pineapple: FruitStock(singleConsumption: 2),
-        kiwi: FruitStock(singleConsumption: 3, combineConsumption: 1),
-        mango: FruitStock(singleConsumption: 3, combineConsumption: 2)
-    )
-    
     var strawberry: FruitStock
     var banana: FruitStock
     var pineapple: FruitStock
     var kiwi: FruitStock
     var mango: FruitStock
     
-    private init(strawberry: FruitStock, banana: FruitStock, pineapple: FruitStock, kiwi: FruitStock, mango: FruitStock) {
+    init(strawberry: FruitStock = FruitStock(name: "딸기", singleConsumption: 16, combineConsumption: 10),
+         banana: FruitStock = FruitStock(name: "바나나", singleConsumption: 2, combineConsumption: 1),
+         pineapple: FruitStock = FruitStock(name: "파인애플", singleConsumption: 2),
+         kiwi: FruitStock = FruitStock(name: "키위", singleConsumption: 3, combineConsumption: 1),
+         mango: FruitStock = FruitStock(name: "망고", singleConsumption: 3, combineConsumption: 2)
+    ) {
         self.strawberry = strawberry
         self.banana = banana
         self.pineapple = pineapple
@@ -43,26 +40,25 @@ class FruitStore {
         case .mangoJuice:
             mango.currentStock -= mango.singleConsumption
         case .strawberryBananaJuice:
-            guard let strawberryConsumption = strawberry.combineConsumption else{
+            guard let strawberryConsumption = strawberry.combineConsumption else {
                 return
             }
-            guard let bananaConsumption = banana.combineConsumption else{
+            guard let bananaConsumption = banana.combineConsumption else {
                 return
             }
             strawberry.currentStock -= strawberryConsumption
             banana.currentStock -= bananaConsumption
         case .mangoKiwiJuice:
-            guard let mangoConsumption = mango.combineConsumption else{
+            guard let mangoConsumption = mango.combineConsumption else {
                 return
             }
-            guard let kiwiConsumption = kiwi.combineConsumption else{
+            guard let kiwiConsumption = kiwi.combineConsumption else {
                 return
             }
             mango.currentStock -= mangoConsumption
             kiwi.currentStock -= kiwiConsumption
         }
-
-        print(juiceName.message)
+        print(juiceName.description)
     }
     
     func stockManager(_ fruit: String) {
