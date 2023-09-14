@@ -8,19 +8,28 @@ import UIKit
 
 class JuiceMakerViewController: UIViewController {
     
-    let juiceMaker: JuiceMaker = JuiceMaker(fruitStore: FruitStore(fruitList: [
+    let juiceMaker: JuiceMaker = JuiceMaker(fruitStore: FruitStore(fruitList:[
         FruitStore.Fruit(name: "딸기"),
         FruitStore.Fruit(name: "바나나"),
         FruitStore.Fruit(name: "파인애플"),
         FruitStore.Fruit(name: "키위"),
-        FruitStore.Fruit(name: "망고")
-    ]))
+        FruitStore.Fruit(name: "망고")]))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
+        guard let navigationViewController = segue.destination as? UINavigationController else {
+            print("\(segue.destination)")
+            return}
+        
+//        let 새로운네비게이서ㅕㄴUINavigationController(rootViewController: <#T##UIViewController#>) 이거는 따로 뷰로 연결 안해줘도 됨
+//        guard let fruitStoreViewController = navigationViewController.topViewController
+    }
     
     @IBOutlet weak var strawberryQantityLabel: UILabel!
     
