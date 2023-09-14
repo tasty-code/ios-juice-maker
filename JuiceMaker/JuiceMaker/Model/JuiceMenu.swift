@@ -7,7 +7,6 @@
 
 import Foundation
 
-@frozen
 enum JuiceMenu: Int, CustomStringConvertible {
     case strawberry
     case banana
