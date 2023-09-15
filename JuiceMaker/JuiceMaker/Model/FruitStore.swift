@@ -21,7 +21,7 @@ class FruitStore {
   private let initialValue = 10
   private var inventory = [Fruit.strawberry: 0, Fruit.pineapple: 0, Fruit.banana: 0, Fruit.kiwi: 0, Fruit.mango: 0]
   
-  init() {
+  private init() {
     for fruitList in inventory {
       inventory.updateValue(initialValue, forKey: fruitList.key)
     }
