@@ -18,50 +18,46 @@ struct JuiceMaker {
     case strawberryBanana
     case mango
     case mangoKiwi
-  }
-  
-  func makeJuice(type: Juice) {
-    do {
-      switch type {
-      case .strawberry:
-        if try store.checkInventory(fruitName: .strawberry, num: 16) {
-          store.subtract(fruitName: .strawberry, num: 16)
-        }
-      case .banana:
-        if try store.checkInventory(fruitName: .banana, num: 2) {
-          store.subtract(fruitName: .banana, num: 2)
-        }
-      case .kiwi:
-        if try store.checkInventory(fruitName: .kiwi, num: 3) {
-          store.subtract(fruitName: .kiwi, num: 3)
-        }
-      case .pineapple:
-        if try store.checkInventory(fruitName: .pineapple, num: 2) {
-          store.subtract(fruitName: .pineapple, num: 2)
-        }
-      case .strawberryBanana:
-        let checkOne = try store.checkInventory(fruitName: .strawberry, num: 10)
-        let checkTwo = try store.checkInventory(fruitName: .banana, num: 1)
-        if checkOne && checkTwo {
-          store.subtract(fruitName: .strawberry, num: 10)
-          store.subtract(fruitName: .banana, num: 1)
-        }
-      case .mango:
-        if try store.checkInventory(fruitName: .mango, num: 3) {
-          store.subtract(fruitName: .mango, num: 3)
-        }
-      case .mangoKiwi:
-        let checkOne = try store.checkInventory(fruitName: .mango, num: 2)
-        let checkTwo = try store.checkInventory(fruitName: .kiwi, num: 1)
-        if checkOne && checkTwo {
-          store.subtract(fruitName: .mango, num: 2)
-          store.subtract(fruitName: .kiwi, num: 1)
-        }
+    
+    var recipe: Dictionary<String, Int> {
+      switch self {
+      case .strawberry: return ["strawberry": 16]
+      case .banana: return ["banana": 2]
+      case .kiwi: return ["kiwi": 3]
+      case .pineapple: return ["pineapple": 2]
+      case .strawberryBanana: return ["strawberry": 10, "banana": 1]
+      case .mango: return ["mango": 3]
+      case .mangoKiwi: return ["mango": 2, "kiwi": 1]
       }
-    } catch FruitStoreError.outOfStock {
-      print("재료가 없습니다.")
-    } catch let error {
-      print("또 다른 에러 발생 \(error)")
     }
   }
+  
+  func createJuice(type: Juice) {
+    if checkAvailableJuice(type: type) {
+      makeJuice(type: type)
+    }
+  }
+  
+  private func checkAvailableJuice(type: Juice) -> Bool {
+    do {
+      let recipe = type.recipe
+      for (fruit, number) in recipe {
+        try store.checkInventory(fruitName: fruit, number: number)
+      }
+    } catch let error {
+      if error as! FruitStoreError == FruitStoreError.outOfStock {
+        print("재고가 없습니다.")
+        return false
+      }
+    }
+    return true
+  }
+  
+  private func makeJuice(type: Juice) {
+    let recipe = type.recipe
+    for (fruit, number) in recipe {
+      store.subtract(fruitName: fruit, number: number)
+    }
+  }
+  
 }
