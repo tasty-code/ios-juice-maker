@@ -58,48 +58,30 @@ class FruitInventoryViewController: UIViewController {
     }
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
-        let value = Int(sender.value)
+        let newFruitCount = Int(sender.value)
         guard let fruitType = FruitType(rawValue: sender.tag),
               let fruitCount = FruitStore.shared.fruitCountList[fruitType] else {
             return
         }
         do {
+            let fruit = Fruit(fruitType, newFruitCount - fruitCount)
+            
             switch fruitType {
             case .strawberry:
-                if value > fruitCount {
-                    try juiceMaker.add(fruitType)
-                } else if value < fruitCount {
-                    try juiceMaker.sub(fruitType)
-                }
-                strawberryCountLabel.text = "\(value)"
+                try juiceMaker.update(fruit)
+                strawberryCountLabel.text = "\(newFruitCount)"
             case .banana:
-                if value > fruitCount {
-                    try juiceMaker.add(fruitType)
-                } else if value < fruitCount {
-                    try juiceMaker.sub(fruitType)
-                }
-                bananaCountLabel.text = "\(value)"
+                try juiceMaker.update(fruit)
+                bananaCountLabel.text = "\(newFruitCount)"
             case .pineapple:
-                if value > fruitCount {
-                    try juiceMaker.add(fruitType)
-                } else if value < fruitCount {
-                    try juiceMaker.sub(fruitType)
-                }
-                pineappleCountLabel.text = "\(value)"
+                try juiceMaker.update(fruit)
+                pineappleCountLabel.text = "\(newFruitCount)"
             case .kiwi:
-                if value > fruitCount {
-                    try juiceMaker.add(fruitType)
-                } else if value < fruitCount {
-                    try juiceMaker.sub(fruitType)
-                }
-                kiwiCountLabel.text = "\(value)"
+                try juiceMaker.update(fruit)
+                kiwiCountLabel.text = "\(newFruitCount)"
             case .mango:
-                if value > fruitCount {
-                    try juiceMaker.add(fruitType)
-                } else if value < fruitCount {
-                    try juiceMaker.sub(fruitType)
-                }
-                mangoCountLabel.text = "\(value)"
+                try juiceMaker.update(fruit)
+                mangoCountLabel.text = "\(newFruitCount)"
             }
         } catch {
             return
