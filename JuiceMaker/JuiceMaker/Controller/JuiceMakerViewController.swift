@@ -45,7 +45,8 @@ class JuiceMakerViewController: UIViewController {
     
     
     @IBAction func orderJuice(_ sender: UIButton) {
-        guard let juiceName = sender.restorationIdentifier else { return }
+        guard let juiceName = sender.currentTitle?.split(separator: " ").filter({ $0 != "주문"}).joined() else { return }
+
         juiceMaker.startOrder(juiceName: juiceName)
         juiceMaker.canMakeJuice ? showingCompletedOrderAlert(juiceName: juiceName) : showingOutOfStockAlert()
         updateUI()
