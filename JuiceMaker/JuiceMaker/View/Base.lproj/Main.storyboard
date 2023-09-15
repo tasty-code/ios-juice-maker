@@ -301,9 +301,6 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZQk-f4-zrz">
                                                 <rect key="frame" x="0.0" y="130" width="94" height="32"/>
-                                                <connections>
-                                                    <action selector="strawberryPressed:" destination="Yu1-lM-nqp" eventType="valueChanged" id="vf7-wy-AMX"/>
-                                                </connections>
                                             </stepper>
                                         </subviews>
                                     </stackView>
@@ -325,9 +322,6 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="O5s-2N-3iP">
                                                 <rect key="frame" x="0.0" y="130" width="94" height="32"/>
-                                                <connections>
-                                                    <action selector="bananaPressed:" destination="Yu1-lM-nqp" eventType="valueChanged" id="tCG-CT-0IC"/>
-                                                </connections>
                                             </stepper>
                                         </subviews>
                                         <constraints>
@@ -352,9 +346,6 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Rcr-xr-eqz">
                                                 <rect key="frame" x="0.0" y="130" width="94" height="32"/>
-                                                <connections>
-                                                    <action selector="pineapplePressed:" destination="Yu1-lM-nqp" eventType="valueChanged" id="766-lI-1db"/>
-                                                </connections>
                                             </stepper>
                                         </subviews>
                                     </stackView>
@@ -376,9 +367,6 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="klA-59-Nu4">
                                                 <rect key="frame" x="0.0" y="130" width="94" height="32"/>
-                                                <connections>
-                                                    <action selector="kiwiPressed:" destination="Yu1-lM-nqp" eventType="valueChanged" id="h8M-FV-lyj"/>
-                                                </connections>
                                             </stepper>
                                         </subviews>
                                     </stackView>
@@ -400,9 +388,6 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="xbn-6P-grO">
                                                 <rect key="frame" x="0.0" y="130" width="94" height="32"/>
-                                                <connections>
-                                                    <action selector="mangoPressed:" destination="Yu1-lM-nqp" eventType="valueChanged" id="Dbp-Yz-nwJ"/>
-                                                </connections>
                                             </stepper>
                                         </subviews>
                                     </stackView>

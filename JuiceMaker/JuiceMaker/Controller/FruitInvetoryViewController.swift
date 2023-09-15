@@ -36,69 +36,58 @@ class FruitInventoryViewController: UIViewController {
         pineappleStepper.value = Double(FruitStore.shared.pineapple)
         kiwiStepper.value = Double(FruitStore.shared.kiwi)
         mangoStepper.value = Double(FruitStore.shared.mango)
-
+        
+        strawberryStepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
+        bananaStepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
+        pineappleStepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
+        kiwiStepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
+        mangoStepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
     }
     
-    @IBAction func strawberryPressed(_ sender: UIStepper) {
+    @IBAction func stepperValueChanged(_ sender: UIStepper) {
+        let value = Int(sender.value)
         do {
-            if sender.value > Double(FruitStore.shared.strawberry) {
-                try juiceMaker.add(fruit: Fruit(.strawberry, 1))
-            } else if sender.value < Double(FruitStore.shared.strawberry) {
-                try juiceMaker.sub(fruit: Fruit(.strawberry, 1))
+            if sender == strawberryStepper {
+                let fruitCount = FruitStore.shared.strawberry
+                if value > fruitCount {
+                    try juiceMaker.add(fruitType: .strawberry)
+                } else if value < fruitCount {
+                    try juiceMaker.sub(fruitType: .strawberry)
+                }
+                strawberryCountLabel.text = "\(FruitStore.shared.strawberry)"
+            } else if sender == bananaStepper {
+                let fruitCount = FruitStore.shared.banana
+                if value > fruitCount {
+                    try juiceMaker.add(fruitType: .banana)
+                } else if value < fruitCount {
+                    try juiceMaker.sub(fruitType: .banana)
+                }
+                bananaCountLabel.text = "\(FruitStore.shared.banana)"
+            } else if sender == mangoStepper {
+                let fruitCount = FruitStore.shared.mango
+                if value > fruitCount {
+                    try juiceMaker.add(fruitType: .mango)
+                } else if value < fruitCount {
+                    try juiceMaker.sub(fruitType: .mango)
+                }
+                mangoCountLabel.text = "\(FruitStore.shared.mango)"
+            } else if sender == kiwiStepper {
+                let fruitCount = FruitStore.shared.kiwi
+                if value > fruitCount {
+                    try juiceMaker.add(fruitType: .kiwi)
+                } else if value < fruitCount {
+                    try juiceMaker.sub(fruitType: .kiwi)
+                }
+                kiwiCountLabel.text = "\(FruitStore.shared.kiwi)"
+            } else if sender == pineappleStepper {
+                let fruitCount = FruitStore.shared.pineapple
+                if value > fruitCount {
+                    try juiceMaker.add(fruitType: .pineapple)
+                } else if value < fruitCount {
+                    try juiceMaker.sub(fruitType: .pineapple)
+                }
+                pineappleCountLabel.text = "\(FruitStore.shared.pineapple)"
             }
-            strawberryCountLabel.text = "\(FruitStore.shared.strawberry)"
-        } catch {
-            return
-        }
-    }
-    
-    @IBAction func bananaPressed(_ sender: UIStepper) {
-        do {
-            if sender.value > Double(FruitStore.shared.banana) {
-                try juiceMaker.add(fruit: Fruit(.banana, 1))
-            } else if sender.value < Double(FruitStore.shared.banana) {
-                try juiceMaker.sub(fruit: Fruit(.banana, 1))
-            }
-            bananaCountLabel.text = "\(FruitStore.shared.banana)"
-        } catch {
-            return
-        }
-    }
-    
-    @IBAction func pineapplePressed(_ sender: UIStepper) {
-        do {
-            if sender.value > Double(FruitStore.shared.pineapple) {
-                try juiceMaker.add(fruit: Fruit(.pineapple, 1))
-            } else if sender.value < Double(FruitStore.shared.pineapple) {
-                try juiceMaker.sub(fruit: Fruit(.pineapple, 1))
-            }
-            pineappleCountLabel.text = "\(FruitStore.shared.pineapple)"
-        } catch {
-            return
-        }
-    }
-    
-    @IBAction func kiwiPressed(_ sender: UIStepper) {
-        do {
-            if sender.value > Double(FruitStore.shared.kiwi) {
-                try juiceMaker.add(fruit: Fruit(.kiwi, 1))
-            } else if sender.value < Double(FruitStore.shared.kiwi) {
-                try juiceMaker.sub(fruit: Fruit(.kiwi, 1))
-            }
-            kiwiCountLabel.text = "\(FruitStore.shared.kiwi)"
-        } catch {
-            return
-        }
-    }
-    
-    @IBAction func mangoPressed(_ sender: UIStepper) {
-        do {
-            if sender.value > Double(FruitStore.shared.mango) {
-                try juiceMaker.add(fruit: Fruit(.mango, 1))
-            } else if sender.value < Double(FruitStore.shared.mango) {
-                try juiceMaker.sub(fruit: Fruit(.mango, 1))
-            }
-            mangoCountLabel.text = "\(FruitStore.shared.mango)"
         } catch {
             return
         }
