@@ -10,17 +10,17 @@ import UIKit
 class FruitInventoryViewController: UIViewController {
     private let juiceMaker = JuiceMaker()
     
-    @IBOutlet weak var strawberryCountLabel: UILabel!
-    @IBOutlet weak var bananaCountLabel: UILabel!
-    @IBOutlet weak var pineappleCountLabel: UILabel!
-    @IBOutlet weak var kiwiCountLabel: UILabel!
-    @IBOutlet weak var mangoCountLabel: UILabel!
+    @IBOutlet var strawberryCountLabel: UILabel!
+    @IBOutlet var bananaCountLabel: UILabel!
+    @IBOutlet var pineappleCountLabel: UILabel!
+    @IBOutlet var kiwiCountLabel: UILabel!
+    @IBOutlet var mangoCountLabel: UILabel!
     
-    @IBOutlet weak var strawberryStepper: UIStepper!
-    @IBOutlet weak var bananaStepper: UIStepper!
-    @IBOutlet weak var pineappleStepper: UIStepper!
-    @IBOutlet weak var kiwiStepper: UIStepper!
-    @IBOutlet weak var mangoStepper: UIStepper!
+    @IBOutlet var strawberryStepper: UIStepper!
+    @IBOutlet var bananaStepper: UIStepper!
+    @IBOutlet var pineappleStepper: UIStepper!
+    @IBOutlet var kiwiStepper: UIStepper!
+    @IBOutlet var mangoStepper: UIStepper!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +30,14 @@ class FruitInventoryViewController: UIViewController {
         pineappleCountLabel.text = "\(FruitStore.shared.pineapple)"
         kiwiCountLabel.text = "\(FruitStore.shared.kiwi)"
         mangoCountLabel.text = "\(FruitStore.shared.mango)"
+        
+        strawberryStepper.value = Double(FruitStore.shared.strawberry)
+        bananaStepper.value = Double(FruitStore.shared.banana)
+        pineappleStepper.value = Double(FruitStore.shared.pineapple)
+        kiwiStepper.value = Double(FruitStore.shared.kiwi)
+        mangoStepper.value = Double(FruitStore.shared.mango)
+
     }
-    
     
     @IBAction func strawberryPressed(_ sender: UIStepper) {
         do {
@@ -45,7 +51,6 @@ class FruitInventoryViewController: UIViewController {
             return
         }
     }
-    
     
     @IBAction func bananaPressed(_ sender: UIStepper) {
         do {

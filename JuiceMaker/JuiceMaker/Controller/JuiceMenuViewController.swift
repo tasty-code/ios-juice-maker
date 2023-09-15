@@ -52,8 +52,8 @@ class JuiceMenuViewController: UIViewController {
     }
     @IBAction func mangoKiwiPressed(_ sender: Any) {
         order(menu: .mangoKiwiJuice)
-        kiwiCountLabel.text = "\(FruitStore.shared.kiwi)"
         mangoCountLabel.text = "\(FruitStore.shared.mango)"
+        kiwiCountLabel.text = "\(FruitStore.shared.kiwi)"
     }
     @IBAction func kiwiPressed(_ sender: Any) {
         order(menu: .kiwiJuice)
