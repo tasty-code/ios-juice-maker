@@ -8,7 +8,7 @@ import UIKit
 
 class JuiceMakerViewController: UIViewController {
     
-    let juiceMaker: JuiceMaker = JuiceMaker(fruitStore: FruitStore(fruitList:[
+    var juiceMaker: JuiceMaker = JuiceMaker(fruitStore: FruitStore(fruitList:[
         FruitStore.Fruit(name: "딸기"),
         FruitStore.Fruit(name: "바나나"),
         FruitStore.Fruit(name: "파인애플"),
@@ -49,9 +49,16 @@ class JuiceMakerViewController: UIViewController {
     @IBAction func orderJuice(_ sender: UIButton) {
         guard let juiceName = sender.restorationIdentifier else { return }
         juiceMaker.startOrder(juiceName: juiceName)
+        
         updateUI()
     }
     
+}
+
+
+
+//MARK: - Method
+extension JuiceMakerViewController {
     
     private func updateUI() {
         strawberryQantityLabel.text = String(juiceMaker.fruitStore.fruitList[0].stock)
@@ -62,7 +69,28 @@ class JuiceMakerViewController: UIViewController {
     }
     
     
+    private func showingOutOfStockAlert() {
+        let outOfStockAlert = UIAlertController(title: nil, message: MessageLog.AlertCase.outOfStock.message, preferredStyle: .alert)
+        
+        let moveToFruitStore = UIAlertAction(title: "이동하기", style: .destructive)
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        
+        outOfStockAlert.addAction(moveToFruitStore)
+        outOfStockAlert.addAction(cancel)
+        
+        present(outOfStockAlert, animated: true)
+        
+    }
     
+    private func showingCompletedOrderAlert(juiceName: String) {
+        let completedOrderAlert =  UIAlertController(title: nil, message: MessageLog.AlertCase.sucess(juiceName: juiceName).message, preferredStyle: .alert)
+        
+        let okay = UIAlertAction(title: "확인", style: .default)
+        
+        completedOrderAlert.addAction(okay)
+        
+        
+        present(completedOrderAlert, animated: true)
+    }
 }
-
 

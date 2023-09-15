@@ -44,9 +44,6 @@ class FruitStoreViewController: UIViewController {
     
     @IBOutlet weak var mangoStepper: UIStepper!
     
-    @IBAction func backToJuiceMakerView(_ sender: UIButton) {
-        dismiss(animated: true)
-    }
     
  
     
@@ -60,8 +57,7 @@ class FruitStoreViewController: UIViewController {
             
             guard let fruit = fruitStore.fruitList.filter({$0.name == labelName}).first else { return }
             
-           
-            
+    
             try fruitStore.addFruitStock(inputFruit: fruit, count: Int(sender.value)) // n + 1
             
             updateUI()
@@ -96,11 +92,14 @@ class FruitStoreViewController: UIViewController {
     private func updateUI() {
         guard let bindingFruitStore = fruitStore else { return }
         storeStrawberryLabel.text = String(bindingFruitStore.fruitList[0].stock)
-        
         storeBananaLabel.text = String(bindingFruitStore.fruitList[1].stock)
         storePineappleLabel.text = String(bindingFruitStore.fruitList[2].stock)
         storeKiwiLabel.text = String(bindingFruitStore.fruitList[3].stock)
         storeMangoLabel.text = String(bindingFruitStore.fruitList[4].stock)
         
     }
+    
+    
+    
 }
+

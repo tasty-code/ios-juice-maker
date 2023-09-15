@@ -9,17 +9,17 @@ import Foundation
 
 enum MessageLog {
     
-    enum AlertCase: CustomStringConvertible {
+    enum AlertCase {
         case sucess(juiceName: String)
-        case outOfStock(fruitName: String)
+        case outOfStock
         
-        var description: String {
+        var message: String? {
             switch self {
             case .sucess(let juiceName):
                 return "\(juiceName) 나왔습니다. 맛있게 드세요!"
             
-            case .outOfStock(let fruitName):
-                return "\(fruitName)가 모자라요. 재고를 수정할까요?"
+            case .outOfStock:
+                return "재료가 모자라요. 재고를 수정할까요?"
             }
         }
     }
