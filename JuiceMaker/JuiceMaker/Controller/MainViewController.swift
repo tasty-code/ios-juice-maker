@@ -30,14 +30,7 @@ class MainViewController: UIViewController {
         remainFruit()
         
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "moveInventory" {
-            guard let vc = segue.destination as? FruitInventoryViewController else { return }
-            vc.juiceMaker = self.juiceMaker
-        }
-    }
-    
+        
     private func remainFruit() {
         do {
             let strawberry = try juiceMaker.remainingCount(fruit: .strawberry)
@@ -59,6 +52,10 @@ class MainViewController: UIViewController {
         }
     }
     
+    @IBAction func moveInventory(_ sender: UIButton) {
+        self.moveInventoryVC()
+    }
+
     
     @IBAction func orderJuice(_ sender: UIButton) {
         guard let id = sender.accessibilityIdentifier else { return }
@@ -67,16 +64,41 @@ class MainViewController: UIViewController {
             let recipe = try identifyJuiceMenu(btnIdentifier: id)
             try juiceMaker.makeJuice(order: recipe)
             remainFruit()
-        } catch {
+            juiceAlert(message: "\(recipe.recipeName)쥬스 나왔습니다! 맛있게 드세요!")
+            
+        }
+        catch InventoryError.noLongerConsumeError {
+            juiceMakeFailAlert(message: "재료가 모자라요. 재고를 수정할까요?")
+        }
+        catch {
             print(error)
         }
     }
     
+    func juiceAlert(message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
     
+    func juiceMakeFailAlert(message: String) {
+        
+        let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
+        let yes = UIAlertAction(title: "예", style: .default) { _ in
+            self.moveInventoryVC()
+        }
+        let no = UIAlertAction(title: "아니오", style: .destructive)
+        alert.addAction(yes)
+        alert.addAction(no)
+        alert.preferredAction = yes
+        present(alert, animated: true)
+    }
     
-    
+   
     
 }
+
 
 extension MainViewController {
     private func identifyJuiceMenu(btnIdentifier: String) throws -> JuiceMenu {
@@ -98,6 +120,12 @@ extension MainViewController {
         default:
             throw InventoryError.invalidMenuError
         }
+    }
+    
+    func moveInventoryVC () {
+        guard let inventoryVC = self.storyboard?.instantiateViewController(identifier: "Inventory") as? FruitInventoryViewController else { return }
+        inventoryVC.juiceMaker = self.juiceMaker
+        self.navigationController?.pushViewController(inventoryVC, animated: true)
     }
 }
 

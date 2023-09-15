@@ -245,7 +245,7 @@
                     <navigationItem key="navigationItem" title="맛있는 쥬스를 만들어 드려요!" id="Eal-fj-o4N">
                         <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT">
                             <connections>
-                                <segue destination="Yu1-lM-nqp" kind="push" identifier="moveInventory" id="EOI-UT-bLf"/>
+                                <action selector="moveInventory:" destination="BYZ-38-t0r" id="XrX-bP-eKX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -289,7 +289,7 @@
         <!--Fruit Inventory View Controller-->
         <scene sceneID="fkG-vv-hpE">
             <objects>
-                <viewController id="Yu1-lM-nqp" customClass="FruitInventoryViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Inventory" id="Yu1-lM-nqp" customClass="FruitInventoryViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tKV-4l-Vtc">
                         <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -404,7 +404,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1637" y="901"/>
+            <point key="canvasLocation" x="1532" y="820"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cAf-jL-tPK">
@@ -425,9 +425,6 @@
             <point key="canvasLocation" x="1637" y="21"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="EOI-UT-bLf"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
