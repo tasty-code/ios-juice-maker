@@ -14,7 +14,7 @@ class FruitStoreViewController: UIViewController {
         super.viewDidLoad()
         updateUI()
         initStepper()
-        print(fruitStore?.fruitList)
+//        print(fruitStore?.fruitList)
     }
     
    
@@ -45,16 +45,14 @@ class FruitStoreViewController: UIViewController {
     
     @IBAction func fruitStockStepper(_ sender: UIStepper) {
         do {
-            guard let labelName = sender.accessibilityLabel else {
-                print("labelName 바인딩 실패")
-                return }
+            guard let labelName = sender.accessibilityLabel else { return }
 
             guard let fruitStore = fruitStore else { return }
             
             guard let fruit = fruitStore.fruitList.filter({$0.name == labelName}).first else { return }
             
     
-            try fruitStore.addFruitStock(inputFruit: fruit, count: Int(sender.value)) // n + 1
+            try fruitStore.addFruitStock(inputFruit: fruit, count: Int(sender.value))
             
             updateUI()
         } catch {
@@ -65,20 +63,20 @@ class FruitStoreViewController: UIViewController {
     
     private func initStepper() {
         guard let fruitStore = self.fruitStore else { return }
-        strawberryStepper?.accessibilityLabel = "딸기"
-        strawberryStepper?.value = Double(fruitStore.fruitList[0].stock)
+        strawberryStepper.accessibilityLabel = "딸기"
+        strawberryStepper.value = Double(fruitStore.fruitList[0].stock)
         
-        bananaStepper?.accessibilityLabel = "바나나"
-        bananaStepper?.value = Double(fruitStore.fruitList[1].stock)
+        bananaStepper.accessibilityLabel = "바나나"
+        bananaStepper.value = Double(fruitStore.fruitList[1].stock)
         
-        pineappleStepper?.accessibilityLabel = "파인애플"
-        pineappleStepper?.value = Double(fruitStore.fruitList[2].stock)
+        pineappleStepper.accessibilityLabel = "파인애플"
+        pineappleStepper.value = Double(fruitStore.fruitList[2].stock)
         
-        kiwiStepper?.accessibilityLabel = "키위"
-        kiwiStepper?.value = Double(fruitStore.fruitList[3].stock)
+        kiwiStepper.accessibilityLabel = "키위"
+        kiwiStepper.value = Double(fruitStore.fruitList[3].stock)
         
-        mangoStepper?.accessibilityLabel = "망고"
-        mangoStepper?.value = Double(fruitStore.fruitList[4].stock)
+        mangoStepper.accessibilityLabel = "망고"
+        mangoStepper.value = Double(fruitStore.fruitList[4].stock)
     }
     
     
@@ -88,13 +86,15 @@ class FruitStoreViewController: UIViewController {
     
     private func updateUI() {
         guard let fruitStore = self.fruitStore else { return }
-        storeStrawberryLabel?.text = String(fruitStore.fruitList[0].stock)
-        storeBananaLabel?.text = String(fruitStore.fruitList[1].stock)
-        storePineappleLabel?.text = String(fruitStore.fruitList[2].stock)
-        storeKiwiLabel?.text = String(fruitStore.fruitList[3].stock)
-        storeMangoLabel?.text = String(fruitStore.fruitList[4].stock)
+        storeStrawberryLabel.text = String(fruitStore.fruitList[0].stock)
+        storeBananaLabel.text = String(fruitStore.fruitList[1].stock)
+        storePineappleLabel.text = String(fruitStore.fruitList[2].stock)
+        storeKiwiLabel.text = String(fruitStore.fruitList[3].stock)
+        storeMangoLabel.text = String(fruitStore.fruitList[4].stock)
         
     }
+    
+    
     
 }
 

@@ -11,9 +11,9 @@ struct JuiceMaker {
     
     let fruitStore: FruitStore
     
-//    var canMakeJuice: Bool = true
+
     
-    mutating func startOrder(juiceName: String) throws {
+    func startOrder(juiceName: String) throws {
         let fruitDict: [FruitStore.Fruit: Int] = try orderConvertToDict(juice: juiceName)
         
         try checkStock(juiceIngredient: fruitDict)
@@ -22,7 +22,7 @@ struct JuiceMaker {
     }
     
     
-    private mutating func checkStock(juiceIngredient: [FruitStore.Fruit: Int]) throws {
+    private func checkStock(juiceIngredient: [FruitStore.Fruit: Int]) throws {
         try juiceIngredient.forEach { fruit, count in
             guard let listIndex = fruitStore.fruitList.firstIndex(where: {$0.name == fruit.name}) else {
                 throw MessageLog.ErrorCase.canNotFound

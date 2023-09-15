@@ -44,7 +44,7 @@ class JuiceMakerViewController: UIViewController {
     
     
     @IBAction func orderJuice(_ sender: UIButton) {
-        guard let juiceName = sender.currentTitle?.split(separator: " ").filter({ $0 != "주문"}).joined() else { return }
+        guard let juiceName = sender.currentTitle?.split(separator: " ").filter({ $0 != "주문" }).joined() else { return }
         do {
             try juiceMaker.startOrder(juiceName: juiceName)
             showingCompletedOrderAlert(juiceName: juiceName)
@@ -74,13 +74,13 @@ extension JuiceMakerViewController {
         let outOfStockAlert = UIAlertController(title: nil, message: "\(error)", preferredStyle: .alert)
         
         let moveToFruitStore = UIAlertAction(title: "이동하기", style: .destructive) { _ in
-            let fruitStoreViewController = FruitStoreViewController()
+            guard let fruitStoreViewController = self.storyboard?.instantiateViewController(withIdentifier: "FruitStoreViewController") as? FruitStoreViewController else { return }
+            guard let navigationController = self.navigationController else { return }
             fruitStoreViewController.fruitStore = self.juiceMaker.fruitStore
             
-            
-            self.navigationController?.pushViewController(fruitStoreViewController, animated: true)
-            
+            navigationController.pushViewController(fruitStoreViewController, animated: true)
         }
+        
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         
         outOfStockAlert.addAction(moveToFruitStore)
