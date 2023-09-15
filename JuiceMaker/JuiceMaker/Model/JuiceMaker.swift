@@ -33,4 +33,8 @@ struct JuiceMaker {
         }
         return true
     }
+    
+    func remainingCount(fruit: Fruit) throws -> UInt {
+        return try fruitStore.remainingCount(fruit: fruit)
+    }
 }
