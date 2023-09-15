@@ -27,27 +27,40 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initIdentifier()
+    }
+    
+    private func initIdentifier() {
+        strawberryLabel.accessibilityIdentifier = "딸기"
+        bananaLabel.accessibilityIdentifier = "바나나"
+        pineappleLabel.accessibilityIdentifier = "파인애플"
+        kiwiLabel.accessibilityIdentifier = "키위"
+        mangoLabel.accessibilityIdentifier = "망고"
+        
+        strawberryJuiceButton.accessibilityIdentifier = "딸기쥬스"
+        bananaJuiceButton.accessibilityIdentifier = "바나나쥬스"
+        pineappleJuiceButton.accessibilityIdentifier = "파인애플쥬스"
+        kiwiJuiceButton.accessibilityIdentifier = "키위쥬스"
+        mangoJuiceButton.accessibilityIdentifier = "망고쥬스"
+        strawberryBananaJuiceButton.accessibilityIdentifier = "딸바쥬스"
+        mangoKiwiJuiceButton.accessibilityIdentifier = "망키쥬스"
+        
         remainFruit()
     }
         
     private func remainFruit() {
-        do {
-            let strawberry = try juiceMaker.remainingCount(fruit: .strawberry)
-            strawberryLabel.text = String(strawberry)
+        let labelArray: [UILabel] = [strawberryLabel, bananaLabel, pineappleLabel, kiwiLabel, mangoLabel]
+        
+        labelArray.forEach { label in
+            guard let id = label.accessibilityIdentifier else { return }
             
-            let banana = try juiceMaker.remainingCount(fruit: .banana)
-            bananaLabel.text = String(banana)
-            
-            let kiwi = try juiceMaker.remainingCount(fruit: .kiwi)
-            kiwiLabel.text = String(kiwi)
-            
-            let pineapple = try juiceMaker.remainingCount(fruit: .pineapple)
-            pineappleLabel.text = String(pineapple)
-            
-            let mango = try juiceMaker.remainingCount(fruit: .mango)
-            mangoLabel.text = String(mango)
-        } catch {
-            defaultAlert(message: InventoryError.invalidError.description)
+            do {
+                let fruit = try Fruit.identifyFruit(labelIdentifier: id)
+                let count = try juiceMaker.remainingCount(fruit: fruit)
+                label.text = "\(count)"
+            } catch {
+                defaultAlert(message: InventoryError.invalidError.description)
+            }
         }
     }
     
