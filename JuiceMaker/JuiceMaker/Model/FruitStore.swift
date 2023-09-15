@@ -22,7 +22,7 @@ class FruitStore {
             throw MessageLog.ErrorCase.canNotFound
         }
         
-        fruitList[index].stock += count
+        fruitList[index].stock = count
     }
     
 }

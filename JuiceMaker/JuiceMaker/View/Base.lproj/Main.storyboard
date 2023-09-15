@@ -238,7 +238,7 @@
                     <navigationItem key="navigationItem" title="맛있는 쥬스를 만들어 드려요!" id="Eal-fj-o4N">
                         <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT">
                             <connections>
-                                <segue destination="Yu1-lM-nqp" kind="show" id="vIf-Dv-cuB"/>
+                                <segue destination="Yu1-lM-nqp" kind="presentation" id="mMy-hB-jny"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -291,6 +291,9 @@
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="xbn-6P-grO">
                                 <rect key="frame" x="591" y="238" width="94" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="fruitStockStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="ztp-tR-AwQ"/>
+                                </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="🥝" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EHe-D1-1xN">
                                 <rect key="frame" x="488" y="85" width="75" height="83.666666666666671"/>
@@ -310,6 +313,9 @@
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="klA-59-Nu4">
                                 <rect key="frame" x="479" y="238" width="94" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="fruitStockStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="NDE-hZ-zYf"/>
+                                </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="🍍" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rac-Ji-vZK">
                                 <rect key="frame" x="381" y="85" width="75" height="83.666666666666671"/>
@@ -329,6 +335,9 @@
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Rcr-xr-eqz">
                                 <rect key="frame" x="371" y="238" width="94" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="fruitStockStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="T1t-gl-nhH"/>
+                                </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="🍌" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="y33-ND-gz2">
                                 <rect key="frame" x="275" y="83" width="75" height="83.666666666666671"/>
@@ -340,6 +349,9 @@
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="O5s-2N-3iP">
                                 <rect key="frame" x="265" y="238" width="94" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="fruitStockStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="kow-Vb-lTz"/>
+                                </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="🍓" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dCK-AJ-zGU">
                                 <rect key="frame" x="170" y="83" width="75" height="83.666666666666671"/>
@@ -393,7 +405,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="g4W-fY-l7r"/>
                     <connections>
-                        <outlet property="bananStepper" destination="O5s-2N-3iP" id="Xbh-lM-FRM"/>
+                        <outlet property="bananaStepper" destination="O5s-2N-3iP" id="Xbh-lM-FRM"/>
+                        <outlet property="kiwiStepper" destination="klA-59-Nu4" id="V9d-5d-ISr"/>
+                        <outlet property="mangoStepper" destination="xbn-6P-grO" id="uhg-XS-W8N"/>
+                        <outlet property="pineappleStepper" destination="Rcr-xr-eqz" id="gLV-fd-3bZ"/>
                         <outlet property="storeBananaLabel" destination="gKu-86-RhI" id="SQq-7n-d9j"/>
                         <outlet property="storeKiwiLabel" destination="ZDv-1m-HBY" id="Wh8-uR-evR"/>
                         <outlet property="storeMangoLabel" destination="YJI-ER-LJR" id="TnD-Xj-Isk"/>
@@ -417,7 +432,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Yu1-lM-nqp" kind="relationship" relationship="rootViewController" id="wH1-3A-cBm"/>
+                        <segue destination="Yu1-lM-nqp" kind="relationship" relationship="rootViewController" id="fgd-Ey-kno"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2s5-lS-967" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -426,7 +441,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="vIf-Dv-cuB"/>
+        <segue reference="mMy-hB-jny"/>
     </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="AccentColor">
