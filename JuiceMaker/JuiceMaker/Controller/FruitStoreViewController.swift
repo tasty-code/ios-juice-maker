@@ -68,20 +68,21 @@ class FruitStoreViewController: UIViewController {
     
     
     private func initStepper() {
+        guard let fruitStore = self.fruitStore else { return }
         strawberryStepper.accessibilityLabel = "딸기"
-        strawberryStepper.value = Double(fruitStore?.fruitList[0].stock ?? 10 )
+        strawberryStepper.value = Double(fruitStore.fruitList[0].stock)
         
         bananaStepper.accessibilityLabel = "바나나"
-        bananaStepper.value = Double(fruitStore?.fruitList[1].stock ?? 10 )
+        bananaStepper.value = Double(fruitStore.fruitList[1].stock)
         
         pineappleStepper.accessibilityLabel = "파인애플"
-        pineappleStepper.value = Double(fruitStore?.fruitList[2].stock ?? 10 )
+        pineappleStepper.value = Double(fruitStore.fruitList[2].stock)
         
         kiwiStepper.accessibilityLabel = "키위"
-        kiwiStepper.value = Double(fruitStore?.fruitList[3].stock ?? 10 )
+        kiwiStepper.value = Double(fruitStore.fruitList[3].stock)
         
         mangoStepper.accessibilityLabel = "망고"
-        mangoStepper.value = Double(fruitStore?.fruitList[4].stock ?? 10 )
+        mangoStepper.value = Double(fruitStore.fruitList[4].stock)
     }
     
     
@@ -90,12 +91,12 @@ class FruitStoreViewController: UIViewController {
     
     
     private func updateUI() {
-        guard let bindingFruitStore = fruitStore else { return }
-        storeStrawberryLabel.text = String(bindingFruitStore.fruitList[0].stock)
-        storeBananaLabel.text = String(bindingFruitStore.fruitList[1].stock)
-        storePineappleLabel.text = String(bindingFruitStore.fruitList[2].stock)
-        storeKiwiLabel.text = String(bindingFruitStore.fruitList[3].stock)
-        storeMangoLabel.text = String(bindingFruitStore.fruitList[4].stock)
+        guard let fruitStore = self.fruitStore else { return }
+        storeStrawberryLabel.text = String(fruitStore.fruitList[0].stock)
+        storeBananaLabel.text = String(fruitStore.fruitList[1].stock)
+        storePineappleLabel.text = String(fruitStore.fruitList[2].stock)
+        storeKiwiLabel.text = String(fruitStore.fruitList[3].stock)
+        storeMangoLabel.text = String(fruitStore.fruitList[4].stock)
         
     }
     
