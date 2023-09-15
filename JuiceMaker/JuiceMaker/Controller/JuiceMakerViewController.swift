@@ -17,18 +17,22 @@ class JuiceMakerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateUI()
+        print("화면 1 : \(juiceMaker.fruitStore.fruitList)")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         
-        guard let navigationViewController = segue.destination as? UINavigationController else {
+        guard let fruitStoreViewController = segue.destination as? FruitStoreViewController else {
             print("\(segue.destination)")
             return}
-        
+        fruitStoreViewController.fruitStore = juiceMaker.fruitStore
 //        let 새로운네비게이서ㅕㄴUINavigationController(rootViewController: <#T##UIViewController#>) 이거는 따로 뷰로 연결 안해줘도 됨
 //        guard let fruitStoreViewController = navigationViewController.topViewController
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        updateUI()
     }
     
     @IBOutlet weak var strawberryQantityLabel: UILabel!
@@ -56,5 +60,9 @@ class JuiceMakerViewController: UIViewController {
         kiwiQantityLabel.text = String(juiceMaker.fruitStore.fruitList[3].stock)
         mangoQuatityLabel.text = String(juiceMaker.fruitStore.fruitList[4].stock)
     }
+    
+    
+    
 }
+
 

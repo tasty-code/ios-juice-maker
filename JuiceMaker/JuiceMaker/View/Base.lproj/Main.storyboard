@@ -238,7 +238,7 @@
                     <navigationItem key="navigationItem" title="맛있는 쥬스를 만들어 드려요!" id="Eal-fj-o4N">
                         <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT">
                             <connections>
-                                <segue destination="WwV-Td-3Bn" kind="presentation" id="TYy-d0-Zte"/>
+                                <segue destination="Yu1-lM-nqp" kind="show" id="vIf-Dv-cuB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -356,9 +356,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZQk-f4-zrz">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZQk-f4-zrz" userLabel="&quot;딸기&quot;">
                                 <rect key="frame" x="160" y="238" width="94" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="fruitStockStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="Vlm-kf-yVE"/>
+                                </connections>
                             </stepper>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CK6-BH-2o2">
                                 <rect key="frame" x="59" y="32" width="62" height="20"/>
@@ -390,7 +393,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="g4W-fY-l7r"/>
                     <connections>
+                        <outlet property="bananStepper" destination="O5s-2N-3iP" id="Xbh-lM-FRM"/>
+                        <outlet property="storeBananaLabel" destination="gKu-86-RhI" id="SQq-7n-d9j"/>
+                        <outlet property="storeKiwiLabel" destination="ZDv-1m-HBY" id="Wh8-uR-evR"/>
+                        <outlet property="storeMangoLabel" destination="YJI-ER-LJR" id="TnD-Xj-Isk"/>
+                        <outlet property="storePineappleLabel" destination="MpT-VW-hCb" id="nmp-8i-IaV"/>
                         <outlet property="storeStrawberryLabel" destination="0yV-kn-zaT" id="yQL-zA-JjZ"/>
+                        <outlet property="strawberryStepper" destination="ZQk-f4-zrz" id="eqi-zw-kpx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
@@ -416,6 +425,9 @@
             <point key="canvasLocation" x="1637" y="21"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="vIf-Dv-cuB"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
