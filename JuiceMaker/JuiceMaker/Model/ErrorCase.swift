@@ -9,10 +9,11 @@ import Foundation
 
 enum MessageLog {
     
-    enum AlertCase {
+    enum AlertCase: CustomStringConvertible {
+
         case sucess(juiceName: String)
         
-        var message: String? {
+        var description: String {
             switch self {
             case .sucess(let juiceName):
                 return "\(juiceName) 나왔습니다. 맛있게 드세요!"

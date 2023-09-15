@@ -92,7 +92,7 @@ extension JuiceMakerViewController {
     }
     
     private func showingCompletedOrderAlert(juiceName: String) {
-        let completedOrderAlert =  UIAlertController(title: nil, message: MessageLog.AlertCase.sucess(juiceName: juiceName).message, preferredStyle: .alert)
+        let completedOrderAlert =  UIAlertController(title: nil, message: "\(MessageLog.AlertCase.sucess(juiceName: juiceName))", preferredStyle: .alert)
         
         let okay = UIAlertAction(title: "확인", style: .default)
         
