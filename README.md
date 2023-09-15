@@ -1,10 +1,10 @@
-# 쥬스 자판기 [STEP 1] Mango, SwainYun
+# 쥬스 자판기 [STEP 2] Mango, SwainYun
 
 리뷰어: @zdodev
 참가자: 망고, 스웨인
 
 안녕하세요, 소대!
-쥬스 자판기 [STEP 1] PR 올립니다.
+쥬스 자판기 [STEP 2] PR 올립니다.
 
 ---------------------
 
@@ -13,14 +13,41 @@
 * **쥬스와 과일의 종류를 나타내는 열거형**
 
 ```swift
-@frozen enum JuiceType {
-    case strawberryJuice, bananaJuice, kiwiJuice, pineappleJuice, strawberryBananaMixJuice, mangoJuice, mangokiwiJuice
+private enum JuiceType: String {
+    case strawberryJuice = "딸기쥬스"
+    case bananaJuice = "바나나쥬스"
+    case kiwiJuice = "키위쥬스"
+    case pineappleJuice = "파인애플쥬스"
+    case strawberryBananaMixJuice = "딸바쥬스"
+    case mangoJuice = "망고쥬스"
+    case mangokiwiJuice = "망키쥬스"
+    
+    var recipe: [Fruit] {
+        switch self {
+        case .strawberryJuice: return [Fruit(.strawberry, 16)]
+        case .bananaJuice: return [Fruit(.banana, 2)]
+        case .kiwiJuice: return [Fruit(.kiwi, 3)]
+        case .pineappleJuice: return [Fruit(.pineapple, 2)]
+        case .strawberryBananaMixJuice: return [Fruit(.strawberry, 10), Fruit(.banana, 1)]
+        case .mangoJuice: return [Fruit(.mango, 3)]
+        case .mangokiwiJuice: return [Fruit(.mango, 2), Fruit(.kiwi, 1)]
+        }
+    }
 }
 
-@frozen enum FruitType {
-    case strawberry, banana, kiwi, pineapple, mango
+    private enum FruitType: String, CaseIterable {
+    case strawberry = "딸기"
+    case banana = "바나나"
+    case kiwi = "키위"
+    case pineapple = "파인애플"
+    case mango = "망고"
 }
 ```
+
+    * JuiceType, FruitType
+    1. FruitStore 클래스 내에서만 사용할 것이라고 판단, FruitStore Nested Type으로 변경
+    2. Storyboard의 각 버튼과 재고 현황을 표시하기 위해 Accessability ID와 매칭할 수 있도록 각 case별 RawValue 설정
+> 각 버튼과 재고 라벨을 매칭할 수단으로, Restoration ID는 UI 복구 시 사용되는 것이라고 해서 사용하지 않는 것으로 의견 나눴고 버튼의 타이틀텍스트를
 
 * **Fruit 모델**
 ```swift

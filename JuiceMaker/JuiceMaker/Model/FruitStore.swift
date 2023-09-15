@@ -7,7 +7,6 @@
 import Foundation
 
 final class FruitStore {
-    // Properties
     private var inventory: [FruitType: Int]
     
     init() {
@@ -23,16 +22,13 @@ final class FruitStore {
     }
     
     func receiveOrder(juiceName: String) throws {
-        // 쥬스 이름을 가지고 어떤 쥬스인지 확인, 그런 쥬스가 있으면 그 쥬스의 레시피를 확인
         guard let juice = JuiceType(rawValue: juiceName) else { throw JuiceMakerError.invalidSelection }
         let recipe = juice.recipe
         
-        // 레시피 대로 재고 확인
         for ingredient in recipe {
             try validateStock(with: ingredient)
         }
         
-        // 이상 없으면 재고 감산
         for ingredient in recipe {
             try updateInventoryStock(with: ingredient)
         }
@@ -73,7 +69,7 @@ extension FruitStore {
         }
     }
     
-    @frozen private enum FruitType: String, CaseIterable {
+    private enum FruitType: String, CaseIterable {
         case strawberry = "딸기"
         case banana = "바나나"
         case kiwi = "키위"
@@ -94,19 +90,16 @@ extension FruitStore {
 
 // MARK: Private Methods
 extension FruitStore {
-    // 현재 재고 확인, 요구 수량을 빼고도 0 이상이면 통과, 아니면 outOfStock 에러 전파
     private func validateStock(with fruit: Fruit) throws {
         guard let stock = self.inventory[fruit.fruitType], stock - fruit.quantity >= 0 else { throw JuiceMakerError.outOfStock }
     }
     
-    // 지정된 요구 수량 만큼 빼고 변경된 값으로 재고 갱신
     private func updateInventoryStock(with fruit: Fruit) throws {
         guard let stock = self.inventory[fruit.fruitType] else { throw JuiceMakerError.invalidSelection }
         let remainStock = stock - fruit.quantity
         self.inventory[fruit.fruitType] = remainStock
     }
     
-    // 원하는 값으로 해당 재료의 재고 갱신
     private func updateInventoryStock(with fruit: Fruit, _ quantity: Int = 1) throws {
         guard let stock = self.inventory[fruit.fruitType] else { throw JuiceMakerError.invalidSelection }
         let newStock = stock + quantity
