@@ -8,7 +8,7 @@ import UIKit
 
 class JuiceMakerViewController: UIViewController {
     
-    var juiceMaker: JuiceMaker = JuiceMaker(fruitStore: FruitStore(fruitList:[
+    let juiceMaker: JuiceMaker = JuiceMaker(fruitStore: FruitStore(fruitList:[
         FruitStore.Fruit(name: "딸기"),
         FruitStore.Fruit(name: "바나나"),
         FruitStore.Fruit(name: "파인애플"),
