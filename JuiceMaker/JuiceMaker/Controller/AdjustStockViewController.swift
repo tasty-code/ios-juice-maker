@@ -8,9 +8,9 @@
 import UIKit
 
 class AdjustStockViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
 }

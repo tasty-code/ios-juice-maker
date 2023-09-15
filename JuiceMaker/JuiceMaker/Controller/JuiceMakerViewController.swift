@@ -54,7 +54,7 @@ extension JuiceMakerViewController {
     private func showAlertOutOfStock(_ error: Error) {
         let alert = UIAlertController(title: "\(error)", message: nil, preferredStyle: .alert)
         let yes = UIAlertAction(title: "예", style: .default) { _ in
-            self.moveAdjustStorageView()
+            self.pushAdjustStockViewController()
         }
         let no = UIAlertAction(title: "아니오", style: .destructive, handler: nil)
         alert.addAction(yes)
@@ -62,8 +62,10 @@ extension JuiceMakerViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    private func moveAdjustStorageView() {
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "AdjustStockViewController") else { return }
-        self.present(vc, animated: true)
+    private func pushAdjustStockViewController() {
+        guard let adjustStockViewController = self.storyboard?.instantiateViewController(withIdentifier: "AdjustStockViewController") as? AdjustStockViewController
+        else { return }
+        
+        self.navigationController?.pushViewController(adjustStockViewController, animated: true)
     }
 }

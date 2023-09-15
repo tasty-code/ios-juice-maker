@@ -54,7 +54,7 @@ extension FruitStore {
         case pineappleJuice = "파인애플쥬스"
         case strawberryBananaMixJuice = "딸바쥬스"
         case mangoJuice = "망고쥬스"
-        case mangokiwiJuice = "망키쥬스"
+        case mangoKiwiMixJuice = "망키쥬스"
         
         var recipe: [Fruit] {
             switch self {
@@ -64,7 +64,7 @@ extension FruitStore {
             case .pineappleJuice: return [Fruit(.pineapple, 2)]
             case .strawberryBananaMixJuice: return [Fruit(.strawberry, 10), Fruit(.banana, 1)]
             case .mangoJuice: return [Fruit(.mango, 3)]
-            case .mangokiwiJuice: return [Fruit(.mango, 2), Fruit(.kiwi, 1)]
+            case .mangoKiwiMixJuice: return [Fruit(.mango, 2), Fruit(.kiwi, 1)]
             }
         }
     }
