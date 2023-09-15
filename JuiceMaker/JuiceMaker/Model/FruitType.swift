@@ -9,10 +9,10 @@ import Foundation
 
 typealias Fruit = (fruitType: FruitType, count: Int)
 
-enum FruitType {
-    case strawberry
-    case banana
-    case pineapple
-    case mango
-    case kiwi
+enum FruitType: Int {
+    case strawberry = 0
+    case banana = 1
+    case pineapple = 2
+    case mango = 3
+    case kiwi = 4
 }

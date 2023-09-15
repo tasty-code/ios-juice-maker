@@ -46,47 +46,51 @@ class FruitInventoryViewController: UIViewController {
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
         let value = Int(sender.value)
+        guard let fruitType = FruitType(rawValue: sender.tag) else {
+            return
+        }
         do {
-            if sender == strawberryStepper {
+            switch fruitType {
+            case .strawberry:
                 let fruitCount = FruitStore.shared.strawberry
                 if value > fruitCount {
-                    try juiceMaker.add(fruitType: .strawberry)
+                    try juiceMaker.add(fruitType)
                 } else if value < fruitCount {
-                    try juiceMaker.sub(fruitType: .strawberry)
+                    try juiceMaker.sub(fruitType)
                 }
                 strawberryCountLabel.text = "\(FruitStore.shared.strawberry)"
-            } else if sender == bananaStepper {
-                let fruitCount = FruitStore.shared.banana
+            case .banana:
+                let fruitCount = FruitStore.shared.strawberry
                 if value > fruitCount {
-                    try juiceMaker.add(fruitType: .banana)
+                    try juiceMaker.add(fruitType)
                 } else if value < fruitCount {
-                    try juiceMaker.sub(fruitType: .banana)
+                    try juiceMaker.sub(fruitType)
                 }
                 bananaCountLabel.text = "\(FruitStore.shared.banana)"
-            } else if sender == mangoStepper {
-                let fruitCount = FruitStore.shared.mango
-                if value > fruitCount {
-                    try juiceMaker.add(fruitType: .mango)
-                } else if value < fruitCount {
-                    try juiceMaker.sub(fruitType: .mango)
-                }
-                mangoCountLabel.text = "\(FruitStore.shared.mango)"
-            } else if sender == kiwiStepper {
-                let fruitCount = FruitStore.shared.kiwi
-                if value > fruitCount {
-                    try juiceMaker.add(fruitType: .kiwi)
-                } else if value < fruitCount {
-                    try juiceMaker.sub(fruitType: .kiwi)
-                }
-                kiwiCountLabel.text = "\(FruitStore.shared.kiwi)"
-            } else if sender == pineappleStepper {
+            case .pineapple:
                 let fruitCount = FruitStore.shared.pineapple
                 if value > fruitCount {
-                    try juiceMaker.add(fruitType: .pineapple)
+                    try juiceMaker.add(fruitType)
                 } else if value < fruitCount {
-                    try juiceMaker.sub(fruitType: .pineapple)
+                    try juiceMaker.sub(fruitType)
                 }
                 pineappleCountLabel.text = "\(FruitStore.shared.pineapple)"
+            case .kiwi:
+                let fruitCount = FruitStore.shared.kiwi
+                if value > fruitCount {
+                    try juiceMaker.add(fruitType)
+                } else if value < fruitCount {
+                    try juiceMaker.sub(fruitType)
+                }
+                kiwiCountLabel.text = "\(FruitStore.shared.kiwi)"
+            case .mango:
+                let fruitCount = FruitStore.shared.mango
+                if value > fruitCount {
+                    try juiceMaker.add(fruitType)
+                } else if value < fruitCount {
+                    try juiceMaker.sub(fruitType)
+                }
+                mangoCountLabel.text = "\(FruitStore.shared.mango)"
             }
         } catch {
             return
