@@ -394,6 +394,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="g4W-fY-l7r"/>
+                    <connections>
+                        <outlet property="bananaLabel" destination="gKu-86-RhI" id="h33-iS-xUB"/>
+                        <outlet property="kiwiLabel" destination="ZDv-1m-HBY" id="uMF-GM-Eew"/>
+                        <outlet property="mangoLabel" destination="YJI-ER-LJR" id="Fnx-Xo-BSZ"/>
+                        <outlet property="pineappleLabel" destination="MpT-VW-hCb" id="z6t-eU-EHI"/>
+                        <outlet property="strawberryLabel" destination="0yV-kn-zaT" id="J6i-OS-N13"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
             </objects>
