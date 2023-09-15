@@ -21,12 +21,11 @@ class JuiceMakerViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        
         guard let fruitStoreViewController = segue.destination as? FruitStoreViewController else {
             print("\(segue.destination)")
             return}
         fruitStoreViewController.fruitStore = juiceMaker.fruitStore
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,12 +45,15 @@ class JuiceMakerViewController: UIViewController {
     
     @IBAction func orderJuice(_ sender: UIButton) {
         guard let juiceName = sender.currentTitle?.split(separator: " ").filter({ $0 != "주문"}).joined() else { return }
-
-        juiceMaker.startOrder(juiceName: juiceName)
-        juiceMaker.canMakeJuice ? showingCompletedOrderAlert(juiceName: juiceName) : showingOutOfStockAlert()
-        updateUI()
+        do {
+            try juiceMaker.startOrder(juiceName: juiceName)
+            showingCompletedOrderAlert(juiceName: juiceName)
+            updateUI()
+        } catch {
+            showingOutOfStockAlert(error: error)
+        }
+        
     }
-    
 }
 
 
@@ -68,17 +70,24 @@ extension JuiceMakerViewController {
     }
     
     
-    private func showingOutOfStockAlert() {
-        let outOfStockAlert = UIAlertController(title: nil, message: MessageLog.AlertCase.outOfStock.message, preferredStyle: .alert)
+    private func showingOutOfStockAlert(error: Error) {
+        let outOfStockAlert = UIAlertController(title: nil, message: "\(error)", preferredStyle: .alert)
         
-        let moveToFruitStore = UIAlertAction(title: "이동하기", style: .destructive)
+        let moveToFruitStore = UIAlertAction(title: "이동하기", style: .destructive) { _ in
+            let fruitStoreViewController = FruitStoreViewController()
+            fruitStoreViewController.fruitStore = self.juiceMaker.fruitStore
+            
+            
+            self.navigationController?.pushViewController(fruitStoreViewController, animated: true)
+            
+        }
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         
         outOfStockAlert.addAction(moveToFruitStore)
         outOfStockAlert.addAction(cancel)
         
         present(outOfStockAlert, animated: true)
-
+        
         
     }
     

@@ -11,19 +11,14 @@ struct JuiceMaker {
     
     let fruitStore: FruitStore
     
-    var canMakeJuice: Bool = true
+//    var canMakeJuice: Bool = true
     
-    mutating func startOrder(juiceName: String) {
+    mutating func startOrder(juiceName: String) throws {
+        let fruitDict: [FruitStore.Fruit: Int] = try orderConvertToDict(juice: juiceName)
         
-        do {
-            let fruitDict: [FruitStore.Fruit: Int] = try orderConvertToDict(juice: juiceName)
-            
-            try checkStock(juiceIngredient: fruitDict)
-            try makeJuice(juiceIngredient: fruitDict)
-            
-        } catch {
-            debugPrint(error)
-        }
+        try checkStock(juiceIngredient: fruitDict)
+        try makeJuice(juiceIngredient: fruitDict)
+
     }
     
     
@@ -32,10 +27,8 @@ struct JuiceMaker {
             guard let listIndex = fruitStore.fruitList.firstIndex(where: {$0.name == fruit.name}) else {
                 throw MessageLog.ErrorCase.canNotFound
             }
-            guard fruitStore.fruitList[listIndex].stock > count - 1 else {
-                canMakeJuice = false
-                throw MessageLog.ErrorCase.outOfStock}
-            canMakeJuice = true
+            guard fruitStore.fruitList[listIndex].stock > count - 1 else {throw MessageLog.ErrorCase.outOfStock}
+
         }
 
     }
