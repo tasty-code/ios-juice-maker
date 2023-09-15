@@ -7,7 +7,7 @@
 import UIKit
 
 class JuiceMenuViewController: UIViewController {
-    private var juiceMaker = JuiceMaker()
+    private let juiceMaker = JuiceMaker()
     
     @IBOutlet weak var strawberryCountLabel: UILabel!
     @IBOutlet weak var bananaCountLabel: UILabel!
