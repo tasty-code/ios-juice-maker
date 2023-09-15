@@ -17,7 +17,6 @@ class JuiceMakerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("화면 1 : \(juiceMaker.fruitStore.fruitList)")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -27,8 +26,7 @@ class JuiceMakerViewController: UIViewController {
             print("\(segue.destination)")
             return}
         fruitStoreViewController.fruitStore = juiceMaker.fruitStore
-//        let 새로운네비게이서ㅕㄴUINavigationController(rootViewController: <#T##UIViewController#>) 이거는 따로 뷰로 연결 안해줘도 됨
-//        guard let fruitStoreViewController = navigationViewController.topViewController
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,7 +47,7 @@ class JuiceMakerViewController: UIViewController {
     @IBAction func orderJuice(_ sender: UIButton) {
         guard let juiceName = sender.restorationIdentifier else { return }
         juiceMaker.startOrder(juiceName: juiceName)
-        
+        juiceMaker.canMakeJuice ? showingCompletedOrderAlert(juiceName: juiceName) : showingOutOfStockAlert()
         updateUI()
     }
     
@@ -79,6 +77,7 @@ extension JuiceMakerViewController {
         outOfStockAlert.addAction(cancel)
         
         present(outOfStockAlert, animated: true)
+
         
     }
     

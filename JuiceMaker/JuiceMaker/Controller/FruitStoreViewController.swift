@@ -15,10 +15,6 @@ class FruitStoreViewController: UIViewController {
         updateUI()
         initStepper()
         
-        
-        
-        
-        print("화면 2 : \(fruitStore!.fruitList)")
     }
     
    
