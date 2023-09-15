@@ -36,7 +36,7 @@ enum JuiceType {
         case .kiwiJuice:
             return [Fruit(.kiwi, 3)]
         case .pineappleJuice:
-            return [Fruit(.kiwi, 3)]
+            return [Fruit(.pineapple, 2)]
         case .strawberrydBananaJuice:
             return [Fruit(.strawberry, 10), Fruit(.banana, 1)]
         case .mangoJuice:
