@@ -10,14 +10,6 @@ import Foundation
 class FruitStore {
   static let shared = FruitStore()
   
-  enum Fruit: String {
-    case strawberry
-    case pineapple
-    case banana
-    case kiwi
-    case mango
-  }
-  
   private let initialValue = 10
   private var inventory = [Fruit.strawberry: 0, Fruit.pineapple: 0, Fruit.banana: 0, Fruit.kiwi: 0, Fruit.mango: 0]
   
@@ -33,22 +25,19 @@ class FruitStore {
     inventory.updateValue(result, forKey: fruitName)
   }
   
-  func subtract(fruitName: String, number: Int) {
-    guard let fruit = Fruit(rawValue: fruitName) else { return }
-    let currentNumber = getNum(fruitName: fruit)
+  func subtract(fruitName: Fruit, number: Int) {
+    let currentNumber = getNum(fruitName: fruitName)
     let result = currentNumber - number
-    inventory.updateValue(result, forKey: fruit)
+    inventory.updateValue(result, forKey: fruitName)
   }
   
   func getNum(fruitName: Fruit) -> Int {
     let currentNumber = inventory[fruitName] ?? 0
-    print(currentNumber)
     return currentNumber
   }
   
-  func checkInventory(fruitName: String, number: Int) throws {
-    guard let fruit = Fruit(rawValue: fruitName) else { return }
-    let currentNumber = getNum(fruitName: fruit)
+  func checkInventory(fruitName: Fruit, number: Int) throws {
+    let currentNumber = getNum(fruitName: fruitName)
     if currentNumber < number {
       throw FruitStoreError.outOfStock
     }
