@@ -1,13 +1,13 @@
 //
-//  ErrorPrinter.swift
+//  ErrorMessage.swift
 //  JuiceMaker
 //
-//  Created by 전성수 on 2023/09/13.
+//  Created by 김수경 on 2023/09/15.
 //
 
 import Foundation
 
-enum ErrorPrinter: Error, CustomDebugStringConvertible {
+enum ErrorMessage: Error, CustomDebugStringConvertible {
     case stockInsufficient(_ fruit: String)
     case stockInsufficients(_ frutits: [String])
     case invalidInput
@@ -23,4 +23,3 @@ enum ErrorPrinter: Error, CustomDebugStringConvertible {
         }
     }
 }
-

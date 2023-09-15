@@ -8,59 +8,77 @@ import Foundation
 
 // 쥬스 메이커 타입
 struct JuiceMaker {
-    private var fruitStorage = FruitStore()
-    
-    func makeJuice(_ order: Juice) {
+    var fruitStorage = FruitStore()
+
+    func getOrder(_ order: Juice) -> [Int?] {
+        var makable: [Int?] = []
         do {
-            let getOrder = try soldOutChecker(order)
-            fruitStorage.changeCurrentStock(getOrder)
+            let currentFruitStock: [Int] = try fruitStorage.getStockInfo(order.recipe.fruitName)
+            currentFruitStock.enumerated().forEach { stock in
+                makable.append(stock.element >= order.recipe.consumption[stock.offset] ? order.recipe.consumption[stock.offset] : nil)
+            }
+            if try fruitStorage.makeJuice(order.recipe.fruitName, makable) {
+                print(order.description)
+            }
         } catch {
             print(error)
         }
-    }
-    
-    private func juiceSoldOutChecker(_ fruit: FruitStock, _ juice: Juice) throws -> Juice {
-        guard fruit.currentStock >= fruit.singleConsumption else {
-            throw ErrorPrinter.stockInsufficient(fruit.name)
-        }
-        return juice
-    }
-    
-    private func combineJuiceSoldOutChecker(_ firstFruit: FruitStock, _ secondFruit: FruitStock, _ juice: Juice) throws -> Juice {
-        guard let firstConsumption = firstFruit.combineConsumption else {
-            throw ErrorPrinter.invalidInput
-        }
-        guard let secondConsumption = secondFruit.combineConsumption else {
-            throw ErrorPrinter.invalidInput
-        }
-        guard firstFruit.currentStock >= firstConsumption || secondFruit.currentStock >= secondConsumption else {
-            throw ErrorPrinter.stockInsufficients([firstFruit.name, secondFruit.name])
-        }
-        guard firstFruit.currentStock >= firstConsumption else {
-            throw ErrorPrinter.stockInsufficient(firstFruit.name)
-        }
-        guard secondFruit.currentStock >= secondConsumption else {
-            throw ErrorPrinter.stockInsufficient(secondFruit.name)
-        }
-        return juice
-    }
-    
-    private func soldOutChecker(_ menu: Juice) throws -> Juice {
-        switch menu {
-        case .strawberryJuice:
-            return try juiceSoldOutChecker(fruitStorage.showStockList(.strawberryJuice)[0], .strawberryJuice)
-        case .bananaJuice:
-            return try juiceSoldOutChecker(fruitStorage.showStockList(.bananaJuice)[0], .bananaJuice)
-        case .kiwiJuice:
-            return try juiceSoldOutChecker(fruitStorage.showStockList(.kiwiJuice)[0], .kiwiJuice)
-        case .pineappleJuice:
-            return try juiceSoldOutChecker(fruitStorage.showStockList(.pineappleJuice)[0], .pineappleJuice)
-        case .mangoJuice:
-            return try juiceSoldOutChecker(fruitStorage.showStockList(.mangoJuice)[0], .mangoJuice)
-        case .strawberryBananaJuice:
-            return try combineJuiceSoldOutChecker(fruitStorage.showStockList(.strawberryBananaJuice)[0], fruitStorage.showStockList(.strawberryBananaJuice)[1], .strawberryBananaJuice)
-        case .mangoKiwiJuice:
-            return try combineJuiceSoldOutChecker(fruitStorage.showStockList(.mangoKiwiJuice)[0], fruitStorage.showStockList(.mangoKiwiJuice)[1], .mangoKiwiJuice)
-        }
+        return makable
     }
 }
+
+enum Juice: CustomStringConvertible {
+    case strawberryJuice
+    case bananaJuice
+    case pineappleJuice
+    case kiwiJuice
+    case mangoJuice
+    case strawberryBananaJuice
+    case mangoKiwiJuice
+    
+    
+    var recipe: Consumption {
+        switch self {
+        case .strawberryJuice:
+            return Consumption(fruitName: [.strawberry], consumption: [16])
+        case .bananaJuice:
+            return Consumption(fruitName: [.banana], consumption: [2])
+        case .pineappleJuice:
+            return Consumption(fruitName: [.pineapple], consumption: [2])
+        case .kiwiJuice:
+            return Consumption(fruitName: [.kiwi], consumption: [3])
+        case .mangoJuice:
+            return Consumption(fruitName: [.mango], consumption: [3])
+        case .strawberryBananaJuice:
+            return Consumption(fruitName: [.strawberry, .banana], consumption: [10, 1])
+        case .mangoKiwiJuice:
+            return Consumption(fruitName: [.mango, .kiwi], consumption: [2, 1])
+        }
+    }
+    
+    var description: String {
+            switch self {
+            case .strawberryJuice:
+                return "주문성공😀 주문하신 딸기쥬스 나왔습니다."
+            case .bananaJuice:
+                return "주문성공😀 주문하신 바나나쥬스 나왔습니다."
+            case .kiwiJuice:
+                return "주문성공😀 주문하신 키위쥬스 나왔습니다."
+            case .pineappleJuice:
+                return "주문성공😀 주문하신 파인애플쥬스 나왔습니다."
+            case .mangoJuice:
+                return "주문성공😀 주문하신 망고쥬스 나왔습니다."
+            case .strawberryBananaJuice:
+                return "주문성공😀 주문하신 딸바쥬스 나왔습니다."
+            case .mangoKiwiJuice:
+                return "주문성공😀 주문하신 망키쥬스 나왔습니다."
+            }
+        }
+    
+    struct Consumption {
+        let fruitName: [FruitStore.Fruit]
+        let consumption: [Int]
+    }
+}
+
+
