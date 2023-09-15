@@ -27,35 +27,26 @@ class JuiceMenuViewController: UIViewController {
         mangoCountLabel.text = "\(FruitStore.shared.mango)"
     }
     
-    @IBAction func strawberryBananaPressed(_ sender: Any) {
-        order(menu: .strawberrydBananaJuice)
-        strawberryCountLabel.text = "\(FruitStore.shared.strawberry)"
-        bananaCountLabel.text = "\(FruitStore.shared.banana)"
-    }
-    @IBAction func strawberryPressed(_ sender: Any) {
-        order(menu: .strawberryJuice)
-        strawberryCountLabel.text = "\(FruitStore.shared.strawberry)"
-    }
-    @IBAction func bananaPressed(_ sender: Any) {
-        order(menu: .bananaJuice)
-        bananaCountLabel.text = "\(FruitStore.shared.banana)"
-    }
-    @IBAction func pineapplePressed(_ sender: Any) {
-        order(menu: .pineappleJuice)
-        pineappleCountLabel.text = "\(FruitStore.shared.pineapple)"
-    }
-    @IBAction func mangoKiwiPressed(_ sender: Any) {
-        order(menu: .mangoKiwiJuice)
-        mangoCountLabel.text = "\(FruitStore.shared.mango)"
-        kiwiCountLabel.text = "\(FruitStore.shared.kiwi)"
-    }
-    @IBAction func kiwiPressed(_ sender: Any) {
-        order(menu: .kiwiJuice)
-        kiwiCountLabel.text = "\(FruitStore.shared.kiwi)"
-    }
-    @IBAction func mangoPressed(_ sender: Any) {
-        order(menu: .mangoJuice)
-        mangoCountLabel.text = "\(FruitStore.shared.mango)"
+    @IBAction func juiceButtonPressed(_ sender: UIButton) {
+        guard let juiceSubstring = sender.titleLabel?.text?.split(separator: " ")[0],
+        let juiceType = JuiceType(rawValue: String(juiceSubstring)) else {
+            return
+        }
+        order(menu: juiceType)
+        for (fruitType, _) in juiceType.ingredients {
+            switch fruitType {
+            case .strawberry:
+                strawberryCountLabel.text = "\(FruitStore.shared.strawberry)"
+            case .banana:
+                bananaCountLabel.text = "\(FruitStore.shared.banana)"
+            case .mango:
+                mangoCountLabel.text = "\(FruitStore.shared.mango)"
+            case .pineapple:
+                pineappleCountLabel.text = "\(FruitStore.shared.pineapple)"
+            case .kiwi:
+                kiwiCountLabel.text = "\(FruitStore.shared.kiwi)"
+            }
+        }
     }
     
     private func order(menu selectedMenu: JuiceType) {
@@ -70,7 +61,7 @@ class JuiceMenuViewController: UIViewController {
     private func alertOrderSuccess(of juice: JuiceType) {
         let alertController = UIAlertController(
             title: "제조 성공",
-            message: "\(juice.name) 나왔습니다! 맛있게 드세요!",
+            message: "\(juice.rawValue) 나왔습니다! 맛있게 드세요!",
             preferredStyle: .alert
         )
         let finishedAlertAction = UIAlertAction(title: "확인", style: .default)
