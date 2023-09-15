@@ -18,7 +18,7 @@ class FruitStore {
     
     func consume(fruit: Fruit, withCount: UInt) throws {
         guard let remainedCount = fruitInventory[fruit] else {
-            throw InventoryError.invalidMenuError
+            throw InventoryError.invalidError
         }
         
         if remainedCount < withCount {
@@ -30,7 +30,7 @@ class FruitStore {
     
     func remainingCount(fruit: Fruit) throws -> UInt {
         guard let remainedCount = fruitInventory[fruit] else {
-            throw InventoryError.invalidMenuError
+            throw InventoryError.invalidError
         }
         return remainedCount
     }
