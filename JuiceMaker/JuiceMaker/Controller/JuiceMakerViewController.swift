@@ -19,14 +19,16 @@ class JuiceMakerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.manageFruitStock()
+        self.loadInventory()
+        self.syncStockLabels()
     }
 
     @IBAction func makeJuice(_ sender: UIButton) {
         guard let buttonId = sender.accessibilityIdentifier else { return }
         do {
             try juiceMaker.makeJuice(juiceName: buttonId)
-            manageFruitStock()
+            self.loadInventory()
+            self.syncStockLabels()
             showAlertCompletionJuiceMaking(buttonId)
         } catch let error {
             showAlertOutOfStock(error)
@@ -43,9 +45,11 @@ class JuiceMakerViewController: UIViewController {
 
 // MARK: Private Methods
 extension JuiceMakerViewController {
-    private func manageFruitStock() {
-        inventory = juiceMaker.checkFruitStoreInventory()
-        
+    private func loadInventory() {
+        self.inventory = juiceMaker.checkFruitStoreInventory()
+    }
+    
+    private func syncStockLabels() {
         strawberryStockLabel.text = String(inventory?["딸기"] ?? 0)
         bananaStockLabel.text = String(inventory?["바나나"] ?? 0)
         kiwiStockLabel.text = String(inventory?["키위"] ?? 0)

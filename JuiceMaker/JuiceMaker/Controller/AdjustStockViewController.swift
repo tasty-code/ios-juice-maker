@@ -24,42 +24,39 @@ class AdjustStockViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        manageFruitStock()
-        initializeStepperValue()
+        syncStockLabels()
+        syncStepperValue()
     }
     
     @IBAction func touchStrawberryStepper(_ sender: UIStepper) {
         inventory?["딸기"] = Int(sender.value)
-        manageFruitStock()
+        syncStockLabels()
     }
     
     @IBAction func touchBananaStepper(_ sender: UIStepper) {
         inventory?["바나나"] = Int(sender.value)
-        manageFruitStock()
+        syncStockLabels()
     }
     
     @IBAction func touchKiwiStepper(_ sender: UIStepper) {
         inventory?["키위"] = Int(sender.value)
-        manageFruitStock()
+        syncStockLabels()
     }
     
     @IBAction func touchPineappleStepper(_ sender: UIStepper) {
         inventory?["파인애플"] = Int(sender.value)
-        manageFruitStock()
+        syncStockLabels()
     }
     
     @IBAction func touchMangoStepper(_ sender: UIStepper) {
         inventory?["망고"] = Int(sender.value)
-        manageFruitStock()
+        syncStockLabels()
     }
-    
-    
-    
 }
 
 // MARK: Private Methods
 extension AdjustStockViewController {
-    private func manageFruitStock() {
+    private func syncStockLabels() {
         strawberryStockLabel.text = String(inventory?["딸기"] ?? 0)
         bananaStockLabel.text = String(inventory?["바나나"] ?? 0)
         kiwiStockLabel.text = String(inventory?["키위"] ?? 0)
@@ -67,7 +64,7 @@ extension AdjustStockViewController {
         mangoStockLabel.text = String(inventory?["망고"] ?? 0)
     }
     
-    private func initializeStepperValue() {
+    private func syncStepperValue() {
         strawberryStockStepper.value = Double(inventory?["딸기"] ?? 0)
         bananaStockStepper.value = Double(inventory?["바나나"] ?? 0)
         pineappleStockStepper.value = Double(inventory?["파인애플"] ?? 0)
