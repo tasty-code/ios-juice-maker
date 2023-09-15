@@ -25,6 +25,14 @@ class JuiceMenuViewController: UIViewController {
         mangoCountLabel.text = "\(FruitStore.shared.mango)"
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        strawberryCountLabel.text = "\(FruitStore.shared.strawberry)"
+        bananaCountLabel.text = "\(FruitStore.shared.banana)"
+        pineappleCountLabel.text = "\(FruitStore.shared.pineapple)"
+        kiwiCountLabel.text = "\(FruitStore.shared.kiwi)"
+        mangoCountLabel.text = "\(FruitStore.shared.mango)"
+    }
+    
     @IBAction func strawberryBananaPressed(_ sender: Any) {
         order(menu: .strawberrydBananaJuice)
         strawberryCountLabel.text = "\(FruitStore.shared.strawberry)"
