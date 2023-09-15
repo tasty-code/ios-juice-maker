@@ -17,12 +17,6 @@ class JuiceMenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        strawberryCountLabel.text = "\(FruitStore.shared.strawberry)"
-        bananaCountLabel.text = "\(FruitStore.shared.banana)"
-        pineappleCountLabel.text = "\(FruitStore.shared.pineapple)"
-        kiwiCountLabel.text = "\(FruitStore.shared.kiwi)"
-        mangoCountLabel.text = "\(FruitStore.shared.mango)"
     }
     
     override func viewWillAppear(_ animated: Bool) {
