@@ -15,6 +15,8 @@ class JuiceMakerViewController: UIViewController {
     @IBOutlet weak var kiwiStockLabel: UILabel!
     @IBOutlet weak var mangoStockLabel: UILabel!
     
+    var inventory: [String: Int]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.manageFruitStock()
@@ -30,18 +32,25 @@ class JuiceMakerViewController: UIViewController {
             showAlertOutOfStock(error)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let adjustStockViewController = segue.destination as? AdjustStockViewController
+        else { return }
+        
+        adjustStockViewController.inventory = self.inventory
+    }
 }
 
 // MARK: Private Methods
 extension JuiceMakerViewController {
     private func manageFruitStock() {
-        let inventory = juiceMaker.checkFruitStoreInventory()
+        inventory = juiceMaker.checkFruitStoreInventory()
         
-        strawberryStockLabel.text = String(inventory["딸기"] ?? 0)
-        bananaStockLabel.text = String(inventory["바나나"] ?? 0)
-        kiwiStockLabel.text = String(inventory["키위"] ?? 0)
-        pineappleStockLabel.text = String(inventory["파인애플"] ?? 0)
-        mangoStockLabel.text = String(inventory["망고"] ?? 0)
+        strawberryStockLabel.text = String(inventory?["딸기"] ?? 0)
+        bananaStockLabel.text = String(inventory?["바나나"] ?? 0)
+        kiwiStockLabel.text = String(inventory?["키위"] ?? 0)
+        pineappleStockLabel.text = String(inventory?["파인애플"] ?? 0)
+        mangoStockLabel.text = String(inventory?["망고"] ?? 0)
     }
     
     private func showAlertCompletionJuiceMaking(_ juiceName: String) {
@@ -66,6 +75,7 @@ extension JuiceMakerViewController {
         guard let adjustStockViewController = self.storyboard?.instantiateViewController(withIdentifier: "AdjustStockViewController") as? AdjustStockViewController
         else { return }
         
+        adjustStockViewController.inventory = self.inventory
         self.navigationController?.pushViewController(adjustStockViewController, animated: true)
     }
 }
