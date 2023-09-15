@@ -20,11 +20,27 @@ class JuiceMenuViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        strawberryCountLabel.text = "\(FruitStore.shared.strawberry)"
-        bananaCountLabel.text = "\(FruitStore.shared.banana)"
-        pineappleCountLabel.text = "\(FruitStore.shared.pineapple)"
-        kiwiCountLabel.text = "\(FruitStore.shared.kiwi)"
-        mangoCountLabel.text = "\(FruitStore.shared.mango)"
+        super.viewWillAppear(animated)
+        
+        for fruitType in FruitType.allCases {
+            var fruitCount = 0
+            if let tempCount = FruitStore.shared.fruitCountList[fruitType] {
+                fruitCount = tempCount
+            }
+            
+            switch fruitType {
+            case .strawberry:
+                strawberryCountLabel.text = "\(fruitCount)"
+            case .banana:
+                bananaCountLabel.text = "\(fruitCount)"
+            case .pineapple:
+                pineappleCountLabel.text = "\(fruitCount)"
+            case .mango:
+                kiwiCountLabel.text = "\(fruitCount)"
+            case .kiwi:
+                mangoCountLabel.text = "\(fruitCount)"
+            }
+        }
     }
     
     @IBAction func juiceButtonPressed(_ sender: UIButton) {
@@ -34,17 +50,21 @@ class JuiceMenuViewController: UIViewController {
         }
         order(menu: juiceType)
         for (fruitType, _) in juiceType.ingredients {
+            var fruitCount = 0
+            if let tempCount = FruitStore.shared.fruitCountList[fruitType] {
+                fruitCount = tempCount
+            }
             switch fruitType {
             case .strawberry:
-                strawberryCountLabel.text = "\(FruitStore.shared.strawberry)"
+                strawberryCountLabel.text = "\(fruitCount)"
             case .banana:
-                bananaCountLabel.text = "\(FruitStore.shared.banana)"
+                bananaCountLabel.text = "\(fruitCount)"
             case .mango:
-                mangoCountLabel.text = "\(FruitStore.shared.mango)"
+                mangoCountLabel.text = "\(fruitCount)"
             case .pineapple:
-                pineappleCountLabel.text = "\(FruitStore.shared.pineapple)"
+                pineappleCountLabel.text = "\(fruitCount)"
             case .kiwi:
-                kiwiCountLabel.text = "\(FruitStore.shared.kiwi)"
+                kiwiCountLabel.text = "\(fruitCount)"
             }
         }
     }

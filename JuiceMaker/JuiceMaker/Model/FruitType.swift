@@ -9,7 +9,7 @@ import Foundation
 
 typealias Fruit = (fruitType: FruitType, count: Int)
 
-enum FruitType: Int {
+enum FruitType: Int, CaseIterable {
     case strawberry = 0
     case banana = 1
     case pineapple = 2

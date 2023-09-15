@@ -25,17 +25,30 @@ class FruitInventoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        strawberryCountLabel.text = "\(FruitStore.shared.strawberry)"
-        bananaCountLabel.text = "\(FruitStore.shared.banana)"
-        pineappleCountLabel.text = "\(FruitStore.shared.pineapple)"
-        kiwiCountLabel.text = "\(FruitStore.shared.kiwi)"
-        mangoCountLabel.text = "\(FruitStore.shared.mango)"
-        
-        strawberryStepper.value = Double(FruitStore.shared.strawberry)
-        bananaStepper.value = Double(FruitStore.shared.banana)
-        pineappleStepper.value = Double(FruitStore.shared.pineapple)
-        kiwiStepper.value = Double(FruitStore.shared.kiwi)
-        mangoStepper.value = Double(FruitStore.shared.mango)
+        for fruitType in FruitType.allCases {
+            var fruitCount = 0
+            if let tempCount = FruitStore.shared.fruitCountList[fruitType] {
+                fruitCount = tempCount
+            }
+            
+            switch fruitType {
+            case .strawberry:
+                strawberryCountLabel.text = "\(fruitCount)"
+                strawberryStepper.value = Double(fruitCount)
+            case .banana:
+                bananaCountLabel.text = "\(fruitCount)"
+                bananaStepper.value = Double(fruitCount)
+            case .pineapple:
+                pineappleCountLabel.text = "\(fruitCount)"
+                pineappleStepper.value = Double(fruitCount)
+            case .mango:
+                kiwiCountLabel.text = "\(fruitCount)"
+                kiwiStepper.value = Double(fruitCount)
+            case .kiwi:
+                mangoCountLabel.text = "\(fruitCount)"
+                mangoStepper.value = Double(fruitCount)
+            }
+        }
         
         strawberryStepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
         bananaStepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
@@ -46,51 +59,47 @@ class FruitInventoryViewController: UIViewController {
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
         let value = Int(sender.value)
-        guard let fruitType = FruitType(rawValue: sender.tag) else {
+        guard let fruitType = FruitType(rawValue: sender.tag),
+              let fruitCount = FruitStore.shared.fruitCountList[fruitType] else {
             return
         }
         do {
             switch fruitType {
             case .strawberry:
-                let fruitCount = FruitStore.shared.strawberry
                 if value > fruitCount {
                     try juiceMaker.add(fruitType)
                 } else if value < fruitCount {
                     try juiceMaker.sub(fruitType)
                 }
-                strawberryCountLabel.text = "\(FruitStore.shared.strawberry)"
+                strawberryCountLabel.text = "\(value)"
             case .banana:
-                let fruitCount = FruitStore.shared.strawberry
                 if value > fruitCount {
                     try juiceMaker.add(fruitType)
                 } else if value < fruitCount {
                     try juiceMaker.sub(fruitType)
                 }
-                bananaCountLabel.text = "\(FruitStore.shared.banana)"
+                bananaCountLabel.text = "\(value)"
             case .pineapple:
-                let fruitCount = FruitStore.shared.pineapple
                 if value > fruitCount {
                     try juiceMaker.add(fruitType)
                 } else if value < fruitCount {
                     try juiceMaker.sub(fruitType)
                 }
-                pineappleCountLabel.text = "\(FruitStore.shared.pineapple)"
+                pineappleCountLabel.text = "\(value)"
             case .kiwi:
-                let fruitCount = FruitStore.shared.kiwi
                 if value > fruitCount {
                     try juiceMaker.add(fruitType)
                 } else if value < fruitCount {
                     try juiceMaker.sub(fruitType)
                 }
-                kiwiCountLabel.text = "\(FruitStore.shared.kiwi)"
+                kiwiCountLabel.text = "\(value)"
             case .mango:
-                let fruitCount = FruitStore.shared.mango
                 if value > fruitCount {
                     try juiceMaker.add(fruitType)
                 } else if value < fruitCount {
                     try juiceMaker.sub(fruitType)
                 }
-                mangoCountLabel.text = "\(FruitStore.shared.mango)"
+                mangoCountLabel.text = "\(value)"
             }
         } catch {
             return
