@@ -25,6 +25,7 @@ class JuiceMakerViewController: UIViewController {
 
     @IBAction func makeJuice(_ sender: UIButton) {
         guard let buttonId = sender.accessibilityIdentifier else { return }
+        
         do {
             try juiceMaker.makeJuice(juiceName: buttonId)
             self.loadInventory()
