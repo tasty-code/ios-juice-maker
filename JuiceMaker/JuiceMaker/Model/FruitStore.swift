@@ -43,6 +43,14 @@ final class FruitStore {
 
         return itemDict
     }
+    
+    func updateInventoryStock(with inventory: [String: Int]) {
+        for item in inventory {
+            if let fruitType = FruitType(rawValue: item.key) {
+                self.inventory.updateValue(item.value, forKey: fruitType)
+            }
+        }
+    }
 }
 
 // MARK: Nested Types
@@ -98,11 +106,5 @@ extension FruitStore {
         guard let stock = self.inventory[fruit.fruitType] else { throw JuiceMakerError.invalidSelection }
         let remainStock = stock - fruit.quantity
         self.inventory[fruit.fruitType] = remainStock
-    }
-    
-    private func updateInventoryStock(with fruit: Fruit, _ quantity: Int = 1) throws {
-        guard let stock = self.inventory[fruit.fruitType] else { throw JuiceMakerError.invalidSelection }
-        let newStock = stock + quantity
-        self.inventory[fruit.fruitType] = newStock
     }
 }

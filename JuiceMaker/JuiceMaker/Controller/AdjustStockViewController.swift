@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol InventorySendDelegate: AnyObject {
+    func sendInventory(inventory: [String: Int])
+}
+
 class AdjustStockViewController: UIViewController {
     @IBOutlet weak var strawberryStockLabel: UILabel!
     @IBOutlet weak var bananaStockLabel: UILabel!
@@ -21,6 +25,7 @@ class AdjustStockViewController: UIViewController {
     @IBOutlet weak var mangoStockStepper: UIStepper!
     
     var inventory: [String: Int]?
+    weak var delegate: InventorySendDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +56,14 @@ class AdjustStockViewController: UIViewController {
     @IBAction func touchMangoStepper(_ sender: UIStepper) {
         inventory?["망고"] = Int(sender.value)
         syncStockLabels()
+    }
+    
+    @IBAction func touchNavSaveButton(_ sender: UIButton) {
+        if let inventory = inventory {
+            delegate?.sendInventory(inventory: inventory)
+        }
+        
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

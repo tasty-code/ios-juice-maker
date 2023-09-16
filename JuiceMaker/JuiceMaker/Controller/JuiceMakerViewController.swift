@@ -35,11 +35,17 @@ class JuiceMakerViewController: UIViewController {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let adjustStockViewController = segue.destination as? AdjustStockViewController
-        else { return }
-        
-        adjustStockViewController.inventory = self.inventory
+    @IBAction func touchNavButton(_ sender: UIBarButtonItem) {
+        pushAdjustStockViewController()
+    }
+}
+
+// MARK: Delegate
+extension JuiceMakerViewController: InventorySendDelegate {
+    func sendInventory(inventory: [String: Int]) {
+        self.inventory = inventory
+        syncStockLabels()
+        juiceMaker.updateFruitStoreInventory(with: inventory)
     }
 }
 
@@ -80,6 +86,7 @@ extension JuiceMakerViewController {
         else { return }
         
         adjustStockViewController.inventory = self.inventory
+        adjustStockViewController.delegate = self
         self.navigationController?.pushViewController(adjustStockViewController, animated: true)
     }
 }
