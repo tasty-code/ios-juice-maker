@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		98FAC71D2AB054CD00F222F5 /* StockError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FAC71C2AB054CD00F222F5 /* StockError.swift */; };
+		C346A13F2AB49373001F7ED4 /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C346A13E2AB49373001F7ED4 /* Fruit.swift */; };
 		C38A0FF12AB01BB800D7F1AF /* JuiceMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38A0FF02AB01BB800D7F1AF /* JuiceMenu.swift */; };
 		C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71CD66A266C7ACB0038B9CB /* FruitStore.swift */; };
 		C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DAF36255D0CDD00020D38 /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		98FAC71C2AB054CD00F222F5 /* StockError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockError.swift; sourceTree = "<group>"; };
+		C346A13E2AB49373001F7ED4 /* Fruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
 		C38A0FF02AB01BB800D7F1AF /* JuiceMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMenu.swift; sourceTree = "<group>"; };
 		C71CD66A266C7ACB0038B9CB /* FruitStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitStore.swift; sourceTree = "<group>"; };
 		C73DAF33255D0CDD00020D38 /* JuiceMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JuiceMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				C38A0FF02AB01BB800D7F1AF /* JuiceMenu.swift */,
+				C346A13E2AB49373001F7ED4 /* Fruit.swift */,
 				C71CD66A266C7ACB0038B9CB /* FruitStore.swift */,
 				C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */,
 				98FAC71C2AB054CD00F222F5 /* StockError.swift */,
@@ -173,6 +176,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C346A13F2AB49373001F7ED4 /* Fruit.swift in Sources */,
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
 				98FAC71D2AB054CD00F222F5 /* StockError.swift in Sources */,
 				C38A0FF12AB01BB800D7F1AF /* JuiceMenu.swift in Sources */,
