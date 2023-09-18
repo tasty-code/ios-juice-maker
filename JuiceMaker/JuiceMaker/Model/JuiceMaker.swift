@@ -22,6 +22,10 @@ struct JuiceMaker {
         }
     }
     
+    func passCurrentList() -> [Fruit : Int] {
+        return fruitStorage.showCurrentList()
+    }
+    
     private func soldOutChecker(_ order: Juice) throws -> [Fruit : Int?] {
         var makable: [Fruit : Int?] = [:]
         

@@ -8,7 +8,7 @@ import Foundation
 
 // 과일 저장소 타입
 class FruitStore {
-    private var fruitBox: [Fruit: Int] = [.strawberry : 10, .banana : 10, .pineapple : 10, .kiwi : 10, .mango : 10]
+    private var fruitBox: [Fruit : Int] = [.strawberry : 10, .banana : 10, .pineapple : 10, .kiwi : 10, .mango : 10]
 
     func errorHandler(_ consumeRecipe: [Fruit : Int?]) throws -> Bool {
         if consumeRecipe.values.filter({ $0 == nil }).count == 2 {
@@ -20,6 +20,10 @@ class FruitStore {
         }
         let nonOptionalRecipe = consumeRecipe.compactMapValues({ $0 })
         return calculateStock(nonOptionalRecipe) ? true : false
+    }
+    
+    func showCurrentList() -> [Fruit : Int] {
+        return fruitBox
     }
     
     func getStockInfo(_ fruit: Fruit) throws -> Int {

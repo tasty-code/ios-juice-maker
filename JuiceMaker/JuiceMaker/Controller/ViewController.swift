@@ -8,13 +8,25 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    private let juiceMaker = JuiceMaker()
+    var currentQuantity: [Fruit : Int] = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        let juiceMaker = JuiceMaker()
-        juiceMaker.getOrder(.strawberryBananaJuice)
-        juiceMaker.getOrder(.mangoJuice)
-        juiceMaker.getOrder(.strawberryJuice)
+        getStockList()
+    }
+    
+    @IBOutlet var fruitsLabel: [UILabel]!
+    
+    func getStockList() {
+        self.currentQuantity = juiceMaker.passCurrentList()
+        for (fruit, _) in currentQuantity {
+            guard let fruitLabelText = currentQuantity[fruit] else {
+                return
+            }
+            
+            fruitsLabel[fruit.rawValue].text = String(fruitLabelText)
+        }
     }
 }
 
