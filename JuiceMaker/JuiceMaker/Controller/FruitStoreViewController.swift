@@ -12,9 +12,8 @@ class FruitStoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateUI()
         initStepper()
-//        print(fruitStore?.fruitList)
+        updateUI()
     }
     
    
@@ -40,9 +39,6 @@ class FruitStoreViewController: UIViewController {
     
     @IBOutlet weak var mangoStepper: UIStepper!
     
-    
- 
-    
     @IBAction func fruitStockStepper(_ sender: UIStepper) {
         do {
             guard let labelName = sender.accessibilityLabel else { return }
@@ -55,11 +51,17 @@ class FruitStoreViewController: UIViewController {
             try fruitStore.addFruitStock(inputFruit: fruit, count: Int(sender.value))
             
             updateUI()
+            
         } catch {
             print("\(error)")
         }
     }
     
+}
+
+
+//MARK: - Method
+extension FruitStoreViewController {
     
     private func initStepper() {
         guard let fruitStore = self.fruitStore else { return }
@@ -79,11 +81,6 @@ class FruitStoreViewController: UIViewController {
         mangoStepper.value = Double(fruitStore.fruitList[4].stock)
     }
     
-    
-    
-    
-    
-    
     private func updateUI() {
         guard let fruitStore = self.fruitStore else { return }
         storeStrawberryLabel.text = String(fruitStore.fruitList[0].stock)
@@ -93,8 +90,5 @@ class FruitStoreViewController: UIViewController {
         storeMangoLabel.text = String(fruitStore.fruitList[4].stock)
         
     }
-    
-    
-    
 }
 
