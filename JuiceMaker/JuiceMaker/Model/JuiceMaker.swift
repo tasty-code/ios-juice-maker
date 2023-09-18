@@ -10,7 +10,7 @@ import Foundation
 struct JuiceMaker {
     private var fruitStorage = FruitStore()
 
-    func getOrder(_ order: Juice) {
+    func getOrder(_ order: Juice) -> (message: String, success: Bool) {
         do {
             let makable: [Fruit : Int?] = try soldOutChecker(order)
             let complete = try fruitStorage.errorHandler(makable)
@@ -19,7 +19,9 @@ struct JuiceMaker {
             }
         } catch {
             print(error)
+            return (message: "\(error)", success: false )
         }
+        return (message:order.description, success: true)
     }
     
     func passCurrentList() -> [Fruit : Int] {
