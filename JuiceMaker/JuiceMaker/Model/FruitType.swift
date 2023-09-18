@@ -13,6 +13,6 @@ enum FruitType: Int, CaseIterable {
     case strawberry = 0
     case banana = 1
     case pineapple = 2
-    case mango = 3
-    case kiwi = 4
+    case kiwi = 3
+    case mango = 4
 }

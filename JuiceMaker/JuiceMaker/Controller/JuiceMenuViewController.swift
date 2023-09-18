@@ -23,9 +23,8 @@ class JuiceMenuViewController: UIViewController {
         super.viewWillAppear(animated)
         
         for fruitType in FruitType.allCases {
-            var fruitCount = 0
-            if let tempCount = FruitStore.shared.fruitCountList[fruitType] {
-                fruitCount = tempCount
+            guard let fruitCount = FruitStore.shared.fruitCountList[fruitType] else {
+                return
             }
             
             switch fruitType {
@@ -35,9 +34,9 @@ class JuiceMenuViewController: UIViewController {
                 bananaCountLabel.text = "\(fruitCount)"
             case .pineapple:
                 pineappleCountLabel.text = "\(fruitCount)"
-            case .mango:
-                kiwiCountLabel.text = "\(fruitCount)"
             case .kiwi:
+                kiwiCountLabel.text = "\(fruitCount)"
+            case .mango:
                 mangoCountLabel.text = "\(fruitCount)"
             }
         }
