@@ -10,15 +10,15 @@ import Foundation
 struct JuiceMaker {
     private let fruitStore: FruitStore = FruitStore()
 
-    func makeJuice(juiceName: String) throws {
+    func makeJuice(juiceName: FruitStore.JuiceType) throws {
         try fruitStore.receiveOrder(juiceName: juiceName)
     }
     
-    func checkFruitStoreInventory() -> [String: Int] {
+    func checkFruitStoreInventory() -> [FruitStore.FruitType: Int] {
         return fruitStore.checkInventoryStock()
     }
     
-    func updateFruitStoreInventory(with inventory: [String: Int]) {
+    func updateFruitStoreInventory(with inventory: [FruitStore.FruitType: Int]) {
         fruitStore.updateInventoryStock(with: inventory)
     }
 }

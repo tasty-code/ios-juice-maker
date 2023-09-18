@@ -8,23 +8,16 @@
 import UIKit
 
 protocol InventorySendDelegate: AnyObject {
-    func sendInventory(inventory: [String: Int])
+    func sendInventory(inventory: [FruitStore.FruitType: Int])
 }
 
 class AdjustStockViewController: UIViewController {
-    @IBOutlet weak var strawberryStockLabel: UILabel!
-    @IBOutlet weak var bananaStockLabel: UILabel!
-    @IBOutlet weak var pineappleStockLabel: UILabel!
-    @IBOutlet weak var kiwiStockLabel: UILabel!
-    @IBOutlet weak var mangoStockLabel: UILabel!
+    @IBOutlet var fruitStockLabels: [UILabel]!
     
-    @IBOutlet weak var strawberryStockStepper: UIStepper!
-    @IBOutlet weak var bananaStockStepper: UIStepper!
-    @IBOutlet weak var pineappleStockStepper: UIStepper!
-    @IBOutlet weak var kiwiStockStepper: UIStepper!
-    @IBOutlet weak var mangoStockStepper: UIStepper!
+    @IBOutlet var fruitStockSteppers: [UIStepper]!
     
-    var inventory: [String: Int]?
+    var inventory: [FruitStore.FruitType: Int]?
+    
     weak var delegate: InventorySendDelegate?
     
     override func viewDidLoad() {
@@ -33,28 +26,9 @@ class AdjustStockViewController: UIViewController {
         syncStepperValue()
     }
     
-    @IBAction func touchStrawberryStepper(_ sender: UIStepper) {
-        inventory?["딸기"] = Int(sender.value)
-        syncStockLabels()
-    }
-    
-    @IBAction func touchBananaStepper(_ sender: UIStepper) {
-        inventory?["바나나"] = Int(sender.value)
-        syncStockLabels()
-    }
-    
-    @IBAction func touchKiwiStepper(_ sender: UIStepper) {
-        inventory?["키위"] = Int(sender.value)
-        syncStockLabels()
-    }
-    
-    @IBAction func touchPineappleStepper(_ sender: UIStepper) {
-        inventory?["파인애플"] = Int(sender.value)
-        syncStockLabels()
-    }
-    
-    @IBAction func touchMangoStepper(_ sender: UIStepper) {
-        inventory?["망고"] = Int(sender.value)
+    @IBAction func touchFruitStockStepper(_ sender: UIStepper) {
+        guard let fruit = sender as? FruitStockIdentifiable else { return }
+        inventory?[fruit.fruitType] = Int(sender.value)
         syncStockLabels()
     }
     
@@ -70,18 +44,24 @@ class AdjustStockViewController: UIViewController {
 // MARK: Private Methods
 extension AdjustStockViewController {
     private func syncStockLabels() {
-        strawberryStockLabel.text = String(inventory?["딸기"] ?? 0)
-        bananaStockLabel.text = String(inventory?["바나나"] ?? 0)
-        kiwiStockLabel.text = String(inventory?["키위"] ?? 0)
-        pineappleStockLabel.text = String(inventory?["파인애플"] ?? 0)
-        mangoStockLabel.text = String(inventory?["망고"] ?? 0)
+        for fruitStockLabel in fruitStockLabels {
+            guard let label = fruitStockLabel as? FruitStockIdentifiable,
+                  let stock = inventory?[label.fruitType]
+            else { return }
+            
+            let labelText = String(stock)
+            
+            fruitStockLabel.text = labelText
+        }
     }
     
     private func syncStepperValue() {
-        strawberryStockStepper.value = Double(inventory?["딸기"] ?? 0)
-        bananaStockStepper.value = Double(inventory?["바나나"] ?? 0)
-        pineappleStockStepper.value = Double(inventory?["파인애플"] ?? 0)
-        kiwiStockStepper.value = Double(inventory?["키위"] ?? 0)
-        mangoStockStepper.value = Double(inventory?["망고"] ?? 0)
+        for fruitStockStepper in fruitStockSteppers {
+            guard let stepper = fruitStockStepper as? FruitStockIdentifiable,
+                  let value = inventory?[stepper.fruitType]
+            else { return }
+            
+            fruitStockStepper.value = Double(value)
+        }
     }
 }
