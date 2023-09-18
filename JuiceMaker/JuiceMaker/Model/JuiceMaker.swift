@@ -8,15 +8,17 @@ import Foundation
 
 struct JuiceMaker {
     let myFruitStore: FruitStore = FruitStore.shared
-    func order(_ choice: Menu) {
+    func order(_ choice: Menu) -> Menu? {
+        var isAvailable = false
         do {
             let checkedMenu = try checkAvailable(choice)
-            makeJuice(checkedMenu)
+            return checkedMenu
         } catch OrderError.soldOut {
             print(OrderError.soldOut.rawValue)
         } catch {
             print(OrderError.unexpected.rawValue)
         }
+        return nil
     }
     
     func getRecipe(_ menu: Menu) -> [Fruit: Int] {

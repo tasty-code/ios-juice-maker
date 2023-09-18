@@ -36,23 +36,48 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didTapRightNavigatorItem(_ sender: UIBarButtonItem) {
-         let dashboardVC = storyboard?.instantiateViewController(withIdentifier: "dashboardVC") as! DashboardViewController
-        navigationController?.pushViewController(dashboardVC, animated: true)
+        navigateToDashboardViewController()
     }
     
-    @IBAction func didTapButton(_ sender: UIButton) {
-        print(sender.titleLabel?.text ?? "")
+    @IBAction func didTapJuiceButton(_ sender: UIButton) {
         guard let tapped = sender.titleLabel, let label = tapped.text else {
             return
         }
         let splited = String(label.split(separator: " ")[0])
-        print(splited)
         
         guard let retained = Menu(rawValue: splited) else {
             return
         }
-        juiceMakerModel.order(retained)
+        if let availableMenu = juiceMakerModel.order(retained) {
+            juiceMakerModel.makeJuice(availableMenu)
+            showAlert(message: "\(availableMenu.rawValue) 나왔습니다! 맛있게 드세요!")
+        } else {
+            showSoldOutAlert(message: "재료가 모자라요. 재고를 수정할까요?")
+        }
+        
         setFruitStock()
+    }
+    
+    func navigateToDashboardViewController() {
+        let dashboardVC = storyboard?.instantiateViewController(withIdentifier: "dashboardVC") as! DashboardViewController
+        navigationController?.pushViewController(dashboardVC, animated: true)
+    }
+    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func showSoldOutAlert(message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "예", style: .default)  { action in
+            self.navigateToDashboardViewController() }
+        let noAction = UIAlertAction(title: "아니오", style: .cancel)
+        alert.addAction(okAction)
+        alert.addAction(noAction)
+        present(alert, animated: true, completion: nil)
     }
 }
 
