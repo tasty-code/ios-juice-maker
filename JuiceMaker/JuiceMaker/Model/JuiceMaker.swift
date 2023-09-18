@@ -11,26 +11,24 @@ struct JuiceMaker {
     
     let fruitStore: FruitStore
     
-    func startOrder(juiceName: String) {
+
+    
+    func startOrder(juiceName: String) throws {
+        let fruitDict: [FruitStore.Fruit: Int] = try orderConvertToDict(juice: juiceName)
         
-        do {
-            let fruitDict: [FruitStore.Fruit: Int] = try orderConvertToDict(juice: juiceName)
-            
-            try checkStock(juiceIngredient: fruitDict)
-            try makeJuice(juiceIngredient: fruitDict)
-            
-        } catch {
-            debugPrint(error)
-        }
+        try checkStock(juiceIngredient: fruitDict)
+        try makeJuice(juiceIngredient: fruitDict)
+
     }
     
     
     private func checkStock(juiceIngredient: [FruitStore.Fruit: Int]) throws {
         try juiceIngredient.forEach { fruit, count in
             guard let listIndex = fruitStore.fruitList.firstIndex(where: {$0.name == fruit.name}) else {
-                throw ErrorCase.canNotFound
+                throw MessageLog.ErrorCase.canNotFound
             }
-            guard fruitStore.fruitList[listIndex].stock > count - 1 else {throw ErrorCase.outOfStock}
+            guard fruitStore.fruitList[listIndex].stock > count - 1 else {throw MessageLog.ErrorCase.outOfStock}
+
         }
 
     }
@@ -45,7 +43,7 @@ struct JuiceMaker {
     
     private func orderConvertToDict(juice: String) throws -> [FruitStore.Fruit: Int] {
         
-        guard let confirmJuice = Recipe(rawValue: juice) else { throw ErrorCase.canNotFound }
+        guard let confirmJuice = Recipe(rawValue: juice) else { throw MessageLog.ErrorCase.canNotFound }
         
         return confirmJuice.juiceIngredient
     }
@@ -54,7 +52,7 @@ struct JuiceMaker {
     
     private func subtractFruitStock(inputFruit: FruitStore.Fruit, count: Int) throws {
         guard let index = fruitStore.fruitList.firstIndex(where: {$0.name == inputFruit.name}) else {
-            throw ErrorCase.canNotFound
+            throw MessageLog.ErrorCase.canNotFound
         }
         
         fruitStore.fruitList[index].stock -= count
@@ -62,13 +60,13 @@ struct JuiceMaker {
     
     private enum Recipe: String {
         
-        case strawberryJuice = "딸기 주스"
-        case bananaJuice = "바나나 주스"
-        case pineappleJuice = "파인애플 주스"
-        case mangoJuice = "망고 주스"
-        case kiwiJuice = "키위 주스"
-        case strawberryBananaJuice = "딸바 주스"
-        case mangoKiwiJuice = "망키 주스"
+        case strawberryJuice = "딸기쥬스"
+        case bananaJuice = "바나나쥬스"
+        case pineappleJuice = "파인애플쥬스"
+        case mangoJuice = "망고쥬스"
+        case kiwiJuice = "키위쥬스"
+        case strawberryBananaJuice = "딸바쥬스"
+        case mangoKiwiJuice = "망키쥬스"
         
         var juiceIngredient: [FruitStore.Fruit: Int] {
             switch self {
