@@ -6,13 +6,52 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+final class ViewController: UIViewController {
+    
+    // MARK: - Properties
+    
+    private let juiceMaker = JuiceMaker()
+    
+    // MARK: - Views
+    
+    @IBOutlet private var strawberryQuantityLabel: UILabel!
+    @IBOutlet private var bananaQuantityLabel: UILabel!
+    @IBOutlet private var pineappleQuantityLabel: UILabel!
+    @IBOutlet private var kiwiQuantityLabel: UILabel!
+    @IBOutlet private var mangoQuantityLabel: UILabel!
+    
+    // MARK: - LifeCycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        displayFruitQuantity()
     }
-
-
+    
+    // MARK: - Methods
+    
+    private func displayFruitQuantity() {
+        let fruitQuantityLabels: [UILabel] = [strawberryQuantityLabel,
+                                              bananaQuantityLabel,
+                                              pineappleQuantityLabel,
+                                              kiwiQuantityLabel,
+                                              mangoQuantityLabel]
+        
+        for label in fruitQuantityLabels {
+            
+            guard let fruit = Fruit(rawValue: label.tag) else { continue }
+            
+            do {
+                let fruitQuantity = try juiceMaker.checkFruit(fruit: fruit)
+                
+                label.text = String(fruitQuantity)
+            }
+            catch {
+                // 알럿 makeAlert()
+            }
+        }
+    }
+    
+    @IBAction func pressOrderButton(_ button: UIButton)  {
+     
+    }
 }
 
