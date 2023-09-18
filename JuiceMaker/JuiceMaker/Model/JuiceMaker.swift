@@ -8,25 +8,30 @@ import Foundation
 
 // 쥬스 메이커 타입
 struct JuiceMaker {
-    var fruitStorage = FruitStore()
+    private var fruitStorage = FruitStore()
 
-    func getOrder(_ order: Juice) -> [Fruit : Int?] {
-        var makable: [Fruit : Int?] = [:]
+    func getOrder(_ order: Juice) {
         do {
-            for (fruit, needs) in order.recipe {
-                let currentStock = try fruitStorage.getStockInfo(fruit)
-                if currentStock >= needs {
-                    makable.updateValue(needs, forKey: fruit)
-                } else {
-                    makable.updateValue(nil, forKey: fruit)
-                }
-            }
-            let complete = try fruitStorage.makeJuice(makable)
+            let makable: [Fruit : Int?] = try soldOutChecker(order)
+            let complete = try fruitStorage.errorHandler(makable)
             if complete {
                 print(order.description)
             }
         } catch {
             print(error)
+        }
+    }
+    
+    private func soldOutChecker(_ order: Juice) throws -> [Fruit : Int?] {
+        var makable: [Fruit : Int?] = [:]
+        
+        for (fruit, needs) in order.recipe {
+            let currentStock = try fruitStorage.getStockInfo(fruit)
+            if currentStock >= needs {
+                makable.updateValue(needs, forKey: fruit)
+            } else {
+                makable.updateValue(nil, forKey: fruit)
+            }
         }
         return makable
     }

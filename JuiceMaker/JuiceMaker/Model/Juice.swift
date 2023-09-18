@@ -31,7 +31,7 @@ enum Juice: CustomStringConvertible {
         case .strawberryBananaJuice:
             return [.strawberry : 10, .banana : 1]
         case .mangoKiwiJuice:
-            return [.mango: 2, .kiwi : 1]
+            return [.mango : 2, .kiwi : 1]
         }
     }
     

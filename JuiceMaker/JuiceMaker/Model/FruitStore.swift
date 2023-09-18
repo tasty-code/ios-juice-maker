@@ -10,15 +10,15 @@ import Foundation
 class FruitStore {
     private var fruitBox: [Fruit: Int] = [.strawberry : 10, .banana : 10, .pineapple : 10, .kiwi : 10, .mango : 10]
 
-    func makeJuice(_ consumeRecipe: [Fruit : Int?]) throws -> Bool {
+    func errorHandler(_ consumeRecipe: [Fruit : Int?]) throws -> Bool {
         if consumeRecipe.values.filter({ $0 == nil }).count == 2 {
             throw ErrorMessage.stockInsufficients(Array(consumeRecipe.keys))
         }
         if consumeRecipe.values.contains(nil) {
-            let nilValues = consumeRecipe.filter { $0.value == nil }.map { $0.key}
+            let nilValues = consumeRecipe.filter { $0.value == nil }.map { $0.key }
             throw ErrorMessage.stockInsufficient(nilValues[0])
         }
-        let nonOptionalRecipe = consumeRecipe.compactMapValues({$0})
+        let nonOptionalRecipe = consumeRecipe.compactMapValues({ $0 })
         return calculateStock(nonOptionalRecipe) ? true : false
     }
     
