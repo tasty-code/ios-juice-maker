@@ -24,9 +24,16 @@ class ViewController: UIViewController {
             guard let fruitLabelText = currentQuantity[fruit] else {
                 return
             }
-            
             fruitsLabel[fruit.rawValue].text = String(fruitLabelText)
         }
+    }
+    
+    @IBAction func makeOrder(_ sender: UIButton) {
+        guard let menu = Juice(rawValue: sender.tag) else {
+            return
+        }
+        juiceMaker.getOrder(menu)
+        getStockList()
     }
 }
 
