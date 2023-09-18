@@ -10,15 +10,20 @@ import Foundation
 struct JuiceMaker {
     var fruitStorage = FruitStore()
 
-    func getOrder(_ order: Juice) -> [Int?] {
-        var makable: [Int?] = []
+    func getOrder(_ order: Juice) -> [Fruit : Int?] {
+        var makable: [Fruit : Int?] = [:]
         do {
-            let currentFruitStock: [Int] = try fruitStorage.getStockInfo(order.recipe.fruitName)
-            currentFruitStock.enumerated().forEach { stock in
-                makable.append(stock.element >= order.recipe.consumption[stock.offset] ? order.recipe.consumption[stock.offset] : nil)
-            }
-            if try fruitStorage.makeJuice(order.recipe.fruitName, makable) {
-                print(order.description)
+            for (fruit, needs) in order.recipe {
+                let currentStock = try fruitStorage.getStockInfo(fruit)
+                if currentStock >= needs {
+                    makable.updateValue(needs, forKey: fruit)
+                } else {
+                    makable.updateValue(nil, forKey: fruit)
+                }
+                let complete = try fruitStorage.makeJuice(makable)
+                if complete {
+                    print(order.description)
+                }
             }
         } catch {
             print(error)
@@ -36,23 +41,22 @@ enum Juice: CustomStringConvertible {
     case strawberryBananaJuice
     case mangoKiwiJuice
     
-    
-    var recipe: Consumption {
+    var recipe: [Fruit : Int] {
         switch self {
         case .strawberryJuice:
-            return Consumption(fruitName: [.strawberry], consumption: [16])
+            return [.strawberry : 16]
         case .bananaJuice:
-            return Consumption(fruitName: [.banana], consumption: [2])
+            return [.banana : 2]
         case .pineappleJuice:
-            return Consumption(fruitName: [.pineapple], consumption: [2])
+            return [.pineapple : 2]
         case .kiwiJuice:
-            return Consumption(fruitName: [.kiwi], consumption: [3])
+            return [.kiwi : 3]
         case .mangoJuice:
-            return Consumption(fruitName: [.mango], consumption: [3])
+            return [.mango : 3]
         case .strawberryBananaJuice:
-            return Consumption(fruitName: [.strawberry, .banana], consumption: [10, 1])
+            return [.strawberry : 10, .banana : 1]
         case .mangoKiwiJuice:
-            return Consumption(fruitName: [.mango, .kiwi], consumption: [2, 1])
+            return [.mango: 2, .kiwi : 1]
         }
     }
     
@@ -74,11 +78,6 @@ enum Juice: CustomStringConvertible {
                 return "주문성공😀 주문하신 망키쥬스 나왔습니다."
             }
         }
-    
-    struct Consumption {
-        let fruitName: [FruitStore.Fruit]
-        let consumption: [Int]
-    }
 }
 
 

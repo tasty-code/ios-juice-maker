@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		533EADBF2AB7D3D1005FC84E /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533EADBE2AB7D3D1005FC84E /* Fruit.swift */; };
 		53A932A52AB4952100B1E69C /* JuiceMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A932A22AB4952100B1E69C /* JuiceMaker.swift */; };
 		53A932A62AB4952100B1E69C /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A932A32AB4952100B1E69C /* ErrorMessage.swift */; };
 		53A932A72AB4952100B1E69C /* FruitStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A932A42AB4952100B1E69C /* FruitStore.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		533EADBE2AB7D3D1005FC84E /* Fruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
 		53A932A22AB4952100B1E69C /* JuiceMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JuiceMaker.swift; sourceTree = "<group>"; };
 		53A932A32AB4952100B1E69C /* ErrorMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		53A932A42AB4952100B1E69C /* FruitStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FruitStore.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				53A932A32AB4952100B1E69C /* ErrorMessage.swift */,
 				53A932A42AB4952100B1E69C /* FruitStore.swift */,
 				53A932A22AB4952100B1E69C /* JuiceMaker.swift */,
+				533EADBE2AB7D3D1005FC84E /* Fruit.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
 				53A932A72AB4952100B1E69C /* FruitStore.swift in Sources */,
 				53A932A62AB4952100B1E69C /* ErrorMessage.swift in Sources */,
+				533EADBF2AB7D3D1005FC84E /* Fruit.swift in Sources */,
 				C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */,
 				53A932A52AB4952100B1E69C /* JuiceMaker.swift in Sources */,
 			);
