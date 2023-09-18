@@ -22,13 +22,23 @@ class FruitInventoryViewController: UIViewController {
     @IBOutlet var kiwiStepper: UIStepper!
     @IBOutlet var mangoStepper: UIStepper!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        strawberryStepper.tag = 0
+        bananaStepper.tag = 1
+        pineappleStepper.tag = 2
+        kiwiStepper.tag = 3
+        mangoStepper.tag = 4
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         for fruitType in FruitType.allCases {
-            var fruitCount = 0
-            if let tempCount = FruitStore.shared.fruitCountList[fruitType] {
-                fruitCount = tempCount
+            guard let fruitCount = FruitStore.shared.fruitCountList[fruitType] else {
+                return
             }
             
             switch fruitType {
@@ -41,10 +51,10 @@ class FruitInventoryViewController: UIViewController {
             case .pineapple:
                 pineappleCountLabel.text = "\(fruitCount)"
                 pineappleStepper.value = Double(fruitCount)
-            case .mango:
+            case .kiwi:
                 kiwiCountLabel.text = "\(fruitCount)"
                 kiwiStepper.value = Double(fruitCount)
-            case .kiwi:
+            case .mango:
                 mangoCountLabel.text = "\(fruitCount)"
                 mangoStepper.value = Double(fruitCount)
             }
