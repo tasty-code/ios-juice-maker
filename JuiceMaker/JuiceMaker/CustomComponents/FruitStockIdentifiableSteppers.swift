@@ -8,21 +8,21 @@
 import UIKit
 
 class StrawberryStepper: UIStepper, FruitStockIdentifiable {
-    var fruitType: FruitStore.FruitType = .strawberry
+    var fruitType: FruitName = .strawberry
 }
 
 class BananaStepper: UIStepper, FruitStockIdentifiable {
-    var fruitType: FruitStore.FruitType = .banana
+    var fruitType: FruitName = .banana
 }
 
 class KiwiStepper: UIStepper, FruitStockIdentifiable {
-    var fruitType: FruitStore.FruitType = .kiwi
+    var fruitType: FruitName = .kiwi
 }
 
 class PineappleStepper: UIStepper, FruitStockIdentifiable {
-    var fruitType: FruitStore.FruitType = .pineapple
+    var fruitType: FruitName = .pineapple
 }
 
 class MangoStepper: UIStepper, FruitStockIdentifiable {
-    var fruitType: FruitStore.FruitType = .mango
+    var fruitType: FruitName = .mango
 }

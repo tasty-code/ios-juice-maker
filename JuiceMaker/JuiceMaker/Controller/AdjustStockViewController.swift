@@ -8,7 +8,7 @@
 import UIKit
 
 protocol InventorySendDelegate: AnyObject {
-    func sendInventory(inventory: [FruitStore.FruitType: Int])
+    func sendInventory(inventory: [FruitName: Int])
 }
 
 class AdjustStockViewController: UIViewController {
@@ -16,7 +16,7 @@ class AdjustStockViewController: UIViewController {
     
     @IBOutlet var fruitStockSteppers: [UIStepper]!
     
-    var inventory: [FruitStore.FruitType: Int]?
+    var inventory: [FruitName: Int]?
     
     weak var delegate: InventorySendDelegate?
     

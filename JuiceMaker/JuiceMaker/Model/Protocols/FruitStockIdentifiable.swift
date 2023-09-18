@@ -8,5 +8,5 @@
 import Foundation
 
 protocol FruitStockIdentifiable {
-    var fruitType: FruitStore.FruitType { get }
+    var fruitType: FruitName { get }
 }

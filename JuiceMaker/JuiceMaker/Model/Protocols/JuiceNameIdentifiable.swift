@@ -8,5 +8,5 @@
 import Foundation
 
 protocol JuiceNameIdentifiable {
-    var juiceName: FruitStore.JuiceType { get }
+    var juiceName: JuiceName { get }
 }

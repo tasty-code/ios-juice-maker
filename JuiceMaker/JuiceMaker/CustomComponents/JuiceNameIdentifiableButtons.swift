@@ -8,29 +8,29 @@
 import UIKit
 
 class StrawberryJuiceOrderButton: UIButton, JuiceNameIdentifiable {
-    var juiceName: FruitStore.JuiceType = .strawberryJuice
+    var juiceName: JuiceName = .strawberryJuice
 }
 
 class BananaJuiceOrderButton: UIButton, JuiceNameIdentifiable {
-    var juiceName: FruitStore.JuiceType = .bananaJuice
+    var juiceName: JuiceName = .bananaJuice
 }
 
 class KiwiJuiceOrderButton: UIButton, JuiceNameIdentifiable {
-    var juiceName: FruitStore.JuiceType = .kiwiJuice
+    var juiceName: JuiceName = .kiwiJuice
 }
 
 class MangoJuiceOrderButton: UIButton, JuiceNameIdentifiable {
-    var juiceName: FruitStore.JuiceType = .mangoJuice
+    var juiceName: JuiceName = .mangoJuice
 }
 
 class PineappleJuiceOrderButton: UIButton, JuiceNameIdentifiable {
-    var juiceName: FruitStore.JuiceType = .pineappleJuice
+    var juiceName: JuiceName = .pineappleJuice
 }
 
 class StrawberryBananaMixJuiceOrderButton: UIButton, JuiceNameIdentifiable {
-    var juiceName: FruitStore.JuiceType = .strawberryBananaMixJuice
+    var juiceName: JuiceName = .strawberryBananaMixJuice
 }
 
 class MangoKiwiMixJuiceOrderButton: UIButton, JuiceNameIdentifiable {
-    var juiceName: FruitStore.JuiceType = .mangoKiwiMixJuice
+    var juiceName: JuiceName = .mangoKiwiMixJuice
 }

@@ -11,7 +11,7 @@ class JuiceMakerViewController: UIViewController {
     
     @IBOutlet var fruitStockLabels: [UILabel]!
     
-    var inventory: [FruitStore.FruitType: Int]?
+    var inventory: [FruitName: Int]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ class JuiceMakerViewController: UIViewController {
 
 // MARK: Delegate
 extension JuiceMakerViewController: InventorySendDelegate {
-    func sendInventory(inventory: [FruitStore.FruitType: Int]) {
+    func sendInventory(inventory: [FruitName: Int]) {
         self.inventory = inventory
         syncStockLabels()
         juiceMaker.updateFruitStoreInventory(with: inventory)
@@ -64,7 +64,7 @@ extension JuiceMakerViewController {
         }
     }
     
-    private func showAlertCompletionJuiceMaking(_ juiceName: FruitStore.JuiceType) {
+    private func showAlertCompletionJuiceMaking(_ juiceName: JuiceName) {
         let alert = UIAlertController(title: "\(juiceName.rawValue) 쥬스 나왔습니다! 맛있게 드세요!", message: nil, preferredStyle: .alert)
         let yes = UIAlertAction(title: "감사합니다!", style: .default)
         alert.addAction(yes)
