@@ -7,8 +7,7 @@
 import Foundation
 
 struct JuiceMaker {
-    let myFruitStore: FruitStore = FruitStore()
-    
+    let myFruitStore: FruitStore = FruitStore.shared
     func order(_ choice: Menu) {
         do {
             let checkedMenu = try checkAvailable(choice)
@@ -22,6 +21,15 @@ struct JuiceMaker {
     
     func getRecipe(_ menu: Menu) -> [Fruit: Int] {
         return menu.recipe
+    }
+    
+    func getAllStocks() -> [Fruit:Int] {
+        let fruits = Fruit.allCases.map { $0 }
+        return myFruitStore.getRemains(fruits)
+    }
+    
+    func getFruitStock(for fruit: Fruit) -> Int {
+        return myFruitStore.getRemains([fruit])[fruit] ?? 10
     }
     
     func checkAvailable(_ choice: Menu) throws -> Menu {
@@ -40,6 +48,7 @@ struct JuiceMaker {
     
     func makeJuice(_ menu: Menu) {
         myFruitStore.deduct(menu.recipe)
-        print("\(menu.juice) 완성")
+        print("\(menu.rawValue) 완성")
     }
 }
+

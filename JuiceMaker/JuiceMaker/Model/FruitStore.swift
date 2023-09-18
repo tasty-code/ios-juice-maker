@@ -7,13 +7,16 @@
 import Foundation
 
 final class FruitStore {
-    private var fruitList = [Fruit: Int]()
-    
-    init() {
+    static let shared = FruitStore()
+    var fruitList: [Fruit: Int] = {
+        var list: [Fruit: Int] = [:]
         Fruit.allCases.forEach {
-            self.fruitList.updateValue(10, forKey: $0)
+            list.updateValue(10, forKey: $0)
         }
-    }
+        return list
+    }()
+
+    private init() {}
     
     func getRemains(_ ingredient: Array<Fruit>) -> [Fruit: Int] {
         var remains = [Fruit: Int]()
