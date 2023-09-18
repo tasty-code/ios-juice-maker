@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FruitInventoryViewController: UIViewController {
+final class FruitInventoryViewController: UIViewController {
     
     var juiceMaker: JuiceMaker?
     

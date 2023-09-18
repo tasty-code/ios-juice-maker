@@ -6,9 +6,9 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
     
-    let juiceMaker = JuiceMaker()
+    private let juiceMaker = JuiceMaker()
     
     @IBOutlet weak var strawberryLabel: UILabel!
     @IBOutlet weak var bananaLabel: UILabel!
@@ -121,13 +121,13 @@ extension MainViewController {
     
     private func juiceMakeFailAlert(message: String) {
         let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
-        let yes = UIAlertAction(title: "예", style: .default) { _ in
+        let yes = UIAlertAction(title: "예", style: .destructive) { _ in
             self.moveInventoryVC()
         }
-        let no = UIAlertAction(title: "아니오", style: .destructive)
-        alert.addAction(yes)
+        let no = UIAlertAction(title: "아니오", style: .cancel)
+        
         alert.addAction(no)
-        alert.preferredAction = yes
+        alert.addAction(yes)
         present(alert, animated: true)
     }
 }
