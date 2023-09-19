@@ -16,6 +16,10 @@ class ViewController: UIViewController {
         getStockList()
     }
     
+    @IBAction func showPush() {
+        moveToStockVc()
+    }
+    
     @IBOutlet var fruitsLabel: [UILabel]!
     
     func getStockList() {
@@ -48,14 +52,23 @@ class ViewController: UIViewController {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "확인", style: .default)
         
+        let changeAction = UIAlertAction(title: "이동", style: .default, handler: { action in
+            self.moveToStockVc()
+        })
+        
         if isSuccess {
             alert.addAction(okAction)
         } else {
             let cancleAction = UIAlertAction(title: "취소", style: .default)
             alert.addAction(cancleAction)
-            alert.addAction(okAction)
+            alert.addAction(changeAction)
         }
         present(alert, animated: true, completion: nil)
+    }
+    
+    func moveToStockVc() {
+        let stockVC = self.storyboard?.instantiateViewController(withIdentifier: "StockViewController") as! StockViewController
+        self.navigationController?.pushViewController(stockVC, animated: true)
     }
 }
 
