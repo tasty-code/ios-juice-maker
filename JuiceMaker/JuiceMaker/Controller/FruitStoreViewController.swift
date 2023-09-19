@@ -52,7 +52,7 @@ class FruitStoreViewController: UIViewController {
             try updateUI()
             
         } catch {
-            print("\(error)")
+            showingSystemAlert(error: error)
         }
     }
     
@@ -89,8 +89,20 @@ extension FruitStoreViewController {
             try initStepper()
             try updateUI()
         } catch {
-            print("\(error)")
+            showingSystemAlert(error: error)
         }
+    }
+    
+    
+    //MARK: - Alert
+    private func showingSystemAlert(error: Error) {
+        let systemAlert =  UIAlertController(title: nil, message: "\(error))", preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "확인", style: .default)
+        
+        systemAlert.addAction(confirmAction)
+        
+        present(systemAlert, animated: true)
     }
 }
 
