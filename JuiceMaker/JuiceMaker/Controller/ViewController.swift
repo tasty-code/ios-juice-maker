@@ -53,7 +53,7 @@ final class ViewController: UIViewController {
         }
     }
     
-    func displayAcceptAlert(fruitName: JuiceMenu) {
+    private func displayAcceptAlert(fruitName: JuiceMenu) {
         let alert = UIAlertController(
             title: "\(fruitName.description) 쥬스 나왔습니다",
             message: "맛있게 드세요!",
@@ -63,7 +63,7 @@ final class ViewController: UIViewController {
         present(alert, animated: false, completion: nil)
     }
     
-    func displayFillStockAlert() {
+    private func displayFillStockAlert() {
         let alert = UIAlertController(
             title: "재료가 부족해요",
             message: "재고를 수정할까요?",
