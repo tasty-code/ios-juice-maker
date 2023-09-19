@@ -50,6 +50,10 @@ final class FruitInventoryViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func closeButtonTapped(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
+    }
 }
 
 extension FruitInventoryViewController {
