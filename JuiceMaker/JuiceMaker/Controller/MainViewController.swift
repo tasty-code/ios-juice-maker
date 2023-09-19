@@ -68,7 +68,7 @@ final class MainViewController: UIViewController {
         }
     }
     
-    @IBAction func moveInventory(_ sender: UIButton) {
+    @IBAction func changeInventoryButtonTapped(_ sender: UIButton) {
         self.moveInventoryVC()
     }
 
