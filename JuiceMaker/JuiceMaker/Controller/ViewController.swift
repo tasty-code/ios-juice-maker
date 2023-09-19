@@ -44,18 +44,18 @@ final class ViewController: UIViewController {
     
     @IBAction private func pressOrderButton(_ button: UIButton)  {
         do {
-            guard let fruitName = JuiceMenu(rawValue: button.tag) else { return }
-            try juiceMaker.makeJuice(menu: fruitName)
-            displayAcceptAlert(fruitName: fruitName)
+            guard let menu = JuiceMenu(rawValue: button.tag) else { return }
+            try juiceMaker.makeJuice(menu: menu)
+            displayAcceptAlert(menuName: menu.description)
             displayFruitQuantity()
         } catch {
             displayFillStockAlert()
         }
     }
     
-    private func displayAcceptAlert(fruitName: JuiceMenu) {
+    private func displayAcceptAlert(menuName: String) {
         let alert = UIAlertController(
-            title: "\(fruitName.description) 쥬스 나왔습니다",
+            title: "\(menuName) 쥬스 나왔습니다",
             message: "맛있게 드세요!",
             preferredStyle: UIAlertController.Style.alert
         )
