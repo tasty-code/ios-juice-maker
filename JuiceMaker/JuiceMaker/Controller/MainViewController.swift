@@ -113,7 +113,9 @@ extension MainViewController {
             return
         }
         inventoryVC.juiceMaker = self.juiceMaker
-        self.navigationController?.pushViewController(inventoryVC, animated: true)
+        let navigationVC = UINavigationController(rootViewController: inventoryVC)
+        navigationVC.modalTransitionStyle = .crossDissolve
+        present(navigationVC, animated: true)
     }
     
     private func defaultAlert(message: String) {
