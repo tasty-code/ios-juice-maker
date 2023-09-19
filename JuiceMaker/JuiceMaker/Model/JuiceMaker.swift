@@ -13,8 +13,8 @@ struct JuiceMaker {
     
 
     
-    func startOrder(juiceName: String) throws {
-        let fruitDict: [FruitStore.Fruit: Int] = try orderConvertToDict(juice: juiceName)
+    func startOrder(juiceTag: Int) throws {
+        let fruitDict: [FruitStore.Fruit: Int] = try orderConvertToDict(juiceTag: juiceTag)
         
         try checkStock(juiceIngredient: fruitDict)
         try makeJuice(juiceIngredient: fruitDict)
@@ -41,9 +41,9 @@ struct JuiceMaker {
     }
     
     
-    private func orderConvertToDict(juice: String) throws -> [FruitStore.Fruit: Int] {
+    private func orderConvertToDict(juiceTag: Int) throws -> [FruitStore.Fruit: Int] {
         
-        guard let confirmJuice = Recipe(rawValue: juice) else { throw MessageLog.ErrorCase.canNotFound }
+        guard let confirmJuice = Recipe(rawValue: juiceTag) else { throw MessageLog.ErrorCase.canNotFound }
         
         return confirmJuice.juiceIngredient
     }
@@ -58,40 +58,60 @@ struct JuiceMaker {
         fruitStore.fruitList[index].stock -= count
     }
     
-    private enum Recipe: String {
+    enum Recipe: Int {
         
-        case strawberryJuice = "딸기쥬스"
-        case bananaJuice = "바나나쥬스"
-        case pineappleJuice = "파인애플쥬스"
-        case mangoJuice = "망고쥬스"
-        case kiwiJuice = "키위쥬스"
-        case strawberryBananaJuice = "딸바쥬스"
-        case mangoKiwiJuice = "망키쥬스"
+        case strawberryJuiceTag = 0
+        case bananaJuiceTag = 1
+        case pineappleJuiceTag = 2
+        case mangoJuiceTag = 3
+        case kiwiJuiceTag = 4
+        case strawberryBananaJuiceTag = 5
+        case mangoKiwiJuiceTag = 6
         
         var juiceIngredient: [FruitStore.Fruit: Int] {
             switch self {
-            case .strawberryJuice:
+            case .strawberryJuiceTag:
                 return [FruitStore.Fruit(name: "딸기"): 16]
                 
-            case .bananaJuice:
+            case .bananaJuiceTag:
                 return [FruitStore.Fruit(name: "바나나"): 2]
                 
-            case .pineappleJuice:
+            case .pineappleJuiceTag:
                 return [FruitStore.Fruit(name: "파인애플"): 2]
                 
-            case .mangoJuice:
+            case .mangoJuiceTag:
                 return [FruitStore.Fruit(name: "망고"): 3]
                 
-            case .kiwiJuice:
+            case .kiwiJuiceTag:
                 return [FruitStore.Fruit(name: "키위"): 3]
                 
-            case .strawberryBananaJuice:
+            case .strawberryBananaJuiceTag:
                 return [FruitStore.Fruit(name: "딸기"): 10,
                         FruitStore.Fruit(name: "바나나"): 1]
                 
-            case .mangoKiwiJuice:
+            case .mangoKiwiJuiceTag:
                 return [FruitStore.Fruit(name: "망고"): 2,
                         FruitStore.Fruit(name: "키위"): 1]
+            }
+            
+        }
+        var juiceName: String {
+            switch self {
+                
+            case .strawberryJuiceTag:
+               return "딸기 주스"
+            case .bananaJuiceTag:
+                return "바나나 주스"
+            case .pineappleJuiceTag:
+                return "파인애플 주스"
+            case .mangoJuiceTag:
+                return "망고 주스"
+            case .kiwiJuiceTag:
+                return "키위 주스"
+            case .strawberryBananaJuiceTag:
+                return "딸바 주스"
+            case .mangoKiwiJuiceTag:
+                return "망키 주스"
             }
         }
     }

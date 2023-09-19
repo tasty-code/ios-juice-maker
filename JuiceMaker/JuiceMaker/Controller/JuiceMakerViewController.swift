@@ -29,7 +29,11 @@ class JuiceMakerViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        updateUI()
+        do {
+            try updateUI()
+        } catch {
+            print("\(error)")
+        }
     }
     
     @IBOutlet weak var strawberryQantityLabel: UILabel!
@@ -44,11 +48,11 @@ class JuiceMakerViewController: UIViewController {
     
     
     @IBAction func orderJuice(_ sender: UIButton) {
-        guard let juiceName = sender.currentTitle?.split(separator: " ").filter({ $0 != "주문" }).joined() else { return }
+        guard let juiceTag = JuiceMaker.Recipe(rawValue: sender.tag)  else { return }
         do {
-            try juiceMaker.startOrder(juiceName: juiceName)
-            showingCompletedOrderAlert(juiceName: juiceName)
-            updateUI()
+            try juiceMaker.startOrder(juiceTag: juiceTag.rawValue)
+            showingCompletedOrderAlert(juiceName: juiceTag.juiceName)
+            try updateUI()
         } catch {
             showingOutOfStockAlert(error: error)
         }
@@ -61,16 +65,15 @@ class JuiceMakerViewController: UIViewController {
 //MARK: - Method
 extension JuiceMakerViewController {
     
-    private func updateUI() {
-        do {
-            strawberryQantityLabel.text = String(try juiceMaker.fruitStore.takeFruitStock(fruitName:"딸기"))
-            bananaQantityLabel.text = String(try juiceMaker.fruitStore.takeFruitStock(fruitName:"바나나"))
-            pineappleQantityLabel.text = String(try juiceMaker.fruitStore.takeFruitStock(fruitName:"파인애플"))
-            kiwiQantityLabel.text = String(try juiceMaker.fruitStore.takeFruitStock(fruitName:"키위"))
-            mangoQuatityLabel.text = String(try juiceMaker.fruitStore.takeFruitStock(fruitName:"망고"))
-        } catch {
-            print("\(error)")
-        }
+    private func updateUI() throws{
+        
+        strawberryQantityLabel.text = String(try juiceMaker.fruitStore.takeFruitStock(fruitName:"딸기"))
+        bananaQantityLabel.text = String(try juiceMaker.fruitStore.takeFruitStock(fruitName:"바나나"))
+        pineappleQantityLabel.text = String(try juiceMaker.fruitStore.takeFruitStock(fruitName:"파인애플"))
+        kiwiQantityLabel.text = String(try juiceMaker.fruitStore.takeFruitStock(fruitName:"키위"))
+        mangoQuatityLabel.text = String(try juiceMaker.fruitStore.takeFruitStock(fruitName:"망고"))
+
+        
     }
     
     
