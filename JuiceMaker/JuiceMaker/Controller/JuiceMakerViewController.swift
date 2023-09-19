@@ -85,10 +85,10 @@ extension JuiceMakerViewController {
             navigationController.pushViewController(fruitStoreViewController, animated: true)
         }
         
-        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        let dismissAction = UIAlertAction(title: "취소", style: .cancel)
         
         outOfStockAlert.addAction(moveToFruitStore)
-        outOfStockAlert.addAction(cancel)
+        outOfStockAlert.addAction(dismissAction)
         
         present(outOfStockAlert, animated: true)
         
@@ -98,9 +98,9 @@ extension JuiceMakerViewController {
     private func showingCompletedOrderAlert(juiceName: String) {
         let completedOrderAlert =  UIAlertController(title: nil, message: "\(MessageLog.AlertCase.sucess(juiceName: juiceName))", preferredStyle: .alert)
         
-        let okay = UIAlertAction(title: "확인", style: .default)
+        let confirmAction = UIAlertAction(title: "확인", style: .default)
         
-        completedOrderAlert.addAction(okay)
+        completedOrderAlert.addAction(confirmAction)
         
         
         present(completedOrderAlert, animated: true)
