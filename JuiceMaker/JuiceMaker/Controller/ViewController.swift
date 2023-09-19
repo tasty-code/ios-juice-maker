@@ -10,8 +10,15 @@ class ViewController: UIViewController {
   
   let juiceMaker = JuiceMaker()
   
+  @IBOutlet weak var strawberryNumberLabel: UILabel!
+  @IBOutlet weak var bananaNumberLabel: UILabel!
+  @IBOutlet weak var pineappleNumberLabel: UILabel!
+  @IBOutlet weak var kiwiNumberLabel: UILabel!
+  @IBOutlet weak var mangoNumberLabel: UILabel!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+    setNumberLabel()
   }
   
   @IBAction func juiceOrderButtonTapped(_ sender: UIButton) {
@@ -21,6 +28,7 @@ class ViewController: UIViewController {
     let juiceName = buttonName.split(separator: " ")[0]
     let (message, type) = juiceMaker.createJuice(type: tag, juiceName: String(juiceName))
     showAlert(message: message, type: type)
+    setNumberLabel()
   }
   
   func showAlert(message: String, type: String) {
@@ -37,6 +45,14 @@ class ViewController: UIViewController {
       alert.addAction(UIAlertAction(title: "아니오", style: UIAlertAction.Style.cancel, handler: nil))
     }
     self.present(alert, animated: true, completion: nil)
+  }
+  
+  func setNumberLabel() {
+    strawberryNumberLabel.text = String(juiceMaker.store.getNum(fruitName: Fruit.strawberry))
+    bananaNumberLabel.text = String(juiceMaker.store.getNum(fruitName: Fruit.banana))
+    pineappleNumberLabel.text = String(juiceMaker.store.getNum(fruitName: Fruit.pineapple))
+    kiwiNumberLabel.text = String(juiceMaker.store.getNum(fruitName: Fruit.kiwi))
+    mangoNumberLabel.text = String(juiceMaker.store.getNum(fruitName: Fruit.mango))
   }
 }
 
