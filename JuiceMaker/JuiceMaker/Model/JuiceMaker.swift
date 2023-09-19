@@ -33,10 +33,12 @@ struct JuiceMaker {
     }
   }
   
-  func createJuice(type: Int) {
+  func createJuice(type: Int, juiceName: String) -> String {
     if checkAvailableJuice(type: type) {
       makeJuice(type: type)
+      return "\(juiceName) 나왔습니다! 맛있게 드세요!"
     }
+    return "재료가 모자라요. 재고를 수정할까요?"
   }
   
   private func checkAvailableJuice(type: Int) -> Bool {
@@ -48,7 +50,6 @@ struct JuiceMaker {
       }
     } catch let error {
       if error as! FruitStoreError == FruitStoreError.outOfStock {
-        print("재고가 없습니다.")
         return false
       }
     }
