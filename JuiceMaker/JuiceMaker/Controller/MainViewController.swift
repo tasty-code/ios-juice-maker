@@ -45,19 +45,22 @@ final class MainViewController: UIViewController {
         strawberryBananaJuiceButton.accessibilityIdentifier = "딸바쥬스"
         mangoKiwiJuiceButton.accessibilityIdentifier = "망키쥬스"
         
-        remainFruit()
+        updateFruitLabels()
     }
         
-    private func remainFruit() {
-        let labelArray: [UILabel] = [strawberryLabel, bananaLabel, pineappleLabel, kiwiLabel, mangoLabel]
+    private func updateFruitLabels() {
+        let fruitLabels = [strawberryLabel, bananaLabel, pineappleLabel, kiwiLabel, mangoLabel]
         
-        labelArray.forEach { label in
-            guard let id = label.accessibilityIdentifier else { return }
-            
+        fruitLabels.forEach { label in
+            guard let tempLabel = label, let id = tempLabel.accessibilityIdentifier else {
+                return
+            }
             do {
-                let fruit = try Fruit.identifyFruit(labelIdentifier: id)
+                guard let fruit = try Fruit(id) else {
+                    return
+                }
                 let count = try juiceMaker.remainingCount(fruit: fruit)
-                label.text = "\(count)"
+                tempLabel.text = "\(count)"
             } catch {
                 defaultAlert(message: InventoryError.invalidError.description)
             }
@@ -107,7 +110,9 @@ extension MainViewController {
     }
     
     private func moveInventoryVC () {
-        guard let inventoryVC = self.storyboard?.instantiateViewController(identifier: "Inventory") as? FruitInventoryViewController else { return }
+        guard let inventoryVC = self.storyboard?.instantiateViewController(identifier: "Inventory") as? FruitInventoryViewController else {
+            return
+        }
         inventoryVC.juiceMaker = self.juiceMaker
         self.navigationController?.pushViewController(inventoryVC, animated: true)
     }
