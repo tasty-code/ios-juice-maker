@@ -9,7 +9,6 @@ import Foundation
 struct JuiceMaker {
     let myFruitStore: FruitStore = FruitStore.shared
     func order(_ choice: Menu) -> Menu? {
-        var isAvailable = false
         do {
             let checkedMenu = try checkAvailable(choice)
             return checkedMenu

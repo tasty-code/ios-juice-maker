@@ -7,7 +7,7 @@
 import Foundation
 
 final class FruitStore {
-    let shared = FruitStore()
+    static let shared = FruitStore()
     private var fruitList: [Fruit: Int] = Dictionary(uniqueKeysWithValues: zip(Fruit.allCases, Array(repeating: 10, count: 5)))
 
     private init() {}

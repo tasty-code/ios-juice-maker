@@ -243,7 +243,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="inventoryStackView" destination="zaq-m5-IIF" id="Q5k-Mq-VfP"/>
+                        <outlet property="bananaStockLabel" destination="gvk-pA-Lw5" id="vcp-vl-Lc8"/>
+                        <outlet property="kiwiStockLabel" destination="FZq-de-TJG" id="f4G-kw-9xu"/>
+                        <outlet property="mangoStockLabel" destination="3Ce-SU-JeH" id="FKr-s4-Y0N"/>
+                        <outlet property="pineappleStockLabel" destination="ccQ-Dk-PuY" id="vzB-Z6-LG6"/>
+                        <outlet property="strawberryStockLabel" destination="Qas-vP-td6" id="foT-c3-9Hi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

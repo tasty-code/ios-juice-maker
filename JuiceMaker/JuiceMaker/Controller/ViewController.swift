@@ -9,29 +9,27 @@ import UIKit
 final class ViewController: UIViewController {
     
     private let juiceMakerModel = JuiceMaker()
-    private @IBOutlet weak var inventoryStackView : UIStackView!
+    
+    @IBOutlet weak var strawberryStockLabel: UILabel!
+    @IBOutlet weak var bananaStockLabel: UILabel!
+    @IBOutlet weak var pineappleStockLabel: UILabel!
+    @IBOutlet weak var kiwiStockLabel: UILabel!
+    @IBOutlet weak var mangoStockLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setFruitStock()
+        updateStock()
     }
     
-    func setFruitStock() {
-        let allStocks = juiceMakerModel.getAllStocks()
-        guard let outerStackView = inventoryStackView else {
-            return
-        }
-        let innerStackView = outerStackView.arrangedSubviews.compactMap { (stack) -> [UIView]? in
-            guard let inner = stack as? UIStackView else { return nil }
-            return inner.arrangedSubviews
-        }
-        
-        for label in innerStackView {
-            guard let inner = label as? [UILabel] else { return }
-            guard let emoji = inner[0].text else { return }
-            guard let fruit = Fruit(rawValue: emoji) else { return }
-            guard let amountLabel = allStocks[fruit] else { return }
-            inner[1].text = String(amountLabel)
+    private func updateStock() {
+        let fruitsUILabels = [strawberryStockLabel: Fruit.strawberry , bananaStockLabel: Fruit.banana , kiwiStockLabel: Fruit.kiwi  ,pineappleStockLabel: Fruit.pineapple, mangoStockLabel: Fruit.mango]
+        let fruitStocks = juiceMakerModel.getAllStocks()
+        for (remainFruit, fruit) in fruitsUILabels {
+            guard let amount = fruitStocks[fruit] else {
+                return
+            }
+            remainFruit?.text = String(amount)
         }
     }
     
@@ -50,12 +48,11 @@ final class ViewController: UIViewController {
         }
         if let availableMenu = juiceMakerModel.order(retained) {
             juiceMakerModel.makeJuice(availableMenu)
+            updateStock()
             showAlert(message: "\(availableMenu.rawValue) 나왔습니다! 맛있게 드세요!")
         } else {
             showSoldOutAlert(message: "재료가 모자라요. 재고를 수정할까요?")
         }
-        
-        setFruitStock()
     }
     
     func navigateToDashboardViewController() {
