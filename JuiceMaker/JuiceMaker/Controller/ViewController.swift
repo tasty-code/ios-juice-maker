@@ -19,13 +19,18 @@ class ViewController: UIViewController {
     
     guard let buttonName = sender.titleLabel?.text else { return }
     let juiceName = buttonName.split(separator: " ")[0]
-    let message = juiceMaker.createJuice(type: tag, juiceName: String(juiceName))
-    showAlert(message: message)
+    let (message, type) = juiceMaker.createJuice(type: tag, juiceName: String(juiceName))
+    showAlert(message: message, type: type)
   }
   
-  func showAlert(message: String) {
+  func showAlert(message: String, type: String) {
     let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertController.Style.alert)
-    alert.addAction(UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: nil))
+    if type == "oneButton" {
+      alert.addAction(UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: nil))
+    } else {
+      alert.addAction(UIAlertAction(title: "예", style: UIAlertAction.Style.default, handler: nil))
+      alert.addAction(UIAlertAction(title: "아니오", style: UIAlertAction.Style.cancel, handler: nil))
+    }
     self.present(alert, animated: true, completion: nil)
   }
 }
