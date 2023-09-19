@@ -60,7 +60,7 @@ final class ViewController: UIViewController {
             preferredStyle: UIAlertController.Style.alert
         )
         alert.addAction(UIAlertAction(title: "감사합니다", style: .default))
-        present(alert, animated: false, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     private func displayFillStockAlert() {
@@ -73,7 +73,7 @@ final class ViewController: UIViewController {
             self.presentStockManager()
         }))
         alert.addAction(UIAlertAction(title: "아니요", style: .destructive))
-        present(alert, animated: false, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     private func presentStockManager() {
