@@ -15,8 +15,6 @@ final class MainViewController: UIViewController {
     @IBOutlet weak var kiwiLabel: UILabel!
     @IBOutlet weak var pineappleLabel: UILabel!
     @IBOutlet weak var mangoLabel: UILabel!
-    
-    
     @IBOutlet weak var strawberryJuiceButton: UIButton!
     @IBOutlet weak var bananaJuiceButton: UIButton!
     @IBOutlet weak var pineappleJuiceButton: UIButton!
@@ -72,13 +70,14 @@ final class MainViewController: UIViewController {
     }
 
     @IBAction func orderJuice(_ sender: UIButton) {
-        guard let id = sender.accessibilityIdentifier else { return }
-        
+        guard let id = sender.accessibilityIdentifier else {
+            return
+        }
         do {
-            let recipe = try identifyJuiceMenu(btnIdentifier: id)
-            try juiceMaker.makeJuice(order: recipe)
-            remainFruit()
-            defaultAlert(message: "\(recipe.recipeName)쥬스 나왔습니다! 맛있게 드세요!")
+            let menu = try menuForJuiceButton(btnIdentifier: id)
+            try juiceMaker.makeJuice(order: menu)
+            updateFruitLabels()
+            defaultAlert(message: "\(menu.recipeName)쥬스 나왔습니다! 맛있게 드세요!")
         } catch InventoryError.noLongerConsumeError {
             juiceMakeFailAlert(message: InventoryError.noLongerConsumeError.description)
         } catch {
@@ -88,7 +87,7 @@ final class MainViewController: UIViewController {
 }
 
 extension MainViewController {
-    private func identifyJuiceMenu(btnIdentifier: String) throws -> JuiceMenu {
+    private func menuForJuiceButton(btnIdentifier: String) throws -> JuiceMenu {
         switch btnIdentifier {
         case "딸기쥬스":
             return .strawberryJuice

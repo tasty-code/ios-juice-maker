@@ -29,20 +29,22 @@ final class FruitInventoryViewController: UIViewController {
         kiwiLabel.accessibilityIdentifier = "키위"
         mangoLabel.accessibilityIdentifier = "망고"
         
-        remainFruit()
+        updateFruitLabels()
     }
     
-    private func remainFruit() {
-        let labelArray: [UILabel] = [strawberryLabel, bananaLabel, pineappleLabel, kiwiLabel, mangoLabel]
+    private func updateFruitLabels() {
+        let fruitLabels = [strawberryLabel, bananaLabel, pineappleLabel, kiwiLabel, mangoLabel]
         
-        labelArray.forEach { label in
-            guard let id = label.accessibilityIdentifier else { return }
-            
+        fruitLabels.forEach { label in
+            guard let tempLabel = label, let id = tempLabel.accessibilityIdentifier else {
+                return
+            }
             do {
-                guard let tempJuiceMaker = juiceMaker else { return }
-                let fruit = try Fruit.identifyFruit(labelIdentifier: id)
+                guard let fruit = try Fruit(id), let tempJuiceMaker = juiceMaker else {
+                    return
+                }
                 let count = try tempJuiceMaker.remainingCount(fruit: fruit)
-                label.text = "\(count)"
+                tempLabel.text = "\(count)"
             } catch {
                 defaultAlert(message: InventoryError.invalidError.description)
             }
