@@ -279,7 +279,7 @@
             </objects>
             <point key="canvasLocation" x="19.419642857142858" y="92.753623188405811"/>
         </scene>
-        <!--Adjust Stock View Controller-->
+        <!--재고 추가-->
         <scene sceneID="fkG-vv-hpE">
             <objects>
                 <viewController storyboardIdentifier="AdjustStockViewController" id="Yu1-lM-nqp" customClass="AdjustStockViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
@@ -420,13 +420,13 @@
                             <constraint firstItem="24r-3A-DZO" firstAttribute="centerX" secondItem="tKV-4l-Vtc" secondAttribute="centerX" id="KYZ-Nc-qIm"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="g4W-fY-l7r">
+                    <navigationItem key="navigationItem" title="재고 추가" id="g4W-fY-l7r">
                         <barButtonItem key="rightBarButtonItem" id="zqd-gs-FSA">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Prl-8b-IHf">
                                 <rect key="frame" x="590" y="0.0" width="187" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="완료"/>
+                                <buttonConfiguration key="configuration" style="plain" title="닫기"/>
                                 <connections>
                                     <action selector="touchNavSaveButton:" destination="Yu1-lM-nqp" eventType="touchUpInside" id="Lgq-vJ-KZE"/>
                                 </connections>
