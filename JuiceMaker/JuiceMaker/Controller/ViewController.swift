@@ -10,11 +10,11 @@ final class ViewController: UIViewController {
     
     private let juiceMakerModel = JuiceMaker()
     
-    @IBOutlet weak var strawberryStockLabel: UILabel!
-    @IBOutlet weak var bananaStockLabel: UILabel!
-    @IBOutlet weak var pineappleStockLabel: UILabel!
-    @IBOutlet weak var kiwiStockLabel: UILabel!
-    @IBOutlet weak var mangoStockLabel: UILabel!
+    @IBOutlet private weak var strawberryStockLabel: UILabel!
+    @IBOutlet private weak var bananaStockLabel: UILabel!
+    @IBOutlet private weak var pineappleStockLabel: UILabel!
+    @IBOutlet private weak var kiwiStockLabel: UILabel!
+    @IBOutlet private weak var mangoStockLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -76,5 +76,6 @@ final class ViewController: UIViewController {
         alert.addAction(noAction)
         present(alert, animated: true, completion: nil)
     }
+    
 }
 
