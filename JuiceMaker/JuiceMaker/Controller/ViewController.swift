@@ -6,10 +6,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     
     private let juiceMakerModel = JuiceMaker()
-    @IBOutlet weak var inventoryStackView : UIStackView!
+    private @IBOutlet weak var inventoryStackView : UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,11 +35,11 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func didTapRightNavigatorItem(_ sender: UIBarButtonItem) {
+    @IBAction private func didTapRightNavigatorItem(_ sender: UIBarButtonItem) {
         navigateToDashboardViewController()
     }
     
-    @IBAction func didTapJuiceButton(_ sender: UIButton) {
+    @IBAction private func didTapJuiceButton(_ sender: UIButton) {
         guard let tapped = sender.titleLabel, let label = tapped.text else {
             return
         }

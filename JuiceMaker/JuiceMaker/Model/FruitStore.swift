@@ -7,14 +7,8 @@
 import Foundation
 
 final class FruitStore {
-    static let shared = FruitStore()
-    var fruitList: [Fruit: Int] = {
-        var list: [Fruit: Int] = [:]
-        Fruit.allCases.forEach {
-            list.updateValue(10, forKey: $0)
-        }
-        return list
-    }()
+    let shared = FruitStore()
+    private var fruitList: [Fruit: Int] = Dictionary(uniqueKeysWithValues: zip(Fruit.allCases, Array(repeating: 10, count: 5)))
 
     private init() {}
     
