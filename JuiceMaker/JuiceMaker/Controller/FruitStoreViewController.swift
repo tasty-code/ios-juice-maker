@@ -12,8 +12,7 @@ class FruitStoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initStepper()
-        updateUI()
+        configStepperAndLabel()
     }
     
    
@@ -50,7 +49,7 @@ class FruitStoreViewController: UIViewController {
     
             try fruitStore.addFruitStock(inputFruit: fruit, count: Int(sender.value))
             
-            updateUI()
+            try updateUI()
             
         } catch {
             print("\(error)")
@@ -63,24 +62,35 @@ class FruitStoreViewController: UIViewController {
 //MARK: - Method
 extension FruitStoreViewController {
     
-    private func initStepper() {
-        guard let fruitStore = self.fruitStore else { return }
+    private func initStepper() throws {
+        guard let fruitStore = fruitStore else {throw MessageLog.ErrorCase.failedOptionalBinding}
         
-        strawberryStepper.value = Double(fruitStore.fruitList[0].stock)
-        bananaStepper.value = Double(fruitStore.fruitList[1].stock)
-        pineappleStepper.value = Double(fruitStore.fruitList[2].stock)
-        kiwiStepper.value = Double(fruitStore.fruitList[3].stock)
-        mangoStepper.value = Double(fruitStore.fruitList[4].stock)
+        strawberryStepper.value = Double(try fruitStore.takeFruitStock(fruitName: "딸기"))
+        bananaStepper.value = Double(try fruitStore.takeFruitStock(fruitName: "바나나"))
+        pineappleStepper.value = Double(try fruitStore.takeFruitStock(fruitName: "파인애플"))
+        kiwiStepper.value = Double(try fruitStore.takeFruitStock(fruitName: "키위"))
+        mangoStepper.value = Double(try fruitStore.takeFruitStock(fruitName: "망고"))
     }
     
-    private func updateUI() {
-        guard let fruitStore = self.fruitStore else { return }
-        storeStrawberryLabel.text = String(fruitStore.fruitList[0].stock)
-        storeBananaLabel.text = String(fruitStore.fruitList[1].stock)
-        storePineappleLabel.text = String(fruitStore.fruitList[2].stock)
-        storeKiwiLabel.text = String(fruitStore.fruitList[3].stock)
-        storeMangoLabel.text = String(fruitStore.fruitList[4].stock)
+    private func updateUI() throws {
+        guard let fruitStore = fruitStore else {throw MessageLog.ErrorCase.failedOptionalBinding}
         
+        storeStrawberryLabel.text = String(try fruitStore.takeFruitStock(fruitName: "딸기"))
+        storeBananaLabel.text = String(try fruitStore.takeFruitStock(fruitName: "바나나"))
+        storePineappleLabel.text = String(try fruitStore.takeFruitStock(fruitName: "파인애플"))
+        storeKiwiLabel.text = String(try fruitStore.takeFruitStock(fruitName: "키위"))
+        storeMangoLabel.text = String(try fruitStore.takeFruitStock(fruitName: "망고"))
+    }
+    
+  
+    
+    private func configStepperAndLabel() {
+        do {
+            try initStepper()
+            try updateUI()
+        } catch {
+            print("\(error)")
+        }
     }
 }
 

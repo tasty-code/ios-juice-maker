@@ -30,6 +30,8 @@ enum MessageLog {
         case canNotFound
         case outOfStock
         case stepperTagError
+        case failedOptionalBinding
+
         
         var debugDescription: String {
             switch self {
@@ -41,6 +43,9 @@ enum MessageLog {
                 
             case .stepperTagError:
                 return "일치하는 stepper의 태그가 없습니다."
+                
+            case .failedOptionalBinding:
+                return "optional binding 실패"
             }
         }
         

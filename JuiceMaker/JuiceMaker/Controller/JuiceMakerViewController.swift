@@ -62,11 +62,15 @@ class JuiceMakerViewController: UIViewController {
 extension JuiceMakerViewController {
     
     private func updateUI() {
-        strawberryQantityLabel.text = String(juiceMaker.fruitStore.fruitList[0].stock)
-        bananaQantityLabel.text = String(juiceMaker.fruitStore.fruitList[1].stock)
-        pineappleQantityLabel.text = String(juiceMaker.fruitStore.fruitList[2].stock)
-        kiwiQantityLabel.text = String(juiceMaker.fruitStore.fruitList[3].stock)
-        mangoQuatityLabel.text = String(juiceMaker.fruitStore.fruitList[4].stock)
+        do {
+            strawberryQantityLabel.text = String(try juiceMaker.fruitStore.takeFruitStock(fruitName:"딸기"))
+            bananaQantityLabel.text = String(try juiceMaker.fruitStore.takeFruitStock(fruitName:"바나나"))
+            pineappleQantityLabel.text = String(try juiceMaker.fruitStore.takeFruitStock(fruitName:"파인애플"))
+            kiwiQantityLabel.text = String(try juiceMaker.fruitStore.takeFruitStock(fruitName:"키위"))
+            mangoQuatityLabel.text = String(try juiceMaker.fruitStore.takeFruitStock(fruitName:"망고"))
+        } catch {
+            print("\(error)")
+        }
     }
     
     
