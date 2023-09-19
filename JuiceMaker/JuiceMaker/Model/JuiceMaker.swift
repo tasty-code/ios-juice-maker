@@ -28,8 +28,8 @@ struct JuiceMaker {
         return fruitStorage.showCurrentList()
     }
     
-    func stockChanger(_ fruit: Fruit, _ isAdd: Bool) {
-        fruitStorage.stockManager(fruit, isAdd)
+    func stockChanger(_ fruit: [Fruit : Int]) {
+        fruitStorage.stockManager(fruit)
     }
     
     private func soldOutChecker(_ order: Juice) throws -> [Fruit : Int?] {

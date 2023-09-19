@@ -33,15 +33,9 @@ class FruitStore {
         return firstFruit
     }
     
-    func stockManager(_ fruit: Fruit, _ isAdd: Bool) {
-        guard let current = fruitBox[fruit] else {
-            return
-        }
-        if isAdd {
-            fruitBox[fruit] = current + 1
-        } else if isAdd == false && current > 0 {
-            fruitBox[fruit] = current - 1
-        }
+    
+    func stockManager(_ fruit: [Fruit : Int]) {
+       fruitBox = fruit
     }
     
     private func calculateStock(_ consumeRecipe: [Fruit : Int]) -> Bool {

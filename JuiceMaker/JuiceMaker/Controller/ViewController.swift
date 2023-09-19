@@ -7,7 +7,6 @@
 import UIKit
 
 class ViewController: UIViewController, SendDataDelegate {
-    
     private let juiceMaker = JuiceMaker()
     var currentQuantity: [Fruit : Int] = [:]
     
@@ -15,6 +14,12 @@ class ViewController: UIViewController, SendDataDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getStockList()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        juiceMaker.stockChanger(currentQuantity)
         getStockList()
     }
     
@@ -48,7 +53,6 @@ class ViewController: UIViewController, SendDataDelegate {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "확인", style: .default)
         
-        
         if isSuccess {
             alert.addAction(okAction)
         } else {
@@ -65,15 +69,15 @@ class ViewController: UIViewController, SendDataDelegate {
     func moveToStockVc() {
         let stockVC = self.storyboard?.instantiateViewController(withIdentifier: "StockViewController") as! StockViewController
         
-        stockVC.current = currentQuantity
+        stockVC.transferData = currentQuantity
         stockVC.delegate = self
         
         self.navigationController?.pushViewController(stockVC, animated: true)
     }
     
     func recieveData(response: [Fruit : Int]) {
+        currentQuantity = response
         print("업데이트 밸류 : \(response)")
     }
-    
 }
 
