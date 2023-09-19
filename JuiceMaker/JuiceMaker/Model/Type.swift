@@ -14,3 +14,8 @@ enum Fruit: String {
   case kiwi
   case mango
 }
+
+enum AlertType: String {
+  case oneButton
+  case twoButton
+}

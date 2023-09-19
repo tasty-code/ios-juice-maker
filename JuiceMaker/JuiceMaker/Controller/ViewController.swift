@@ -26,16 +26,24 @@ class ViewController: UIViewController {
     
     guard let buttonName = sender.titleLabel?.text else { return }
     let juiceName = buttonName.split(separator: " ")[0]
-    let (message, type) = juiceMaker.createJuice(type: tag, juiceName: String(juiceName))
-    showAlert(message: message, type: type)
+    let (type, message) = juiceMaker.createJuice(type: tag, juiceName: String(juiceName))
+    showAlert(type: type, message: message)
     setNumberLabel()
   }
   
-  func showAlert(message: String, type: String) {
+  func setNumberLabel() {
+    strawberryNumberLabel.text = String(juiceMaker.store.getNum(fruitName: Fruit.strawberry))
+    bananaNumberLabel.text = String(juiceMaker.store.getNum(fruitName: Fruit.banana))
+    pineappleNumberLabel.text = String(juiceMaker.store.getNum(fruitName: Fruit.pineapple))
+    kiwiNumberLabel.text = String(juiceMaker.store.getNum(fruitName: Fruit.kiwi))
+    mangoNumberLabel.text = String(juiceMaker.store.getNum(fruitName: Fruit.mango))
+  }
+  
+  func showAlert(type: AlertType, message: String) {
     let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertController.Style.alert)
-    if type == "oneButton" {
+    if type == .oneButton {
       alert.addAction(UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: nil))
-    } else {
+    } else if type == .twoButton {
       alert.addAction(UIAlertAction(title: "예", style: UIAlertAction.Style.default, handler: { _ in
         guard let editStoreView = self.storyboard?.instantiateViewController(identifier: "editStoreView") else { return }
         editStoreView.modalTransitionStyle = .coverVertical
@@ -46,13 +54,4 @@ class ViewController: UIViewController {
     }
     self.present(alert, animated: true, completion: nil)
   }
-  
-  func setNumberLabel() {
-    strawberryNumberLabel.text = String(juiceMaker.store.getNum(fruitName: Fruit.strawberry))
-    bananaNumberLabel.text = String(juiceMaker.store.getNum(fruitName: Fruit.banana))
-    pineappleNumberLabel.text = String(juiceMaker.store.getNum(fruitName: Fruit.pineapple))
-    kiwiNumberLabel.text = String(juiceMaker.store.getNum(fruitName: Fruit.kiwi))
-    mangoNumberLabel.text = String(juiceMaker.store.getNum(fruitName: Fruit.mango))
-  }
 }
-
