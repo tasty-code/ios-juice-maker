@@ -58,9 +58,7 @@ extension JuiceMakerViewController {
                   let stock = inventory?[label.fruitType]
             else { return }
             
-            let labelText = String(stock)
-            
-            fruitStockLabel.text = labelText
+            fruitStockLabel.text = String(stock)
         }
     }
     
