@@ -33,15 +33,16 @@ struct JuiceMaker {
     }
   }
   
-  func createJuice(type: Juice) {
+  func createJuice(type: Int) {
     if checkAvailableJuice(type: type) {
       makeJuice(type: type)
     }
   }
   
-  private func checkAvailableJuice(type: Juice) -> Bool {
+  private func checkAvailableJuice(type: Int) -> Bool {
     do {
-      let recipe = type.recipe
+      guard let juiceType = Juice(rawValue: type) else { return false }
+      let recipe = juiceType.recipe
       for (fruit, number) in recipe {
         try store.checkInventory(fruitName: fruit, number: number)
       }
@@ -54,8 +55,9 @@ struct JuiceMaker {
     return true
   }
   
-  private func makeJuice(type: Juice) {
-    let recipe = type.recipe
+  private func makeJuice(type: Int) {
+    guard let juiceType = Juice(rawValue: type) else { return }
+    let recipe = juiceType.recipe
     for (fruit, number) in recipe {
       store.subtract(fruitName: fruit, number: number)
     }
