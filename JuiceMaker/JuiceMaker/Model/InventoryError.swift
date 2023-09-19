@@ -8,15 +8,15 @@
 import Foundation
 
 enum InventoryError: Error, CustomStringConvertible {
-    case invalidMenuError
+    case invalidError
     case noLongerConsumeError
     
     var description: String {
         switch self {
-        case .invalidMenuError:
-            return "존재하지 않는 메뉴입니다."
+        case .invalidError:
+            return "오류가 발생하였습니다. 다시 실행해주세요."
         case .noLongerConsumeError:
-            return "재고가 부족하여 주스를 만들 수 없습니다."
+            return "재료가 모자라요. 재고를 수정할까요?"
         }
     }
 }
