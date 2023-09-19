@@ -114,20 +114,19 @@ extension MainViewController {
     
     private func defaultAlert(message: String) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        let yes = UIAlertAction(title: "예", style: .default)
-        alert.addAction(yes)
+        let yesAction = UIAlertAction(title: "예", style: .default)
+        alert.addAction(yesAction)
         present(alert, animated: true, completion: nil)
     }
     
     private func juiceMakeFailAlert(message: String) {
         let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
-        let yes = UIAlertAction(title: "예", style: .destructive) { _ in
+        let yesAction = UIAlertAction(title: "예", style: .destructive) { _ in
             self.moveInventoryVC()
         }
-        let no = UIAlertAction(title: "아니오", style: .cancel)
-        
-        alert.addAction(no)
-        alert.addAction(yes)
+        let noAction = UIAlertAction(title: "아니오", style: .cancel)
+        alert.addAction(noAction)
+        alert.addAction(yesAction)
         present(alert, animated: true)
     }
 }
