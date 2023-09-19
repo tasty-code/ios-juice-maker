@@ -50,7 +50,7 @@ final class ViewController: UIViewController {
         }
     }
     
-    @IBAction func pressOrderButton(_ button: UIButton)  {
+    @IBAction private func pressOrderButton(_ button: UIButton)  {
         do {
             guard let fruitName = JuiceMenu(rawValue: button.tag) else { return }
             try juiceMaker.makeJuice(menu: fruitName)
