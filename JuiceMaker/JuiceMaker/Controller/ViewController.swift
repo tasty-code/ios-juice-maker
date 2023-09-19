@@ -69,8 +69,15 @@ final class ViewController: UIViewController {
             message: "재고를 수정할까요?",
             preferredStyle: .alert
         )
-        alert.addAction(UIAlertAction(title: "채우러갈게요", style: .default))
+        alert.addAction(UIAlertAction(title: "예", style: .default, handler: { _ in
+            self.presentStockManager()
+        }))
         alert.addAction(UIAlertAction(title: "아니요", style: .destructive))
         present(alert, animated: false, completion: nil)
+    }
+    
+    private func presentStockManager() {
+        guard let presentViewController = self.storyboard?.instantiateViewController(identifier: "StockManagement") else { return }
+        self.present(presentViewController, animated: true, completion: nil)
     }
 }

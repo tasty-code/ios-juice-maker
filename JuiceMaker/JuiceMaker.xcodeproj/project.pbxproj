@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		66ECD7AE2AB956E60038A4CA /* StockManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECD7AD2AB956E60038A4CA /* StockManagementViewController.swift */; };
+		66ECD7AE2AB956E60038A4CA /* StockManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECD7AD2AB956E60038A4CA /* StockManagerViewController.swift */; };
 		98FAC71D2AB054CD00F222F5 /* StockError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FAC71C2AB054CD00F222F5 /* StockError.swift */; };
 		C346A13F2AB49373001F7ED4 /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C346A13E2AB49373001F7ED4 /* Fruit.swift */; };
 		C38A0FF12AB01BB800D7F1AF /* JuiceMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38A0FF02AB01BB800D7F1AF /* JuiceMenu.swift */; };
@@ -22,7 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		66ECD7AD2AB956E60038A4CA /* StockManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockManagementViewController.swift; sourceTree = "<group>"; };
+		66ECD7AD2AB956E60038A4CA /* StockManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockManagerViewController.swift; sourceTree = "<group>"; };
 		98FAC71C2AB054CD00F222F5 /* StockError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockError.swift; sourceTree = "<group>"; };
 		C346A13E2AB49373001F7ED4 /* Fruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
 		C38A0FF02AB01BB800D7F1AF /* JuiceMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMenu.swift; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				C73DAF3A255D0CDD00020D38 /* ViewController.swift */,
-				66ECD7AD2AB956E60038A4CA /* StockManagementViewController.swift */,
+				66ECD7AD2AB956E60038A4CA /* StockManagerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -186,7 +186,7 @@
 				C73DAF3B255D0CDD00020D38 /* ViewController.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
 				C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */,
-				66ECD7AE2AB956E60038A4CA /* StockManagementViewController.swift in Sources */,
+				66ECD7AE2AB956E60038A4CA /* StockManagerViewController.swift in Sources */,
 				C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
