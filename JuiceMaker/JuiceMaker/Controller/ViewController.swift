@@ -16,7 +16,6 @@ final class ViewController: UIViewController {
     @IBOutlet private weak var kiwiStockLabel: UILabel!
     @IBOutlet private weak var mangoStockLabel: UILabel!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateStock()
@@ -43,13 +42,13 @@ final class ViewController: UIViewController {
         }
         let splited = String(label.split(separator: " ")[0])
         
-        guard let retained = Menu(rawValue: splited) else {
+        guard let retained = Menu.allCases.first(where: { $0.juice == splited }) else {
             return
         }
         if let availableMenu = juiceMakerModel.order(retained) {
             juiceMakerModel.makeJuice(availableMenu)
             updateStock()
-            showAlert(message: "\(availableMenu.rawValue) 나왔습니다! 맛있게 드세요!")
+            showAlert(message: "\(splited) 나왔습니다! 맛있게 드세요!")
         } else {
             showSoldOutAlert(message: "재료가 모자라요. 재고를 수정할까요?")
         }

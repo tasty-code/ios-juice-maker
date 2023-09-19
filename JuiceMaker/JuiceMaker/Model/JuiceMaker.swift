@@ -49,7 +49,7 @@ struct JuiceMaker {
     
     func makeJuice(_ menu: Menu) {
         myFruitStore.deduct(menu.recipe)
-        print("\(menu.rawValue) 완성")
+        print("\(menu.juice) 완성")
     }
 }
 
