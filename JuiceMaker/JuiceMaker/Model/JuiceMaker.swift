@@ -37,8 +37,9 @@ struct JuiceMaker {
     if checkAvailableJuice(type: type) {
       makeJuice(type: type)
       return "\(juiceName) 나왔습니다! 맛있게 드세요!"
+    } else {
+      return "재료가 모자라요. 재고를 수정할까요?"
     }
-    return "재료가 모자라요. 재고를 수정할까요?"
   }
   
   private func checkAvailableJuice(type: Int) -> Bool {
