@@ -39,19 +39,24 @@ final class ViewController: UIViewController {
             
             guard let fruit = Fruit(rawValue: label.tag) else { continue }
             
-            do {
-                let fruitQuantity = try juiceMaker.checkFruit(fruit: fruit)
+            do{
+                let fruitQuantity =  try juiceMaker.checkFruit(fruit: fruit)
                 
                 label.text = String(fruitQuantity)
             }
             catch {
-                // 알럿 makeAlert()
+            
             }
         }
     }
     
     @IBAction func pressOrderButton(_ button: UIButton)  {
-     
+        do {
+            guard let fruitName = JuiceMenu(rawValue: button.tag) else { return }
+            try juiceMaker.makeJuice(menu: fruitName)
+            displayFruitQuantity()
+        } catch {
+            //alert
+        }
     }
 }
-
