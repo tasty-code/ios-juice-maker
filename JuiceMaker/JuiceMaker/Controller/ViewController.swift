@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, SendDataDelegate {
     
     private let juiceMaker = JuiceMaker()
     var currentQuantity: [Fruit : Int] = [:]
@@ -64,7 +64,15 @@ class ViewController: UIViewController {
     
     func moveToStockVc() {
         let stockVC = self.storyboard?.instantiateViewController(withIdentifier: "StockViewController") as! StockViewController
+        
+        stockVC.current = currentQuantity
+        stockVC.delegate = self
+        
         self.navigationController?.pushViewController(stockVC, animated: true)
+    }
+    
+    func recieveData(response: [Fruit : Int]) {
+        print("업데이트 밸류 : \(response)")
     }
     
 }

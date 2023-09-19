@@ -3,7 +3,7 @@
     <device id="retina6_0" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -272,7 +272,7 @@
             </objects>
             <point key="canvasLocation" x="156" y="128"/>
         </scene>
-        <!--Stock View Controller-->
+        <!--재고 추가-->
         <scene sceneID="fkG-vv-hpE">
             <objects>
                 <viewController storyboardIdentifier="StockViewController" id="Yu1-lM-nqp" customClass="StockViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
@@ -379,8 +379,13 @@
                         <viewLayoutGuide key="safeArea" id="gcO-Xb-kNs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="g4W-fY-l7r">
+                    <navigationItem key="navigationItem" title="재고 추가" leftItemsSupplementBackButton="YES" id="g4W-fY-l7r">
                         <barButtonItem key="backBarButtonItem" title="뒤로" id="h8U-j7-ufN"/>
+                        <barButtonItem key="rightBarButtonItem" title="닫기" id="Q4W-hX-DCg">
+                            <connections>
+                                <action selector="closeBtn:" destination="Yu1-lM-nqp" id="A9J-ez-i6A"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
