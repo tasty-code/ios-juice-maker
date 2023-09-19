@@ -1,8 +1,8 @@
 //
 //  JuiceMaker - ViewController.swift
-//  Created by yagom. 
+//  Created by yagom.
 //  Copyright © yagom academy. All rights reserved.
-// 
+//
 
 import UIKit
 
@@ -46,10 +46,31 @@ final class ViewController: UIViewController {
         do {
             guard let fruitName = JuiceMenu(rawValue: button.tag) else { return }
             try juiceMaker.makeJuice(menu: fruitName)
+            displayAcceptAlert(fruitName: fruitName)
             displayFruitQuantity()
         } catch {
-            let alert = UIAlertController()
-            //alert
+            displayFillStockAlert()
         }
+    }
+    
+    func displayAcceptAlert(fruitName: JuiceMenu) {
+        let alert = UIAlertController(
+            title: "\(fruitName.description) 쥬스 나왔습니다",
+            message: "맛있게 드세요!",
+            preferredStyle: UIAlertController.Style.alert
+        )
+        alert.addAction(UIAlertAction(title: "감사합니다", style: .default))
+        present(alert, animated: false, completion: nil)
+    }
+    
+    func displayFillStockAlert() {
+        let alert = UIAlertController(
+            title: "재료가 부족해요",
+            message: "재고를 수정할까요?",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "채우러갈게요", style: .default))
+        alert.addAction(UIAlertAction(title: "아니요", style: .destructive))
+        present(alert, animated: false, completion: nil)
     }
 }
