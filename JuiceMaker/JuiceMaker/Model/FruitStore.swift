@@ -24,10 +24,8 @@ final class FruitStore {
         fruitStock.updateValue(remainCount - count, forKey: fruit)
     }
     
-    func checkFruitStock(fruit: Fruit) throws -> Int {
-        guard let remainCount = fruitStock[fruit] else {
-            throw StockError.invalidInput
-        }
+    func checkFruitStock(fruit: Fruit) -> Int {
+        guard let remainCount = fruitStock[fruit] else { return 10 }
         return remainCount
     }
 }

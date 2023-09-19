@@ -12,6 +12,5 @@ class StockManagementViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       
     }
 }

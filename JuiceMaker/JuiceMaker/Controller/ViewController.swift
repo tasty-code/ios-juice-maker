@@ -36,17 +36,9 @@ final class ViewController: UIViewController {
                                               mangoQuantityLabel]
         
         for label in fruitQuantityLabels {
-            
             guard let fruit = Fruit(rawValue: label.tag) else { continue }
-            
-            do{
-                let fruitQuantity =  try juiceMaker.checkFruit(fruit: fruit)
-                
-                label.text = String(fruitQuantity)
-            }
-            catch {
-            
-            }
+            let fruitQuantity = juiceMaker.checkFruit(fruit: fruit)
+            label.text = String(fruitQuantity)
         }
     }
     
@@ -56,6 +48,7 @@ final class ViewController: UIViewController {
             try juiceMaker.makeJuice(menu: fruitName)
             displayFruitQuantity()
         } catch {
+            let alert = UIAlertController()
             //alert
         }
     }
