@@ -38,6 +38,9 @@ class FruitStoreViewController: UIViewController {
     
     @IBOutlet weak var mangoStepper: UIStepper!
     
+    @IBAction func btn(_ sender: UIBarButtonItem) {
+        self.navigationController?.popViewController(animated: true)
+    }
     @IBAction func fruitStockStepper(_ sender: UIStepper) {
         do {
             guard let stepperTag = StepperTag(rawValue: sender.tag) else { return }

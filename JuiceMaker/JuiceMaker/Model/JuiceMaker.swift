@@ -14,7 +14,7 @@ struct JuiceMaker {
 
     
     func startOrder(juiceTag: Int) throws {
-        let fruitDict: [FruitStore.Fruit: Int] = try orderConvertToDict(juiceTag: juiceTag)
+        let fruitDict: [String: Int] = try orderConvertToDict(juiceTag: juiceTag)
         
         try checkStock(juiceIngredient: fruitDict)
         try makeJuice(juiceIngredient: fruitDict)
@@ -22,9 +22,9 @@ struct JuiceMaker {
     }
     
     
-    private func checkStock(juiceIngredient: [FruitStore.Fruit: Int]) throws {
+    private func checkStock(juiceIngredient: [String: Int]) throws {
         try juiceIngredient.forEach { fruit, count in
-            guard let listIndex = fruitStore.fruitList.firstIndex(where: {$0.name == fruit.name}) else {
+            guard let listIndex = fruitStore.fruitList.firstIndex(where: {$0.name == fruit}) else {
                 throw MessageLog.ErrorCase.canNotFound
             }
             guard fruitStore.fruitList[listIndex].stock > count - 1 else {throw MessageLog.ErrorCase.outOfStock}
@@ -34,14 +34,14 @@ struct JuiceMaker {
     }
     
     
-    private func makeJuice(juiceIngredient: [FruitStore.Fruit: Int]) throws {
+    private func makeJuice(juiceIngredient: [String: Int]) throws {
         try juiceIngredient.forEach { fruit, count in
             try subtractFruitStock(inputFruit: fruit, count: count)
         }
     }
     
     
-    private func orderConvertToDict(juiceTag: Int) throws -> [FruitStore.Fruit: Int] {
+    private func orderConvertToDict(juiceTag: Int) throws -> [String: Int] {
         
         guard let confirmJuice = Recipe(rawValue: juiceTag) else { throw MessageLog.ErrorCase.canNotFound }
         
@@ -50,8 +50,8 @@ struct JuiceMaker {
     
     
     
-    private func subtractFruitStock(inputFruit: FruitStore.Fruit, count: Int) throws {
-        guard let index = fruitStore.fruitList.firstIndex(where: {$0.name == inputFruit.name}) else {
+    private func subtractFruitStock(inputFruit: String, count: Int) throws {
+        guard let index = fruitStore.fruitList.firstIndex(where: {$0.name == inputFruit}) else {
             throw MessageLog.ErrorCase.canNotFound
         }
         
@@ -68,30 +68,30 @@ struct JuiceMaker {
         case strawberryBananaJuiceTag = 5
         case mangoKiwiJuiceTag = 6
         
-        var juiceIngredient: [FruitStore.Fruit: Int] {
+        var juiceIngredient: [String: Int] {
             switch self {
             case .strawberryJuiceTag:
-                return [FruitStore.Fruit(name: "딸기"): 16]
+                return ["딸기": 16]
                 
             case .bananaJuiceTag:
-                return [FruitStore.Fruit(name: "바나나"): 2]
+                return ["바나나": 2]
                 
             case .pineappleJuiceTag:
-                return [FruitStore.Fruit(name: "파인애플"): 2]
+                return ["파인애플": 2]
                 
             case .mangoJuiceTag:
-                return [FruitStore.Fruit(name: "망고"): 3]
+                return ["망고": 3]
                 
             case .kiwiJuiceTag:
-                return [FruitStore.Fruit(name: "키위"): 3]
+                return ["키위": 3]
                 
             case .strawberryBananaJuiceTag:
-                return [FruitStore.Fruit(name: "딸기"): 10,
-                        FruitStore.Fruit(name: "바나나"): 1]
+                return ["딸기": 10,
+                        "바나나": 1]
                 
             case .mangoKiwiJuiceTag:
-                return [FruitStore.Fruit(name: "망고"): 2,
-                        FruitStore.Fruit(name: "키위"): 1]
+                return ["망고": 2,
+                        "키위": 1]
             }
             
         }
