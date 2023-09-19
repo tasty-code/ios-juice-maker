@@ -27,7 +27,9 @@ enum MessageLog {
     
     enum ErrorCase: Error, CustomDebugStringConvertible {
         
-        case canNotFound, outOfStock
+        case canNotFound
+        case outOfStock
+        case stepperTagError
         
         var debugDescription: String {
             switch self {
@@ -36,6 +38,9 @@ enum MessageLog {
                 
             case .outOfStock:
                 return "재료가 모자라요. 재고를 수정할까요?"
+                
+            case .stepperTagError:
+                return "일치하는 stepper의 태그가 없습니다."
             }
         }
         

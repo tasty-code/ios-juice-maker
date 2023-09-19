@@ -41,11 +41,11 @@ class FruitStoreViewController: UIViewController {
     
     @IBAction func fruitStockStepper(_ sender: UIStepper) {
         do {
-            guard let labelName = sender.accessibilityLabel else { return }
-
+            guard let stepperTag = StepperTag(rawValue: sender.tag) else { return }
+            
             guard let fruitStore = fruitStore else { return }
             
-            guard let fruit = fruitStore.fruitList.filter({$0.name == labelName}).first else { return }
+            guard let fruit = fruitStore.fruitList.filter({$0.name == stepperTag.fruitName}).first else { return }
             
     
             try fruitStore.addFruitStock(inputFruit: fruit, count: Int(sender.value))
@@ -65,19 +65,11 @@ extension FruitStoreViewController {
     
     private func initStepper() {
         guard let fruitStore = self.fruitStore else { return }
-        strawberryStepper.accessibilityLabel = "딸기"
+        
         strawberryStepper.value = Double(fruitStore.fruitList[0].stock)
-        
-        bananaStepper.accessibilityLabel = "바나나"
         bananaStepper.value = Double(fruitStore.fruitList[1].stock)
-        
-        pineappleStepper.accessibilityLabel = "파인애플"
         pineappleStepper.value = Double(fruitStore.fruitList[2].stock)
-        
-        kiwiStepper.accessibilityLabel = "키위"
         kiwiStepper.value = Double(fruitStore.fruitList[3].stock)
-        
-        mangoStepper.accessibilityLabel = "망고"
         mangoStepper.value = Double(fruitStore.fruitList[4].stock)
     }
     
@@ -92,3 +84,29 @@ extension FruitStoreViewController {
     }
 }
 
+extension FruitStoreViewController {
+    
+    private enum StepperTag: Int {
+        case strawberryStepperTag = 0
+        case bananaStepperTag = 1
+        case pineappleStepperTag = 2
+        case kiwiStepperTag = 3
+        case mangoStepperTag = 4
+        
+        var fruitName: String {
+            switch self {
+            case .strawberryStepperTag:
+                return "딸기"
+            case .bananaStepperTag:
+                return "바나나"
+            case .pineappleStepperTag:
+                return "파인애플"
+            case .kiwiStepperTag:
+                return "키위"
+            case .mangoStepperTag:
+                return "망고"
+            }
+        }
+        
+    }
+}
