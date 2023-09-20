@@ -62,7 +62,7 @@ final class FruitInventoryViewController: UIViewController {
     }
     
     @IBAction func closeButtonTapped(_ sender: UIBarButtonItem) {
-        dismiss(animated: true)
+        self.dismiss(animated: true)
     }
 }
 
