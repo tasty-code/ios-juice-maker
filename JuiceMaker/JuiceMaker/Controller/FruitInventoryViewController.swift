@@ -64,6 +64,18 @@ final class FruitInventoryViewController: UIViewController {
     @IBAction func closeButtonTapped(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true)
     }
+    
+    
+    @IBAction func stepperTapped(_ sender: UIStepper) {
+        guard let id = sender.accessibilityIdentifier else { return }
+        do {
+            guard let fruit = try Fruit(id), let tempJuiceMaker = juiceMaker else { return }
+            tempJuiceMaker.changeCount(fruit: fruit, newCount: UInt(sender.value))
+            updateFruitLabels()
+        } catch {
+            defaultAlert(message: InventoryError.invalidError.description)
+        }
+    }
 }
 
 extension FruitInventoryViewController {
