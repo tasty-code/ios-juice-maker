@@ -19,7 +19,7 @@ class JuiceMakerViewController: UIViewController {
         self.syncStockLabels()
     }
 
-    @IBAction func makeJuice(_ sender: UIButton) {
+    @IBAction func touchJuiceOrderButton(_ sender: UIButton) {
         guard let juice = sender as? JuiceNameIdentifiable else { return }
         
         do {
