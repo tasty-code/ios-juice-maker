@@ -16,6 +16,11 @@ final class FruitInventoryViewController: UIViewController {
     @IBOutlet weak var pineappleLabel: UILabel!
     @IBOutlet weak var kiwiLabel: UILabel!
     @IBOutlet weak var mangoLabel: UILabel!
+    @IBOutlet weak var strawberryStepper: UIStepper!
+    @IBOutlet weak var bananaStepper: UIStepper!
+    @IBOutlet weak var pineappleStepper: UIStepper!
+    @IBOutlet weak var kiwiStepper: UIStepper!
+    @IBOutlet weak var mangoStepper: UIStepper!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +33,12 @@ final class FruitInventoryViewController: UIViewController {
         pineappleLabel.accessibilityIdentifier = "파인애플"
         kiwiLabel.accessibilityIdentifier = "키위"
         mangoLabel.accessibilityIdentifier = "망고"
+        
+        strawberryStepper.accessibilityIdentifier = "딸기"
+        bananaStepper.accessibilityIdentifier = "바나나"
+        pineappleStepper.accessibilityIdentifier = "파인애플"
+        kiwiStepper.accessibilityIdentifier = "키위"
+        mangoStepper.accessibilityIdentifier = "망고"
         
         updateFruitLabels()
     }
