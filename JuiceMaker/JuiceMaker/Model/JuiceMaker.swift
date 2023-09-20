@@ -10,9 +10,9 @@ import Foundation
 struct JuiceMaker {
     private var fruitStorage = FruitStore()
 
-    func getOrder(_ order: Juice) -> (message: String, success: Bool) {
+    func makingJuice(_ order: Juice) -> (message: String, success: Bool) {
         do {
-            let complete = try makingJuice(juiceName: order)
+            let complete = try manufacture(juiceName: order)
             if complete {
                 print(order.description)
             }
@@ -56,7 +56,7 @@ extension JuiceMaker {
         return nonOptionalRecipe
     }
     
-    private func makingJuice(juiceName: Juice) throws -> Bool {
+    private func manufacture(juiceName: Juice) throws -> Bool {
         let isSoldout = try soldOutChecker(juiceName)
         let isValid = try errorHandler(isSoldout)
         let isMade = fruitStorage.calculateStock(isValid)

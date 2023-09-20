@@ -64,7 +64,7 @@ extension ViewController {
         guard let menu = Juice(rawValue: sender.tag) else {
             return
         }
-        let orderResult = juiceMaker.getOrder(menu)
+        let orderResult = juiceMaker.makingJuice(menu)
         
         if orderResult.success {
             getStockList()
