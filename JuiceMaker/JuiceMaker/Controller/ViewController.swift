@@ -7,34 +7,19 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
     private let juiceMaker = JuiceMaker()
-    var currentQuantity: [Fruit : Int] = [:]
+    private var currentQuantity: [Fruit: Int] = [:]
     
-    @IBOutlet var fruitsLabel: [UILabel]!
+    @IBOutlet private var fruitsLabel: [UILabel]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getStockList()
     }
-    
-    @IBAction func showPush() {
-        moveToStockVc()
-    }
-    
-    @IBAction func makeOrder(_ sender: UIButton) {
-        guard let menu = Juice(rawValue: sender.tag) else {
-            return
-        }
-        let orderResult = juiceMaker.getOrder(menu)
-        
-        if orderResult.success {
-            getStockList()
-        }
-        resultAlert(orderResult.message, orderResult.success)
-    }
-    
-    func getStockList() {
+}
+
+extension ViewController {
+    private func getStockList() {
         self.currentQuantity = juiceMaker.passCurrentList()
         for (fruit, _) in currentQuantity {
             guard let fruitLabelText = currentQuantity[fruit] else {
@@ -44,28 +29,48 @@ class ViewController: UIViewController {
         }
     }
     
-    func resultAlert(_ message: String, _ isSuccess: Bool) {
+    private func successAlert(_ message: String) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "확인", style: .default)
         
-        
-        if isSuccess {
-            alert.addAction(okAction)
-        } else {
-            let cancleAction = UIAlertAction(title: "취소", style: .default)
-            let changeAction = UIAlertAction(title: "이동", style: .default, handler: { action in
-                self.moveToStockVc()
-            })
-            alert.addAction(cancleAction)
-            alert.addAction(changeAction)
-        }
+        alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
     }
     
-    func moveToStockVc() {
+    private func failAlert(_ message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let cancleAction = UIAlertAction(title: "취소", style: .default)
+        let changeAction = UIAlertAction(title: "이동", style: .default, handler: { action in
+            self.moveToStockVc()
+        })
+        
+        alert.addAction(cancleAction)
+        alert.addAction(changeAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func moveToStockVc() {
         let stockVC = self.storyboard?.instantiateViewController(withIdentifier: "StockViewController") as! StockViewController
         self.navigationController?.pushViewController(stockVC, animated: true)
     }
-    
 }
 
+extension ViewController {
+    @IBAction private func showPush() {
+        moveToStockVc()
+    }
+    
+    @IBAction private func makeOrder(_ sender: UIButton) {
+        guard let menu = Juice(rawValue: sender.tag) else {
+            return
+        }
+        let orderResult = juiceMaker.makingJuice(menu)
+        
+        if orderResult.success {
+            getStockList()
+            successAlert(orderResult.message)
+            return
+        }
+        failAlert(orderResult.message)
+    }
+}
