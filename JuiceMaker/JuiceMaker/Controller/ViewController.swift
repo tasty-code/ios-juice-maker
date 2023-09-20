@@ -9,20 +9,20 @@ import UIKit
 class ViewController: UIViewController {
     
     private let juiceMaker = JuiceMaker()
-    var currentQuantity: [Fruit : Int] = [:]
+    private var currentQuantity: [Fruit: Int] = [:]
     
-    @IBOutlet var fruitsLabel: [UILabel]!
+    @IBOutlet private var fruitsLabel: [UILabel]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getStockList()
     }
     
-    @IBAction func showPush() {
+    @IBAction private func showPush() {
         moveToStockVc()
     }
     
-    @IBAction func makeOrder(_ sender: UIButton) {
+    @IBAction private func makeOrder(_ sender: UIButton) {
         guard let menu = Juice(rawValue: sender.tag) else {
             return
         }
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         resultAlert(orderResult.message, orderResult.success)
     }
     
-    func getStockList() {
+    private func getStockList() {
         self.currentQuantity = juiceMaker.passCurrentList()
         for (fruit, _) in currentQuantity {
             guard let fruitLabelText = currentQuantity[fruit] else {
@@ -44,7 +44,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func resultAlert(_ message: String, _ isSuccess: Bool) {
+    private func resultAlert(_ message: String, _ isSuccess: Bool) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "확인", style: .default)
         
@@ -62,7 +62,7 @@ class ViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func moveToStockVc() {
+    private func moveToStockVc() {
         let stockVC = self.storyboard?.instantiateViewController(withIdentifier: "StockViewController") as! StockViewController
         self.navigationController?.pushViewController(stockVC, animated: true)
     }

@@ -8,9 +8,9 @@ import Foundation
 
 // 과일 저장소 타입
 class FruitStore {
-    private var fruitBox: [Fruit : Int] = [.strawberry : 10, .banana : 10, .pineapple : 10, .kiwi : 10, .mango : 10]
+    private var fruitBox: [Fruit: Int] = [.strawberry : 10, .banana : 10, .pineapple : 10, .kiwi : 10, .mango : 10]
 
-    func errorHandler(_ consumeRecipe: [Fruit : Int?]) throws -> Bool {
+    func errorHandler(_ consumeRecipe: [Fruit: Int?]) throws -> Bool {
         if consumeRecipe.values.filter({ $0 == nil }).count == 2 {
             throw ErrorMessage.stockInsufficients(Array(consumeRecipe.keys))
         }
@@ -22,7 +22,7 @@ class FruitStore {
         return calculateStock(nonOptionalRecipe) ? true : false
     }
     
-    func showCurrentList() -> [Fruit : Int] {
+    func showCurrentList() -> [Fruit: Int] {
         return fruitBox
     }
     
@@ -33,7 +33,7 @@ class FruitStore {
         return firstFruit
     }
     
-    private func calculateStock(_ consumeRecipe: [Fruit : Int]) -> Bool {
+    private func calculateStock(_ consumeRecipe: [Fruit: Int]) -> Bool {
         for (fruit, needs) in consumeRecipe {
             guard let current = fruitBox[fruit] else  {
                 return false

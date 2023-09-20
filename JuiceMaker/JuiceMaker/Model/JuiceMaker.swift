@@ -12,7 +12,7 @@ struct JuiceMaker {
 
     func getOrder(_ order: Juice) -> (message: String, success: Bool) {
         do {
-            let makable: [Fruit : Int?] = try soldOutChecker(order)
+            let makable: [Fruit: Int?] = try soldOutChecker(order)
             let complete = try fruitStorage.errorHandler(makable)
             if complete {
                 print(order.description)
@@ -24,12 +24,12 @@ struct JuiceMaker {
         return (message:order.description, success: true)
     }
     
-    func passCurrentList() -> [Fruit : Int] {
+    func passCurrentList() -> [Fruit: Int] {
         return fruitStorage.showCurrentList()
     }
     
-    private func soldOutChecker(_ order: Juice) throws -> [Fruit : Int?] {
-        var makable: [Fruit : Int?] = [:]
+    private func soldOutChecker(_ order: Juice) throws -> [Fruit: Int?] {
+        var makable: [Fruit: Int?] = [:]
         
         for (fruit, needs) in order.recipe {
             let currentStock = try fruitStorage.getStockInfo(fruit)
