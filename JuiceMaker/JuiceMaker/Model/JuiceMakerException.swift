@@ -8,5 +8,6 @@
 import Foundation
 
 enum JuiceMakerException: Error {
-    case negativeCountError
+    case fruitNotFound
+    case negativeCount
 }
