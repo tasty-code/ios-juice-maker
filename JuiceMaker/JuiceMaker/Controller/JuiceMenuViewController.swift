@@ -14,7 +14,7 @@ class JuiceMenuViewController: UIViewController {
     @IBOutlet weak var pineappleCountLabel: UILabel!
     @IBOutlet weak var kiwiCountLabel: UILabel!
     @IBOutlet weak var mangoCountLabel: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -23,7 +23,7 @@ class JuiceMenuViewController: UIViewController {
         super.viewWillAppear(animated)
         
         for fruitType in FruitType.allCases {
-            guard let fruitCount = FruitStore.shared.fruitCountList[fruitType] else {
+            guard let fruitCount = FruitStore.shared.fruitCounts[fruitType] else {
                 return
             }
             
@@ -50,7 +50,7 @@ class JuiceMenuViewController: UIViewController {
         order(menu: juiceType)
         for (fruitType, _) in juiceType.ingredients {
             var fruitCount = 0
-            if let tempCount = FruitStore.shared.fruitCountList[fruitType] {
+            if let tempCount = FruitStore.shared.fruitCounts[fruitType] {
                 fruitCount = tempCount
             }
             switch fruitType {
@@ -71,13 +71,13 @@ class JuiceMenuViewController: UIViewController {
     private func order(menu selectedMenu: JuiceType) {
         do {
             try juiceMaker.make(juice: selectedMenu)
-            alertOrderSuccess(of: selectedMenu)
+            showAlertOrderSuccess(of: selectedMenu)
         } catch {
-            alertOrderFailed()
+            showAlertOrderFailed()
         }
     }
     
-    private func alertOrderSuccess(of juice: JuiceType) {
+    private func showAlertOrderSuccess(of juice: JuiceType) {
         let alertController = UIAlertController(
             title: "제조 성공",
             message: "\(juice.rawValue) 나왔습니다! 맛있게 드세요!",
@@ -88,7 +88,7 @@ class JuiceMenuViewController: UIViewController {
         present(alertController, animated: true)
     }
     
-    private func alertOrderFailed() {
+    private func showAlertOrderFailed() {
         let alertController = UIAlertController(
             title: "재료 부족",
             message: "재료가 모자라요. 재고를 수정할까요?",
@@ -105,5 +105,6 @@ class JuiceMenuViewController: UIViewController {
         alertController.addAction(disagreeAlertAction)
         present(alertController, animated: true)
     }
+    
 }
 

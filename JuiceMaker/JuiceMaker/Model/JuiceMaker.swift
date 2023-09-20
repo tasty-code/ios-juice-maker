@@ -14,4 +14,5 @@ struct JuiceMaker {
     func update(_ fruit: Fruit) throws {
         try FruitStore.shared.update(fruit, as: +)
     }
+    
 }

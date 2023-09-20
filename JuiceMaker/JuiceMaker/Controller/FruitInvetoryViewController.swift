@@ -10,34 +10,30 @@ import UIKit
 class FruitInventoryViewController: UIViewController {
     private let juiceMaker = JuiceMaker()
     
-    @IBOutlet var strawberryCountLabel: UILabel!
-    @IBOutlet var bananaCountLabel: UILabel!
-    @IBOutlet var pineappleCountLabel: UILabel!
-    @IBOutlet var kiwiCountLabel: UILabel!
-    @IBOutlet var mangoCountLabel: UILabel!
+    @IBOutlet private var strawberryCountLabel: UILabel!
+    @IBOutlet private var bananaCountLabel: UILabel!
+    @IBOutlet private var pineappleCountLabel: UILabel!
+    @IBOutlet private var kiwiCountLabel: UILabel!
+    @IBOutlet private var mangoCountLabel: UILabel!
     
-    @IBOutlet var strawberryStepper: UIStepper!
-    @IBOutlet var bananaStepper: UIStepper!
-    @IBOutlet var pineappleStepper: UIStepper!
-    @IBOutlet var kiwiStepper: UIStepper!
-    @IBOutlet var mangoStepper: UIStepper!
+    @IBOutlet private var strawberryStepper: UIStepper!
+    @IBOutlet private var bananaStepper: UIStepper!
+    @IBOutlet private var pineappleStepper: UIStepper!
+    @IBOutlet private var kiwiStepper: UIStepper!
+    @IBOutlet private var mangoStepper: UIStepper!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        strawberryStepper.tag = 0
-        bananaStepper.tag = 1
-        pineappleStepper.tag = 2
-        kiwiStepper.tag = 3
-        mangoStepper.tag = 4
+        setTagOfStepper()
+        setEventActionOfStepper()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         for fruitType in FruitType.allCases {
-            guard let fruitCount = FruitStore.shared.fruitCountList[fruitType] else {
+            guard let fruitCount = FruitStore.shared.fruitCounts[fruitType] else {
                 return
             }
             
@@ -59,18 +55,12 @@ class FruitInventoryViewController: UIViewController {
                 mangoStepper.value = Double(fruitCount)
             }
         }
-        
-        strawberryStepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
-        bananaStepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
-        pineappleStepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
-        kiwiStepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
-        mangoStepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
     }
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
         let newFruitCount = Int(sender.value)
         guard let fruitType = FruitType(rawValue: sender.tag),
-              let fruitCount = FruitStore.shared.fruitCountList[fruitType] else {
+              let fruitCount = FruitStore.shared.fruitCounts[fruitType] else {
             return
         }
         do {
@@ -96,5 +86,21 @@ class FruitInventoryViewController: UIViewController {
         } catch {
             return
         }
+    }
+    
+    private func setTagOfStepper(){
+        strawberryStepper.tag = 0
+        bananaStepper.tag = 1
+        pineappleStepper.tag = 2
+        kiwiStepper.tag = 3
+        mangoStepper.tag = 4
+    }
+    
+    private func setEventActionOfStepper(){
+        strawberryStepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
+        bananaStepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
+        pineappleStepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
+        kiwiStepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
+        mangoStepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
     }
 }

@@ -9,23 +9,23 @@ import Foundation
 class FruitStore {
     static let shared = FruitStore()
     
-    private(set) var fruitCountList: [FruitType: Int] = [:]
+    private(set) var fruitCounts: [FruitType: Int] = [:]
     
     private init(count: Int) {
         for type in FruitType.allCases {
-            fruitCountList[type] = count
+            fruitCounts[type] = count
         }
     }
     
     private init(strawberry: Int, banana: Int, pineapple: Int, mango: Int, kiwi: Int) {
-        fruitCountList[.strawberry] = strawberry
-        fruitCountList[.banana] = banana
-        fruitCountList[.pineapple] = pineapple
-        fruitCountList[.mango] = mango
-        fruitCountList[.kiwi] = kiwi
+        fruitCounts[.strawberry] = strawberry
+        fruitCounts[.banana] = banana
+        fruitCounts[.pineapple] = pineapple
+        fruitCounts[.mango] = mango
+        fruitCounts[.kiwi] = kiwi
     }
     
-    convenience init() {
+    private convenience init() {
         self.init(count: 10)
     }
     
@@ -38,31 +38,31 @@ class FruitStore {
     }
     
     func update(_ fruit: Fruit, as `operator`: ((Int, Int) -> Int)) throws {
-        guard let fruitCount = fruitCountList[fruit.fruitType] else {
-            throw JuiceMakerException.fruitNotFoundError
+        guard let fruitCount = fruitCounts[fruit.fruitType] else {
+            throw JuiceMakerException.fruitNotFound
         }
-        fruitCountList[fruit.fruitType] = try getCalculatedCount(of: `operator`(fruitCount, fruit.count))
+        fruitCounts[fruit.fruitType] = try getCalculatedCount(of: `operator`(fruitCount, fruit.count))
     }
     
     private func applyCount(of fruit: Fruit) {
-        fruitCountList[fruit.fruitType] = fruit.count
+        fruitCounts[fruit.fruitType] = fruit.count
     }
     
     private func getCalculatedCounts(of fruits: [Fruit], as `operator`: ((Int, Int) -> Int)) throws -> [Fruit] {
         var checkedFruits = [Fruit]()
         for (fruitType, count) in fruits {
-            guard let fruitCount = fruitCountList[fruitType] else {
-                throw JuiceMakerException.fruitNotFoundError
+            guard let fruitCount = fruitCounts[fruitType] else {
+                throw JuiceMakerException.fruitNotFound
             }
-            let checkedCount = try getCalculatedCount(of: `operator`(fruitCount, count))
-            checkedFruits.append(Fruit(fruitType, checkedCount))
+            let calculatedCount = try getCalculatedCount(of: `operator`(fruitCount, count))
+            checkedFruits.append(Fruit(fruitType, calculatedCount))
         }
         return checkedFruits
     }
     
     private func getCalculatedCount(of fruitCount: Int) throws -> Int {
         if fruitCount < 0 {
-            throw JuiceMakerException.negativeCountError
+            throw JuiceMakerException.negativeCount
         }
         return fruitCount
     }
