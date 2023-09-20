@@ -23,9 +23,14 @@ final class MainViewController: UIViewController {
     @IBOutlet weak var strawberryBananaJuiceButton: UIButton!
     @IBOutlet weak var mangoKiwiJuiceButton: UIButton!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        initIdentifier()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        initIdentifier()
+        updateFruitLabels()
     }
     
     private func initIdentifier() {
@@ -42,8 +47,6 @@ final class MainViewController: UIViewController {
         mangoJuiceButton.accessibilityIdentifier = "망고쥬스"
         strawberryBananaJuiceButton.accessibilityIdentifier = "딸바쥬스"
         mangoKiwiJuiceButton.accessibilityIdentifier = "망키쥬스"
-        
-        updateFruitLabels()
     }
         
     private func updateFruitLabels() {
