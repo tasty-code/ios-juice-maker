@@ -103,8 +103,6 @@ extension FruitInventoryViewController {
                     return
                 }
                 let count = try tempJuiceMaker.remainingCount(fruit: fruit)
-                
-                tempStepper.minimumValue = Double(count)
                 tempStepper.value = Double(count)
             } catch {
                 defaultAlert(message: InventoryError.invalidError.description)
