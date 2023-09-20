@@ -69,8 +69,8 @@ final class FruitInventoryViewController: UIViewController {
 extension FruitInventoryViewController {
     private func defaultAlert(message: String) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        let yes = UIAlertAction(title: "예", style: .default)
-        alert.addAction(yes)
+        let yesAction = UIAlertAction(title: "예", style: .default)
+        alert.addAction(yesAction)
         present(alert, animated: true, completion: nil)
     }
 }
