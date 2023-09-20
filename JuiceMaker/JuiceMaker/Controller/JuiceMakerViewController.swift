@@ -6,7 +6,7 @@
 
 import UIKit
 
-class JuiceMakerViewController: UIViewController {
+final class JuiceMakerViewController: UIViewController {
     private let juiceMaker = JuiceMaker()
     
     @IBOutlet var fruitStockLabels: [UILabel]!

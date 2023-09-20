@@ -11,7 +11,7 @@ protocol InventorySendDelegate: AnyObject {
     func sendInventory(inventory: [FruitName: Int])
 }
 
-class AdjustStockViewController: UIViewController {
+final class AdjustStockViewController: UIViewController {
     @IBOutlet var fruitStockLabels: [UILabel]!
     
     @IBOutlet var fruitStockSteppers: [UIStepper]!
