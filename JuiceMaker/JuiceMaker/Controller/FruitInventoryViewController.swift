@@ -26,6 +26,7 @@ final class FruitInventoryViewController: UIViewController {
         super.viewDidLoad()
         initIdentifier()
         updateFruitLabels()
+        setupStepper()
     }
     
     private func initIdentifier() {
@@ -84,5 +85,30 @@ extension FruitInventoryViewController {
         let yesAction = UIAlertAction(title: "예", style: .default)
         alert.addAction(yesAction)
         present(alert, animated: true, completion: nil)
+    }
+    
+    private func setupStepper() {
+        let fruitSteppers = [strawberryStepper, bananaStepper, pineappleStepper, kiwiStepper, mangoStepper]
+        
+        fruitSteppers.forEach { stepper in
+            guard let tempStepper = stepper, let id = tempStepper.accessibilityIdentifier else {
+                return
+            }
+            guard let tempJuiceMaker = juiceMaker else {
+                return
+            }
+            
+            do {
+                guard let fruit = try Fruit(id) else {
+                    return
+                }
+                let count = try tempJuiceMaker.remainingCount(fruit: fruit)
+                
+                tempStepper.minimumValue = Double(count)
+                tempStepper.value = Double(count)
+            } catch {
+                defaultAlert(message: InventoryError.invalidError.description)
+            }
+        }
     }
 }
