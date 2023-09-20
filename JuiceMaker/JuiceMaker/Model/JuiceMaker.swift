@@ -28,6 +28,6 @@ struct JuiceMaker {
     }
     
     func checkFruit(fruit: Fruit) -> Int {
-        return fruitStore.checkFruitStock(fruit: fruit)
+        return fruitStore.quantity(of: fruit)
     }
 }

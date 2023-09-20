@@ -11,7 +11,7 @@ final class FruitStore {
     
     // MARK: - Properties
     
-    var fruitStock: [Fruit: Int] = [.strawberry : 10,
+    private var fruitStock: [Fruit: Int] = [.strawberry : 10,
                                     .banana: 10,
                                     .pineapple: 10,
                                     .kiwi: 10,
@@ -24,8 +24,8 @@ final class FruitStore {
         fruitStock.updateValue(remainCount - count, forKey: fruit)
     }
     
-    func checkFruitStock(fruit: Fruit) -> Int {
-        guard let remainCount = fruitStock[fruit] else { return 10 }
-        return remainCount
+    func quantity(of: Fruit) -> Int {
+        guard let quantity = fruitStock[of] else { return 10 }
+        return quantity
     }
 }

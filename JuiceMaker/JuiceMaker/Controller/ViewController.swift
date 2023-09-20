@@ -23,6 +23,7 @@ final class ViewController: UIViewController {
     // MARK: - LifeCycle
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         displayFruitQuantity()
     }
     
