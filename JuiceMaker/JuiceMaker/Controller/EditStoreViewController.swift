@@ -15,7 +15,7 @@ class EditStoreViewController: UIViewController {
     // Do any additional setup after loading the view.
   }
   
-  @IBAction func dismissButtonTapped(_ sender: UIBarButtonItem) {
+  @IBAction func dismissButtonTapped(_ sender: UIButton) {
     self.dismiss(animated: true)
   }
   

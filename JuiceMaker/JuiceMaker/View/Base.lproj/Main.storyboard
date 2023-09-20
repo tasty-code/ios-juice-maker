@@ -238,7 +238,7 @@
                     <navigationItem key="navigationItem" title="맛있는 쥬스를 만들어 드려요!" id="Eal-fj-o4N">
                         <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT">
                             <connections>
-                                <segue destination="WwV-Td-3Bn" kind="presentation" id="ZgC-Do-Sqr"/>
+                                <segue destination="Yu1-lM-nqp" kind="presentation" id="jZl-Nj-h4Q"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -272,7 +272,7 @@
             </objects>
             <point key="canvasLocation" x="19.419642857142858" y="92.753623188405811"/>
         </scene>
-        <!--재고 추가-->
+        <!--Edit Store View Controller-->
         <scene sceneID="fkG-vv-hpE">
             <objects>
                 <viewController storyboardIdentifier="editStoreView" id="Yu1-lM-nqp" customClass="EditStoreViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
@@ -412,25 +412,49 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uU8-lj-E1b">
+                                <rect key="frame" x="0.0" y="0.0" width="844" height="42"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="재고 추가" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3o-BH-DeK">
+                                        <rect key="frame" x="388.66666666666669" y="10.333333333333334" width="67" height="21.666666666666664"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eI1-aa-MhL">
+                                        <rect key="frame" x="765.33333333333337" y="4" width="53.666666666666629" height="34.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="닫기"/>
+                                        <connections>
+                                            <action selector="dismissButtonTapped:" destination="Yu1-lM-nqp" eventType="touchUpInside" id="2pd-3V-CjF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstItem="G3o-BH-DeK" firstAttribute="centerY" secondItem="uU8-lj-E1b" secondAttribute="centerY" id="5mP-5a-BdF"/>
+                                    <constraint firstAttribute="height" constant="42" id="6or-3U-doG"/>
+                                    <constraint firstAttribute="trailing" secondItem="eI1-aa-MhL" secondAttribute="trailing" constant="25" id="Poc-RD-sHA"/>
+                                    <constraint firstItem="G3o-BH-DeK" firstAttribute="centerX" secondItem="uU8-lj-E1b" secondAttribute="centerX" id="QSu-tQ-VOE"/>
+                                    <constraint firstItem="eI1-aa-MhL" firstAttribute="centerY" secondItem="uU8-lj-E1b" secondAttribute="centerY" id="pPg-6p-wCM"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gcO-Xb-kNs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="7MH-0F-wAJ" firstAttribute="centerX" secondItem="tKV-4l-Vtc" secondAttribute="centerX" id="3b9-4B-XnS"/>
                             <constraint firstItem="7MH-0F-wAJ" firstAttribute="centerY" secondItem="tKV-4l-Vtc" secondAttribute="centerY" id="4ro-xW-Qnb"/>
+                            <constraint firstAttribute="trailing" secondItem="uU8-lj-E1b" secondAttribute="trailing" id="Cqo-xF-SwP"/>
+                            <constraint firstItem="uU8-lj-E1b" firstAttribute="top" secondItem="tKV-4l-Vtc" secondAttribute="top" id="ffW-OO-GSc"/>
+                            <constraint firstItem="uU8-lj-E1b" firstAttribute="leading" secondItem="tKV-4l-Vtc" secondAttribute="leading" id="mbg-wA-cm4"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="재고 추가" id="rO2-xT-2dN">
-                        <barButtonItem key="rightBarButtonItem" title="닫기" id="zYB-4i-afO">
-                            <connections>
-                                <action selector="dismissButtonTapped:" destination="Yu1-lM-nqp" id="wAs-cN-Aag"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="rO2-xT-2dN"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1637" y="901"/>
+            <point key="canvasLocation" x="1636.4928909952605" y="900"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cAf-jL-tPK">
@@ -453,6 +477,9 @@
             <point key="canvasLocation" x="1637" y="21"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="jZl-Nj-h4Q"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
