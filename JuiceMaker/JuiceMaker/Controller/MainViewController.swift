@@ -118,6 +118,7 @@ extension MainViewController {
         inventoryVC.juiceMaker = self.juiceMaker
         let navigationVC = UINavigationController(rootViewController: inventoryVC)
         navigationVC.modalTransitionStyle = .crossDissolve
+        navigationVC.modalPresentationStyle = .fullScreen
         present(navigationVC, animated: true)
     }
     
