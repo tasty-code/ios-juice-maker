@@ -37,23 +37,9 @@ class FruitInventoryViewController: UIViewController {
                 return
             }
             
-            switch fruitType {
-            case .strawberry:
-                strawberryCountLabel.text = "\(fruitCount)"
-                strawberryStepper.value = Double(fruitCount)
-            case .banana:
-                bananaCountLabel.text = "\(fruitCount)"
-                bananaStepper.value = Double(fruitCount)
-            case .pineapple:
-                pineappleCountLabel.text = "\(fruitCount)"
-                pineappleStepper.value = Double(fruitCount)
-            case .kiwi:
-                kiwiCountLabel.text = "\(fruitCount)"
-                kiwiStepper.value = Double(fruitCount)
-            case .mango:
-                mangoCountLabel.text = "\(fruitCount)"
-                mangoStepper.value = Double(fruitCount)
-            }
+            let fruit = Fruit(fruitType, fruitCount)
+            setFruitCountToLabel(fruit)
+            setFruitCountToStepperValue(fruit)
         }
     }
     
@@ -65,24 +51,9 @@ class FruitInventoryViewController: UIViewController {
         }
         do {
             let fruit = Fruit(fruitType, newFruitCount - fruitCount)
+            try juiceMaker.update(fruit)
             
-            switch fruitType {
-            case .strawberry:
-                try juiceMaker.update(fruit)
-                strawberryCountLabel.text = "\(newFruitCount)"
-            case .banana:
-                try juiceMaker.update(fruit)
-                bananaCountLabel.text = "\(newFruitCount)"
-            case .pineapple:
-                try juiceMaker.update(fruit)
-                pineappleCountLabel.text = "\(newFruitCount)"
-            case .kiwi:
-                try juiceMaker.update(fruit)
-                kiwiCountLabel.text = "\(newFruitCount)"
-            case .mango:
-                try juiceMaker.update(fruit)
-                mangoCountLabel.text = "\(newFruitCount)"
-            }
+            setFruitCountToLabel(Fruit(fruitType, newFruitCount))
         } catch {
             return
         }
@@ -102,5 +73,39 @@ class FruitInventoryViewController: UIViewController {
         pineappleStepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
         kiwiStepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
         mangoStepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
+    }
+    
+    private func setFruitCountToLabel(_ fruit: Fruit) {
+        let (fruitType, fruitCount) = fruit
+        
+        switch fruitType {
+        case .strawberry:
+            strawberryCountLabel.text = "\(fruitCount)"
+        case .banana:
+            bananaCountLabel.text = "\(fruitCount)"
+        case .pineapple:
+            pineappleCountLabel.text = "\(fruitCount)"
+        case .kiwi:
+            kiwiCountLabel.text = "\(fruitCount)"
+        case .mango:
+            mangoCountLabel.text = "\(fruitCount)"
+        }
+    }
+    
+    private func setFruitCountToStepperValue(_ fruit: Fruit) {
+        let (fruitType, fruitCount) = fruit
+        
+        switch fruitType {
+        case .strawberry:
+            strawberryStepper.value = Double(fruitCount)
+        case .banana:
+            bananaStepper.value = Double(fruitCount)
+        case .pineapple:
+            pineappleStepper.value = Double(fruitCount)
+        case .kiwi:
+            kiwiStepper.value = Double(fruitCount)
+        case .mango:
+            mangoStepper.value = Double(fruitCount)
+        }
     }
 }

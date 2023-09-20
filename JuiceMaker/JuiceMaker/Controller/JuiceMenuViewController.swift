@@ -27,18 +27,7 @@ class JuiceMenuViewController: UIViewController {
                 return
             }
             
-            switch fruitType {
-            case .strawberry:
-                strawberryCountLabel.text = "\(fruitCount)"
-            case .banana:
-                bananaCountLabel.text = "\(fruitCount)"
-            case .pineapple:
-                pineappleCountLabel.text = "\(fruitCount)"
-            case .kiwi:
-                kiwiCountLabel.text = "\(fruitCount)"
-            case .mango:
-                mangoCountLabel.text = "\(fruitCount)"
-            }
+            setFruitCountToLabel(Fruit(fruitType, fruitCount))
         }
     }
     
@@ -49,22 +38,10 @@ class JuiceMenuViewController: UIViewController {
         }
         order(menu: juiceType)
         for (fruitType, _) in juiceType.ingredients {
-            var fruitCount = 0
-            if let tempCount = FruitStore.shared.fruitCounts[fruitType] {
-                fruitCount = tempCount
+            guard let fruitCount = FruitStore.shared.fruitCounts[fruitType] else {
+                return
             }
-            switch fruitType {
-            case .strawberry:
-                strawberryCountLabel.text = "\(fruitCount)"
-            case .banana:
-                bananaCountLabel.text = "\(fruitCount)"
-            case .mango:
-                mangoCountLabel.text = "\(fruitCount)"
-            case .pineapple:
-                pineappleCountLabel.text = "\(fruitCount)"
-            case .kiwi:
-                kiwiCountLabel.text = "\(fruitCount)"
-            }
+            setFruitCountToLabel(Fruit(fruitType, fruitCount))
         }
     }
     
@@ -106,5 +83,20 @@ class JuiceMenuViewController: UIViewController {
         present(alertController, animated: true)
     }
     
+    private func setFruitCountToLabel(_ fruit: Fruit) {
+        let (fruitType, fruitCount) = fruit
+        
+        switch fruitType {
+        case .strawberry:
+            strawberryCountLabel.text = "\(fruitCount)"
+        case .banana:
+            bananaCountLabel.text = "\(fruitCount)"
+        case .mango:
+            mangoCountLabel.text = "\(fruitCount)"
+        case .pineapple:
+            pineappleCountLabel.text = "\(fruitCount)"
+        case .kiwi:
+            kiwiCountLabel.text = "\(fruitCount)"
+        }
+    }
 }
-
