@@ -11,7 +11,6 @@ final class ViewController: UIViewController {
     // MARK: - Properties
     
     private let juiceMaker = JuiceMaker()
-    
     // MARK: - Views
     
     @IBOutlet private var strawberryQuantityLabel: UILabel!
@@ -38,7 +37,7 @@ final class ViewController: UIViewController {
         
         for label in fruitQuantityLabels {
             guard let fruit = Fruit(rawValue: label.tag) else { continue }
-            let fruitQuantity = juiceMaker.checkFruit(fruit: fruit)
+            let fruitQuantity = juiceMaker.fruitStore.quantity(of: fruit)
             label.text = String(fruitQuantity)
         }
     }

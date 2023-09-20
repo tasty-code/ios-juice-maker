@@ -10,7 +10,7 @@ struct JuiceMaker {
     
     // MARK: - Properties
     
-    private let fruitStore = FruitStore()
+    let fruitStore = FruitStore()
     
     // MARK: - Methods
     
@@ -18,16 +18,12 @@ struct JuiceMaker {
         let recipe = menu.juiceRecipe()
         
         for (fruit, count) in recipe {
-            let remainCount = checkFruit(fruit: fruit)
+            let remainCount = fruitStore.quantity(of: fruit)
             
             if remainCount < count {
                 throw StockError.emptyStock
             }
             fruitStore.consume(fruit: fruit, count: count)
         }
-    }
-    
-    func checkFruit(fruit: Fruit) -> Int {
-        return fruitStore.quantity(of: fruit)
     }
 }
