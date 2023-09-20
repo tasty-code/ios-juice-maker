@@ -7,7 +7,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
     private let juiceMaker = JuiceMaker()
     private var currentQuantity: [Fruit: Int] = [:]
     

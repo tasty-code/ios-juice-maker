@@ -12,8 +12,7 @@ struct JuiceMaker {
 
     func getOrder(_ order: Juice) -> (message: String, success: Bool) {
         do {
-            let makable: [Fruit: Int?] = try soldOutChecker(order)
-            let complete = try fruitStorage.errorHandler(makable)
+            let complete = try makingJuice(juiceName: order)
             if complete {
                 print(order.description)
             }
@@ -41,5 +40,23 @@ struct JuiceMaker {
         }
         return makable
     }
+    
+    private func errorHandler(_ consumeRecipe: [Fruit: Int?]) throws -> [Fruit: Int] {
+        if consumeRecipe.values.filter({ $0 == nil }).count == 2 {
+            throw ErrorMessage.stockInsufficients(Array(consumeRecipe.keys))
+        }
+        if consumeRecipe.values.contains(nil) {
+            let nilValues = consumeRecipe.filter { $0.value == nil }.map { $0.key }
+            throw ErrorMessage.stockInsufficient(nilValues[0])
+        }
+        let nonOptionalRecipe = consumeRecipe.compactMapValues({ $0 })
+        return nonOptionalRecipe
+    }
+    
+    private func makingJuice(juiceName: Juice) throws -> Bool {
+        let isSoldout = try soldOutChecker(juiceName)
+        let isValid = try errorHandler(isSoldout)
+        let isMade = fruitStorage.calculateStock(isValid)
+        return isMade
+    }
 }
-
