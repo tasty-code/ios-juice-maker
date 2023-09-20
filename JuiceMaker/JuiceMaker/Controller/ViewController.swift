@@ -30,8 +30,10 @@ class ViewController: UIViewController {
         
         if orderResult.success {
             getStockList()
+            successAlert(orderResult.message)
+            return
         }
-        resultAlert(orderResult.message, orderResult.success)
+        failAlert(orderResult.message)
     }
     
     private func getStockList() {
@@ -44,21 +46,23 @@ class ViewController: UIViewController {
         }
     }
     
-    private func resultAlert(_ message: String, _ isSuccess: Bool) {
+    private func successAlert(_ message: String) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "확인", style: .default)
         
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func failAlert(_ message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let cancleAction = UIAlertAction(title: "취소", style: .default)
+        let changeAction = UIAlertAction(title: "이동", style: .default, handler: { action in
+            self.moveToStockVc()
+        })
         
-        if isSuccess {
-            alert.addAction(okAction)
-        } else {
-            let cancleAction = UIAlertAction(title: "취소", style: .default)
-            let changeAction = UIAlertAction(title: "이동", style: .default, handler: { action in
-                self.moveToStockVc()
-            })
-            alert.addAction(cancleAction)
-            alert.addAction(changeAction)
-        }
+        alert.addAction(cancleAction)
+        alert.addAction(changeAction)
         present(alert, animated: true, completion: nil)
     }
     
@@ -66,6 +70,5 @@ class ViewController: UIViewController {
         let stockVC = self.storyboard?.instantiateViewController(withIdentifier: "StockViewController") as! StockViewController
         self.navigationController?.pushViewController(stockVC, animated: true)
     }
-    
 }
 
