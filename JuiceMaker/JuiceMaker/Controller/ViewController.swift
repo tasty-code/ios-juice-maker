@@ -16,25 +16,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         getStockList()
     }
-    
-    @IBAction private func showPush() {
-        moveToStockVc()
-    }
-    
-    @IBAction private func makeOrder(_ sender: UIButton) {
-        guard let menu = Juice(rawValue: sender.tag) else {
-            return
-        }
-        let orderResult = juiceMaker.getOrder(menu)
-        
-        if orderResult.success {
-            getStockList()
-            successAlert(orderResult.message)
-            return
-        }
-        failAlert(orderResult.message)
-    }
-    
+}
+
+extension ViewController {
     private func getStockList() {
         self.currentQuantity = juiceMaker.passCurrentList()
         for (fruit, _) in currentQuantity {
@@ -71,3 +55,22 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController {
+    @IBAction private func showPush() {
+        moveToStockVc()
+    }
+    
+    @IBAction private func makeOrder(_ sender: UIButton) {
+        guard let menu = Juice(rawValue: sender.tag) else {
+            return
+        }
+        let orderResult = juiceMaker.getOrder(menu)
+        
+        if orderResult.success {
+            getStockList()
+            successAlert(orderResult.message)
+            return
+        }
+        failAlert(orderResult.message)
+    }
+}

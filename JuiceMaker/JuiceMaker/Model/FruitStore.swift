@@ -8,7 +8,7 @@ import Foundation
 
 // 과일 저장소 타입
 class FruitStore {
-    private (set) var fruitBox: [Fruit: Int] = [.strawberry : 10, .banana : 10, .pineapple : 10, .kiwi : 10, .mango : 10]
+    private (set) var fruitBox: [Fruit: Int] = [.strawberry: 10, .banana: 10, .pineapple: 10, .kiwi: 10, .mango: 10]
     
     func showCurrentList() -> [Fruit: Int] {
         return fruitBox
@@ -20,7 +20,10 @@ class FruitStore {
         }
         return firstFruit
     }
+}
 
+
+extension FruitStore {
     public func calculateStock(_ consumeRecipe: [Fruit: Int]) -> Bool {
         for (fruit, needs) in consumeRecipe {
             guard let current = fruitBox[fruit] else  {
