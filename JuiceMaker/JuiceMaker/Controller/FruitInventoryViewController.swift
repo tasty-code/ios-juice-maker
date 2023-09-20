@@ -26,7 +26,7 @@ final class FruitInventoryViewController: UIViewController {
         super.viewDidLoad()
         initIdentifier()
         updateFruitLabels()
-        setupStepper()
+        initStepperValue()
     }
     
     private func initIdentifier() {
@@ -87,7 +87,7 @@ extension FruitInventoryViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    private func setupStepper() {
+    private func initStepperValue() {
         let fruitSteppers = [strawberryStepper, bananaStepper, pineappleStepper, kiwiStepper, mangoStepper]
         
         fruitSteppers.forEach { stepper in
@@ -97,7 +97,6 @@ extension FruitInventoryViewController {
             guard let tempJuiceMaker = juiceMaker else {
                 return
             }
-            
             do {
                 guard let fruit = try Fruit(id) else {
                     return
