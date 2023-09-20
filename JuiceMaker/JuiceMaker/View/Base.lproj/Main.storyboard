@@ -451,6 +451,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rO2-xT-2dN"/>
+                    <connections>
+                        <outlet property="bananaNumberLabel" destination="gKu-86-RhI" id="mBo-IH-1ae"/>
+                        <outlet property="kiwiNumberLabel" destination="ZDv-1m-HBY" id="vH7-GE-8x3"/>
+                        <outlet property="mangoNumberLabel" destination="YJI-ER-LJR" id="iFU-7x-5tD"/>
+                        <outlet property="pineappleNumberLabel" destination="MpT-VW-hCb" id="1rs-61-oEe"/>
+                        <outlet property="strawberryNumberLabel" destination="0yV-kn-zaT" id="eUz-qq-p6I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
             </objects>
@@ -478,7 +485,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jZl-Nj-h4Q"/>
+        <segue reference="wH1-3A-cBm"/>
     </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="AccentColor">

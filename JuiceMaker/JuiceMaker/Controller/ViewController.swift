@@ -45,13 +45,31 @@ class ViewController: UIViewController {
       alert.addAction(UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: nil))
     } else if type == .twoButton {
       alert.addAction(UIAlertAction(title: "예", style: UIAlertAction.Style.default, handler: { _ in
-        guard let editStoreView = self.storyboard?.instantiateViewController(identifier: "editStoreView") else { return }
+        guard let editStoreView = self.storyboard?.instantiateViewController(identifier: "editStoreView") as? EditStoreViewController else { return }
         editStoreView.modalTransitionStyle = .coverVertical
         editStoreView.modalPresentationStyle = .automatic
+        
+        editStoreView.strawberry = self.strawberryNumberLabel?.text
+        editStoreView.banana = self.bananaNumberLabel?.text
+        editStoreView.pineapple = self.pineappleNumberLabel?.text
+        editStoreView.kiwi = self.kiwiNumberLabel?.text
+        editStoreView.mango = self.mangoNumberLabel?.text
+        
         self.present(editStoreView, animated: true, completion: nil)
       }))
       alert.addAction(UIAlertAction(title: "아니오", style: UIAlertAction.Style.cancel, handler: nil))
     }
     self.present(alert, animated: true, completion: nil)
   }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      if segue.destination is EditStoreViewController {
+        let editStoreView = segue.destination as? EditStoreViewController
+        editStoreView?.strawberry = self.strawberryNumberLabel?.text
+        editStoreView?.banana = self.bananaNumberLabel?.text
+        editStoreView?.pineapple = self.pineappleNumberLabel?.text
+        editStoreView?.kiwi = self.kiwiNumberLabel?.text
+        editStoreView?.mango = self.mangoNumberLabel?.text
+      }
+    }
 }
