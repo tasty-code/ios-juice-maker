@@ -7,7 +7,6 @@
 import UIKit
 
 final class MainViewController: UIViewController {
-    
     private let juiceMaker = JuiceMaker()
     
     @IBOutlet weak var strawberryLabel: UILabel!
@@ -39,7 +38,6 @@ final class MainViewController: UIViewController {
         pineappleLabel.accessibilityIdentifier = "파인애플"
         kiwiLabel.accessibilityIdentifier = "키위"
         mangoLabel.accessibilityIdentifier = "망고"
-        
         strawberryJuiceButton.accessibilityIdentifier = "딸기쥬스"
         bananaJuiceButton.accessibilityIdentifier = "바나나쥬스"
         pineappleJuiceButton.accessibilityIdentifier = "파인애플쥬스"
@@ -51,7 +49,6 @@ final class MainViewController: UIViewController {
         
     private func updateFruitLabels() {
         let fruitLabels = [strawberryLabel, bananaLabel, pineappleLabel, kiwiLabel, mangoLabel]
-        
         fruitLabels.forEach { label in
             guard let tempLabel = label, let id = tempLabel.accessibilityIdentifier else {
                 return
@@ -68,28 +65,21 @@ final class MainViewController: UIViewController {
         }
     }
     
+    private func moveInventoryVC () {
+        guard let inventoryVC = self.storyboard?.instantiateViewController(identifier: "Inventory") as? FruitInventoryViewController else {
+            return
+        }
+        inventoryVC.juiceMaker = self.juiceMaker
+        let navigationVC = UINavigationController(rootViewController: inventoryVC)
+        navigationVC.modalTransitionStyle = .crossDissolve
+        navigationVC.modalPresentationStyle = .fullScreen
+        present(navigationVC, animated: true)
+    }
+    
     @IBAction func changeInventoryButtonTapped(_ sender: UIButton) {
         self.moveInventoryVC()
     }
-
-    @IBAction func orderJuice(_ sender: UIButton) {
-        guard let id = sender.accessibilityIdentifier else {
-            return
-        }
-        do {
-            let menu = try menuForJuiceButton(btnIdentifier: id)
-            try juiceMaker.makeJuice(order: menu)
-            updateFruitLabels()
-            defaultAlert(message: "\(menu.recipeName)쥬스 나왔습니다! 맛있게 드세요!")
-        } catch InventoryError.noLongerConsumeError {
-            juiceMakeFailAlert(message: InventoryError.noLongerConsumeError.description)
-        } catch {
-            defaultAlert(message: InventoryError.invalidError.description)
-        }
-    }
-}
-
-extension MainViewController {
+    
     private func menuForJuiceButton(btnIdentifier: String) throws -> JuiceMenu {
         switch btnIdentifier {
         case "딸기쥬스":
@@ -111,17 +101,24 @@ extension MainViewController {
         }
     }
     
-    private func moveInventoryVC () {
-        guard let inventoryVC = self.storyboard?.instantiateViewController(identifier: "Inventory") as? FruitInventoryViewController else {
+    @IBAction func orderJuice(_ sender: UIButton) {
+        guard let id = sender.accessibilityIdentifier else {
             return
         }
-        inventoryVC.juiceMaker = self.juiceMaker
-        let navigationVC = UINavigationController(rootViewController: inventoryVC)
-        navigationVC.modalTransitionStyle = .crossDissolve
-        navigationVC.modalPresentationStyle = .fullScreen
-        present(navigationVC, animated: true)
+        do {
+            let menu = try menuForJuiceButton(btnIdentifier: id)
+            try juiceMaker.makeJuice(order: menu)
+            updateFruitLabels()
+            defaultAlert(message: "\(menu.recipeName)쥬스 나왔습니다! 맛있게 드세요!")
+        } catch InventoryError.noLongerConsumeError {
+            juiceMakeFailAlert(message: InventoryError.noLongerConsumeError.description)
+        } catch {
+            defaultAlert(message: InventoryError.invalidError.description)
+        }
     }
-    
+}
+
+extension MainViewController {
     private func defaultAlert(message: String) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "예", style: .default)
@@ -140,4 +137,3 @@ extension MainViewController {
         present(alert, animated: true)
     }
 }
-
