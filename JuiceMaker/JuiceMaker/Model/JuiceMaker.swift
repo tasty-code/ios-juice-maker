@@ -6,7 +6,6 @@
 
 import Foundation
 
-// 쥬스 메이커 타입
 struct JuiceMaker {
     private let fruitStore = FruitStore()
     
@@ -36,5 +35,9 @@ struct JuiceMaker {
     
     func remainingCount(fruit: Fruit) throws -> UInt {
         return try fruitStore.remainingCount(fruit: fruit)
+    }
+    
+    func changeCount(fruit: Fruit, newCount: UInt) {
+        fruitStore.changeCount(fruit: fruit, newCount: newCount)
     }
 }
