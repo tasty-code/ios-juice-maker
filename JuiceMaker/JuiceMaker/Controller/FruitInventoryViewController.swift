@@ -25,6 +25,7 @@ final class FruitInventoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initIdentifier()
+        updateFruitLabels()
     }
     
     private func initIdentifier() {
@@ -39,8 +40,6 @@ final class FruitInventoryViewController: UIViewController {
         pineappleStepper.accessibilityIdentifier = "파인애플"
         kiwiStepper.accessibilityIdentifier = "키위"
         mangoStepper.accessibilityIdentifier = "망고"
-        
-        updateFruitLabels()
     }
     
     private func updateFruitLabels() {
