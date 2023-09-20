@@ -56,7 +56,8 @@ final class ViewController: UIViewController {
     
     func navigateToDashboardViewController() {
         let dashboardVC = storyboard?.instantiateViewController(withIdentifier: "dashboardVC") as! DashboardViewController
-        navigationController?.pushViewController(dashboardVC, animated: true)
+        
+        present(dashboardVC, animated: true)
     }
     
     func showAlert(message: String) {

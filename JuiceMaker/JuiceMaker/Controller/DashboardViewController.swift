@@ -11,8 +11,9 @@ class DashboardViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
-
+    
+    @IBAction func closeButtonTapped(_ sender: UIButton) {
+        dismiss(animated: true)
+    }
 }
