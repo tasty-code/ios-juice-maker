@@ -7,13 +7,10 @@
 import Foundation
 
 final class FruitStore {
-    private var fruitList = [Fruit: Int]()
-    
-    init() {
-        Fruit.allCases.forEach {
-            self.fruitList.updateValue(10, forKey: $0)
-        }
-    }
+    static let shared = FruitStore()
+    private var fruitList: [Fruit: Int] = Dictionary(uniqueKeysWithValues: zip(Fruit.allCases, Array(repeating: 10, count: 5)))
+
+    private init() {}
     
     func getRemains(_ ingredient: Array<Fruit>) -> [Fruit: Int] {
         var remains = [Fruit: Int]()

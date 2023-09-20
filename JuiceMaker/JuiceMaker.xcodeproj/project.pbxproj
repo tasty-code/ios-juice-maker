@@ -17,6 +17,7 @@
 		C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */; };
 		E1D4DD642AAFEEE9001AB013 /* OrderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D4DD632AAFEEE9001AB013 /* OrderError.swift */; };
 		E1D4DD662AAFFEF2001AB013 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D4DD652AAFFEF2001AB013 /* Menu.swift */; };
+		E3269B6D2AB7E6AF00FBD37B /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3269B6C2AB7E6AE00FBD37B /* DashboardViewController.swift */; };
 		E3BCEE022AAEF4CA00B7415D /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BCEE012AAEF4CA00B7415D /* Fruit.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMaker.swift; sourceTree = "<group>"; };
 		E1D4DD632AAFEEE9001AB013 /* OrderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderError.swift; sourceTree = "<group>"; };
 		E1D4DD652AAFFEF2001AB013 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		E3269B6C2AB7E6AE00FBD37B /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		E3BCEE012AAEF4CA00B7415D /* Fruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -53,6 +55,7 @@
 				C73DAF36255D0CDD00020D38 /* AppDelegate.swift */,
 				C73DAF38255D0CDD00020D38 /* SceneDelegate.swift */,
 				C73DAF3A255D0CDD00020D38 /* ViewController.swift */,
+				E3269B6C2AB7E6AE00FBD37B /* DashboardViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3BCEE022AAEF4CA00B7415D /* Fruit.swift in Sources */,
+				E3269B6D2AB7E6AF00FBD37B /* DashboardViewController.swift in Sources */,
 				E1D4DD642AAFEEE9001AB013 /* OrderError.swift in Sources */,
 				E1D4DD662AAFFEF2001AB013 /* Menu.swift in Sources */,
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
