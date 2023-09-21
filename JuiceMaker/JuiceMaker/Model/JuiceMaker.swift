@@ -17,4 +17,8 @@ struct JuiceMaker {
     func checkFruitStoreInventory() -> [String: Int] {
         return fruitStore.checkInventoryStock()
     }
+    
+    func updateFruitStoreInventory(with inventory: [String: Int]) {
+        fruitStore.updateInventoryStock(with: inventory)
+    }
 }

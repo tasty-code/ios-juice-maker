@@ -15,33 +15,53 @@ class JuiceMakerViewController: UIViewController {
     @IBOutlet weak var kiwiStockLabel: UILabel!
     @IBOutlet weak var mangoStockLabel: UILabel!
     
+    var inventory: [String: Int]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.manageFruitStock()
+        self.loadInventory()
+        self.syncStockLabels()
     }
 
     @IBAction func makeJuice(_ sender: UIButton) {
         guard let buttonId = sender.accessibilityIdentifier else { return }
+        
         do {
             try juiceMaker.makeJuice(juiceName: buttonId)
-            manageFruitStock()
+            self.loadInventory()
+            self.syncStockLabels()
             showAlertCompletionJuiceMaking(buttonId)
         } catch let error {
             showAlertOutOfStock(error)
         }
     }
+    
+    @IBAction func touchNavButton(_ sender: UIBarButtonItem) {
+        pushAdjustStockViewController()
+    }
+}
+
+// MARK: Delegate
+extension JuiceMakerViewController: InventorySendDelegate {
+    func sendInventory(inventory: [String: Int]) {
+        self.inventory = inventory
+        syncStockLabels()
+        juiceMaker.updateFruitStoreInventory(with: inventory)
+    }
 }
 
 // MARK: Private Methods
 extension JuiceMakerViewController {
-    private func manageFruitStock() {
-        let inventory = juiceMaker.checkFruitStoreInventory()
-        
-        strawberryStockLabel.text = String(inventory["딸기"] ?? 0)
-        bananaStockLabel.text = String(inventory["바나나"] ?? 0)
-        kiwiStockLabel.text = String(inventory["키위"] ?? 0)
-        pineappleStockLabel.text = String(inventory["파인애플"] ?? 0)
-        mangoStockLabel.text = String(inventory["망고"] ?? 0)
+    private func loadInventory() {
+        self.inventory = juiceMaker.checkFruitStoreInventory()
+    }
+    
+    private func syncStockLabels() {
+        strawberryStockLabel.text = String(inventory?["딸기"] ?? 0)
+        bananaStockLabel.text = String(inventory?["바나나"] ?? 0)
+        kiwiStockLabel.text = String(inventory?["키위"] ?? 0)
+        pineappleStockLabel.text = String(inventory?["파인애플"] ?? 0)
+        mangoStockLabel.text = String(inventory?["망고"] ?? 0)
     }
     
     private func showAlertCompletionJuiceMaking(_ juiceName: String) {
@@ -66,6 +86,8 @@ extension JuiceMakerViewController {
         guard let adjustStockViewController = self.storyboard?.instantiateViewController(withIdentifier: "AdjustStockViewController") as? AdjustStockViewController
         else { return }
         
+        adjustStockViewController.inventory = self.inventory
+        adjustStockViewController.delegate = self
         self.navigationController?.pushViewController(adjustStockViewController, animated: true)
     }
 }

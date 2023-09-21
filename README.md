@@ -211,3 +211,36 @@ private func showAlertOutOfStock(_ error: Error) {
 >음료를 제조하기에 재고가 부족한 경우 실행되는 메서드이며 
 > * yes경우: moveAdjustStorageView를 실행합니다.
 > * no경우: alert을 닫습니다.
+
+* **pushAdjustStockViewController() 메서드**
+```swift
+private func pushAdjustStockViewController() {
+    guard let adjustStockViewController = self.storyboard?.instantiateViewController(withIdentifier: "AdjustStockViewController") as? AdjustStockViewController
+    else { return }
+
+    self.navigationController?.pushViewController(adjustStockViewController, animated: true)
+}
+```
+
+    * pushAdjustStockViewController()
+    1. navigationController를 사용하여 화면 전환시 화면 이동에 연관된 처리까지 기능해준다. UI측면에서 우측상단의 버튼클릭 시 오른쪽에서 화면이 등장하여 화면전환에 이질감이 줄어든다.
+    2. AdjustStockViewController를 인스턴스화 해 부르는 과정에서 타입 캐스팅을 시도, 추후 재고 수정 화면에서 데이터를 주고 받을 수 있도록 함
+> * present
+> 1. 뷰 위에 뷰가 한겹 올라간 것
+> 2. 세로 방향으로 전개됨
+> 3. ViewController - dismiss 메서드로 빠져나옴
+> 그래서 얼럿이나 알람같은거에 적합함?
+> 4. modalPresentationSytle로 환면 전환 스타일을 정할 수 있음
+> 
+> * push
+> 1. stack에 뷰컨트롤러를 push해서 다른 계층의 뷰로 전환
+> 2. 가로 방향으로 전개됨
+> 3. NavigationController - pop 메서드로 빠져나옴
+> 4. 원하는 스택으로 돌아갈 수 있음
+
+> * push를 사용한 이유
+> 1. ViewController는 그림과 같이 1번View는 2번 View와 2번 View 3번 View끼리는 서로 연결 되어 있지만 1번 3번 View 끼리는 서로의 존재를 모릅니다.(바로 연결되어 있지 않다. 어쨌든 2번 뷰를 거쳐야 함)
+> 2. NavigationController는 view들을 Stack에 넣어서
+> stack의 크기단위를 알기에 원하는 위치로 이동이 가능하다는 차이가 있습니다.
+> NavigationController는 view들을 Stack에 넣어서
+> stack의 크기단위를 알기에 원하는 위치로 이동이 가능하다는 차이가 있습니다.
