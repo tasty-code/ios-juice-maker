@@ -22,11 +22,11 @@ class ViewController: UIViewController {
   }
   
   @IBAction func juiceOrderButtonTapped(_ sender: UIButton) {
-    let tag = sender.tag
+//    let tag = sender.tag
     
     guard let buttonName = sender.titleLabel?.text else { return }
     let juiceName = buttonName.split(separator: " ")[0]
-    let (type, message) = juiceMaker.createJuice(type: tag, juiceName: String(juiceName))
+    let (type, message) = juiceMaker.createJuice(type: String(juiceName))
     showAlert(type: type, message: message)
     setNumberLabel()
   }
