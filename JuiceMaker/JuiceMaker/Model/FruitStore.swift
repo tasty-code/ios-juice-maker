@@ -7,7 +7,7 @@
 import Foundation
 
 final class FruitStore {
-    private var inventory: [FruitType: Int]
+    private(set) var inventory: [FruitType: Int]
     
     init() {
         let initialQuantity: Int = 10

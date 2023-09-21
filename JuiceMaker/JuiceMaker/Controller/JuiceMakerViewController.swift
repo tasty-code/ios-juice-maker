@@ -49,7 +49,7 @@ extension JuiceMakerViewController: InventorySendDelegate {
 // MARK: Private Methods
 extension JuiceMakerViewController {
     private func loadInventory() {
-        self.inventory = juiceMaker.checkFruitStoreInventory()
+        self.inventory = juiceMaker.fruitStore.inventory
     }
     
     private func syncStockLabels() {
