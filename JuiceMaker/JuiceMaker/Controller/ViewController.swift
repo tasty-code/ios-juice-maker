@@ -13,11 +13,11 @@ final class ViewController: UIViewController {
     private let juiceMaker = JuiceMaker()
     // MARK: - Views
     
-    @IBOutlet private var strawberryQuantityLabel: UILabel!
-    @IBOutlet private var bananaQuantityLabel: UILabel!
-    @IBOutlet private var pineappleQuantityLabel: UILabel!
-    @IBOutlet private var kiwiQuantityLabel: UILabel!
-    @IBOutlet private var mangoQuantityLabel: UILabel!
+    @IBOutlet private var strawberryQuantityLabel: StrawberryQuantityLabel!
+    @IBOutlet private var bananaQuantityLabel: BananaQuantityLabel!
+    @IBOutlet private var pineappleQuantityLabel: PineappleQuantityLabel!
+    @IBOutlet private var kiwiQuantityLabel: KiwiQuantityLabel!
+    @IBOutlet private var mangoQuantityLabel: MangoQuantityLabel!
     
     // MARK: - LifeCycle
     
@@ -29,28 +29,28 @@ final class ViewController: UIViewController {
     // MARK: - Methods
     
     private func displayFruitQuantity() {
-        let fruitQuantityLabels: [UILabel] = [strawberryQuantityLabel,
-                                              bananaQuantityLabel,
-                                              pineappleQuantityLabel,
-                                              kiwiQuantityLabel,
-                                              mangoQuantityLabel]
+        let fruitQuantityLabels: [FruitQuantityLabel] = [strawberryQuantityLabel,
+                                                         bananaQuantityLabel,
+                                                         pineappleQuantityLabel,
+                                                         kiwiQuantityLabel,
+                                                         mangoQuantityLabel]
         
         for label in fruitQuantityLabels {
-            guard let fruit = Fruit(rawValue: label.tag) else { continue }
-            let fruitQuantity = juiceMaker.fruitStore.quantity(of: fruit)
+            guard let furit = label.fruit() else { continue }
+            let fruitQuantity = juiceMaker.fruitStore.quantity(of: furit)
             label.text = String(fruitQuantity)
         }
     }
     
     @IBAction func pressOrderButton(_ button: JuiceButton) {
         guard let menu = button.pickMenu() else { return }
-                do {
-                    try juiceMaker.makeJuice(menu: menu)
-                    displayAcceptAlert(menuName: menu.description)
-                    displayFruitQuantity()
-                } catch {
-                    displayFillStockAlert()
-                }
+        do {
+            try juiceMaker.makeJuice(menu: menu)
+            displayAcceptAlert(menuName: menu.description)
+            displayFruitQuantity()
+        } catch {
+            displayFillStockAlert()
+        }
     }
     
     private func displayAcceptAlert(menuName: String) {
