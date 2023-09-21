@@ -38,5 +38,6 @@ class KiwiQuantityLabel: FruitQuantityLabel {
 class MangoQuantityLabel: FruitQuantityLabel {
     override func fruit() -> Fruit? {
         return Fruit(rawValue: Fruit.mango.rawValue)
-    }}
+    }
+}
 

@@ -11,6 +11,7 @@ final class ViewController: UIViewController {
     // MARK: - Properties
     
     private let juiceMaker = JuiceMaker()
+    
     // MARK: - Views
     
     @IBOutlet private var strawberryQuantityLabel: StrawberryQuantityLabel!
