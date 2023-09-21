@@ -11,43 +11,43 @@ class JuiceButton: UIButton {
     func pickMenu() -> JuiceMenu? { return nil }
 }
 
-class StrawberryJuiceButton: JuiceButton  {
+final class StrawberryJuiceButton: JuiceButton  {
     override func pickMenu() -> JuiceMenu? {
         return .strawberryJuice
     }
 }
 
-class BananaJuiceButton: JuiceButton {
+final class BananaJuiceButton: JuiceButton {
     override func pickMenu() -> JuiceMenu? {
         return .bananaJuice
     }
 }
 
-class PineappleJuiceButton: JuiceButton {
+final class PineappleJuiceButton: JuiceButton {
     override func pickMenu() -> JuiceMenu? {
         return .pineappleJuice
     }
 }
 
-class KiwiJuiceButton: JuiceButton {
+final class KiwiJuiceButton: JuiceButton {
     override func pickMenu() -> JuiceMenu? {
         return .kiwiJuice
     }
 }
 
-class MangoJuiceButton: JuiceButton {
+final class MangoJuiceButton: JuiceButton {
     override func pickMenu() -> JuiceMenu? {
         return .mangoJuice
     }
 }
 
-class StrawberryBananaJuiceButton: JuiceButton {
+final class StrawberryBananaJuiceButton: JuiceButton {
     override func pickMenu() -> JuiceMenu? {
         return .strawberryBananaJuice
     }
 }
 
-class MangoKiwiJuiceButton: JuiceButton {
+final class MangoKiwiJuiceButton: JuiceButton {
     override func pickMenu() -> JuiceMenu? {
         return .mangoKiwiJuice
     }

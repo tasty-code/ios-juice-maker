@@ -11,31 +11,31 @@ class FruitQuantityLabel: UILabel {
     func fruit() -> Fruit? { return nil }
 }
 
-class StrawberryQuantityLabel: FruitQuantityLabel {
+final class StrawberryQuantityLabel: FruitQuantityLabel {
     override func fruit() -> Fruit? {
         return Fruit(rawValue: Fruit.strawberry.rawValue)
     }
 }
 
-class BananaQuantityLabel: FruitQuantityLabel {
+final class BananaQuantityLabel: FruitQuantityLabel {
     override func fruit() -> Fruit? {
         return Fruit(rawValue: Fruit.banana.rawValue)
     }
 }
 
-class PineappleQuantityLabel: FruitQuantityLabel {
+final class PineappleQuantityLabel: FruitQuantityLabel {
     override func fruit() -> Fruit? {
         return Fruit(rawValue: Fruit.pineapple.rawValue)
     }
 }
 
-class KiwiQuantityLabel: FruitQuantityLabel {
+final class KiwiQuantityLabel: FruitQuantityLabel {
     override func fruit() -> Fruit? {
         return Fruit(rawValue: Fruit.kiwi.rawValue)
     }
 }
 
-class MangoQuantityLabel: FruitQuantityLabel {
+final class MangoQuantityLabel: FruitQuantityLabel {
     override func fruit() -> Fruit? {
         return Fruit(rawValue: Fruit.mango.rawValue)
     }
