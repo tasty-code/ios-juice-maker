@@ -9,16 +9,8 @@ import UIKit
 class JuiceMenuViewController: UIViewController {
     private let juiceMaker = JuiceMaker()
     
-    @IBOutlet weak var strawberryCountLabel: UILabel!
-    @IBOutlet weak var bananaCountLabel: UILabel!
-    @IBOutlet weak var pineappleCountLabel: UILabel!
-    @IBOutlet weak var kiwiCountLabel: UILabel!
-    @IBOutlet weak var mangoCountLabel: UILabel!
+    @IBOutlet private var fruitsCountLabels: [UILabel]!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -86,17 +78,6 @@ class JuiceMenuViewController: UIViewController {
     private func setFruitCountToLabel(_ fruit: Fruit) {
         let (fruitType, fruitCount) = fruit
         
-        switch fruitType {
-        case .strawberry:
-            strawberryCountLabel.text = "\(fruitCount)"
-        case .banana:
-            bananaCountLabel.text = "\(fruitCount)"
-        case .mango:
-            mangoCountLabel.text = "\(fruitCount)"
-        case .pineapple:
-            pineappleCountLabel.text = "\(fruitCount)"
-        case .kiwi:
-            kiwiCountLabel.text = "\(fruitCount)"
-        }
+        fruitsCountLabels[fruitType.rawValue].text = String(fruitCount)
     }
 }

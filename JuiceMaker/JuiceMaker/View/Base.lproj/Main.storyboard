@@ -243,11 +243,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="bananaCountLabel" destination="gvk-pA-Lw5" id="Gp8-x1-dts"/>
-                        <outlet property="kiwiCountLabel" destination="FZq-de-TJG" id="GsK-Rc-qWW"/>
-                        <outlet property="mangoCountLabel" destination="3Ce-SU-JeH" id="Heh-1W-CKX"/>
-                        <outlet property="pineappleCountLabel" destination="ccQ-Dk-PuY" id="6sX-Me-5XY"/>
-                        <outlet property="strawberryCountLabel" destination="Qas-vP-td6" id="0yE-v2-WOc"/>
+                        <outletCollection property="fruitsCountLabels" destination="Qas-vP-td6" collectionClass="NSMutableArray" id="xpg-0X-xLd"/>
+                        <outletCollection property="fruitsCountLabels" destination="gvk-pA-Lw5" collectionClass="NSMutableArray" id="5cD-BX-AYF"/>
+                        <outletCollection property="fruitsCountLabels" destination="ccQ-Dk-PuY" collectionClass="NSMutableArray" id="MOd-BX-W6X"/>
+                        <outletCollection property="fruitsCountLabels" destination="FZq-de-TJG" collectionClass="NSMutableArray" id="TPm-x1-Ygv"/>
+                        <outletCollection property="fruitsCountLabels" destination="3Ce-SU-JeH" collectionClass="NSMutableArray" id="jLJ-mg-pym"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -449,7 +449,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
