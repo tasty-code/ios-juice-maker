@@ -42,15 +42,15 @@ final class ViewController: UIViewController {
         }
     }
     
-    @IBAction private func pressOrderButton(_ button: UIButton)  {
-        do {
-            guard let menu = JuiceMenu(rawValue: button.tag) else { return }
-            try juiceMaker.makeJuice(menu: menu)
-            displayAcceptAlert(menuName: menu.description)
-            displayFruitQuantity()
-        } catch {
-            displayFillStockAlert()
-        }
+    @IBAction func pressOrderButton(_ button: JuiceButton) {
+        guard let menu = button.pickMenu() else { return }
+                do {
+                    try juiceMaker.makeJuice(menu: menu)
+                    displayAcceptAlert(menuName: menu.description)
+                    displayFruitQuantity()
+                } catch {
+                    displayFillStockAlert()
+                }
     }
     
     private func displayAcceptAlert(menuName: String) {
