@@ -9,9 +9,9 @@ import UIKit
 final class JuiceMakerViewController: UIViewController {
     private let juiceMaker = JuiceMaker()
     
-    @IBOutlet var fruitStockLabels: [UILabel]!
+    @IBOutlet private var fruitStockLabels: [UILabel]!
     
-    var inventory: [FruitName: Int]?
+    private var inventory: [FruitName: Int]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +19,7 @@ final class JuiceMakerViewController: UIViewController {
         self.syncStockLabels()
     }
 
-    @IBAction func touchJuiceOrderButton(_ sender: UIButton) {
+    @IBAction private func touchJuiceOrderButton(_ sender: UIButton) {
         guard let juice = sender as? JuiceNameIdentifiable else { return }
         
         do {
@@ -32,7 +32,7 @@ final class JuiceMakerViewController: UIViewController {
         }
     }
     
-    @IBAction func touchNavButton(_ sender: UIBarButtonItem) {
+    @IBAction private func touchNavButton(_ sender: UIBarButtonItem) {
         pushAdjustStockViewController()
     }
 }
@@ -49,7 +49,7 @@ extension JuiceMakerViewController: InventorySendDelegate {
 // MARK: Private Methods
 extension JuiceMakerViewController {
     private func loadInventory() {
-        self.inventory = juiceMaker.fruitStore.inventory
+        self.inventory = juiceMaker.checkFruitStoreInventory()
     }
     
     private func syncStockLabels() {

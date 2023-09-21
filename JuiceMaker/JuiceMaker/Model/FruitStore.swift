@@ -33,10 +33,6 @@ final class FruitStore {
         }
     }
     
-    func checkInventoryStock() -> [FruitType: Int] {
-        return inventory
-    }
-    
     func updateInventoryStock(with inventory: [FruitType: Int]) {
         self.inventory = inventory
     }

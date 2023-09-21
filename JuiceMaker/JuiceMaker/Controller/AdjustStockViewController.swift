@@ -12,9 +12,9 @@ protocol InventorySendDelegate: AnyObject {
 }
 
 final class AdjustStockViewController: UIViewController {
-    @IBOutlet var fruitStockLabels: [UILabel]!
+    @IBOutlet private var fruitStockLabels: [UILabel]!
     
-    @IBOutlet var fruitStockSteppers: [UIStepper]!
+    @IBOutlet private var fruitStockSteppers: [UIStepper]!
     
     var inventory: [FruitName: Int]?
     
@@ -26,13 +26,13 @@ final class AdjustStockViewController: UIViewController {
         syncStepperValue()
     }
     
-    @IBAction func touchFruitStockStepper(_ sender: UIStepper) {
+    @IBAction private func touchFruitStockStepper(_ sender: UIStepper) {
         guard let fruit = sender as? FruitStockIdentifiable else { return }
         inventory?[fruit.fruitType] = Int(sender.value)
         syncStockLabels()
     }
     
-    @IBAction func touchNavSaveButton(_ sender: UIButton) {
+    @IBAction private func touchNavSaveButton(_ sender: UIButton) {
         if let inventory = inventory {
             delegate?.sendInventory(inventory: inventory)
         }
