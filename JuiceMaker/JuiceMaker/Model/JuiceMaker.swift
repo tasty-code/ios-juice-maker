@@ -33,12 +33,12 @@ struct JuiceMaker {
     }
   }
   
-  func createJuice(type: String) -> (AlertType, String) {
+  func createJuice(type: String) -> String {
     if checkAvailableJuice(type: type) {
       makeJuice(type: type)
-      return (AlertType.oneButton, "\(type) 나왔습니다! 맛있게 드세요!")
+      return "\(type) 나왔습니다! 맛있게 드세요!"
     } else {
-      return (AlertType.twoButton, "재료가 모자라요. 재고를 수정할까요?")
+      return "재료가 모자라요. 재고를 수정할까요?"
     }
   }
   
