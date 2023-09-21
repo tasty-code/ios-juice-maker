@@ -6,7 +6,6 @@
 
 import Foundation
 
-// 쥬스 메이커 타입
 struct JuiceMaker {
     private var fruitStorage = FruitStore()
 
@@ -23,11 +22,10 @@ struct JuiceMaker {
         return (message:order.description, success: true)
     }
     
-    func passCurrentList() -> [Fruit: Int] {
-        return fruitStorage.showCurrentList()
+    func getRemainingFruits(_ fruitName: Fruit) throws -> String {
+        return try String(fruitStorage.getStockInfo(fruitName))
     }
 }
-
 
 extension JuiceMaker {
     private func soldOutChecker(_ order: Juice) throws -> [Fruit: Int?] {
