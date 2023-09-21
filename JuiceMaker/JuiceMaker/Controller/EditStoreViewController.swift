@@ -30,6 +30,25 @@ class EditStoreViewController: UIViewController {
     self.dismiss(animated: true)
   }
   
+  @IBAction func stepperButtonTapped(_ sender: UIStepper) {
+    let tag = sender.tag
+    switch tag {
+    case 0:
+      strawberryNumberLabel.text = Int(sender.value).description
+    case 1:
+      bananaNumberLabel.text = Int(sender.value).description
+    case 2:
+      pineappleNumberLabel.text = Int(sender.value).description
+    case 3:
+      kiwiNumberLabel.text = Int(sender.value).description
+    case 4:
+      mangoNumberLabel.text = Int(sender.value).description
+    default:
+      return
+    }
+  }
+  
+  
   func setNumberLabel() {
     strawberryNumberLabel.text = strawberry
     bananaNumberLabel.text = banana
