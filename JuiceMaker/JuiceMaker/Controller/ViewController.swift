@@ -6,30 +6,35 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    private let juiceMaker = JuiceMaker()
-    private var currentQuantity: [Fruit: Int] = [:]
+final class ViewController: UIViewController {
+    let juiceMaker = JuiceMaker()
     
-    @IBOutlet private var fruitsLabel: [UILabel]!
+    @IBOutlet var strawBerryLabel: UILabel!
+    @IBOutlet var bananaLabel: UILabel!
+    @IBOutlet var pineappleLabel: UILabel!
+    @IBOutlet var kiwiLabel: UILabel!
+    @IBOutlet var mangoLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getStockList()
+        bindingLabel()
     }
 }
 
 extension ViewController {
-    private func getStockList() {
-        self.currentQuantity = juiceMaker.passCurrentList()
-        for (fruit, _) in currentQuantity {
-            guard let fruitLabelText = currentQuantity[fruit] else {
-                return
-            }
-            fruitsLabel[fruit.rawValue].text = String(fruitLabelText)
+    private func bindingLabel() {
+        do {
+            strawBerryLabel.text = try juiceMaker.getRemainingFruits(.strawberry)
+            bananaLabel.text = try juiceMaker.getRemainingFruits(.banana)
+            pineappleLabel.text = try juiceMaker.getRemainingFruits(.pineapple)
+            kiwiLabel.text = try juiceMaker.getRemainingFruits(.kiwi)
+            mangoLabel.text = try juiceMaker.getRemainingFruits(.mango)
+        } catch {
+            statusAlert(ErrorMessage.invalidInput.debugDescription)
         }
     }
     
-    private func successAlert(_ message: String) {
+    private func statusAlert(_ message: String) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "확인", style: .default)
         
@@ -51,6 +56,7 @@ extension ViewController {
     
     private func moveToStockVc() {
         let stockVC = self.storyboard?.instantiateViewController(withIdentifier: "StockViewController") as! StockViewController
+        
         self.navigationController?.pushViewController(stockVC, animated: true)
     }
 }
@@ -67,8 +73,8 @@ extension ViewController {
         let orderResult = juiceMaker.makingJuice(menu)
         
         if orderResult.success {
-            getStockList()
-            successAlert(orderResult.message)
+            bindingLabel()
+            statusAlert(orderResult.message)
             return
         }
         failAlert(orderResult.message)
