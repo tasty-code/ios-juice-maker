@@ -10,6 +10,24 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="LzN-aE-P5w">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DCG-dP-Fms" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wpg-nM-F9y">
+                        <rect key="frame" x="0.0" y="0.0" width="844" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="AmB-GK-67P"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="66L-FI-VI3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="19.419642857142858" y="92.753623188405811"/>
+        </scene>
         <!--맛있는 쥬스를 만들어 드려요!-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -261,24 +279,6 @@
             </objects>
             <point key="canvasLocation" x="762.72321428571422" y="92.753623188405811"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="LzN-aE-P5w">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DCG-dP-Fms" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wpg-nM-F9y">
-                        <rect key="frame" x="0.0" y="0.0" width="844" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="AmB-GK-67P"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="66L-FI-VI3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="19.419642857142858" y="92.753623188405811"/>
-        </scene>
         <!--재고 추가-->
         <scene sceneID="fkG-vv-hpE">
             <objects>
@@ -420,19 +420,15 @@
                             <constraint firstItem="24r-3A-DZO" firstAttribute="centerX" secondItem="tKV-4l-Vtc" secondAttribute="centerX" id="KYZ-Nc-qIm"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="재고 추가" id="g4W-fY-l7r">
-                        <barButtonItem key="rightBarButtonItem" id="zqd-gs-FSA">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Prl-8b-IHf">
-                                <rect key="frame" x="67" y="0.0" width="710" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="닫기"/>
-                                <connections>
-                                    <action selector="touchNavSaveButton:" destination="Yu1-lM-nqp" eventType="touchUpInside" id="Lgq-vJ-KZE"/>
-                                </connections>
-                            </button>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="재고 추가" id="hEm-NT-qT0">
+                        <barButtonItem key="rightBarButtonItem" title="닫기" id="pjW-et-MM5">
+                            <connections>
+                                <action selector="touchNavSaveButton:" destination="Yu1-lM-nqp" id="G1a-qr-bQf"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outletCollection property="fruitStockLabels" destination="YJI-ER-LJR" collectionClass="NSMutableArray" id="pLJ-FG-dQS"/>
                         <outletCollection property="fruitStockLabels" destination="ZDv-1m-HBY" collectionClass="NSMutableArray" id="FGE-zK-cgR"/>

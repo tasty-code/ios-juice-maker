@@ -32,7 +32,7 @@ final class AdjustStockViewController: UIViewController {
         syncStockLabels()
     }
     
-    @IBAction private func touchNavSaveButton(_ sender: UIButton) {
+    @IBAction private func touchNavSaveButton(_ sender: UIBarButtonItem) {
         if let inventory = inventory {
             delegate?.sendInventory(inventory: inventory)
         }
