@@ -6,14 +6,12 @@
 
 import Foundation
 
-// 쥬스 메이커 타입
 struct JuiceMaker {
     private var fruitStorage = FruitStore()
 
-    func getOrder(_ order: Juice) -> (message: String, success: Bool) {
+    func makingJuice(_ order: Juice) -> (message: String, success: Bool) {
         do {
-            let makable: [Fruit : Int?] = try soldOutChecker(order)
-            let complete = try fruitStorage.errorHandler(makable)
+            let complete = try manufacture(juiceName: order)
             if complete {
                 print(order.description)
             }
@@ -24,16 +22,14 @@ struct JuiceMaker {
         return (message:order.description, success: true)
     }
     
-    func passCurrentList() -> [Fruit : Int] {
-        return fruitStorage.showCurrentList()
+    func getRemainingFruits(_ fruitName: Fruit) throws -> String {
+        return try String(fruitStorage.getStockInfo(fruitName))
     }
-    
-    func stockChanger(_ fruit: [Fruit : Int]) {
-        fruitStorage.stockManager(fruit)
-    }
-    
-    private func soldOutChecker(_ order: Juice) throws -> [Fruit : Int?] {
-        var makable: [Fruit : Int?] = [:]
+}
+
+extension JuiceMaker {
+    private func soldOutChecker(_ order: Juice) throws -> [Fruit: Int?] {
+        var makable: [Fruit: Int?] = [:]
         
         for (fruit, needs) in order.recipe {
             let currentStock = try fruitStorage.getStockInfo(fruit)
@@ -45,5 +41,23 @@ struct JuiceMaker {
         }
         return makable
     }
+    
+    private func errorHandler(_ consumeRecipe: [Fruit: Int?]) throws -> [Fruit: Int] {
+        if consumeRecipe.values.filter({ $0 == nil }).count == 2 {
+            throw ErrorMessage.stockInsufficients(Array(consumeRecipe.keys))
+        }
+        if consumeRecipe.values.contains(nil) {
+            let nilValues = consumeRecipe.filter { $0.value == nil }.map { $0.key }
+            throw ErrorMessage.stockInsufficient(nilValues[0])
+        }
+        let nonOptionalRecipe = consumeRecipe.compactMapValues({ $0 })
+        return nonOptionalRecipe
+    }
+    
+    private func manufacture(juiceName: Juice) throws -> Bool {
+        let isSoldout = try soldOutChecker(juiceName)
+        let isValid = try errorHandler(isSoldout)
+        let isMade = fruitStorage.calculateStock(isValid)
+        return isMade
+    }
 }
-
