@@ -15,6 +15,7 @@ class FruitInventoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.backgroundColor = .lightGray
         setTagOfStepper()
         setEventActionOfStepper()
     }
@@ -47,6 +48,10 @@ class FruitInventoryViewController: UIViewController {
         } catch {
             return
         }
+    }
+    
+    @IBAction func touchUpCloseButton(_ sender: UIButton) {
+        dismiss(animated: true)
     }
     
     private func setTagOfStepper(){

@@ -14,6 +14,8 @@ class JuiceMenuViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.navigationController?.navigationBar.backgroundColor = .lightGray
+
         for fruitType in FruitType.allCases {
             guard let fruitCount = FruitStore.shared.fruitCounts[fruitType] else {
                 return
@@ -36,6 +38,17 @@ class JuiceMenuViewController: UIViewController {
             setFruitCountToLabel(Fruit(fruitType, fruitCount))
         }
     }
+    
+    @IBAction func modifyInvertoryPressed(_ sender: Any) {
+        guard let fruitInventoryViewController = self.storyboard?.instantiateViewController(identifier: "FruitInventoryViewController") else {
+            return
+        }
+        let navigationController = UINavigationController(rootViewController: fruitInventoryViewController)
+        
+        navigationController.modalPresentationStyle = .fullScreen
+        self.present(navigationController, animated: true)
+    }
+    
     
     private func order(menu selectedMenu: JuiceType) {
         do {
@@ -67,7 +80,10 @@ class JuiceMenuViewController: UIViewController {
             guard let fruitInventoryViewController = self.storyboard?.instantiateViewController(identifier: "FruitInventoryViewController") else {
                 return
             }
-            self.navigationController?.pushViewController(fruitInventoryViewController, animated: true)
+            let navigationController = UINavigationController(rootViewController: fruitInventoryViewController)
+            
+            navigationController.modalPresentationStyle = .fullScreen
+            self.present(navigationController, animated: true)
         }
         let disagreeAlertAction = UIAlertAction(title: "아니오", style: .destructive)
         alertController.addAction(agreeAlertAction)

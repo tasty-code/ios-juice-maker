@@ -238,7 +238,7 @@
                     <navigationItem key="navigationItem" title="맛있는 쥬스를 만들어 드려요!" id="Eal-fj-o4N">
                         <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT">
                             <connections>
-                                <segue destination="Yu1-lM-nqp" kind="show" id="tIu-q5-aSf"/>
+                                <action selector="modifyInvertoryPressed:" destination="BYZ-38-t0r" id="Jfg-cy-GCP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -272,7 +272,7 @@
             </objects>
             <point key="canvasLocation" x="999" y="20"/>
         </scene>
-        <!--Fruit Inventory View Controller-->
+        <!--재고 추가-->
         <scene sceneID="fkG-vv-hpE">
             <objects>
                 <viewController storyboardIdentifier="FruitInventoryViewController" id="Yu1-lM-nqp" customClass="FruitInventoryViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
@@ -401,7 +401,19 @@
                             <constraint firstItem="5zg-zx-UZC" firstAttribute="centerX" secondItem="tKV-4l-Vtc" secondAttribute="centerX" id="rSZ-UF-tG1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="g4W-fY-l7r"/>
+                    <navigationItem key="navigationItem" title="재고 추가" id="g4W-fY-l7r" userLabel="재고 추가">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="7v7-mx-o5s">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="dOR-QE-RAm">
+                                <rect key="frame" x="702" y="4.6666666666666679" width="54" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="닫기"/>
+                                <connections>
+                                    <action selector="touchUpCloseButton:" destination="Yu1-lM-nqp" eventType="touchUpInside" id="ub2-qk-B1H"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outletCollection property="fruitsCountLabels" destination="0yV-kn-zaT" collectionClass="NSMutableArray" id="hpM-cr-1t7"/>
                         <outletCollection property="fruitsCountLabels" destination="gKu-86-RhI" collectionClass="NSMutableArray" id="6NI-Lz-R9l"/>
@@ -417,7 +429,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1691" y="877"/>
+            <point key="canvasLocation" x="1690.5213270142178" y="876.92307692307691"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cAf-jL-tPK">
@@ -438,9 +450,6 @@
             <point key="canvasLocation" x="1691" y="20"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="tIu-q5-aSf"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
