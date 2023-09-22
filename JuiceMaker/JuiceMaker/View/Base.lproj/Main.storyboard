@@ -401,19 +401,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="재고 추가" leftItemsSupplementBackButton="YES" id="g4W-fY-l7r">
                         <barButtonItem key="backBarButtonItem" title="뒤로" id="h8U-j7-ufN"/>
-                        <barButtonItem key="rightBarButtonItem" title="닫기" id="Q4W-hX-DCg">
-                            <connections>
-                                <action selector="closeBtn:" destination="Yu1-lM-nqp" id="A9J-ez-i6A"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="닫기" id="Q4W-hX-DCg"/>
                     </navigationItem>
-                    <connections>
-                        <outletCollection property="changableFruitsLabel" destination="0yV-kn-zaT" collectionClass="NSMutableArray" id="QaA-cL-lZ4"/>
-                        <outletCollection property="changableFruitsLabel" destination="gKu-86-RhI" collectionClass="NSMutableArray" id="KPQ-iX-Shl"/>
-                        <outletCollection property="changableFruitsLabel" destination="MpT-VW-hCb" collectionClass="NSMutableArray" id="Zhs-YK-pPK"/>
-                        <outletCollection property="changableFruitsLabel" destination="ZDv-1m-HBY" collectionClass="NSMutableArray" id="0sf-4H-ROg"/>
-                        <outletCollection property="changableFruitsLabel" destination="YJI-ER-LJR" collectionClass="NSMutableArray" id="ZYJ-3O-9X9"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
             </objects>

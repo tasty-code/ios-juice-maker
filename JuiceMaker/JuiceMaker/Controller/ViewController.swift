@@ -37,6 +37,7 @@ extension ViewController {
     private func statusAlert(_ message: String) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "확인", style: .default)
+        
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
     }
@@ -57,7 +58,6 @@ extension ViewController {
         let stockVC = self.storyboard?.instantiateViewController(withIdentifier: "StockViewController") as! StockViewController
     
         self.navigationController?.pushViewController(stockVC, animated: true)
-        self.present(stockVC, animated: true, completion: nil)
     }
 }
 
