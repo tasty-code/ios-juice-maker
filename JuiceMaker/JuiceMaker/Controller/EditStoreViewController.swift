@@ -9,11 +9,15 @@ import UIKit
 
 class EditStoreViewController: UIViewController {
   
+  let store = FruitStore.shared
+  
   var strawberry: String?
   var banana: String?
   var pineapple: String?
   var kiwi: String?
   var mango: String?
+  
+  var delegate: UpdateProtocol?
   
   @IBOutlet weak var strawberryNumberLabel: UILabel!
   @IBOutlet weak var bananaNumberLabel: UILabel!
@@ -34,6 +38,8 @@ class EditStoreViewController: UIViewController {
   }
   
   @IBAction func dismissButtonTapped(_ sender: UIButton) {
+    self.delegate?.update()
+    
     self.dismiss(animated: true)
   }
   
@@ -43,23 +49,33 @@ class EditStoreViewController: UIViewController {
     case 0:
       guard let strawberryString = strawberry else { return }
       guard let strawberryNumber = Int(strawberryString) else { return }
-      strawberryNumberLabel.text = (strawberryNumber + Int(sender.value)).description
+      let strawberryChangeNumber = strawberryNumber + Int(sender.value)
+      strawberryNumberLabel.text = strawberryChangeNumber.description
+      store.update(fruitName: .strawberry, number: strawberryChangeNumber)
     case 1:
       guard let bananaString = banana else { return }
       guard let bananaNumber = Int(bananaString) else { return }
-      bananaNumberLabel.text = (bananaNumber + Int(sender.value)).description
+      let bananaChangeNumber = bananaNumber + Int(sender.value)
+      bananaNumberLabel.text = bananaChangeNumber.description
+      store.update(fruitName: .banana, number: bananaChangeNumber)
     case 2:
       guard let pineappleString = pineapple else { return }
       guard let pineappleNumber = Int(pineappleString) else { return }
-      pineappleNumberLabel.text = (pineappleNumber + Int(sender.value)).description
+      let pineappleChangeNumber = pineappleNumber + Int(sender.value)
+      pineappleNumberLabel.text = pineappleChangeNumber.description
+      store.update(fruitName: .pineapple, number: pineappleChangeNumber)
     case 3:
       guard let kiwiString = kiwi else { return }
       guard let kiwiNumber = Int(kiwiString) else { return }
-      kiwiNumberLabel.text = (kiwiNumber + Int(sender.value)).description
+      let kiwiChangeNumber = kiwiNumber + Int(sender.value)
+      kiwiNumberLabel.text = kiwiChangeNumber.description
+      store.update(fruitName: .kiwi, number: kiwiChangeNumber)
     case 4:
       guard let mangoString = mango else { return }
       guard let mangoNumber = Int(mangoString) else { return }
-      mangoNumberLabel.text = (mangoNumber + Int(sender.value)).description
+      let mangoChangeNumber = mangoNumber + Int(sender.value)
+      mangoNumberLabel.text = mangoChangeNumber.description
+      store.update(fruitName: .mango, number: mangoChangeNumber)
     default:
       return
     }

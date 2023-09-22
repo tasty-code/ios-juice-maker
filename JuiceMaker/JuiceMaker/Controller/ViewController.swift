@@ -6,7 +6,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+protocol UpdateProtocol {
+  func update()
+}
+
+class ViewController: UIViewController, UpdateProtocol {
+  func update() {
+    setNumberLabel()
+  }
   
   let juiceMaker = JuiceMaker()
   
@@ -18,6 +25,11 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    setNumberLabel()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     setNumberLabel()
   }
   
@@ -53,6 +65,8 @@ class ViewController: UIViewController {
         editStoreView.kiwi = self.kiwiNumberLabel?.text
         editStoreView.mango = self.mangoNumberLabel?.text
         
+        editStoreView.delegate = self
+        
         self.present(editStoreView, animated: true, completion: nil)
       }))
     }
@@ -62,13 +76,15 @@ class ViewController: UIViewController {
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      if segue.destination is EditStoreViewController {
-        let editStoreView = segue.destination as? EditStoreViewController
-        editStoreView?.strawberry = self.strawberryNumberLabel?.text
-        editStoreView?.banana = self.bananaNumberLabel?.text
-        editStoreView?.pineapple = self.pineappleNumberLabel?.text
-        editStoreView?.kiwi = self.kiwiNumberLabel?.text
-        editStoreView?.mango = self.mangoNumberLabel?.text
-      }
+    if segue.destination is EditStoreViewController {
+      let editStoreView = segue.destination as? EditStoreViewController
+      editStoreView?.strawberry = self.strawberryNumberLabel?.text
+      editStoreView?.banana = self.bananaNumberLabel?.text
+      editStoreView?.pineapple = self.pineappleNumberLabel?.text
+      editStoreView?.kiwi = self.kiwiNumberLabel?.text
+      editStoreView?.mango = self.mangoNumberLabel?.text
+      
+      editStoreView?.delegate = self
     }
+  }
 }
