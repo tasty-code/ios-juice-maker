@@ -101,7 +101,7 @@ final class MainViewController: UIViewController {
         }
     }
     
-    @IBAction func orderJuice(_ sender: UIButton) {
+    @IBAction func orderJuiceButtonTapped(_ sender: UIButton) {
         guard let id = sender.accessibilityIdentifier else {
             return
         }
