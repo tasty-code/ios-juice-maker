@@ -14,8 +14,8 @@ enum Fruit: String {
     case pineapple = "파인애플"
     case mango = "망고"
     
-    init?(_ fruit: String) throws {
-        switch fruit {
+    init?(fruitLabel: String) throws {
+        switch fruitLabel {
         case Fruit.strawberry.rawValue:
             self = Fruit.strawberry
         case Fruit.banana.rawValue:
