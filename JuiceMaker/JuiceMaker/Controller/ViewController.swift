@@ -1,8 +1,8 @@
 //
 //  JuiceMaker - ViewController.swift
-//  Created by yagom. 
+//  Created by yagom.
 //  Copyright © yagom academy. All rights reserved.
-// 
+//
 
 import UIKit
 
@@ -27,7 +27,7 @@ final class ViewController: UIViewController {
 
 extension ViewController {
     private func bindingLabel() {
-    do {
+        do {
             strawBerryLabel.text = try juiceMaker.getRemainingFruits(.strawberry)
             bananaLabel.text = try juiceMaker.getRemainingFruits(.banana)
             pineappleLabel.text = try juiceMaker.getRemainingFruits(.pineapple)
@@ -60,6 +60,7 @@ extension ViewController {
     
     private func moveToStockVc() {
         let stockVC = self.storyboard?.instantiateViewController(withIdentifier: "StockViewController") as! StockViewController
+        
         stockVC.delegate = self
         self.navigationController?.pushViewController(stockVC, animated: true)
     }

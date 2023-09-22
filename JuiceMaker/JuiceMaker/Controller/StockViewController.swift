@@ -12,9 +12,8 @@ protocol sendStockDelegate {
 }
 
 final class StockViewController: UIViewController{
-    
     var delegate: sendStockDelegate?
-
+    
     @IBOutlet weak var strawberryLabel: UILabel!
     @IBOutlet weak var bananaLabel: UILabel!
     @IBOutlet weak var pineappleLabel: UILabel!
@@ -26,7 +25,7 @@ final class StockViewController: UIViewController{
     @IBOutlet weak var pineappleStepper: UIStepper!
     @IBOutlet weak var kiwiStepper: UIStepper!
     @IBOutlet weak var mangoStepper: UIStepper!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,7 +33,7 @@ final class StockViewController: UIViewController{
         updateStockLabel()
         updateStepperValue()
     }
-
+    
 }
 
 extension StockViewController {
