@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FruitInventoryViewController: UIViewController, FruitShowable {
+class FruitInventoryViewController: UIViewController {
     private let juiceMaker = JuiceMaker()
     
     @IBOutlet private var fruitsCountLabels: [UILabel]!
@@ -15,7 +15,7 @@ class FruitInventoryViewController: UIViewController, FruitShowable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.backgroundColor = .gray
+        self.navigationController?.navigationBar.backgroundColor = .lightGray
         setTagOfStepper()
         setEventActionOfStepper()
     }
@@ -29,8 +29,8 @@ class FruitInventoryViewController: UIViewController, FruitShowable {
             }
             
             let fruit = Fruit(fruitType, fruitCount)
-            show(fruit, on: fruitsCountLabels)
-            show(fruit, on: fruitsCountSteppers)
+            setFruitCountToLabel(fruit)
+            setFruitCountToStepperValue(fruit)
         }
     }
     
@@ -44,7 +44,7 @@ class FruitInventoryViewController: UIViewController, FruitShowable {
             let fruit = Fruit(fruitType, newFruitCount - fruitCount)
             try juiceMaker.update(fruit)
             
-            show(Fruit(fruitType, newFruitCount), on: fruitsCountLabels)
+            setFruitCountToLabel(Fruit(fruitType, newFruitCount))
         } catch {
             return
         }
@@ -64,5 +64,17 @@ class FruitInventoryViewController: UIViewController, FruitShowable {
         for fruitsCountStepper in fruitsCountSteppers {
             fruitsCountStepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
         }
+    }
+    
+    private func setFruitCountToLabel(_ fruit: Fruit) {
+        let (fruitType, fruitCount) = fruit
+        
+        fruitsCountLabels[fruitType.rawValue].text = "\(fruitCount)"
+    }
+    
+    private func setFruitCountToStepperValue(_ fruit: Fruit) {
+        let (fruitType, fruitCount) = fruit
+        
+        fruitsCountSteppers[fruitType.rawValue].value = Double(fruitCount)
     }
 }
