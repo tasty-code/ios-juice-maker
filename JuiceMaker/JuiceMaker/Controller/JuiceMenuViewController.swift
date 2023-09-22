@@ -6,7 +6,8 @@
 
 import UIKit
 
-class JuiceMenuViewController: UIViewController {
+class JuiceMenuViewController: UIViewController, FruitShowable {
+    
     private let juiceMaker = JuiceMaker()
     
     @IBOutlet private var fruitsCountLabels: [UILabel]!
@@ -21,7 +22,7 @@ class JuiceMenuViewController: UIViewController {
                 return
             }
             
-            setFruitCountToLabel(Fruit(fruitType, fruitCount))
+            show(Fruit(fruitType, fruitCount), on: fruitsCountLabels)
         }
     }
     
@@ -35,7 +36,7 @@ class JuiceMenuViewController: UIViewController {
             guard let fruitCount = FruitStore.shared.fruitCounts[fruitType] else {
                 return
             }
-            setFruitCountToLabel(Fruit(fruitType, fruitCount))
+            show(Fruit(fruitType, fruitCount), on: fruitsCountLabels)
         }
     }
     
@@ -89,11 +90,5 @@ class JuiceMenuViewController: UIViewController {
         alertController.addAction(agreeAlertAction)
         alertController.addAction(disagreeAlertAction)
         present(alertController, animated: true)
-    }
-    
-    private func setFruitCountToLabel(_ fruit: Fruit) {
-        let (fruitType, fruitCount) = fruit
-        
-        fruitsCountLabels[fruitType.rawValue].text = String(fruitCount)
     }
 }
