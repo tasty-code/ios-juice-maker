@@ -15,7 +15,7 @@ class FruitInventoryViewController: UIViewController, FruitShowable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.backgroundColor = .gray
+        navigationController?.navigationBar.backgroundColor = .lightGray
         setTagOfStepper()
         setEventActionOfStepper()
     }
@@ -54,13 +54,13 @@ class FruitInventoryViewController: UIViewController, FruitShowable {
         dismiss(animated: true)
     }
     
-    private func setTagOfStepper(){
-        for index in 0..<fruitsCountSteppers.count {
+    private func setTagOfStepper() {
+        for index in 0 ..< fruitsCountSteppers.count {
             fruitsCountSteppers[index].tag = index
         }
     }
     
-    private func setEventActionOfStepper(){
+    private func setEventActionOfStepper() {
         for fruitsCountStepper in fruitsCountSteppers {
             fruitsCountStepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
         }

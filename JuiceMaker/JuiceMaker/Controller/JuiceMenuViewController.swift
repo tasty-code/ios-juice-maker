@@ -1,13 +1,12 @@
 //
 //  JuiceMaker - JuiceMenuViewController.swift
-//  Created by yagom. 
+//  Created by yagom.
 //  Copyright © yagom academy. All rights reserved.
-// 
+//
 
 import UIKit
 
 class JuiceMenuViewController: UIViewController, FruitShowable {
-    
     private let juiceMaker = JuiceMaker()
     
     @IBOutlet private var fruitsCountLabels: [UILabel]!
@@ -15,7 +14,7 @@ class JuiceMenuViewController: UIViewController, FruitShowable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.navigationBar.backgroundColor = .lightGray
+        navigationController?.navigationBar.backgroundColor = .lightGray
 
         for fruitType in FruitType.allCases {
             guard let fruitCount = FruitStore.shared.fruitCounts[fruitType] else {
@@ -41,15 +40,14 @@ class JuiceMenuViewController: UIViewController, FruitShowable {
     }
     
     @IBAction func modifyInvertoryPressed(_ sender: Any) {
-        guard let fruitInventoryViewController = self.storyboard?.instantiateViewController(identifier: "FruitInventoryViewController") else {
+        guard let fruitInventoryViewController = storyboard?.instantiateViewController(identifier: "FruitInventoryViewController") else {
             return
         }
         let navigationController = UINavigationController(rootViewController: fruitInventoryViewController)
         
         navigationController.modalPresentationStyle = .fullScreen
-        self.present(navigationController, animated: true)
+        present(navigationController, animated: true)
     }
-    
     
     private func order(menu selectedMenu: JuiceType) {
         do {
@@ -77,7 +75,7 @@ class JuiceMenuViewController: UIViewController, FruitShowable {
             message: "재료가 모자라요. 재고를 수정할까요?",
             preferredStyle: .alert
         )
-        let agreeAlertAction = UIAlertAction(title: "예", style: .default) { action in
+        let agreeAlertAction = UIAlertAction(title: "예", style: .default) { _ in
             guard let fruitInventoryViewController = self.storyboard?.instantiateViewController(identifier: "FruitInventoryViewController") else {
                 return
             }

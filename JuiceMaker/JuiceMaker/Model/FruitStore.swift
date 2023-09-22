@@ -29,7 +29,7 @@ class FruitStore {
         self.init(count: 10)
     }
     
-    func update(fruits: [Fruit], as `operator`: ((Int, Int) -> Int)) throws {
+    func update(fruits: [Fruit], as operator: (Int, Int) -> Int) throws {
         let calculatedFruits = try getCalculatedCounts(of: fruits, as: `operator`)
         
         for fruit in calculatedFruits {
@@ -37,7 +37,7 @@ class FruitStore {
         }
     }
     
-    func update(_ fruit: Fruit, as `operator`: ((Int, Int) -> Int)) throws {
+    func update(_ fruit: Fruit, as operator: (Int, Int) -> Int) throws {
         guard let fruitCount = fruitCounts[fruit.fruitType] else {
             throw JuiceMakerException.fruitNotFound
         }
@@ -48,7 +48,7 @@ class FruitStore {
         fruitCounts[fruit.fruitType] = fruit.count
     }
     
-    private func getCalculatedCounts(of fruits: [Fruit], as `operator`: ((Int, Int) -> Int)) throws -> [Fruit] {
+    private func getCalculatedCounts(of fruits: [Fruit], as operator: (Int, Int) -> Int) throws -> [Fruit] {
         var checkedFruits = [Fruit]()
         for (fruitType, count) in fruits {
             guard let fruitCount = fruitCounts[fruitType] else {
