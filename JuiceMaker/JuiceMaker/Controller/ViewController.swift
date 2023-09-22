@@ -19,11 +19,15 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         bindingLabel()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        bindingLabel()
+    }
 }
 
 extension ViewController {
     private func bindingLabel() {
-        do {
+    do {
             strawBerryLabel.text = try juiceMaker.getRemainingFruits(.strawberry)
             bananaLabel.text = try juiceMaker.getRemainingFruits(.banana)
             pineappleLabel.text = try juiceMaker.getRemainingFruits(.pineapple)
@@ -56,7 +60,7 @@ extension ViewController {
     
     private func moveToStockVc() {
         let stockVC = self.storyboard?.instantiateViewController(withIdentifier: "StockViewController") as! StockViewController
-        
+        stockVC.delegate = self
         self.navigationController?.pushViewController(stockVC, animated: true)
     }
 }
@@ -78,5 +82,11 @@ extension ViewController {
             return
         }
         failAlert(orderResult.message)
+    }
+}
+
+extension ViewController: sendStockDelegate {
+    func sendStock() -> JuiceMaker {
+        return juiceMaker
     }
 }

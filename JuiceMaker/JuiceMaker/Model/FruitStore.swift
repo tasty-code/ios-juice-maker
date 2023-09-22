@@ -27,4 +27,23 @@ extension FruitStore {
         }
         return true
     }
+    
+    public func stockManager(_ fruit: Int, changedStock: Double) {
+        switch fruit {
+        case 0:
+            fruitBox[.strawberry] = Int(changedStock)
+        case 1:
+            fruitBox[.banana] = Int(changedStock)
+        case 2:
+            fruitBox[.pineapple] = Int(changedStock)
+        case 3:
+            fruitBox[.kiwi] = Int(changedStock)
+        case 4:
+            fruitBox[.mango] = Int(changedStock)
+        default:
+            break
+        }
+    }
 }
+
+

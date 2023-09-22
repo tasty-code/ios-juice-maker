@@ -7,7 +7,7 @@
 import Foundation
 
 struct JuiceMaker {
-    private var fruitStorage = FruitStore()
+    private (set) var fruitStorage = FruitStore()
 
     func makingJuice(_ order: Juice) -> (message: String, success: Bool) {
         do {
@@ -21,9 +21,13 @@ struct JuiceMaker {
         }
         return (message:order.description, success: true)
     }
-    
+
     func getRemainingFruits(_ fruitName: Fruit) throws -> String {
         return try String(fruitStorage.getStockInfo(fruitName))
+    }
+    
+    func getStepperValue(_ fruitName: Fruit) throws -> Double {
+        return try Double(fruitStorage.getStockInfo(fruitName))
     }
 }
 
@@ -61,3 +65,4 @@ extension JuiceMaker {
         return isMade
     }
 }
+
