@@ -11,14 +11,14 @@ struct JuiceMaker {
 
   let store = FruitStore.shared
   
-  enum Juice: Int {
-    case strawberry
-    case banana
-    case kiwi
-    case pineapple
-    case strawberryBanana
-    case mango
-    case mangoKiwi
+  enum Juice: String {
+    case strawberry = "딸기 쥬스"
+    case banana = "바나나쥬스"
+    case kiwi = "키위쥬스"
+    case pineapple = "파인애플쥬스"
+    case strawberryBanana = "딸바쥬스"
+    case mango = "망고쥬스"
+    case mangoKiwi = "망키쥬스"
     
     var recipe: Dictionary<Fruit, Int> {
       switch self {
@@ -33,16 +33,16 @@ struct JuiceMaker {
     }
   }
   
-  func createJuice(type: Int, juiceName: String) -> (AlertType, String) {
+  func createJuice(type: String) -> String {
     if checkAvailableJuice(type: type) {
       makeJuice(type: type)
-      return (AlertType.oneButton, "\(juiceName) 나왔습니다! 맛있게 드세요!")
+      return "\(type) 나왔습니다! 맛있게 드세요!"
     } else {
-      return (AlertType.twoButton, "재료가 모자라요. 재고를 수정할까요?")
+      return "재료가 모자라요. 재고를 수정할까요?"
     }
   }
   
-  private func checkAvailableJuice(type: Int) -> Bool {
+  private func checkAvailableJuice(type: String) -> Bool {
     do {
       guard let juiceType = Juice(rawValue: type) else { return false }
       let recipe = juiceType.recipe
@@ -57,7 +57,7 @@ struct JuiceMaker {
     return true
   }
   
-  private func makeJuice(type: Int) {
+  private func makeJuice(type: String) {
     guard let juiceType = Juice(rawValue: type) else { return }
     let recipe = juiceType.recipe
     for (fruit, number) in recipe {
