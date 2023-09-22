@@ -6,11 +6,11 @@
 
 import UIKit
 
-protocol UpdateProtocol {
-  func update()
+protocol ViewControllerDelegate {
+  func updateData()
 }
 
-class ViewController: UIViewController, UpdateProtocol {
+class ViewController: UIViewController, ViewControllerDelegate {
   
   let juiceMaker = JuiceMaker()
   
@@ -25,15 +25,7 @@ class ViewController: UIViewController, UpdateProtocol {
     setNumberLabel()
   }
   
-  @IBAction func juiceOrderButtonTapped(_ sender: UIButton) {
-    guard let buttonName = sender.titleLabel?.text else { return }
-    let juiceName = buttonName.split(separator: " ")[0]
-    let message = juiceMaker.createJuice(type: String(juiceName))
-    showAlert(message: message)
-    setNumberLabel()
-  }
-  
-  func update() {
+  func updateData() {
     setNumberLabel()
   }
   
@@ -43,6 +35,14 @@ class ViewController: UIViewController, UpdateProtocol {
     pineappleNumberLabel.text = String(juiceMaker.store.getNum(fruitName: Fruit.pineapple))
     kiwiNumberLabel.text = String(juiceMaker.store.getNum(fruitName: Fruit.kiwi))
     mangoNumberLabel.text = String(juiceMaker.store.getNum(fruitName: Fruit.mango))
+  }
+  
+  @IBAction func juiceOrderButtonTapped(_ sender: UIButton) {
+    guard let buttonName = sender.titleLabel?.text else { return }
+    let juiceName = buttonName.split(separator: " ")[0]
+    let message = juiceMaker.createJuice(type: String(juiceName))
+    showAlert(message: message)
+    setNumberLabel()
   }
   
   func showAlert(message: String) {
@@ -71,11 +71,11 @@ class ViewController: UIViewController, UpdateProtocol {
   }
   
   func sendData(view: EditStoreViewController) {
-    view.strawberry = self.strawberryNumberLabel?.text
-    view.banana = self.bananaNumberLabel?.text
-    view.pineapple = self.pineappleNumberLabel?.text
-    view.kiwi = self.kiwiNumberLabel?.text
-    view.mango = self.mangoNumberLabel?.text
+    view.strawberryValue = self.strawberryNumberLabel?.text
+    view.bananaValue = self.bananaNumberLabel?.text
+    view.pineappleValue = self.pineappleNumberLabel?.text
+    view.kiwiValue = self.kiwiNumberLabel?.text
+    view.mangoValue = self.mangoNumberLabel?.text
     view.delegate = self
   }
 }
