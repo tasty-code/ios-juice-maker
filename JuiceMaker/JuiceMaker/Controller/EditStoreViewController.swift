@@ -34,15 +34,25 @@ class EditStoreViewController: UIViewController {
     let tag = sender.tag
     switch tag {
     case 0:
-      strawberryNumberLabel.text = Int(sender.value).description
+      guard let strawberryString = strawberry else { return }
+      guard let strawberryNumber = Int(strawberryString) else { return }
+      strawberryNumberLabel.text = (strawberryNumber + Int(sender.value)).description
     case 1:
-      bananaNumberLabel.text = Int(sender.value).description
+      guard let bananaString = banana else { return }
+      guard let bananaNumber = Int(bananaString) else { return }
+      bananaNumberLabel.text = (bananaNumber + Int(sender.value)).description
     case 2:
-      pineappleNumberLabel.text = Int(sender.value).description
+      guard let pineappleString = pineapple else { return }
+      guard let pineappleNumber = Int(pineappleString) else { return }
+      pineappleNumberLabel.text = (pineappleNumber + Int(sender.value)).description
     case 3:
-      kiwiNumberLabel.text = Int(sender.value).description
+      guard let kiwiString = kiwi else { return }
+      guard let kiwiNumber = Int(kiwiString) else { return }
+      kiwiNumberLabel.text = (kiwiNumber + Int(sender.value)).description
     case 4:
-      mangoNumberLabel.text = Int(sender.value).description
+      guard let mangoString = mango else { return }
+      guard let mangoNumber = Int(mangoString) else { return }
+      mangoNumberLabel.text = (mangoNumber + Int(sender.value)).description
     default:
       return
     }
