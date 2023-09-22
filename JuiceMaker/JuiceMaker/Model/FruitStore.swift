@@ -20,9 +20,8 @@ final class FruitStore {
         return remains
     }
     
-    func add(_ inStockList: [Fruit: Int]) -> Void {
-        fruitList.merge(inStockList) { stock, new in
-            return stock + new }
+    func update(_ inStockList: [Fruit: Int]) -> Void {
+        fruitList.merge(inStockList) { _, new in new }
     }
     
     func deduct(_ usedList: [Fruit: Int]) -> Void {

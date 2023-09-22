@@ -7,7 +7,6 @@
 import UIKit
 
 final class ViewController: UIViewController {
-    
     private let juiceMakerModel = JuiceMaker()
     
     @IBOutlet private weak var strawberryStockLabel: UILabel!
@@ -20,6 +19,7 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         updateStock()
     }
+    
     
     private func updateStock() {
         let fruitsUILabels = [strawberryStockLabel: Fruit.strawberry , bananaStockLabel: Fruit.banana , kiwiStockLabel: Fruit.kiwi  ,pineappleStockLabel: Fruit.pineapple, mangoStockLabel: Fruit.mango]
@@ -40,11 +40,13 @@ final class ViewController: UIViewController {
         guard let tapped = sender.titleLabel, let label = tapped.text else {
             return
         }
+        
         let splited = String(label.split(separator: " ")[0])
         
         guard let retained = Menu.allCases.first(where: { $0.juice == splited }) else {
             return
         }
+        
         if let availableMenu = juiceMakerModel.order(retained) {
             juiceMakerModel.makeJuice(availableMenu)
             updateStock()
@@ -56,7 +58,7 @@ final class ViewController: UIViewController {
     
     func navigateToDashboardViewController() {
         let dashboardVC = storyboard?.instantiateViewController(withIdentifier: "dashboardVC") as! DashboardViewController
-        
+        dashboardVC.delegate = self
         present(dashboardVC, animated: true)
     }
     
@@ -76,6 +78,11 @@ final class ViewController: UIViewController {
         alert.addAction(noAction)
         present(alert, animated: true, completion: nil)
     }
-    
+}
+
+extension ViewController: DashboardViewControllerDelegate {
+    func didUpdateData() {
+        self.updateStock()
+    }
 }
 
