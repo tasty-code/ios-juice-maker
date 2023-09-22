@@ -43,20 +43,19 @@ final class FruitInventoryViewController: UIViewController {
     
     private func initStepperValue() {
         let fruitSteppers = [strawberryStepper, bananaStepper, pineappleStepper, kiwiStepper, mangoStepper]
-        
+        guard let juiceMaker = juiceMaker else {
+            return
+        }
         fruitSteppers.forEach { stepper in
-            guard let tempStepper = stepper, let id = tempStepper.accessibilityIdentifier else {
-                return
-            }
-            guard let tempJuiceMaker = juiceMaker else {
+            guard let stepper = stepper, let id = stepper.accessibilityIdentifier else {
                 return
             }
             do {
-                guard let fruit = try Fruit(id) else {
+                guard let fruit = try Fruit(fruitLabel: id) else {
                     return
                 }
-                let count = try tempJuiceMaker.remainingCount(fruit: fruit)
-                tempStepper.value = Double(count)
+                let count = try juiceMaker.remainingCount(fruit: fruit)
+                stepper.value = Double(count)
             } catch {
                 defaultAlert(message: InventoryError.invalidError.description)
             }
@@ -65,16 +64,19 @@ final class FruitInventoryViewController: UIViewController {
     
     private func updateFruitLabels() {
         let fruitLabels = [strawberryLabel, bananaLabel, pineappleLabel, kiwiLabel, mangoLabel]
+        guard let juiceMaker = juiceMaker else {
+            return
+        }
         fruitLabels.forEach { label in
-            guard let tempLabel = label, let id = tempLabel.accessibilityIdentifier else {
+            guard let label = label, let id = label.accessibilityIdentifier else {
                 return
             }
             do {
-                guard let fruit = try Fruit(id), let tempJuiceMaker = juiceMaker else {
+                guard let fruit = try Fruit(fruitLabel: id) else {
                     return
                 }
-                let count = try tempJuiceMaker.remainingCount(fruit: fruit)
-                tempLabel.text = "\(count)"
+                let count = try juiceMaker.remainingCount(fruit: fruit)
+                label.text = "\(count)"
             } catch {
                 defaultAlert(message: InventoryError.invalidError.description)
             }
@@ -86,10 +88,13 @@ final class FruitInventoryViewController: UIViewController {
     }
     
     @IBAction func stepperTapped(_ sender: UIStepper) {
-        guard let id = sender.accessibilityIdentifier else { return }
+        guard let id = sender.accessibilityIdentifier, let juiceMaker = juiceMaker else { return
+        }
         do {
-            guard let fruit = try Fruit(id), let tempJuiceMaker = juiceMaker else { return }
-            tempJuiceMaker.changeCount(fruit: fruit, newCount: UInt(sender.value))
+            guard let fruit = try Fruit(fruitLabel: id) else {
+                return
+            }
+            juiceMaker.changeCount(fruit: fruit, newCount: UInt(sender.value))
             updateFruitLabels()
         } catch {
             defaultAlert(message: InventoryError.invalidError.description)

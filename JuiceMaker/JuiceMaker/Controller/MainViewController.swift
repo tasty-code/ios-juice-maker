@@ -50,15 +50,15 @@ final class MainViewController: UIViewController {
     private func updateFruitLabels() {
         let fruitLabels = [strawberryLabel, bananaLabel, pineappleLabel, kiwiLabel, mangoLabel]
         fruitLabels.forEach { label in
-            guard let tempLabel = label, let id = tempLabel.accessibilityIdentifier else {
+            guard let label = label, let id = label.accessibilityIdentifier else {
                 return
             }
             do {
-                guard let fruit = try Fruit(id) else {
+                guard let fruit = try Fruit(fruitLabel: id) else {
                     return
                 }
                 let count = try juiceMaker.remainingCount(fruit: fruit)
-                tempLabel.text = "\(count)"
+                label.text = "\(count)"
             } catch {
                 defaultAlert(message: InventoryError.invalidError.description)
             }
