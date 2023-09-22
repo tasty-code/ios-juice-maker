@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+@frozen
 enum Fruit: Int {
     case strawberry = 0
     case banana
