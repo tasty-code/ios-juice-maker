@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FruitInventoryViewController: UIViewController {
+class FruitInventoryViewController: UIViewController, FruitShowable {
     private let juiceMaker = JuiceMaker()
     
     @IBOutlet private var fruitsCountLabels: [UILabel]!
@@ -15,7 +15,7 @@ class FruitInventoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.backgroundColor = .lightGray
+        self.navigationController?.navigationBar.backgroundColor = .gray
         setTagOfStepper()
         setEventActionOfStepper()
     }
@@ -29,8 +29,8 @@ class FruitInventoryViewController: UIViewController {
             }
             
             let fruit = Fruit(fruitType, fruitCount)
-            setFruitCountToLabel(fruit)
-            setFruitCountToStepperValue(fruit)
+            show(fruit, on: fruitsCountLabels)
+            show(fruit, on: fruitsCountSteppers)
         }
     }
     
@@ -44,7 +44,7 @@ class FruitInventoryViewController: UIViewController {
             let fruit = Fruit(fruitType, newFruitCount - fruitCount)
             try juiceMaker.update(fruit)
             
-            setFruitCountToLabel(Fruit(fruitType, newFruitCount))
+            show(Fruit(fruitType, newFruitCount), on: fruitsCountLabels)
         } catch {
             return
         }
@@ -64,17 +64,5 @@ class FruitInventoryViewController: UIViewController {
         for fruitsCountStepper in fruitsCountSteppers {
             fruitsCountStepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
         }
-    }
-    
-    private func setFruitCountToLabel(_ fruit: Fruit) {
-        let (fruitType, fruitCount) = fruit
-        
-        fruitsCountLabels[fruitType.rawValue].text = "\(fruitCount)"
-    }
-    
-    private func setFruitCountToStepperValue(_ fruit: Fruit) {
-        let (fruitType, fruitCount) = fruit
-        
-        fruitsCountSteppers[fruitType.rawValue].value = Double(fruitCount)
     }
 }
