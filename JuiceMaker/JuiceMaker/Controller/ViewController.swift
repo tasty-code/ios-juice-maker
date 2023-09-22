@@ -22,6 +22,15 @@ final class ViewController: UIViewController {
     
     // MARK: - LifeCycle
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(displayFruitQuantity),
+                                               name: Notification.Name("stcokDidChanged"),
+                                               object: nil)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         displayFruitQuantity()
@@ -29,7 +38,7 @@ final class ViewController: UIViewController {
     
     // MARK: - Methods
     
-    private func displayFruitQuantity() {
+    @objc private func displayFruitQuantity() {
         let fruitQuantityLabels: [FruitQuantityLabel] = [strawberryQuantityLabel,
                                                          bananaQuantityLabel,
                                                          pineappleQuantityLabel,
@@ -48,7 +57,6 @@ final class ViewController: UIViewController {
         do {
             try juiceMaker.makeJuice(menu: menu)
             displayAcceptAlert(menuName: menu.description)
-            displayFruitQuantity()
         } catch {
             displayFillStockAlert()
         }

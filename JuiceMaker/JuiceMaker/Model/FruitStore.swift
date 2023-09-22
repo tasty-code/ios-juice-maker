@@ -11,11 +11,19 @@ final class FruitStore {
     
     // MARK: - Properties
     
-    private var fruitStock: [Fruit: Int] = [.strawberry : 10,
-                                            .banana: 10,
-                                            .pineapple: 10,
-                                            .kiwi: 10,
-                                            .mango: 10]
+    private var fruitStock: [Fruit: Int] = [
+        .strawberry : 10,
+        .banana: 10,
+        .pineapple: 10,
+        .kiwi: 10,
+        .mango: 10] {
+            didSet {
+                NotificationCenter.default.post(
+                    name:  Notification.Name("stcokDidChanged"),
+                    object: self
+                )
+            }
+        }
     
     // MARK: - Methods
     
