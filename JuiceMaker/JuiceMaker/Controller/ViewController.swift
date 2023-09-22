@@ -20,10 +20,10 @@ final class ViewController: UIViewController {
         updateStock()
     }
     
-    
     private func updateStock() {
         let fruitsUILabels = [strawberryStockLabel: Fruit.strawberry , bananaStockLabel: Fruit.banana , kiwiStockLabel: Fruit.kiwi  ,pineappleStockLabel: Fruit.pineapple, mangoStockLabel: Fruit.mango]
         let fruitStocks = juiceMakerModel.getAllStocks()
+        
         for (remainFruit, fruit) in fruitsUILabels {
             guard let amount = fruitStocks[fruit] else {
                 return
@@ -59,6 +59,7 @@ final class ViewController: UIViewController {
     func navigateToDashboardViewController() {
         let dashboardVC = storyboard?.instantiateViewController(withIdentifier: "dashboardVC") as! DashboardViewController
         dashboardVC.delegate = self
+        dashboardVC.juiceMakerModel = self.juiceMakerModel
         present(dashboardVC, animated: true)
     }
     

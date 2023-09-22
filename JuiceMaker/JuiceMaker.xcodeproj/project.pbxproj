@@ -54,8 +54,8 @@
 			children = (
 				C73DAF36255D0CDD00020D38 /* AppDelegate.swift */,
 				C73DAF38255D0CDD00020D38 /* SceneDelegate.swift */,
-				C73DAF3A255D0CDD00020D38 /* ViewController.swift */,
 				E3269B6C2AB7E6AE00FBD37B /* DashboardViewController.swift */,
+				C73DAF3A255D0CDD00020D38 /* ViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

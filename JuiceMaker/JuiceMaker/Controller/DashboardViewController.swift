@@ -13,7 +13,7 @@ protocol DashboardViewControllerDelegate: AnyObject {
 
 final class DashboardViewController: UIViewController {
     weak var delegate: DashboardViewControllerDelegate?
-    var juiceMakerModel: JuiceMaker = JuiceMaker()
+    var juiceMakerModel: JuiceMaker?
     var fruitDataSet: [(Fruit, UILabel, UIStepper)]?
     
     @IBOutlet weak var strawberryLabel: UILabel!
@@ -31,9 +31,9 @@ final class DashboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fruitDataSet = [(Fruit.strawberry, strawberryLabel, strawberryStepper),(Fruit.banana, bananaLabel, bananaStepper),
-                                     (Fruit.pineapple, pineappleLabel, pineappleStepper),
-                                     (Fruit.kiwi, kiwiLabel, kiwiStepper),
-                                     (Fruit.mango, mangoLabel, mangoStepper)
+                        (Fruit.pineapple, pineappleLabel, pineappleStepper),
+                        (Fruit.kiwi, kiwiLabel, kiwiStepper),
+                        (Fruit.mango, mangoLabel, mangoStepper)
         ]
         setStockLabel()
     }
@@ -47,22 +47,25 @@ final class DashboardViewController: UIViewController {
         guard let fruitData = fruitDataSet else {
             return
         }
+        guard let juiceMaker = juiceMakerModel else {
+            return
+        }
         
         switch sender.tag {
         case 0:
-            updateFruitStock(fruit: fruitData[0].0, amount: sender.value)
+            juiceMaker.updateFruitStock(fruit: fruitData[0].0, amount: sender.value)
             fruitData[0].1.text = Int(sender.value).description
         case 1:
-            updateFruitStock(fruit: fruitData[1].0, amount: sender.value)
+            juiceMaker.updateFruitStock(fruit: fruitData[1].0, amount: sender.value)
             fruitData[1].1.text = Int(sender.value).description
         case 2:
-            updateFruitStock(fruit: fruitData[2].0, amount: sender.value)
+            juiceMaker.updateFruitStock(fruit: fruitData[2].0, amount: sender.value)
             fruitData[2].1.text = Int(sender.value).description
         case 3:
-            updateFruitStock(fruit: fruitData[3].0, amount: sender.value)
+            juiceMaker.updateFruitStock(fruit: fruitData[3].0, amount: sender.value)
             fruitData[3].1.text = Int(sender.value).description
         case 4:
-            updateFruitStock(fruit: fruitData[4].0, amount: sender.value)
+            juiceMaker.updateFruitStock(fruit: fruitData[4].0, amount: sender.value)
             fruitData[4].1.text = Int(sender.value).description
         default:
             break
@@ -70,22 +73,20 @@ final class DashboardViewController: UIViewController {
     }
     
     private func setStockLabel() {
-        guard let fruitsData = fruitDataSet else {
+        guard let fruitData = fruitDataSet else {
+            return
+        }
+        guard let juiceMaker = juiceMakerModel else {
             return
         }
         
-        let fruitStocks = juiceMakerModel.getAllStocks()
-        
-        for (fruit, label, stepper) in fruitsData {
+        let fruitStocks = juiceMaker.getAllStocks()
+        for (fruit, label, stepper) in fruitData {
             guard let amount = fruitStocks[fruit] else {
                 return
             }
             label.text = String(amount)
             stepper.value = Double(amount)
         }
-    }
-    
-    private func updateFruitStock(fruit: Fruit, amount: Double) {
-        FruitStore.shared.update([fruit: Int(amount)])
     }
 }
