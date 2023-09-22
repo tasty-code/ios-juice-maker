@@ -60,7 +60,7 @@ final class MainViewController: UIViewController {
                 let count = try juiceMaker.remainingCount(fruit: fruit)
                 label.text = "\(count)"
             } catch {
-                defaultAlert(message: InventoryError.invalidError.description)
+                displayAlert(message: InventoryError.invalidError.description)
             }
         }
     }
@@ -110,31 +110,28 @@ final class MainViewController: UIViewController {
             let menu = try menuForJuiceButton(btnIdentifier: id)
             try juiceMaker.makeJuice(order: menu)
             updateFruitLabels()
-            defaultAlert(message: "\(menu.recipeName)쥬스 나왔습니다! 맛있게 드세요!")
+            displayAlert(message: "\(menu.recipeName)쥬스 나왔습니다! 맛있게 드세요!")
         } catch InventoryError.noLongerConsumeError {
-            juiceMakeFailAlert(message: InventoryError.noLongerConsumeError.description)
+            displayAlert(message: InventoryError.noLongerConsumeError.description)
         } catch {
-            defaultAlert(message: InventoryError.invalidError.description)
+            displayAlert(message: InventoryError.invalidError.description)
         }
     }
 }
 
 extension MainViewController {
-    private func defaultAlert(message: String) {
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "예", style: .default)
-        alert.addAction(yesAction)
-        present(alert, animated: true, completion: nil)
-    }
-    
-    private func juiceMakeFailAlert(message: String) {
-        let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "예", style: .destructive) { _ in
-            self.moveInventoryVC()
+    private func displayAlert(message: String) {
+        let alert = UIAlertController(title: message, message: nil , preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "예", style: .default) { _ in
+            if message == InventoryError.noLongerConsumeError.description {
+                self.moveInventoryVC()
+            }
         }
-        let noAction = UIAlertAction(title: "아니오", style: .cancel)
-        alert.addAction(noAction)
         alert.addAction(yesAction)
+        if message == InventoryError.noLongerConsumeError.description {
+            let noAction = UIAlertAction(title: "아니오", style: .destructive)
+            alert.addAction(noAction)
+        }
         present(alert, animated: true)
     }
 }
