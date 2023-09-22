@@ -9,6 +9,7 @@ import UIKit
 
 class EditStoreViewController: UIViewController {
   
+  var delegate: UpdateProtocol?
   let store = FruitStore.shared
   
   var strawberry: String?
@@ -16,8 +17,6 @@ class EditStoreViewController: UIViewController {
   var pineapple: String?
   var kiwi: String?
   var mango: String?
-  
-  var delegate: UpdateProtocol?
   
   @IBOutlet weak var strawberryNumberLabel: UILabel!
   @IBOutlet weak var bananaNumberLabel: UILabel!
