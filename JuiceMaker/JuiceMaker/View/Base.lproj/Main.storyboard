@@ -468,10 +468,15 @@
                     <navigationItem key="navigationItem" id="rO2-xT-2dN"/>
                     <connections>
                         <outlet property="bananaNumberLabel" destination="gKu-86-RhI" id="mBo-IH-1ae"/>
+                        <outlet property="bananaStepper" destination="O5s-2N-3iP" id="9W8-Ln-ecP"/>
                         <outlet property="kiwiNumberLabel" destination="ZDv-1m-HBY" id="vH7-GE-8x3"/>
+                        <outlet property="kiwiStepper" destination="klA-59-Nu4" id="JsO-1n-G5D"/>
                         <outlet property="mangoNumberLabel" destination="YJI-ER-LJR" id="iFU-7x-5tD"/>
+                        <outlet property="mangoStepper" destination="xbn-6P-grO" id="7sw-84-sK1"/>
                         <outlet property="pineappleNumberLabel" destination="MpT-VW-hCb" id="1rs-61-oEe"/>
+                        <outlet property="pineappleStepper" destination="Rcr-xr-eqz" id="Qju-AW-QIf"/>
                         <outlet property="strawberryNumberLabel" destination="0yV-kn-zaT" id="eUz-qq-p6I"/>
+                        <outlet property="strawberryStepper" destination="ZQk-f4-zrz" id="Zac-HU-SSt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
