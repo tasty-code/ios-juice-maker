@@ -7,10 +7,10 @@
 
 import UIKit
 
-class EditStoreViewController: UIViewController {
+final class EditStoreViewController: UIViewController {
   
   var delegate: ViewControllerDelegate?
-  let store = FruitStore.shared
+  private let store = FruitStore.shared
   
   var strawberryValue: String?
   var bananaValue: String?
@@ -18,17 +18,17 @@ class EditStoreViewController: UIViewController {
   var kiwiValue: String?
   var mangoValue: String?
   
-  @IBOutlet weak var strawberryNumberLabel: UILabel!
-  @IBOutlet weak var bananaNumberLabel: UILabel!
-  @IBOutlet weak var pineappleNumberLabel: UILabel!
-  @IBOutlet weak var kiwiNumberLabel: UILabel!
-  @IBOutlet weak var mangoNumberLabel: UILabel!
+  @IBOutlet weak private var strawberryNumberLabel: UILabel!
+  @IBOutlet weak private var bananaNumberLabel: UILabel!
+  @IBOutlet weak private var pineappleNumberLabel: UILabel!
+  @IBOutlet weak private var kiwiNumberLabel: UILabel!
+  @IBOutlet weak private var mangoNumberLabel: UILabel!
   
-  @IBOutlet weak var strawberryStepper: UIStepper!
-  @IBOutlet weak var bananaStepper: UIStepper!
-  @IBOutlet weak var pineappleStepper: UIStepper!
-  @IBOutlet weak var kiwiStepper: UIStepper!
-  @IBOutlet weak var mangoStepper: UIStepper!
+  @IBOutlet weak private var strawberryStepper: UIStepper!
+  @IBOutlet weak private var bananaStepper: UIStepper!
+  @IBOutlet weak private var pineappleStepper: UIStepper!
+  @IBOutlet weak private var kiwiStepper: UIStepper!
+  @IBOutlet weak private var mangoStepper: UIStepper!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -36,7 +36,7 @@ class EditStoreViewController: UIViewController {
     setMinimumValue()
   }
   
-  func setNumberLabel() {
+  private func setNumberLabel() {
     strawberryNumberLabel.text = strawberryValue
     bananaNumberLabel.text = bananaValue
     pineappleNumberLabel.text = pineappleValue
@@ -44,7 +44,7 @@ class EditStoreViewController: UIViewController {
     mangoNumberLabel.text = mangoValue
   }
   
-  func setMinimumValue() {
+  private func setMinimumValue() {
     let fruitStepperList: [UILabel: UIStepper] = [strawberryNumberLabel: strawberryStepper, bananaNumberLabel: bananaStepper, pineappleNumberLabel: pineappleStepper, kiwiNumberLabel: kiwiStepper, mangoNumberLabel: mangoStepper]
     
     for (fruitLabel, fruitStepper) in fruitStepperList {
@@ -54,12 +54,12 @@ class EditStoreViewController: UIViewController {
     }
   }
   
-  @IBAction func dismissButtonTapped(_ sender: UIButton) {
+  @IBAction private func dismissButtonTapped(_ sender: UIButton) {
     self.delegate?.updateData()
     self.dismiss(animated: true)
   }
   
-  @IBAction func stepperButtonTapped(_ sender: UIStepper) {
+  @IBAction private func stepperButtonTapped(_ sender: UIStepper) {
     switch sender.tag {
     case 0:
       let changeNumber = getChangeNumber(fruitNumber: strawberryValue, changeValue: sender.value)
@@ -86,7 +86,7 @@ class EditStoreViewController: UIViewController {
     }
   }
   
-  func getChangeNumber(fruitNumber: String?, changeValue: Double) -> Int {
+  private func getChangeNumber(fruitNumber: String?, changeValue: Double) -> Int {
     guard let stringFruitValue = fruitNumber else { return 0 }
     guard let intFruitValue = Int(stringFruitValue) else { return 0 }
     return intFruitValue + Int(changeValue)

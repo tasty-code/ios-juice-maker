@@ -10,15 +10,15 @@ protocol ViewControllerDelegate {
   func updateData()
 }
 
-class ViewController: UIViewController, ViewControllerDelegate {
+final class ViewController: UIViewController, ViewControllerDelegate {
   
-  let juiceMaker = JuiceMaker()
+  private let juiceMaker = JuiceMaker()
   
-  @IBOutlet weak var strawberryNumberLabel: UILabel!
-  @IBOutlet weak var bananaNumberLabel: UILabel!
-  @IBOutlet weak var pineappleNumberLabel: UILabel!
-  @IBOutlet weak var kiwiNumberLabel: UILabel!
-  @IBOutlet weak var mangoNumberLabel: UILabel!
+  @IBOutlet weak private var strawberryNumberLabel: UILabel!
+  @IBOutlet weak private var bananaNumberLabel: UILabel!
+  @IBOutlet weak private var pineappleNumberLabel: UILabel!
+  @IBOutlet weak private var kiwiNumberLabel: UILabel!
+  @IBOutlet weak private var mangoNumberLabel: UILabel!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -37,7 +37,7 @@ class ViewController: UIViewController, ViewControllerDelegate {
     mangoNumberLabel.text = String(juiceMaker.store.getNum(fruitName: Fruit.mango))
   }
   
-  @IBAction func juiceOrderButtonTapped(_ sender: UIButton) {
+  @IBAction private func juiceOrderButtonTapped(_ sender: UIButton) {
     guard let buttonName = sender.titleLabel?.text else { return }
     let juiceName = buttonName.split(separator: " ")[0]
     let message = juiceMaker.createJuice(type: String(juiceName))
@@ -45,7 +45,7 @@ class ViewController: UIViewController, ViewControllerDelegate {
     setNumberLabel()
   }
   
-  func showAlert(message: String) {
+  private func showAlert(message: String) {
     let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertController.Style.alert)
     let outOfStock = (message == "재료가 모자라요. 재고를 수정할까요?")
     
@@ -70,7 +70,7 @@ class ViewController: UIViewController, ViewControllerDelegate {
     }
   }
   
-  func sendData(view: EditStoreViewController) {
+  private func sendData(view: EditStoreViewController) {
     view.strawberryValue = self.strawberryNumberLabel?.text
     view.bananaValue = self.bananaNumberLabel?.text
     view.pineappleValue = self.pineappleNumberLabel?.text
