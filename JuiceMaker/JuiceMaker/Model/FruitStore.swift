@@ -11,11 +11,19 @@ final class FruitStore {
     
     // MARK: - Properties
     
-    var fruitStock: [Fruit: Int] = [.strawberry : 10,
-                                    .banana: 10,
-                                    .pineapple: 10,
-                                    .kiwi: 10,
-                                    .mango: 10]
+    private var fruitStock: [Fruit: Int] = [
+        .strawberry: 10,
+        .banana: 10,
+        .pineapple: 10,
+        .kiwi: 10,
+        .mango: 10] {
+            didSet {
+                NotificationCenter.default.post(
+                    name: Notification.Name("stockDidChanged"),
+                    object: self
+                )
+            }
+        }
     
     // MARK: - Methods
     
@@ -24,10 +32,8 @@ final class FruitStore {
         fruitStock.updateValue(remainCount - count, forKey: fruit)
     }
     
-    func checkFruitStock(fruit: Fruit) throws -> Int {
-        guard let remainCount = fruitStock[fruit] else {
-            throw StockError.invalidInput
-        }
-        return remainCount
+    func quantity(of fruit: Fruit) -> Int {
+        guard let quantity = fruitStock[fruit] else { return 0 }
+        return quantity
     }
 }

@@ -10,25 +10,26 @@ struct JuiceMaker {
     
     // MARK: - Properties
     
-    private let fruitStore = FruitStore()
+    let fruitStore = FruitStore()
     
-
     // MARK: - Methods
     
     func makeJuice(menu: JuiceMenu) throws {
         let recipe = menu.juiceRecipe()
         
+        try checkStock(for: recipe)
+        
         for (fruit, count) in recipe {
-            let remainCount = try checkFruit(fruit: fruit)
-            
-            if remainCount < count {
-                throw StockError.emptyStock
-            }
             fruitStore.consume(fruit: fruit, count: count)
         }
     }
     
-    func checkFruit(fruit: Fruit) throws -> Int {
-        return try fruitStore.checkFruitStock(fruit: fruit)
+    private func checkStock(for recipe: [Fruit: Int]) throws {
+        for (fruit, count) in recipe {
+            let remainCount = fruitStore.quantity(of: fruit)
+            if remainCount < count {
+                throw StockError.emptyStock
+            }
+        }
     }
 }
