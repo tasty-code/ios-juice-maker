@@ -79,14 +79,14 @@ final class ViewController: UIViewController {
             preferredStyle: .alert
         )
         alert.addAction(UIAlertAction(title: "예", style: .default, handler: { _ in
-            self.presentStockManager()
+            self.presentStockManagerViewController()
         }))
         alert.addAction(UIAlertAction(title: "아니요", style: .destructive))
         present(alert, animated: true, completion: nil)
     }
     
-    private func presentStockManager() {
-        guard let presentViewController = self.storyboard?.instantiateViewController(identifier: "StockManagement") else { return }
-        self.present(presentViewController, animated: true, completion: nil)
+    private func presentStockManagerViewController() {
+        guard let stockManagerViewController = self.storyboard?.instantiateViewController(identifier: "StockManagement") else { return }
+        self.present(stockManagerViewController, animated: true, completion: nil)
     }
 }
