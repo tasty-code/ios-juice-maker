@@ -24,16 +24,11 @@ final class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        displayFruitQuantity()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(displayFruitQuantity),
                                                name: Notification.Name("stockDidChanged"),
                                                object: nil)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        displayFruitQuantity()
     }
     
     // MARK: - Methods
