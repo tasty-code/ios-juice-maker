@@ -27,7 +27,7 @@ final class ViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(displayFruitQuantity),
-                                               name: Notification.Name("stcokDidChanged"),
+                                               name: Notification.Name("stockDidChanged"),
                                                object: nil)
     }
     

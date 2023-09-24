@@ -19,7 +19,7 @@ final class FruitStore {
         .mango: 10] {
             didSet {
                 NotificationCenter.default.post(
-                    name: Notification.Name("stcokDidChanged"),
+                    name: Notification.Name("stockDidChanged"),
                     object: self
                 )
             }
