@@ -32,8 +32,8 @@ final class FruitStore {
         fruitStock.updateValue(remainCount - count, forKey: fruit)
     }
     
-    func quantity(of: Fruit) -> Int {
-        guard let quantity = fruitStock[of] else { return 10 }
+    func quantity(of fruit: Fruit) -> Int {
+        guard let quantity = fruitStock[fruit] else { return 0 }
         return quantity
     }
 }
