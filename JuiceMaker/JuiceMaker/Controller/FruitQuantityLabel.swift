@@ -13,31 +13,31 @@ class FruitQuantityLabel: UILabel {
 
 final class StrawberryQuantityLabel: FruitQuantityLabel {
     override func fruit() -> Fruit? {
-        return Fruit(rawValue: Fruit.strawberry.rawValue)
+        return Fruit.strawberry
     }
 }
 
 final class BananaQuantityLabel: FruitQuantityLabel {
     override func fruit() -> Fruit? {
-        return Fruit(rawValue: Fruit.banana.rawValue)
+        return Fruit.banana
     }
 }
 
 final class PineappleQuantityLabel: FruitQuantityLabel {
     override func fruit() -> Fruit? {
-        return Fruit(rawValue: Fruit.pineapple.rawValue)
+        return Fruit.pineapple
     }
 }
 
 final class KiwiQuantityLabel: FruitQuantityLabel {
     override func fruit() -> Fruit? {
-        return Fruit(rawValue: Fruit.kiwi.rawValue)
+        return Fruit.kiwi
     }
 }
 
 final class MangoQuantityLabel: FruitQuantityLabel {
     override func fruit() -> Fruit? {
-        return Fruit(rawValue: Fruit.mango.rawValue)
+        return Fruit.mango
     }
 }
 
