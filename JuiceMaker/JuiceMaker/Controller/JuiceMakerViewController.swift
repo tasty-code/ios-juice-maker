@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class JuiceMakerViewController: UIViewController {
     
     // MARK: - Properties
     
