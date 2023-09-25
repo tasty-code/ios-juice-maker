@@ -10,13 +10,14 @@ import UIKit
 final class EditStoreViewController: UIViewController {
   
   var delegate: DismissEditStoreViewDelegate?
-  private let store = FruitStore.shared
   
   var strawberryValue: String?
   var bananaValue: String?
   var pineappleValue: String?
   var kiwiValue: String?
   var mangoValue: String?
+  
+  private let store = FruitStore.shared
   
   @IBOutlet weak private var strawberryNumberLabel: UILabel!
   @IBOutlet weak private var bananaNumberLabel: UILabel!

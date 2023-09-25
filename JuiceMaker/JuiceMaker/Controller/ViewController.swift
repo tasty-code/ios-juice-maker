@@ -25,6 +25,13 @@ final class ViewController: UIViewController, DismissEditStoreViewDelegate {
     setNumberLabel()
   }
   
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.destination is EditStoreViewController {
+      guard let editStoreView = segue.destination as? EditStoreViewController else { return }
+      sendData(view: editStoreView)
+    }
+  }
+  
   func updateData() {
     setNumberLabel()
   }
@@ -61,13 +68,6 @@ final class ViewController: UIViewController, DismissEditStoreViewDelegate {
     
     alert.addAction(UIAlertAction(title: outOfStock ? "아니오" : "확인", style: UIAlertAction.Style.cancel, handler: nil))
     self.present(alert, animated: true, completion: nil)
-  }
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.destination is EditStoreViewController {
-      guard let editStoreView = segue.destination as? EditStoreViewController else { return }
-      sendData(view: editStoreView)
-    }
   }
   
   private func sendData(view: EditStoreViewController) {
