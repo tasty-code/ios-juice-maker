@@ -63,31 +63,27 @@ final class EditStoreViewController: UIViewController {
   @IBAction private func stepperButtonTapped(_ sender: UIStepper) {
     switch sender.tag {
     case 0:
-      let changeNumber = getChangeNumber(fruitNumber: strawberryNumber, changeValue: sender.value)
+      let changeNumber = strawberryNumber + Int(sender.value)
       strawberryNumberLabel.text = changeNumber.description
       store.update(fruitName: .strawberry, number: changeNumber)
     case 1:
-      let changeNumber = getChangeNumber(fruitNumber: bananaNumber, changeValue: sender.value)
+      let changeNumber = bananaNumber + Int(sender.value)
       bananaNumberLabel.text = changeNumber.description
       store.update(fruitName: .banana, number: changeNumber)
     case 2:
-      let changeNumber = getChangeNumber(fruitNumber: pineappleNumber, changeValue: sender.value)
+      let changeNumber = pineappleNumber + Int(sender.value)
       pineappleNumberLabel.text = changeNumber.description
       store.update(fruitName: .pineapple, number: changeNumber)
     case 3:
-      let changeNumber = getChangeNumber(fruitNumber: kiwiNumber, changeValue: sender.value)
+      let changeNumber = kiwiNumber + Int(sender.value)
       kiwiNumberLabel.text = changeNumber.description
       store.update(fruitName: .kiwi, number: changeNumber)
     case 4:
-      let changeNumber = getChangeNumber(fruitNumber: mangoNumber, changeValue: sender.value)
+      let changeNumber = mangoNumber + Int(sender.value)
       mangoNumberLabel.text = changeNumber.description
       store.update(fruitName: .mango, number: changeNumber)
     default:
       return
     }
-  }
-  
-  private func getChangeNumber(fruitNumber: Int, changeValue: Double) -> Int {
-    return fruitNumber + Int(changeValue)
   }
 }
