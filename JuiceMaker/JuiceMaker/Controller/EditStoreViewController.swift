@@ -13,11 +13,7 @@ final class EditStoreViewController: UIViewController {
   
   private let store = FruitStore.shared
   
-  lazy private var strawberryNumber = store.getNum(fruitName: .strawberry)
-  lazy private var bananaNumber = store.getNum(fruitName: .banana)
-  lazy private var pineappleNumber = store.getNum(fruitName: .pineapple)
-  lazy private var kiwiNumber = store.getNum(fruitName: .kiwi)
-  lazy private var mangoNumber = store.getNum(fruitName: .mango)
+  @IBOutlet var numberLabelCollection: [UILabel]!
   
   @IBOutlet weak private var strawberryNumberLabel: UILabel!
   @IBOutlet weak private var bananaNumberLabel: UILabel!
@@ -38,11 +34,10 @@ final class EditStoreViewController: UIViewController {
   }
   
   private func setNumberLabel() {
-    strawberryNumberLabel.text = strawberryNumber.description
-    bananaNumberLabel.text = bananaNumber.description
-    pineappleNumberLabel.text = pineappleNumber.description
-    kiwiNumberLabel.text = kiwiNumber.description
-    mangoNumberLabel.text = mangoNumber.description
+    for numberLabel in numberLabelCollection {
+      guard let currentFruitName = Fruit(rawValue: numberLabel.tag) else { return }
+      numberLabel.text = store.getNum(fruitName: currentFruitName).description
+    }
   }
   
   private func setMinimumValue() {
@@ -56,34 +51,25 @@ final class EditStoreViewController: UIViewController {
   }
   
   @IBAction private func dismissButtonTapped(_ sender: UIButton) {
+    for numberLabel in numberLabelCollection {
+      guard let stringNumberValue = numberLabel.text else { return }
+      guard let currentFruitValue = Int(stringNumberValue) else { return }
+      guard let currentFruitName = Fruit(rawValue: numberLabel.tag) else { return }
+      store.update(fruitName: currentFruitName, number: currentFruitValue)
+    }
+    
     self.delegate?.updateData()
     self.dismiss(animated: true)
   }
   
   @IBAction private func stepperButtonTapped(_ sender: UIStepper) {
-    switch sender.tag {
-    case 0:
-      let changeNumber = strawberryNumber + Int(sender.value)
-      strawberryNumberLabel.text = changeNumber.description
-      store.update(fruitName: .strawberry, number: changeNumber)
-    case 1:
-      let changeNumber = bananaNumber + Int(sender.value)
-      bananaNumberLabel.text = changeNumber.description
-      store.update(fruitName: .banana, number: changeNumber)
-    case 2:
-      let changeNumber = pineappleNumber + Int(sender.value)
-      pineappleNumberLabel.text = changeNumber.description
-      store.update(fruitName: .pineapple, number: changeNumber)
-    case 3:
-      let changeNumber = kiwiNumber + Int(sender.value)
-      kiwiNumberLabel.text = changeNumber.description
-      store.update(fruitName: .kiwi, number: changeNumber)
-    case 4:
-      let changeNumber = mangoNumber + Int(sender.value)
-      mangoNumberLabel.text = changeNumber.description
-      store.update(fruitName: .mango, number: changeNumber)
-    default:
-      return
+    guard let currentFruitName = Fruit(rawValue: sender.tag) else { return }
+    let changeNumber = store.getNum(fruitName: currentFruitName) + Int(sender.value)
+    
+    for numberLabel in numberLabelCollection {
+      if numberLabel.tag == sender.tag {
+        numberLabel.text = changeNumber.description
+      }
     }
   }
 }
