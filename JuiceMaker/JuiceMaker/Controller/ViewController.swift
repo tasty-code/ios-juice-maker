@@ -6,11 +6,11 @@
 
 import UIKit
 
-protocol ViewControllerDelegate {
+protocol DismissEditStoreViewDelegate {
   func updateData()
 }
 
-final class ViewController: UIViewController, ViewControllerDelegate {
+final class ViewController: UIViewController, DismissEditStoreViewDelegate {
   
   private let juiceMaker = JuiceMaker()
   

@@ -9,7 +9,7 @@ import UIKit
 
 final class EditStoreViewController: UIViewController {
   
-  var delegate: ViewControllerDelegate?
+  var delegate: DismissEditStoreViewDelegate?
   private let store = FruitStore.shared
   
   var strawberryValue: String?
