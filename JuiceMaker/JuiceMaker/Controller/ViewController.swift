@@ -6,7 +6,7 @@
 
 import UIKit
 
-protocol DismissEditStoreViewDelegate {
+protocol DismissEditStoreViewDelegate: AnyObject {
   func updateData()
 }
 

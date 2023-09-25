@@ -9,7 +9,7 @@ import UIKit
 
 final class EditStoreViewController: UIViewController {
   
-  var delegate: DismissEditStoreViewDelegate?
+  weak var delegate: DismissEditStoreViewDelegate?
   
   var strawberryValue: String?
   var bananaValue: String?
