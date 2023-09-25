@@ -71,11 +71,6 @@ final class ViewController: UIViewController, DismissEditStoreViewDelegate {
   }
   
   private func sendData(view: EditStoreViewController) {
-    view.strawberryValue = self.strawberryNumberLabel?.text
-    view.bananaValue = self.bananaNumberLabel?.text
-    view.pineappleValue = self.pineappleNumberLabel?.text
-    view.kiwiValue = self.kiwiNumberLabel?.text
-    view.mangoValue = self.mangoNumberLabel?.text
     view.delegate = self
   }
 }
