@@ -65,7 +65,7 @@ final class MainViewController: UIViewController {
         }
     }
     
-    private func moveInventoryVC () {
+    private func moveInventoryVC() {
         let invetoryViewControllerIdentifier = "Inventory"
         guard let inventoryVC = self.storyboard?.instantiateViewController(identifier: invetoryViewControllerIdentifier) as? FruitInventoryViewController else {
             return
