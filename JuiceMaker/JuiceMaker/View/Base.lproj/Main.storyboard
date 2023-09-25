@@ -377,7 +377,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="재고 추가" id="5Wl-q8-mbo">
-                                        <barButtonItem key="rightBarButtonItem" title="닫기" id="lWh-MN-Huc"/>
+                                        <barButtonItem key="rightBarButtonItem" title="닫기" id="lWh-MN-Huc">
+                                            <connections>
+                                                <action selector="pressCloseButton:" destination="Yu1-lM-nqp" id="uZi-Nz-AQC"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
