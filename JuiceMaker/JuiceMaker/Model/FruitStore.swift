@@ -38,9 +38,4 @@ class FruitStore {
     func changeCount(fruit: Fruit, newCount: UInt) {
         fruitInventory[fruit] = newCount
     }
-    
-    func increaseCount(fruit: Fruit) {
-        guard let reamainedCount = fruitInventory[fruit] else { return }
-        fruitInventory[fruit] = reamainedCount + 1
-    }
 }
