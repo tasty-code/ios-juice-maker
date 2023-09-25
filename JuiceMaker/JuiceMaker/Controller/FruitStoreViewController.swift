@@ -7,8 +7,8 @@
 
 import UIKit
 
-class FruitStoreViewController: UIViewController {
-    var fruitStore: FruitStore?
+final class FruitStoreViewController: UIViewController {
+    weak var fruitStore: FruitStore?
     
     override func viewDidLoad() {
         super.viewDidLoad()
