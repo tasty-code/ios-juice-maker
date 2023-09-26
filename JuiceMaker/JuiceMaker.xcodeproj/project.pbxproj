@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		665EEF872AC26F310058186F /* FruitQunatityStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665EEF862AC26F310058186F /* FruitQunatityStepper.swift */; };
 		66ECD7AE2AB956E60038A4CA /* StockManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECD7AD2AB956E60038A4CA /* StockManagerViewController.swift */; };
 		98FAC71D2AB054CD00F222F5 /* StockError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FAC71C2AB054CD00F222F5 /* StockError.swift */; };
 		C3013A8C2ABAE4510055A37C /* JuiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3013A8B2ABAE4510055A37C /* JuiceButton.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		665EEF862AC26F310058186F /* FruitQunatityStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitQunatityStepper.swift; sourceTree = "<group>"; };
 		66ECD7AD2AB956E60038A4CA /* StockManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockManagerViewController.swift; sourceTree = "<group>"; };
 		98FAC71C2AB054CD00F222F5 /* StockError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockError.swift; sourceTree = "<group>"; };
 		C3013A8B2ABAE4510055A37C /* JuiceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceButton.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				66ECD7AD2AB956E60038A4CA /* StockManagerViewController.swift */,
 				C3013A8B2ABAE4510055A37C /* JuiceButton.swift */,
 				C3013A8D2ABBCB290055A37C /* FruitQuantityLabel.swift */,
+				665EEF862AC26F310058186F /* FruitQunatityStepper.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C346A13F2AB49373001F7ED4 /* Fruit.swift in Sources */,
+				665EEF872AC26F310058186F /* FruitQunatityStepper.swift in Sources */,
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
 				98FAC71D2AB054CD00F222F5 /* StockError.swift in Sources */,
 				C38A0FF12AB01BB800D7F1AF /* JuiceMenu.swift in Sources */,

@@ -85,7 +85,7 @@ final class JuiceMakerViewController: UIViewController {
     
     private func presentStockManagerViewController() {
         guard let stockManagerViewController = self.storyboard?.instantiateViewController(identifier: "StcokManagerViewController") as? StockManagerViewController else { return }
-                stockManagerViewController.fruitStore = juiceMaker.fruitStore
-                self.present(stockManagerViewController, animated: true, completion: nil)
+        stockManagerViewController.fruitStock = juiceMaker.fruitStore.getFruitStock()
+        self.present(stockManagerViewController, animated: true, completion: nil)
     }
 }

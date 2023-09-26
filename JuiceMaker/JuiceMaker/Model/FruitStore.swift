@@ -36,4 +36,8 @@ final class FruitStore {
         guard let quantity = fruitStock[fruit] else { return 0 }
         return quantity
     }
+    
+    func getFruitStock() -> [Fruit : Int] {
+        return self.fruitStock
+    }
 }
