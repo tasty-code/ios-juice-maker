@@ -238,16 +238,16 @@
                     <navigationItem key="navigationItem" title="맛있는 쥬스를 만들어 드려요!" id="Eal-fj-o4N">
                         <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT">
                             <connections>
-                                <segue destination="Yu1-lM-nqp" kind="show" id="tIu-q5-aSf"/>
+                                <action selector="modifyInvertoryPressed:" destination="BYZ-38-t0r" id="Jfg-cy-GCP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="bananaCountLabel" destination="gvk-pA-Lw5" id="Gp8-x1-dts"/>
-                        <outlet property="kiwiCountLabel" destination="FZq-de-TJG" id="GsK-Rc-qWW"/>
-                        <outlet property="mangoCountLabel" destination="3Ce-SU-JeH" id="Heh-1W-CKX"/>
-                        <outlet property="pineappleCountLabel" destination="ccQ-Dk-PuY" id="6sX-Me-5XY"/>
-                        <outlet property="strawberryCountLabel" destination="Qas-vP-td6" id="0yE-v2-WOc"/>
+                        <outletCollection property="fruitsCountLabels" destination="Qas-vP-td6" collectionClass="NSMutableArray" id="xpg-0X-xLd"/>
+                        <outletCollection property="fruitsCountLabels" destination="gvk-pA-Lw5" collectionClass="NSMutableArray" id="5cD-BX-AYF"/>
+                        <outletCollection property="fruitsCountLabels" destination="ccQ-Dk-PuY" collectionClass="NSMutableArray" id="MOd-BX-W6X"/>
+                        <outletCollection property="fruitsCountLabels" destination="FZq-de-TJG" collectionClass="NSMutableArray" id="TPm-x1-Ygv"/>
+                        <outletCollection property="fruitsCountLabels" destination="3Ce-SU-JeH" collectionClass="NSMutableArray" id="jLJ-mg-pym"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -272,7 +272,7 @@
             </objects>
             <point key="canvasLocation" x="999" y="20"/>
         </scene>
-        <!--Fruit Inventory View Controller-->
+        <!--재고 추가-->
         <scene sceneID="fkG-vv-hpE">
             <objects>
                 <viewController storyboardIdentifier="FruitInventoryViewController" id="Yu1-lM-nqp" customClass="FruitInventoryViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
@@ -401,23 +401,35 @@
                             <constraint firstItem="5zg-zx-UZC" firstAttribute="centerX" secondItem="tKV-4l-Vtc" secondAttribute="centerX" id="rSZ-UF-tG1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="g4W-fY-l7r"/>
+                    <navigationItem key="navigationItem" title="재고 추가" id="g4W-fY-l7r" userLabel="재고 추가">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="7v7-mx-o5s">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="dOR-QE-RAm">
+                                <rect key="frame" x="702" y="4.6666666666666679" width="54" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="닫기"/>
+                                <connections>
+                                    <action selector="touchUpCloseButton:" destination="Yu1-lM-nqp" eventType="touchUpInside" id="ub2-qk-B1H"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="bananaCountLabel" destination="gKu-86-RhI" id="Pr4-ET-VWF"/>
-                        <outlet property="bananaStepper" destination="O5s-2N-3iP" id="6b1-Af-7SL"/>
-                        <outlet property="kiwiCountLabel" destination="ZDv-1m-HBY" id="0qr-Um-LiQ"/>
-                        <outlet property="kiwiStepper" destination="klA-59-Nu4" id="CVF-61-QAE"/>
-                        <outlet property="mangoCountLabel" destination="YJI-ER-LJR" id="PvI-VZ-56l"/>
-                        <outlet property="mangoStepper" destination="xbn-6P-grO" id="sh5-Fb-XfS"/>
-                        <outlet property="pineappleCountLabel" destination="MpT-VW-hCb" id="OMB-R0-dc3"/>
-                        <outlet property="pineappleStepper" destination="Rcr-xr-eqz" id="PTo-Lc-578"/>
-                        <outlet property="strawberryCountLabel" destination="0yV-kn-zaT" id="fhx-H0-luM"/>
-                        <outlet property="strawberryStepper" destination="ZQk-f4-zrz" id="uIs-PI-bj9"/>
+                        <outletCollection property="fruitsCountLabels" destination="0yV-kn-zaT" collectionClass="NSMutableArray" id="hpM-cr-1t7"/>
+                        <outletCollection property="fruitsCountLabels" destination="gKu-86-RhI" collectionClass="NSMutableArray" id="6NI-Lz-R9l"/>
+                        <outletCollection property="fruitsCountLabels" destination="MpT-VW-hCb" collectionClass="NSMutableArray" id="b4A-HH-KtF"/>
+                        <outletCollection property="fruitsCountLabels" destination="ZDv-1m-HBY" collectionClass="NSMutableArray" id="EeL-Gb-vbl"/>
+                        <outletCollection property="fruitsCountLabels" destination="YJI-ER-LJR" collectionClass="NSMutableArray" id="4bg-bO-tUy"/>
+                        <outletCollection property="fruitsCountSteppers" destination="ZQk-f4-zrz" collectionClass="NSMutableArray" id="rrG-p6-1yk"/>
+                        <outletCollection property="fruitsCountSteppers" destination="O5s-2N-3iP" collectionClass="NSMutableArray" id="7tu-u2-kd4"/>
+                        <outletCollection property="fruitsCountSteppers" destination="Rcr-xr-eqz" collectionClass="NSMutableArray" id="scZ-xw-CW4"/>
+                        <outletCollection property="fruitsCountSteppers" destination="klA-59-Nu4" collectionClass="NSMutableArray" id="aTe-h0-jLV"/>
+                        <outletCollection property="fruitsCountSteppers" destination="xbn-6P-grO" collectionClass="NSMutableArray" id="VTR-77-C1P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1691" y="877"/>
+            <point key="canvasLocation" x="1690.5213270142178" y="876.92307692307691"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cAf-jL-tPK">
@@ -438,9 +450,6 @@
             <point key="canvasLocation" x="1691" y="20"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="wH1-3A-cBm"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -449,7 +458,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

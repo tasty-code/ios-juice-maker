@@ -1,39 +1,31 @@
 //
 //  JuiceMaker - JuiceMenuViewController.swift
-//  Created by yagom. 
+//  Created by yagom.
 //  Copyright © yagom academy. All rights reserved.
-// 
+//
 
 import UIKit
 
-class JuiceMenuViewController: UIViewController {
+class JuiceMenuViewController: UIViewController, FruitShowable {
     private let juiceMaker = JuiceMaker()
     
-    @IBOutlet weak var strawberryCountLabel: UILabel!
-    @IBOutlet weak var bananaCountLabel: UILabel!
-    @IBOutlet weak var pineappleCountLabel: UILabel!
-    @IBOutlet weak var kiwiCountLabel: UILabel!
-    @IBOutlet weak var mangoCountLabel: UILabel!
-
+    @IBOutlet private var fruitsCountLabels: [UILabel]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setNavigationBarBackgroundColor()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        for fruitType in FruitType.allCases {
-            guard let fruitCount = FruitStore.shared.fruitCounts[fruitType] else {
-                return
-            }
-            
-            setFruitCountToLabel(Fruit(fruitType, fruitCount))
-        }
+        setCount(on: fruitsCountLabels)
     }
     
-    @IBAction func juiceButtonPressed(_ sender: UIButton) {
+    @IBAction private func juiceButtonPressed(_ sender: UIButton) {
         guard let juiceSubstring = sender.titleLabel?.text?.split(separator: " ")[0],
-        let juiceType = JuiceType(rawValue: String(juiceSubstring)) else {
+              let juiceType = JuiceType(rawValue: String(juiceSubstring)) else {
             return
         }
         order(menu: juiceType)
@@ -41,8 +33,12 @@ class JuiceMenuViewController: UIViewController {
             guard let fruitCount = FruitStore.shared.fruitCounts[fruitType] else {
                 return
             }
-            setFruitCountToLabel(Fruit(fruitType, fruitCount))
+            setCount(of: Fruit(fruitType, fruitCount), on: fruitsCountLabels)
         }
+    }
+    
+    @IBAction private func modifyInvertoryPressed(_ sender: Any) {
+        showFruitInventoryViewController()
     }
     
     private func order(menu selectedMenu: JuiceType) {
@@ -71,11 +67,8 @@ class JuiceMenuViewController: UIViewController {
             message: "재료가 모자라요. 재고를 수정할까요?",
             preferredStyle: .alert
         )
-        let agreeAlertAction = UIAlertAction(title: "예", style: .default) { action in
-            guard let fruitInventoryViewController = self.storyboard?.instantiateViewController(identifier: "FruitInventoryViewController") else {
-                return
-            }
-            self.navigationController?.pushViewController(fruitInventoryViewController, animated: true)
+        let agreeAlertAction = UIAlertAction(title: "예", style: .default) { _ in
+            self.showFruitInventoryViewController()
         }
         let disagreeAlertAction = UIAlertAction(title: "아니오", style: .destructive)
         alertController.addAction(agreeAlertAction)
@@ -83,20 +76,14 @@ class JuiceMenuViewController: UIViewController {
         present(alertController, animated: true)
     }
     
-    private func setFruitCountToLabel(_ fruit: Fruit) {
-        let (fruitType, fruitCount) = fruit
-        
-        switch fruitType {
-        case .strawberry:
-            strawberryCountLabel.text = "\(fruitCount)"
-        case .banana:
-            bananaCountLabel.text = "\(fruitCount)"
-        case .mango:
-            mangoCountLabel.text = "\(fruitCount)"
-        case .pineapple:
-            pineappleCountLabel.text = "\(fruitCount)"
-        case .kiwi:
-            kiwiCountLabel.text = "\(fruitCount)"
+    private func showFruitInventoryViewController() {
+        guard let fruitInventoryViewController = storyboard?.instantiateViewController(identifier: "FruitInventoryViewController") else {
+            return
         }
+        let navigationController = UINavigationController(rootViewController: fruitInventoryViewController)
+        
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true)
     }
+    
 }
