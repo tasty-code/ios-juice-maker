@@ -6,16 +6,12 @@
 
 import UIKit
 
-class JuiceMakerViewController: UIViewController {
+final class JuiceMakerViewController: UIViewController {
     private let juiceMaker = JuiceMaker()
     
-    @IBOutlet weak var strawberryStockLabel: UILabel!
-    @IBOutlet weak var bananaStockLabel: UILabel!
-    @IBOutlet weak var pineappleStockLabel: UILabel!
-    @IBOutlet weak var kiwiStockLabel: UILabel!
-    @IBOutlet weak var mangoStockLabel: UILabel!
+    @IBOutlet private var fruitStockLabels: [UILabel]!
     
-    var inventory: [String: Int]?
+    private var inventory: [FruitName: Int]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,27 +19,27 @@ class JuiceMakerViewController: UIViewController {
         self.syncStockLabels()
     }
 
-    @IBAction func makeJuice(_ sender: UIButton) {
-        guard let buttonId = sender.accessibilityIdentifier else { return }
+    @IBAction private func touchJuiceOrderButton(_ sender: UIButton) {
+        guard let juice = sender as? JuiceNameIdentifiable else { return }
         
         do {
-            try juiceMaker.makeJuice(juiceName: buttonId)
+            try juiceMaker.makeJuice(juiceName: juice.juiceName)
             self.loadInventory()
             self.syncStockLabels()
-            showAlertCompletionJuiceMaking(buttonId)
+            showAlertCompletionJuiceMaking(juice.juiceName)
         } catch let error {
             showAlertOutOfStock(error)
         }
     }
     
-    @IBAction func touchNavButton(_ sender: UIBarButtonItem) {
+    @IBAction private func touchNavButton(_ sender: UIBarButtonItem) {
         pushAdjustStockViewController()
     }
 }
 
 // MARK: Delegate
 extension JuiceMakerViewController: InventorySendDelegate {
-    func sendInventory(inventory: [String: Int]) {
+    func sendInventory(inventory: [FruitName: Int]) {
         self.inventory = inventory
         syncStockLabels()
         juiceMaker.updateFruitStoreInventory(with: inventory)
@@ -57,15 +53,17 @@ extension JuiceMakerViewController {
     }
     
     private func syncStockLabels() {
-        strawberryStockLabel.text = String(inventory?["딸기"] ?? 0)
-        bananaStockLabel.text = String(inventory?["바나나"] ?? 0)
-        kiwiStockLabel.text = String(inventory?["키위"] ?? 0)
-        pineappleStockLabel.text = String(inventory?["파인애플"] ?? 0)
-        mangoStockLabel.text = String(inventory?["망고"] ?? 0)
+        for fruitStockLabel in fruitStockLabels {
+            guard let label = fruitStockLabel as? FruitStockIdentifiable,
+                  let stock = inventory?[label.fruitType]
+            else { return }
+            
+            fruitStockLabel.text = String(stock)
+        }
     }
     
-    private func showAlertCompletionJuiceMaking(_ juiceName: String) {
-        let alert = UIAlertController(title: "\(juiceName) 쥬스 나왔습니다! 맛있게 드세요!", message: nil, preferredStyle: .alert)
+    private func showAlertCompletionJuiceMaking(_ juiceName: JuiceName) {
+        let alert = UIAlertController(title: "\(juiceName.rawValue) 쥬스 나왔습니다! 맛있게 드세요!", message: nil, preferredStyle: .alert)
         let yes = UIAlertAction(title: "감사합니다!", style: .default)
         alert.addAction(yes)
         present(alert, animated: true, completion: nil)

@@ -7,7 +7,7 @@
 import Foundation
 
 final class FruitStore {
-    private var inventory: [FruitType: Int]
+    private(set) var inventory: [FruitType: Int]
     
     init() {
         let initialQuantity: Int = 10
@@ -21,9 +21,8 @@ final class FruitStore {
         self.inventory = inventory
     }
     
-    func receiveOrder(juiceName: String) throws {
-        guard let juice = JuiceType(rawValue: juiceName) else { throw JuiceMakerError.invalidSelection }
-        let recipe = juice.recipe
+    func receiveOrder(juiceName: JuiceType) throws {
+        let recipe = juiceName.recipe
         
         for ingredient in recipe {
             try validateStock(with: ingredient)
@@ -34,28 +33,14 @@ final class FruitStore {
         }
     }
     
-    func checkInventoryStock() -> [String: Int] {
-        var itemDict: [String: Int] = [:]
-
-        for item in self.inventory {
-            itemDict[item.key.rawValue] = item.value
-        }
-
-        return itemDict
-    }
-    
-    func updateInventoryStock(with inventory: [String: Int]) {
-        for item in inventory {
-            if let fruitType = FruitType(rawValue: item.key) {
-                self.inventory.updateValue(item.value, forKey: fruitType)
-            }
-        }
+    func updateInventoryStock(with inventory: [FruitType: Int]) {
+        self.inventory = inventory
     }
 }
 
 // MARK: Nested Types
 extension FruitStore {
-    private enum JuiceType: String {
+    enum JuiceType: String {
         case strawberryJuice = "딸기쥬스"
         case bananaJuice = "바나나쥬스"
         case kiwiJuice = "키위쥬스"
@@ -77,7 +62,7 @@ extension FruitStore {
         }
     }
     
-    private enum FruitType: String, CaseIterable {
+    enum FruitType: String, CaseIterable {
         case strawberry = "딸기"
         case banana = "바나나"
         case kiwi = "키위"
@@ -85,7 +70,7 @@ extension FruitStore {
         case mango = "망고"
     }
     
-    private struct Fruit {
+    struct Fruit {
         let fruitType: FruitType
         let quantity: Int
         
