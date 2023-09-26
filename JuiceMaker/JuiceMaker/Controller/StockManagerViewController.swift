@@ -74,5 +74,4 @@ final class StockManagerViewController: UIViewController {
         fruitStock[fruit] = Int(sender.value)
         displayQuantityLabel()
     }
-    
 }
