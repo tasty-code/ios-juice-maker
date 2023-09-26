@@ -6,9 +6,13 @@
 
 import Foundation
 
-struct JuiceMaker {
+struct JuiceMaker{
     private var fruitStorage: FruitStore = FruitStore()
-
+    
+    func updateStock(_ updatedFruit: Fruit, updatedStock: Double ) {
+        fruitStorage.stockManager(updatedFruit, changedStock: updatedStock)
+    }
+        
     func makingJuice(_ order: Juice) -> (message: String, success: Bool) {
         do {
             let complete = try manufacture(juiceName: order)

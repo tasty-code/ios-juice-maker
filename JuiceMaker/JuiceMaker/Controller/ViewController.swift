@@ -7,7 +7,7 @@
 import UIKit
 
 final class ViewController: UIViewController {
-    let juiceMaker: JuiceMaker = JuiceMaker()
+    var juiceMaker: JuiceMaker = JuiceMaker()
     
     @IBOutlet var strawBerryLabel: UILabel!
     @IBOutlet var bananaLabel: UILabel!
@@ -19,6 +19,7 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         bindingLabel()
     }
+
 }
 
 extension ViewController {
@@ -59,22 +60,12 @@ extension ViewController {
             return
         }
         stockVC.injectModel(self.juiceMaker)
-
+        stockVC.delegate = self
         self.navigationController?.pushViewController(stockVC, animated: true)
     }
-}
-
-extension ViewController {
-    @IBAction private func showPush() {
-        moveToStockVc()
-    }
     
-    @IBAction private func makeOrder(_ sender: UIButton) {
-        guard let menu = Juice(rawValue: sender.tag) else {
-            return
-        }
+    private func makeOrder(_ menu: Juice) {
         let orderResult = juiceMaker.makingJuice(menu)
-        
         if orderResult.success {
             bindingLabel()
             statusAlert(orderResult.message)
@@ -84,7 +75,49 @@ extension ViewController {
     }
 }
 
-extension ViewController: SendStockDelegate {
+extension ViewController {
+    @IBAction func OrderStrawberryBananaJuice(_ sender: Any) {
+        let menu = Juice.strawberryBananaJuice
+        makeOrder(menu)
+    }
+    
+    @IBAction func orderMangoKiwiJuice(_ sender: UIButton) {
+        let menu = Juice.mangoKiwiJuice
+        makeOrder(menu)
+    }
+    
+    @IBAction func orderStrawberryJuice(_ sender: UIButton) {
+        let menu = Juice.strawberryJuice
+        makeOrder(menu)
+    }
+    
+    @IBAction func orderBananaJuice(_ sender: UIButton) {
+        let menu = Juice.bananaJuice
+        makeOrder(menu)
+    }
+    
+    @IBAction func orderPineappleJuice(_ sender: UIButton) {
+        let menu = Juice.pineappleJuice
+        makeOrder(menu)
+    }
+    
+    @IBAction func orderKiwiJuice(_ sender: UIButton) {
+        let menu = Juice.kiwiJuice
+        makeOrder(menu)
+    }
+    
+    @IBAction func orderMangoJuice(_ sender: UIButton) {
+        let menu = Juice.mangoJuice
+        makeOrder(menu)
+    }
+    
+    @IBAction private func showPush() {
+        moveToStockVc()
+    }
+
+}
+
+extension ViewController: SendStockDelegate{
     func sendStock(data: JuiceMaker) {
         do {
             strawBerryLabel.text = try data.getRemainingFruits(.strawberry)
@@ -92,8 +125,12 @@ extension ViewController: SendStockDelegate {
             pineappleLabel.text = try data.getRemainingFruits(.pineapple)
             kiwiLabel.text = try data.getRemainingFruits(.kiwi)
             mangoLabel.text = try data.getRemainingFruits(.mango)
+            
+            print(data)
         } catch {
             statusAlert(ErrorMessage.invalidInput.debugDescription)
         }
     }
 }
+
+

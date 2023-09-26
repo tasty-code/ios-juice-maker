@@ -26,14 +26,14 @@ final class StockViewController: UIViewController{
     @IBOutlet private weak var pineappleStepper: UIStepper!
     @IBOutlet private weak var kiwiStepper: UIStepper!
     @IBOutlet private weak var mangoStepper: UIStepper!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.hidesBackButton = true
-        updateStockLabel()
         updateStepperValue()
     }
+
     
 }
 
@@ -52,16 +52,7 @@ extension StockViewController {
             pineappleStepper.value = try stock.getStepperValue(.pineapple)
             kiwiStepper.value = try stock.getStepperValue(.kiwi)
             mangoStepper.value = try stock.getStepperValue(.mango)
-        } catch {
-            print(error)
-        }
-    }
-    
-    private func updateStockLabel() {
-        guard let stock = injectedModel else {
-            return
-        }
-        do {
+            
             strawberryLabel.text = try stock.getRemainingFruits(.strawberry)
             bananaLabel.text = try stock.getRemainingFruits(.banana)
             pineappleLabel.text = try  stock.getRemainingFruits(.pineapple)
@@ -70,6 +61,7 @@ extension StockViewController {
         } catch {
             statusAlert(ErrorMessage.invalidInput.debugDescription)
         }
+        
     }
     
     private func statusAlert(_ message: String) {
@@ -82,18 +74,49 @@ extension StockViewController {
 }
 
 extension StockViewController {
-    @IBAction func pressedStepper(_ sender: UIStepper) {
+    @IBAction func manageStrawberryStock(_ sender: UIStepper) {
         guard let stock = injectedModel else {
             return
         }
+        stock.updateStock(.strawberry, updatedStock: sender.value)
         updateStepperValue()
-        updateStockLabel()
+    }
+    
+    @IBAction func manageBananaStock(_ sender: UIStepper) {
+        guard let stock = injectedModel else {
+            return
+        }
+        stock.updateStock(.banana, updatedStock: sender.value)
+        updateStepperValue()
+    }
+    @IBAction func managePinappleStock(_ sender: UIStepper) {
+        guard let stock = injectedModel else {
+            return
+        }
+        stock.updateStock(.pineapple, updatedStock: sender.value)
+        updateStepperValue()
+    }
+    
+    @IBAction func manageKiwiStock(_ sender: UIStepper) {
+        guard let stock = injectedModel else {
+            return
+        }
+        stock.updateStock(.kiwi, updatedStock: sender.value)
+        updateStepperValue()
+    }
+    @IBAction func manageMangoStepper(_ sender: UIStepper)  {
+        guard let stock = injectedModel else {
+            return
+        }
+        stock.updateStock(.mango, updatedStock: sender.value)
+        updateStepperValue()
     }
     
     @IBAction func goBack(_ sender: UIBarButtonItem) {
         guard let updatedModel = injectedModel else {
             return
         }
+        
         delegate?.sendStock(data: updatedModel)
         self.navigationController?.popViewController(animated: true)
     }

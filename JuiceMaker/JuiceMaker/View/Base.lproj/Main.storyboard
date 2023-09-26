@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DCG-dP-Fms">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DCG-dP-Fms">
     <device id="retina6_72" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -127,7 +127,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="makeOrder:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OQr-J6-ets"/>
+                                                    <action selector="OrderStrawberryBananaJuice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LbL-kf-KlQ"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9E2-H9-FXr">
@@ -142,7 +142,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="makeOrder:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oZO-Z1-lLL"/>
+                                                    <action selector="orderMangoKiwiJuice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Vv-va-JNO"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -161,7 +161,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="makeOrder:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1KS-2p-Pi6"/>
+                                                            <action selector="orderStrawberryJuice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JoX-Ah-uBe"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y2A-PH-DJY">
@@ -172,7 +172,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="makeOrder:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mkV-cp-ql5"/>
+                                                            <action selector="orderBananaJuice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hfy-ic-jNF"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFb-ka-wGA">
@@ -183,7 +183,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="makeOrder:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wbl-px-RzE"/>
+                                                            <action selector="orderPineappleJuice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="owx-GB-MyI"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcW-7H-RXw">
@@ -194,7 +194,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="makeOrder:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GGW-er-2pO"/>
+                                                            <action selector="orderKiwiJuice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lbq-Si-ePh"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6G-4X-bVm">
@@ -205,7 +205,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="makeOrder:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dkz-a8-ePw"/>
+                                                            <action selector="orderMangoJuice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EYX-wI-e2T"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -299,7 +299,7 @@
                                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZQk-f4-zrz">
                                         <rect key="frame" x="0.0" y="122" width="94" height="32"/>
                                         <connections>
-                                            <action selector="pressedStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="Ykh-PK-XSF"/>
+                                            <action selector="manageStrawberryStock:" destination="Yu1-lM-nqp" eventType="valueChanged" id="etu-hV-fNV"/>
                                         </connections>
                                     </stepper>
                                 </subviews>
@@ -323,7 +323,7 @@
                                     <stepper opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="O5s-2N-3iP">
                                         <rect key="frame" x="0.0" y="122" width="94" height="32"/>
                                         <connections>
-                                            <action selector="pressedStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="gk3-r6-xGh"/>
+                                            <action selector="manageBananaStock:" destination="Yu1-lM-nqp" eventType="valueChanged" id="dEB-YP-rar"/>
                                         </connections>
                                     </stepper>
                                 </subviews>
@@ -347,7 +347,7 @@
                                     <stepper opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Rcr-xr-eqz">
                                         <rect key="frame" x="0.0" y="122" width="94" height="32"/>
                                         <connections>
-                                            <action selector="pressedStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="apV-zz-L6j"/>
+                                            <action selector="managePinappleStock:" destination="Yu1-lM-nqp" eventType="valueChanged" id="fGm-RV-G3J"/>
                                         </connections>
                                     </stepper>
                                 </subviews>
@@ -371,7 +371,7 @@
                                     <stepper opaque="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="klA-59-Nu4">
                                         <rect key="frame" x="0.0" y="122" width="94" height="32"/>
                                         <connections>
-                                            <action selector="pressedStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="lvP-ed-I0B"/>
+                                            <action selector="manageKiwiStock:" destination="Yu1-lM-nqp" eventType="valueChanged" id="kJR-X3-rCg"/>
                                         </connections>
                                     </stepper>
                                 </subviews>
@@ -395,7 +395,7 @@
                                     <stepper opaque="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="xbn-6P-grO">
                                         <rect key="frame" x="0.0" y="122" width="94" height="32"/>
                                         <connections>
-                                            <action selector="pressedStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="yEi-lZ-N7b"/>
+                                            <action selector="manageMangoStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="LuR-5i-6xL"/>
                                         </connections>
                                     </stepper>
                                 </subviews>
@@ -471,7 +471,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

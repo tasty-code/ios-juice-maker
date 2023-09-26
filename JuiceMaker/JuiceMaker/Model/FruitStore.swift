@@ -34,4 +34,3 @@ extension FruitStore {
 }
 //일일이 업데이트한 값을 stockVC 가지고 있다가 -> AVC로 저 값을 넘기고 -> AVC에서 넘어온 값을 바탕으로 모델을 업데이트해라.
 
-
