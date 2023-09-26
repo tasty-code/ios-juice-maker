@@ -30,16 +30,25 @@ final class StockManagerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        strawberryQuantityStepper.value = Double(fruitStock[Fruit.strawberry]!)
-        bananaQuantityStepper.value = Double(fruitStock[Fruit.banana]!)
-        pineappleQuantityStepper.value = Double(fruitStock[Fruit.pineapple]!)
-        kiwiQuantityStepper.value = Double(fruitStock[Fruit.kiwi]!)
-        mangoQuantityStepper.value = Double(fruitStock[Fruit.mango]!)
-        
+        initStepperValue()
         displayQuantityLabel()
     }
     
     // MARK: - Methods
+    
+    private func initStepperValue() {
+        let fruitQuantitySteppers: [FruitQuantityStepper] = [strawberryQuantityStepper,
+                                                             bananaQuantityStepper,
+                                                             pineappleQuantityStepper,
+                                                             kiwiQuantityStepper,
+                                                             mangoQuantityStepper]
+        
+        for stepper in fruitQuantitySteppers {
+            guard let fruit = stepper.fruit() else { continue }
+            guard let fruitQuantity = fruitStock[fruit] else { continue }
+            stepper.value = Double(fruitQuantity)
+        }
+    }
     
     @IBAction private func pressCloseButton(_ sender: UIBarButtonItem) {
         stockEditionDelegate.sendChangedStock(fruitStock)
@@ -60,29 +69,10 @@ final class StockManagerViewController: UIViewController {
         }
     }
     
-    @IBAction func pressStrawberryStepper(_ sender: UIStepper) {
-        // sender.value = Double(fruitStock[Fruit.strawberry]!)
-        fruitStock[Fruit.strawberry] = Int(sender.value)
-        strawberryQuantityLabel.text = Int(sender.value).description
+    @IBAction private func pressStepper(_ sender: FruitQuantityStepper) {
+        let fruit = sender.fruit()!
+        fruitStock[fruit] = Int(sender.value)
+        displayQuantityLabel()
     }
     
-    @IBAction func pressBananaStepper(_ sender: UIStepper) {
-        fruitStock[Fruit.banana] = Int(sender.value)
-        bananaQuantityLabel.text = Int(sender.value).description
-    }
-    
-    @IBAction func pressPineappleStepper(_ sender: UIStepper) {
-        fruitStock[Fruit.pineapple] = Int(sender.value)
-        pineappleQuantityLabel.text = Int(sender.value).description
-    }
-    
-    @IBAction func pressKiwiStepper(_ sender: UIStepper) {
-        fruitStock[Fruit.kiwi] = Int(sender.value)
-        kiwiQuantityLabel.text = Int(sender.value).description
-    }
-    
-    @IBAction func pressMangoStepper(_ sender: UIStepper) {
-        fruitStock[Fruit.mango] = Int(sender.value)
-        mangoQuantityLabel.text = Int(sender.value).description
-    }
 }

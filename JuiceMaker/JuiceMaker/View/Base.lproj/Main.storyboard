@@ -275,7 +275,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0yV-kn-zaT" customClass="StrawberryQuantityLabel" customModule="JuiceMaker" customModuleProvider="target">
-                                                <rect key="frame" x="56.666666666666671" y="144.66666666666666" width="13.333333333333329" height="26.333333333333343"/>
+                                                <rect key="frame" x="56.666666666666671" y="144.66666666666663" width="13.333333333333314" height="26.333333333333371"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
@@ -284,7 +284,7 @@
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZQk-f4-zrz" customClass="StrawberryQuantityStepper" customModule="JuiceMaker" customModuleProvider="target">
                                                 <rect key="frame" x="16.333333333333336" y="177" width="94" height="32"/>
                                                 <connections>
-                                                    <action selector="pressStrawberryStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="BU5-Ts-NZ3"/>
+                                                    <action selector="pressStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="YTM-Dl-II8"/>
                                                 </connections>
                                             </stepper>
                                         </subviews>
@@ -299,7 +299,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gKu-86-RhI" customClass="BananaQuantityLabel" customModule="JuiceMaker" customModuleProvider="target">
-                                                <rect key="frame" x="56.666666666666657" y="147.66666666666666" width="13.333333333333329" height="26.333333333333343"/>
+                                                <rect key="frame" x="56.666666666666657" y="147.66666666666663" width="13.333333333333329" height="26.333333333333371"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
@@ -308,7 +308,7 @@
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="O5s-2N-3iP" customClass="BananaQuantityStepper" customModule="JuiceMaker" customModuleProvider="target">
                                                 <rect key="frame" x="16.333333333333314" y="177" width="94" height="32"/>
                                                 <connections>
-                                                    <action selector="pressBananaStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="OjF-W4-uel"/>
+                                                    <action selector="pressStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="1wI-CG-w0z"/>
                                                 </connections>
                                             </stepper>
                                         </subviews>
@@ -323,7 +323,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MpT-VW-hCb" customClass="PineappleQuantityLabel" customModule="JuiceMaker" customModuleProvider="target">
-                                                <rect key="frame" x="56.666666666666629" y="143.66666666666666" width="13.333333333333329" height="26.333333333333343"/>
+                                                <rect key="frame" x="56.666666666666629" y="143.66666666666663" width="13.333333333333329" height="26.333333333333371"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
@@ -332,7 +332,7 @@
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Rcr-xr-eqz" customClass="PineappleQuantityStepper" customModule="JuiceMaker" customModuleProvider="target">
                                                 <rect key="frame" x="16.333333333333314" y="177" width="94" height="32"/>
                                                 <connections>
-                                                    <action selector="pressPineappleStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="LJw-1l-J4R"/>
+                                                    <action selector="pressStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="TJx-Rr-zR3"/>
                                                 </connections>
                                             </stepper>
                                         </subviews>
@@ -347,7 +347,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZDv-1m-HBY" customClass="KiwiQuantityLabel" customModule="JuiceMaker" customModuleProvider="target">
-                                                <rect key="frame" x="56.333333333333258" y="143.66666666666666" width="13.333333333333329" height="26.333333333333343"/>
+                                                <rect key="frame" x="56.333333333333258" y="143.66666666666663" width="13.333333333333329" height="26.333333333333371"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
@@ -356,7 +356,7 @@
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="klA-59-Nu4" customClass="KiwiQuantityStepper" customModule="JuiceMaker" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="177" width="94" height="32"/>
                                                 <connections>
-                                                    <action selector="pressKiwiStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="bVR-qg-cnh"/>
+                                                    <action selector="pressStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="Tew-Xz-Hh3"/>
                                                 </connections>
                                             </stepper>
                                         </subviews>
@@ -371,7 +371,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YJI-ER-LJR" customClass="MangoQuantityLabel" customModule="JuiceMaker" customModuleProvider="target">
-                                                <rect key="frame" x="56.333333333333371" y="143.66666666666666" width="13.333333333333329" height="26.333333333333343"/>
+                                                <rect key="frame" x="56.333333333333371" y="143.66666666666663" width="13.333333333333329" height="26.333333333333371"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
@@ -380,7 +380,7 @@
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="xbn-6P-grO" customClass="MangoQuantityStepper" customModule="JuiceMaker" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="177" width="94" height="32"/>
                                                 <connections>
-                                                    <action selector="pressMangoStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="5Ke-0K-g5h"/>
+                                                    <action selector="pressStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="xcW-fy-4G6"/>
                                                 </connections>
                                             </stepper>
                                         </subviews>
@@ -388,7 +388,7 @@
                                 </subviews>
                             </stackView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OQb-gI-xD1">
-                                <rect key="frame" x="0.0" y="0.0" width="843" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="842" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="재고 추가" id="5Wl-q8-mbo">
