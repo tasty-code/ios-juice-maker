@@ -6,7 +6,7 @@
 
 import UIKit
 
-class JuiceMakerViewController: UIViewController {
+final class JuiceMakerViewController: UIViewController {
     
     let juiceMaker: JuiceMaker = JuiceMaker(fruitStore: FruitStore(fruitList:[
         FruitStore.Fruit(name: "딸기"),

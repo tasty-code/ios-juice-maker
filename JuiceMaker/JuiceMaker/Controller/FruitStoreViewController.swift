@@ -7,12 +7,13 @@
 
 import UIKit
 
-class FruitStoreViewController: UIViewController {
-    var fruitStore: FruitStore?
+final class FruitStoreViewController: UIViewController {
+    weak var fruitStore: FruitStore?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configStepperAndLabel()
+        self.navigationItem.setHidesBackButton(true, animated: true)
     }
     
    
@@ -38,9 +39,10 @@ class FruitStoreViewController: UIViewController {
     
     @IBOutlet weak var mangoStepper: UIStepper!
     
-    @IBAction func btn(_ sender: UIBarButtonItem) {
-        self.navigationController?.popViewController(animated: true)
+    @IBAction func goToJuiceMakerView(_ sender: UIBarButtonItem) {
+        self.navigationController?.popToRootViewController(animated: true)
     }
+    
     @IBAction func fruitStockStepper(_ sender: UIStepper) {
         do {
             guard let stepperTag = StepperTag(rawValue: sender.tag) else { return }
