@@ -31,7 +31,7 @@ enum Menu: String, CaseIterable {
          case .mangoJuice:
              return "망고쥬스"
          case .mangoKiwiJuice:
-             return "망고키위쥬스"
+             return "망키쥬스"
          }
      }
     

@@ -7,10 +7,7 @@
 import Foundation
 
 final class FruitStore {
-    static let shared = FruitStore()
     private var fruitList: [Fruit: Int] = Dictionary(uniqueKeysWithValues: zip(Fruit.allCases, Array(repeating: 10, count: 5)))
-
-    private init() {}
     
     func getRemains(_ ingredient: Array<Fruit>) -> [Fruit: Int] {
         var remains = [Fruit: Int]()
@@ -20,9 +17,8 @@ final class FruitStore {
         return remains
     }
     
-    func add(_ inStockList: [Fruit: Int]) -> Void {
-        fruitList.merge(inStockList) { stock, new in
-            return stock + new }
+    func update(_ inStockList: [Fruit: Int]) -> Void {
+        fruitList.merge(inStockList) { _, new in new }
     }
     
     func deduct(_ usedList: [Fruit: Int]) -> Void {
