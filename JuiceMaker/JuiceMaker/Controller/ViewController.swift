@@ -7,7 +7,7 @@
 import UIKit
 
 final class ViewController: UIViewController {
-    let juiceMaker = JuiceMaker()
+    let juiceMaker: JuiceMaker = JuiceMaker()
     
     @IBOutlet var strawBerryLabel: UILabel!
     @IBOutlet var bananaLabel: UILabel!
@@ -17,10 +17,6 @@ final class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindingLabel()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         bindingLabel()
     }
 }
@@ -59,9 +55,11 @@ extension ViewController {
     }
     
     private func moveToStockVc() {
-        let stockVC = self.storyboard?.instantiateViewController(withIdentifier: "StockViewController") as! StockViewController
-        
-        stockVC.delegate = self
+        guard let stockVC = self.storyboard?.instantiateViewController(withIdentifier: "StockViewController") as? StockViewController else {
+            return
+        }
+        stockVC.injectModel(self.juiceMaker)
+
         self.navigationController?.pushViewController(stockVC, animated: true)
     }
 }
@@ -86,8 +84,16 @@ extension ViewController {
     }
 }
 
-extension ViewController: sendStockDelegate {
-    func sendStock() -> JuiceMaker {
-        return juiceMaker
+extension ViewController: SendStockDelegate {
+    func sendStock(data: JuiceMaker) {
+        do {
+            strawBerryLabel.text = try data.getRemainingFruits(.strawberry)
+            bananaLabel.text = try data.getRemainingFruits(.banana)
+            pineappleLabel.text = try data.getRemainingFruits(.pineapple)
+            kiwiLabel.text = try data.getRemainingFruits(.kiwi)
+            mangoLabel.text = try data.getRemainingFruits(.mango)
+        } catch {
+            statusAlert(ErrorMessage.invalidInput.debugDescription)
+        }
     }
 }

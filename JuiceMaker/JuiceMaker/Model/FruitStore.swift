@@ -28,22 +28,10 @@ extension FruitStore {
         return true
     }
     
-    public func stockManager(_ fruit: Int, changedStock: Double) {
-        switch fruit {
-        case 0:
-            fruitBox[.strawberry] = Int(changedStock)
-        case 1:
-            fruitBox[.banana] = Int(changedStock)
-        case 2:
-            fruitBox[.pineapple] = Int(changedStock)
-        case 3:
-            fruitBox[.kiwi] = Int(changedStock)
-        case 4:
-            fruitBox[.mango] = Int(changedStock)
-        default:
-            break
-        }
+    public func stockManager(_ fruit: Fruit, changedStock: Double) {
+       fruitBox[fruit] = Int(changedStock)
     }
 }
+//일일이 업데이트한 값을 stockVC 가지고 있다가 -> AVC로 저 값을 넘기고 -> AVC에서 넘어온 값을 바탕으로 모델을 업데이트해라.
 
 

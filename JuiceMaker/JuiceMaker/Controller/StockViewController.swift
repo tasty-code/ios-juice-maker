@@ -7,24 +7,25 @@
 
 import UIKit
 
-protocol sendStockDelegate {
-    func sendStock() -> JuiceMaker
+protocol SendStockDelegate {
+    func sendStock(data: JuiceMaker)
 }
 
 final class StockViewController: UIViewController{
-    var delegate: sendStockDelegate?
+    var delegate: SendStockDelegate?
+    var injectedModel: JuiceMaker?
     
-    @IBOutlet weak var strawberryLabel: UILabel!
-    @IBOutlet weak var bananaLabel: UILabel!
-    @IBOutlet weak var pineappleLabel: UILabel!
-    @IBOutlet weak var kiwiLabel: UILabel!
-    @IBOutlet weak var mangoLabel: UILabel!
+    @IBOutlet private weak var strawberryLabel: UILabel!
+    @IBOutlet private weak var bananaLabel: UILabel!
+    @IBOutlet private weak var pineappleLabel: UILabel!
+    @IBOutlet private weak var kiwiLabel: UILabel!
+    @IBOutlet private weak var mangoLabel: UILabel!
     
-    @IBOutlet weak var strawberryStepper: UIStepper!
-    @IBOutlet weak var bananaStepper: UIStepper!
-    @IBOutlet weak var pineappleStepper: UIStepper!
-    @IBOutlet weak var kiwiStepper: UIStepper!
-    @IBOutlet weak var mangoStepper: UIStepper!
+    @IBOutlet private weak var strawberryStepper: UIStepper!
+    @IBOutlet private weak var bananaStepper: UIStepper!
+    @IBOutlet private weak var pineappleStepper: UIStepper!
+    @IBOutlet private weak var kiwiStepper: UIStepper!
+    @IBOutlet private weak var mangoStepper: UIStepper!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +38,12 @@ final class StockViewController: UIViewController{
 }
 
 extension StockViewController {
+    func injectModel(_ model: JuiceMaker) {
+        injectedModel = model
+    }
+    
     private func updateStepperValue()  {
-        guard let stock = delegate?.sendStock() else {
+        guard let stock = injectedModel else {
             return
         }
         do {
@@ -53,7 +58,7 @@ extension StockViewController {
     }
     
     private func updateStockLabel() {
-        guard let stock = delegate?.sendStock() else {
+        guard let stock = injectedModel else {
             return
         }
         do {
@@ -78,15 +83,19 @@ extension StockViewController {
 
 extension StockViewController {
     @IBAction func pressedStepper(_ sender: UIStepper) {
-        guard let stock = delegate?.sendStock() else {
+        guard let stock = injectedModel else {
             return
         }
-        stock.fruitStorage.stockManager(sender.tag, changedStock: sender.value)
         updateStepperValue()
         updateStockLabel()
     }
     
     @IBAction func goBack(_ sender: UIBarButtonItem) {
+        guard let updatedModel = injectedModel else {
+            return
+        }
+        delegate?.sendStock(data: updatedModel)
         self.navigationController?.popViewController(animated: true)
     }
 }
+
