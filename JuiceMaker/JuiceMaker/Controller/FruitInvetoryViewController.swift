@@ -15,7 +15,8 @@ class FruitInventoryViewController: UIViewController, FruitShowable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.backgroundColor = .lightGray
+        
+        setNavigationBarBackgroundColor()
         setTagOfStepper()
         setEventActionOfStepper()
     }
@@ -23,18 +24,10 @@ class FruitInventoryViewController: UIViewController, FruitShowable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        for fruitType in FruitType.allCases {
-            guard let fruitCount = FruitStore.shared.fruitCounts[fruitType] else {
-                return
-            }
-            
-            let fruit = Fruit(fruitType, fruitCount)
-            show(fruit, on: fruitsCountLabels)
-            show(fruit, on: fruitsCountSteppers)
-        }
+        setCount(on: fruitsCountLabels, fruitsCountSteppers)
     }
     
-    @IBAction func stepperValueChanged(_ sender: UIStepper) {
+    @IBAction private func stepperValueChanged(_ sender: UIStepper) {
         let newFruitCount = Int(sender.value)
         guard let fruitType = FruitType(rawValue: sender.tag),
               let fruitCount = FruitStore.shared.fruitCounts[fruitType] else {
@@ -44,13 +37,13 @@ class FruitInventoryViewController: UIViewController, FruitShowable {
             let fruit = Fruit(fruitType, newFruitCount - fruitCount)
             try juiceMaker.update(fruit)
             
-            show(Fruit(fruitType, newFruitCount), on: fruitsCountLabels)
+            setCount(of: Fruit(fruitType, newFruitCount), on: fruitsCountLabels)
         } catch {
             return
         }
     }
     
-    @IBAction func touchUpCloseButton(_ sender: UIButton) {
+    @IBAction private func touchUpCloseButton(_ sender: UIButton) {
         dismiss(animated: true)
     }
     

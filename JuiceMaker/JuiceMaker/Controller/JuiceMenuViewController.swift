@@ -10,24 +10,22 @@ class JuiceMenuViewController: UIViewController, FruitShowable {
     private let juiceMaker = JuiceMaker()
     
     @IBOutlet private var fruitsCountLabels: [UILabel]!
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setNavigationBarBackgroundColor()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.navigationBar.backgroundColor = .lightGray
-
-        for fruitType in FruitType.allCases {
-            guard let fruitCount = FruitStore.shared.fruitCounts[fruitType] else {
-                return
-            }
-            
-            show(Fruit(fruitType, fruitCount), on: fruitsCountLabels)
-        }
+        setCount(on: fruitsCountLabels)
     }
     
-    @IBAction func juiceButtonPressed(_ sender: UIButton) {
+    @IBAction private func juiceButtonPressed(_ sender: UIButton) {
         guard let juiceSubstring = sender.titleLabel?.text?.split(separator: " ")[0],
-        let juiceType = JuiceType(rawValue: String(juiceSubstring)) else {
+              let juiceType = JuiceType(rawValue: String(juiceSubstring)) else {
             return
         }
         order(menu: juiceType)
@@ -35,18 +33,12 @@ class JuiceMenuViewController: UIViewController, FruitShowable {
             guard let fruitCount = FruitStore.shared.fruitCounts[fruitType] else {
                 return
             }
-            show(Fruit(fruitType, fruitCount), on: fruitsCountLabels)
+            setCount(of: Fruit(fruitType, fruitCount), on: fruitsCountLabels)
         }
     }
     
-    @IBAction func modifyInvertoryPressed(_ sender: Any) {
-        guard let fruitInventoryViewController = storyboard?.instantiateViewController(identifier: "FruitInventoryViewController") else {
-            return
-        }
-        let navigationController = UINavigationController(rootViewController: fruitInventoryViewController)
-        
-        navigationController.modalPresentationStyle = .fullScreen
-        present(navigationController, animated: true)
+    @IBAction private func modifyInvertoryPressed(_ sender: Any) {
+        showFruitInventoryViewController()
     }
     
     private func order(menu selectedMenu: JuiceType) {
@@ -76,17 +68,22 @@ class JuiceMenuViewController: UIViewController, FruitShowable {
             preferredStyle: .alert
         )
         let agreeAlertAction = UIAlertAction(title: "예", style: .default) { _ in
-            guard let fruitInventoryViewController = self.storyboard?.instantiateViewController(identifier: "FruitInventoryViewController") else {
-                return
-            }
-            let navigationController = UINavigationController(rootViewController: fruitInventoryViewController)
-            
-            navigationController.modalPresentationStyle = .fullScreen
-            self.present(navigationController, animated: true)
+            self.showFruitInventoryViewController()
         }
         let disagreeAlertAction = UIAlertAction(title: "아니오", style: .destructive)
         alertController.addAction(agreeAlertAction)
         alertController.addAction(disagreeAlertAction)
         present(alertController, animated: true)
     }
+    
+    private func showFruitInventoryViewController() {
+        guard let fruitInventoryViewController = storyboard?.instantiateViewController(identifier: "FruitInventoryViewController") else {
+            return
+        }
+        let navigationController = UINavigationController(rootViewController: fruitInventoryViewController)
+        
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true)
+    }
+    
 }
