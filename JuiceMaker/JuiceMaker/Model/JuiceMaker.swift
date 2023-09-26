@@ -7,7 +7,7 @@
 import Foundation
 
 struct JuiceMaker {
-    let myFruitStore: FruitStore = FruitStore()
+    private let myFruitStore: FruitStore = FruitStore()
     
     func order(_ choice: Menu) -> Menu? {
         do {
@@ -19,10 +19,6 @@ struct JuiceMaker {
             print(OrderError.unexpected.rawValue)
         }
         return nil
-    }
-    
-    func getRecipe(_ menu: Menu) -> [Fruit: Int] {
-        return menu.recipe
     }
     
     func getFruitStock(for fruit: Fruit) -> Int {
@@ -38,7 +34,15 @@ struct JuiceMaker {
         myFruitStore.update([fruit: Int(amount)])
     }
     
-    func checkAvailable(_ choice: Menu) throws -> Menu {
+    func makeJuice(_ menu: Menu) {
+        myFruitStore.deduct(menu.recipe)
+    }
+    
+    private func getRecipe(_ menu: Menu) -> [Fruit: Int] {
+        return menu.recipe
+    }
+    
+    private func checkAvailable(_ choice: Menu) throws -> Menu {
         let recipe = getRecipe(choice)
         let keys = Array(recipe.keys) as [Fruit]
         let remains = myFruitStore.getRemains(keys)
@@ -50,10 +54,6 @@ struct JuiceMaker {
             continue
         }
         return choice
-    }
-    
-    func makeJuice(_ menu: Menu) {
-        myFruitStore.deduct(menu.recipe)
     }
 }
 
