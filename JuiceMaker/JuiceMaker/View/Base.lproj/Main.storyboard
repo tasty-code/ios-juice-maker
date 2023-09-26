@@ -238,7 +238,7 @@
                     <navigationItem key="navigationItem" title="맛있는 쥬스를 만들어 드려요!" id="Eal-fj-o4N">
                         <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT">
                             <connections>
-                                <segue destination="Yu1-lM-nqp" kind="presentation" id="C0O-sK-8CV"/>
+                                <action selector="pressEditButton:" destination="BYZ-38-t0r" id="XIn-FC-yG6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -263,110 +263,110 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="38" translatesAutoresizingMaskIntoConstraints="NO" id="H6q-1Z-hQo">
-                                <rect key="frame" x="30" y="50" width="784" height="290"/>
+                                <rect key="frame" x="77" y="50" width="690" height="269"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="dgy-3O-NTT">
-                                        <rect key="frame" x="0.0" y="0.0" width="126.33333333333333" height="290"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="107.66666666666667" height="269"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🍓" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dCK-AJ-zGU">
-                                                <rect key="frame" x="25.666666666666664" y="0.0" width="75" height="219.66666666666666"/>
+                                                <rect key="frame" x="16.333333333333329" y="0.0" width="74.999999999999986" height="198.66666666666666"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="70"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0yV-kn-zaT">
-                                                <rect key="frame" x="56.666666666666671" y="225.66666666666669" width="13.333333333333329" height="26.333333333333343"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0yV-kn-zaT" customClass="StrawberryQuantityLabel" customModule="JuiceMaker" customModuleProvider="target">
+                                                <rect key="frame" x="47" y="204.66666666666666" width="13.333333333333336" height="26.333333333333343"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZQk-f4-zrz">
-                                                <rect key="frame" x="16.333333333333336" y="258" width="94" height="32"/>
+                                                <rect key="frame" x="6.6666666666666714" y="237" width="94.000000000000014" height="32"/>
                                             </stepper>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="KBv-lc-Odb">
-                                        <rect key="frame" x="164.33333333333334" y="0.0" width="126.33333333333334" height="290"/>
+                                        <rect key="frame" x="145.66666666666666" y="0.0" width="107.66666666666666" height="269"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🍌" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="y33-ND-gz2">
-                                                <rect key="frame" x="25.666666666666657" y="0.0" width="75" height="225.66666666666666"/>
+                                                <rect key="frame" x="16.333333333333343" y="0.0" width="75" height="204.66666666666666"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="70"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gKu-86-RhI">
-                                                <rect key="frame" x="56.666666666666657" y="228.66666666666669" width="13.333333333333329" height="26.333333333333343"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gKu-86-RhI" customClass="BananaQuantityLabel" customModule="JuiceMaker" customModuleProvider="target">
+                                                <rect key="frame" x="47.000000000000028" y="207.66666666666669" width="13.333333333333336" height="26.333333333333343"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="O5s-2N-3iP">
-                                                <rect key="frame" x="16.333333333333314" y="258" width="94" height="32"/>
+                                                <rect key="frame" x="6.6666666666666856" y="237" width="94" height="32"/>
                                             </stepper>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="KSl-Q5-jci">
-                                        <rect key="frame" x="328.66666666666669" y="0.0" width="126.66666666666669" height="290"/>
+                                        <rect key="frame" x="291.33333333333331" y="0.0" width="107.33333333333331" height="269"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🍍" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rac-Ji-vZK">
-                                                <rect key="frame" x="26" y="0.0" width="75" height="217.66666666666666"/>
+                                                <rect key="frame" x="16.333333333333371" y="0.0" width="75" height="196.66666666666666"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="70"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MpT-VW-hCb">
-                                                <rect key="frame" x="56.666666666666629" y="224.66666666666669" width="13.333333333333329" height="26.333333333333343"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MpT-VW-hCb" customClass="PineappleQuantityLabel" customModule="JuiceMaker" customModuleProvider="target">
+                                                <rect key="frame" x="47" y="203.66666666666666" width="13.333333333333336" height="26.333333333333343"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Rcr-xr-eqz">
-                                                <rect key="frame" x="16.333333333333314" y="258" width="94" height="32"/>
+                                                <rect key="frame" x="6.6666666666666856" y="237" width="94" height="32"/>
                                             </stepper>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="x4b-43-Xc7">
-                                        <rect key="frame" x="493.33333333333331" y="0.0" width="126.33333333333331" height="290"/>
+                                        <rect key="frame" x="436.66666666666663" y="0.0" width="107.66666666666663" height="269"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🥝" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EHe-D1-1xN">
-                                                <rect key="frame" x="25.666666666666629" y="0.0" width="75" height="217.66666666666666"/>
+                                                <rect key="frame" x="16.333333333333371" y="0.0" width="75" height="196.66666666666666"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="70"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZDv-1m-HBY">
-                                                <rect key="frame" x="56.333333333333258" y="224.66666666666669" width="13.333333333333329" height="26.333333333333343"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZDv-1m-HBY" customClass="KiwiQuantityLabel" customModule="JuiceMaker" customModuleProvider="target">
+                                                <rect key="frame" x="47.333333333333371" y="203.66666666666666" width="13.333333333333336" height="26.333333333333343"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="klA-59-Nu4">
-                                                <rect key="frame" x="16" y="258" width="94" height="32"/>
+                                                <rect key="frame" x="7" y="237" width="94" height="32"/>
                                             </stepper>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="0Lr-EC-SmA">
-                                        <rect key="frame" x="657.66666666666663" y="0.0" width="126.33333333333337" height="290"/>
+                                        <rect key="frame" x="582.33333333333337" y="0.0" width="107.66666666666663" height="269"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🥭" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="w1F-9o-qJR">
-                                                <rect key="frame" x="25.666666666666742" y="0.0" width="75" height="217.66666666666666"/>
+                                                <rect key="frame" x="16.333333333333258" y="0.0" width="75" height="196.66666666666666"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="70"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YJI-ER-LJR">
-                                                <rect key="frame" x="56.333333333333371" y="224.66666666666669" width="13.333333333333329" height="26.333333333333343"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YJI-ER-LJR" customClass="MangoQuantityLabel" customModule="JuiceMaker" customModuleProvider="target">
+                                                <rect key="frame" x="47.333333333333258" y="203.66666666666666" width="13.333333333333336" height="26.333333333333343"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="xbn-6P-grO">
-                                                <rect key="frame" x="16" y="258" width="94" height="32"/>
+                                                <rect key="frame" x="7" y="237" width="94" height="32"/>
                                             </stepper>
                                         </subviews>
                                     </stackView>
@@ -398,6 +398,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="g4W-fY-l7r"/>
+                    <connections>
+                        <outlet property="bananaQuantityLabel" destination="gKu-86-RhI" id="rzw-AZ-hGl"/>
+                        <outlet property="kiwiQuantityLabel" destination="ZDv-1m-HBY" id="icQ-h4-ULA"/>
+                        <outlet property="mangoQuantityLabel" destination="YJI-ER-LJR" id="DXI-Yj-nMd"/>
+                        <outlet property="pineappleQuantityLabel" destination="MpT-VW-hCb" id="hhx-4k-b1x"/>
+                        <outlet property="strawberryQuantityLabel" destination="0yV-kn-zaT" id="KNS-sm-5Lw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
             </objects>

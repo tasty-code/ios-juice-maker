@@ -57,6 +57,9 @@ final class JuiceMakerViewController: UIViewController {
         }
     }
     
+    @IBAction func pressEditButton(_ sender: UIBarButtonItem) {
+        presentStockManagerViewController()
+    }
     private func displayAcceptAlert(menuName: String) {
         let alert = UIAlertController(
             title: "\(menuName) 쥬스 나왔습니다",
@@ -81,7 +84,8 @@ final class JuiceMakerViewController: UIViewController {
     }
     
     private func presentStockManagerViewController() {
-        guard let stockManagerViewController = self.storyboard?.instantiateViewController(identifier: "StcokManagerViewController") else { return }
-        self.present(stockManagerViewController, animated: true, completion: nil)
+        guard let stockManagerViewController = self.storyboard?.instantiateViewController(identifier: "StcokManagerViewController") as? StockManagerViewController else { return }
+                stockManagerViewController.fruitStore = juiceMaker.fruitStore
+                self.present(stockManagerViewController, animated: true, completion: nil)
     }
 }
