@@ -12,7 +12,7 @@ struct JuiceMaker {
   let store = FruitStore.shared
   
   enum Juice: String {
-    case strawberry = "딸기 쥬스"
+    case strawberry = "딸기쥬스"
     case banana = "바나나쥬스"
     case kiwi = "키위쥬스"
     case pineapple = "파인애플쥬스"
