@@ -7,12 +7,12 @@
 
 import UIKit
 
-protocol SendStockDelegate {
+protocol SendStockDelegate: AnyObject {
     func sendStock(data: JuiceMaker)
 }
 
-final class StockViewController: UIViewController{
-    var delegate: SendStockDelegate?
+final class StockViewController: UIViewController {
+    weak var delegate: SendStockDelegate?
     var injectedModel: JuiceMaker?
     
     @IBOutlet private weak var strawberryLabel: UILabel!
