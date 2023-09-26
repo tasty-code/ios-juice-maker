@@ -8,17 +8,17 @@
 import UIKit
 
 final class StockManagerViewController: UIViewController {
-
-    @IBOutlet var strawberryQuantityStepper: StrawberryQuantityStepper!
-    @IBOutlet var bananaQuantityStepper: BananaQuantityStepper!
-    @IBOutlet var pineappleQuantityStepper: PineappleQuantityStepper!
-    @IBOutlet var kiwiQuantityStepper: KiwiQuantityStepper!
-    @IBOutlet var mangoQuantityStepper: MangoQuantityStepper!
-    
     
     // MARK: - Properties
     
     var fruitStock: [Fruit : Int]!
+    var stockEditionDelegate: StockEditDelegate!
+    
+    @IBOutlet private var strawberryQuantityStepper: StrawberryQuantityStepper!
+    @IBOutlet private var bananaQuantityStepper: BananaQuantityStepper!
+    @IBOutlet private var pineappleQuantityStepper: PineappleQuantityStepper!
+    @IBOutlet private var kiwiQuantityStepper: KiwiQuantityStepper!
+    @IBOutlet private var mangoQuantityStepper: MangoQuantityStepper!
     
     @IBOutlet private var strawberryQuantityLabel: StrawberryQuantityLabel!
     @IBOutlet private var bananaQuantityLabel: BananaQuantityLabel!
@@ -42,9 +42,10 @@ final class StockManagerViewController: UIViewController {
     // MARK: - Methods
     
     @IBAction private func pressCloseButton(_ sender: UIBarButtonItem) {
+        stockEditionDelegate.sendChangedStock(fruitStock)
         dismiss(animated: true)
     }
-
+    
     private func displayQuantityLabel() {
         let fruitQuantityLabels: [FruitQuantityLabel] = [strawberryQuantityLabel,
                                                          bananaQuantityLabel,

@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class JuiceMakerViewController: UIViewController {
+final class JuiceMakerViewController: UIViewController, StockEditDelegate {
     
     // MARK: - Properties
     
@@ -86,6 +86,11 @@ final class JuiceMakerViewController: UIViewController {
     private func presentStockManagerViewController() {
         guard let stockManagerViewController = self.storyboard?.instantiateViewController(identifier: "StcokManagerViewController") as? StockManagerViewController else { return }
         stockManagerViewController.fruitStock = juiceMaker.fruitStore.getFruitStock()
+        stockManagerViewController.stockEditionDelegate = self
         self.present(stockManagerViewController, animated: true, completion: nil)
+    }
+    
+    func sendChangedStock(_ fruitStock: [Fruit : Int]) {
+        juiceMaker.fruitStore.updateStock(fruitStock)
     }
 }

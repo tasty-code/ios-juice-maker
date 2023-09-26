@@ -40,4 +40,8 @@ final class FruitStore {
     func getFruitStock() -> [Fruit : Int] {
         return self.fruitStock
     }
+    
+    func updateStock(_ editedFruitStock: [Fruit : Int]) {
+        fruitStock = editedFruitStock
+    }
 }
