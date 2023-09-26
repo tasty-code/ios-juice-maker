@@ -13,7 +13,7 @@ final class EditStoreViewController: UIViewController {
   
   private let store = FruitStore.shared
   
-  @IBOutlet var numberLabelCollection: [UILabel]!
+  @IBOutlet private var numberLabelCollection: [UILabel]!
   
   @IBOutlet weak private var strawberryNumberLabel: UILabel!
   @IBOutlet weak private var bananaNumberLabel: UILabel!

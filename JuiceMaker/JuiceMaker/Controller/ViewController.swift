@@ -25,11 +25,10 @@ final class ViewController: UIViewController, DismissEditStoreViewDelegate {
     setNumberLabel()
   }
   
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.destination is EditStoreViewController {
-      guard let editStoreView = segue.destination as? EditStoreViewController else { return }
-      sendData(view: editStoreView)
-    }
+  @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
+    guard let editStoreView = storyboard?.instantiateViewController(identifier: "EditStoreView") as? EditStoreViewController else { return }
+    editStoreView.delegate = self
+    self.present(editStoreView, animated: true)
   }
   
   func updateData() {
@@ -58,19 +57,15 @@ final class ViewController: UIViewController, DismissEditStoreViewDelegate {
     
     if outOfStock {
       alert.addAction(UIAlertAction(title: "예", style: UIAlertAction.Style.default, handler: { [self] _ in
-        guard let editStoreView = self.storyboard?.instantiateViewController(identifier: "editStoreView") as? EditStoreViewController else { return }
+        guard let editStoreView = self.storyboard?.instantiateViewController(identifier: "EditStoreView") as? EditStoreViewController else { return }
         editStoreView.modalTransitionStyle = .coverVertical
         editStoreView.modalPresentationStyle = .automatic
-        sendData(view: editStoreView)
+        editStoreView.delegate = self
         self.present(editStoreView, animated: true, completion: nil)
       }))
     }
     
     alert.addAction(UIAlertAction(title: outOfStock ? "아니오" : "확인", style: UIAlertAction.Style.cancel, handler: nil))
     self.present(alert, animated: true, completion: nil)
-  }
-  
-  private func sendData(view: EditStoreViewController) {
-    view.delegate = self
   }
 }
