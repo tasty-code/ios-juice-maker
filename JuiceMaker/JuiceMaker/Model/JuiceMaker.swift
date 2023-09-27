@@ -1,14 +1,18 @@
 //
 //  JuiceMaker - JuiceMaker.swift
-//  Created by yagom. 
+//  Created by yagom.
 //  Copyright © yagom academy. All rights reserved.
-// 
+//
 
 import Foundation
 
 struct JuiceMaker {
-    private var fruitStorage = FruitStore()
-
+    private var fruitStorage: FruitStore = FruitStore()
+    
+    func updateStock(_ updatedFruit: Fruit, updatedStock: Double ) {
+        fruitStorage.stockManager(updatedFruit, changedStock: updatedStock)
+    }
+    
     func makingJuice(_ order: Juice) -> (message: String, success: Bool) {
         do {
             let complete = try manufacture(juiceName: order)
@@ -24,6 +28,10 @@ struct JuiceMaker {
     
     func getRemainingFruits(_ fruitName: Fruit) throws -> String {
         return try String(fruitStorage.getStockInfo(fruitName))
+    }
+    
+    func getStepperValue(_ fruitName: Fruit) throws -> Double {
+        return try Double(fruitStorage.getStockInfo(fruitName))
     }
 }
 
@@ -61,3 +69,4 @@ extension JuiceMaker {
         return isMade
     }
 }
+

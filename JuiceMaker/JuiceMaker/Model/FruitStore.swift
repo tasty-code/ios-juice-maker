@@ -1,6 +1,6 @@
 //
 //  JuiceMaker - FruitStore.swift
-//  Created by yagom. 
+//  Created by yagom.
 //  Copyright © yagom academy. All rights reserved.
 //
 
@@ -26,5 +26,9 @@ extension FruitStore {
             fruitBox[fruit] = current - needs
         }
         return true
+    }
+    
+    public func stockManager(_ fruit: Fruit, changedStock: Double) {
+        fruitBox[fruit] = Int(changedStock)
     }
 }
