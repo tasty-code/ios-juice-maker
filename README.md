@@ -10,6 +10,7 @@
 
 ## 📱 실행 화면
 <img src = "https://raw.githubusercontent.com/comdori-wj/ios-juice-maker/step3/Screenshots/%EC%A5%AC%EC%8A%A4_%EC%9E%90%ED%8C%90%EA%B8%B0_%EC%8B%A4%ED%96%89%ED%99%94%EB%A9%B4.gif">
+
 ## 🗂️ 디렉토리 구조
 
 ```markdown
