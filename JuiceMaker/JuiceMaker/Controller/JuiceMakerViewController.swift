@@ -11,6 +11,8 @@ final class JuiceMakerViewController: UIViewController, StockEditDelegate {
     // MARK: - Properties
     
     private let juiceMaker = JuiceMaker()
+    private var acceptAlertFactory: AlertFactoryService!
+    private var yesOrNoAlertFactory: AlertFactoryService!
     
     // MARK: - Views
     
@@ -29,6 +31,9 @@ final class JuiceMakerViewController: UIViewController, StockEditDelegate {
                                                selector: #selector(displayFruitQuantity),
                                                name: Notification.Name("stockDidChanged"),
                                                object: nil)
+        
+        acceptAlertFactory = AcceptAlertFactory(alertActionDelegate: self)
+        yesOrNoAlertFactory = YesOrNoAlertFactory(alertActionDelegate: self)
     }
     
     // MARK: - Methods
@@ -61,25 +66,24 @@ final class JuiceMakerViewController: UIViewController, StockEditDelegate {
         presentStockManagerViewController()
     }
     private func displayAcceptAlert(menuName: String) {
-        let alert = UIAlertController(
-            title: "\(menuName) 쥬스 나왔습니다",
-            message: "맛있게 드세요!",
-            preferredStyle: UIAlertController.Style.alert
-        )
-        alert.addAction(UIAlertAction(title: "감사합니다", style: .default))
+        let alertViewData = AlertViewData(title: "\(menuName) 쥬스 나왔습니다",
+                                          message: "맛있게 드세요!",
+                                          style: UIAlertController.Style.alert,
+                                          okActionTitle: "감사합니다",
+                                          cancelActionTitle: nil)
+        let alert = acceptAlertFactory.build(alertData: alertViewData)
+        
         present(alert, animated: true, completion: nil)
     }
     
     private func displayFillStockAlert() {
-        let alert = UIAlertController(
-            title: "재료가 부족해요",
-            message: "재고를 수정할까요?",
-            preferredStyle: .alert
-        )
-        alert.addAction(UIAlertAction(title: "예", style: .default, handler: { _ in
-            self.presentStockManagerViewController()
-        }))
-        alert.addAction(UIAlertAction(title: "아니요", style: .destructive))
+        let alertViewData = AlertViewData(title: "재료가 부족해요",
+                                          message: "재고를 수정할까요?",
+                                          style: UIAlertController.Style.alert,
+                                          okActionTitle: "예",
+                                          cancelActionTitle: "아니요")
+        let alert = yesOrNoAlertFactory.build(alertData: alertViewData)
+        
         present(alert, animated: true, completion: nil)
     }
     
@@ -93,4 +97,15 @@ final class JuiceMakerViewController: UIViewController, StockEditDelegate {
     func sendChangedStock(_ fruitStock: [Fruit : Int]) {
         juiceMaker.fruitStore.updateStock(fruitStock)
     }
+}
+
+extension JuiceMakerViewController: AceeptAlertActionDelegate {
+    func okAction() { }
+}
+
+extension JuiceMakerViewController: YesOrNoAlertActionDelegate {
+    func yesAction() {
+        presentStockManagerViewController()
+    }
+    func noAction() { }
 }
