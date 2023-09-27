@@ -7,7 +7,7 @@
 import UIKit
 
 final class ViewController: UIViewController {
-    var juiceMaker: JuiceMaker = JuiceMaker()
+    private var juiceMaker: JuiceMaker = JuiceMaker()
     
     @IBOutlet var strawBerryLabel: UILabel!
     @IBOutlet var bananaLabel: UILabel!
@@ -19,7 +19,6 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         bindingLabel()
     }
-
 }
 
 extension ViewController {
@@ -76,7 +75,7 @@ extension ViewController {
 }
 
 extension ViewController {
-    @IBAction func OrderStrawberryBananaJuice(_ sender: Any) {
+    @IBAction func OrderStrawberryBananaJuice(_ sender: UIButton) {
         let menu = Juice.strawberryBananaJuice
         makeOrder(menu)
     }
@@ -114,19 +113,16 @@ extension ViewController {
     @IBAction private func showPush() {
         moveToStockVc()
     }
-
 }
 
-extension ViewController: SendStockDelegate{
-    func sendStock(data: JuiceMaker) {
+extension ViewController: SendStockDelegate {
+    func sendStock(updatedModel: JuiceMaker) {
         do {
-            strawBerryLabel.text = try data.getRemainingFruits(.strawberry)
-            bananaLabel.text = try data.getRemainingFruits(.banana)
-            pineappleLabel.text = try data.getRemainingFruits(.pineapple)
-            kiwiLabel.text = try data.getRemainingFruits(.kiwi)
-            mangoLabel.text = try data.getRemainingFruits(.mango)
-            
-            print(data)
+            strawBerryLabel.text = try updatedModel.getRemainingFruits(.strawberry)
+            bananaLabel.text = try updatedModel.getRemainingFruits(.banana)
+            pineappleLabel.text = try updatedModel.getRemainingFruits(.pineapple)
+            kiwiLabel.text = try updatedModel.getRemainingFruits(.kiwi)
+            mangoLabel.text = try updatedModel.getRemainingFruits(.mango)
         } catch {
             statusAlert(ErrorMessage.invalidInput.debugDescription)
         }
