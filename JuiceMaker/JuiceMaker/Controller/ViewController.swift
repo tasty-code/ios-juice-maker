@@ -9,11 +9,11 @@ import UIKit
 final class ViewController: UIViewController {
     private var juiceMaker: JuiceMaker = JuiceMaker()
     
-    @IBOutlet var strawBerryLabel: UILabel!
-    @IBOutlet var bananaLabel: UILabel!
-    @IBOutlet var pineappleLabel: UILabel!
-    @IBOutlet var kiwiLabel: UILabel!
-    @IBOutlet var mangoLabel: UILabel!
+    @IBOutlet private weak var strawBerryLabel: UILabel!
+    @IBOutlet private weak var bananaLabel: UILabel!
+    @IBOutlet private weak var pineappleLabel: UILabel!
+    @IBOutlet private weak var kiwiLabel: UILabel!
+    @IBOutlet private weak var mangoLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
