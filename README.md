@@ -1,13 +1,17 @@
 # ios-juice-maker
 
-### 프로젝트 참여자
+## 프로젝트 참여자
 |<a href="https://github.com/KSK9820">Dora</a>|<a href="https://github.com/JEON-Sungsu">Howard</a>|
 |----|----|
 |<image src="https://github.com/KSK9820/ios-juice-maker/assets/63297236/dbf7a327-774a-49de-94a3-925c57a8e1eb" width="100" height="100"/>|<image src="https://github.com/KSK9820/ios-juice-maker/assets/63297236/fbc57a30-2fe9-4ac8-8368-47cec6db6c72" width="100" height="100">|
+<br/>
 
-
-### 프로젝트 간단 소개&설명
-
+## 프로젝트 간단 소개&설명
+- 결과 화면 <br/>
+<div >
+    <image src="https://github.com/KSK9820/ios-juice-maker/assets/68066104/97dace04-785d-435f-a9c0-4695ce711065" width="800" height="auto">
+</div>
+  
 - 사용자의 입력을 받아, 과일음료를 만들어 주는 앱
     - Model
         - JuiceMaker : 사용자의 요청을 받아 음료를 제작해주고 제작 결과에 대해서 알려준다. FruitStore에 음료를 만들기 위한 과일이 존재하는지 확인하고 소모된 과일의 수를 알려준다.
@@ -18,15 +22,12 @@
     - ViewController
         - ViewController : 음료 주문 View를 관리하고, 현재 음료를 만들기 위한 과일의 재고량을 View에 보여준다.
         - StockViewController : 과일의 재고량 관리 View. stepper를 통해 과일을 추가하거나 삭제 요청을 한다.
-- 결과 화면 <br/>
-  <image src="https://github.com/KSK9820/ios-juice-maker/assets/63297236/c27e9d00-02dd-4d82-bd45-94b26895e6b3" width="500" height="auto" />
-
 
 - 주요 함수 관계 <br/>
   ![image](https://github.com/KSK9820/ios-juice-maker/assets/63297236/47dabec8-749a-456a-9b5b-eb92fda2a61e)
+<br/>
 
-
-### 프로젝트를 진행하며 중점적으로 학습하고 적용시킨것
+## 프로젝트를 진행하며 중점적으로 학습하고 적용시킨것
 
 - 추상화 & 은닉화
     - 데이터를 관리하는 class를 은닉화 하기 위해서 singleton 패턴을 사용하려고 했으나, singleton은 은닉화와는 관계가 없다는것을 배우게 되었다.
@@ -57,8 +58,9 @@
 - Autolayout
     - 기본적인 Autolayout 사용법을 익히고 적용하였다.
     - UIKit 별로 constraint를 적용시키는 법, 기준을 잡는법등 을 배울 수 있었다.
+<br/>
 
-### 가장 큰 고민이었던 부분
+## 가장 큰 고민이었던 부분 @Howard
 
 - 은닉화에 관한 부분
     - private를 통해서 외부에서 접근을 차단하고, 대신 접근할 수 있는 메서드를 제공함으로써 데이터에 접근을 시키게 해야 된다.
@@ -79,8 +81,9 @@
     - Protocol을 이용하려고 했으나 이또한 지식이 부족하여 적용을 실패함
 - 결론
     - Protocol에 대한 학습을 통해 다음 프로젝트에서는 위의 문제들을 해결할 수 있도록 만들어야 겠다.
+<br/>
 
-### 개발 과정과 고민
+## 개발 과정과 고민 @Dora
 
 →는 고민 갈래, ⇒ 는 실제 개발 방향
 
