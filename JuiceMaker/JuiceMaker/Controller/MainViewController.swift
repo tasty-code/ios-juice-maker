@@ -60,7 +60,7 @@ final class MainViewController: UIViewController {
                 let count = try juiceMaker.remainingCount(fruit: fruit)
                 label.text = "\(count)"
             } catch {
-                juiceMakeFailAlert(message: InventoryError.invalidError.description)
+                defaultAlert(message: InventoryError.invalidError.description)
             }
         }
     }
@@ -112,9 +112,9 @@ final class MainViewController: UIViewController {
             updateFruitLabels()
             defaultAlert(message: "\(menu.recipeName)쥬스 나왔습니다! 맛있게 드세요!")
         } catch InventoryError.noLongerConsumeError {
-            defaultAlert(message: InventoryError.noLongerConsumeError.description)
+            juiceMakeFailAlert(message: InventoryError.noLongerConsumeError.description)
         } catch {
-            juiceMakeFailAlert(message: InventoryError.invalidError.description)
+            defaultAlert(message: InventoryError.invalidError.description)
         }
     }
 }
