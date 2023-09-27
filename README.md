@@ -25,6 +25,10 @@
 
 - 주요 함수 관계 <br/>
   ![image](https://github.com/KSK9820/ios-juice-maker/assets/63297236/47dabec8-749a-456a-9b5b-eb92fda2a61e)
+- 시퀀스 다이어그램 <br/>
+  ![쥬스자판기_sequence drawio](https://github.com/KSK9820/ios-juice-maker/assets/68066104/05dc0856-3572-4da9-8920-c5addb386cf5)
+- 클래스 다이어그램 <br/>
+  ![쥬스매이커_클래스 drawio](https://github.com/KSK9820/ios-juice-maker/assets/68066104/d6c1966a-91af-435e-b369-19dbfbd07150)
 <br/>
 
 ## 프로젝트를 진행하며 중점적으로 학습하고 적용시킨것
