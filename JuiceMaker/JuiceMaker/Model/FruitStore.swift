@@ -8,10 +8,17 @@ import Foundation
 
 // 과일 저장소 타입
 class FruitStore {
+    private var eachFruits: Set<EachFruitStore>
     
+    init() {
+        let newFruits = Fruits.allCases.map { fruit in
+            EachFruitStore(fruitType: fruit)
+        }
+        self.eachFruits = Set(newFruits)
+    }
 }
 
-enum Fruits {
+enum Fruits: CaseIterable {
     case strawberry
     case banana
     case pineapple
