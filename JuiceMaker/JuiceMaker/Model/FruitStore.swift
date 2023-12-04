@@ -16,6 +16,17 @@ class FruitStore {
         }
         self.eachFruits = Set(newFruits)
     }
+    
+    private func findFruits(_ fruit: Fruits) -> EachFruitStore? {
+        return eachFruits.first(where: { eachFruitStore in
+            eachFruitStore.fruitType == fruit
+        })
+    }
+    
+    func get(_ fruit: Fruits, count: Int) throws {
+        guard let targetFruitStore = findFruits(fruit) else { return }
+        try targetFruitStore.takeFruits(count: count)
+    }
 }
 
 enum Fruits: CaseIterable {
@@ -26,8 +37,8 @@ enum Fruits: CaseIterable {
     case mango
 }
 
-struct EachFruitStore {
-    private let fruitType: Fruits
+class EachFruitStore {
+    let fruitType: Fruits
     
     private var count: Int = 10
     
@@ -35,13 +46,17 @@ struct EachFruitStore {
         self.fruitType = fruitType
     }
     
-    mutating func takeFruits(count: Int) throws {
+    func takeFruits(count: Int) throws {
         guard self.count >= count else { throw JuiceMakerError.fruitShortage }
         self.count -= count
     }
 }
 
 extension EachFruitStore: Hashable {
+    static func == (lhs: EachFruitStore, rhs: EachFruitStore) -> Bool {
+        lhs.fruitType == rhs.fruitType
+    }
+    
     func hash(into hasher: inout Hasher) {
         hasher.combine(self.fruitType)
     }
