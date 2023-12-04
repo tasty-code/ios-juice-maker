@@ -19,13 +19,3 @@ class EachFruitStore {
         self.count -= count
     }
 }
-
-extension EachFruitStore: Hashable {
-    static func == (lhs: EachFruitStore, rhs: EachFruitStore) -> Bool {
-        lhs.fruitType == rhs.fruitType
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(self.fruitType)
-    }
-}
