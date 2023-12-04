@@ -12,6 +12,14 @@ class FruitStore {
         self.fruitStock = fruitStock
     }
     
+    func checkStock(juice: Juice) -> Bool {
+        for (fruitName, numberOfFruits) in juice.recipe {
+            guard let stock = fruitStock[fruitName] else { return false }
+            guard stock - numberOfFruits > 0 else { return false }
+        }
+        return true
+    }
+    
     func consumeFruit(juice: Juice) {
         for (fruitName, numberOfFruits) in juice.recipe {
             guard let stock = fruitStock[fruitName] else { return }
@@ -20,5 +28,3 @@ class FruitStore {
         }
     }
 }
-
-

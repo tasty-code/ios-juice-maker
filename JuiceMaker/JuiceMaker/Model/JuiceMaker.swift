@@ -6,5 +6,13 @@
 
 // 쥬스 메이커 타입
 struct JuiceMaker {
+    var fruitStore: FruitStore
     
+    init() {
+        fruitStore = FruitStore()
+    }
+    
+    func orderJuice(juice: Juice) {
+        
+    }
 }
