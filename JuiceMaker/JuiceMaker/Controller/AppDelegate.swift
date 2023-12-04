@@ -1,6 +1,6 @@
 //
 //  JuiceMaker - AppDelegate.swift
-//  Created by yagom. 
+//  Created by 미르 & 미성
 //  Copyright © yagom academy. All rights reserved.
 // 
 
