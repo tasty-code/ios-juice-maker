@@ -15,8 +15,8 @@
 		C73DAF40255D0CDE00020D38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C73DAF3F255D0CDE00020D38 /* Assets.xcassets */; };
 		C73DAF43255D0CDF00020D38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C73DAF41255D0CDF00020D38 /* LaunchScreen.storyboard */; };
 		C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */; };
-		F426214F2B1DBEE800C6423A /* Fruits.swift in Sources */ = {isa = PBXBuildFile; fileRef = F426214E2B1DBEE800C6423A /* Fruits.swift */; };
-		F42621512B1DBEFD00C6423A /* EachFruitStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42621502B1DBEFD00C6423A /* EachFruitStore.swift */; };
+		F426214F2B1DBEE800C6423A /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F426214E2B1DBEE800C6423A /* Fruit.swift */; };
+		F42621512B1DBEFD00C6423A /* FruitStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42621502B1DBEFD00C6423A /* FruitStock.swift */; };
 		F42621532B1DBF2E00C6423A /* JuiceMakerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42621522B1DBF2E00C6423A /* JuiceMakerError.swift */; };
 		F42621552B1DBF3F00C6423A /* JuiceFlavor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42621542B1DBF3F00C6423A /* JuiceFlavor.swift */; };
 /* End PBXBuildFile section */
@@ -32,8 +32,8 @@
 		C73DAF42255D0CDF00020D38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C73DAF44255D0CDF00020D38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMaker.swift; sourceTree = "<group>"; };
-		F426214E2B1DBEE800C6423A /* Fruits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruits.swift; sourceTree = "<group>"; };
-		F42621502B1DBEFD00C6423A /* EachFruitStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachFruitStore.swift; sourceTree = "<group>"; };
+		F426214E2B1DBEE800C6423A /* Fruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
+		F42621502B1DBEFD00C6423A /* FruitStock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitStock.swift; sourceTree = "<group>"; };
 		F42621522B1DBF2E00C6423A /* JuiceMakerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMakerError.swift; sourceTree = "<group>"; };
 		F42621542B1DBF3F00C6423A /* JuiceFlavor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceFlavor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,8 +64,8 @@
 			children = (
 				C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */,
 				C71CD66A266C7ACB0038B9CB /* FruitStore.swift */,
-				F426214E2B1DBEE800C6423A /* Fruits.swift */,
-				F42621502B1DBEFD00C6423A /* EachFruitStore.swift */,
+				F426214E2B1DBEE800C6423A /* Fruit.swift */,
+				F42621502B1DBEFD00C6423A /* FruitStock.swift */,
 				F42621522B1DBF2E00C6423A /* JuiceMakerError.swift */,
 				F42621542B1DBF3F00C6423A /* JuiceFlavor.swift */,
 			);
@@ -183,8 +183,8 @@
 				C73DAF3B255D0CDD00020D38 /* ViewController.swift in Sources */,
 				F42621552B1DBF3F00C6423A /* JuiceFlavor.swift in Sources */,
 				F42621532B1DBF2E00C6423A /* JuiceMakerError.swift in Sources */,
-				F42621512B1DBEFD00C6423A /* EachFruitStore.swift in Sources */,
-				F426214F2B1DBEE800C6423A /* Fruits.swift in Sources */,
+				F42621512B1DBEFD00C6423A /* FruitStock.swift in Sources */,
+				F426214F2B1DBEE800C6423A /* Fruit.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
 				C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */,
 				C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */,

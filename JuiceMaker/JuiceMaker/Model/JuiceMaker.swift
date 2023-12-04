@@ -15,7 +15,7 @@ struct JuiceMaker {
     }
     
     func makeJuice(flavor: JuiceFlavor) throws {
-        try flavor.recipe.forEach { (fruit: Fruits, count: Int) in
+        try flavor.recipe.forEach { (fruit: Fruit, count: Int) in
             try fruitStore.get(fruit, count: count)
         }
     }

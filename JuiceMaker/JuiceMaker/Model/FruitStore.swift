@@ -7,19 +7,19 @@
 import Foundation
 
 // 과일 저장소 타입
-class FruitStore {
-    private var eachFruits: Dictionary<Fruits, EachFruitStore>
+final class FruitStore {
+    private var fruitStocks: [Fruit: FruitStock]
     
     init() {
-        let newFruits: Dictionary<Fruits, EachFruitStore> = Fruits.allCases.reduce(into: [:]) { (result, fruit) in
-            let stock = EachFruitStore(fruitType: fruit)
+        let newFruits: [Fruit: FruitStock] = Fruit.allCases.reduce(into: [:]) { (result, fruit) in
+            let stock = FruitStock(fruitType: fruit)
             result.updateValue(stock, forKey: fruit)
         }
-        self.eachFruits = newFruits
+        self.fruitStocks = newFruits
     }
     
-    func get(_ fruit: Fruits, count: Int) throws {
-        guard let targetFruitStore = eachFruits[fruit] else { return }
+    func get(_ fruit: Fruit, count: Int) throws {
+        guard let targetFruitStore = fruitStocks[fruit] else { return }
         try targetFruitStore.takeFruits(count: count)
     }
 }

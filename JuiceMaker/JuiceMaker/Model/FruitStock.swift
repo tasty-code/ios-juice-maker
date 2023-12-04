@@ -5,12 +5,12 @@
 //  Created by Effie on 12/4/23.
 //
 
-class EachFruitStore {
-    let fruitType: Fruits
+final class FruitStock {
+    let fruitType: Fruit
     
     private var count: Int = 10
     
-    init(fruitType: Fruits) {
+    init(fruitType: Fruit) {
         self.fruitType = fruitType
     }
     
