@@ -8,9 +8,24 @@ import Foundation
 
 // 과일 저장소 타입
 class FruitStore {
-    var strawberry: Int = 10
-    var banana: Int = 10
-    var pineapple: Int = 10
-    var kiwi: Int = 10
-    var mango: Int = 10
+    var strawberryStock: Int = 10
+    var bananaStock: Int = 10
+    var pineappleStock: Int = 10
+    var kiwiStock: Int = 10
+    var mangoStock: Int = 10
+    
+    func manageFruitsStocks(_ fruit: Fruits, count: Int) {
+        switch fruit {
+        case .strawberry:
+            self.strawberryStock = count
+        case .banana:
+            self.bananaStock = count
+        case .pineapple:
+            self.pineappleStock = count
+        case .kiwi:
+            self.kiwiStock = count
+        case .mango:
+            self.mangoStock = count
+        }
+    }
 }
