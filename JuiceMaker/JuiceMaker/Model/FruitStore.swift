@@ -6,7 +6,6 @@
 
 import Foundation
 
-// 과일 저장소 타입
 class FruitStore {
     var strawberryStock: Int = 10
     var bananaStock: Int = 10
@@ -26,6 +25,21 @@ class FruitStore {
             self.kiwiStock = count
         case .mango:
             self.mangoStock = count
+        }
+    }
+
+    func useJuiceIngredient(_ fruit: Fruits, count: Int) {
+        switch fruit {
+        case .strawberry:
+            self.strawberryStock -= count
+        case .banana:
+            self.bananaStock -= count
+        case .pineapple:
+            self.pineappleStock -= count
+        case .kiwi:
+            self.kiwiStock -= count
+        case .mango:
+            self.mangoStock -= count
         }
     }
 }
