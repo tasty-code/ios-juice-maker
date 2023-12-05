@@ -18,6 +18,5 @@ final class FruitStore {
         }
         let newQuantity = oldQuantity - quantity
         quantityOfAllFruits[fruitName] = newQuantity
-        print("바나나 남은 개수:", quantityOfAllFruits[fruitName] ?? 0)
     }
 }
