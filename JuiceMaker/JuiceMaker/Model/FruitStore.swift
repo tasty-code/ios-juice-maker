@@ -8,9 +8,9 @@ import Foundation
 
 // 과일 저장소 타입
 class FruitStore {
-    var stock = [String: Int]()
+    var fruitStock = [String: Int]()
     init() {
-        stock = [
+        fruitStock = [
             "strawberry": 10,
             "banana": 10,
             "pineapple": 10,
@@ -19,11 +19,20 @@ class FruitStore {
         ]
     }
     
-    func changeStock(fruitName: [String: Int]) {
-        for(name, num) in fruitName {
-            guard var currentStock = stock[name] else { return }
-            currentStock -= num
-            stock[name] = currentStock
+    func changeStock(recipe: [String: Int]) {
+        for(fruit, amount) in recipe {
+            guard var currentStock = fruitStock[fruit] else { return }
+            currentStock -= amount
+            fruitStock[fruit] = currentStock
         }
+    }
+    
+    func checkStockAvailability(for recipe: [String: Int]) -> Bool {
+        for (fruit, amount) in recipe {
+            guard let stock = fruitStock[fruit], stock >= amount else {
+                return false
+            }
+        }
+        return true
     }
 }

@@ -12,7 +12,9 @@ struct JuiceMaker {
     
     mutating func makeJuice(juice: String) {
         let recipe = juiceRecipe(juice: juice)
-        fruitStore.changeStock(fruitName: recipe)
+        
+        guard fruitStore.checkStockAvailability(for: recipe) else { return }
+        fruitStore.changeStock(recipe: recipe)
     }
     
     private func juiceRecipe(juice: String) -> [String: Int] {
