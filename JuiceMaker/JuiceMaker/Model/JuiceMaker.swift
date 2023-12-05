@@ -23,5 +23,31 @@ struct JuiceMaker {
         var description: String {
             self.rawValue
         }
+        
+        // FruitStore의 과일을 사용해 과일쥬스를 제조
+        private func receiveRecipes() -> [(requiredFruit: Fruit, requestedAmount: Int)] {
+            var recipe: [(Fruit, Int)]
+            
+            switch self {
+            case .strawberry:
+                recipe = [(.strawberry, 16)]
+            case .banana:
+                recipe = [(.banana, 2)]
+            case .kiwi:
+                recipe = [(.kiwi, 3)]
+            case .pineapple:
+                recipe = [(.pineapple, 2)]
+            case .mango:
+                recipe = [(.mango, 3)]
+            case .strawberryBanana:
+                recipe = [(.strawberry, 10), (.banana, 1)]
+            case .mangoKiwi:
+                recipe = [(.mango, 2), (.kiwi, 1)]
+            }
+            
+            return recipe
+        }
+        
+        
     }
 }
