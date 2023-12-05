@@ -13,13 +13,13 @@ final class FruitStore {
     init() {
         let newFruits: [Fruit: FruitStock] = Fruit.allCases.reduce(into: [:]) { (result, fruit) in
             let stock = FruitStock(fruitType: fruit)
-            result.updateValue(stock, forKey: fruit)
+            result[fruit] = stock
         }
         self.fruitStocks = newFruits
     }
     
-    func get(_ fruit: Fruit, count: Int) throws {
+    func getFruits(_ fruit: Fruit, count: Int) throws {
         guard let targetFruitStore = fruitStocks[fruit] else { return }
-        try targetFruitStore.takeFruits(count: count)
+        try targetFruitStore.consumeFruits(count: count)
     }
 }

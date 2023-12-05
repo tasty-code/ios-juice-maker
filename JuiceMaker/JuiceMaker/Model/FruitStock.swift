@@ -14,7 +14,7 @@ final class FruitStock {
         self.fruitType = fruitType
     }
     
-    func takeFruits(count: Int) throws {
+    func consumeFruits(count: Int) throws {
         guard self.count >= count else { throw JuiceMakerError.fruitShortage }
         self.count -= count
     }
