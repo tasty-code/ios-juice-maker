@@ -15,16 +15,18 @@ class FruitStore {
     func checkStock(juice: Juice) -> Bool {
         for (fruitName, numberOfFruits) in juice.recipe {
             guard let stock = fruitStock[fruitName] else { return false }
-            guard stock - numberOfFruits > 0 else { return false }
+            guard stock >= numberOfFruits else { return false }
         }
         return true
     }
     
-    func consumeFruit(juice: Juice) {
+    func consumeFruit(juice: Juice) -> Bool {
+        guard checkStock(juice: juice) else { return false }
+        
         for (fruitName, numberOfFruits) in juice.recipe {
-            guard let stock = fruitStock[fruitName] else { return }
-            
+            guard let stock = fruitStock[fruitName] else { return false }
             fruitStock.updateValue(stock - numberOfFruits, forKey: fruitName)
         }
+        return true
     }
 }
