@@ -34,4 +34,9 @@ class FruitStore {
         guard let quantity = fruitStock[fruit] else { return 0 }
         return quantity
     }
+    
+    func updateFruit(fruit: Fruit, quantity: UInt) -> Bool {
+        guard let stock = fruitStock.updateValue(quantity, forKey: fruit) else { return false }
+        return true
+    }
 }
