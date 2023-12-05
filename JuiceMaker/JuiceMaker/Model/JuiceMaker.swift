@@ -12,8 +12,7 @@ struct JuiceMaker {
         self.fruitStore = fruitStore
     }
     
-    func orderJuice(juice: Juice) -> Bool {
-        guard fruitStore.consumeFruit(juice: juice) else { return false }
-        return true
+    func orderJuice(juice: Juice) throws {
+        try fruitStore.consumeFruit(juice: juice)
     }
 }
