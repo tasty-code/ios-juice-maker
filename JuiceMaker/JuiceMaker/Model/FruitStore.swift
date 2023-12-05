@@ -8,5 +8,16 @@ import Foundation
 
 // 과일 저장소 타입
 class FruitStore {
+    var quantityOfAllFruits: [FruitName: Int] = [.strawberry: 10, .banana: 10, .pineapple: 10, .kiwi: 10, .mango: 10]
     
+    func consumeFruit(fruitName: FruitName, fruitQuantity quantity: Int) {
+        let oldQuantity = quantityOfAllFruits[fruitName] ?? 0
+        guard oldQuantity >= quantity else {
+            print("과일 재고 부족")
+            return
+        }
+        let newQuantity = oldQuantity - quantity
+        quantityOfAllFruits[fruitName] = newQuantity
+        print("바나나 남은 개수:", quantityOfAllFruits[fruitName] ?? 0)
+    }
 }
