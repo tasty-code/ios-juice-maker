@@ -6,19 +6,32 @@
 
 import Foundation
 
-// 쥬스 메이커 타입
 struct JuiceMaker {
-    let makeJuice: FruitStore = FruitStore()
+    let fruitStore: FruitStore = FruitStore()
     
     func isEnouph(juiceMenu: JuiceMenu) -> Bool {
         var stockCheck: Bool = true
-        for (fruit, count) in juiceMenu.recipe {
-            guard makeJuice.checkStock(fruit: fruit, count: count) else {
+        for (fruit, number) in juiceMenu.recipe {
+            guard fruitStore.checkStock(fruit: fruit, stock: number) else {
                 stockCheck = false
                 break
             }
         }
         return stockCheck
+    }
+    
+    func makeJuice(juiceMenu: JuiceMenu) -> Juice? {
+        guard isEnouph(juiceMenu: juiceMenu) else {
+            print("재고 없어용ㅠㅠ")
+            return nil
+        }
+        
+        juiceMenu.recipe.forEach { (fruit: Fruit, number: Int) in
+            fruitStore.release(fruit: fruit, stock: number)
+        }
+        
+        print("\(juiceMenu.name) 나왔습니다.")
+        return Juice(juiceMenu: juiceMenu)
     }
     
 }
