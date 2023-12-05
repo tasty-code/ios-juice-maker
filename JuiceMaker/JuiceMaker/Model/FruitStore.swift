@@ -7,11 +7,19 @@
 import Foundation
 
 class FruitStore {
-    var strawberryStock: Int = 10
-    var bananaStock: Int = 10
-    var pineappleStock: Int = 10
-    var kiwiStock: Int = 10
-    var mangoStock: Int = 10
+    var strawberryStock: Int
+    var bananaStock: Int
+    var pineappleStock: Int
+    var kiwiStock: Int
+    var mangoStock: Int
+    
+    init(strawberryStock: Int, bananaStock: Int, pineappleStock: Int, kiwiStock: Int, mangoStock: Int) {
+        self.strawberryStock = strawberryStock
+        self.bananaStock = bananaStock
+        self.pineappleStock = pineappleStock
+        self.kiwiStock = kiwiStock
+        self.mangoStock = mangoStock
+    }
     
     func manageFruitsStocks(_ fruit: Fruits, count: Int) {
         switch fruit {
