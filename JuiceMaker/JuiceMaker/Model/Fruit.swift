@@ -11,7 +11,7 @@ enum Fruit {
     case pineapple
     case kiwi
     case mango
-
+    
     var name: String {
         switch self {
         case .strawberry:
