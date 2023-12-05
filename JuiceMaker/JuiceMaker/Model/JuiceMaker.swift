@@ -3,11 +3,16 @@
 //  Created by Kyle& L
 //  Copyright © yagom academy. All rights reserved.
 //
-import UIKit
+
 struct JuiceMaker {
     
-    var fruitStore: FruitStore = FruitStore()
-    
+    var fruitStore: FruitStore = FruitStore(
+        strawberryStock: 10,
+        bananaStock: 10,
+        pineappleStock: 10,
+        kiwiStock: 10,
+        mangoStock: 10
+    )
     
     func makeJuice(juice: Juice) {
         var understockedFruits: [String] = []
@@ -20,14 +25,16 @@ struct JuiceMaker {
             }
             fruitStore.useJuiceIngredient(fruit, count: count)
         }
-        guard understockedFruits.isEmpty else {
+        guard 
+            understockedFruits.isEmpty 
+        else {
             let understockedFruit = understockedFruits.map{$0}.joined(separator: ",")
             print("\(understockedFruit) 재고 없음")
             return
         }
     }
     
-    func hasEnoughStock(juice: Juice) -> Bool {
+    private func hasEnoughStock(juice: Juice) -> Bool {
         switch juice {
         case .strawberryJuice:
             return fruitStore.strawberryStock >= 16
