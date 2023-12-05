@@ -32,55 +32,15 @@ class OrderViewController: UIViewController {
     
     
     @IBAction func tapMakeJuiceButton(_ sender: UIButton) {
-        guard let selectedJuice = sender.currentTitle else {
+        guard let selectedButton = sender.currentTitle,
+              let juice = Juice(rawValue: selectedButton) else {
             return
         }
         
-        switch selectedJuice {
-        case "딸기쥬스 주문":
-            do {
-                try juiceMaker.makeJuice(juiceType: .strawberry)
-            } catch {
-                print("재고가 없습니다.")
-            }
-        case "바나나쥬스 주문":
-            do {
-                try juiceMaker.makeJuice(juiceType: .banana)
-            } catch {
-                print("재고가 없습니다.")
-            }
-        case "키위쥬스 주문":
-            do {
-                try juiceMaker.makeJuice(juiceType: .kiwi)
-            } catch {
-                print("재고가 없습니다.")
-            }
-        case "파인애플쥬스 주문":
-            do {
-                try juiceMaker.makeJuice(juiceType: .pineapple)
-            } catch {
-                print("재고가 없습니다.")
-            }
-        case "딸바쥬스 주문":
-            do {
-                try juiceMaker.makeJuice(juiceType: .strawberryBanana)
-            } catch {
-                print("재고가 없습니다.")
-            }
-        case "망고쥬스 주문":
-            do {
-                try juiceMaker.makeJuice(juiceType: .mangoKiwi)
-            } catch {
-                print("재고가 없습니다.")
-            }
-        case "망키쥬스 주문":
-            do {
-                try juiceMaker.makeJuice(juiceType: .strawberry)
-            } catch {
-                print("재고가 없습니다.")
-            }
-        default:
-            print("")
+        do {
+            try juiceMaker.makeJuice(juiceType: juice)
+        } catch {
+            print("재고가 부족합니다.")
         }
     }
     
