@@ -39,4 +39,10 @@ class FruitStore {
         let currentStock = checkQuantity(fruit: fruit)
         fruitStock.updateValue(currentStock + num, forKey: fruit)
     }
+    
+    func subtractFruit(fruit: Fruit, num: UInt) {
+        let currentStock = checkQuantity(fruit: fruit)
+        guard currentStock >= num else { return }
+        fruitStock.updateValue(currentStock - num, forKey: fruit)
+    }
 }
