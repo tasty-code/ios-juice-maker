@@ -31,8 +31,4 @@ class FruitStore {
       func updateStock(fruit: Fruit, num: Int) {
           inventory.updateValue(num, forKey: fruit)
       }
-    
-    
-    
-    
 }
