@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4E0E6E872B1DAC98004DBB95 /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0E6E862B1DAC98004DBB95 /* Fruit.swift */; };
 		4E0E6E9C2B1DD963004DBB95 /* JuiceMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0E6E9B2B1DD963004DBB95 /* JuiceMakerTests.swift */; };
+		4E0E6EA32B1EBDDE004DBB95 /* JuiceMakerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0E6EA22B1EBDDE004DBB95 /* JuiceMakerError.swift */; };
 		C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71CD66A266C7ACB0038B9CB /* FruitStore.swift */; };
 		C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DAF36255D0CDD00020D38 /* AppDelegate.swift */; };
 		C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DAF38255D0CDD00020D38 /* SceneDelegate.swift */; };
@@ -34,6 +35,7 @@
 		4E0E6E862B1DAC98004DBB95 /* Fruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
 		4E0E6E992B1DD963004DBB95 /* JuiceMakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JuiceMakerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E0E6E9B2B1DD963004DBB95 /* JuiceMakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMakerTests.swift; sourceTree = "<group>"; };
+		4E0E6EA22B1EBDDE004DBB95 /* JuiceMakerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMakerError.swift; sourceTree = "<group>"; };
 		C71CD66A266C7ACB0038B9CB /* FruitStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitStore.swift; sourceTree = "<group>"; };
 		C73DAF33255D0CDD00020D38 /* JuiceMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JuiceMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C73DAF36255D0CDD00020D38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				C71CD66A266C7ACB0038B9CB /* FruitStore.swift */,
 				4E0E6E862B1DAC98004DBB95 /* Fruit.swift */,
 				FAEA5ABE2B1DAF4F00E29512 /* Juice.swift */,
+				4E0E6EA22B1EBDDE004DBB95 /* JuiceMakerError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 			files = (
 				4E0E6E872B1DAC98004DBB95 /* Fruit.swift in Sources */,
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
+				4E0E6EA32B1EBDDE004DBB95 /* JuiceMakerError.swift in Sources */,
 				FAEA5ABF2B1DAF4F00E29512 /* Juice.swift in Sources */,
 				C73DAF3B255D0CDD00020D38 /* ViewController.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
