@@ -6,7 +6,6 @@
 
 import Foundation
 
-// 과일 저장소 타입
 class FruitStore {
     private var store: Dictionary<Fruit, Int>
     
@@ -15,24 +14,35 @@ class FruitStore {
         Fruit.allCases.forEach { store[$0] = 10 }
     }
     
-    public func warehouse(fruit: Fruit, count: Int) {
+    public func warehouse(fruit: Fruit, quantity: Int) {
         guard let nowCount = store[fruit] else {
             return
         }
-        store[fruit] = nowCount + count
+        store[fruit] = nowCount + quantity
     }
     
-    public func release(fruit: Fruit, count: Int) -> Bool {
+    public func release(fruit: Fruit, stock: Int) {
+        guard let nowCount = store[fruit] else {
+            return
+        }
+        
+        if nowCount < stock {
+            return
+        }
+        
+        store[fruit] = nowCount - stock
+    }
+    
+    
+    func checkStock(fruit: Fruit, stock: Int) -> Bool {
         guard let nowCount = store[fruit] else {
             return false
         }
         
-        if nowCount < count {
+        if nowCount < stock {
             return false
         }
         
-        store[fruit] = nowCount - count
         return true
     }
-    
 }
