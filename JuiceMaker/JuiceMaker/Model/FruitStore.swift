@@ -20,11 +20,11 @@ class FruitStore {
         .mango: 10,
     ]
     
-    func supplyFruit(for fruitName: Fruit, by count: UInt) {
+    func supplyFruit(ofType fruitName: Fruit, amount count: UInt) {
         self.storage[fruitName]? += count
     }
     
-    func consumeFruit(for fruitName: Fruit, by count: UInt) {
+    func consumeFruit(ofType fruitName: Fruit, amount count: UInt) {
         guard let currentStock = self.storage[fruitName] else {
             return
         }

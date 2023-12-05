@@ -17,21 +17,21 @@ struct JuiceMaker {
     func makeJuice(menu: Menu) {
         switch menu {
         case .딸기쥬스:
-            fruitStore.consumeFruit(for: .strawberry, by: 16)
+            fruitStore.consumeFruit(ofType: .strawberry, amount: 16)
         case .바나나쥬스:
-            fruitStore.consumeFruit(for: .banana, by: 2)
+            fruitStore.consumeFruit(ofType: .banana, amount: 2)
         case .키위쥬스:
-            fruitStore.consumeFruit(for: .kiwi, by: 3)
+            fruitStore.consumeFruit(ofType: .kiwi, amount: 3)
         case .파인애플쥬스:
-            fruitStore.consumeFruit(for: .pineapple, by: 2)
+            fruitStore.consumeFruit(ofType: .pineapple, amount: 2)
         case .딸바쥬스:
-            fruitStore.consumeFruit(for: .strawberry, by: 10)
-            fruitStore.consumeFruit(for: .banana, by: 1)
+            fruitStore.consumeFruit(ofType: .strawberry, amount: 10)
+            fruitStore.consumeFruit(ofType: .banana, amount: 1)
         case .망고쥬스:
-            fruitStore.consumeFruit(for: .mango, by: 3)
+            fruitStore.consumeFruit(ofType: .mango, amount: 3)
         case .망고키위쥬스:
-            fruitStore.consumeFruit(for: .mango, by: 2)
-            fruitStore.consumeFruit(for: .kiwi, by: 1)
+            fruitStore.consumeFruit(ofType: .mango, amount: 2)
+            fruitStore.consumeFruit(ofType: .kiwi, amount: 1)
         }
     }
 }
