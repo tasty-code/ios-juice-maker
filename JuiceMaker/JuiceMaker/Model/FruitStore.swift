@@ -19,9 +19,11 @@ class FruitStore {
         ]
     }
     
-    func changeStock(){
-        
+    func changeStock(fruitName: [String: Int]) {
+        for(name, num) in fruitName {
+            guard var currentStock = stock[name] else { return }
+            currentStock -= num
+            stock[name] = currentStock
+        }
     }
-    
 }
-
