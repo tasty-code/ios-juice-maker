@@ -6,13 +6,14 @@
 
 // 쥬스 메이커 타입
 struct JuiceMaker {
-    var fruitStore: FruitStore
+    private var fruitStore: FruitStore
     
-    init() {
-        fruitStore = FruitStore()
+    init(fruitStore: FruitStore = FruitStore()) {
+        self.fruitStore = fruitStore
     }
     
-    func orderJuice(juice: Juice) {
-        
+    func orderJuice(juice: Juice) -> Bool {
+        guard fruitStore.consumeFruit(juice: juice) else { return false }
+        return true
     }
 }
