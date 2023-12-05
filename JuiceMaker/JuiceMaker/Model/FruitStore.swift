@@ -8,23 +8,31 @@ import Foundation
 
 // 과일 저장소 타입
 class FruitStore {
-    struct Item {
-        var count: Int = 10
-    }
-    
     enum Fruit {
         case strawberry, banana, pineapple, kiwi, mango
     }
     
-    var storage: [Fruit:Item] = [
-        .strawberry: Item(),
-        .banana: Item(),
-        .pineapple: Item(),
-        .kiwi: Item(),
-        .mango: Item(),
+    var storage: [Fruit:UInt] = [
+        .strawberry: 10,
+        .banana: 10,
+        .pineapple: 10,
+        .kiwi: 10,
+        .mango: 10,
     ]
     
-    func supply(fruitName: Fruit, count: Int) {
-        self.storage[fruitName]?.count += count
+    func supplyFruit(for fruitName: Fruit, by count: UInt) {
+        self.storage[fruitName]? += count
+    }
+    
+    func consumeFruit(for fruitName: Fruit, by count: UInt) {
+        guard let currentStock = self.storage[fruitName] else {
+            return
+        }
+        
+        if count > currentStock {
+            return
+        }
+        
+        self.storage[fruitName]? -= count
     }
 }
