@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77CBF1A32B1EBA42007B052A /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CBF1A22B1EBA42007B052A /* InventoryViewController.swift */; };
 		77CBF1A62B1EBCAF007B052A /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CBF1A52B1EBCAF007B052A /* UIViewController + Extension.swift */; };
 		C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71CD66A266C7ACB0038B9CB /* FruitStore.swift */; };
 		C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DAF36255D0CDD00020D38 /* AppDelegate.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		77CBF1A22B1EBA42007B052A /* InventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InventoryViewController.swift; path = JuiceMaker/View/InventoryViewController.swift; sourceTree = SOURCE_ROOT; };
 		77CBF1A52B1EBCAF007B052A /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
 		C71CD66A266C7ACB0038B9CB /* FruitStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitStore.swift; sourceTree = "<group>"; };
 		C73DAF33255D0CDD00020D38 /* JuiceMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JuiceMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +56,7 @@
 		C71CD66D266C7B470038B9CB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				77CBF1A22B1EBA42007B052A /* InventoryViewController.swift */,
 				C73DAF36255D0CDD00020D38 /* AppDelegate.swift */,
 				C73DAF38255D0CDD00020D38 /* SceneDelegate.swift */,
 				C73DAF3A255D0CDD00020D38 /* ViewController.swift */,
@@ -179,7 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
-				C73DAF3B255D0CDD00020D38 /* ViewController.swift in Sources */,
+				77CBF1A32B1EBA42007B052A /* InventoryViewController.swift in Sources */,
 				77CBF1A62B1EBCAF007B052A /* UIViewController + Extension.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
 				C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */,
