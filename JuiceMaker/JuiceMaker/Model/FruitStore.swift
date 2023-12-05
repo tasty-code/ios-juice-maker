@@ -3,8 +3,12 @@
 //  Created by yagom.
 //  Copyright © yagom academy. All rights reserved.
 //
-
 import Foundation
+
+enum FruitStoreError: Error {
+    case invalidSelection
+    case insufficientStock
+}
 
 // 과일 저장소 타입
 class FruitStore {
@@ -24,13 +28,13 @@ class FruitStore {
         self.storage[fruitName]? += count
     }
     
-    func consumeFruit(ofType fruitName: Fruit, amount count: UInt) {
+    func consumeFruit(ofType fruitName: Fruit, amount count: UInt) throws {
         guard let currentStock = self.storage[fruitName] else {
-            return
+            throw FruitStoreError.invalidSelection
         }
         
         if count > currentStock {
-            return
+            throw FruitStoreError.insufficientStock
         }
         
         self.storage[fruitName]? -= count
