@@ -29,4 +29,9 @@ class FruitStore {
         }
         return true
     }
+    
+    func checkQuantity(fruit: Fruit) -> UInt {
+        guard let quantity = fruitStock[fruit] else { return 0 }
+        return quantity
+    }
 }
