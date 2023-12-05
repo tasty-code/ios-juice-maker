@@ -22,13 +22,13 @@ final class JuiceMakerTests: XCTestCase {
     func test_딸기쥬스를_만들수_있는_재고가_없다() {
         let result = sut.hasEnoughStock(juice: .strawberryJuice)
         
-        XCTAssertEqual(result, false, "딸기 재고 없음! 테스트 성공")
+        XCTAssertEqual(result, false, "딸기 재고 있음! 테스트 실패")
     }
     
     func test_바나나쥬스를_만들수_있는_재고가_있다() {
         let result = sut.hasEnoughStock(juice: .bananaJuice)
         
-        XCTAssertEqual(result, true, "바나나 재고 있음! 테스트 성공")
+        XCTAssertEqual(result, true, "바나나 재고 없음! 테스트 실패")
     }
     
     func test_딸기_기본재고_10개로_쥬스를_만들수_없다() {
@@ -47,6 +47,14 @@ final class JuiceMakerTests: XCTestCase {
         let result: Int = 7
         let remainMango: Int = sut.fruitStore.mangoStock
         
-        XCTAssertEqual(result, remainMango, "망고쥬스를 만들고 남은 망고는 7개 입니다! 테스트 성공")
+        XCTAssertEqual(result, remainMango, "망고쥬스를 만들고 남은 망고는 7개 아닙니다! 테스트 실패")
+    }
+    
+    func test_파인애플의_재고를_3개로_바꾼다() {
+        sut.fruitStore.manageFruitsStocks(.pineapple, count: 3)
+        let result: Int = 3
+        let remainPineapple: Int  = sut.fruitStore.pineappleStock
+        
+        XCTAssertEqual(result, remainPineapple, "파인애플의 재고는 3개가 아닙니다! 테스트 실패")
     }
 }
