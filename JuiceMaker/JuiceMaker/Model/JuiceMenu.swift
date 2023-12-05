@@ -16,6 +16,25 @@ enum JuiceMenu {
     case mangoJuicie
     case mangoKiwiJuice
     
+//    init(juiceMenu: JuiceMenu) {
+//        switch juiceMenu {
+//        case .strawberryJuice:
+//            self = .strawberryJuice
+//        case .bananaJuice:
+//            self = .bananaJuice
+//        case .kiwiJuice:
+//            self = .kiwiJuice
+//        case .pineaplleJuice:
+//            self = .pineaplleJuice
+//        case .strawberryBananaJuice:
+//            self = .strawberryBananaJuice
+//        case .mangoJuicie:
+//            self = .mangoJuicie
+//        case .mangoKiwiJuice:
+//            self = .mangoKiwiJuice
+//        }
+//    }
+    
     var recipe: Dictionary<Fruit, Int> {
         switch self {
         case .strawberryJuice:

@@ -35,4 +35,16 @@ class FruitStore {
         return true
     }
     
+    
+    func checkStock(fruit: Fruit, count: Int) -> Bool {
+        guard let nowCount = store[fruit] else {
+            return false
+        }
+        
+        if nowCount < count {
+            return false
+        }
+        
+        return true
+    }
 }
