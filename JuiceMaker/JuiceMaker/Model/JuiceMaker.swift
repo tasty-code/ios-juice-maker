@@ -11,7 +11,7 @@ struct JuiceMaker {
     enum Menu {
         case 딸기쥬스, 바나나쥬스, 키위쥬스, 파인애플쥬스, 딸바쥬스, 망고쥬스, 망고키위쥬스
         
-        var recipe: [FruitStore.Fruit:UInt] {
+        var recipe: [FruitStore.Fruit:Int] {
             switch self {
             case .딸기쥬스:
                 return [.strawberry:16]

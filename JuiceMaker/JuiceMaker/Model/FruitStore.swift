@@ -17,7 +17,7 @@ class FruitStore {
         case invalidAmountOfFruit
     }
     
-    var storage: [Fruit:UInt] = [
+    var storage: [Fruit:Int] = [
         .strawberry: 10,
         .banana: 10,
         .pineapple: 10,
@@ -25,7 +25,7 @@ class FruitStore {
         .mango: 10,
     ]
     
-    func supply(fruits: [FruitStore.Fruit:UInt]) throws {
+    func supply(fruits: [FruitStore.Fruit:Int]) throws {
         for (fruitName, amount) in fruits {
             guard amount <= 0 else {
                 throw StorageError.invalidAmountOfFruit
@@ -35,7 +35,7 @@ class FruitStore {
         }
     }
     
-    func consume(fruits: [FruitStore.Fruit:UInt]) throws {
+    func consume(fruits: [FruitStore.Fruit:Int]) throws {
         for (fruitName, amount) in fruits {
             guard let currentStock = self.storage[fruitName] else {
                 throw StorageError.invalidSelection
