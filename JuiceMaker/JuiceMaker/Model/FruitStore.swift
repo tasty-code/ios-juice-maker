@@ -9,6 +9,10 @@ import Foundation
 // 과일 저장소 타입
 final class FruitStore {
     
+    static let shared = FruitStore()
+    
+    private init() {}
+    
     var fruitInventory: [FruitType: Int] = [
         .strawberry: 10,
         .banana: 10,
