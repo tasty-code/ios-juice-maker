@@ -60,8 +60,8 @@
 			children = (
 				C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */,
 				C71CD66A266C7ACB0038B9CB /* FruitStore.swift */,
-				1D97DE9E2B205CE600AB00FC /* ErrorType.swift */,
 				1D97DE9D2B205CE500AB00FC /* FruitType.swift */,
+				1D97DE9E2B205CE600AB00FC /* ErrorType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
