@@ -8,13 +8,11 @@ import Foundation
 
 // 쥬스 메이커 타입
 struct JuiceMaker {
-    private var fruitStore: FruitStore
-    
+    let fruitStore: FruitStore
     init(fruitStore: FruitStore) {
         self.fruitStore = fruitStore
     }
-    
-    func makeJuice(juiceRecipe: JuiceRecipe) -> String {
-        return fruitStore.makeJuice(type: juiceRecipe)
+    func makeJuice(juiceRecipe: JuiceRecipe) throws -> String {
+        return try fruitStore.makeJuice(juiceRecipe: juiceRecipe)
     }
 }

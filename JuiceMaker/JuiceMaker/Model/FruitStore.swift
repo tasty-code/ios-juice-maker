@@ -47,19 +47,16 @@ class FruitStore {
         }
         return false
     }
-    
-    func makeJuice(type: JuiceRecipe) -> String {
-        var ingredients = type.ingredients
-        for (fruit, quantity) in ingredients {
-            guard let available = fruitInventory[fruit], available >= quantity else {
-                return "재료가 부족하여 \(type.name)를 제조할 수 없습니다."
+    func makeJuice(juiceRecipe: JuiceRecipe) throws  -> String {
+        var  ingredients = juiceRecipe.ingredients
+        for (fruit, juiceIngrediant) in ingredients {
+            guard let ingrediantsInInventory = fruitInventory[fruit], ingrediantsInInventory > juiceIngrediant else {
+                throw CustomError.makeJuiceError(message: "not enough ingrediantss in invetory")
             }
+            fruitInventory[fruit] = ingrediantsInInventory - juiceIngrediant
+            print("\(juiceRecipe.name)제조완료.")
         }
-        for (fruit, quantity) in ingredients {
-            if let available = fruitInventory[fruit], let currentQuantity = fruitInventory[fruit], available >= quantity {
-                fruitInventory[fruit] = currentQuantity - quantity
-            }
-        }
-        return "\(type.name)가 제조되었습니다."
+        return "\(CustomError.makeJuiceError(message: "makeJuiceMethodError"))"
     }
+    
 }
