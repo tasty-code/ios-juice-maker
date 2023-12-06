@@ -14,6 +14,9 @@ struct JuiceMaker {
         let recipe = juice.recipe
         
         guard fruitStore.checkStockAvailability(recipe: recipe) else { return }
-        fruitStore.changeStock(recipe: recipe)
+        
+        for(fruit, amount) in recipe {
+            fruitStore.changeStock(fruitname: fruit, amount: -amount)
+        }
     }
 }
