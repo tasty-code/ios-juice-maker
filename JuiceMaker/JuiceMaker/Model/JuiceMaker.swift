@@ -1,8 +1,8 @@
 //
 //  JuiceMaker - JuiceMaker.swift
-//  Created by yagom. 
+//  Created by yagom.
 //  Copyright © yagom academy. All rights reserved.
-// 
+//
 
 import Foundation
 
@@ -24,8 +24,8 @@ struct JuiceMaker {
             self.rawValue
         }
         
-        // FruitStore의 과일을 사용해 과일쥬스를 제조
-        private func receiveRecipes() -> [(requiredFruit: Fruit, requestedAmount: Int)] {
+        // 쥬스 레시피 받는 함수
+        fileprivate func receiveRecipes() -> [(requiredFruit: Fruit, requestedAmount: Int)] {
             var recipe: [(Fruit, Int)]
             
             switch self {
@@ -44,10 +44,31 @@ struct JuiceMaker {
             case .mangoKiwi:
                 recipe = [(.mango, 2), (.kiwi, 1)]
             }
-            
             return recipe
         }
-        
-        
     }
+    
+    // 주스메이킹 결과
+    enum JuiceMakingResult {
+        case success(message: String)
+        case failure(description: String)
+    }
+    
+    // JuiceMaker는 FruitStore를 소유
+    let fruitStore: FruitStore
+    
+    // 주스 제조
+    func produce(_ menuName: JuiceMenu) -> JuiceMakingResult {
+        let recipes = menuName.receiveRecipes()
+        var outcomeCreated: JuiceMakingResult // 메이킹 결과 <성공/실패>
+        
+        do {
+            
+        } catch  {
+            
+        }
+        return outcomeCreated
+    }
+    
 }
+
