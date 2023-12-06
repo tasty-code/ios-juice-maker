@@ -27,7 +27,7 @@ class FruitStore {
     
     func supply(fruits: [Fruit:Int]) throws {
         for (fruitName, amount) in fruits {
-            guard amount <= 0 else {
+            guard amount > 0 else {
                 throw StorageError.invalidAmountOfFruit
             }
             
@@ -41,11 +41,11 @@ class FruitStore {
                 throw StorageError.invalidSelection
             }
             
-            guard amount <= 0 else {
+            guard amount > 0 else {
                 throw StorageError.invalidAmountOfFruit
             }
             
-            if amount > currentStock {
+            guard amount <= currentStock else {
                 throw StorageError.insufficientStock
             }
             
