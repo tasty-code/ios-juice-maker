@@ -10,14 +10,13 @@ import Foundation
 final class FruitStore {
     private var quantityOfAllFruits: [FruitName: Int] = [.strawberry: 10, .banana: 10, .pineapple: 10, .kiwi: 10, .mango: 10]
     
-    func consumeFruit(fruitName: FruitName, fruitQuantity quantity: Int) {
+    func consumeFruit(fruitName: FruitName, fruitQuantity quantity: Int) throws {
         guard let oldQuantity = quantityOfAllFruits[fruitName] else {
             return
         }
         
         guard oldQuantity >= quantity else {
-            print("과일 재고 부족")
-            return
+            throw JuiceError.outOfStock
         }
         
         let newQuantity = oldQuantity - quantity
