@@ -21,10 +21,10 @@ struct JuiceMaker {
         } catch {
             print("FruitStore에 과일이 부족합니다!!!")
         }
-        print("\(store.fruits)")
     }
     
     func makeJuice2(_ kind: Recipe) throws {
+        print("주문하신 쥬스는 \(kind.rawValue) 입니다" )
         let arr = kind.rawValue.split(separator: ",")
         if arr.count == 1 {
             guard let fruitsStock = store.fruits[String(arr[0])],
