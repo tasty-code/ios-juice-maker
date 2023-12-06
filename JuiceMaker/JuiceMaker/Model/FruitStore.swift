@@ -8,21 +8,20 @@ import Foundation
 
 // 과일 저장소 타입
 final class FruitStore {
-    var fruits = [ "strawberry": 10,
-                   "banana": 10,
-                   "pineapple": 10,
-                   "kiwi": 10,
-                   "mango": 10
+    var fruits = [ Fruit.strawberry.rawValue: 10,
+                   Fruit.banana.rawValue: 10,
+                   Fruit.pineapple.rawValue: 10,
+                   Fruit.kiwi.rawValue: 10,
+                   Fruit.mango.rawValue: 10
     ]
     
-    var recipes = ["strawberry": [16],
-                   "banana": [2],
-                   "kiwi": [3],
-                   "pineapple": [2],
-                   "strawberry,banana": [10, 1],
-                   "mango": [3],
-                   "mango,kiwi": [2, 1],
-                   "mango,kiwi,strawberry": [1, 2, 3]
+    var recipes = [Recipe.strawberry.rawValue: [16],
+                   Recipe.banana.rawValue: [2],
+                   Recipe.kiwi.rawValue: [3],
+                   Recipe.pineapple.rawValue: [2],
+                   Recipe.strawberryBanana.rawValue: [10, 1],
+                   Recipe.mango.rawValue: [3],
+                   Recipe.mangoKiwi.rawValue: [2, 1],
     ]
     
     func supplyFruits(fruitName: String, quantity: Int) {

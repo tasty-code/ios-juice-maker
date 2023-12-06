@@ -10,8 +10,14 @@ import Foundation
 struct JuiceMaker {
     var store: FruitStore
     
-    func makeJuice(kind: String) throws {
-        let arr = kind.split(separator: ",")
+    init(store: FruitStore) {
+        self.store = store
+    }
+    
+    
+    
+    func makeJuice(kind: Recipe) throws {
+        let arr = kind.rawValue.split(separator: ",")
         if arr.count == 1 {
             guard let fruitsStock = store.fruits[String(arr[0])],
                   fruitsStock >= store.recipes[String(arr[0])]![0] else {
@@ -21,10 +27,10 @@ struct JuiceMaker {
         } else {
             try arr.enumerated().forEach { index, fruit in
                 guard let fruitsStock = store.fruits[String(fruit)],
-                      fruitsStock >= store.recipes[kind]![index] else {
+                      fruitsStock >= store.recipes[kind.rawValue]![index] else {
                     throw JuiceMakerError.notEnoughKiwiStock
                 }
-                store.fruits[String(fruit)] = fruitsStock - store.recipes[kind]![index]
+                store.fruits[String(fruit)] = fruitsStock - store.recipes[kind.rawValue]![index]
             }
         }
     }
