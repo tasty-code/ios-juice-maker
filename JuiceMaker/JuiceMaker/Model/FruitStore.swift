@@ -30,7 +30,7 @@ class FruitStore {
         guard var currentQuantity = fruitInventory[fruit] else {
             throw CustomError.fruitUpdateError(message: "과일없음")
         }
-        currentQuantity = max(0, quantity)
+        currentQuantity = quantity
         if currentQuantity <= 0 {
             throw CustomError.fruitUpdateError(message: "과일은 0개 이하로 내려갈 수 없습니다")
         }
