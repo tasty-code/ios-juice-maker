@@ -11,19 +11,14 @@ final class FruitStore {
         self.fruitStock = fruitStock
     }
     
-    private func checkStock(juice: Juice) throws {
-        for (fruitName, numberOfFruits) in juice.recipe {
-            guard let stock = fruitStock[fruitName], stock >= numberOfFruits else { throw JuiceMakerError.outOfStock }
+    private func checkStock(fruit: Fruit, num: UInt) throws {
+        guard num <= checkQuantity(fruit: fruit) else { throw JuiceMakerError.outOfStock
         }
     }
     
-    func consumeFruit(juice: Juice) throws {
-        try checkStock(juice: juice)
-        
-        for (fruitName, numberOfFruits) in juice.recipe {
-            guard let stock = fruitStock[fruitName] else { throw JuiceMakerError.outOfStock }
-            fruitStock[fruitName] = stock - numberOfFruits
-        }
+    func consumeFruit(fruit: Fruit, num: UInt) throws {
+        try checkStock(fruit: fruit, num: num)
+        subtractFruit(fruit: fruit, num: num)
     }
     
     private func checkQuantity(fruit: Fruit) -> UInt {
@@ -36,9 +31,8 @@ final class FruitStore {
         fruitStock[fruit] = currentStock + num
     }
     
-    func subtractFruit(fruit: Fruit, num: UInt) throws {
+    private func subtractFruit(fruit: Fruit, num: UInt) {
         let currentStock = checkQuantity(fruit: fruit)
-        guard currentStock >= num else { throw JuiceMakerError.outOfStock }
         fruitStock[fruit] = currentStock - num
     }
 }
