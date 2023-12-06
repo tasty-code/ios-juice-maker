@@ -8,5 +8,15 @@ import Foundation
 
 // 쥬스 메이커 타입
 struct JuiceMaker {
+    private let fruitStore: FruitStore
     
+    init(fruitStore: FruitStore) {
+        self.fruitStore = fruitStore
+    }
+    
+    func makeJuice(flavor: JuiceFlavor) throws {
+        try flavor.recipe.forEach { (fruit: Fruit, count: Int) in
+            try fruitStore.getFruits(fruit, count: count)
+        }
+    }
 }
