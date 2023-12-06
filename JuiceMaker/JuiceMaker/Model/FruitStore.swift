@@ -4,8 +4,6 @@
 //  Copyright © yagom academy. All rights reserved.
 //
 
-import Foundation
-
 final class FruitStore {
     var strawberryStock: Int
     var bananaStock: Int
