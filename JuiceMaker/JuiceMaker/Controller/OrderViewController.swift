@@ -39,6 +39,7 @@ class OrderViewController: UIViewController {
         
         do {
             try juiceMaker.makeJuice(juiceType: juice)
+            configUI()
         } catch {
             print("재고가 부족합니다.")
         }
