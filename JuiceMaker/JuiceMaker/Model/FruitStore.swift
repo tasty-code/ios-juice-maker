@@ -21,6 +21,10 @@ final class FruitStore {
         fruitInventory[fruit, default: 0] += inventory
     }
     
+    func usedFruitInventory(for fruit: FruitType, inventory: Int) {
+        fruitInventory[fruit, default: 0] -= inventory
+    }
+    
     func getFruitInvetory(for fruit: FruitType) -> Int {
         return fruitInventory[fruit, default: 0]
     }
