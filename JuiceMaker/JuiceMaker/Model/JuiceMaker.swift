@@ -5,7 +5,7 @@
 // 
 
 struct JuiceMaker {
-    private var fruitStore: FruitStore
+    private let fruitStore: FruitStore
     
     init(fruitStore: FruitStore = FruitStore()) {
         self.fruitStore = fruitStore

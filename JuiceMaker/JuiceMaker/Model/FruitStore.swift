@@ -22,7 +22,7 @@ final class FruitStore {
         
         for (fruitName, numberOfFruits) in juice.recipe {
             guard let stock = fruitStock[fruitName] else { throw JuiceMakerError.outOfStock }
-            fruitStock.updateValue(stock - numberOfFruits, forKey: fruitName)
+            fruitStock[fruitName] = stock - numberOfFruits
         }
     }
     
@@ -33,12 +33,12 @@ final class FruitStore {
     
     func addFruit(fruit: Fruit, num: UInt) {
         let currentStock = checkQuantity(fruit: fruit)
-        fruitStock.updateValue(currentStock + num, forKey: fruit)
+        fruitStock[fruit] = currentStock + num
     }
     
     func subtractFruit(fruit: Fruit, num: UInt) throws {
         let currentStock = checkQuantity(fruit: fruit)
         guard currentStock >= num else { throw JuiceMakerError.outOfStock }
-        fruitStock.updateValue(currentStock - num, forKey: fruit)
+        fruitStock[fruit] = currentStock - num
     }
 }
