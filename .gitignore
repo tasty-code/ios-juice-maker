@@ -9,7 +9,7 @@ xcuserdata/
 *.xcscmblueprint
 *.xccheckout
 
-Test 무시
+## Test 무시
 JuiceMaker/JuiceMakerTests/
 
 
