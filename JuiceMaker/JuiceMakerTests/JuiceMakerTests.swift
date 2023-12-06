@@ -19,26 +19,20 @@ final class JuiceMakerTests: XCTestCase {
         try super.tearDownWithError()
     }
     
-    func test_딸기쥬스를_만들수_있는_재고가_없다() {
-        let result = sut.hasEnoughStock(juice: .strawberryJuice)
-        
-        XCTAssertEqual(result, false, "딸기 재고 있음! 테스트 실패")
-    }
-    
-    func test_바나나쥬스를_만들수_있는_재고가_있다() {
-        let result = sut.hasEnoughStock(juice: .bananaJuice)
-        
-        XCTAssertEqual(result, true, "바나나 재고 없음! 테스트 실패")
-    }
-    
-    func test_딸기_기본재고_10개로_쥬스를_만들수_없다() {
-        sut.makeJuice(juice: .strawberryJuice)
+    func test_딸기재고의_초기값이_10개라_딸기쥬스를_만들수_있는_재고가_없다() {
+        XCTAssertThrowsError(try sut.checkUnderstockedFruits(juice: .strawberryJuice), "딸기 재고 있음! 테스트 실패")
     }
     
     func test_망고키위쥬스를_만드는데_망고_키위_둘다_재고가_없다() {
         sut.fruitStore.mangoStock = 0
         sut.fruitStore.kiwiStock = 0
         
+        sut.makeJuice(juice: .mangoKiwiJuice)
+        print(sut.fruitStore.kiwiStock)
+    }
+    
+    func test_망고키위쥬스를_만드는데_망고만_재고가_없다() {
+        sut.fruitStore.mangoStock = 0
         sut.makeJuice(juice: .mangoKiwiJuice)
     }
     
