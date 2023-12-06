@@ -6,7 +6,7 @@
 
 import Foundation
 
-class FruitStore {
+final class FruitStore {
     var strawberryStock: Int
     var bananaStock: Int
     var pineappleStock: Int
