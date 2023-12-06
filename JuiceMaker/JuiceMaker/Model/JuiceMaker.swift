@@ -7,9 +7,9 @@
 import Foundation
 
 struct JuiceMaker {
-    let fruitStore = FruitStore()
+    var fruitStore = FruitStore()
     
-    func makeJuice(_ juice: JuiceType.RawValue) throws {
+    mutating func makeJuice(_ juice: JuiceType.RawValue) throws {
         switch juice {
         case "딸기쥬스":
             try useFruits(fruit: "딸기", quantity: 16)
@@ -32,7 +32,7 @@ struct JuiceMaker {
         }
     }
     
-    func useFruits(fruit: FruitType.RawValue, quantity: Int) throws {
+    mutating func useFruits(fruit: FruitType.RawValue, quantity: Int) throws {
         let currentQuantity = fruitStore.getQuantity(of: FruitType(rawValue: fruit) ?? .banana)
         guard currentQuantity >= quantity else {
             throw ErrorType.insufficientFruits

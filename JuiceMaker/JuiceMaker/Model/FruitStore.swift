@@ -6,19 +6,19 @@
 
 import Foundation
 
-class FruitStore {
+struct FruitStore {
     var inventory: [FruitType: Int]
     
     init() {
         inventory = [.banana: 10, .kiwi: 10, .mango: 10, .pineapple: 10, .strawberry: 10]
     }
 
-    func updateInventory(fruit: FruitType, quantity: Int) {
+    mutating func updateInventory(fruit: FruitType, quantity: Int) {
         guard let currentQuantity = inventory[fruit] else { return }
         inventory[fruit] = currentQuantity + quantity
     }
 
-    func getQuantity(of fruit: FruitType) -> Int {
+    mutating func getQuantity(of fruit: FruitType) -> Int {
         return inventory[fruit, default: 0]
     }
 }
