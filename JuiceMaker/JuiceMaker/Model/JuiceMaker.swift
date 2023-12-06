@@ -11,23 +11,13 @@ struct JuiceMaker {
     private let fruitStore: FruitStore = FruitStore()
 
     func makeJuice(juiceName: JuiceName) {
-        switch juiceName {
-        case .strawberry:
-            fruitStore.consumeFruit(fruitName: .strawberry, fruitQuantity: 16)
-        case .banana:
-            fruitStore.consumeFruit(fruitName: .banana, fruitQuantity: 2)
-        case .kiwi:
-            fruitStore.consumeFruit(fruitName: .kiwi, fruitQuantity: 3)
-        case .pineapple:
-            fruitStore.consumeFruit(fruitName: .pineapple, fruitQuantity: 2)
-        case .straberryBanana:
-            fruitStore.consumeFruit(fruitName: .strawberry, fruitQuantity: 10)
-            fruitStore.consumeFruit(fruitName: .banana, fruitQuantity: 1)
-        case .mango:
-            fruitStore.consumeFruit(fruitName: .mango, fruitQuantity: 3)
-        case .mangoKiwi:
-            fruitStore.consumeFruit(fruitName: .mango, fruitQuantity: 2)
-            fruitStore.consumeFruit(fruitName: .kiwi, fruitQuantity: 1)
+        guard let fruitName = juiceName.recipe.keys.first, let fruitQuantity = juiceName.recipe.values.first else { return }
+        do {
+            try fruitStore.consumeFruit(fruitName: fruitName, fruitQuantity: fruitQuantity)
+        } catch JuiceError.outOfStock {
+            print(JuiceError.outOfStock.localizedDescription)
+        } catch {
+            print("알 수 없는 에러")
         }
     }
 }
