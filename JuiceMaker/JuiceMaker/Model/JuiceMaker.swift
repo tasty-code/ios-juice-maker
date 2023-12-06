@@ -30,7 +30,7 @@ struct JuiceMaker {
             }
             fruitStore.kiwi -= 3
         case .pineapple:
-            if fruitStore.strawberry < 2 {
+            if fruitStore.pineapple < 2 {
                 throw JuiceMakerError.invalidRequest
             }
             fruitStore.pineapple -= 2
