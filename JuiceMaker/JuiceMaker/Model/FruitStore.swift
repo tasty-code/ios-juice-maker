@@ -14,6 +14,7 @@ class FruitStore {
     enum StorageError: Error {
         case invalidSelection
         case insufficientStock
+        case invalidAmountOfFruit
     }
     
     var storage: [Fruit:UInt] = [
@@ -24,8 +25,12 @@ class FruitStore {
         .mango: 10,
     ]
     
-    func supply(fruits: [FruitStore.Fruit:UInt]) {
+    func supply(fruits: [FruitStore.Fruit:UInt]) throws {
         for (fruitName, amount) in fruits {
+            guard amount <= 0 else {
+                throw StorageError.invalidAmountOfFruit
+            }
+            
             self.storage[fruitName]? += amount
         }
     }
@@ -34,6 +39,10 @@ class FruitStore {
         for (fruitName, amount) in fruits {
             guard let currentStock = self.storage[fruitName] else {
                 throw StorageError.invalidSelection
+            }
+            
+            guard amount <= 0 else {
+                throw StorageError.invalidAmountOfFruit
             }
             
             if amount > currentStock {
