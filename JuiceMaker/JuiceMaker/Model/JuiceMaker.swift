@@ -12,6 +12,8 @@ struct JuiceMaker {
     }
     
     func orderJuice(juice: Juice) throws {
-        try fruitStore.consumeFruit(juice: juice)
+        for (fruitName, quantity) in juice.recipe {
+            try fruitStore.consumeFruit(fruit: fruitName, num: quantity)
+        }
     }
 }
