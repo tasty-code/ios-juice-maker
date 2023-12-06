@@ -1,6 +1,6 @@
 //
 //  JuiceMaker - FruitStore.swift
-//  Created by yagom. 
+//  Created by yagom.
 //  Copyright © yagom academy. All rights reserved.
 //
 
@@ -16,19 +16,34 @@ enum FruitType {
 
 class FruitStore {
     let stock: Int = 10
-        
-        func changeStock(fruit: FruitType, change: Int) -> Int {
-            switch fruit {
-            case .strawberry:
-                return stock + change
-            case .banana:
-                return stock + change
-            case .pineapple:
-                return stock + change
-            case .kiwi:
-                return stock + change
-            case .mango:
-                return stock + change
-            }
+    
+    func addStock(fruit: FruitType, change: Int) -> Int {
+        switch fruit {
+        case .strawberry:
+            return stock + change
+        case .banana:
+            return stock + change
+        case .pineapple:
+            return stock + change
+        case .kiwi:
+            return stock + change
+        case .mango:
+            return stock + change
         }
+    }
+    
+    func subtractStock(fruit: FruitType, change: Int) -> Int {
+        switch fruit {
+        case .strawberry:
+            return stock - change
+        case .banana:
+            return stock - change
+        case .pineapple:
+            return stock - change
+        case .kiwi:
+            return stock - change
+        case .mango:
+            return stock - change
+        }
+    }
 }
