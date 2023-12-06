@@ -10,30 +10,32 @@ import Foundation
 struct JuiceMaker {
     enum Menu {
         case 딸기쥬스, 바나나쥬스, 키위쥬스, 파인애플쥬스, 딸바쥬스, 망고쥬스, 망고키위쥬스
+        
+        var recipe: [FruitStore.Fruit:UInt] {
+            switch self {
+            case .딸기쥬스:
+                return [.strawberry:16]
+            case .바나나쥬스:
+                return [.banana:2]
+            case .키위쥬스:
+                return [.kiwi:3]
+            case .파인애플쥬스:
+                return [.pineapple:2]
+            case .딸바쥬스:
+                return [.strawberry:10, .banana:1]
+            case .망고쥬스:
+                return [.mango:3]
+            case .망고키위쥬스:
+                return [.mango:2, .kiwi:1]
+            }
+        }
     }
     
     var fruitStore = FruitStore()
     
     func makeJuice(menu: Menu) {
         do {
-            switch menu {
-            case .딸기쥬스:
-                try fruitStore.consumeFruit(ofType: .strawberry, amount: 16)
-            case .바나나쥬스:
-                try fruitStore.consumeFruit(ofType: .banana, amount: 2)
-            case .키위쥬스:
-                try fruitStore.consumeFruit(ofType: .kiwi, amount: 3)
-            case .파인애플쥬스:
-                try fruitStore.consumeFruit(ofType: .pineapple, amount: 2)
-            case .딸바쥬스:
-                try fruitStore.consumeFruit(ofType: .strawberry, amount: 10)
-                try fruitStore.consumeFruit(ofType: .banana, amount: 1)
-            case .망고쥬스:
-                try fruitStore.consumeFruit(ofType: .mango, amount: 3)
-            case .망고키위쥬스:
-                try fruitStore.consumeFruit(ofType: .mango, amount: 2)
-                try fruitStore.consumeFruit(ofType: .kiwi, amount: 1)
-            }
+            try fruitStore.consume(fruits: menu.recipe)
         } catch {
             print(error)
         }

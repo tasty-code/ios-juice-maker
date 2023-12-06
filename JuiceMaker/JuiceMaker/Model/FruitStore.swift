@@ -24,19 +24,23 @@ class FruitStore {
         .mango: 10,
     ]
     
-    func supplyFruit(ofType fruitName: Fruit, amount count: UInt) {
-        self.storage[fruitName]? += count
+    func supply(fruits: [FruitStore.Fruit:UInt]) {
+        for (fruitName, amount) in fruits {
+            self.storage[fruitName]? += amount
+        }
     }
     
-    func consumeFruit(ofType fruitName: Fruit, amount count: UInt) throws {
-        guard let currentStock = self.storage[fruitName] else {
-            throw FruitStoreError.invalidSelection
+    func consume(fruits: [FruitStore.Fruit:UInt]) throws {
+        for (fruitName, amount) in fruits {
+            guard let currentStock = self.storage[fruitName] else {
+                throw FruitStoreError.invalidSelection
+            }
+            
+            if amount > currentStock {
+                throw FruitStoreError.insufficientStock
+            }
+            
+            self.storage[fruitName]? -= amount
         }
-        
-        if count > currentStock {
-            throw FruitStoreError.insufficientStock
-        }
-        
-        self.storage[fruitName]? -= count
     }
 }
