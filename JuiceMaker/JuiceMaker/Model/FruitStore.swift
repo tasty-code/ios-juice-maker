@@ -31,4 +31,10 @@ final class FruitStore {
             print("error")
         }
     }
+    
+    func initFruits() {
+        Fruit.allCases.forEach {  key in
+            fruits[key.rawValue] = 10
+        }
+    }
 }

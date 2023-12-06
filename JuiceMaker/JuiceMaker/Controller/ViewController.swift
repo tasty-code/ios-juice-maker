@@ -8,58 +8,45 @@ import UIKit
 
 class ViewController: UIViewController {
     
-//    var fruitStore: FruitStore
-//    lazy var juiceMaker: JuiceMaker
-//    
-//    required init(coder: NSCoder) {
-//        fruitStore = FruitStore()
-//        juiceMaker = JuiceMaker(store: fruitStore)
-//        fatalError("init(coder:) has not been implemented")
-//        super.init(coder: coder)
-//    }
-    
-    
+    var fruitStore = FruitStore()
+    lazy var juiceMaker = JuiceMaker(store: self.fruitStore)
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        var prompt = Prompt()
-        prompt.sendMessage(input: prompt.initMessage)
-        var fruitStore = FruitStore()
-        var juiceMaker = JuiceMaker(store: fruitStore)
-        
-        try! juiceMaker.makeJuice(kind: Recipe.strawberryBanana)
-        print(fruitStore.fruits)
         fruitStore.supplyFruits(fruitName: "strawberry", quantity: 100)
-        print(fruitStore.fruits)
         // Do any additional setup after loading the view.
     }
     
     @IBAction func btnStrawberryBanana(_ sender: Any) {
-        
+        juiceMaker.makeJuice(Recipe.strawberryBanana)
     }
     
     @IBAction func btnMangoKiwi(_ sender: Any) {
+        juiceMaker.makeJuice(Recipe.mangoKiwi)
     }
     
-    
     @IBAction func btnStrawberry(_ sender: Any) {
+        juiceMaker.makeJuice(Recipe.strawberry)
     }
     
     @IBAction func btnBanana(_ sender: Any) {
+        juiceMaker.makeJuice(Recipe.banana)
     }
-    
     
     @IBAction func btnPineapple(_ sender: Any) {
+        juiceMaker.makeJuice(Recipe.pineapple)
     }
-    
     
     @IBAction func btnKiwi(_ sender: Any) {
+        juiceMaker.makeJuice(Recipe.kiwi)
     }
-    
     
     @IBAction func btnMango(_ sender: Any) {
+        juiceMaker.makeJuice(Recipe.mango)
     }
-    
-    
+    @IBAction func btnMoveToFruitStore(_ sender: Any) {
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "View Controller") else {return}
+                self.navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 

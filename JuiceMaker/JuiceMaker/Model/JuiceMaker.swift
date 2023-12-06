@@ -12,11 +12,19 @@ struct JuiceMaker {
     
     init(store: FruitStore) {
         self.store = store
+        self.store.initFruits()
     }
     
+    func makeJuice(_ recipe: Recipe) {
+        do {
+            try makeJuice2(recipe)
+        } catch {
+            print("FruitStore에 과일이 부족합니다!!!")
+        }
+        print("\(store.fruits)")
+    }
     
-    
-    func makeJuice(kind: Recipe) throws {
+    func makeJuice2(_ kind: Recipe) throws {
         let arr = kind.rawValue.split(separator: ",")
         if arr.count == 1 {
             guard let fruitsStock = store.fruits[String(arr[0])],
