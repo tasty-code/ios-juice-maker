@@ -5,7 +5,6 @@
 //
 
 struct JuiceMaker {
-    
     var fruitStore: FruitStore = FruitStore(
         strawberryStock: 10,
         bananaStock: 10,
@@ -15,41 +14,53 @@ struct JuiceMaker {
     )
     
     func makeJuice(juice: Juice) {
-        var understockedFruits: [String] = []
-        for (fruit, count) in juice.recipe {
-            guard
-                hasEnoughStock(juice: juice)
-            else {
-                understockedFruits.append(fruit.name)
-                continue
+        do {
+            try checkUnderstockedFruits(juice: juice)
+            for (fruit, count) in juice.recipe {
+                fruitStore.useJuiceIngredient(fruit, count: count)
             }
-            fruitStore.useJuiceIngredient(fruit, count: count)
-        }
-        guard 
-            understockedFruits.isEmpty 
-        else {
-            let understockedFruit = understockedFruits.map{$0}.joined(separator: ",")
-            print("\(understockedFruit) 재고 없음")
-            return
+        } catch {
+            switch error {
+            case JuiceMakerError.outOfStock(let fruit):
+                print("\(fruit) 재고 없음")
+            default:
+                print("알 수 없는 에러 발생")
+            }
         }
     }
     
-    private func hasEnoughStock(juice: Juice) -> Bool {
-        switch juice {
-        case .strawberryJuice:
-            return fruitStore.strawberryStock >= 16
-        case .bananaJuice:
-            return fruitStore.bananaStock >= 2
-        case .pineappleJuice:
-            return fruitStore.pineappleStock >= 2
-        case .kiwiJuice:
-            return fruitStore.kiwiStock >= 3
-        case .mangoJuice:
-            return fruitStore.mangoStock >= 3
-        case .strawberryBananaJuice:
-            return fruitStore.strawberryStock >= 10 && fruitStore.bananaStock >= 1
-        case .mangoKiwiJuice:
-            return fruitStore.mangoStock >= 2 && fruitStore.kiwiStock >= 1
+    func checkUnderstockedFruits(juice: Juice) throws {
+        var understockedFruits: [String] = []
+        var canMakeJuice = true
+        
+        for (fruit, count) in juice.recipe {
+            guard
+                hasEnoughStock(for: fruit, count: count)
+            else {
+                understockedFruits.append(fruit.name)
+                canMakeJuice = false
+                continue
+            }
+        }
+        
+        guard canMakeJuice else {
+            let understockedFruit = understockedFruits.joined(separator: ",")
+            throw JuiceMakerError.outOfStock(fruit: understockedFruit)
+        }
+    }
+    
+    private func hasEnoughStock(for fruit: Fruits, count: Int) -> Bool {
+        switch fruit {
+        case .strawberry:
+            return fruitStore.strawberryStock >= count
+        case .banana:
+            return fruitStore.bananaStock >= count
+        case .pineapple:
+            return fruitStore.pineappleStock >= count
+        case .kiwi:
+            return fruitStore.kiwiStock >= count
+        case .mango:
+            return fruitStore.mangoStock >= count
         }
     }
 }
