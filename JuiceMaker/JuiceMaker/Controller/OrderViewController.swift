@@ -41,7 +41,7 @@ class OrderViewController: UIViewController {
             try juiceMaker.makeJuice(juiceType: juice)
             configUI()
         } catch {
-            print("재고가 부족합니다.")
+            makeAlert(title: "재고가 부족합니다.", message: "다른 쥬스를 선택해주세요.", confirmTitle: "확인")
         }
     }
     
