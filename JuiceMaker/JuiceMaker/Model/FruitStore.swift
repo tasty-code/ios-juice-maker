@@ -5,15 +5,15 @@
 //
 import Foundation
 
-enum FruitStoreError: Error {
-    case invalidSelection
-    case insufficientStock
-}
-
 // 과일 저장소 타입
 class FruitStore {
     enum Fruit {
         case strawberry, banana, pineapple, kiwi, mango
+    }
+    
+    enum StorageError: Error {
+        case invalidSelection
+        case insufficientStock
     }
     
     var storage: [Fruit:UInt] = [
@@ -33,11 +33,11 @@ class FruitStore {
     func consume(fruits: [FruitStore.Fruit:UInt]) throws {
         for (fruitName, amount) in fruits {
             guard let currentStock = self.storage[fruitName] else {
-                throw FruitStoreError.invalidSelection
+                throw StorageError.invalidSelection
             }
             
             if amount > currentStock {
-                throw FruitStoreError.insufficientStock
+                throw StorageError.insufficientStock
             }
             
             self.storage[fruitName]? -= amount
