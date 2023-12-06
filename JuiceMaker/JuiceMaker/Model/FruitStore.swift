@@ -17,7 +17,7 @@ class FruitStore {
         case invalidAmountOfFruit
     }
     
-    var storage: [Fruit:Int] = [
+    private var storage: [Fruit:Int] = [
         .strawberry: 10,
         .banana: 10,
         .pineapple: 10,
