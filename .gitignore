@@ -10,7 +10,7 @@ xcuserdata/
 *.xccheckout
 
 ## Test 무시
-JuiceMaker/JuiceMakerTests/
+/JuiceMaker/JuiceMakerTests/
 
 
 
