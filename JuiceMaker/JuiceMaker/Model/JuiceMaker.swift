@@ -10,31 +10,9 @@ import Foundation
 struct JuiceMaker {
     private var fruitStore = FruitStore()
     
-    mutating func makeJuice(juice: String) {
-        let recipe = juiceRecipe(juice: juice)
-        
+    mutating func makeJuice(juice: Juice) {
+        let recipe = juice.recipe
         guard fruitStore.checkStockAvailability(recipe: recipe) else { return }
         fruitStore.changeStock(recipe: recipe)
-    }
-    
-    private func juiceRecipe(juice: String) -> [String: Int] {
-        switch juice {
-        case "strawberry":
-            return ["strawberry": 16]
-        case "banana":
-            return ["banana": 2]
-        case "pineapple":
-            return ["pineapple": 2]
-        case "kiwi":
-            return ["kiwi": 3]
-        case "mango":
-            return ["mango": 3]
-        case "strawberrybanana":
-            return ["strawberry": 10,"banana": 1]
-        case "mangokiwi":
-            return ["mango": 2, "kiwi": 1]
-        default:
-            return [:]
-        }
     }
 }
