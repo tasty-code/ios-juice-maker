@@ -14,7 +14,7 @@ struct JuiceMaker {
         self.fruitStore = fruitStore
     }
     
-    func makeJuice(type: JuiceRecipe) -> String {
-        return fruitStore.makeJuice(type: type)
+    func makeJuice(juiceRecipe: JuiceRecipe) -> String {
+        return fruitStore.makeJuice(type: juiceRecipe)
     }
 }

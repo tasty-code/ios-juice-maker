@@ -1,6 +1,6 @@
 //
 //  JuiceMaker - FruitStore.swift
-//  Created by yagom. 
+//  Created by yagom.
 //  Copyright © yagom academy. All rights reserved.
 //
 
@@ -26,12 +26,18 @@ class FruitStore {
         print("재고변경.\(fruit): \(updatedQuantity)")
     }
     
-    func updateFruitQuantity(fruit: String, quantity: Int) {
-        if let currentQuantity = fruitInventory[fruit] {
-            fruitInventory[fruit] = max(0,currentQuantity + quantity)
+    func updateFruitQuantity(fruit: String, quantity: Int) throws {
+        guard var currentQuantity = fruitInventory[fruit] else {
+            throw CustomError.fruitUpdateError(message: "과일없음")
         }
-        displayCurrentyFruitInventory(fruit: fruit, quantity: quantity)
+        currentQuantity = max(0, quantity)
+        if currentQuantity <= 0 {
+            throw CustomError.fruitUpdateError(message: "과일은 0개 이하로 내려갈 수 없습니다")
+        }
+        fruitInventory[fruit] = currentQuantity
+        displayCurrentyFruitInventory(fruit: fruit, quantity: currentQuantity)
     }
+
     
     func checkAvailability(for juiceIngredients: [String: Int]) -> Bool {
         for (fruit, requiredQuantity) in juiceIngredients {
