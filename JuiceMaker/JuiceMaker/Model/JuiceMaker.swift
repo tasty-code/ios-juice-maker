@@ -7,12 +7,12 @@
 import Foundation
 
 struct JuiceMaker {
-    let fruitStore: FruitStore = FruitStore()
+    var fruitStore: FruitStore = FruitStore()
     
-    func isEnouph(juiceMenu: JuiceMenu) -> Bool {
+    func isEnough(juiceMenu: JuiceMenu) -> Bool {
         var stockCheck: Bool = true
-        for (fruit, number) in juiceMenu.recipe {
-            guard fruitStore.checkStock(fruit: fruit, stock: number) else {
+        for (fruit, count) in juiceMenu.recipe {
+            guard fruitStore.checkStock(fruit: fruit, count: count) else {
                 stockCheck = false
                 break
             }
@@ -20,14 +20,14 @@ struct JuiceMaker {
         return stockCheck
     }
     
-    func makeJuice(juiceMenu: JuiceMenu) -> Juice? {
-        guard isEnouph(juiceMenu: juiceMenu) else {
+    mutating func makeJuice(juiceMenu: JuiceMenu) -> Juice? {
+        guard isEnough(juiceMenu: juiceMenu) else {
             print("재고 없어용ㅠㅠ")
             return nil
         }
         
-        juiceMenu.recipe.forEach { (fruit: Fruit, number: Int) in
-            fruitStore.release(fruit: fruit, stock: number)
+        juiceMenu.recipe.forEach { (fruit: Fruit, count: Int) in
+            fruitStore.release(fruit: fruit, count: count)
         }
         
         print("\(juiceMenu.name) 나왔습니다.")

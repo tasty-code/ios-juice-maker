@@ -6,7 +6,7 @@
 
 import Foundation
 
-class FruitStore {
+struct FruitStore {
     private var store: Dictionary<Fruit, Int>
     
     init() {
@@ -14,35 +14,29 @@ class FruitStore {
         Fruit.allCases.forEach { store[$0] = 10 }
     }
     
-    public func warehouse(fruit: Fruit, quantity: Int) {
-        guard let nowCount = store[fruit] else {
-            return
+    public mutating func warehouse(fruit: Fruit, count: Int) {
+        if let nowCount = store[fruit] {
+            store[fruit] = nowCount + count
         }
-        store[fruit] = nowCount + quantity
     }
     
-    public func release(fruit: Fruit, stock: Int) {
+    public mutating func release(fruit: Fruit, count: Int) {
         guard let nowCount = store[fruit] else {
             return
         }
         
-        if nowCount < stock {
+        if nowCount < count {
             return
         }
         
-        store[fruit] = nowCount - stock
+        store[fruit] = nowCount - count
     }
     
     
-    func checkStock(fruit: Fruit, stock: Int) -> Bool {
-        guard let nowCount = store[fruit] else {
-            return false
+    func checkStock(fruit: Fruit, count: Int) -> Bool {
+        if let nowCount = store[fruit], nowCount >= count {
+            return true
         }
-        
-        if nowCount < stock {
-            return false
-        }
-        
-        return true
+        return false
     }
 }
