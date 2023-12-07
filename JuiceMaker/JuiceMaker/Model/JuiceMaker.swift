@@ -12,7 +12,6 @@ struct JuiceMaker {
     
     mutating func makeJuice(juice: Juice) {
         do {
-            print(fruitStore.fruitStock)
             let recipe = juice.recipe
             guard fruitStore.checkStockAvailability(recipe: recipe) else {
                 throw JuiceMakerError.insufficientStock
