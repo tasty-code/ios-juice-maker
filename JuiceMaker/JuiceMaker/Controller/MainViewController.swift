@@ -10,7 +10,6 @@ class MainViewController: UIViewController {
     let fruitStore = FruitStore.shared
     let juiceMaker: JuiceMaker = JuiceMaker()
     
-    
     @IBOutlet weak var strawberryLabel: UILabel!
     @IBOutlet weak var bananaLabel: UILabel!
     @IBOutlet weak var pineappleLabel: UILabel!
@@ -21,7 +20,6 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         checkFruitsStock()
     }
-
 
     @IBAction func manageStockButton(_ sender: UIButton) {
         moveToManageStockView()
@@ -51,11 +49,13 @@ class MainViewController: UIViewController {
     }
     
     func checkFruitsStock() {
-        strawberryLabel.text = String(fruitStore.fruitStock[.strawberry] ?? 0)
-        bananaLabel.text = String(fruitStore.fruitStock[.banana] ?? 0)
-        pineappleLabel.text = String(fruitStore.fruitStock[.pineapple] ?? 0)
-        kiwiLabel.text = String(fruitStore.fruitStock[.kiwi] ?? 0)
-        mangoLabel.text = String(fruitStore.fruitStock[.mango] ?? 0)
+        let stock = fruitStore.fruitStock.compactMapValues { String($0) }
+        
+        strawberryLabel.text = stock[.strawberry]
+        bananaLabel.text = stock[.banana]
+        pineappleLabel.text = stock[.pineapple]
+        kiwiLabel.text = stock[.kiwi]
+        mangoLabel.text = stock[.mango]
     }
     
     func showOutOfStockAlert() {
