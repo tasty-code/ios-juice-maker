@@ -12,7 +12,7 @@ struct JuiceMaker {
     
     init(store: FruitStore) {
         self.store = store
-        self.store.initFruits()
+        self.store.initializeFruit()
     }
     
     func order(_ recipe: Recipe) {

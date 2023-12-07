@@ -8,12 +8,13 @@ import Foundation
 
 // 과일 저장소 타입
 final class FruitStore {
-    var fruits = [ Fruit.strawberry.rawValue: 10,
-                   Fruit.banana.rawValue: 10,
-                   Fruit.pineapple.rawValue: 10,
-                   Fruit.kiwi.rawValue: 10,
-                   Fruit.mango.rawValue: 10
-    ]
+    
+    var fruits: [String: Int] = [:]
+    
+    func initializeFruit() {
+        Fruit.allCases.forEach { fruits[$0.rawValue] = 10 }
+    }
+    
     
     var recipes = [Recipe.strawberry.rawValue: [16],
                    Recipe.banana.rawValue: [2],
@@ -32,9 +33,4 @@ final class FruitStore {
         }
     }
     
-    func initFruits() {
-        Fruit.allCases.forEach {  key in
-            fruits[key.rawValue] = 10
-        }
-    }
 }
