@@ -63,9 +63,12 @@ struct JuiceMaker {
         var outcomeCreated: JuiceMakingResult // 메이킹 결과 <성공/실패>
         
         do {
+            try fruitStore.consumeStocks(recipes)
             
-        } catch  {
-            
+            let completeOrderMessage = "주문한 메뉴 나옴"
+            outcomeCreated = .success(message: "\(menuName) \(completeOrderMessage)")
+        } catch  FruitStore.InventoryError.inventoryError(description: let message) {
+            outcomeCreated = .failure(description: message)
         }
         return outcomeCreated
     }
