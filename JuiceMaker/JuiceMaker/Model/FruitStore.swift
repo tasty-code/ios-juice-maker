@@ -8,26 +8,31 @@ import Foundation
 
 // 과일 저장소 타입
 class FruitStore {
-    var fruitsInfo: [[Fruits: Int]] = [[.strawberry: 10], [.banana: 10], [.pineapple: 10], [.kiwi: 10], [.mango: 10]]
+    var fruitList: [FruitData] = [
+        FruitData(name: .strawberry, quantity: 0),
+        FruitData(name: .banana, quantity: 0),
+        FruitData(name: .pineapple, quantity: 0),
+        FruitData(name: .kiwi, quantity: 0),
+        FruitData(name: .mango, quantity: 0)
+    ]
     
-    func addQuantity(fruits: Fruits) {
-        for i in 0..<fruitsInfo.count {
-            var dict = fruitsInfo[i]
-            if let value = dict[fruits] {
-                dict[fruits] = value + 1
-                fruitsInfo[i] = dict
-            }
+    func addQuantity(fruit: FruitType) {
+        if let index = fruitList.firstIndex(where: { $0.name == fruit }) {
+            fruitList[index].quantity += 1
         }
     }
     
-    func deleteQuantity(fruits: Fruits) {
-        for i in 0..<fruitsInfo.count {
-            var dict = fruitsInfo[i]
-            if let value = dict[fruits] {
-                dict[fruits] = value - 1
-                fruitsInfo[i] = dict
-            }
+    func deleteQuantity(fruit: FruitType) {
+        if let index = fruitList.firstIndex(where: { $0.name == fruit }) {
+            fruitList[index].quantity -= 1
         }
+    }
+    
+    func showQuantity(fruit: FruitType) -> String {
+        if let index = fruitList.firstIndex(where: { $0.name == fruit }) {
+            return String(fruitList[index].quantity)
+        }
+        return String(0)
     }
 }
 
