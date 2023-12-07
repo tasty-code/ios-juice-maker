@@ -9,34 +9,32 @@ import Foundation
 struct JuiceMaker {
     var fruitStore = FruitStore()
     
-    mutating func makeJuice(_ juice: JuiceType.RawValue) throws {
+    func makeJuice(_ juice: Juice) throws {
         switch juice {
-        case "딸기쥬스":
-            try useFruits(fruit: "딸기", quantity: 16)
-        case "바나나쥬스":
-            try useFruits(fruit: "바나나", quantity: 2)
-        case "키위쥬스":
-            try useFruits(fruit: "키위", quantity: 3)
-        case "파인애플쥬스":
-            try useFruits(fruit: "파인애플", quantity: 2)
-        case "딸기바나나쥬스":
-            try useFruits(fruit: "딸기", quantity: 10)
-            try useFruits(fruit: "바나나", quantity: 1)
-        case "망고쥬스":
-            try useFruits(fruit: "망고", quantity: 3)
-        case "망고키위쥬스":
-            try useFruits(fruit: "망고", quantity: 2)
-            try useFruits(fruit: "키위", quantity: 1)
-        default:
-            ErrorType.insufficientFruits
+        case .strawberryJuice:
+            try useFruits(fruit: .strawberry, quantity: 16)
+        case .bananaJuice:
+            try useFruits(fruit: .banana, quantity: 2)
+        case .kiwiJuice:
+            try useFruits(fruit: .kiwi, quantity: 3)
+        case .pineappleJuice:
+            try useFruits(fruit: .pineapple, quantity: 2)
+        case .strawberryBananaJuice:
+            try useFruits(fruit: .strawberry, quantity: 10)
+            try useFruits(fruit: .banana, quantity: 1)
+        case .mangoJuice:
+            try useFruits(fruit: .mango, quantity: 3)
+        case .mangoKiwiJuice:
+            try useFruits(fruit: .mango, quantity: 2)
+            try useFruits(fruit: .kiwi, quantity: 1)
         }
     }
     
-    mutating func useFruits(fruit: FruitType.RawValue, quantity: Int) throws {
-        let currentQuantity = fruitStore.getQuantity(of: FruitType(rawValue: fruit) ?? .banana)
+    private func useFruits(fruit: Fruit, quantity: Int) throws {
+        let currentQuantity = fruitStore.getQuantity(of: fruit)
         guard currentQuantity >= quantity else {
             throw ErrorType.insufficientFruits
         }
-        fruitStore.updateInventory(fruit: FruitType(rawValue: fruit) ?? .banana, quantity: -quantity)
+        fruitStore.updateInventory(fruit: fruit, quantity: -quantity)
     }
 }
