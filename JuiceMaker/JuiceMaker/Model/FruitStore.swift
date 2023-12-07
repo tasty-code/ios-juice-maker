@@ -32,4 +32,15 @@ final class FruitStore {
     func getFruitInvetory(for fruit: FruitType) -> Int {
         return fruitInventory[fruit, default: 0]
     }
+    func compareFruitInventory(for juice: JuiceType) -> Bool {
+        for (fruit, quantity) in juice.juiceRecipe {
+            let currentInventory = getFruitInvetory(for: fruit)
+            
+            if currentInventory <= quantity {
+                print("재고부족")
+                return false
+            }
+        }
+        return true
+    }
 }

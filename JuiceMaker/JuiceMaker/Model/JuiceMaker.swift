@@ -8,23 +8,12 @@ import Foundation
 
 // 쥬스 메이커 타입
 struct JuiceMaker {
-    func compareFruitInventory(for juice: JuiceType) {
-        for (fruit, quantity) in juice.juiceRecipe {
-            let currentInventory = FruitStore.shared.getFruitInvetory(for: fruit)
-            
-            if currentInventory <= quantity {
-                print("재고부족")
-            } else {
-
-            }
-        }
-    }
+    
     func makeJuice(juice: JuiceType) {
+        guard FruitStore.shared.compareFruitInventory(for: juice) else { return }
         for (fruit, quantity) in juice.juiceRecipe {
             FruitStore.shared.usedFruitInventory(for: fruit, inventory: quantity)
         }
         print("\(juice.juiceName) 나왔습니다.")
-
-        
     }
 }
