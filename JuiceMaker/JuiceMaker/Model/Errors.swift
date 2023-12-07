@@ -8,12 +8,6 @@
 import Foundation
 
 enum Errors: Error {
-    case orderStrawberry
-    case orderBanana
-    case orderKiwi
-    case orderPineapple
-    case orderStrawberryBanana
-    case orderMango
-    case orderMangoKiwi
+    case orderFail(Recipe)
 }
 

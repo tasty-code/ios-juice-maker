@@ -28,6 +28,8 @@ final class FruitStore {
     func supplyFruits(fruitName: String, quantity: Int) {
         if let currentStock = fruits[fruitName] {
             fruits[fruitName] = currentStock + quantity
+            print("과일 저장소에서 \(fruitName)를 \(quantity)만큼 추가 저장했습니다")
+            print(fruits)
         } else {
             print("error")
         }
