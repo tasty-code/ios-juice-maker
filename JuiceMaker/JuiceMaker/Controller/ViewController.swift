@@ -13,15 +13,18 @@ class ViewController: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        juiceMaker.makeJuice(Recipe.mangoKiwi)
+        juiceMaker.order(Recipe.mangoKiwi)
         print("\(juiceMaker.store.fruits)")
-        juiceMaker.makeJuice(Recipe.mangoKiwi)
+        juiceMaker.order(Recipe.mangoKiwi)
         print("\(juiceMaker.store.fruits)")
-        juiceMaker.makeJuice(Recipe.strawberry)
+        juiceMaker.order(Recipe.strawberry)
         fruitStore.supplyFruits(fruitName: "strawberry", quantity: 20)
         print("\(juiceMaker.store.fruits)")
-        juiceMaker.makeJuice(Recipe.strawberry)
+        juiceMaker.order(Recipe.strawberry)
         print("\(juiceMaker.store.fruits)")
+        juiceMaker.order(Recipe.strawberryBanana)
+        juiceMaker.order(Recipe.strawberryBanana)
+        juiceMaker.order(Recipe.strawberryBanana)
     }
 }
 

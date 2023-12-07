@@ -7,10 +7,13 @@
 
 import Foundation
 
-enum JuiceMakerError: Error {
-    case notEnoughStrawberryStock
-    case notEnoughBananaStock
-    case notEnoughPineappleStock
-    case notEnoughKiwiStock
-    case notEnoughMangoStock
+enum Errors: Error {
+    case orderStrawberry
+    case orderBanana
+    case orderKiwi
+    case orderPineapple
+    case orderStrawberryBanana
+    case orderMango
+    case orderMangoKiwi
 }
+
