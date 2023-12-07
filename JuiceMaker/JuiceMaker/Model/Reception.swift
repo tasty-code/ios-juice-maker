@@ -11,7 +11,7 @@ struct Reception {
 
     private let juiceMaker = JuiceMaker()
 
-    func acceptOrder(request: Request, juiceType: JuiceType) {
+    func acceptOrder(request: Request, juiceType: JuiceType? = nil) {
         
         switch request {
         case .juiceOrder:
@@ -38,6 +38,8 @@ struct Reception {
             case .mangki:
                 juiceMaker.makeMangkiJuice()
                 
+            case .none:
+                break
             }
             
         case .stockManage:
