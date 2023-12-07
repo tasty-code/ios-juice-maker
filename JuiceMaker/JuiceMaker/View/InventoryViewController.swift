@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InventoryViewController: UIViewController {
+final class InventoryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

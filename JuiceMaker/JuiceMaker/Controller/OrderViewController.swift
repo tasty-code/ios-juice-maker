@@ -6,10 +6,10 @@
 
 import UIKit
 
-class OrderViewController: UIViewController {
+final class OrderViewController: UIViewController {
     
-    let fruitStore = FruitStore.shared
-    let juiceMaker = JuiceMaker()
+    private let fruitStore = FruitStore.shared
+    private let juiceMaker = JuiceMaker()
     
     @IBOutlet weak var strawberryQuantityLabel: UILabel!
     @IBOutlet weak var bananaQuantityLabel: UILabel!
