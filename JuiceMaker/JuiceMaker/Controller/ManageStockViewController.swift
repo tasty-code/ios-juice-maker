@@ -2,7 +2,7 @@
 //  ManageStockViewController.swift
 //  JuiceMaker
 //
-//  Created by Lee minyeol on 12/7/23.
+//  Created by 미르 & 미성
 //
 
 import UIKit

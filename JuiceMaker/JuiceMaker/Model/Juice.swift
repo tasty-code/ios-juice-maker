@@ -5,7 +5,7 @@
 //  Created by 미르 & 미성
 //
 
-enum Juice {
+enum Juice: CaseIterable {
     case strawberryJuice
     case bananaJuice
     case pineappleJuice
@@ -29,7 +29,7 @@ enum Juice {
         case .strawberryBananaJuice:
             "딸바쥬스"
         case .mangoKiwiJuice:
-            "망고키위쥬스"
+            "망키쥬스"
         }
     }
     

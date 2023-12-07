@@ -16,4 +16,14 @@ struct JuiceMaker {
             try fruitStore.consumeFruit(fruit: fruitName, num: quantity)
         }
     }
+    
+    func checkJuiceRecipe(juiceName: String) -> Juice? {
+        let juiceRecipes = Juice.allCases.map { $0 }
+        for juiceRecipe in juiceRecipes {
+            if juiceName == juiceRecipe.name {
+                return juiceRecipe
+            }
+        }
+        return nil
+    }
 }
