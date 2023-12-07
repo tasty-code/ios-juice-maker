@@ -1,6 +1,10 @@
 
 import Foundation
 
+enum Juice {
+    case strawberry, banana, kiwi, mango, pineapple, ddalba, mangki
+}
+
 //MARK: - JuiceMaker 초기화
 struct JuiceMaker {
     
@@ -11,37 +15,39 @@ struct JuiceMaker {
 //MARK: - JuiceMaker 메서드
 extension JuiceMaker {
     
-    private func makeStrawberryJuice() {
+    func makeStrawberryJuice() {
         fruitStore.decrementFruit(of: .strawberry, at: 16)
     }
     
-    private func makeBananaJuice() {
+    func makeBananaJuice() {
         fruitStore.decrementFruit(of: .banana, at: 2)
     }
 
     
-    private func makeKiwiJuice() {
+    func makeKiwiJuice() {
         fruitStore.decrementFruit(of: .kiwi, at: 3)
     }
 
     
-    private func makePineappleJuice() {
+    func makePineappleJuice() {
         fruitStore.decrementFruit(of: .pineapple, at: 2)
     }
 
     
-    private func makeDdalbaJuice() {
+    func makeDdalbaJuice() {
         fruitStore.decrementFruit(of: .strawberry, at: 10)
         fruitStore.decrementFruit(of: .banana, at: 1)
     }
 
     
-    private func makeMangoJuice() {
+    func makeMangoJuice() {
         fruitStore.decrementFruit(of: .mango, at: 3)
     }
 
-    private func makeMangkiJuice() {
+    func makeMangkiJuice() {
         fruitStore.decrementFruit(of: .mango, at: 2)
         fruitStore.decrementFruit(of: .kiwi, at: 1)
     }
 }
+
+
