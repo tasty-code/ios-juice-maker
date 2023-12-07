@@ -18,7 +18,7 @@ class FruitStore {
     
     private func displayCurrentyFruitInventory(fruit: String, quantity: Int) {
         guard let currentQuantity = fruitInventory[fruit] else {
-            print("해당 과일의 재고가 없습니다.")
+            print("과일저장오류")
             return
         }
         let updatedQuantity = currentQuantity
@@ -38,7 +38,6 @@ class FruitStore {
         displayCurrentyFruitInventory(fruit: fruit, quantity: currentQuantity)
     }
 
-    
     func checkAvailability(for juiceIngredients: [String: Int]) -> Bool {
         for (fruit, requiredQuantity) in juiceIngredients {
             guard let availableQuantity = fruitInventory[fruit], requiredQuantity <= availableQuantity else {
@@ -47,16 +46,15 @@ class FruitStore {
         }
         return false
     }
+    
     func makeJuice(juiceRecipe: JuiceRecipe) throws  -> String {
         var  ingredients = juiceRecipe.ingredients
         for (fruit, juiceIngrediant) in ingredients {
             guard let ingrediantsInInventory = fruitInventory[fruit], ingrediantsInInventory > juiceIngrediant else {
-                throw CustomError.makeJuiceError(message: "not enough ingrediantss in invetory")
+                throw CustomError.makeJuiceError(message: "과일부족 에러")
             }
             fruitInventory[fruit] = ingrediantsInInventory - juiceIngrediant
-            print("\(juiceRecipe.name)제조완료.")
         }
-        return "\(CustomError.makeJuiceError(message: "makeJuiceMethodError"))"
+        return ("\(juiceRecipe.name)제조완료.")
     }
-    
 }
