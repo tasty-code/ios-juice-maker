@@ -19,10 +19,10 @@ class FruitStore {
         ]
     }
     
-    func changeStock(fruitname: Fruit, amount: Int) {
-        guard var currentStock = fruitStock[fruitname] else { return }
+    func changeStock(fruitName: Fruit, amount: Int) {
+        guard var currentStock = fruitStock[fruitName] else { return }
         currentStock += amount
-        fruitStock[fruitname] = currentStock
+        fruitStock[fruitName] = currentStock
     }
     
     func checkStockAvailability(recipe: [Fruit: Int]) -> Bool {

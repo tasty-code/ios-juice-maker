@@ -11,12 +11,20 @@ struct JuiceMaker {
     private var fruitStore = FruitStore()
     
     mutating func makeJuice(juice: Juice) {
-        let recipe = juice.recipe
-        
-        guard fruitStore.checkStockAvailability(recipe: recipe) else { return }
-        
-        for(fruit, amount) in recipe {
-            fruitStore.changeStock(fruitname: fruit, amount: -amount)
+        do {
+            print(fruitStore.fruitStock)
+            let recipe = juice.recipe
+            guard fruitStore.checkStockAvailability(recipe: recipe) else {
+                throw JuiceMakerError.insufficientStock
+            }
+            
+            for (fruit, amount) in recipe {
+                fruitStore.changeStock(fruitName: fruit, amount: -amount)
+            }
+        } catch JuiceMakerError.insufficientStock {
+            print(JuiceMakerError.insufficientStock.rawValue)
+        } catch {
+            print(JuiceMakerError.unexpected.rawValue)
         }
     }
 }
