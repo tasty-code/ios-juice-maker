@@ -17,7 +17,9 @@ final class FruitStore {
     
     
     func consume(_ fruitType: Fruit, numberOfFruits: Int) throws {
-        guard let targetFruitStore = fruitStocks[fruitType] else { return }
+        guard let targetFruitStore = fruitStocks[fruitType] else {
+            throw JuiceMakerError.fruitStockNotFound
+        }
         try targetFruitStore.consumeFruits(count: numberOfFruits)
     }
 }
