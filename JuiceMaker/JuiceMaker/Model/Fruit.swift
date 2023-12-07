@@ -17,7 +17,7 @@ enum Fruit {
     var fruitName:String {
         switch self {
         case .strawberry:
-            return "딸기쥬스"
+            return "딸기"
         case .banana:
             return "바나나"
         case .kiwi:
