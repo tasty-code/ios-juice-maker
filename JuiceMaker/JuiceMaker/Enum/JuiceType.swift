@@ -14,7 +14,7 @@ enum JuiceType: Int64 {
     case kiwiJuice
     case mangoJuice
     case strawberryBananaJuice
-    case mangoKiwiKJuice
+    case mangoKiwiJuice
     
     var recipe: [FruitData] {
         switch self {
@@ -30,9 +30,20 @@ enum JuiceType: Int64 {
             return [FruitData(name: FruitType.mango, quantity: 3)]
         case .strawberryBananaJuice:
             return [FruitData(name: FruitType.strawberry, quantity: 10), FruitData(name: .banana, quantity: 1)]
-        case .mangoKiwiKJuice:
+        case .mangoKiwiJuice:
             return [FruitData(name: FruitType.mango, quantity: 2), FruitData(name: FruitType.kiwi, quantity: 1)]
         }
     }
-        
+    
+    static var allCases: [JuiceType] {
+        return [
+            .strawberryJuice,
+            .bananaJuice,
+            .pineappleJuice,
+            .kiwiJuice,
+            .mangoJuice,
+            .strawberryBananaJuice,
+            .mangoKiwiJuice
+        ]
+    }
 }
