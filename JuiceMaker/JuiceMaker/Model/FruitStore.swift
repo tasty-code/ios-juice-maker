@@ -9,7 +9,6 @@ final class FruitStore {
     }
     
     var fruitsStock = Dictionary(uniqueKeysWithValues: Fruits.allCases.map {($0, 10)})
-    
 }
 
 //MARK: - FruitStore 메서드
@@ -21,7 +20,7 @@ extension FruitStore {
     }
     
     func decrementFruit(of fruit: Fruits, at count: Int) {
-        guard let currentStock = fruitsStock[fruit], currentStock > 0 else { print("\(#function) 에러 발생!"); return }
+        guard let currentStock = fruitsStock[fruit], currentStock-count>0 else { print("\(#function) 재고 부족!"); return }
         fruitsStock[fruit] = currentStock - count
     }
 }

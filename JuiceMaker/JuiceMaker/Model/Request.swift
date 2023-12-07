@@ -6,12 +6,15 @@ enum Request {
     case stockManage
 }
 
-extension Request {
-    func acceptJuiceOrder(juiceType: JuiceType) {
+
+struct Reception {
+
+    private let juiceMaker = JuiceMaker()
+
+    func acceptJuiceOrder(request: Request, juiceType: JuiceType) {
         
-        switch self {
+        switch request {
         case .juiceOrder:
-            let juiceMaker = JuiceMaker()
             
             switch juiceType {
             case .strawberry:

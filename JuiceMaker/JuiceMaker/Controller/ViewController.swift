@@ -1,11 +1,11 @@
 
 import UIKit
 
-
 //MARK: - JuiceMachineViewController 초기화
 class JuiceMachineViewController: UIViewController {
     
-    let juiceMachineView = JuiceMachineView()
+    private let juiceMachineView = JuiceMachineView()
+    private let reception = Reception()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -13,32 +13,31 @@ class JuiceMachineViewController: UIViewController {
     
     //Button Action Method
     @IBAction func ddalbaJuiceOrderButtonTapped(_ sender: UIButton) {
-        
+        reception.acceptJuiceOrder(request: .juiceOrder, juiceType: .ddalba)
     }
     
     @IBAction func mangkiJuiceButtonTapped(_ sender: UIButton) {
-        
+        reception.acceptJuiceOrder(request: .juiceOrder, juiceType: .ddalba)
     }
     
-    
     @IBAction func strawberryJuiceOrderButtonTapped(_ sender: UIButton) {
-        
+        reception.acceptJuiceOrder(request: .juiceOrder, juiceType: .ddalba)
     }
     
     
     @IBAction func bananaJuiceOrderButtonTapped(_ sender: UIButton) {
-        
+        reception.acceptJuiceOrder(request: .juiceOrder, juiceType: .ddalba)
     }
     
     @IBAction func pineappleJuiceOrderButtonTapped(_ sender: UIButton) {
-        
+        reception.acceptJuiceOrder(request: .juiceOrder, juiceType: .ddalba)
     }
     
     @IBAction func kiwiJuiceOrderButtonTapped(_ sender: UIButton) {
-        
+        reception.acceptJuiceOrder(request: .juiceOrder, juiceType: .ddalba)
     }
     
     @IBAction func mangoJuiceButtonTapped(_ sender: UIButton) {
-        
+        reception.acceptJuiceOrder(request: .juiceOrder, juiceType: .ddalba)
     }
 }

@@ -1,10 +1,6 @@
 
 import Foundation
 
-enum Juice {
-    case strawberry, banana, kiwi, mango, pineapple, ddalba, mangki
-}
-
 //MARK: - JuiceMaker 초기화
 struct JuiceMaker {
     
