@@ -69,6 +69,8 @@ struct JuiceMaker {
             outcomeCreated = .success(message: "\(menuName) \(completeOrderMessage)")
         } catch  FruitStore.InventoryError.inventoryError(description: let message) {
             outcomeCreated = .failure(description: message)
+        } catch {
+            outcomeCreated = .failure(description: "Error")
         }
         return outcomeCreated
     }
