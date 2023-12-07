@@ -9,14 +9,14 @@ struct JuiceMaker {
     
     init() {}
     
-    func checkJuice(juice: Juice) throws {
+    private func checkJuiceIngredients(juice: Juice) throws {
         for (fruitName, quantity) in juice.recipe {
             try fruitStore.checkStock(fruit: fruitName, num: quantity)
         }
     }
     
     func orderJuice(juice: Juice) throws {
-        try checkJuice(juice: juice)
+        try checkJuiceIngredients(juice: juice)
         
         for (fruitName, quantity) in juice.recipe {
             try fruitStore.consumeFruit(fruit: fruitName, num: quantity)

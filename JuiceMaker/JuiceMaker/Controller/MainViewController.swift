@@ -7,8 +7,8 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    let fruitStore = FruitStore.shared
-    let juiceMaker: JuiceMaker = JuiceMaker()
+    private let fruitStore = FruitStore.shared
+    private let juiceMaker: JuiceMaker = JuiceMaker()
     
     @IBOutlet weak var strawberryLabel: UILabel!
     @IBOutlet weak var bananaLabel: UILabel!
@@ -20,24 +20,18 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         checkFruitsStock()
     }
-
-    @IBAction func manageStockButton(_ sender: UIButton) {
+    
+    @IBAction private func manageStockButton(_ sender: UIButton) {
         moveToManageStockView()
     }
     
-    @IBAction func checkJuiceOrder(_ sender: UIButton) {
+    @IBAction private func checkJuiceOrder(_ sender: UIButton) {
         guard let juiceName = sender.titleLabel?.text?.components(separatedBy: " ")[0] else { return }
-        
         guard let juice = juiceMaker.checkJuiceRecipe(juiceName: juiceName) else { return }
         orderJuice(juice: juice)
     }
     
-    func moveToManageStockView() {
-        guard let viewController = self.storyboard?.instantiateViewController(identifier: "viewController") as? ManageStockViewController else { return }
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
-    
-    func orderJuice(juice: Juice) {
+    private func orderJuice(juice: Juice) {
         do {
             try juiceMaker.orderJuice(juice: juice)
             showSuccessAlert(juiceName: juice.name)
@@ -48,7 +42,7 @@ class MainViewController: UIViewController {
         }
     }
     
-    func checkFruitsStock() {
+    private func checkFruitsStock() {
         let stock = fruitStore.fruitStock.compactMapValues { String($0) }
         
         strawberryLabel.text = stock[.strawberry]
@@ -58,12 +52,11 @@ class MainViewController: UIViewController {
         mangoLabel.text = stock[.mango]
     }
     
-    func showOutOfStockAlert() {
+    private func showOutOfStockAlert() {
         let alert = UIAlertController(title: nil, message: "재료가 모자라요. 재고를 수정할까요?", preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "예", style: .default) { _ in
-            self.moveToManageStockView()
-        }
+            self.moveToManageStockView() }
         let cancelAction = UIAlertAction(title: "아니오", style: .default)
         
         alert.addAction(okAction)
@@ -72,12 +65,18 @@ class MainViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func showSuccessAlert(juiceName: String) {
+    private func showSuccessAlert(juiceName: String) {
         let alert = UIAlertController(title: nil, message: "\(juiceName) 나왔습니다! 맛있게 드세요!", preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+        
         alert.addAction(okAction)
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    private func moveToManageStockView() {
+        guard let viewController = self.storyboard?.instantiateViewController(identifier: "viewController") as? ManageStockViewController else { return }
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }

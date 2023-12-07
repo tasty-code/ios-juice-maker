@@ -8,8 +8,7 @@
 import UIKit
 
 class ManageStockViewController: UIViewController {
-
-    let fruitStore = FruitStore.shared
+    private let fruitStore = FruitStore.shared
     
     @IBOutlet weak var strawberryStockLabel: UILabel!
     @IBOutlet weak var bananaStockLabel: UILabel!
@@ -20,11 +19,11 @@ class ManageStockViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkFruitsStock()
-
+        
         navigationController?.navigationBar.topItem?.backButtonTitle = "뒤로 가기"
     }
     
-    func checkFruitsStock() {
+    private func checkFruitsStock() {
         let stock = fruitStore.fruitStock.compactMapValues { String($0) }
         
         strawberryStockLabel.text = stock[.strawberry]
@@ -33,5 +32,4 @@ class ManageStockViewController: UIViewController {
         kiwiStockLabel.text = stock[.kiwi]
         mangoStockLabel.text = stock[.mango]
     }
-    
 }
