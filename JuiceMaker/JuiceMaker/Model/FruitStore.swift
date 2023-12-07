@@ -8,7 +8,9 @@ import Foundation
 
 // 과일 저장소 타입
 class FruitStore {
-    let shared: FruitStore = FruitStore()
+    static let shared: FruitStore = FruitStore()
+    
+    private init() {}
     
     var fruitList: [FruitData] = [
         FruitData(name: .strawberry, quantity: 0),
@@ -37,13 +39,18 @@ class FruitStore {
         return String(0)
     }
     
-    func checkFruitsQuantity(fruit: FruitType, usedQuantity: Int64) -> Bool {
+    func checkFruitsQuantity(fruit: FruitType, willUseQuantity: Int64) -> Bool {
         let result = fruitList
             .firstIndex { $0.name == fruit }
-            .map { fruitList[$0].quantity >= usedQuantity } ?? false
+            .map { fruitList[$0].quantity >= willUseQuantity } ?? false
         return result
     }
     
+    func usedFruitsQuantity(fruit: FruitType, usedQuantity: Int64) {
+        if let index = fruitList.firstIndex(where: { $0.name == fruit }) {
+            fruitList[index].quantity -= usedQuantity
+        }
+    }
 
 }
 
