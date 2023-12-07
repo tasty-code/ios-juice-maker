@@ -7,14 +7,14 @@
 
 import Foundation
 
-enum FruitType {
+enum Fruit {
     case strawberry
     case banana
     case kiwi
     case pineapple
     case mango
     
-    var FruitName:String {
+    var fruitName:String {
         switch self {
         case .strawberry:
             return "딸기쥬스"

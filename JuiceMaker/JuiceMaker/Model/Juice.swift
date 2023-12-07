@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum JuiceType {
+enum Juice {
     case strawberryJuice
     case bananaJuice
     case kiwiJuice
@@ -35,7 +35,7 @@ enum JuiceType {
         }
     }
     
-    var juiceRecipe: [FruitType: Int] {
+    var juiceRecipe: [Fruit: Int] {
         switch self {
         case .strawberryJuice:
             return [.strawberry: 16]

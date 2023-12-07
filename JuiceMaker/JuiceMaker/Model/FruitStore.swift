@@ -13,7 +13,7 @@ final class FruitStore {
     
     private init() {}
     
-    var fruitInventory: [FruitType: Int] = [
+    private var fruitInventory: [Fruit: Int] = [
         .strawberry: 10,
         .banana: 10,
         .kiwi: 10,
@@ -21,20 +21,21 @@ final class FruitStore {
         .mango: 10
     ]
     
-    func addFruitInvetory(for fruit: FruitType, inventory: Int) {
+    private func addFruitInventory(fruit: Fruit, inventory: Int) {
         fruitInventory[fruit, default: 0] += inventory
     }
     
-    func usedFruitInventory(for fruit: FruitType, inventory: Int) {
+    func usedFruitInventory(fruit: Fruit, inventory: Int) {
         fruitInventory[fruit, default: 0] -= inventory
     }
     
-    func getFruitInvetory(for fruit: FruitType) -> Int {
+    private func getFruitInventory(fruit: Fruit) -> Int {
         return fruitInventory[fruit, default: 0]
     }
-    func compareFruitInventory(for juice: JuiceType) -> Bool {
+    
+    func compareFruitInventory(juice: Juice) -> Bool {
         for (fruit, quantity) in juice.juiceRecipe {
-            let currentInventory = getFruitInvetory(for: fruit)
+            let currentInventory = getFruitInventory(fruit: fruit)
             
             if currentInventory <= quantity {
                 print("재고부족")
