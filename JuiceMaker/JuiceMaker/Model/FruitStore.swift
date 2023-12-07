@@ -9,7 +9,7 @@ import Foundation
 // 과일 저장소 타입
 final class FruitStore {
     
-    var fruits: [String: Int] = [:]
+    var fruits: [String : Int] = [:]
     
     func initializeFruit() {
         Fruit.allCases.forEach { fruits[$0.rawValue] = 10 }
