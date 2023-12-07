@@ -7,6 +7,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    let fruitStore = FruitStore.shared
     let juiceMaker: JuiceMaker = JuiceMaker()
     
     
@@ -28,7 +29,7 @@ class MainViewController: UIViewController {
     
     @IBAction func checkJuiceOrder(_ sender: UIButton) {
         guard let juiceName = sender.titleLabel?.text?.components(separatedBy: " ")[0] else { return }
-        print(juiceName)
+        
         guard let juice = juiceMaker.checkJuiceRecipe(juiceName: juiceName) else { return }
         orderJuice(juice: juice)
     }
@@ -45,15 +46,16 @@ class MainViewController: UIViewController {
             checkFruitsStock()
         } catch {
             showOutOfStockAlert()
+            checkFruitsStock()
         }
     }
     
     func checkFruitsStock() {
-        strawberryLabel.text = String(juiceMaker.fruitStore.fruitStock[.strawberry] ?? 0)
-        bananaLabel.text = String(juiceMaker.fruitStore.fruitStock[.banana] ?? 0)
-        pineappleLabel.text = String(juiceMaker.fruitStore.fruitStock[.pineapple] ?? 0)
-        kiwiLabel.text = String(juiceMaker.fruitStore.fruitStock[.kiwi] ?? 0)
-        mangoLabel.text = String(juiceMaker.fruitStore.fruitStock[.mango] ?? 0)
+        strawberryLabel.text = String(fruitStore.fruitStock[.strawberry] ?? 0)
+        bananaLabel.text = String(fruitStore.fruitStock[.banana] ?? 0)
+        pineappleLabel.text = String(fruitStore.fruitStock[.pineapple] ?? 0)
+        kiwiLabel.text = String(fruitStore.fruitStock[.kiwi] ?? 0)
+        mangoLabel.text = String(fruitStore.fruitStock[.mango] ?? 0)
     }
     
     func showOutOfStockAlert() {

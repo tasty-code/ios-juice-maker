@@ -5,13 +5,19 @@
 // 
 
 struct JuiceMaker {
-    private(set) var fruitStore: FruitStore
+    private(set) var fruitStore = FruitStore.shared
     
-    init(fruitStore: FruitStore = FruitStore()) {
-        self.fruitStore = fruitStore
+    init() {}
+    
+    func checkJuice(juice: Juice) throws {
+        for (fruitName, quantity) in juice.recipe {
+            try fruitStore.checkStock(fruit: fruitName, num: quantity)
+        }
     }
     
     func orderJuice(juice: Juice) throws {
+        try checkJuice(juice: juice)
+        
         for (fruitName, quantity) in juice.recipe {
             try fruitStore.consumeFruit(fruit: fruitName, num: quantity)
         }
