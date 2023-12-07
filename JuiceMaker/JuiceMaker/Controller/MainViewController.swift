@@ -7,12 +7,18 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
-    var juiceMaker: JuiceMaker = JuiceMaker()
+    let juiceMaker: JuiceMaker = JuiceMaker()
+    
+    
+    @IBOutlet weak var strawberryLabel: UILabel!
+    @IBOutlet weak var bananaLabel: UILabel!
+    @IBOutlet weak var pineappleLabel: UILabel!
+    @IBOutlet weak var kiwiLabel: UILabel!
+    @IBOutlet weak var mangoLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        checkFruitsStock()
     }
 
 
@@ -33,8 +39,17 @@ class MainViewController: UIViewController {
             print("재료 준비")
             try juiceMaker.orderJuice(juice: juice)
             print("\(juice.name) 주문 성공!!!")
+            checkFruitsStock()
         } catch {
             print(error)
         }
+    }
+    
+    func checkFruitsStock() {
+        strawberryLabel.text = String(juiceMaker.fruitStore.fruitStock[.strawberry] ?? 0)
+        bananaLabel.text = String(juiceMaker.fruitStore.fruitStock[.banana] ?? 0)
+        pineappleLabel.text = String(juiceMaker.fruitStore.fruitStock[.pineapple] ?? 0)
+        kiwiLabel.text = String(juiceMaker.fruitStore.fruitStock[.kiwi] ?? 0)
+        mangoLabel.text = String(juiceMaker.fruitStore.fruitStock[.mango] ?? 0)
     }
 }
