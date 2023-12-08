@@ -11,12 +11,18 @@ final class OrderViewController: UIViewController {
     private let fruitStore = FruitStore.shared
     private let juiceMaker = JuiceMaker()
     
+    @IBOutlet private weak var strawberryQuantityLabel: UILabel!
+    @IBOutlet private weak var bananaQuantityLabel: UILabel!
+    @IBOutlet private weak var pineappleQuantityLabel: UILabel!
+    @IBOutlet private weak var kiwiQuantityLabel: UILabel!
+    @IBOutlet private weak var mangoQuantityLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
 
+    @IBAction private func tapEditInventoryButton(_ sender: UIBarButtonItem) {
         guard let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: InventoryViewController.className)
                 as? UIViewController else { return }
         
@@ -24,6 +30,9 @@ final class OrderViewController: UIViewController {
     }
     
     
+    @IBAction private func tapMakeJuiceButton(_ sender: UIButton) {
+        guard let selectedButtonTitle = sender.currentTitle,
+              let juice = Juice(rawValue: selectedButtonTitle) else {
             return
         }
         
@@ -34,6 +43,7 @@ final class OrderViewController: UIViewController {
         }
     }
     
+    private func configureUI() {
         strawberryQuantityLabel.text = String(fruitStore.fruitContainer[.strawberry, default: 0])
         bananaQuantityLabel.text = String(fruitStore.fruitContainer[.banana, default: 0])
         pineappleQuantityLabel.text = String(fruitStore.fruitContainer[.pineapple, default: 0])
