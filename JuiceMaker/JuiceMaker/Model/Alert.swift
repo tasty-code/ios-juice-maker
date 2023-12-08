@@ -9,7 +9,7 @@ import UIKit
 
 struct Alert {
     
-    static func createAlertController(alertType: AlertType, title: String?, message: String, view: UIViewController) -> UIAlertController {
+    static func createAlertController(alertType: AlertType, title: String?, message: String, view: UIViewController?) -> UIAlertController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         switch alertType {
@@ -17,7 +17,8 @@ struct Alert {
             let okAction = UIAlertAction(title: "확인", style: .default)
             alertController.addAction(okAction)
         case .outOfStockAlert:
-            let okAction = UIAlertAction(title: "예", style: .default) { _ in view.moveToManageStockView() }
+            let okAction = UIAlertAction(title: "예", style: .default) { _ in view?.moveToManageStockView()
+            }
             let cancelAction = UIAlertAction(title: "아니오", style: .default)
             alertController.addAction(okAction)
             alertController.addAction(cancelAction)

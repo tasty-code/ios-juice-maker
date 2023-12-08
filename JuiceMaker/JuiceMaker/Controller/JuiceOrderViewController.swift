@@ -26,8 +26,8 @@ final class JuiceOrderViewController: UIViewController {
     }
     
     @IBAction private func checkJuiceOrder(_ sender: UIButton) {
-        guard let juiceName = sender.titleLabel?.text?.components(separatedBy: " ")[0] else { return }
-        guard let juice = juiceMaker.checkJuiceRecipe(juiceName: juiceName) else { return }
+        guard let juiceName = sender.titleLabel?.text?.components(separatedBy: " ")[0] else { return present(Alert.createAlertController(alertType: .defaultAlert, title: nil, message: JuiceMakerError.cannotFindLabel.description, view: nil), animated: true) }
+        guard let juice = juiceMaker.checkJuiceRecipe(juiceName: juiceName) else { return present(Alert.createAlertController(alertType: .defaultAlert, title: nil, message: JuiceMakerError.cannotFindJuice.description, view: nil), animated: true) }
         order(juice: juice)
     }
     
@@ -56,6 +56,6 @@ final class JuiceOrderViewController: UIViewController {
 extension UIViewController {
     func moveToManageStockView() {
         guard let viewController = storyboard?.instantiateViewController(identifier: NameSpace.manageStockVC) as? ManageStockViewController else { return }
-        viewController.navigationController?.pushViewController(viewController, animated: true)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
