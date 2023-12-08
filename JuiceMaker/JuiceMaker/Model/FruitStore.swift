@@ -25,7 +25,7 @@ class FruitStore {
     
     private var storage: [Fruit: Int] = [:]
     
-    func supply(fruits: [Fruit:Int]) throws {
+    func supply(fruits: [Fruit: Int]) throws {
         for (fruitName, amount) in fruits {
             guard amount > 0 else {
                 throw StorageError.invalidAmountOfFruit
@@ -35,7 +35,7 @@ class FruitStore {
         }
     }
     
-    func consume(fruits: [Fruit:Int]) throws {
+    func consume(fruits: [Fruit: Int]) throws {
         for (fruitName, amount) in fruits {
             guard let currentStock = self.storage[fruitName] else {
                 throw StorageError.invalidSelection
