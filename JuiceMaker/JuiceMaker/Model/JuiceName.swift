@@ -21,7 +21,7 @@ enum JuiceName {
         case .strawberry:
             return [.strawberry: 16]
         case .banana:
-            return [.banana: 12]
+            return [.banana: 2]
         case .kiwi:
             return [.kiwi: 3]
         case .pineapple:

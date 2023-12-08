@@ -11,7 +11,12 @@ struct JuiceMaker {
     private let fruitStore: FruitStore = FruitStore()
 
     func makeJuice(juiceName: JuiceName) {
-        guard let fruitName = juiceName.recipe.keys.first, let fruitQuantity = juiceName.recipe.values.first else { return }
+        for (fruitName, fruitQuantity) in juiceName.recipe {
+            consumeFruit(fruitName: fruitName, fruitQuantity: fruitQuantity)
+        }
+    }
+    
+    private func consumeFruit(fruitName: FruitName, fruitQuantity: Int) {
         do {
             try fruitStore.consumeFruit(fruitName: fruitName, fruitQuantity: fruitQuantity)
         } catch JuiceError.outOfStock {
