@@ -1,8 +1,7 @@
 //
 //  Juice.swift
 //  JuiceMaker
-//
-//  Created by LeeSeongYeon on 2023/12/05.
+//  Created by Kyle & L
 //
 
 enum Juice {

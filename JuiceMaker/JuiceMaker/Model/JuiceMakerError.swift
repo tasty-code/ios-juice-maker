@@ -1,9 +1,10 @@
 //
-//  Error.swift
+//  JuiceMakerError.swift
 //  JuiceMaker
+//  Created by Kyle & L
 //
-//  Created by 강창현 on 12/6/23.
-//
+
+import Foundation
 
 import Foundation
 
@@ -18,5 +19,4 @@ extension JuiceMakerError: LocalizedError {
             return "\(fruit)가 모자라요. 재고를 수정할까요?"
         }
     }
-    
 }

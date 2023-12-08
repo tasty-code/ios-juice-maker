@@ -1,8 +1,7 @@
 //
 //  Fruits.swift
 //  JuiceMaker
-//
-//  Created by 강창현 on 12/4/23.
+//  Created by Kyle & L
 //
     
 enum Fruits {

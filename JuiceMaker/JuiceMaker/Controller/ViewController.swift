@@ -1,7 +1,6 @@
 //
 //  JuiceMaker - ViewController.swift
 //  Created by Kyle& L
-//  Copyright © yagom academy. All rights reserved.
 // 
 
 import UIKit
