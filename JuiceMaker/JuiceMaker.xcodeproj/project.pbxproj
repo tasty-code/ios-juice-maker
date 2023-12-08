@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,7 @@
 		E4A738752B21608C00166343 /* JuiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A738732B21608C00166343 /* JuiceType.swift */; };
 		E4A738772B21609800166343 /* FruitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A738762B21609800166343 /* FruitData.swift */; };
 		E4A738792B2160F900166343 /* JuiceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A738782B2160F900166343 /* JuiceData.swift */; };
+		E4AE21D72B22F5D9004484C0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE21D62B22F5D9004484C0 /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		E4A738732B21608C00166343 /* JuiceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JuiceType.swift; sourceTree = "<group>"; };
 		E4A738762B21609800166343 /* FruitData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FruitData.swift; sourceTree = "<group>"; };
 		E4A738782B2160F900166343 /* JuiceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceData.swift; sourceTree = "<group>"; };
+		E4AE21D62B22F5D9004484C0 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 		C73DAF35255D0CDD00020D38 /* JuiceMaker */ = {
 			isa = PBXGroup;
 			children = (
+				E4AE21D52B22F5BC004484C0 /* Message */,
 				C1ED27DC2B218C980013F195 /* Font */,
 				C1ED27D12B218C510013F195 /* Views */,
 				C73DAF36255D0CDD00020D38 /* AppDelegate.swift */,
@@ -133,6 +136,14 @@
 				E4A738732B21608C00166343 /* JuiceType.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		E4AE21D52B22F5BC004484C0 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				E4AE21D62B22F5D9004484C0 /* Message.swift */,
+			);
+			path = Message;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,6 +222,7 @@
 				E4A738792B2160F900166343 /* JuiceData.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
 				C1ED27CC2B217B530013F195 /* JuiceMakerViewController.swift in Sources */,
+				E4AE21D72B22F5D9004484C0 /* Message.swift in Sources */,
 				C1ED27D02B2187760013F195 /* ViewController.swift in Sources */,
 				E4A738752B21608C00166343 /* JuiceType.swift in Sources */,
 				C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */,

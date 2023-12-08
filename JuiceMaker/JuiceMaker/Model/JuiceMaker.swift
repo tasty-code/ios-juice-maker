@@ -75,5 +75,11 @@ struct JuiceMaker {
         }
         return String(0)
     }
+    
+    mutating func addJuiceQuantity(juice: JuiceType) {
+        if let index = juiceList.firstIndex(where: { $0.name == juice }) {
+            juiceList[index].quantity += 1
+        }
+    }
 }
 
