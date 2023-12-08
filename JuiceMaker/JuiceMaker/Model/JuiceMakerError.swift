@@ -7,7 +7,16 @@
 
 import Foundation
 
-enum JuiceMakerError: String, Error {
-    case insufficientStock = "재고가 부족합니다."
-    case unexpected = "예기치 못한 에러가 발생했습니다."
+enum JuiceMakerError: Error {
+    case insufficientStock
+    case unexpected
+    
+    var errorMessage: String {
+        switch self {
+        case .insufficientStock:
+            return "재고가 부족합니다."
+        case .unexpected:
+            return "예기치 못한 에러가 발생했습니다."
+        }
+    }
 }

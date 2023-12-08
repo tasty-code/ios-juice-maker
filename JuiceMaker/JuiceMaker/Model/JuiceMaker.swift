@@ -21,9 +21,9 @@ struct JuiceMaker {
                 fruitStore.changeStock(fruitName: fruit, amount: -amount)
             }
         } catch JuiceMakerError.insufficientStock {
-            print(JuiceMakerError.insufficientStock.rawValue)
+            print(JuiceMakerError.insufficientStock.errorMessage)
         } catch {
-            print(JuiceMakerError.unexpected.rawValue)
+            print(JuiceMakerError.unexpected.errorMessage)
         }
     }
 }
