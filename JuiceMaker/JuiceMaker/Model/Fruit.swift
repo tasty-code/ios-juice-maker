@@ -2,19 +2,19 @@
 //  FruitType.swift
 //  JuiceMaker
 //
-//  Created by MAC2020 on 2023/12/06.
+//  Created by 유니 & 이안 on 2023/12/06.
 //
 
 import Foundation
 
-enum Fruit {
+enum Fruit: CaseIterable {
     case strawberry
     case banana
     case kiwi
     case pineapple
     case mango
     
-    var fruitName:String {
+    var name:String {
         switch self {
         case .strawberry:
             return "딸기"

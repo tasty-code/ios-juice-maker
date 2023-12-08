@@ -1,7 +1,7 @@
 //
 //  JuiceMaker - FruitStore.swift
 //  Created by yagom. 
-//  Copyright © yagom academy. All rights reserved.
+//  Copyright © 유니 & 이안. All rights reserved.
 //
 
 import Foundation
@@ -20,22 +20,22 @@ final class FruitStore {
         .pineapple: 10,
         .mango: 10
     ]
-    
-    private func addFruitInventory(fruit: Fruit, inventory: Int) {
-        fruitInventory[fruit, default: 0] += inventory
+    @discardableResult private func add(fruit: Fruit, amount: Int) -> Int {
+        fruitInventory[fruit, default: 0] += amount
+        return fruitInventory[fruit, default: 0]
+    }
+    @discardableResult func consume(fruit: Fruit, amount: Int) -> Int {
+        fruitInventory[fruit, default: 0] -= amount
+        return fruitInventory[fruit, default: 0]
     }
     
-    func usedFruitInventory(fruit: Fruit, inventory: Int) {
-        fruitInventory[fruit, default: 0] -= inventory
-    }
-    
-    private func getFruitInventory(fruit: Fruit) -> Int {
+    private func inventory(fruit: Fruit) -> Int {
         return fruitInventory[fruit, default: 0]
     }
     
     func compareFruitInventory(juice: Juice) -> Bool {
-        for (fruit, quantity) in juice.juiceRecipe {
-            let currentInventory = getFruitInventory(fruit: fruit)
+        for (fruit, quantity) in juice.recipe {
+            let currentInventory = inventory(fruit: fruit)
             
             if currentInventory <= quantity {
                 print("재고부족")

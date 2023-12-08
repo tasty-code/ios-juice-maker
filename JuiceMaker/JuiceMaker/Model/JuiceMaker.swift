@@ -1,7 +1,7 @@
 //
 //  JuiceMaker - JuiceMaker.swift
 //  Created by yagom.
-//  Copyright © yagom academy. All rights reserved.
+//  Copyright © 유니 & 이안. All rights reserved.
 //
 
 import Foundation
@@ -9,13 +9,13 @@ import Foundation
 // 쥬스 메이커 타입
 struct JuiceMaker {
     
-    func makeJuice(juice: Juice) {
+    func make(juice: Juice) {
         guard FruitStore.shared.compareFruitInventory(juice: juice) else {
             return
         }
-        for (fruit, quantity) in juice.juiceRecipe {
-            FruitStore.shared.usedFruitInventory(fruit: fruit, inventory: quantity)
+        for (fruit, quantity) in juice.recipe {
+            FruitStore.shared.consume(fruit: fruit, amount: quantity)
         }
-        print("\(juice.juiceName) 나왔습니다.")
+        print("\(juice.name) 나왔습니다.")
     }
 }

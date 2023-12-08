@@ -2,12 +2,12 @@
 //  JuiceType.swift
 //  JuiceMaker
 //
-//  Created by MAC2020 on 2023/12/06.
+//  Created by 유니 & 이안 on 2023/12/06.
 //
 
 import Foundation
 
-enum Juice {
+enum Juice: CaseIterable {
     case strawberryJuice
     case bananaJuice
     case kiwiJuice
@@ -16,7 +16,7 @@ enum Juice {
     case strawberryBananaJuice
     case mangoKiwiJuice
     
-    var juiceName:String {
+    var name:String {
         switch self {
         case .strawberryJuice:
             return "딸기쥬스"
@@ -35,7 +35,7 @@ enum Juice {
         }
     }
     
-    var juiceRecipe: [Fruit: Int] {
+    var recipe: [Fruit: Int] {
         switch self {
         case .strawberryJuice:
             return [.strawberry: 16]
