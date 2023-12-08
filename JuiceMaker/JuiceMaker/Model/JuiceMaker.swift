@@ -22,7 +22,7 @@ struct JuiceMaker {
         } catch JuiceError.outOfStock {
             print(JuiceError.outOfStock.localizedDescription)
         } catch {
-            print("알 수 없는 에러")
+            print(JuiceError.unknown.localizedDescription)
         }
     }
 }
