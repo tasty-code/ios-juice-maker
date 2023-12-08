@@ -18,9 +18,8 @@ enum Juice: String {
     case mangoKiwi = "망키쥬스 주문"
     
     /// 쥬스 제조 시 필요한 과일 수량 반환하는 메서드
-    func checkFruitQuantity(juice: Self) -> [Fruit: Int] {
-        switch juice {
-            
+    func checkFruitQuantity() -> [Fruit: Int] {
+        switch self {
         case .strawberry:
             return [.strawberry: 16]
         case .banana:
