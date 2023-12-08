@@ -1,13 +1,13 @@
 //
-//  JuiceName.swift
+//  JuiceMenu.swift
 //  JuiceMaker
 //
-//  Created by Taewan Kim on 12/5/23.
+//  Created by 이주상 on 2023/12/08.
 //
 
 import Foundation
 
-enum JuiceName {
+enum JuiceMenu {
     case strawberry
     case banana
     case kiwi
