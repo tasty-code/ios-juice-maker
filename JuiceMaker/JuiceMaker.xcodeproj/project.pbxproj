@@ -20,6 +20,8 @@
 		C73DAF43255D0CDF00020D38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C73DAF41255D0CDF00020D38 /* LaunchScreen.storyboard */; };
 		C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */; };
 		FAEA5ABF2B1DAF4F00E29512 /* Juice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA5ABE2B1DAF4F00E29512 /* Juice.swift */; };
+		FAEA5B362B22E3B500E29512 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA5B352B22E3B500E29512 /* Alert.swift */; };
+		FAEA5B3A2B22F39100E29512 /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA5B392B22F39100E29512 /* AlertType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		C73DAF44255D0CDF00020D38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMaker.swift; sourceTree = "<group>"; };
 		FAEA5ABE2B1DAF4F00E29512 /* Juice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Juice.swift; sourceTree = "<group>"; };
+		FAEA5B352B22E3B500E29512 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		FAEA5B392B22F39100E29512 /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,8 @@
 				4E0E6E862B1DAC98004DBB95 /* Fruit.swift */,
 				FAEA5ABE2B1DAF4F00E29512 /* Juice.swift */,
 				4E0E6EA22B1EBDDE004DBB95 /* JuiceMakerError.swift */,
+				FAEA5B352B22E3B500E29512 /* Alert.swift */,
+				FAEA5B392B22F39100E29512 /* AlertType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -255,7 +261,9 @@
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
 				C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */,
 				C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */,
+				FAEA5B362B22E3B500E29512 /* Alert.swift in Sources */,
 				4E8F2C6A2B217BB500003EF5 /* ManageStockViewController.swift in Sources */,
+				FAEA5B3A2B22F39100E29512 /* AlertType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

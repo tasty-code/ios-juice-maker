@@ -34,10 +34,10 @@ class MainViewController: UIViewController {
     private func orderJuice(juice: Juice) {
         do {
             try juiceMaker.orderJuice(juice: juice)
-            showSuccessAlert(juiceName: juice.name)
+            present(Alert.createAlertController(alertType: .defaultAlert, title: nil, message: "\(juice.name) 나왔습니다! 맛있게 드세요!", view: self), animated: true)
             checkFruitsStock()
         } catch {
-            showOutOfStockAlert()
+            present(Alert.createAlertController(alertType: .outOfStockAlert, title: nil, message: JuiceMakerError.outOfStock.description, view: self), animated: true)
             checkFruitsStock()
         }
     }
@@ -52,30 +52,7 @@ class MainViewController: UIViewController {
         mangoLabel.text = stock[.mango]
     }
     
-    private func showOutOfStockAlert() {
-        let alert = UIAlertController(title: nil, message: "재료가 모자라요. 재고를 수정할까요?", preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "예", style: .default) { _ in
-            self.moveToManageStockView() }
-        let cancelAction = UIAlertAction(title: "아니오", style: .default)
-        
-        alert.addAction(okAction)
-        alert.addAction(cancelAction)
-        
-        present(alert, animated: true, completion: nil)
-    }
-    
-    private func showSuccessAlert(juiceName: String) {
-        let alert = UIAlertController(title: nil, message: "\(juiceName) 나왔습니다! 맛있게 드세요!", preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
-        
-        alert.addAction(okAction)
-        
-        present(alert, animated: true, completion: nil)
-    }
-    
-    private func moveToManageStockView() {
+    func moveToManageStockView() {
         guard let viewController = self.storyboard?.instantiateViewController(identifier: "viewController") as? ManageStockViewController else { return }
         self.navigationController?.pushViewController(viewController, animated: true)
     }
