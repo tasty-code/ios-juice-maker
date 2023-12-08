@@ -20,6 +20,7 @@ final class OrderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureUI()
     }
 
     @IBAction private func tapEditInventoryButton(_ sender: UIBarButtonItem) {
@@ -38,6 +39,7 @@ final class OrderViewController: UIViewController {
         
         do {
             try juiceMaker.makeJuice(juiceType: juice)
+            configureUI()
         } catch {
             presentAlert(title: "재고가 부족합니다.", message: "다른 쥬스를 선택해주세요.", confirmTitle: "확인")
         }
