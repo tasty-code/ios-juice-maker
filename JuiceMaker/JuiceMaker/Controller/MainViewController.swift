@@ -51,7 +51,9 @@ class MainViewController: UIViewController {
         kiwiLabel.text = stock[.kiwi]
         mangoLabel.text = stock[.mango]
     }
-    
+}
+
+extension UIViewController {
     func moveToManageStockView() {
         guard let viewController = self.storyboard?.instantiateViewController(identifier: "viewController") as? ManageStockViewController else { return }
         self.navigationController?.pushViewController(viewController, animated: true)

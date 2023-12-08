@@ -9,7 +9,7 @@ import UIKit
 
 struct Alert {
     
-    static func createAlertController(alertType: AlertType, title: String?, message: String, view: MainViewController) -> UIAlertController {
+    static func createAlertController(alertType: AlertType, title: String?, message: String, view: UIViewController) -> UIAlertController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         switch alertType {
