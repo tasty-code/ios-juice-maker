@@ -8,10 +8,11 @@ import Foundation
 
 // 쥬스 메이커 타입
 struct JuiceMaker {
-    var store: FruitStore
     
-    init(store: FruitStore) {
-        self.store = store
+    private let store: FruitStore
+    
+    init() {
+        self.store = FruitStore()
         self.store.initializeFruit()
     }
     
