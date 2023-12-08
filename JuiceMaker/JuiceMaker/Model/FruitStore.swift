@@ -7,7 +7,7 @@
 import Foundation
 
 class FruitStore {
-    enum InventoryError : Error {
+    enum InventoryError: Error {
             static let outOfStockMessage = "재료 없음. 재고를 수정할까요?"
             static let fruitThatDoesNotExistMessage  = "그런 과일 없음"
         
@@ -25,32 +25,32 @@ class FruitStore {
         inventory[fruit] = number
     }
     
-    func increaseStock() {
+    private func increaseStock() {
         
     }
     
-    func decreaseStock() {
+    private func decreaseStock() {
         
     }
     
-    func useIngredients() {
+    private func useIngredients() {
         decreaseStock()
     }
     
-    func checkStock(amountOfFruitNow: Int, amountRequired: Int) throws {
+    private func checkStock(amountOfFruitNow: Int, amountRequired: Int) throws {
         guard amountOfFruitNow > amountRequired else {
             throw InventoryError.inventoryError(description: InventoryError.outOfStockMessage)
         }
     }
     
-    func giveBackNumberIfExist(_ fruit: Fruit) throws -> Int {
+    private func giveBackNumberIfExist(_ fruit: Fruit) throws -> Int {
         guard let numberOfFruitExist = inventory[fruit] else {
             throw InventoryError.inventoryError(description: InventoryError.fruitThatDoesNotExistMessage)
         }
         return numberOfFruitExist
     }
     
-    func checkIngredients(_ recipes: [(requiredFruit: Fruit, requestedAmount: Int)]) throws -> [Int] {
+    private func checkIngredients(_ recipes: [(requiredFruit: Fruit, requestedAmount: Int)]) throws -> [Int] {
         var numberOfFruitExist = [Int]()
         
         for demand in recipes {
