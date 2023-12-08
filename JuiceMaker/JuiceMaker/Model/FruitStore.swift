@@ -7,13 +7,6 @@
 import Foundation
 
 class FruitStore {
-    enum InventoryError: Error {
-            static let outOfStockMessage = "재료 없음. 재고를 수정할까요?"
-            static let fruitThatDoesNotExistMessage  = "그런 과일 없음"
-        
-            case inventoryError(description: String)
-        }
-
     private(set) var inventory = Fruit.allCases.reduce([Fruit: Int]()) { bag, fruit in
         var bag = bag
         let initialNumberOfFruits = 10
