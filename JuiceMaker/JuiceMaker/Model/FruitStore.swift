@@ -15,13 +15,19 @@ final class FruitStore {
             throw JuiceError.quantityOfAllFruitsAccessFailed
         }
         
-        guard oldQuantity >= quantity else {
-            throw JuiceError.outOfStock
+        do {
+            try checkStockQuantity(oldQuantity: oldQuantity, quantity: quantity)
+        } catch JuiceError.outOfStock {
+            print(JuiceError.outOfStock.localizedDescription)
         }
         
         let newQuantity = oldQuantity - quantity
         quantityOfAllFruits[fruitName] = newQuantity
     }
     
-    
+    func checkStockQuantity(oldQuantity: Int, quantity: Int) throws {
+        guard oldQuantity >= quantity else {
+            throw JuiceError.outOfStock
+        }
+    }
 }
