@@ -7,7 +7,7 @@ import Foundation
 
 // 과일 저장소 타입
 class FruitStore {
-    enum Fruit {
+    enum Fruit: CaseIterable {
         case strawberry, banana, pineapple, kiwi, mango
     }
     
@@ -17,13 +17,13 @@ class FruitStore {
         case invalidAmountOfFruit
     }
     
-    private var storage: [Fruit:Int] = [
-        .strawberry: 10,
-        .banana: 10,
-        .pineapple: 10,
-        .kiwi: 10,
-        .mango: 10,
-    ]
+    init() {
+        for fruit in Fruit.allCases {
+            self.storage[fruit] = 10
+        }
+    }
+    
+    private var storage: [Fruit: Int] = [:]
     
     func supply(fruits: [Fruit:Int]) throws {
         for (fruitName, amount) in fruits {
