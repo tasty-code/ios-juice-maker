@@ -26,14 +26,13 @@ final class FruitStore {
                  Recipe.mangoKiwi.rawValue: [2, 1]
        ]
     
-    func supplyFruits(fruitName: String, quantity: Int) {
-        if let currentStock = fruits[fruitName] {
-            fruits[fruitName] = currentStock + quantity
-            print("과일 저장소에서 \(fruitName)를 \(quantity)만큼 추가 저장했습니다")
-            print(fruits)
-        } else {
-            print("error")
+    func supplyFruits(fruitName: String, quantity: Int) throws {
+        guard let currentStock = fruits[fruitName] else {
+            throw JuiceMakerErrors.notEnoughFruits
         }
+        fruits[fruitName] = currentStock + quantity
+        print("과일 저장소에서 \(fruitName)를 \(quantity)만큼 추가 저장했습니다")
+        print(fruits)
     }
     
 }
