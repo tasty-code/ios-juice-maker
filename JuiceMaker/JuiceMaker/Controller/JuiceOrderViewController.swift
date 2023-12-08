@@ -6,9 +6,9 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+final class JuiceOrderViewController: UIViewController {
     private let fruitStore = FruitStore.shared
-    private let juiceMaker: JuiceMaker = JuiceMaker()
+    private let juiceMaker = JuiceMaker()
     
     @IBOutlet weak var strawberryLabel: UILabel!
     @IBOutlet weak var bananaLabel: UILabel!
@@ -18,31 +18,31 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        checkFruitsStock()
+        updateFruitStockLabel()
     }
     
-    @IBAction private func manageStockButton(_ sender: UIButton) {
+    @IBAction private func manageStockButtonTapped(_ sender: UIButton) {
         moveToManageStockView()
     }
     
     @IBAction private func checkJuiceOrder(_ sender: UIButton) {
         guard let juiceName = sender.titleLabel?.text?.components(separatedBy: " ")[0] else { return }
         guard let juice = juiceMaker.checkJuiceRecipe(juiceName: juiceName) else { return }
-        orderJuice(juice: juice)
+        order(juice: juice)
     }
     
-    private func orderJuice(juice: Juice) {
+    private func order(juice: Juice) {
         do {
             try juiceMaker.orderJuice(juice: juice)
             present(Alert.createAlertController(alertType: .defaultAlert, title: nil, message: "\(juice.name) 나왔습니다! 맛있게 드세요!", view: self), animated: true)
-            checkFruitsStock()
+            updateFruitStockLabel()
         } catch {
             present(Alert.createAlertController(alertType: .outOfStockAlert, title: nil, message: JuiceMakerError.outOfStock.description, view: self), animated: true)
-            checkFruitsStock()
+            updateFruitStockLabel()
         }
     }
     
-    private func checkFruitsStock() {
+    private func updateFruitStockLabel() {
         let stock = fruitStore.fruitStock.compactMapValues { String($0) }
         
         strawberryLabel.text = stock[.strawberry]
@@ -55,7 +55,7 @@ class MainViewController: UIViewController {
 
 extension UIViewController {
     func moveToManageStockView() {
-        guard let viewController = self.storyboard?.instantiateViewController(identifier: "viewController") as? ManageStockViewController else { return }
-        self.navigationController?.pushViewController(viewController, animated: true)
+        guard let viewController = storyboard?.instantiateViewController(identifier: NameSpace.manageStockVC) as? ManageStockViewController else { return }
+        viewController.navigationController?.pushViewController(viewController, animated: true)
     }
 }

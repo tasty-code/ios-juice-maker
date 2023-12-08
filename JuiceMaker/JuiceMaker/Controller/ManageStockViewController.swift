@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ManageStockViewController: UIViewController {
+final class ManageStockViewController: UIViewController {
     private let fruitStore = FruitStore.shared
     
     @IBOutlet weak var strawberryStockLabel: UILabel!
