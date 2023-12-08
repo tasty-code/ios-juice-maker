@@ -30,7 +30,6 @@ final class OrderViewController: UIViewController {
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }
     
-    
     @IBAction private func tapMakeJuiceButton(_ sender: UIButton) {
         guard let selectedButtonTitle = sender.currentTitle,
               let juice = Juice(rawValue: selectedButtonTitle) else {
