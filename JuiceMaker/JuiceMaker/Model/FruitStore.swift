@@ -16,14 +16,15 @@ final class FruitStore {
     }
     
     
-    var recipes = [Recipe.strawberry.rawValue: [16],
-                   Recipe.banana.rawValue: [2],
-                   Recipe.kiwi.rawValue: [3],
-                   Recipe.pineapple.rawValue: [2],
-                   Recipe.strawberryBanana.rawValue: [10, 1],
-                   Recipe.mango.rawValue: [3],
-                   Recipe.mangoKiwi.rawValue: [2, 1],
-    ]
+    var recipes = [
+                 Recipe.strawberry.rawValue: [16],
+                 Recipe.banana.rawValue: [2],
+                 Recipe.kiwi.rawValue: [3],
+                 Recipe.pineapple.rawValue: [2],
+                 Recipe.strawberryBanana.rawValue: [10, 1],
+                 Recipe.mango.rawValue: [3],
+                 Recipe.mangoKiwi.rawValue: [2, 1]
+       ]
     
     func supplyFruits(fruitName: String, quantity: Int) {
         if let currentStock = fruits[fruitName] {
