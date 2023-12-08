@@ -7,7 +7,8 @@
 
 import Foundation
 
-enum Errors: Error {
+enum JuiceMakerErrors: Error {
     case orderFail(Recipe)
+    case notEnoughFruits
 }
 

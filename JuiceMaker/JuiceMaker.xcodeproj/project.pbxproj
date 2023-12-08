@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		89667DC62B1DB9E20017C068 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89667DC52B1DB9E20017C068 /* Errors.swift */; };
+		89667DC62B1DB9E20017C068 /* JuiceMakerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89667DC52B1DB9E20017C068 /* JuiceMakerErrors.swift */; };
 		89667E162B200A170017C068 /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89667E152B200A170017C068 /* Fruit.swift */; };
 		89667E182B200A880017C068 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89667E172B200A880017C068 /* Recipe.swift */; };
 		C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71CD66A266C7ACB0038B9CB /* FruitStore.swift */; };
