@@ -12,7 +12,7 @@ final class FruitStore {
     
     func consumeFruit(fruitName: FruitName, fruitQuantity quantity: Int) throws {
         guard let oldQuantity = quantityOfAllFruits[fruitName] else {
-            return
+            throw JuiceError.quantityOfAllFruitsAccessFailed
         }
         
         guard oldQuantity >= quantity else {
@@ -22,4 +22,6 @@ final class FruitStore {
         let newQuantity = oldQuantity - quantity
         quantityOfAllFruits[fruitName] = newQuantity
     }
+    
+    
 }
