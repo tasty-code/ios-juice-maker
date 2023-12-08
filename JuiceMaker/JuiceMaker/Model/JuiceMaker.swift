@@ -18,7 +18,7 @@ struct JuiceMaker {
         }
     }
     
-    private func checkUnderstockedFruits(juice: Juice) throws {
+    func checkUnderstockedFruits(juice: Juice) throws {
         var understockedFruits: [String] = []
         var canMakeJuice: Bool = true
         

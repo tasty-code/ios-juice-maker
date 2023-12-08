@@ -21,31 +21,31 @@ class ViewController: UIViewController {
     }
     func configureUI() {
         guard 
-            let strawberryStock = juiceMaker.fruitStore.fruitStock[.strawberry]
+            let strawberryStock = juiceMaker.fruitStore.fruitStocks[.strawberry]
         else {
             return
         }
         strawberryStockLabel.text = String(strawberryStock)
         guard
-            let bananaStock = juiceMaker.fruitStore.fruitStock[.banana]
+            let bananaStock = juiceMaker.fruitStore.fruitStocks[.banana]
         else {
             return
         }
         bananaStockLabel.text = String(bananaStock)
         guard
-            let pineappleStock = juiceMaker.fruitStore.fruitStock[.pineapple]
+            let pineappleStock = juiceMaker.fruitStore.fruitStocks[.pineapple]
         else {
             return
         }
         pineappleStockLabel.text = String(pineappleStock)
         guard
-            let kiwiStock = juiceMaker.fruitStore.fruitStock[.kiwi]
+            let kiwiStock = juiceMaker.fruitStore.fruitStocks[.kiwi]
         else {
             return
         }
         kiwiStockLabel.text = String(kiwiStock)
         guard
-            let mangoStock = juiceMaker.fruitStore.fruitStock[.mango]
+            let mangoStock = juiceMaker.fruitStore.fruitStocks[.mango]
         else {
             return
         }
@@ -81,8 +81,8 @@ class ViewController: UIViewController {
         do {
             try makeAndNotifyOrder(juice: .strawberryBananaJuice)
             guard
-                let strawberryStock = juiceMaker.fruitStore.fruitStock[.strawberry],
-                let bananaStock = juiceMaker.fruitStore.fruitStock[.banana]
+                let strawberryStock = juiceMaker.fruitStore.fruitStocks[.strawberry],
+                let bananaStock = juiceMaker.fruitStore.fruitStocks[.banana]
             else {
                 return
             }
@@ -97,13 +97,13 @@ class ViewController: UIViewController {
     @IBAction func mangoKiwiJuiceButtonTapped(_ sender: UIButton) {
         juiceMaker.makeJuice(juice: .mangoKiwiJuice)
         guard
-            let kiwiStock = juiceMaker.fruitStore.fruitStock[.kiwi]
+            let kiwiStock = juiceMaker.fruitStore.fruitStocks[.kiwi]
         else {
             return
         }
         kiwiStockLabel.text = String(kiwiStock)
         guard
-            let mangoStock = juiceMaker.fruitStore.fruitStock[.mango]
+            let mangoStock = juiceMaker.fruitStore.fruitStocks[.mango]
         else {
             return
         }
@@ -113,7 +113,7 @@ class ViewController: UIViewController {
     @IBAction func strawberryJuiceButtonTapped(_ sender: UIButton) {
         juiceMaker.makeJuice(juice: .strawberryJuice)
         guard
-            let strawberryStock = juiceMaker.fruitStore.fruitStock[.strawberry]
+            let strawberryStock = juiceMaker.fruitStore.fruitStocks[.strawberry]
         else {
             return
         }
@@ -123,7 +123,7 @@ class ViewController: UIViewController {
     @IBAction func bananaJuiceButtonTapped(_ sender: UIButton) {
         juiceMaker.makeJuice(juice: .bananaJuice)
         guard
-            let bananaStock = juiceMaker.fruitStore.fruitStock[.banana]
+            let bananaStock = juiceMaker.fruitStore.fruitStocks[.banana]
         else {
             return
         }
@@ -133,7 +133,7 @@ class ViewController: UIViewController {
     @IBAction func pineappleJuiceButtonTapped(_ sender: UIButton) {
         juiceMaker.makeJuice(juice: .pineappleJuice)
         guard
-            let pineappleStock = juiceMaker.fruitStore.fruitStock[.pineapple]
+            let pineappleStock = juiceMaker.fruitStore.fruitStocks[.pineapple]
         else {
             return
         }
@@ -143,7 +143,7 @@ class ViewController: UIViewController {
     @IBAction func kiwiJuiceButtonTapped(_ sender: UIButton) {
         juiceMaker.makeJuice(juice: .kiwiJuice)
         guard
-            let kiwiStock = juiceMaker.fruitStore.fruitStock[.kiwi]
+            let kiwiStock = juiceMaker.fruitStore.fruitStocks[.kiwi]
         else {
             return
         }
@@ -153,7 +153,7 @@ class ViewController: UIViewController {
     @IBAction func mangoJuiceButtonTapped(_ sender: UIButton) {
         juiceMaker.makeJuice(juice: .mangoJuice)
         guard
-            let mangoStock = juiceMaker.fruitStore.fruitStock[.mango]
+            let mangoStock = juiceMaker.fruitStore.fruitStocks[.mango]
         else {
             return
         }

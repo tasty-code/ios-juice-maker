@@ -30,7 +30,7 @@ final class FruitStore {
         return stock >= count
     }
     
-    func useJuiceIngredient(_ fruit: Fruits, count: Int) {
+    func useJuiceIngredient(fruit: Fruits, count: Int) {
         guard 
             let stock = fruitStocks[fruit]
         else {
