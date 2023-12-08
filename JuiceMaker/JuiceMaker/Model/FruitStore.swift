@@ -7,8 +7,8 @@
 import Foundation
 
 // 과일 저장소 타입
-class FruitStore {
-    var fruitStock = [Fruits: Int]()
+final class FruitStore {
+    private var fruitStock = [Fruits: Int]()
     init() {
         fruitStock = [
             .strawberry: 10,
