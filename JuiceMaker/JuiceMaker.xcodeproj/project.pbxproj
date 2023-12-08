@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D8F0C692B22E42A00A4CC98 /* JuiceMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8F0C682B22E42A00A4CC98 /* JuiceMenu.swift */; };
 		22555D262B1F0D7C007F4BD3 /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22555D252B1F0D7C007F4BD3 /* Fruit.swift */; };
 		229058E92B22A83D00675A3D /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229058E82B22A83D00675A3D /* Error.swift */; };
 		C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71CD66A266C7ACB0038B9CB /* FruitStore.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D8F0C682B22E42A00A4CC98 /* JuiceMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMenu.swift; sourceTree = "<group>"; };
 		22555D252B1F0D7C007F4BD3 /* Fruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
 		229058E82B22A83D00675A3D /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		C71CD66A266C7ACB0038B9CB /* FruitStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitStore.swift; sourceTree = "<group>"; };
@@ -45,6 +47,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D8F0C6A2B22E48D00A4CC98 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				1D8F0C682B22E42A00A4CC98 /* JuiceMenu.swift */,
+				22555D252B1F0D7C007F4BD3 /* Fruit.swift */,
+				229058E82B22A83D00675A3D /* Error.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
 		C71CD66D266C7B470038B9CB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -60,8 +72,7 @@
 			children = (
 				C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */,
 				C71CD66A266C7ACB0038B9CB /* FruitStore.swift */,
-				22555D252B1F0D7C007F4BD3 /* Fruit.swift */,
-				229058E82B22A83D00675A3D /* Error.swift */,
+				1D8F0C6A2B22E48D00A4CC98 /* Enum */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -180,6 +191,7 @@
 				C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */,
 				229058E92B22A83D00675A3D /* Error.swift in Sources */,
 				C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */,
+				1D8F0C692B22E42A00A4CC98 /* JuiceMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
