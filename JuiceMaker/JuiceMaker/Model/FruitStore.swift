@@ -1,7 +1,7 @@
 
 import Foundation
 
-//MARK: - FruitStore 초기화
+// MARK: - FruitStore 초기화
 
 final class FruitStore {
     enum Fruits: CaseIterable {
@@ -11,7 +11,7 @@ final class FruitStore {
     var fruitsStock = Dictionary(uniqueKeysWithValues: Fruits.allCases.map {($0, 10)})
 }
 
-//MARK: - FruitStore 메서드
+// MARK: - FruitStore 메서드
 
 extension FruitStore {
     func incrementFruit(fruit: Fruits, quantities: Int) {
@@ -20,7 +20,7 @@ extension FruitStore {
     }
     
     func decrementFruit(fruit: Fruits, quantities: Int) {
-        guard let currentStock = fruitsStock[fruit], currentStock-quantities>0 else { print("\(#function) 재고 부족!"); return }
+        guard let currentStock = fruitsStock[fruit], currentStock - quantities > 0 else { print("\(#function) 재고 부족!"); return }
         fruitsStock[fruit] = currentStock - quantities
     }
 }

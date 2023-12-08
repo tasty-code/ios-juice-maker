@@ -1,14 +1,14 @@
 
 import Foundation
 
-//MARK: - JuiceMaker 초기화
+// MARK: - JuiceMaker 초기화
 struct JuiceMaker {
     
     private let fruitStore = FruitStore()
 
 }
 
-//MARK: - JuiceMaker 메서드
+// MARK: - JuiceMaker 메서드
 extension JuiceMaker {
     
     func makeStrawberryJuice() {
@@ -19,22 +19,18 @@ extension JuiceMaker {
         fruitStore.decrementFruit(fruit: .banana, quantities: 2)
     }
 
-    
     func makeKiwiJuice() {
         fruitStore.decrementFruit(fruit: .kiwi, quantities: 3)
     }
-
     
     func makePineappleJuice() {
         fruitStore.decrementFruit(fruit: .pineapple, quantities: 2)
     }
-
     
     func makeDdalbaJuice() {
         fruitStore.decrementFruit(fruit: .strawberry, quantities: 10)
         fruitStore.decrementFruit(fruit: .banana, quantities: 1)
     }
-
     
     func makeMangoJuice() {
         fruitStore.decrementFruit(fruit: .mango, quantities: 3)

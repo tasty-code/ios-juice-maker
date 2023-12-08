@@ -1,7 +1,7 @@
 
 import UIKit
 
-//MARK: - JuiceMachineViewController 초기화
+// MARK: - JuiceMachineViewController 초기화
 class JuiceMachineViewController: UIViewController {
     
     private let juiceMachineView = JuiceMachineView()
@@ -23,7 +23,6 @@ class JuiceMachineViewController: UIViewController {
     @IBAction func strawberryJuiceOrderButtonTapped(_ sender: UIButton) {
         reception.acceptOrder(request: .juiceOrder, juiceType: .strawberry)
     }
-    
     
     @IBAction func bananaJuiceOrderButtonTapped(_ sender: UIButton) {
         reception.acceptOrder(request: .juiceOrder, juiceType: .banana)

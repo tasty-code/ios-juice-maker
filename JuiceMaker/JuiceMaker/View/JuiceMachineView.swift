@@ -3,7 +3,7 @@ import UIKit
 
 class JuiceMachineView : UIView {
     
-    //MARK: - 과일 라벨
+    // MARK: - 과일 라벨
     
     @IBOutlet weak var strawberryLabel: UILabel!
     @IBOutlet weak var bananaLabel: UILabel!
@@ -12,7 +12,7 @@ class JuiceMachineView : UIView {
     @IBOutlet weak var mangoLabel: UILabel!
     
     
-    //MARK: - 수량 라벨
+    // MARK: - 수량 라벨
     
     @IBOutlet weak var strawberryStockLabel: UILabel!
     @IBOutlet weak var bananaStockLabel: UILabel!
@@ -21,7 +21,7 @@ class JuiceMachineView : UIView {
     @IBOutlet weak var mangoStockLabel: UILabel!
     
     
-    //MARK: - 버튼
+    // MARK: - 버튼
     
     @IBOutlet weak var ddalbaOrderButton: UIButton!
     @IBOutlet weak var mangkiOrderButton: UIButton!
