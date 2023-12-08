@@ -18,7 +18,7 @@ extension UIViewController {
     }
     
     /// 확인 버튼 Alert 메서드
-    func makeAlert(title: String, message: String, confirmTitle: String) {
+    func presentAlert(title: String, message: String, confirmTitle: String) {
         let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: confirmTitle, style: .default)
         alertViewController.addAction(confirmAction)
