@@ -11,7 +11,7 @@ final class FruitStore {
     private var quantityOfAllFruits: [FruitName: Int] = [.strawberry: 10, .banana: 10, .pineapple: 10, .kiwi: 10, .mango: 10]
     
     func consumeFruit(fruitName: FruitName, fruitQuantity quantity: Int) throws {
-        guard let oldQuantity = quantityOfAllFruits[fruitName] else {
+        guard let oldQuantity = currentFruitStockQuantity(fruitName: fruitName) else {
             throw JuiceError.quantityOfAllFruitsAccessFailed
         }
         
@@ -22,12 +22,24 @@ final class FruitStore {
         }
         
         let newQuantity = oldQuantity - quantity
-        quantityOfAllFruits[fruitName] = newQuantity
+        setFruitStockQuantity(fruitName: fruitName, quantityToChange: newQuantity)
     }
     
-    func checkStockQuantity(oldQuantity: Int, quantity: Int) throws {
+    private func checkStockQuantity(oldQuantity: Int, quantity: Int) throws {
         guard oldQuantity >= quantity else {
             throw JuiceError.outOfStock
         }
+    }
+    
+    func currentFruitStockQuantity(fruitName: FruitName) -> Int? {
+        return quantityOfAllFruits[fruitName]
+    }
+    
+    func setFruitStockQuantity(fruitName: FruitName, quantityToChange: Int) {
+        quantityOfAllFruits[fruitName] = quantityToChange
+    }
+
+    func currentQuantityOfAllFruits() -> [FruitName: Int] {
+        return quantityOfAllFruits
     }
 }
