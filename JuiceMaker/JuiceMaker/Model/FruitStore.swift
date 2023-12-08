@@ -18,10 +18,6 @@ class FruitStore {
         inventory[fruit] = number
     }
     
-    private func increaseStock() {
-        
-    }
-    
     private func decreaseStock() {
         
     }
