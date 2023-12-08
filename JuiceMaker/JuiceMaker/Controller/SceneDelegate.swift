@@ -1,7 +1,6 @@
 //
 //  JuiceMaker - SceneDelegate.swift
-//  Created by Kyle& L
-//  Copyright © yagom academy. All rights reserved.
+//  Created by Kyle & L
 // 
 
 import UIKit
