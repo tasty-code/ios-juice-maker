@@ -11,7 +11,7 @@ struct JuiceMaker {
         self.fruitStore = fruitStore
     }
     
-    func makeJuice(flavor: JuiceFlavor) throws {
+    func consumeFruitsForMakingJuice(flavor: JuiceFlavor) throws {
         try flavor.recipe.forEach { (fruit: Fruit, count: Int) in
             try fruitStore.consume(fruit, numberOfFruits: count)
         }
