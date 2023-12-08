@@ -38,4 +38,5 @@ final class FruitStore {
         }
         fruitStocks[fruit] = stock - count
     }
+    
 }

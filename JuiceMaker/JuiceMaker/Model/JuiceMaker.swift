@@ -4,7 +4,7 @@
 //
 
 struct JuiceMaker {
-    private let fruitStore: FruitStore = FruitStore(
+    let fruitStore: FruitStore = FruitStore(
         strawberryStock: 10,
         bananaStock: 10,
         pineappleStock: 10,
@@ -12,14 +12,9 @@ struct JuiceMaker {
         mangoStock: 10
     )
     
-    func makeJuice(juice: Juice) throws {
-        do {
-            try checkUnderstockedFruits(juice: juice)
-            for (fruit, count) in juice.recipe {
-                fruitStore.useJuiceIngredient(fruit, count: count)
-            }
-        } catch {
-            print(error.localizedDescription)
+   func makeJuice(juice: Juice) {
+        for (fruit, count) in juice.recipe {
+            fruitStore.useJuiceIngredient(fruit: fruit, count: count)
         }
     }
     
@@ -45,5 +40,3 @@ struct JuiceMaker {
         }
     }
 }
-
-
