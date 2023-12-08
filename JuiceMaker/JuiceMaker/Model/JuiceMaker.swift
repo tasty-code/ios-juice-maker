@@ -24,31 +24,30 @@ struct JuiceMaker {
         print("주문하신 쥬스는 \(recipe) 입니다" )
         do {
             try takeOrder(recipe)
-        } catch Errors.orderFail(let recipe) {
+        } catch JuiceMakerErrors.orderFail(let recipe) {
             print("\(recipe) 주문에 실패 했습니다...")
             print("\(self.store.fruits)")
-        }
-        catch {
-            print("unknown error")
+        } catch {
+            
         }
     }
     
     func takeOrder(_ kind: Recipe) throws {
-        let arr = kind.rawValue.split(separator: ",")
-        if arr.count == 1 {
-            guard let fruitsStock = store.fruits[String(arr[0])],
-                  let recipe = store.recipes[String(arr[0])],
+        let splittedIngredientArray = kind.rawValue.split(separator: ",")
+        if splittedIngredientArray.count == 1 {
+            guard let fruitsStock = store.fruits[String(splittedIngredientArray[0])],
+                  let recipe = store.recipes[String(splittedIngredientArray[0])],
                     fruitsStock >= recipe[0]
             else {
-                throw Errors.orderFail(kind)
+                throw JuiceMakerErrors.orderFail(kind)
             }
-            store.fruits[String(arr[0])] = fruitsStock - recipe[0]
+            store.fruits[String(splittedIngredientArray[0])] = fruitsStock - recipe[0]
         } else {
-            try arr.enumerated().forEach { index, fruit in
+            try splittedIngredientArray.enumerated().forEach { index, fruit in
                 guard let fruitsStock = store.fruits[String(fruit)],
                       let recipe = store.recipes[kind.rawValue],
                       fruitsStock >= recipe[index] else {
-                    throw Errors.orderFail(kind)
+                    throw JuiceMakerErrors.orderFail(kind)
                 }
                 store.fruits[String(fruit)] = fruitsStock - recipe[index]
             }
