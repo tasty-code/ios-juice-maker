@@ -30,15 +30,15 @@ class FruitStore {
         decreaseStock()
     }
     
-    private func checkStock(amountOfFruitNow: Int, amountRequired: Int) throws {
-        guard amountOfFruitNow > amountRequired else {
+    private func checkStock(amountOfFruitNow: Int, requiredAmount: Int) throws {
+        guard amountOfFruitNow > requiredAmount else {
             throw InventoryError.inventoryError(description: InventoryError.outOfStockMessage)
         }
     }
     
-    private func giveBackNumberIfExist(_ fruit: Fruit) throws -> Int {
+    private func getNumberIfExist(_ fruit: Fruit) throws -> Int {
         guard let numberOfFruitExist = inventory[fruit] else {
-            throw InventoryError.inventoryError(description: InventoryError.fruitThatDoesNotExistMessage)
+            throw InventoryError.inventoryError(description: InventoryError.NotExistMessage)
         }
         return numberOfFruitExist
     }
@@ -47,8 +47,8 @@ class FruitStore {
         var numberOfFruitExist = [Int]()
         
         for demand in recipes {
-            let numberOfFruit = try giveBackNumberIfExist(demand.requiredFruit)
-            try checkStock(amountOfFruitNow: numberOfFruit, amountRequired: demand.requestedAmount)
+            let numberOfFruit = try getNumberIfExist(demand.requiredFruit)
+            try checkStock(amountOfFruitNow: numberOfFruit, requiredAmount: demand.requestedAmount)
             numberOfFruitExist.append(numberOfFruit)
         }
 
@@ -56,7 +56,7 @@ class FruitStore {
     }
     
     func consumeStocks(_ recipes: [(requiredFruit: Fruit, requestedAmount: Int)]) throws {
-        let amountOfFruit = try checkIngredients(recipes)
+        let _ = try checkIngredients(recipes)
         
         useIngredients()
     }
