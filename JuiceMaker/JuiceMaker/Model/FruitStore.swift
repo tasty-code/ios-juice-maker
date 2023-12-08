@@ -22,6 +22,6 @@ extension FruitStore {
     func decrementFruit(fruit: Fruits, quantities: Int) {
         guard let currentStock = fruitsStock[fruit], currentStock - quantities > 0 else { print("\(#function) 재고 부족!"); return }
         fruitsStock[fruit] = currentStock - quantities
+        
     }
 }
-

@@ -17,6 +17,8 @@ extension JuiceMaker {
     
     func makeBananaJuice() {
         fruitStore.decrementFruit(fruit: .banana, quantities: 2)
+        
+        let nanana: (String, String) = AlertHandler.shared.getAlertMessage(alertType: .fruitShortage("딸기부족합니다~"))
     }
 
     func makeKiwiJuice() {
