@@ -28,13 +28,13 @@ class FruitStore {
     
     private func checkStock(amountOfFruitNow: Int, requiredAmount: Int) throws {
         guard amountOfFruitNow > requiredAmount else {
-            throw InventoryError.inventoryError(description: InventoryError.outOfStockMessage)
+            throw InventoryError.outOfStock(description: InventoryError.outOfStockMessage)
         }
     }
     
     private func getNumberIfExist(_ fruit: Fruit) throws -> Int {
         guard let numberOfFruitExist = inventory[fruit] else {
-            throw InventoryError.inventoryError(description: InventoryError.NotExistMessage)
+            throw InventoryError.notExist(description: InventoryError.notExistMessage)
         }
         return numberOfFruitExist
     }

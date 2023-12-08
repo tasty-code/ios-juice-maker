@@ -59,7 +59,9 @@ struct JuiceMaker {
             
             let completeOrderMessage = "주문한 메뉴 나옴"
             outcomeCreated = .success(message: "\(menuName) \(completeOrderMessage)")
-        } catch InventoryError.inventoryError(description: let message) {
+        } catch InventoryError.outOfStock(description: let message) {
+            outcomeCreated = .failure(description: message)
+        } catch InventoryError.notExist(description: let message) {
             outcomeCreated = .failure(description: message)
         } catch {
             outcomeCreated = .failure(description: "Error")

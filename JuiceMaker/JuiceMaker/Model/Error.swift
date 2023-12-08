@@ -7,7 +7,8 @@
 
 enum InventoryError: Error {
     static let outOfStockMessage = "재료 없음. 재고를 수정할까요?"
-    static let NotExistMessage  = "그런 과일 없음"
+    static let notExistMessage  = "그런 과일 없음"
     
-    case inventoryError(description: String)
+    case outOfStock(description: String)
+    case notExist(description: String)
 }
