@@ -16,7 +16,7 @@ class FruitStore {
         "망고": 10
     ]
     
-    private func displayCurrentyFruitInventory(fruit: String, quantity: Int) {
+    private func displayCurrentFruitInventory(fruit: String, quantity: Int) {
         guard let currentQuantity = fruitInventory[fruit] else {
             print("과일저장오류")
             return
@@ -35,7 +35,7 @@ class FruitStore {
             throw fruitStoreError.fruitUpdateError(message: "과일은 0개 이하로 내려갈 수 없습니다")
         }
         fruitInventory[fruit] = currentQuantity
-        displayCurrentyFruitInventory(fruit: fruit, quantity: currentQuantity)
+        displayCurrentFruitInventory(fruit: fruit, quantity: currentQuantity)
     }
 
     func checkAvailability(for juiceIngredients: [String: Int]) -> Bool {
