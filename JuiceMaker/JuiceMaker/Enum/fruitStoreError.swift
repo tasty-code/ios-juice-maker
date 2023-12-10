@@ -13,3 +13,5 @@ enum fruitStoreError: Error {
     case makeJuiceError (message: String)
     case errorDefault (message: String)
 }
+
+
