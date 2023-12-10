@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum CustomError: Error {
+enum fruitStoreError: Error {
     case fruitUpdateError (message: String)
     case makeJuiceError (message: String)
     case errorDefault (message: String)
