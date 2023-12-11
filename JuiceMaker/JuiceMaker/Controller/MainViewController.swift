@@ -26,19 +26,55 @@ class MainViewController: UIViewController {
         guard let strawberry = allFruitQuantity[.strawberry] else {
             return
         }
+        guard let banana = allFruitQuantity[.banana] else {
+            return
+        }
+        guard let pineapple = allFruitQuantity[.pineapple] else {
+            return
+        }
+        guard let kiwi = allFruitQuantity[.kiwi] else {
+            return
+        }
+        guard let mango = allFruitQuantity[.mango] else {
+            return
+        }
+        
         strawberryQuantity.text = String(strawberry)
+        bananaQuantity.text = String(banana)
+        pineappleQuantity.text = String(pineapple)
+        kiwiQuantity.text = String(kiwi)
+        mangoQuantity.text = String(mango)
     }
     
     @objc func updateFruitQuantities() {
         guard let strawberry = juiceMaker.fruitStore.currentFruitStockQuantity(fruitName: .strawberry) else {
             return
         }
+        
+        guard let banana = juiceMaker.fruitStore.currentFruitStockQuantity(fruitName: .banana) else {
+            return
+        }
+        
+        guard let pineapple = juiceMaker.fruitStore.currentFruitStockQuantity(fruitName: .pineapple) else {
+            return
+        }
+        
+        guard let kiwi = juiceMaker.fruitStore.currentFruitStockQuantity(fruitName: .kiwi) else {
+            return
+        }
+        
+        guard let mango = juiceMaker.fruitStore.currentFruitStockQuantity(fruitName: .mango) else {
+            return
+        }
+        
         strawberryQuantity.text = String(strawberry)
+        bananaQuantity.text = String(banana)
+        pineappleQuantity.text = String(pineapple)
+        kiwiQuantity.text = String(kiwi)
+        mangoQuantity.text = String(mango)
     }
     
-    @IBAction func StrawberryJuiceOrderButton(_ sender: UIButton) {
-        let result = juiceMaker.makeJuice(juiceMenu: .strawberry)
-        
+    private func resultAlert(_ result: Result<Void, JuiceError>) {
         switch result {
         case .success:
             NotificationCenter.default.post(name: NSNotification.Name("JuiceMade"), object: nil)
@@ -66,4 +102,35 @@ class MainViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func StrawberryJuiceOrderButtonTapped(_ sender: UIButton) {
+        resultAlert(juiceMaker.makeJuice(juiceMenu: .strawberry))
+    }
+    
+    @IBAction func bananaJuiceOrderButtonTapped(_ sender: UIButton) {
+        resultAlert(juiceMaker.makeJuice(juiceMenu: .banana))
+    }
+    
+    
+    @IBAction func pineappleJuiceOrderButtonTapped(_ sender: UIButton) {
+        resultAlert(juiceMaker.makeJuice(juiceMenu: .pineapple))
+    }
+    
+    
+    @IBAction func kiwiJuiceOrderButtonTapped(_ sender: UIButton) {
+        resultAlert(juiceMaker.makeJuice(juiceMenu: .kiwi))
+    }
+    
+    @IBAction func mangoJuiceOrderButtonTapped(_ sender: UIButton) {
+        resultAlert(juiceMaker.makeJuice(juiceMenu: .mango))
+    }
+    
+    @IBAction func strawberryBananaJuiceOrderButtonTapped(_ sender: UIButton) {
+        resultAlert(juiceMaker.makeJuice(juiceMenu: .straberryBanana))
+    }
+    
+    @IBAction func mangoKiwiJuiceOrderButtonTapped(_ sender: UIButton) {
+        resultAlert(juiceMaker.makeJuice(juiceMenu: .mangoKiwi))
+    }
+    
 }
