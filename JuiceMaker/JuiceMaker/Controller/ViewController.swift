@@ -46,15 +46,32 @@ class ViewController: UIViewController {
         if let mangoQuantity = fruitStore.fruitInventory["망고"] {
             mango.text = "\(mangoQuantity)"
         }
-        
-        
-        
+
     }
     
-    @IBAction func inventoyChange(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "quantityVC", sender: self)
+        
+    @IBAction func strawBananaJuice(_ sender: UIButton) {
+        do {
+            try fruitStore.makeJuice(juiceRecipe: .strawberryBanana)
+        } catch {
+            print(fruitStoreError.makeJuiceError)
+        }
+    }
+    @IBAction func mangoKiwiJuiceButton(_ sender: UIButton) {
     }
     
+    @IBAction func strawberryButton(_ sender: UIButton) {
+    }
+    
+    @IBAction func bananaJuiceButton(_ sender: UIButton) {
+    }
+    
+    @IBAction func pinAppleJuiceButton(_ sender: UIButton) {
+    }
+    @IBAction func kiwiButton(_ sender: UIButton) {
+    }
+    @IBAction func mangoJuiceButton(_ sender: UIButton) {
+    }
     
     
     
