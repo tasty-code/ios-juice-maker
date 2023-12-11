@@ -4,7 +4,6 @@ import Foundation
 struct Reception {
     
     private let juiceMaker = JuiceMaker()
-    private let fruitStore = FruitStore()
     
     func acceptJuiceOrder(juiceType: JuiceType) {
         switch juiceType {
