@@ -238,7 +238,7 @@
                     <navigationItem key="navigationItem" title="맛있는 쥬스를 만들어 드려요!" id="Eal-fj-o4N">
                         <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT">
                             <connections>
-                                <segue destination="Yu1-lM-nqp" kind="show" id="F0f-Ji-wFq"/>
+                                <segue destination="Yu1-lM-nqp" kind="show" id="D4q-57-4Ma"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -301,6 +301,9 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZQk-f4-zrz">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="fruitsStockStepperTapped:" destination="Yu1-lM-nqp" eventType="valueChanged" id="yuJ-Sy-gOJ"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                         <constraints>
@@ -326,6 +329,9 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="O5s-2N-3iP">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="fruitsStockStepperTapped:" destination="Yu1-lM-nqp" eventType="valueChanged" id="SP4-sJ-GiY"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                         <constraints>
@@ -351,6 +357,9 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Rcr-xr-eqz">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="fruitsStockStepperTapped:" destination="Yu1-lM-nqp" eventType="valueChanged" id="mBz-Hp-4yG"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                         <constraints>
@@ -376,6 +385,9 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="klA-59-Nu4">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="fruitsStockStepperTapped:" destination="Yu1-lM-nqp" eventType="valueChanged" id="oSK-Xb-dte"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                         <constraints>
@@ -401,6 +413,9 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="xbn-6P-grO">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="fruitsStockStepperTapped:" destination="Yu1-lM-nqp" eventType="valueChanged" id="5c9-qr-hW3"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                         <constraints>
@@ -420,10 +435,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="g4W-fY-l7r"/>
                     <connections>
+                        <outlet property="bananaStepper" destination="O5s-2N-3iP" id="1bz-pE-Lpc"/>
                         <outlet property="bananaStockLabel" destination="gKu-86-RhI" id="2ux-7R-A23"/>
+                        <outlet property="kiwiStepper" destination="klA-59-Nu4" id="dcX-tN-PKw"/>
                         <outlet property="kiwiStockLabel" destination="ZDv-1m-HBY" id="DHM-eV-Scc"/>
+                        <outlet property="mangoStepper" destination="xbn-6P-grO" id="iIK-8u-nen"/>
                         <outlet property="mangoStockLabel" destination="YJI-ER-LJR" id="1rs-5o-Dl8"/>
+                        <outlet property="pineappleStepper" destination="Rcr-xr-eqz" id="MOb-BE-40S"/>
                         <outlet property="pineappleStockLabel" destination="MpT-VW-hCb" id="dez-pV-MAg"/>
+                        <outlet property="strawberryStepper" destination="ZQk-f4-zrz" id="lYE-8l-ysM"/>
                         <outlet property="strawberryStockLabel" destination="0yV-kn-zaT" id="G40-Wp-sAg"/>
                     </connections>
                 </viewController>
