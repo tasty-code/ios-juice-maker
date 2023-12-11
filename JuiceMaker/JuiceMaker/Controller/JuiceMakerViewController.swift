@@ -12,45 +12,21 @@ class JuiceMakerViewController: UIViewController {
     
     @IBOutlet weak var navigationRightButton: UIBarButtonItem!
     
-    @IBOutlet weak var orderStrawberryBananaJuiceButton: UIButton!
-    @IBOutlet weak var orderPineappleJuiceButton: UIButton!
-    @IBOutlet weak var orderMangoKiwiButton: UIButton!
-    @IBOutlet weak var orderStrawberryJuice: UIButton!
-    @IBOutlet weak var orderBananaJuice: UIButton!
-    @IBOutlet weak var orderKiwiButton: UIButton!
-    @IBOutlet weak var orderMangoButton: UIButton!
+    @IBOutlet weak var orderStrawberryBananaJuiceButton: JuiceMakerButton!
+    @IBOutlet weak var orderPineappleJuiceButton: JuiceMakerButton!
+    @IBOutlet weak var orderMangoKiwiButton: JuiceMakerButton!
+    @IBOutlet weak var orderStrawberryJuice: JuiceMakerButton!
+    @IBOutlet weak var orderBananaJuice: JuiceMakerButton!
+    @IBOutlet weak var orderKiwiButton: JuiceMakerButton!
+    @IBOutlet weak var orderMangoButton: JuiceMakerButton!
     
-    @IBOutlet weak var quantityStrawberryJuiceLabel: UILabel!
-    @IBOutlet weak var quantityStrawberryBananaJuiceLabel: UILabel!
-    @IBOutlet weak var quantityBananaJuiceLabel: UILabel!
-    @IBOutlet weak var quantityPineappleJuiceLabel: UILabel!
-    @IBOutlet weak var quantityKiwiJuiceLabel: UILabel!
-    @IBOutlet weak var quantityMangoKiwiJuiceLabel: UILabel!
-    @IBOutlet weak var quantityMangoJuiceLabel: UILabel!
-    
-    lazy var buttons: [UIButton] = {
-        return [
-            orderStrawberryBananaJuiceButton,
-            orderPineappleJuiceButton,
-            orderMangoKiwiButton,
-            orderStrawberryJuice,
-            orderBananaJuice,
-            orderKiwiButton,
-            orderMangoButton
-        ]
-    }()
-    
-    lazy var labels: [JuiceType: UILabel] = {
-       return [
-        .strawberryJuice: quantityStrawberryJuiceLabel,
-        .strawberryBananaJuice: quantityStrawberryBananaJuiceLabel,
-        .bananaJuice: quantityBananaJuiceLabel,
-        .pineappleJuice: quantityPineappleJuiceLabel,
-        .kiwiJuice: quantityKiwiJuiceLabel,
-        .mangoKiwiJuice: quantityMangoKiwiJuiceLabel,
-        .mangoJuice: quantityMangoJuiceLabel
-       ]
-    }()
+    @IBOutlet weak var quantityStrawberryJuiceLabel: JuiceMakerLabel!
+    @IBOutlet weak var quantityStrawberryBananaJuiceLabel: JuiceMakerLabel!
+    @IBOutlet weak var quantityBananaJuiceLabel: JuiceMakerLabel!
+    @IBOutlet weak var quantityPineappleJuiceLabel: JuiceMakerLabel!
+    @IBOutlet weak var quantityKiwiJuiceLabel: JuiceMakerLabel!
+    @IBOutlet weak var quantityMangoKiwiJuiceLabel: JuiceMakerLabel!
+    @IBOutlet weak var quantityMangoJuiceLabel: JuiceMakerLabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,16 +39,17 @@ class JuiceMakerViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        labels.values.forEach { label in
-            label.clipsToBounds = true
-            label.layer.cornerRadius = label.bounds.height / 2
-        }
-        
-        buttons.forEach { button in
-            button.clipsToBounds = true
-            button.layer.cornerRadius = button.bounds.height / 2
-        }
+        setupUIButton()
+    }
+    
+    func setupUIButton() {
+        self.orderBananaJuice.addGradient(colors: [.bananaColor])
+        self.orderStrawberryJuice.addGradient(colors: [.strawberryColor])
+        self.orderPineappleJuiceButton.addGradient(colors: [.pineappleColor])
+        self.orderKiwiButton.addGradient(colors: [.kiwiColor])
+        self.orderMangoButton.addGradient(colors: [.mangoColor])
+        self.orderMangoKiwiButton.addGradient(colors: [.mangoColor, .kiwiColor])
+        self.orderStrawberryBananaJuiceButton.addGradient(colors: [.strawberryColor, .bananaColor])
     }
     
     func setNavigationButton() {
@@ -92,6 +69,17 @@ class JuiceMakerViewController: UIViewController {
     }
     
     private func updateQuantityLabel(juice: JuiceType) {
+        let labels: [JuiceType: UILabel] = {
+           return [
+            .strawberryJuice: quantityStrawberryJuiceLabel,
+            .strawberryBananaJuice: quantityStrawberryBananaJuiceLabel,
+            .bananaJuice: quantityBananaJuiceLabel,
+            .pineappleJuice: quantityPineappleJuiceLabel,
+            .kiwiJuice: quantityKiwiJuiceLabel,
+            .mangoKiwiJuice: quantityMangoKiwiJuiceLabel,
+            .mangoJuice: quantityMangoJuiceLabel
+           ]
+        }()
         let quantity = juiceMaker.showJuiceQuantity(juice: juice)
         if let index = labels.firstIndex(where: { $0.key == juice }) {
             labels[index].value.text = "\(quantity)"
