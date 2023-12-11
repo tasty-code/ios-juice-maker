@@ -14,7 +14,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var pineappleQuantity: UILabel!
     @IBOutlet weak var kiwiQuantity: UILabel!
     @IBOutlet weak var mangoQuantity: UILabel!
-    
     let juiceMaker = JuiceMaker()
     
     override func viewDidLoad() {
@@ -74,7 +73,7 @@ class MainViewController: UIViewController {
         mangoQuantity.text = String(mango)
     }
     
-    private func resultAlert(_ result: Result<Void, JuiceError>) {
+    private func openResultAlert(_ result: Result<Void, JuiceError>) {
         switch result {
         case .success:
             NotificationCenter.default.post(name: NSNotification.Name("JuiceMade"), object: nil)
@@ -104,33 +103,31 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func StrawberryJuiceOrderButtonTapped(_ sender: UIButton) {
-        resultAlert(juiceMaker.makeJuice(juiceMenu: .strawberry))
+        openResultAlert(juiceMaker.makeJuice(juiceMenu: .strawberry))
     }
     
     @IBAction func bananaJuiceOrderButtonTapped(_ sender: UIButton) {
-        resultAlert(juiceMaker.makeJuice(juiceMenu: .banana))
+        openResultAlert(juiceMaker.makeJuice(juiceMenu: .banana))
     }
-    
     
     @IBAction func pineappleJuiceOrderButtonTapped(_ sender: UIButton) {
-        resultAlert(juiceMaker.makeJuice(juiceMenu: .pineapple))
+        openResultAlert(juiceMaker.makeJuice(juiceMenu: .pineapple))
     }
     
-    
     @IBAction func kiwiJuiceOrderButtonTapped(_ sender: UIButton) {
-        resultAlert(juiceMaker.makeJuice(juiceMenu: .kiwi))
+        openResultAlert(juiceMaker.makeJuice(juiceMenu: .kiwi))
     }
     
     @IBAction func mangoJuiceOrderButtonTapped(_ sender: UIButton) {
-        resultAlert(juiceMaker.makeJuice(juiceMenu: .mango))
+        openResultAlert(juiceMaker.makeJuice(juiceMenu: .mango))
     }
     
     @IBAction func strawberryBananaJuiceOrderButtonTapped(_ sender: UIButton) {
-        resultAlert(juiceMaker.makeJuice(juiceMenu: .straberryBanana))
+        openResultAlert(juiceMaker.makeJuice(juiceMenu: .straberryBanana))
     }
     
     @IBAction func mangoKiwiJuiceOrderButtonTapped(_ sender: UIButton) {
-        resultAlert(juiceMaker.makeJuice(juiceMenu: .mangoKiwi))
+        openResultAlert(juiceMaker.makeJuice(juiceMenu: .mangoKiwi))
     }
     
 }
