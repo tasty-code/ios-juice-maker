@@ -46,17 +46,35 @@ class ViewController: UIViewController {
         if let mangoQuantity = fruitStore.fruitInventory["망고"] {
             mango.text = "\(mangoQuantity)"
         }
-
     }
     
         
     @IBAction func strawBananaJuice(_ sender: UIButton) {
         do {
-            try fruitStore.makeJuice(juiceRecipe: .strawberryBanana)
+            _ = try fruitStore.makeJuice(juiceRecipe: .strawberryBanana)
+            displaySuccessAlert(message: "\(JuiceRecipe.strawberryBanana.name)쥬스 나왔습니다")
         } catch {
-            print(fruitStoreError.makeJuiceError)
+            displayFailAlert()
+        }
+        func displaySuccessAlert(message: String) {
+            let alertController = UIAlertController(title: "쥬스 완성", message: message, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alertController.addAction(okAction)
+            present(alertController, animated: true, completion: nil)
+        }
+        func displayFailAlert() {
+            let alertController = UIAlertController(title: "재료가 모자라요", message: "재고를 수정할까요?", preferredStyle: .alert)
+            let yesAction = UIAlertAction(title: "예", style: .default) { [weak self] _ in
+                // '예'를 선택한 경우, segue 실행하여 화면 전환
+                self?.performSegue(withIdentifier: "goToQuantityUpdate", sender: sender)
+            }
+            let noAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
+            alertController.addAction(yesAction)
+            alertController.addAction(noAction)
+            self.present(alertController, animated: true, completion: nil)
         }
     }
+    
     @IBAction func mangoKiwiJuiceButton(_ sender: UIButton) {
     }
     
