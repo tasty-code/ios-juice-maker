@@ -28,11 +28,11 @@ class FruitStore {
     
     func updateFruitQuantity(fruit: String, quantity: Int) throws {
         guard var currentQuantity = fruitInventory[fruit] else {
-            throw fruitStoreError.fruitUpdateError(message: "과일없음")
+            throw fruitStoreError.currentQuantityError
         }
         currentQuantity = quantity
         if currentQuantity <= 0 {
-            throw fruitStoreError.fruitUpdateError(message: "과일은 0개 이하로 내려갈 수 없습니다")
+            throw fruitStoreError.fruitQuantityError
         }
         fruitInventory[fruit] = currentQuantity
         displayCurrentFruitInventory(fruit: fruit, quantity: currentQuantity)
@@ -51,7 +51,7 @@ class FruitStore {
         var  ingredients = juiceRecipe.ingredients
         for (fruit, juiceIngrediant) in ingredients {
             guard let ingrediantsInInventory = fruitInventory[fruit], ingrediantsInInventory > juiceIngrediant else {
-                throw fruitStoreError.makeJuiceError(message: "과일부족 에러")
+                throw fruitStoreError.makeJuiceError
             }
             fruitInventory[fruit] = ingrediantsInInventory - juiceIngrediant
         }
