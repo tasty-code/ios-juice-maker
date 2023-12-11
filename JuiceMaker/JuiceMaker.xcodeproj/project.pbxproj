@@ -18,7 +18,12 @@
 		C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DAF36255D0CDD00020D38 /* AppDelegate.swift */; };
 		C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DAF38255D0CDD00020D38 /* SceneDelegate.swift */; };
 		C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */; };
-		E4A738742B21608C00166343 /* FruitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A738722B21608C00166343 /* FruitType.swift */; };
+		E411670F2B269F010012BE2F /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E411670E2B269F010012BE2F /* UIView+.swift */; };
+		E41167122B26A1140012BE2F /* JuiceMakerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41167112B26A1140012BE2F /* JuiceMakerButton.swift */; };
+		E443D26E2B25D11F0014E061 /* FruitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E443D26D2B25D11F0014E061 /* FruitType.swift */; };
+		E477D06F2B26C1C8000C9192 /* ColorAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477D06E2B26C1C8000C9192 /* ColorAsset.swift */; };
+		E477D0732B26C84B000C9192 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E477D0722B26C84B000C9192 /* Colors.xcassets */; };
+		E477D0752B26EBB5000C9192 /* JuiceMakerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477D0742B26EBB5000C9192 /* JuiceMakerLabel.swift */; };
 		E4A738752B21608C00166343 /* JuiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A738732B21608C00166343 /* JuiceType.swift */; };
 		E4A738772B21609800166343 /* FruitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A738762B21609800166343 /* FruitData.swift */; };
 		E4A738792B2160F900166343 /* JuiceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A738782B2160F900166343 /* JuiceData.swift */; };
@@ -39,7 +44,12 @@
 		C73DAF38255D0CDD00020D38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C73DAF44255D0CDF00020D38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMaker.swift; sourceTree = "<group>"; };
-		E4A738722B21608C00166343 /* FruitType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FruitType.swift; sourceTree = "<group>"; };
+		E411670E2B269F010012BE2F /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		E41167112B26A1140012BE2F /* JuiceMakerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMakerButton.swift; sourceTree = "<group>"; };
+		E443D26D2B25D11F0014E061 /* FruitType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitType.swift; sourceTree = "<group>"; };
+		E477D06E2B26C1C8000C9192 /* ColorAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorAsset.swift; sourceTree = "<group>"; };
+		E477D0722B26C84B000C9192 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		E477D0742B26EBB5000C9192 /* JuiceMakerLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMakerLabel.swift; sourceTree = "<group>"; };
 		E4A738732B21608C00166343 /* JuiceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JuiceType.swift; sourceTree = "<group>"; };
 		E4A738762B21609800166343 /* FruitData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FruitData.swift; sourceTree = "<group>"; };
 		E4A738782B2160F900166343 /* JuiceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceData.swift; sourceTree = "<group>"; };
@@ -61,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				C1ED27D22B218C5B0013F195 /* Assets.xcassets */,
+				E477D0722B26C84B000C9192 /* Colors.xcassets */,
 				C1ED27D32B218C5B0013F195 /* LaunchScreen.storyboard */,
 				C1ED27DA2B218C770013F195 /* Main.storyboard */,
 			);
@@ -100,6 +111,8 @@
 		C73DAF2A255D0CDC00020D38 = {
 			isa = PBXGroup;
 			children = (
+				E41167102B26A0FD0012BE2F /* CustomClass */,
+				E411670D2B269EDD0012BE2F /* Extension */,
 				C73DAF35255D0CDD00020D38 /* JuiceMaker */,
 				C73DAF34255D0CDD00020D38 /* Products */,
 			);
@@ -129,11 +142,29 @@
 			path = JuiceMaker;
 			sourceTree = "<group>";
 		};
+		E411670D2B269EDD0012BE2F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E411670E2B269F010012BE2F /* UIView+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		E41167102B26A0FD0012BE2F /* CustomClass */ = {
+			isa = PBXGroup;
+			children = (
+				E41167112B26A1140012BE2F /* JuiceMakerButton.swift */,
+				E477D0742B26EBB5000C9192 /* JuiceMakerLabel.swift */,
+			);
+			path = CustomClass;
+			sourceTree = "<group>";
+		};
 		E469FD902B1D680500450639 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
-				E4A738722B21608C00166343 /* FruitType.swift */,
 				E4A738732B21608C00166343 /* JuiceType.swift */,
+				E443D26D2B25D11F0014E061 /* FruitType.swift */,
+				E477D06E2B26C1C8000C9192 /* ColorAsset.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -204,6 +235,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E477D0732B26C84B000C9192 /* Colors.xcassets in Resources */,
 				C1ED27D82B218C770013F195 /* Main.storyboard in Resources */,
 				C1ED27D62B218C5B0013F195 /* LaunchScreen.storyboard in Resources */,
 				C1ED27D52B218C5B0013F195 /* Assets.xcassets in Resources */,
@@ -218,17 +250,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E477D0752B26EBB5000C9192 /* JuiceMakerLabel.swift in Sources */,
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
 				E4A738792B2160F900166343 /* JuiceData.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
+				E41167122B26A1140012BE2F /* JuiceMakerButton.swift in Sources */,
 				C1ED27CC2B217B530013F195 /* JuiceMakerViewController.swift in Sources */,
+				E477D06F2B26C1C8000C9192 /* ColorAsset.swift in Sources */,
 				E4AE21D72B22F5D9004484C0 /* Message.swift in Sources */,
 				C1ED27D02B2187760013F195 /* ViewController.swift in Sources */,
 				E4A738752B21608C00166343 /* JuiceType.swift in Sources */,
 				C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */,
-				E4A738742B21608C00166343 /* FruitType.swift in Sources */,
 				C1ED27CB2B217B530013F195 /* DetailViewController.swift in Sources */,
 				E4A738772B21609800166343 /* FruitData.swift in Sources */,
+				E411670F2B269F010012BE2F /* UIView+.swift in Sources */,
+				E443D26E2B25D11F0014E061 /* FruitType.swift in Sources */,
 				C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

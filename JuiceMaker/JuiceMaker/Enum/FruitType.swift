@@ -1,8 +1,8 @@
 //
-//  Fruits.swift
+//  FruitType.swift
 //  JuiceMaker
 //
-//  Created by 둘리 on 2023/12/04.
+//  Created by 둘리 on 2023/12/10.
 //
 
 import Foundation
