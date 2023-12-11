@@ -5,8 +5,8 @@
 
 import UIKit
 
-class JuiceMakerViewController: UIViewController {
-
+class JuiceMakerViewController: UIViewController, FruitStockDelegate {
+    
     @IBOutlet weak var strawberryStockLabel: UILabel!
     @IBOutlet weak var pineappleStockLabel: UILabel!
     @IBOutlet weak var bananaStockLabel: UILabel!
@@ -77,7 +77,11 @@ class JuiceMakerViewController: UIViewController {
         fruitStoreViewController.kiwiStock = self.kiwiStockLabel.text ?? ""
         fruitStoreViewController.mangoStock = self.mangoStockLabel.text ?? ""
         
+        fruitStoreViewController.juiceMaker.fruitStore.fruitStocks = juiceMaker.fruitStore.fruitStocks
+        
         self.navigationController?.pushViewController(fruitStoreViewController, animated: true)
+        
+        fruitStoreViewController.delegate = self
     }
     
     @IBAction func strawberryBananaJuiceButtonTapped(_ sender: UIButton) {
@@ -179,6 +183,26 @@ class JuiceMakerViewController: UIViewController {
             mangoStockLabel.text = String(mangoStock)
         } catch {
             showUnderStockAlert(message: error.localizedDescription)
+        }
+    }
+    
+    func updateFruitStock(fruit: Fruits, count: Int) {
+        switch fruit {
+        case .strawberry:
+            strawberryStockLabel.text = String(count)
+            juiceMaker.fruitStore.fruitStocks[.strawberry] = count
+        case .banana:
+            bananaStockLabel.text = String(count)
+            juiceMaker.fruitStore.fruitStocks[.banana] = count
+        case .pineapple:
+            pineappleStockLabel.text = String(count)
+            juiceMaker.fruitStore.fruitStocks[.pineapple] = count
+        case .kiwi:
+            kiwiStockLabel.text = String(count)
+            juiceMaker.fruitStore.fruitStocks[.kiwi] = count
+        case .mango:
+            mangoStockLabel.text = String(count)
+            juiceMaker.fruitStore.fruitStocks[.mango] = count
         }
     }
 }
