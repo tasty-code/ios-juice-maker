@@ -34,9 +34,8 @@ extension FruitStore {
 
 // MARK: - Notification Center Method
 
-extension FruitStore {
+private extension FruitStore {
     func postFruitsStock() {
         NotificationCenter.default.post(name: .fruitStockDidChange, object: nil)
     }
-    
 }

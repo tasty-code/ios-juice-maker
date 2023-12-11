@@ -2,7 +2,7 @@
 import UIKit
 
 // MARK: - JuiceMachineViewController 초기화
-class JuiceMachineViewController: UIViewController {
+final class JuiceMachineViewController: UIViewController {
     
     @IBOutlet var juiceMachineView: JuiceMachineView!
     
@@ -17,12 +17,11 @@ class JuiceMachineViewController: UIViewController {
 }
 
 // MARK: - Setup UI
-extension JuiceMachineViewController {
+private extension JuiceMachineViewController {
     func setupUI() {
         juiceMachineView.bananaOrderButton.addTarget(self, action: #selector(bananaJuiceOrderButtonTapped), for: .touchUpInside)
         juiceMachineView.strawberryOrderButton.addTarget(self, action: #selector(strawberryJuiceOrderButtonTapped), for: .touchUpInside)
-        juiceMachineView.mangoOrderButton.addTarget(self, action: 
-            #selector(mangoJuiceButtonTapped), for: .touchUpInside)
+        juiceMachineView.mangoOrderButton.addTarget(self, action: #selector(mangoJuiceButtonTapped), for: .touchUpInside)
         juiceMachineView.kiwiOrderButton.addTarget(self, action: #selector(kiwiJuiceOrderButtonTapped), for: .touchUpInside)
         juiceMachineView.pineappleOrderButton.addTarget(self, action: #selector(pineappleJuiceOrderButtonTapped), for: .touchUpInside)
         juiceMachineView.ddalbaOrderButton.addTarget(self, action: #selector(ddalbaJuiceOrderButtonTapped), for: .touchUpInside)
@@ -31,7 +30,7 @@ extension JuiceMachineViewController {
 }
 
 // MARK: - Button Action Method
-extension JuiceMachineViewController {
+private extension JuiceMachineViewController {
 
     @objc func ddalbaJuiceOrderButtonTapped() {
         reception.acceptJuiceOrder(juiceType: .ddalba)
@@ -63,7 +62,8 @@ extension JuiceMachineViewController {
 }
 
 // MARK: - SetUp Notification Center
-extension JuiceMachineViewController {
+private extension JuiceMachineViewController {
+    
     func setupNotificationCenter() {
         NotificationCenter.default.addObserver(self, selector: #selector(getFruitsStock), name: .fruitStockDidChange, object: nil)
     }

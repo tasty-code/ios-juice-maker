@@ -1,7 +1,7 @@
 
 import UIKit
 
-class JuiceMachineView : UIView {
+final class JuiceMachineView : UIView {
     
     // MARK: - 수량 라벨
     
