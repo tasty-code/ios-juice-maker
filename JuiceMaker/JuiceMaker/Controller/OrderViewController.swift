@@ -24,10 +24,7 @@ final class OrderViewController: UIViewController {
     }
 
     @IBAction private func tapEditInventoryButton(_ sender: UIBarButtonItem) {
-        guard let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: InventoryViewController.className)
-                as? UIViewController else { return }
-        
-        self.navigationController?.pushViewController(nextViewController, animated: true)
+        pushNextViewController()
     }
     
     @IBAction private func tapMakeJuiceButton(_ sender: UIButton) {
@@ -39,9 +36,17 @@ final class OrderViewController: UIViewController {
         do {
             try juiceMaker.makeJuice(juiceType: juice)
             configureUI()
-            presentMakingJuiceAlert(title: "", message: "\(selectedButtonTitle.replacingOccurrences(of: "쥬스 주문 알림", with: "")) 쥬스 나왔습니다! 맛있게 드세요!", confirmTitle: "확인")
+            presentAlert(title: "쥬스 제조 완료",
+                         message: "\(selectedButtonTitle.components(separatedBy: " ").first ?? "") 나왔습니다! 맛있게 드세요",
+                         confirmTitle: "확인")
         } catch {
-            presentInventoryAlert(title: "재고 알림", message: "재료가 모자라요. 재고를 수정할까요?", confirmTitle: "예", cancelTitle: "아니오")
+            presentAlertWithCancel(title: "재고 부족 알림",
+                                   message: "재료가 모자라요. 재고를 수정할까요?",
+                                   confirmTitle: "예",
+                                   cancelTitle: "아니오",
+                                   confirmAction: { _ in
+                self.pushNextViewController()
+            })
         }
     }
     
@@ -51,6 +56,13 @@ final class OrderViewController: UIViewController {
         pineappleQuantityLabel.text = String(fruitStore.fruitContainer[.pineapple, default: 0])
         kiwiQuantityLabel.text = String(fruitStore.fruitContainer[.kiwi, default: 0])
         mangoQuantityLabel.text = String(fruitStore.fruitContainer[.mango, default: 0])
+    }
+    
+    private func pushNextViewController() {
+        guard let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: InventoryViewController.className)
+                as? UIViewController else { return }
+        
+        self.navigationController?.pushViewController(nextViewController, animated: true)
     }
 }
 
