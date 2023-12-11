@@ -8,7 +8,7 @@ import Foundation
 
 // 과일 저장소 타입
 class FruitStore {
-    private var fruitInventory: [String: Int] = [
+     var fruitInventory: [String: Int] = [
         "딸기": 10,
         "바나나": 10,
         "파인애플": 10,
@@ -48,13 +48,13 @@ class FruitStore {
     }
     
     func makeJuice(juiceRecipe: JuiceRecipe) throws  -> String {
-        var  ingredients = juiceRecipe.ingredients
+        let  ingredients = juiceRecipe.ingredients
         for (fruit, juiceIngrediant) in ingredients {
             guard let ingrediantsInInventory = fruitInventory[fruit], ingrediantsInInventory > juiceIngrediant else {
                 throw fruitStoreError.makeJuiceError
             }
             fruitInventory[fruit] = ingrediantsInInventory - juiceIngrediant
         }
-        return ("\(juiceRecipe.name)제조완료.")
+        return ("\(juiceRecipe.name)쥬스 나왔습니다! 맛있게 드세요!")
     }
 }
