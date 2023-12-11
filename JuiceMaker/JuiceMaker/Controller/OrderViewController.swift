@@ -41,6 +41,7 @@ final class OrderViewController: UIViewController {
             configureUI()
             presentMakingJuiceAlert(title: "", message: "\(selectedButtonTitle.replacingOccurrences(of: "쥬스 주문 알림", with: "")) 쥬스 나왔습니다! 맛있게 드세요!", confirmTitle: "확인")
         } catch {
+            presentInventoryAlert(title: "재고 알림", message: "재료가 모자라요. 재고를 수정할까요?", confirmTitle: "예", cancelTitle: "아니오")
         }
     }
     

@@ -18,10 +18,19 @@ extension UIViewController {
     }
     
     /// 확인 버튼 Alert 메서드
+    func presentInventoryAlert(title: String, message: String, confirmTitle: String, cancelTitle: String) {
         let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let confirmAction = UIAlertAction(title: confirmTitle, style: .default)
+        let confirmAction = UIAlertAction(title: confirmTitle, style: .default, handler: { _ in
+            guard let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: InventoryViewController.className)
+                    as? UIViewController else { return }
+            
+            self.navigationController?.pushViewController(nextViewController, animated: true)
+        })
         alertViewController.addAction(confirmAction)
+        
+        let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel)
+        alertViewController.addAction(cancelAction)
         
         self.present(alertViewController, animated: true)
     }
