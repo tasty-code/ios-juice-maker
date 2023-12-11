@@ -31,30 +31,30 @@ extension JuiceMachineViewController {
 extension JuiceMachineViewController {
 
     @objc func ddalbaJuiceOrderButtonTapped() {
-        reception.acceptOrder(request: .juiceOrder, juiceType: .ddalba)
+        reception.acceptJuiceOrder(juiceType: .ddalba)
     }
     
     @objc func mangkiJuiceButtonTapped() {
-        reception.acceptOrder(request: .juiceOrder, juiceType: .mangki)
+        reception.acceptJuiceOrder(juiceType: .mangki)
     }
     
     @objc func strawberryJuiceOrderButtonTapped() {
-        reception.acceptOrder(request: .juiceOrder, juiceType: .strawberry)
+        reception.acceptJuiceOrder(juiceType: .strawberry)
     }
     
     @objc func bananaJuiceOrderButtonTapped() {
-    reception.acceptOrder(request: .juiceOrder, juiceType: .banana)
+    reception.acceptJuiceOrder(juiceType: .banana)
     }
 
     @objc func pineappleJuiceOrderButtonTapped() {
-        reception.acceptOrder(request: .juiceOrder, juiceType: .pineapple)
+        reception.acceptJuiceOrder(juiceType: .pineapple)
     }
     
     @objc func kiwiJuiceOrderButtonTapped() {
-        reception.acceptOrder(request: .juiceOrder, juiceType: .kiwi)
+        reception.acceptJuiceOrder( juiceType: .kiwi)
     }
     
     @objc func mangoJuiceButtonTapped() {
-        reception.acceptOrder(request: .juiceOrder, juiceType: .mango)
+        reception.acceptJuiceOrder(juiceType: .mango)
     }
 }
