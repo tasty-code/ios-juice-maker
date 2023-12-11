@@ -41,6 +41,7 @@ class MainViewController: UIViewController {
         
         switch result {
         case .success:
+            NotificationCenter.default.post(name: NSNotification.Name("JuiceMade"), object: nil)
             let alert = UIAlertController(title: "주문 완료", message: "쥬스가 나왔습니다! 맛있게 드세요!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
