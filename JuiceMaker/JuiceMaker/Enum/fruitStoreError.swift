@@ -9,12 +9,10 @@ import Foundation
 
 
 enum fruitStoreError: Error {
-    
     case currentQuantityError
     case fruitQuantityError
     case makeJuiceError
     case errorDefault
-    
 }
 
 extension fruitStoreError: LocalizedError {
