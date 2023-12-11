@@ -18,10 +18,20 @@ extension UIViewController {
     }
     
     /// 확인 버튼 Alert 메서드
-    func presentAlert(title: String, message: String, confirmTitle: String) {
         let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
         let confirmAction = UIAlertAction(title: confirmTitle, style: .default)
         alertViewController.addAction(confirmAction)
+        
+        self.present(alertViewController, animated: true)
+    }
+    
+    func presentMakingJuiceAlert(title: String, message: String, confirmTitle: String) {
+        let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: confirmTitle, style: .default)
+        alertViewController.addAction(confirmAction)
+        
         self.present(alertViewController, animated: true)
     }
 }
