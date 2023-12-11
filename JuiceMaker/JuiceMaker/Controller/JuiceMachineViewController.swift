@@ -11,6 +11,8 @@ class JuiceMachineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        getFruitsStock()
+        setupNotificationCenter()
     }
 }
 
@@ -19,7 +21,8 @@ extension JuiceMachineViewController {
     func setupUI() {
         juiceMachineView.bananaOrderButton.addTarget(self, action: #selector(bananaJuiceOrderButtonTapped), for: .touchUpInside)
         juiceMachineView.strawberryOrderButton.addTarget(self, action: #selector(strawberryJuiceOrderButtonTapped), for: .touchUpInside)
-        juiceMachineView.mangoOrderButton.addTarget(self, action: #selector(mangoJuiceButtonTapped), for: .touchUpInside)
+        juiceMachineView.mangoOrderButton.addTarget(self, action: 
+            #selector(mangoJuiceButtonTapped), for: .touchUpInside)
         juiceMachineView.kiwiOrderButton.addTarget(self, action: #selector(kiwiJuiceOrderButtonTapped), for: .touchUpInside)
         juiceMachineView.pineappleOrderButton.addTarget(self, action: #selector(pineappleJuiceOrderButtonTapped), for: .touchUpInside)
         juiceMachineView.ddalbaOrderButton.addTarget(self, action: #selector(ddalbaJuiceOrderButtonTapped), for: .touchUpInside)
@@ -56,5 +59,20 @@ extension JuiceMachineViewController {
     
     @objc func mangoJuiceButtonTapped() {
         reception.acceptJuiceOrder(juiceType: .mango)
+    }
+}
+
+// MARK: - SetUp Notification Center
+extension JuiceMachineViewController {
+    func setupNotificationCenter() {
+        NotificationCenter.default.addObserver(self, selector: #selector(getFruitsStock), name: .fruitStockDidChange, object: nil)
+    }
+    
+    @objc func getFruitsStock() {
+        juiceMachineView.bananaStockLabel.text = String(reception.getFruitsStock(fruit: .banana))
+        juiceMachineView.strawberryStockLabel.text = String(reception.getFruitsStock(fruit: .strawberry))
+        juiceMachineView.mangoStockLabel.text = String(reception.getFruitsStock(fruit: .mango))
+        juiceMachineView.pineappleStockLabel.text = String(reception.getFruitsStock(fruit: .pineapple))
+        juiceMachineView.kiwiStockLabel.text = String(reception.getFruitsStock(fruit: .kiwi))
     }
 }

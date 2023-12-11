@@ -3,15 +3,6 @@ import UIKit
 
 class JuiceMachineView : UIView {
     
-    // MARK: - 과일 라벨
-    
-    @IBOutlet weak var strawberryLabel: UILabel!
-    @IBOutlet weak var bananaLabel: UILabel!
-    @IBOutlet weak var pineappleLabel: UILabel!
-    @IBOutlet weak var kiwiLabel: UILabel!
-    @IBOutlet weak var mangoLabel: UILabel!
-    
-    
     // MARK: - 수량 라벨
     
     @IBOutlet weak var strawberryStockLabel: UILabel!

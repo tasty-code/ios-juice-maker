@@ -214,21 +214,16 @@
                             <constraint firstItem="zaq-m5-IIF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="wst-Au-sZB"/>
                         </constraints>
                         <connections>
-                            <outlet property="bananaLabel" destination="bl7-p0-c43" id="XW6-yO-Vhs"/>
                             <outlet property="bananaOrderButton" destination="y2A-PH-DJY" id="3sD-IH-yNs"/>
                             <outlet property="bananaStockLabel" destination="gvk-pA-Lw5" id="N76-4K-7oG"/>
                             <outlet property="ddalbaOrderButton" destination="hrc-2F-fzl" id="08h-Vs-U6I"/>
-                            <outlet property="kiwiLabel" destination="kI4-bd-cgh" id="K6u-Lm-vvt"/>
                             <outlet property="kiwiOrderButton" destination="wcW-7H-RXw" id="hwo-Qy-qoc"/>
                             <outlet property="kiwiStockLabel" destination="FZq-de-TJG" id="SXc-HK-Swe"/>
                             <outlet property="mangkiOrderButton" destination="ngP-kF-Yii" id="GjD-R2-KGZ"/>
-                            <outlet property="mangoLabel" destination="2DA-4v-r9P" id="8iJ-Kf-kke"/>
                             <outlet property="mangoOrderButton" destination="q6G-4X-bVm" id="bej-zv-v59"/>
                             <outlet property="mangoStockLabel" destination="3Ce-SU-JeH" id="EtC-ip-V8r"/>
-                            <outlet property="pineappleLabel" destination="Qkv-u6-h8e" id="eyo-AF-SKi"/>
                             <outlet property="pineappleOrderButton" destination="BFb-ka-wGA" id="oRq-SA-Jh4"/>
                             <outlet property="pineappleStockLabel" destination="ccQ-Dk-PuY" id="lUY-bb-4Ep"/>
-                            <outlet property="strawberryLabel" destination="mVl-JQ-6g7" id="sIc-OH-K3N"/>
                             <outlet property="strawberryOrderButton" destination="avd-o5-3JM" id="LVQ-U0-Y8O"/>
                             <outlet property="strawberryStockLabel" destination="Qas-vP-td6" id="vEf-s1-m1I"/>
                         </connections>
