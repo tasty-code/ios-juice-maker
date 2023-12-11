@@ -6,14 +6,15 @@
 import UIKit
 
 class JuiceMakerViewController: UIViewController {
-    
-    var juiceMaker = JuiceMaker()
+
     @IBOutlet weak var strawberryStockLabel: UILabel!
     @IBOutlet weak var pineappleStockLabel: UILabel!
     @IBOutlet weak var bananaStockLabel: UILabel!
     @IBOutlet weak var kiwiStockLabel: UILabel!
     @IBOutlet weak var mangoStockLabel: UILabel!
-    
+        
+    var juiceMaker = JuiceMaker()
+
     override func viewDidLoad() {
         super.viewDidLoad()
        configureUI()
@@ -34,21 +35,25 @@ class JuiceMakerViewController: UIViewController {
         pineappleStockLabel.text = String(pineappleStock)
         kiwiStockLabel.text = String(kiwiStock)
         mangoStockLabel.text = String(mangoStock)
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "재고수정",
+                                                                 style: .plain,
+                                                                 target: self,
+                                                                 action: #selector(showFruitStoreViewController))
     }
 
     func showMakeJuiceCompleteAlert(juice: Juice) {
         let alert = UIAlertController(title: "\(juice.name) 나왔습니다!" , message: "맛있게 드세요!", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "닫기", style: .default))
+        alert.addAction(UIAlertAction(title: "닫기", style: .destructive))
         self.present(alert, animated: true)
     }
     
     func showUnderStockAlert(message: String) {
         let alert = UIAlertController(title: "알림", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "예", style: .default, handler: {
-            let viewController = FruitStoreViewController()
-            
+        alert.addAction(UIAlertAction(title: "예", style: .default, handler: { [weak self] _ in
+            self?.showFruitStoreViewController()
         }))
-        alert.addAction(UIAlertAction(title: "아니요", style: .cancel))
+        alert.addAction(UIAlertAction(title: "아니요", style: .destructive))
         self.present(alert, animated: true)
     }
     
@@ -58,10 +63,21 @@ class JuiceMakerViewController: UIViewController {
             showMakeJuiceCompleteAlert(juice: juice)
     }
     
-    func setJuiceIngredients(juice: Juice) {
-        for ingredient in juice.recipe {
-            //
+    @objc
+    func showFruitStoreViewController() {
+        guard
+            let fruitStoreViewController = storyboard?.instantiateViewController(identifier: "FruitStoreViewController") as? FruitStoreViewController
+        else {
+            return
         }
+        
+        fruitStoreViewController.strawberryStock = self.strawberryStockLabel.text ?? ""
+        fruitStoreViewController.bananaStock = self.bananaStockLabel.text ?? ""
+        fruitStoreViewController.pineappleStock = self.pineappleStockLabel.text ?? ""
+        fruitStoreViewController.kiwiStock = self.kiwiStockLabel.text ?? ""
+        fruitStoreViewController.mangoStock = self.mangoStockLabel.text ?? ""
+        
+        self.navigationController?.pushViewController(fruitStoreViewController, animated: true)
     }
     
     @IBAction func strawberryBananaJuiceButtonTapped(_ sender: UIButton) {
@@ -147,7 +163,6 @@ class JuiceMakerViewController: UIViewController {
                 return
             }
             kiwiStockLabel.text = String(kiwiStock)
-            print("kiwiJuiceButtonTapped: \(kiwiStockLabel.text)")
         } catch {
             showUnderStockAlert(message: error.localizedDescription)
         }
@@ -167,4 +182,3 @@ class JuiceMakerViewController: UIViewController {
         }
     }
 }
-
