@@ -1,13 +1,17 @@
 
 import UIKit
 
-// MARK: - JuiceMachineViewController 초기화
+// MARK: - JuiceMachineViewController init & deinit
 final class JuiceMachineViewController: UIViewController {
     
     @IBOutlet var juiceMachineView: JuiceMachineView!
-    
     private let reception = Reception()
     
+    deinit { NotificationCenter.default.removeObserver(self) }
+}
+
+// MARK: - LifeCycle
+extension JuiceMachineViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
