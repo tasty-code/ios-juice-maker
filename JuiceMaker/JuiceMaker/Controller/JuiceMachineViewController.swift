@@ -4,39 +4,57 @@ import UIKit
 // MARK: - JuiceMachineViewController 초기화
 class JuiceMachineViewController: UIViewController {
     
-    private let juiceMachineView = JuiceMachineView()
+    @IBOutlet var juiceMachineView: JuiceMachineView!
+    
     private let reception = Reception()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
     }
-    
-    //Button Action Method
-    @IBAction func ddalbaJuiceOrderButtonTapped(_ sender: UIButton) {
+}
+
+// MARK: - Setup UI
+extension JuiceMachineViewController {
+    func setupUI() {
+        juiceMachineView.bananaOrderButton.addTarget(self, action: #selector(bananaJuiceOrderButtonTapped), for: .touchUpInside)
+        juiceMachineView.strawberryOrderButton.addTarget(self, action: #selector(strawberryJuiceOrderButtonTapped), for: .touchUpInside)
+        juiceMachineView.mangoOrderButton.addTarget(self, action: #selector(mangoJuiceButtonTapped), for: .touchUpInside)
+        juiceMachineView.kiwiOrderButton.addTarget(self, action: #selector(kiwiJuiceOrderButtonTapped), for: .touchUpInside)
+        juiceMachineView.pineappleOrderButton.addTarget(self, action: #selector(pineappleJuiceOrderButtonTapped), for: .touchUpInside)
+        juiceMachineView.ddalbaOrderButton.addTarget(self, action: #selector(ddalbaJuiceOrderButtonTapped), for: .touchUpInside)
+        juiceMachineView.mangkiOrderButton.addTarget(self, action: #selector(mangkiJuiceButtonTapped), for: .touchUpInside)
+    }
+}
+
+// MARK: - Button Action Method
+extension JuiceMachineViewController {
+
+    @objc func ddalbaJuiceOrderButtonTapped() {
         reception.acceptOrder(request: .juiceOrder, juiceType: .ddalba)
     }
     
-    @IBAction func mangkiJuiceButtonTapped(_ sender: UIButton) {
+    @objc func mangkiJuiceButtonTapped() {
         reception.acceptOrder(request: .juiceOrder, juiceType: .mangki)
     }
     
-    @IBAction func strawberryJuiceOrderButtonTapped(_ sender: UIButton) {
+    @objc func strawberryJuiceOrderButtonTapped() {
         reception.acceptOrder(request: .juiceOrder, juiceType: .strawberry)
     }
     
-    @IBAction func bananaJuiceOrderButtonTapped(_ sender: UIButton) {
-        reception.acceptOrder(request: .juiceOrder, juiceType: .banana)
+    @objc func bananaJuiceOrderButtonTapped() {
+    reception.acceptOrder(request: .juiceOrder, juiceType: .banana)
     }
-    
-    @IBAction func pineappleJuiceOrderButtonTapped(_ sender: UIButton) {
+
+    @objc func pineappleJuiceOrderButtonTapped() {
         reception.acceptOrder(request: .juiceOrder, juiceType: .pineapple)
     }
     
-    @IBAction func kiwiJuiceOrderButtonTapped(_ sender: UIButton) {
+    @objc func kiwiJuiceOrderButtonTapped() {
         reception.acceptOrder(request: .juiceOrder, juiceType: .kiwi)
     }
     
-    @IBAction func mangoJuiceButtonTapped(_ sender: UIButton) {
+    @objc func mangoJuiceButtonTapped() {
         reception.acceptOrder(request: .juiceOrder, juiceType: .mango)
     }
 }
