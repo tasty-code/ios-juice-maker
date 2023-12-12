@@ -5,36 +5,31 @@
 //  Created by 권태호 on 11/12/2023.
 //
 
-import Foundation
 import UIKit
 
-//let fruitStore = FruitStore()
+// 클레스를 만들고
 //
-//enum AlertCase {
-//     func displaySuccessAlert() {
-//        let alertController = UIAlertController(title: "쥬스 제조 완료", message: "맛있는 쥬스가 완성되었습니다!", preferredStyle: .alert)
-//        let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
-//        alertController.addAction(okAction)
-//        
-//        // 여기서 UIViewController를 가져오거나, 현재 화면의 뷰 컨트롤러를 설정하여 present 합니다.
-//        if let topViewController = UIApplication.shared.windows.first?.rootViewController {
-//            topViewController.present(alertController, animated: true, completion: nil)
-//        }
-//    }
-//    
-//     func displayFailedAlert(presentingViewController: UIViewController) {
-//        let alertController = UIAlertController(title: "재료가 모자라요", message: "재고를 수정할까요?", preferredStyle: .alert)
-//        let yesAction = UIAlertAction(title: "예", style: .default) { _ in
-//            // '예'를 선택한 경우, 재고 수정 화면으로 이동
-//            
-//        }
-//        let noAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
-//        alertController.addAction(yesAction)
-//        alertController.addAction(noAction)
-//        
-//        presentingViewController.present(alertController, animated: true, completion: nil)
-//    }
-//    
-//    
-//    
-//}
+
+
+class Alert {
+    
+    func success() {
+        func displaySuccessAlert(message: String) {
+            let alertController = UIAlertController(title: "쥬스 완성", message: message, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alertController.addAction(okAction)
+        }
+        
+        func displayFailAlert() {
+            let alertController = UIAlertController(title: "재료가 모자라요", message: "재고를 수정할까요?", preferredStyle: .alert)
+            let yesAction = UIAlertAction(title: "예", style: .default) { [weak self] _ in
+                
+            }
+            let noAction = UIAlertAction(title: "아니오", style: .cancel)
+            alertController.addAction(yesAction)
+            alertController.addAction(noAction)
+            
+        }
+    }
+}
+

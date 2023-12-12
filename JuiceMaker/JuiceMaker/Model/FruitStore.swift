@@ -10,7 +10,7 @@ import Foundation
 class FruitStore {
     
     var fruitInventory: [String: Int] = [
-        "딸기": 30,
+        "딸기": 50,
         "바나나": 10,
         "파인애플": 10,
         "키위": 10,
@@ -49,7 +49,7 @@ class FruitStore {
     func makeJuice(juiceRecipe: JuiceRecipe) throws  -> String {
         let  ingredients = juiceRecipe.ingredients
         for (fruit, juiceIngrediant) in ingredients {
-            guard let ingrediantsInInventory = fruitInventory[fruit], ingrediantsInInventory > juiceIngrediant else {
+            guard let ingrediantsInInventory = fruitInventory[fruit], ingrediantsInInventory >= juiceIngrediant else {
                 throw fruitStoreError.makeJuiceError
             }
             fruitInventory[fruit] = ingrediantsInInventory - juiceIngrediant

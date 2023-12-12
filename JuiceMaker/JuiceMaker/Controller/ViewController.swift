@@ -44,7 +44,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func strawBananaJuice(_ sender: UIButton) {
-        
+
         do {
             _ = try fruitStore.makeJuice(juiceRecipe: .strawberryBanana)
             displaySuccessAlert(message: "\(JuiceRecipe.strawberryBanana.name)쥬스 나왔습니다")
@@ -75,6 +75,14 @@ class ViewController: UIViewController {
     
     @IBAction func mangoKiwiJuiceButton(_ sender: UIButton) {
         
+        do {
+            _ = try fruitStore.makeJuice(juiceRecipe: .mangoKiwi)
+            displaySuccessAlert(message: "\(JuiceRecipe.mangoKiwi.name)쥬스 나왔습니다")
+            updateFruitLabels()
+        } catch {
+            displayFailAlert()
+        }
+        
         func displaySuccessAlert(message: String) {
             let alertController = UIAlertController(title: "쥬스 완성", message: message, preferredStyle: .alert)
             let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
@@ -95,9 +103,16 @@ class ViewController: UIViewController {
         }
         
     }
-    
     @IBAction func strawberryButton(_ sender: UIButton) {
         
+        do {
+            _ = try fruitStore.makeJuice(juiceRecipe: .strawberry)
+            displaySuccessAlert(message: "\(JuiceRecipe.strawberry.name)쥬스 나왔습니다")
+            updateFruitLabels()
+        } catch {
+            displayFailAlert()
+        }
+        
         func displaySuccessAlert(message: String) {
             let alertController = UIAlertController(title: "쥬스 완성", message: message, preferredStyle: .alert)
             let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
@@ -117,9 +132,16 @@ class ViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
         }
     }
-    
     @IBAction func bananaJuiceButton(_ sender: UIButton) {
         
+        do {
+            _ = try fruitStore.makeJuice(juiceRecipe: .banana)
+            displaySuccessAlert(message: "\(JuiceRecipe.banana.name)쥬스 나왔습니다")
+            updateFruitLabels()
+        } catch {
+            displayFailAlert()
+        }
+        
         func displaySuccessAlert(message: String) {
             let alertController = UIAlertController(title: "쥬스 완성", message: message, preferredStyle: .alert)
             let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
@@ -139,8 +161,15 @@ class ViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
         }
     }
-    
     @IBAction func pinAppleJuiceButton(_ sender: UIButton) {
+        
+        do {
+            _ = try fruitStore.makeJuice(juiceRecipe: .pineapple)
+            displaySuccessAlert(message: "\(JuiceRecipe.pineapple.name)쥬스 나왔습니다")
+            updateFruitLabels()
+        } catch {
+            displayFailAlert()
+        }
         
         func displaySuccessAlert(message: String) {
             let alertController = UIAlertController(title: "쥬스 완성", message: message, preferredStyle: .alert)
@@ -163,6 +192,14 @@ class ViewController: UIViewController {
     }
     @IBAction func kiwiButton(_ sender: UIButton) {
         
+        do {
+            _ = try fruitStore.makeJuice(juiceRecipe: .kiwi)
+            displaySuccessAlert(message: "\(JuiceRecipe.kiwi.name)쥬스 나왔습니다")
+            updateFruitLabels()
+        } catch {
+            displayFailAlert()
+        }
+        
         func displaySuccessAlert(message: String) {
             let alertController = UIAlertController(title: "쥬스 완성", message: message, preferredStyle: .alert)
             let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
@@ -184,6 +221,14 @@ class ViewController: UIViewController {
     }
     @IBAction func mangoJuiceButton(_ sender: UIButton) {
         
+        do {
+            _ = try fruitStore.makeJuice(juiceRecipe: .mango)
+            displaySuccessAlert(message: "\(JuiceRecipe.mango.name)쥬스 나왔습니다")
+            updateFruitLabels()
+        } catch {
+            displayFailAlert()
+        }
+        
         func displaySuccessAlert(message: String) {
             let alertController = UIAlertController(title: "쥬스 완성", message: message, preferredStyle: .alert)
             let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
@@ -203,9 +248,6 @@ class ViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
         }
     }
-    
-    
-    
-    
+
 }
 
