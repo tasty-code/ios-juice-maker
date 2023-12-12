@@ -39,9 +39,3 @@ final class StockDisplayResultConverter: StockDisplayResultConvertable {
         display?.displayStock(viewModel: viewModel)
     }
 }
-
-import Foundation
-
-protocol StockDisplayResultDisplayable: NSObjectProtocol {
-    func displayStock(viewModel: StockDisplayModel.ViewModel)
-}
