@@ -16,7 +16,7 @@ enum Juice: String {
     case strawberryBananaJuice
     case mangoKiwiJuice
     
-    var juice: String {
+    var name: String {
         switch self {
         case .strawberryJuice:
             return "딸기쥬스"
