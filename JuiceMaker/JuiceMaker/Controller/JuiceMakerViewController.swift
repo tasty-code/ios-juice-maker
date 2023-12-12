@@ -22,14 +22,23 @@ final class JuiceMakerViewController: UIViewController {
     
     @IBOutlet private weak var mangoStockLabel: UILabel!
     
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let fruitStore = FruitStore(initialCount: 10)
+    required init?(coder: NSCoder) {
+        self.stockDisplay = nil
+        self.juiceMaker = nil
+        
+        super.init(coder: coder)
+    }
+    
+    init?(coder: NSCoder, fruitStore: FruitStore) {
         self.stockDisplay = StockDisplay(fruitStore: fruitStore)
         self.juiceMaker = JuiceMaker(fruitStore: fruitStore)
         
+        super.init(coder: coder)
         setUp()
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
         stockDisplay?.displayStock()
     }
     
