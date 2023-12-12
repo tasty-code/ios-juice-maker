@@ -9,9 +9,9 @@ import Foundation
 struct JuiceMaker {
     var fruitStore: FruitStore = FruitStore.shared
     
-    func isEnough(juiceMenu: JuiceMenu) -> Bool {
+    func isEnough(juice: Juice) -> Bool {
         var stockCheck: Bool = true
-        for (fruit, count) in juiceMenu.recipe {
+        for (fruit, count) in juice.recipe {
             guard fruitStore.checkStock(fruit: fruit, count: count) else {
                 stockCheck = false
                 break
@@ -20,16 +20,16 @@ struct JuiceMaker {
         return stockCheck
     }
     
-    mutating func makeJuice(juiceMenu: JuiceMenu) -> Juice? {
-        guard isEnough(juiceMenu: juiceMenu) else {
+    mutating func makeJuice(juice: Juice) -> Juice? {
+        guard isEnough(juice: juice) else {
             return nil
         }
         
-        juiceMenu.recipe.forEach { (fruit: Fruit, count: Int) in
+        juice.recipe.forEach { (fruit: Fruit, count: Int) in
             fruitStore.release(fruit: fruit, count: count)
         }
         
-        return Juice(juiceMenu: juiceMenu)
+        return juice
     }
 
 }

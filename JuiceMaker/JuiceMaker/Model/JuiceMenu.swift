@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum JuiceMenu: CaseIterable {
+enum Juice: CaseIterable {
     case strawberryJuice
     case bananaJuice
     case kiwiJuice

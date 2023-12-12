@@ -17,7 +17,7 @@ class ViewController: UIViewController, FruitStoreViewController {
     var labels: Dictionary<UILabel, Fruit> = [:]
     var fruitStore: FruitStore = FruitStore.shared
     var juiceMaker: JuiceMaker = JuiceMaker()
-    let jucieMenu: [JuiceMenu] = JuiceMenu.allCases
+    let jucieMenu: [Juice] = Juice.allCases
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,8 @@ extension ViewController {
     }
     
     @IBAction func juiceButtonTapped(_ sender: UIButton) {
-        juiceMaker.makeJuice(juiceMenu: jucieMenu[sender.tag])
+        juiceMaker.makeJuice(juice: jucieMenu[sender.tag])
+        
         configureFruitStoreUI()
     }
 }
