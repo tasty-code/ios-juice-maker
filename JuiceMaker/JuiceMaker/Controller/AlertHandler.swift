@@ -20,7 +20,7 @@ final class AlertHandler {
         return currentVC ?? nil
     }
     
-    private func fetchAlertMessage(alertType: AlertType) -> (String,String) {
+    private func fetchAlertMessage(alertType: AlertType) -> (String, String) {
         switch alertType {
         case .fruitShortage(let customeMessage):
             return ("재고부족!", customeMessage)
