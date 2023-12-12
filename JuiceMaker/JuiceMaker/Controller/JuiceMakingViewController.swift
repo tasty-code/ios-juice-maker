@@ -22,6 +22,7 @@ class JuiceMakingViewController: UIViewController {
     @IBOutlet var orderStrawberryBananaButton: UIButton!
     @IBOutlet var orderMangoKiwiButton: UIButton!
     
+    let juiceMaker = JuiceMaker(fruitStore: FruitStore())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,4 +54,62 @@ extension JuiceMakingViewController {
     }
 }
 
+extension JuiceMakingViewController {
+    func setUpTargetActionOnButtons() {
+        orderStrawberryButton.addTarget(self, action: #selector(orderJuice(_:)), for: .touchUpInside)
+        orderBananaButton.addTarget(self, action: #selector(orderJuice(_:)), for: .touchUpInside)
+        orderPineAppleButton.addTarget(self, action: #selector(orderJuice(_:)), for: .touchUpInside)
+        orderKiwiButton.addTarget(self, action: #selector(orderJuice(_:)), for: .touchUpInside)
+        orderMangoButton.addTarget(self, action: #selector(orderJuice(_:)), for: .touchUpInside)
+        orderStrawberryBananaButton.addTarget(self, action: #selector(orderJuice(_:)), for:.touchUpInside)
+        orderMangoKiwiButton.addTarget(self, action: #selector(orderJuice(_:)), for: .touchUpInside)
+    }
+    
+    @objc func orderJuice(_ sender: UIButton) {
+        let result: JuiceMaker.JuiceMakingResult
+        
+        switch sender {
+        case orderStrawberryButton:
+            result = juiceMaker.produce(.strawberry)
+        case orderBananaButton:
+            result = juiceMaker.produce(.banana)
+        case orderPineAppleButton:
+            result = juiceMaker.produce(.pineapple)
+        case orderKiwiButton:
+            result = juiceMaker.produce(.kiwi)
+        case orderMangoButton:
+            result = juiceMaker.produce(.mango)
+        case orderStrawberryBananaButton:
+            result = juiceMaker.produce(.strawberryBanana)
+        case orderMangoKiwiButton:
+            result = juiceMaker.produce(.mangoKiwi)
+        default:
+            let message = "???"
+            result = .failure(description: message)
+        }
+        
+        self.present(generateAlert(by: result), animated: true, completion: nil)
+        
+    }
+    
+    func generateAlert(by result: JuiceMaker.JuiceMakingResult) -> UIAlertController {
+        let alert: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        switch result {
+        case .success(let message):
+            alert.message = message
+            alert.addAction(UIAlertAction(title: "확인", style: .default))
+        case .failure(let message):
+            alert.message = message
+            alert.addAction(UIAlertAction(title: "예", style: .default, handler: transitionToStockManagement(_:)))
+            alert.addAction(UIAlertAction(title: "아니오", style: .default))
+        }
+        return alert
+    }
+}
 
+extension JuiceMakingViewController {
+    func transitionToStockManagement(_ sender: UIAlertAction) {
+        let segue = "segueToStockManagement"
+        performSegue(withIdentifier: segue, sender: sender)
+    }
+}
