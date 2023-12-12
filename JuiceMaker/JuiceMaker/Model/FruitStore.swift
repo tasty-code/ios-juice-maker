@@ -7,19 +7,32 @@
 final class FruitStore {
     private var fruitStocks: [Fruit: FruitStock]
     
-    init() {
+    init(initialCount: Int) {
         let newStocks: [Fruit: FruitStock] = Fruit.allCases.reduce(into: [:]) { (result, fruit) in
-            let stock = FruitStock(fruitType: fruit)
+            let stock = FruitStock(fruitType: fruit, count: initialCount)
             result[fruit] = stock
         }
         self.fruitStocks = newStocks
     }
     
     
-    func consume(_ fruitType: Fruit, numberOfFruits: Int) throws {
-        guard let targetFruitStore = fruitStocks[fruitType] else {
+    private func consume(_ fruitType: Fruit, numberOfFruits: Int) throws -> FruitStock {
+        guard let copyOfTargetStock = fruitStocks[fruitType] else {
             throw JuiceMakerError.fruitStockNotFound
         }
-        try targetFruitStore.consumeFruits(count: numberOfFruits)
+        let newTarget = try copyOfTargetStock.consumedFruits(count: numberOfFruits)
+        return newTarget
+    }
+    
+    func consume(ingredients: JuiceIngredients) throws {
+        let newFruitStocks: [FruitStock] = try ingredients.reduce(into: []) { (result, ingredient) in
+            let newStock = try consume(ingredient.key, numberOfFruits: ingredient.value)
+            result.append(newStock)
+        }
+        
+        for newFruitStock in newFruitStocks {
+            let fruitType = newFruitStock.fruitType
+            self.fruitStocks[fruitType] = newFruitStock
+        }
     }
 }
