@@ -23,10 +23,12 @@ class FruitStore {
     
     private var storage: [Fruit: Int] = [:]
     
-    func supply(fruits: [Fruit: Int]) throws {
-        for (fruitName, amount) in fruits {
-            self.storage[fruitName]? += amount
+    func supply(fruitName: Fruit, amount: Int) throws {
+        guard let currentStock = self.storage[fruitName], (currentStock + amount) >= 0 else {
+            throw StorageError.insufficientStock
         }
+        
+        self.storage[fruitName]? += amount
     }
     
     func consume(fruits: [Fruit: Int]) throws {
