@@ -29,6 +29,11 @@ final class ManageStockViewController: UIViewController {
         navigationController?.navigationBar.topItem?.backButtonTitle = "뒤로 가기"
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        updateFruitStock()
+    }
+    
     private func checkFruitsStock() {
         let firstStock = fruitStore.fruitStock.compactMapValues { String($0) }
         let secondStock = fruitStore.fruitStock.compactMapValues { Double($0) }
@@ -61,5 +66,13 @@ final class ManageStockViewController: UIViewController {
         default:
             break
         }
+    }
+    
+    private func updateFruitStock() {
+        fruitStore.fruitStock[.strawberry] = UInt(strawberryStockLabel.text ?? "")
+        fruitStore.fruitStock[.banana] = UInt(bananaStockLabel.text ?? "")
+        fruitStore.fruitStock[.pineapple] = UInt(pineappleStockLabel.text ?? "")
+        fruitStore.fruitStock[.mango] = UInt(mangoStockLabel.text ?? "")
+        fruitStore.fruitStock[.kiwi] = UInt(kiwiStockLabel.text ?? "")
     }
 }
