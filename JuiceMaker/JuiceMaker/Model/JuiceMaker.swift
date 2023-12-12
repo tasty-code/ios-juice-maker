@@ -4,9 +4,6 @@
 //  Copyright © yagom academy. All rights reserved.
 // 
 
-import Foundation
-
-// 쥬스 메이커 타입
 struct JuiceMaker {
     private let fruitStore: FruitStore
     
@@ -14,9 +11,9 @@ struct JuiceMaker {
         self.fruitStore = fruitStore
     }
     
-    func makeJuice(flavor: JuiceFlavor) throws {
+    func consumeFruitsForMakingJuice(flavor: JuiceFlavor) throws {
         try flavor.recipe.forEach { (fruit: Fruit, count: Int) in
-            try fruitStore.getFruits(fruit, count: count)
+            try fruitStore.consume(fruit, numberOfFruits: count)
         }
     }
 }

@@ -6,7 +6,7 @@
 //
 
 final class FruitStock {
-    let fruitType: Fruit
+    private let fruitType: Fruit
     
     private var count: Int = 10
     
