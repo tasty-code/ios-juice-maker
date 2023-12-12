@@ -76,10 +76,6 @@
 				F42621502B1DBEFD00C6423A /* FruitStock.swift */,
 				F42621522B1DBF2E00C6423A /* JuiceMakerError.swift */,
 				F42621542B1DBF3F00C6423A /* JuiceFlavor.swift */,
-				7F7DBF6D2B281C460081CBAD /* StockDisplayModel.swift */,
-				7F7DBF6F2B281E6A0081CBAD /* StockDisplay.swift */,
-				7F7DBF712B2820230081CBAD /* StockDisplayResultConvertable.swift */,
-				7F7DBF732B2823120081CBAD /* StockDisplayResultDisplayable.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -113,12 +109,32 @@
 		C73DAF35255D0CDD00020D38 /* JuiceMaker */ = {
 			isa = PBXGroup;
 			children = (
+				F456FA342B282CFF0025386D /* UseCase */,
 				C71CD66F266C7B500038B9CB /* Model */,
 				C71CD671266C7B570038B9CB /* View */,
 				C71CD66D266C7B470038B9CB /* Controller */,
 				C73DAF44255D0CDF00020D38 /* Info.plist */,
 			);
 			path = JuiceMaker;
+			sourceTree = "<group>";
+		};
+		F456FA332B282CF10025386D /* StockDisplay */ = {
+			isa = PBXGroup;
+			children = (
+				7F7DBF6D2B281C460081CBAD /* StockDisplayModel.swift */,
+				7F7DBF6F2B281E6A0081CBAD /* StockDisplay.swift */,
+				7F7DBF712B2820230081CBAD /* StockDisplayResultConvertable.swift */,
+				7F7DBF732B2823120081CBAD /* StockDisplayResultDisplayable.swift */,
+			);
+			path = StockDisplay;
+			sourceTree = "<group>";
+		};
+		F456FA342B282CFF0025386D /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				F456FA332B282CF10025386D /* StockDisplay */,
+			);
+			path = UseCase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
