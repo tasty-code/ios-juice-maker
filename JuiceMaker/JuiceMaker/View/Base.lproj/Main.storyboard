@@ -272,11 +272,14 @@
                                             </stepper>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="ZQk-f4-zrz" firstAttribute="width" secondItem="dCK-AJ-zGU" secondAttribute="width" id="5Km-6p-3N7"/>
-                                            <constraint firstItem="dCK-AJ-zGU" firstAttribute="centerX" secondItem="Tmr-sM-e98" secondAttribute="centerX" id="9vF-E8-gcS"/>
-                                            <constraint firstItem="ZQk-f4-zrz" firstAttribute="centerX" secondItem="Tmr-sM-e98" secondAttribute="centerX" id="JBc-tx-RZb"/>
-                                            <constraint firstItem="0yV-kn-zaT" firstAttribute="centerX" secondItem="Tmr-sM-e98" secondAttribute="centerX" id="uUF-YG-bNA"/>
-                                            <constraint firstItem="0yV-kn-zaT" firstAttribute="width" secondItem="dCK-AJ-zGU" secondAttribute="width" id="ycS-pM-zOq"/>
+                                            <constraint firstItem="ZQk-f4-zrz" firstAttribute="centerY" secondItem="Tmr-sM-e98" secondAttribute="centerY" id="0Ny-MG-EXu"/>
+                                            <constraint firstItem="0yV-kn-zaT" firstAttribute="width" secondItem="dCK-AJ-zGU" secondAttribute="width" id="7oE-w8-Cs9"/>
+                                            <constraint firstItem="ZQk-f4-zrz" firstAttribute="width" secondItem="dCK-AJ-zGU" secondAttribute="width" id="ReX-kX-W9K"/>
+                                            <constraint firstItem="0yV-kn-zaT" firstAttribute="centerX" secondItem="Tmr-sM-e98" secondAttribute="centerX" id="UZQ-mh-KKG"/>
+                                            <constraint firstItem="0yV-kn-zaT" firstAttribute="centerY" secondItem="Tmr-sM-e98" secondAttribute="centerY" id="ann-XV-pPO"/>
+                                            <constraint firstItem="dCK-AJ-zGU" firstAttribute="centerY" secondItem="Tmr-sM-e98" secondAttribute="centerY" id="kE8-bR-ZD1"/>
+                                            <constraint firstItem="ZQk-f4-zrz" firstAttribute="centerX" secondItem="Tmr-sM-e98" secondAttribute="centerX" id="mEk-sU-vuG"/>
+                                            <constraint firstItem="dCK-AJ-zGU" firstAttribute="centerX" secondItem="Tmr-sM-e98" secondAttribute="centerX" id="oz2-kq-Exv"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="1O6-9p-r1i">
