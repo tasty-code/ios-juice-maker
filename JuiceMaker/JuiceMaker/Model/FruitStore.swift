@@ -6,7 +6,6 @@
 
 import Foundation
 
-// 과일 저장소 타입
 final class FruitStore {
     
     static let shared = FruitStore()
@@ -20,11 +19,16 @@ final class FruitStore {
         .pineapple: 10,
         .mango: 10
     ]
-    @discardableResult private func add(fruit: Fruit, amount: Int) -> Int {
+    @discardableResult func add(fruit: Fruit, amount: Int) -> Int {
         fruitInventory[fruit, default: 0] += amount
         return fruitInventory[fruit, default: 0]
     }
-    @discardableResult func consume(fruit: Fruit, amount: Int) -> Int {
+    @discardableResult func consume(fruit: Fruit, amount: Int) throws -> Int {
+        try canConsume(fruit: fruit, amount: amount)
+        
+        guard amount >= 0 else {
+            throw JuceMakerError.negativeAmount
+        }
         fruitInventory[fruit, default: 0] -= amount
         return fruitInventory[fruit, default: 0]
     }
@@ -33,15 +37,11 @@ final class FruitStore {
         return fruitInventory[fruit, default: 0]
     }
     
-    func compareFruitInventory(juice: Juice) -> Bool {
-        for (fruit, quantity) in juice.recipe {
+    private func canConsume(fruit: Fruit, amount: Int) throws {
             let currentInventory = inventory(fruit: fruit)
             
-            if currentInventory <= quantity {
-                print("재고부족")
-                return false
+            if currentInventory < amount {
+                throw JuceMakerError.outOfStock
             }
-        }
-        return true
     }
 }

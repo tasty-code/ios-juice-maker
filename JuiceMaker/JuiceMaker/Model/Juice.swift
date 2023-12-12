@@ -11,7 +11,7 @@ struct Juice: Hashable {
     let name: String
     let recipe: [Fruit: Int]
     
-    init(name: String, recipe: [Fruit : Int]) {
+    init(name: String, recipe: [Fruit: Int]) {
         self.name = name
         self.recipe = recipe
     }
