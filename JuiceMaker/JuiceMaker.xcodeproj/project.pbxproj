@@ -29,6 +29,7 @@
 		F42621552B1DBF3F00C6423A /* JuiceFlavor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42621542B1DBF3F00C6423A /* JuiceFlavor.swift */; };
 		F456FA382B283D1F0025386D /* StoryboardIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F456FA372B283D1F0025386D /* StoryboardIdentifiable.swift */; };
 		F456FA3A2B2840C40025386D /* StockManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F456FA392B2840C40025386D /* StockManagerViewController.swift */; };
+		F456FA3C2B2841C30025386D /* JuiceMakerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F456FA3B2B2841C30025386D /* JuiceMakerRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		F42621542B1DBF3F00C6423A /* JuiceFlavor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceFlavor.swift; sourceTree = "<group>"; };
 		F456FA372B283D1F0025386D /* StoryboardIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardIdentifiable.swift; sourceTree = "<group>"; };
 		F456FA392B2840C40025386D /* StockManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockManagerViewController.swift; sourceTree = "<group>"; };
+		F456FA3B2B2841C30025386D /* JuiceMakerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMakerRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 			children = (
 				F456FA332B282CF10025386D /* StockDisplay */,
 				7F7DBF7B2B2831D10081CBAD /* JuiceMaker */,
+				F456FA3B2B2841C30025386D /* JuiceMakerRouter.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				7F7DBF782B282FD10081CBAD /* JuiceMakerResultConvertable.swift in Sources */,
 				F456FA3A2B2840C40025386D /* StockManagerViewController.swift in Sources */,
 				7F7DBF6E2B281C460081CBAD /* StockDisplayModel.swift in Sources */,
+				F456FA3C2B2841C30025386D /* JuiceMakerRouter.swift in Sources */,
 				7F7DBF7A2B28304E0081CBAD /* JuiceMakerResultDisplayable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
