@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C1DAE6362B26F456003544B4 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DAE6352B26F456003544B4 /* UIViewController+.swift */; };
+		C155FC632B28230E008047C0 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C155FC622B28230E008047C0 /* UIViewController+.swift */; };
 		C1ED27CB2B217B530013F195 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ED27C92B217B530013F195 /* DetailViewController.swift */; };
 		C1ED27CC2B217B530013F195 /* JuiceMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ED27CA2B217B530013F195 /* JuiceMakerViewController.swift */; };
 		C1ED27D02B2187760013F195 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ED27CF2B2187760013F195 /* ViewController.swift */; };
@@ -32,7 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C1DAE6352B26F456003544B4 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIViewController+.swift"; path = "../../../../../aloneDailyQuest/AloneDailyQuest_Project/Models/UIViewController+.swift"; sourceTree = "<group>"; };
+		C155FC622B28230E008047C0 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		C1ED27C92B217B530013F195 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C1ED27CA2B217B530013F195 /* JuiceMakerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JuiceMakerViewController.swift; sourceTree = "<group>"; };
 		C1ED27CF2B2187760013F195 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -156,7 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				E411670E2B269F010012BE2F /* UIView+.swift */,
-				C1DAE6352B26F456003544B4 /* UIViewController+.swift */,
+				C155FC622B28230E008047C0 /* UIViewController+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -267,8 +267,8 @@
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
 				E41167122B26A1140012BE2F /* JuiceMakerButton.swift in Sources */,
 				C1ED27CC2B217B530013F195 /* JuiceMakerViewController.swift in Sources */,
-				C1DAE6362B26F456003544B4 /* UIViewController+.swift in Sources */,
 				E477D06F2B26C1C8000C9192 /* ColorAsset.swift in Sources */,
+				C155FC632B28230E008047C0 /* UIViewController+.swift in Sources */,
 				E4AE21D72B22F5D9004484C0 /* Message.swift in Sources */,
 				C1ED27D02B2187760013F195 /* ViewController.swift in Sources */,
 				E4A738752B21608C00166343 /* JuiceType.swift in Sources */,
