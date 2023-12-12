@@ -27,7 +27,7 @@ final class FruitStore {
         try canConsume(fruit: fruit, amount: amount)
         
         guard amount >= 0 else {
-            throw JuceMakerError.negativeAmount
+            throw JuiceMakerError.negativeAmount
         }
         fruitInventory[fruit, default: 0] -= amount
         return fruitInventory[fruit, default: 0]
@@ -41,7 +41,7 @@ final class FruitStore {
             let currentInventory = inventory(fruit: fruit)
             
             if currentInventory < amount {
-                throw JuceMakerError.outOfStock
+                throw JuiceMakerError.outOfStock
             }
     }
 }

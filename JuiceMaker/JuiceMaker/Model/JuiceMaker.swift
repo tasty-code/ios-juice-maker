@@ -14,9 +14,9 @@ struct JuiceMaker {
                 try FruitStore.shared.consume(fruit: fruit, amount: quantity)
             }
             print("\(juice.name) 나왔습니다.")
-        } catch JuceMakerError.negativeAmount {
+        } catch JuiceMakerError.negativeAmount {
             print("음수입니다.")
-        } catch JuceMakerError.outOfStock {
+        } catch JuiceMakerError.outOfStock {
             print("재고부족")
         }
     }
