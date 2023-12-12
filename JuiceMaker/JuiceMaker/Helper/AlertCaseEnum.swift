@@ -11,7 +11,7 @@ import UIKit
 //
 
 
-
+//ViewContoroller에서 Alert을 호출하게 구현하고 싶음
 class Alert: UIAlertController {
     
     func displaySuccessAlert(message: String) {
