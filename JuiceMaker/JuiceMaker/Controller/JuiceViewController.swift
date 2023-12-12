@@ -35,7 +35,7 @@ class JuiceViewController: UIViewController {
         pushNavigationView()
     }
     
-    private func pushNavigationView(_ uiAlertAction: UIAlertAction = UIAlertAction()) {
+    private func pushNavigationView() {
         let supplyVC = storyboard?.instantiateViewController(withIdentifier: "SupplyViewController") as! SupplyViewController
         navigationController?.pushViewController(supplyVC, animated: true)
     }
@@ -87,9 +87,10 @@ class JuiceViewController: UIViewController {
     
     private func alertInsufficientStock() {
         let alert = UIAlertController(title: "", message: "재료가 모자라요. 재고를 수정할까요?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("예", comment: "Default action"), style: .default, handler: pushNavigationView))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("예", comment: "Default action"), style: .default, handler: { _ in
+            self.pushNavigationView()
+        }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("아니오", comment: "Default action"), style: .default))
         self.present(alert, animated: true, completion: nil)
     }
 }
-
