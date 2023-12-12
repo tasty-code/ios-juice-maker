@@ -15,7 +15,7 @@ final class FruitStore {
         Fruit.allCases.forEach { fruits[$0.rawValue] = 10 }
     }
     
-    var fruitsflag = [
+    var fruitsFlag = [
         Recipe.strawberry.rawValue: false,
         Recipe.banana.rawValue: false,
         Recipe.pineapple.rawValue: false,
@@ -42,4 +42,9 @@ final class FruitStore {
         print(fruits)
     }
     
+    func resetFlag() {
+        self.fruitsFlag.keys.forEach { fruits in
+            self.fruitsFlag[fruits] = false
+        }
+    }
 }

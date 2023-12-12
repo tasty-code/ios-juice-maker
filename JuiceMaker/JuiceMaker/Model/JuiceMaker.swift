@@ -21,7 +21,6 @@ struct JuiceMaker {
     }
     
     func order(_ recipe: Recipe) -> Bool {
-        print("주문하신 쥬스는 \(recipe) 입니다" )
         do {
             try takeOrder(recipe)
         } catch JuiceMakerErrors.orderFail(let recipe) {
@@ -44,6 +43,7 @@ struct JuiceMaker {
                 throw JuiceMakerErrors.orderFail(kind)
             }
             store.fruits[String(splittedIngredientArray[0])] = fruitsStock - recipe[0]
+            store.fruitsFlag[String(splittedIngredientArray[0])] = true
         } else {
             try splittedIngredientArray.enumerated().forEach { index, fruit in
                 guard let fruitsStock = store.fruits[String(fruit)],
@@ -52,6 +52,7 @@ struct JuiceMaker {
                     throw JuiceMakerErrors.orderFail(kind)
                 }
                 store.fruits[String(fruit)] = fruitsStock - recipe[index]
+                store.fruitsFlag[String(fruit)] = true
             }
         }
     }
