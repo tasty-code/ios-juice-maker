@@ -1,6 +1,6 @@
 //
 //  JuiceMaker - FruitStore.swift
-//  Created by yagom. 
+//  Created by yagom.
 //  Copyright © yagom academy. All rights reserved.
 //
 
@@ -15,16 +15,23 @@ final class FruitStore {
         Fruit.allCases.forEach { fruits[$0.rawValue] = 10 }
     }
     
+    var fruitsflag = [
+        Recipe.strawberry.rawValue: false,
+        Recipe.banana.rawValue: false,
+        Recipe.pineapple.rawValue: false,
+        Recipe.kiwi.rawValue: false,
+        Recipe.mango.rawValue: false,
+    ]
     
     var recipes = [
-                 Recipe.strawberry.rawValue: [16],
-                 Recipe.banana.rawValue: [2],
-                 Recipe.kiwi.rawValue: [3],
-                 Recipe.pineapple.rawValue: [2],
-                 Recipe.strawberryBanana.rawValue: [10, 1],
-                 Recipe.mango.rawValue: [3],
-                 Recipe.mangoKiwi.rawValue: [2, 1]
-       ]
+        Recipe.strawberry.rawValue: [16],
+        Recipe.banana.rawValue: [2],
+        Recipe.kiwi.rawValue: [3],
+        Recipe.pineapple.rawValue: [2],
+        Recipe.strawberryBanana.rawValue: [10, 1],
+        Recipe.mango.rawValue: [3],
+        Recipe.mangoKiwi.rawValue: [2, 1]
+    ]
     
     func supplyFruits(fruitName: String, quantity: Int) throws {
         guard let currentStock = fruits[fruitName] else {

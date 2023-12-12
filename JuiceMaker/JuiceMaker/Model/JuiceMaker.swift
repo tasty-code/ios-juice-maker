@@ -20,16 +20,18 @@ struct JuiceMaker {
         print("어서오세요 아래 매뉴중 하나를 선택해주세요!\n딸바쥬스, 망키쥬스, 딸기쥬스, 바나나쥬스, 파인애플쥬스, 키위쥬스, 망고쥬스")
     }
     
-    func order(_ recipe: Recipe) {
+    func order(_ recipe: Recipe) -> Bool {
         print("주문하신 쥬스는 \(recipe) 입니다" )
         do {
             try takeOrder(recipe)
         } catch JuiceMakerErrors.orderFail(let recipe) {
             print("\(recipe) 주문에 실패 했습니다...")
             print("\(self.store.fruits)")
+            return false
         } catch {
-            
+            return false
         }
+        return true
     }
     
     func takeOrder(_ kind: Recipe) throws {

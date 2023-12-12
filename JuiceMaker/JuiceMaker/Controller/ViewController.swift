@@ -15,25 +15,36 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         fruitStore.initializeFruit()
     }
-    
+     
     @IBAction func juiceMakeBtnTapped(_ choice: UIButton) {
+        var selectedRecipe : Recipe
         switch choice.tag {
         case 0:
-            print("button 0 press")
+            selectedRecipe = Recipe.strawberryBanana
         case 1:
-            print("button 1 press")
+            selectedRecipe = Recipe.mangoKiwi
         case 2:
-            print("button 2 press")
+            selectedRecipe = Recipe.strawberry
         case 3:
-            print("button 3 press")
+            selectedRecipe = Recipe.banana
         case 4:
-            print("button 4 press")
+            selectedRecipe = Recipe.pineapple
         case 5:
-            print("button 5 press")
+            selectedRecipe = Recipe.kiwi
         case 6:
-            print("button 6 press")
+            selectedRecipe = Recipe.mango
         default:
-            break
+            selectedRecipe = Recipe.mango
+        }
+        let result = juiceMaker.order(selectedRecipe)
+        setMarketView(result)
+    }
+    
+    private func setMarketView(_ isDone: Bool) {
+        self.fruitStore.fruitsflag.forEach { fruit, isUsed in
+            if isUsed {
+                
+            }
         }
     }
 }
