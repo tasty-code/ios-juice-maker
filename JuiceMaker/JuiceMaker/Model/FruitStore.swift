@@ -15,7 +15,9 @@ class FruitStore {
         case insufficientStock
     }
     
-    init() {
+    static let shared = FruitStore()
+    
+    private init() {
         for fruit in Fruit.allCases {
             self.storage[fruit] = 10
         }

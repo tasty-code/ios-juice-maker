@@ -30,7 +30,7 @@ struct JuiceMaker {
         }
     }
     
-    private let fruitStore = FruitStore()
+    private let fruitStore = FruitStore.shared
     
     func makeJuice(menu: Menu) {
         do {
