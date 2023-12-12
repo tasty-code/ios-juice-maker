@@ -7,26 +7,18 @@
 
 import Foundation
 
-enum Fruit: CaseIterable {
-    case strawberry
-    case banana
-    case kiwi
-    case pineapple
-    case mango
+struct Fruit: Hashable {
+    let name: String
     
-    var name:String {
-        switch self {
-        case .strawberry:
-            return "딸기"
-        case .banana:
-            return "바나나"
-        case .kiwi:
-            return "키위"
-        case .pineapple:
-            return "파인애플"
-        case .mango:
-            return "망고"
-        }
+    init(name: String) {
+        self.name = name
     }
 }
 
+extension Fruit {
+    static let strawberry = Fruit(name: "딸기")
+    static let banana = Fruit(name: "바나나")
+    static let kiwi = Fruit(name: "키위")
+    static let pineapple = Fruit(name: "파인애플")
+    static let mango = Fruit(name: "망고")
+}
