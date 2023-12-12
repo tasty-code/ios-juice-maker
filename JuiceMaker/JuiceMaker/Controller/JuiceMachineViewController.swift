@@ -71,6 +71,7 @@ private extension JuiceMachineViewController {
     
     func setupNotificationCenter() {
         NotificationCenter.default.addObserver(self, selector: #selector(updateFruitStock), name: .fruitStockDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleStockError), name: .fruitStockLimit, object: nil)
     }
     
     @objc func updateFruitStock(notification: Notification) {
@@ -86,6 +87,10 @@ private extension JuiceMachineViewController {
         juiceMachineView.mangoStockLabel.text = String(fruitStock[.mango] ?? 0)
         juiceMachineView.pineappleStockLabel.text = String(fruitStock[.pineapple] ?? 0)
         juiceMachineView.kiwiStockLabel.text = String(fruitStock[.kiwi] ?? 0)
+    }
+    
+    @objc func handleStockError() {
+        AlertHandler.shared.presentAlert(of: .fruitShortage("재고부족해요!"))
     }
 }
 

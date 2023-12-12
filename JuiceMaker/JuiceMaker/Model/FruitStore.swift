@@ -4,6 +4,9 @@ import Foundation
 extension Notification.Name {
     static let fruitStockDidChange =
     Notification.Name("fruitStockDidChange")
+    
+    static let fruitStockLimit =
+    Notification.Name("fruitStockLimit")
 }
 
 // MARK: - FruitStore 초기화
@@ -27,7 +30,9 @@ final class FruitStore {
 
 extension FruitStore {
     func incrementFruit(fruit: Fruits, quantities: Int) {
-        guard let currentStock = fruitsStock[fruit] else { print("\(#function) 에러 발생!")
+        guard let currentStock = fruitsStock[fruit] else {
+            postFruitsStockError()
+            print("\(#function) 에러 발생!")
             return
         }
         fruitsStock[fruit] = currentStock + quantities
@@ -37,6 +42,7 @@ extension FruitStore {
     func decrementFruit(fruit: Fruits, quantities: Int) {
         guard let currentStock = fruitsStock[fruit],
               currentStock - quantities >= limitedQuantity else {
+            postFruitsStockError()
             print("\(#function) 재고 부족!")
             return
         }
@@ -50,5 +56,9 @@ extension FruitStore {
 private extension FruitStore {
     func postFruitsStock() {
         NotificationCenter.default.post(name: .fruitStockDidChange, object: nil, userInfo: ["fruitsStock": fruitsStock])
+    }
+    
+    func postFruitsStockError() {
+        NotificationCenter.default.post(name: .fruitStockLimit, object: nil)
     }
 }

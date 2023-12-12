@@ -52,6 +52,7 @@
 		C71CD66D266C7B470038B9CB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				082E3B802B22E9F00068A685 /* AlertHandler.swift */,
 				C73DAF3A255D0CDD00020D38 /* JuiceMachineViewController.swift */,
 			);
 			path = Controller;
@@ -72,7 +73,6 @@
 			isa = PBXGroup;
 			children = (
 				08C6F55E2B20881B0060C97B /* JuiceMachineView.swift */,
-				082E3B802B22E9F00068A685 /* AlertHandler.swift */,
 				C73DAF41255D0CDF00020D38 /* LaunchScreen.storyboard */,
 				C73DAF3C255D0CDD00020D38 /* Main.storyboard */,
 			);
