@@ -21,29 +21,23 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let starwberryQuantity = fruitStore.fruitInventory["딸기"] {
-            strawberry.text = "\(starwberryQuantity)"
-        } else {
-            print(fruitStoreError.errorDefault)
+        updateFruitLabels()
+
+    }
+    
+    func updateFruitLabels() {
+        if let strawberryQuantity = fruitStore.fruitInventory["딸기"] {
+            strawberry.text = "\(strawberryQuantity)"
         }
-        
-        
         if let bananaQuantity = fruitStore.fruitInventory["바나나"] {
             banana.text = "\(bananaQuantity)"
-        } else {
-            print(fruitStoreError.errorDefault)
         }
-        
-        if let pineAppleQuantity = fruitStore.fruitInventory["파인애플"]  {
+        if let pineAppleQuantity = fruitStore.fruitInventory["파인애플"] {
             pineApple.text = "\(pineAppleQuantity)"
-        } else {
-            print(fruitStoreError.errorDefault)
         }
-        
         if let kiwiQuantity = fruitStore.fruitInventory["키위"] {
             kiwi.text = "\(kiwiQuantity)"
         }
-        
         if let mangoQuantity = fruitStore.fruitInventory["망고"] {
             mango.text = "\(mangoQuantity)"
         }
@@ -54,6 +48,7 @@ class ViewController: UIViewController {
         do {
             _ = try fruitStore.makeJuice(juiceRecipe: .strawberryBanana)
             displaySuccessAlert(message: "\(JuiceRecipe.strawberryBanana.name)쥬스 나왔습니다")
+            updateFruitLabels()
         } catch {
             displayFailAlert()
         }
