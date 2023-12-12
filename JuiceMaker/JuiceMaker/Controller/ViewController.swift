@@ -1,14 +1,14 @@
 //
 //  JuiceMaker - ViewController.swift
-//  Created by yagom. 
+//  Created by yagom.
 //  Copyright © yagom academy. All rights reserved.
-// 
+//
 
 import UIKit
 
 class ViewController: UIViewController {
     let fruitStore = FruitStore()
-
+    
     @IBOutlet weak var strawberry: UILabel!
     @IBOutlet weak var banana: UILabel!
     @IBOutlet weak var pineApple: UILabel!
@@ -18,14 +18,19 @@ class ViewController: UIViewController {
     
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        if let strawberryQuantity = fruitStore.displayCurrentFruitInventory(fruit: "딸기") {
-            strawberry.text = "\(strawberryQuantity)"
+        
+        if let starwberryQuantity = fruitStore.fruitInventory["딸기"] {
+            strawberry.text = "\(starwberryQuantity)"
+        } else {
+            print(fruitStoreError.errorDefault)
         }
-            
+        
+        
         if let bananaQuantity = fruitStore.fruitInventory["바나나"] {
             banana.text = "\(bananaQuantity)"
         } else {
@@ -47,7 +52,7 @@ class ViewController: UIViewController {
         }
     }
     
-        
+    
     @IBAction func strawBananaJuice(_ sender: UIButton) {
         do {
             _ = try fruitStore.makeJuice(juiceRecipe: .strawberryBanana)
@@ -99,6 +104,6 @@ class ViewController: UIViewController {
     
     
     
-
+    
 }
 

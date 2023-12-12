@@ -8,6 +8,7 @@ import Foundation
 
 // 과일 저장소 타입
 class FruitStore {
+    
     var fruitInventory: [String: Int] = [
         "딸기": 30,
         "바나나": 10,
@@ -23,6 +24,14 @@ class FruitStore {
         }
         return currentQuantity
     }
+    
+    func updateInventoryAfterJuiceMaking(juiceRecipe: JuiceRecipe) {
+        let ingredients = juiceRecipe.ingredients
+        for (fruit, juiceIngredient) in ingredients {
+            if let ingredientsInInventory = fruitInventory[fruit] {
+                fruitInventory[fruit] = ingredientsInInventory - juiceIngredient
+            }
+        }
     
     func updateFruitQuantity(fruit: String, quantity: Int) throws {
         guard var currentQuantity = fruitInventory[fruit] else {
