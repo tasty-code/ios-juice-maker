@@ -30,7 +30,9 @@ class FruitStore {
             guard amount > 0 else {
                 throw StorageError.invalidAmountOfFruit
             }
-            
+        }
+        
+        for (fruitName, amount) in fruits {
             self.storage[fruitName]? += amount
         }
     }
@@ -48,7 +50,9 @@ class FruitStore {
             guard amount <= currentStock else {
                 throw StorageError.insufficientStock
             }
-            
+        }
+        
+        for (fruitName, amount) in fruits {
             self.storage[fruitName]? -= amount
         }
     }
