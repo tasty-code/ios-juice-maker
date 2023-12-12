@@ -15,9 +15,21 @@ final class JuiceMakerViewController: UIViewController {
         super.viewDidLoad()
         let fruitStore = FruitStore(initialCount: 10)
         self.stockDisplay = StockDisplay(fruitStore: fruitStore)
+        setUp()
         stockDisplay?.displayStock()
+        
     }
-
+    
+    
+    private func setUp() {
+        let stockDisplayConverter = StockDisplayResultConverter()
+        self.stockDisplay?.resultConverter = stockDisplayConverter
+        stockDisplayConverter.display = self
+    }
+    
+    
+    
+    
 
 }
 
