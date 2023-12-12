@@ -9,6 +9,15 @@ import UIKit
 
 class QuantityVC: UIViewController {
     
+    var quantityVC = ViewController()
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+    }
     
 
 }
