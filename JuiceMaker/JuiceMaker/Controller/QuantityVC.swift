@@ -11,6 +11,8 @@ class QuantityVC: UIViewController {
     
     let fruitStore = FruitStore.shared
     
+    weak var delegate: FruitStoreDelegate?
+    
     @IBOutlet weak var strawberry: UILabel!
     @IBOutlet weak var banana: UILabel!
     @IBOutlet weak var pineapple: UILabel!
@@ -41,17 +43,21 @@ class QuantityVC: UIViewController {
     }
     
     @IBAction func strawberryStepper(_ sender: UIStepper) {
-        strawberry.text = Int(sender.value).description
+        fruitStore.fruitInventory["딸기"] = Int(sender.value)
+        updateFruitLabels()
+        delegate?.didUpdateFruitInventory()
     }
     
     @IBAction func bananaStepper(_ sender: UIStepper) {
+        
     }
     @IBAction func pinappleStepper(_ sender: UIStepper) {
+        
     }
     @IBAction func kiwiStepper(_ sender: UIStepper) {
+        
     }
     @IBAction func mangoStepper(_ sender: UIStepper) {
+        
     }
-    
-
 }

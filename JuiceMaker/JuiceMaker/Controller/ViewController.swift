@@ -6,11 +6,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, FruitStoreDelegate {
     
     let fruitStore = FruitStore.shared
 
-    
     @IBOutlet weak var strawberry: UILabel!
     @IBOutlet weak var banana: UILabel!
     @IBOutlet weak var pineApple: UILabel!
@@ -34,17 +33,25 @@ class ViewController: UIViewController {
         alertController.addAction(noAction)
         self.present(alertController, animated: true, completion: nil)
     }
-
+    
+    func didUpdateFruitInventory() {
+        updateFruitLabels()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        fruitStore.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fruitStore.delegate = self
         updateFruitLabels()
-        
     }
     
     @IBAction func changeInvetoryButtonTapped(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "goToQuantityUpdate", sender: sender)
     }
-    
     
     func updateFruitLabels() {
         if let strawberryQuantity = fruitStore.fruitInventory["딸기"] {

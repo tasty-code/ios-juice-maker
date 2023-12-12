@@ -33,10 +33,8 @@ class Alert: UIAlertController {
     }
 }
 
-
-
 //protocol AlertPresentable {
-//    
+//
 //    func showSuccessAlert()
 //    func showFailAlert()
 //}
@@ -46,11 +44,17 @@ class Alert: UIAlertController {
 //    func showSuccessAlert() {
 //        // show
 //    }
-//    
+//
 //    func showFailAlert() {
 //        // show
 //    }
-//    
+//
 //}
+
+
+
+
+
+
 
 

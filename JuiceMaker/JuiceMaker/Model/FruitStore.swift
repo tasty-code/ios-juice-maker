@@ -10,7 +10,10 @@ import Foundation
 class FruitStore {
     
     var fruitInventory: [String: Int]
+    
     static let shared = FruitStore()
+    
+    weak var delegate: FruitStoreDelegate?
     
     init () {
         fruitInventory =  [
@@ -20,6 +23,11 @@ class FruitStore {
             "키위": 10,
             "망고": 10
         ]
+    }
+    
+    func updateInventory(with inventory: [String: Int]) {
+        fruitInventory = inventory
+        delegate?.didUpdateFruitInventory()
     }
     
 //    var fruitInventory: [String: Int] = [
