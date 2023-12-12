@@ -8,7 +8,7 @@
 import UIKit
 
 
-class SecondViewController: UIViewController {
+class SecondViewController: UIViewController, FruitStoreViewController {
     @IBOutlet weak var strawberryLabel: UILabel!
     @IBOutlet weak var bananaLabel: UILabel!
     @IBOutlet weak var pineappleLabel: UILabel!
@@ -16,17 +16,11 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var mangoLabel: UILabel!
     
     var labels: Dictionary<UILabel, Fruit> = [:]
-    var fruitSore: FruitStore = FruitStore()
+    var fruitStore: FruitStore = FruitStore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         labels = [strawberryLabel : .strawberry, bananaLabel : .banana, pineappleLabel : .pineapple, kiwiLabel : .kiwi, mangoLabel : .mango]
-        configureUI()
-    }
-}
-
-extension SecondViewController {
-    func configureUI() {
-        labels.forEach { $0.text = fruitSore.fruitCount(fruit: $1).description}
+        configureFroutStoreUI()
     }
 }
