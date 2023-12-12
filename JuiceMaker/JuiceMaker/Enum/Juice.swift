@@ -5,9 +5,9 @@
 //  Created by Matthew on 12/7/23.
 //
 
-import Foundation
+import UIKit
 
-enum JuiceType: String {
+enum Juice: String, CaseIterable {
     case strawberryJuice = "딸기쥬스"
     case bananaJuice = "바나나쥬스"
     case pineappleJuice = "파인애플쥬스"
@@ -16,26 +16,26 @@ enum JuiceType: String {
     case strawberryBananaJuice = "딸바쥬스"
     case mangoKiwiJuice = "망키쥬스"
     
-    var recipe: [FruitData] {
+    var recipe: [FruitInfo] {
         switch self {
         case .strawberryJuice:
-            return [FruitData(name: FruitType.strawberry, quantity: 16)]
+            return [FruitInfo(name: Fruit.strawberry, quantity: 16)]
         case .bananaJuice:
-            return [FruitData(name: FruitType.banana, quantity: 2)]
+            return [FruitInfo(name: Fruit.banana, quantity: 2)]
         case .pineappleJuice:
-            return [FruitData(name: FruitType.pineapple, quantity: 2)]
+            return [FruitInfo(name: Fruit.pineapple, quantity: 2)]
         case .kiwiJuice:
-            return [FruitData(name: FruitType.kiwi, quantity: 3)]
+            return [FruitInfo(name: Fruit.kiwi, quantity: 3)]
         case .mangoJuice:
-            return [FruitData(name: FruitType.mango, quantity: 3)]
+            return [FruitInfo(name: Fruit.mango, quantity: 3)]
         case .strawberryBananaJuice:
-            return [FruitData(name: FruitType.strawberry, quantity: 10), FruitData(name: .banana, quantity: 1)]
+            return [FruitInfo(name: Fruit.strawberry, quantity: 10), FruitInfo(name: .banana, quantity: 1)]
         case .mangoKiwiJuice:
-            return [FruitData(name: FruitType.mango, quantity: 2), FruitData(name: FruitType.kiwi, quantity: 1)]
+            return [FruitInfo(name: Fruit.mango, quantity: 2), FruitInfo(name: Fruit.kiwi, quantity: 1)]
         }
     }
     
-    static var allCases: [JuiceType] {
+    static var allCases: [Juice] {
         return [
             .strawberryJuice,
             .bananaJuice,

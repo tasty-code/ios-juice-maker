@@ -5,12 +5,12 @@
 //  Created by 둘리 on 2023/12/08.
 //
 
-import Foundation
+import UIKit
 
 enum Message: CustomStringConvertible {
     case emptyFruitQuantity
     case failedMakeJuice
-    case successMakeJuice(juice: JuiceType.RawValue)
+    case successMakeJuice(juice: Juice.RawValue)
     
     var description: String {
         switch self {

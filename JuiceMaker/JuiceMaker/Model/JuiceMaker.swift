@@ -4,25 +4,25 @@
 //  Copyright © yagom academy. All rights reserved.
 // 
 
-import Foundation
+import UIKit
 
 // 쥬스 메이커 타입
 struct JuiceMaker {
-    static let shared: JuiceMaker = JuiceMaker()
+    static var shared: JuiceMaker = JuiceMaker()
     
     private init() {}
     
-    var juiceList: [JuiceData] = [
-        JuiceData(name: .strawberryJuice, quantity: 0),
-        JuiceData(name: .bananaJuice, quantity: 0),
-        JuiceData(name: .pineappleJuice, quantity: 0),
-        JuiceData(name: .kiwiJuice, quantity: 0),
-        JuiceData(name: .mangoJuice, quantity: 0),
-        JuiceData(name: .strawberryBananaJuice, quantity: 0),
-        JuiceData(name: .mangoKiwiJuice, quantity: 0)
+    var juiceList: [JuiceInfo] = [
+        JuiceInfo(name: .strawberryJuice, quantity: 0),
+        JuiceInfo(name: .bananaJuice, quantity: 0),
+        JuiceInfo(name: .pineappleJuice, quantity: 0),
+        JuiceInfo(name: .kiwiJuice, quantity: 0),
+        JuiceInfo(name: .mangoJuice, quantity: 0),
+        JuiceInfo(name: .strawberryBananaJuice, quantity: 0),
+        JuiceInfo(name: .mangoKiwiJuice, quantity: 0)
     ]
     
-    func makeJuice(juice: JuiceType) -> Bool {
+    func makeJuice(juice: Juice) -> Bool {
         let fruitStore = FruitStore.shared
         switch juice {
             
@@ -69,14 +69,14 @@ struct JuiceMaker {
         return false
     }
     
-    func showJuiceQuantity(juice: JuiceType) -> String {
+    public func showJuiceQuantity(juice: Juice) -> String {
         if let index = juiceList.firstIndex(where: { $0.name == juice }) {
             return String(juiceList[index].quantity)
         }
         return String(0)
     }
     
-    mutating func addJuiceQuantity(juice: JuiceType) {
+    mutating public func addJuiceQuantity(juice: Juice) {
         if let index = juiceList.firstIndex(where: { $0.name == juice }) {
             juiceList[index].quantity += 1
         }

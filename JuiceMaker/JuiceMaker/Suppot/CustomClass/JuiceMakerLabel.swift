@@ -5,21 +5,20 @@
 //  Created by 둘리 on 2023/12/11.
 //
 
-import Foundation
 import UIKit
 
-class JuiceMakerLabel: UILabel {
+final class JuiceMakerLabel: UILabel {
     init() {
         super.init(frame: .zero)
-        configUI()
+        configureUI()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        configUI()
+        configureUI()
     }
     
-    func configUI() {
+    private func configureUI() {
         self.clipsToBounds = true
         self.layer.cornerRadius = self.bounds.height / 2
     }

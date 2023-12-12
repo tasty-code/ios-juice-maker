@@ -5,13 +5,13 @@
 //  Created by 둘리 on 2023/12/07.
 //
 
-import Foundation
+import UIKit
 
-struct JuiceData {
-    let name: JuiceType
-    var quantity: Int64
+struct JuiceInfo {
+    let name: Juice
+    var quantity: Int
     
-    init(name: JuiceType, quantity: Int64) {
+    init(name: Juice, quantity: Int) {
         self.name = name
         self.quantity = quantity
     }
