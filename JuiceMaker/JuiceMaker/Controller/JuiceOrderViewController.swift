@@ -21,12 +21,6 @@ final class JuiceOrderViewController: UIViewController {
         updateFruitStockLabel()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        updateFruitStockLabel()
-    }
-    
     @IBAction private func manageStockButtonTapped(_ sender: UIButton) {
         moveToManageStockView()
     }
