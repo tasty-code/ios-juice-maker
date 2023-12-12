@@ -20,8 +20,3 @@ final class StockDisplay {
         resultConverter?.convertResult(result)
     }
 }
-
-
-protocol StockDisplayResultConvertable {
-    func convertResult(_ result: StockDisplayModel.Result)
-}
