@@ -8,60 +8,59 @@
 import UIKit
 
 final class InventoryViewController: UIViewController {
-
-    private let fruitStore = FruitStore.shared
     
     @IBOutlet weak var strawberryQuantityLabel: UILabel!
     @IBOutlet weak var bananaQuantityLabel: UILabel!
     @IBOutlet weak var pineappleQuantityLabel: UILabel!
     @IBOutlet weak var kiwiQuantityLabel: UILabel!
     @IBOutlet weak var mangoQuantityLabel: UILabel!
-    
     @IBOutlet weak var strawberryStepper: UIStepper!
     @IBOutlet weak var bananaStepper: UIStepper!
     @IBOutlet weak var pineappleStepper: UIStepper!
     @IBOutlet weak var kiwiStepper: UIStepper!
     @IBOutlet weak var mangoStepper: UIStepper!
     
-    private lazy var fruitQuantityLabels: [Fruit: UILabel] = [
-        .strawberry: strawberryQuantityLabel,
-        .banana: bananaQuantityLabel,
-        .pineapple: pineappleQuantityLabel,
-        .kiwi: kiwiQuantityLabel,
-        .mango: mangoQuantityLabel
+    private var fruitStore: FruitStore
+    
+    private lazy var componentsByFruit: [Fruit: (label: UILabel, stepper: UIStepper)] = [
+        .strawberry: (strawberryQuantityLabel, strawberryStepper),
+        .banana: (bananaQuantityLabel, bananaStepper),
+        .pineapple: (pineappleQuantityLabel, pineappleStepper),
+        .kiwi: (kiwiQuantityLabel, kiwiStepper),
+        .mango: (mangoQuantityLabel, mangoStepper)
     ]
     
-    private lazy var fruitSteppers: [UIStepper: Fruit] = [
-        strawberryStepper: .strawberry,
-        bananaStepper: .banana,
-        pineappleStepper: .pineapple,
-        kiwiStepper: .kiwi,
-        mangoStepper: .mango
+    private lazy var labelsByStepper: [UIStepper: UILabel] = [
+        strawberryStepper: strawberryQuantityLabel,
+        bananaStepper: bananaQuantityLabel,
+        pineappleStepper: pineappleQuantityLabel,
+        kiwiStepper: kiwiQuantityLabel,
+        mangoStepper: mangoQuantityLabel
     ]
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.fruitStore = FruitStore.shared
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
-        configureInitialStepperValue()
     }
     
     @IBAction func modifyFruitStepper(_ sender: UIStepper) {
-        if let fruit = fruitSteppers[sender] {
-            fruitStore.fruitContainer[fruit] = Int(sender.value)
-            fruitQuantityLabels[fruit]?.text = String(format: "%.0f", sender.value)
-        }
+        updateFruitQuantity(sender)
     }
     
     private func configureUI() {
-        for (fruit, label) in fruitQuantityLabels {
-            label.text = String(fruitStore.fruitContainer[fruit, default: 0])
+        for (fruit, component) in componentsByFruit {
+            component.label.text = String(fruitStore.fruitContainer[fruit, default: 0])
+            component.stepper.value = Double(fruitStore.fruitContainer[fruit, default: 0])
         }
     }
     
-    private func configureInitialStepperValue() {
-        for (stepper, fruit) in fruitSteppers {
-            stepper.value = Double(fruitStore.fruitContainer[fruit, default: 0])
-        }
+    private func updateFruitQuantity(_ stepper: UIStepper) {
+        labelsByStepper[stepper]?.text = String(Int(stepper.value))
     }
 }
