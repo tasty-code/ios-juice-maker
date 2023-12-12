@@ -11,8 +11,8 @@ struct JuiceMaker {
     
     private let store: FruitStore
     
-    init() {
-        self.store = FruitStore()
+    init(store: FruitStore) {
+        self.store = store
         self.store.initializeFruit()
     }
     
