@@ -1,27 +1,27 @@
 //
 //  JuiceMaker - ViewController.swift
 //  Created by Kyle& L
-// 
+//
 
 import UIKit
 
-class JuiceMakerViewController: UIViewController, FruitStockDelegate {
+final class JuiceMakerViewController: UIViewController {
     
     @IBOutlet weak var strawberryStockLabel: UILabel!
     @IBOutlet weak var pineappleStockLabel: UILabel!
     @IBOutlet weak var bananaStockLabel: UILabel!
     @IBOutlet weak var kiwiStockLabel: UILabel!
     @IBOutlet weak var mangoStockLabel: UILabel!
-        
-    var juiceMaker = JuiceMaker()
-
+    
+    private let juiceMaker = JuiceMaker()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       configureUI()
+        configureUI()
     }
     
-    func configureUI() {
-        guard 
+    private func configureUI() {
+        guard
             let strawberryStock = juiceMaker.fruitStore.fruitStocks[.strawberry],
             let bananaStock = juiceMaker.fruitStore.fruitStocks[.banana],
             let pineappleStock = juiceMaker.fruitStore.fruitStocks[.pineapple],
@@ -41,14 +41,14 @@ class JuiceMakerViewController: UIViewController, FruitStockDelegate {
                                                                  target: self,
                                                                  action: #selector(showFruitStoreViewController))
     }
-
-    func showMakeJuiceCompleteAlert(juice: Juice) {
+    
+    private func showMakeJuiceCompleteAlert(juice: Juice) {
         let alert = UIAlertController(title: "\(juice.name) 나왔습니다!" , message: "맛있게 드세요!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "닫기", style: .destructive))
         self.present(alert, animated: true)
     }
     
-    func showUnderStockAlert(message: String) {
+    private func showUnderStockAlert(message: String) {
         let alert = UIAlertController(title: "알림", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "예", style: .default, handler: { [weak self] _ in
             self?.showFruitStoreViewController()
@@ -57,14 +57,14 @@ class JuiceMakerViewController: UIViewController, FruitStockDelegate {
         self.present(alert, animated: true)
     }
     
-    func makeAndNotifyOrder(juice: Juice) throws {
+    private func makeAndNotifyOrder(juice: Juice) throws {
         try juiceMaker.checkUnderstockedFruits(juice: juice)
-            juiceMaker.makeJuice(juice: juice)
-            showMakeJuiceCompleteAlert(juice: juice)
+        juiceMaker.makeJuice(juice: juice)
+        showMakeJuiceCompleteAlert(juice: juice)
     }
     
     @objc
-    func showFruitStoreViewController() {
+    private func showFruitStoreViewController() {
         guard
             let fruitStoreViewController = storyboard?.instantiateViewController(identifier: "FruitStoreViewController") as? FruitStoreViewController
         else {
@@ -77,14 +77,10 @@ class JuiceMakerViewController: UIViewController, FruitStockDelegate {
         fruitStoreViewController.kiwiStock = self.kiwiStockLabel.text ?? ""
         fruitStoreViewController.mangoStock = self.mangoStockLabel.text ?? ""
         
-        fruitStoreViewController.juiceMaker.fruitStore.fruitStocks = juiceMaker.fruitStore.fruitStocks
-        
         self.navigationController?.pushViewController(fruitStoreViewController, animated: true)
-        
-        fruitStoreViewController.delegate = self
     }
     
-    @IBAction func strawberryBananaJuiceButtonTapped(_ sender: UIButton) {
+    @IBAction private func strawberryBananaJuiceButtonTapped(_ sender: UIButton) {
         do {
             try makeAndNotifyOrder(juice: .strawberryBananaJuice)
             guard
@@ -100,7 +96,7 @@ class JuiceMakerViewController: UIViewController, FruitStockDelegate {
         }
     }
     
-    @IBAction func mangoKiwiJuiceButtonTapped(_ sender: UIButton) {
+    @IBAction private func mangoKiwiJuiceButtonTapped(_ sender: UIButton) {
         do {
             try makeAndNotifyOrder(juice: .mangoKiwiJuice)
             guard
@@ -116,7 +112,7 @@ class JuiceMakerViewController: UIViewController, FruitStockDelegate {
         }
     }
     
-    @IBAction func strawberryJuiceButtonTapped(_ sender: UIButton) {
+    @IBAction private func strawberryJuiceButtonTapped(_ sender: UIButton) {
         do {
             try makeAndNotifyOrder(juice: .strawberryJuice)
             guard
@@ -130,7 +126,7 @@ class JuiceMakerViewController: UIViewController, FruitStockDelegate {
         }
     }
     
-    @IBAction func bananaJuiceButtonTapped(_ sender: UIButton) {
+    @IBAction private func bananaJuiceButtonTapped(_ sender: UIButton) {
         do {
             try makeAndNotifyOrder(juice: .bananaJuice)
             guard
@@ -144,7 +140,7 @@ class JuiceMakerViewController: UIViewController, FruitStockDelegate {
         }
     }
     
-    @IBAction func pineappleJuiceButtonTapped(_ sender: UIButton) {
+    @IBAction private func pineappleJuiceButtonTapped(_ sender: UIButton) {
         do {
             try makeAndNotifyOrder(juice: .pineappleJuice)
             guard
@@ -158,7 +154,7 @@ class JuiceMakerViewController: UIViewController, FruitStockDelegate {
         }
     }
     
-    @IBAction func kiwiJuiceButtonTapped(_ sender: UIButton) {
+    @IBAction private func kiwiJuiceButtonTapped(_ sender: UIButton) {
         do {
             try makeAndNotifyOrder(juice: .kiwiJuice)
             guard
@@ -172,7 +168,7 @@ class JuiceMakerViewController: UIViewController, FruitStockDelegate {
         }
     }
     
-    @IBAction func mangoJuiceButtonTapped(_ sender: UIButton) {
+    @IBAction private func mangoJuiceButtonTapped(_ sender: UIButton) {
         do {
             try makeAndNotifyOrder(juice: .mangoJuice)
             guard
@@ -183,26 +179,6 @@ class JuiceMakerViewController: UIViewController, FruitStockDelegate {
             mangoStockLabel.text = String(mangoStock)
         } catch {
             showUnderStockAlert(message: error.localizedDescription)
-        }
-    }
-    
-    func updateFruitStock(fruit: Fruits, count: Int) {
-        switch fruit {
-        case .strawberry:
-            strawberryStockLabel.text = String(count)
-            juiceMaker.fruitStore.fruitStocks[.strawberry] = count
-        case .banana:
-            bananaStockLabel.text = String(count)
-            juiceMaker.fruitStore.fruitStocks[.banana] = count
-        case .pineapple:
-            pineappleStockLabel.text = String(count)
-            juiceMaker.fruitStore.fruitStocks[.pineapple] = count
-        case .kiwi:
-            kiwiStockLabel.text = String(count)
-            juiceMaker.fruitStore.fruitStocks[.kiwi] = count
-        case .mango:
-            mangoStockLabel.text = String(count)
-            juiceMaker.fruitStore.fruitStocks[.mango] = count
         }
     }
 }
