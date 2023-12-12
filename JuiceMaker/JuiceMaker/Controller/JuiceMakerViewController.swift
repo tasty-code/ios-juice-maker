@@ -35,6 +35,35 @@ final class JuiceMakerViewController: UIViewController {
     }
     
     
+    @IBAction func makeStrawberryBananaJuice(_ sender: UIButton) {
+        juiceMaker?.makeJuice(flavor: .strawberryBanana)
+    }
+    
+    @IBAction func makeMangoKiwiJuice(_ sender: UIButton) {
+        juiceMaker?.makeJuice(flavor: .mangoKiwi)
+    }
+    
+    @IBAction func makeStrawberryJuice(_ sender: UIButton) {
+        juiceMaker?.makeJuice(flavor: .strawberry)
+    }
+    
+    @IBAction func makeBananaJuice(_ sender: UIButton) {
+        juiceMaker?.makeJuice(flavor: .banana)
+    }
+    
+    @IBAction func makePineappleJuice(_ sender: UIButton) {
+        juiceMaker?.makeJuice(flavor: .pineapple)
+    }
+    
+    @IBAction func makeKiwiJuice(_ sender: UIButton) {
+        juiceMaker?.makeJuice(flavor: .kiwi)
+    }
+    
+    @IBAction func makeMangoJuice(_ sender: UIButton) {
+        juiceMaker?.makeJuice(flavor: .mango)
+    }
+    
+    
     private func setUp() {
         let stockDisplayConverter = StockDisplayResultConverter()
         self.stockDisplay?.resultConverter = stockDisplayConverter
@@ -45,9 +74,9 @@ final class JuiceMakerViewController: UIViewController {
         juiceConverter.display = self
     }
     
-    
 
 }
+
 
 extension JuiceMakerViewController: StockDisplayResultDisplayable {
     func displayStock(viewModel: StockDisplayModel.ViewModel) {
@@ -63,6 +92,14 @@ extension JuiceMakerViewController: StockDisplayResultDisplayable {
 
 extension JuiceMakerViewController: JuiceMakerResultDisplayable {
     func displayMakingResult(viewModel: JuiceMakerModel.ViewModel) {
+        guard let juiceName = viewModel.juiceName else {
+            let action: AlertActionHandler = { [weak self] _ in }
+            present(JuiceMakerAlert.fruitShortage(editAction: action).alertController, animated: true)
+            return
+        }
         
+        stockDisplay?.displayStock()
+        
+        present(JuiceMakerAlert.juiceIsReady(juiceName: juiceName).alertController, animated: true)
     }
 }
