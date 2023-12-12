@@ -28,8 +28,3 @@ struct JuiceMaker {
         try fruitStore.consume(ingredients: flavor.recipe)
     }
 }
-
-
-protocol JuiceMakerResultConvertable {
-    func convertRestult(_ result: JuiceMakerModel.Result)
-}

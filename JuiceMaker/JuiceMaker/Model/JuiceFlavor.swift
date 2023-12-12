@@ -32,6 +32,18 @@ enum JuiceFlavor {
             return [.mango: 2, .kiwi: 1]
         }
     }
+    
+    var name: String {
+        switch self {
+        case .strawberry: return "딸기"
+        case .banana: return "바나나"
+        case .pineapple: return "파인애플"
+        case .kiwi: return "키위"
+        case .mango: return "망고"
+        case .strawberryBanana: return "딸바"
+        case .mangoKiwi: return "망키"
+        }
+    }
 }
 
 typealias JuiceIngredients = [Fruit: Int]
