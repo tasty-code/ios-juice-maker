@@ -82,7 +82,7 @@ class JuiceViewController: UIViewController {
     private func alertJuiceServed(menu: JuiceMaker.Menu) {
         let alert = UIAlertController(title: "", message: "\(menu) 나왔습니다! 맛있게 드세요!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("쥬스 수령", comment: "Default action"), style: .default))
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     private func alertInsufficientStock() {
@@ -91,6 +91,6 @@ class JuiceViewController: UIViewController {
             self.showNavigationView()
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("아니오", comment: "Default action"), style: .default))
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
 }
