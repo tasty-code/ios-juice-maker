@@ -91,11 +91,14 @@ class DetailViewController: UIViewController {
         let currentValue = Int(sender.value)
         let previousValue = Int(sender.tag)
         
-        if currentValue > previousValue {
-            fruitStore.addFruitQuantity(fruit: FruitType.kiwi)
-        } else if currentValue < previousValue {
-            fruitStore.deleteFruitQuantity(fruit: FruitType.kiwi)
-        }
+//        if currentValue > previousValue ? fruitStore.addFruitQuantity(fruit: FruitType.kiwi) : fruitStore.deleteFruitQuantity(fruit: FruitType.kiwi)
+//    }
+//        
+//        if currentValue > previousValue {
+//            fruitStore.addFruitQuantity(fruit: FruitType.kiwi)
+//        } else if currentValue < previousValue {
+//            fruitStore.deleteFruitQuantity(fruit: FruitType.kiwi)
+//        }
         
         sender.tag = Int(sender.value)
         setupLabel()

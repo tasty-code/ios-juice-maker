@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C1DAE6362B26F456003544B4 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DAE6352B26F456003544B4 /* UIViewController+.swift */; };
 		C1ED27CB2B217B530013F195 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ED27C92B217B530013F195 /* DetailViewController.swift */; };
 		C1ED27CC2B217B530013F195 /* JuiceMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ED27CA2B217B530013F195 /* JuiceMakerViewController.swift */; };
 		C1ED27D02B2187760013F195 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ED27CF2B2187760013F195 /* ViewController.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C1DAE6352B26F456003544B4 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIViewController+.swift"; path = "../../../../../aloneDailyQuest/AloneDailyQuest_Project/Models/UIViewController+.swift"; sourceTree = "<group>"; };
 		C1ED27C92B217B530013F195 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C1ED27CA2B217B530013F195 /* JuiceMakerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JuiceMakerViewController.swift; sourceTree = "<group>"; };
 		C1ED27CF2B2187760013F195 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,11 +69,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C1ED27D12B218C510013F195 /* Views */ = {
+		C1DAE6342B26F3DE003544B4 /* Suppot */ = {
 			isa = PBXGroup;
 			children = (
 				C1ED27D22B218C5B0013F195 /* Assets.xcassets */,
 				E477D0722B26C84B000C9192 /* Colors.xcassets */,
+				E41167102B26A0FD0012BE2F /* CustomClass */,
+				E411670D2B269EDD0012BE2F /* Extension */,
+			);
+			path = Suppot;
+			sourceTree = "<group>";
+		};
+		C1ED27D12B218C510013F195 /* Views */ = {
+			isa = PBXGroup;
+			children = (
 				C1ED27D32B218C5B0013F195 /* LaunchScreen.storyboard */,
 				C1ED27DA2B218C770013F195 /* Main.storyboard */,
 			);
@@ -111,8 +122,6 @@
 		C73DAF2A255D0CDC00020D38 = {
 			isa = PBXGroup;
 			children = (
-				E41167102B26A0FD0012BE2F /* CustomClass */,
-				E411670D2B269EDD0012BE2F /* Extension */,
 				C73DAF35255D0CDD00020D38 /* JuiceMaker */,
 				C73DAF34255D0CDD00020D38 /* Products */,
 			);
@@ -129,6 +138,7 @@
 		C73DAF35255D0CDD00020D38 /* JuiceMaker */ = {
 			isa = PBXGroup;
 			children = (
+				C1DAE6342B26F3DE003544B4 /* Suppot */,
 				E4AE21D52B22F5BC004484C0 /* Message */,
 				C1ED27DC2B218C980013F195 /* Font */,
 				C1ED27D12B218C510013F195 /* Views */,
@@ -146,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				E411670E2B269F010012BE2F /* UIView+.swift */,
+				C1DAE6352B26F456003544B4 /* UIViewController+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -256,6 +267,7 @@
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
 				E41167122B26A1140012BE2F /* JuiceMakerButton.swift in Sources */,
 				C1ED27CC2B217B530013F195 /* JuiceMakerViewController.swift in Sources */,
+				C1DAE6362B26F456003544B4 /* UIViewController+.swift in Sources */,
 				E477D06F2B26C1C8000C9192 /* ColorAsset.swift in Sources */,
 				E4AE21D72B22F5D9004484C0 /* Message.swift in Sources */,
 				C1ED27D02B2187760013F195 /* ViewController.swift in Sources */,
