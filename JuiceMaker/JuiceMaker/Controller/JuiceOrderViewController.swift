@@ -26,18 +26,30 @@ final class JuiceOrderViewController: UIViewController {
     }
     
     @IBAction private func checkJuiceOrder(_ sender: UIButton) {
-        guard let juiceName = sender.titleLabel?.text?.components(separatedBy: " ")[0] else { return present(Alert.createAlertController(alertType: .defaultAlert, title: nil, message: JuiceMakerError.cannotFindLabel.description, view: nil), animated: true) }
-        guard let juice = juiceMaker.checkJuiceRecipe(juiceName: juiceName) else { return present(Alert.createAlertController(alertType: .defaultAlert, title: nil, message: JuiceMakerError.cannotFindJuice.description, view: nil), animated: true) }
+        guard let juiceName = sender.titleLabel?.text?.components(separatedBy: " ")[0] else {
+            let alert = Alert.createAlert(title: "오류", message: JuiceMakerError.cannotFindLabel.description, okTitle: "확인") { }
+            present(alert, animated: true)
+            return
+        }
+        guard let juice = juiceMaker.checkJuiceRecipe(juiceName: juiceName) else { 
+            let alert = Alert.createAlert(title: "오류", message: JuiceMakerError.cannotFindJuice.description, okTitle: "확인") { }
+            return
+        }
         order(juice: juice)
     }
     
     private func order(juice: Juice) {
         do {
             try juiceMaker.orderJuice(juice: juice)
-            present(Alert.createAlertController(alertType: .defaultAlert, title: nil, message: "\(juice.name) 나왔습니다! 맛있게 드세요!", view: self), animated: true)
+            let alert = Alert.createAlert(message: "\(juice.name) 나왔습니다! 맛있게 드세요!", okTitle: "확인") { }
+            present(alert, animated: true)
             updateFruitStockLabel()
         } catch {
-            present(Alert.createAlertController(alertType: .outOfStockAlert, title: nil, message: JuiceMakerError.outOfStock.description, view: self), animated: true)
+            let alert = Alert.createAlert(message: JuiceMakerError.outOfStock.description, okTitle: "예") {
+                self.moveToManageStockView()
+            }
+            alert.addAction(UIAlertAction(title: "아니오", style: .default))
+            present(alert, animated: true)
             updateFruitStockLabel()
         }
     }

@@ -7,23 +7,11 @@
 
 import UIKit
 
-struct Alert {
-    
-    static func createAlertController(alertType: AlertType, title: String?, message: String, view: UIViewController?) -> UIAlertController {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        switch alertType {
-        case .defaultAlert:
-            let okAction = UIAlertAction(title: "확인", style: .default)
-            alertController.addAction(okAction)
-        case .outOfStockAlert:
-            let okAction = UIAlertAction(title: "예", style: .default) { _ in view?.moveToManageStockView()
-            }
-            let cancelAction = UIAlertAction(title: "아니오", style: .default)
-            alertController.addAction(okAction)
-            alertController.addAction(cancelAction)
-        }
-        
-        return alertController
+class Alert {
+    static func createAlert(title: String? = nil, message: String? = nil, okTitle: String, okAction: @escaping () -> Void) -> UIAlertController {
+        let vc = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: okTitle, style: .default) { _ in okAction() }
+        vc.addAction(okAction)
+        return vc
     }
 }
