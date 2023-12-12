@@ -10,10 +10,10 @@ import Foundation
 enum Juice {
     case strawberry
     case banana
-    case kiwi
     case pineapple
-    case strawberryBanana
+    case kiwi
     case mango
+    case strawberryBanana
     case mangoKiwi
     
     var recipe: [Fruits: Int] {

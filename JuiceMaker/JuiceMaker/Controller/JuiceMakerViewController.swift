@@ -8,6 +8,9 @@ import UIKit
 
 class JuiceMakerViewController: UIViewController {
     
+    var fruit = FruitStore()
+    var juiceMaker = JuiceMaker()
+
     @IBOutlet var strawberryLabel: UILabel!
     @IBOutlet var bananaLabel: UILabel!
     @IBOutlet var kiwiLabel: UILabel!
@@ -17,27 +20,30 @@ class JuiceMakerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    @IBAction func strawberryButoon(_ sender: UIButton){
+    @IBAction func orderJuice(_ sender: UIButton) {
+        var selectedJuice: Juice?
         
-    }
-    @IBAction func bananaButoon(_ sender: UIButton){
-        
-    }
-    @IBAction func kiwiButoon(_ sender: UIButton){
-        
-    }
-    @IBAction func pineappleButoon(_ sender: UIButton){
-        
-    }
-    @IBAction func strawberryBananaButoon(_ sender: UIButton){
-        
-    }
-    @IBAction func mangoButoon(_ sender: UIButton){
-        
-    }
-    @IBAction func mangoKiwiButoon(_ sender: UIButton){
-        
+        switch sender.tag {
+        case 0:
+            selectedJuice = .strawberry
+        case 1:
+            selectedJuice = .banana
+        case 2:
+            selectedJuice = .pineapple
+        case 3:
+            selectedJuice = .kiwi
+        case 4:
+            selectedJuice = .mango
+        case 5:
+            selectedJuice = .strawberryBanana
+        case 6:
+            selectedJuice = .mangoKiwi
+        default:
+            return
+        }
+        if let selectedJuice = selectedJuice {
+            juiceMaker.makeJuice(juice: selectedJuice)
+        }
     }
     
     func updateFruitLabel() {

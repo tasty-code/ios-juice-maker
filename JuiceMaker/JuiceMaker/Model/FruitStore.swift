@@ -9,6 +9,7 @@ import Foundation
 // 과일 저장소 타입
 final class FruitStore {
     private var fruitStock = [Fruits: Int]()
+    
     init() {
         fruitStock = [
             .strawberry: 10,
@@ -19,8 +20,10 @@ final class FruitStore {
         ]
     }
     
-    func getFruitStock() -> [Fruits: Int] {
-        return fruitStock
+    public var fruitstock2: [Fruits: Int] {
+        get {
+            return fruitStock
+        }
     }
     
     func changeStock(fruitName: Fruits, amount: Int) {
