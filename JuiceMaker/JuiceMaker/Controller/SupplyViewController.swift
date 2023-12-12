@@ -23,11 +23,11 @@ class SupplyViewController: UIViewController {
     }
     
     private func showFruitsCount() {
-        strawberryCount.text = fruitStore.storage[FruitStore.Fruit.strawberry]?.description
-        bananaCount.text = fruitStore.storage[FruitStore.Fruit.banana]?.description
-        pineappleCount.text = fruitStore.storage[FruitStore.Fruit.pineapple]?.description
-        kiwiCount.text = fruitStore.storage[FruitStore.Fruit.kiwi]?.description
-        mangoCount.text = fruitStore.storage[FruitStore.Fruit.mango]?.description
+        strawberryCount.text = fruitStore.storage[.strawberry]?.description
+        bananaCount.text = fruitStore.storage[.banana]?.description
+        pineappleCount.text = fruitStore.storage[.pineapple]?.description
+        kiwiCount.text = fruitStore.storage[.kiwi]?.description
+        mangoCount.text = fruitStore.storage[.mango]?.description
     }
 
 
