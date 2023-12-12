@@ -21,9 +21,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
         if let starwberryQuantity = fruitStore.fruitInventory["딸기"] {
             strawberry.text = "\(starwberryQuantity)"
         } else {
