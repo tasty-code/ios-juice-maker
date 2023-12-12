@@ -27,24 +27,24 @@ class ViewController: UIViewController {
     
     func updateFruitLabels() {
         if let strawberryQuantity = fruitStore.fruitInventory["딸기"] {
-            strawberry.text = "\(strawberryQuantity)"
+            strawberry.text = String(strawberryQuantity)
         }
         if let bananaQuantity = fruitStore.fruitInventory["바나나"] {
-            banana.text = "\(bananaQuantity)"
+            banana.text = String(bananaQuantity)
         }
         if let pineAppleQuantity = fruitStore.fruitInventory["파인애플"] {
-            pineApple.text = "\(pineAppleQuantity)"
+            pineApple.text = String(pineAppleQuantity)
         }
         if let kiwiQuantity = fruitStore.fruitInventory["키위"] {
-            kiwi.text = "\(kiwiQuantity)"
+            kiwi.text = String(kiwiQuantity)
         }
         if let mangoQuantity = fruitStore.fruitInventory["망고"] {
-            mango.text = "\(mangoQuantity)"
+            mango.text = String(mangoQuantity)
         }
     }
     
-    
     @IBAction func strawBananaJuice(_ sender: UIButton) {
+        
         do {
             _ = try fruitStore.makeJuice(juiceRecipe: .strawberryBanana)
             displaySuccessAlert(message: "\(JuiceRecipe.strawberryBanana.name)쥬스 나왔습니다")
@@ -52,12 +52,14 @@ class ViewController: UIViewController {
         } catch {
             displayFailAlert()
         }
+        
         func displaySuccessAlert(message: String) {
             let alertController = UIAlertController(title: "쥬스 완성", message: message, preferredStyle: .alert)
             let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
             alertController.addAction(okAction)
             present(alertController, animated: true, completion: nil)
         }
+        
         func displayFailAlert() {
             let alertController = UIAlertController(title: "재료가 모자라요", message: "재고를 수정할까요?", preferredStyle: .alert)
             let yesAction = UIAlertAction(title: "예", style: .default) { [weak self] _ in
@@ -69,12 +71,6 @@ class ViewController: UIViewController {
             alertController.addAction(noAction)
             self.present(alertController, animated: true, completion: nil)
         }
-        do {
-            _ = try fruitStore.makeJuice(juiceRecipe: .strawberryBanana)
-        } catch {
-            print(fruitStoreError.makeJuiceError)
-        }
-        
     }
     
     @IBAction func mangoKiwiJuiceButton(_ sender: UIButton) {
