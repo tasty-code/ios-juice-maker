@@ -72,7 +72,6 @@
 		C71CD66F266C7B500038B9CB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */,
 				C71CD66A266C7ACB0038B9CB /* FruitStore.swift */,
 				F426214E2B1DBEE800C6423A /* Fruit.swift */,
 				F42621502B1DBEFD00C6423A /* FruitStock.swift */,
@@ -136,6 +135,7 @@
 			children = (
 				F456FA332B282CF10025386D /* StockDisplay */,
 				7F7DBF752B282DB70081CBAD /* JuiceMakerModel.swift */,
+				C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
