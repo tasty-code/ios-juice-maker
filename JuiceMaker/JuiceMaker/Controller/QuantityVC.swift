@@ -9,7 +9,7 @@ import UIKit
 
 class QuantityVC: UIViewController {
     
-    var fruitStore = FruitStore.shared
+    let fruitStore = FruitStore.shared
     
     @IBOutlet weak var strawberry: UILabel!
     @IBOutlet weak var banana: UILabel!
@@ -41,7 +41,7 @@ class QuantityVC: UIViewController {
     }
     
     @IBAction func strawberryStepper(_ sender: UIStepper) {
-        
+        strawberry.text = Int(sender.value).description
     }
     
     @IBAction func bananaStepper(_ sender: UIStepper) {
