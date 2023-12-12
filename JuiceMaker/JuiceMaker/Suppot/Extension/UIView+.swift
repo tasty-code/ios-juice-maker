@@ -9,8 +9,6 @@ import Foundation
 import UIKit
 
 extension UIView {
- 
-    
     func addGradient(colors: [UIColor]) {
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.frame = self.bounds

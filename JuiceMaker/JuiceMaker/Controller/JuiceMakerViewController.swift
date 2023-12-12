@@ -70,15 +70,15 @@ class JuiceMakerViewController: UIViewController {
     
     private func updateQuantityLabel(juice: JuiceType) {
         let labels: [JuiceType: UILabel] = {
-           return [
-            .strawberryJuice: quantityStrawberryJuiceLabel,
-            .strawberryBananaJuice: quantityStrawberryBananaJuiceLabel,
-            .bananaJuice: quantityBananaJuiceLabel,
-            .pineappleJuice: quantityPineappleJuiceLabel,
-            .kiwiJuice: quantityKiwiJuiceLabel,
-            .mangoKiwiJuice: quantityMangoKiwiJuiceLabel,
-            .mangoJuice: quantityMangoJuiceLabel
-           ]
+            return [
+                .strawberryJuice: quantityStrawberryJuiceLabel,
+                .strawberryBananaJuice: quantityStrawberryBananaJuiceLabel,
+                .bananaJuice: quantityBananaJuiceLabel,
+                .pineappleJuice: quantityPineappleJuiceLabel,
+                .kiwiJuice: quantityKiwiJuiceLabel,
+                .mangoKiwiJuice: quantityMangoKiwiJuiceLabel,
+                .mangoJuice: quantityMangoJuiceLabel
+            ]
         }()
         let quantity = juiceMaker.showJuiceQuantity(juice: juice)
         if let index = labels.firstIndex(where: { $0.key == juice }) {
@@ -99,7 +99,10 @@ class JuiceMakerViewController: UIViewController {
             juiceMaker.addJuiceQuantity(juice: .strawberryBananaJuice)
             updateQuantityLabel(juice: .strawberryBananaJuice)
         } else {
-            self.showAlert(message: Message.failedMakeJuice)
+            //            self.showAlert(message: Message.failedMakeJuice)
+            makeFailedAlert(title: "제작실패", message: Message.failedMakeJuice.description, okAction: { _ in
+                self.editAction()
+            })
         }
     }
     
@@ -112,6 +115,7 @@ class JuiceMakerViewController: UIViewController {
             self.showAlert(message: Message.failedMakeJuice)
         }
     }
+    
     @IBAction func mangoKiwijuiceButtonTapped(_ sender: UIButton) {
         if juiceMaker.makeJuice(juice: .mangoKiwiJuice) {
             self.showAlert(message: Message.successMakeJuice(juice: JuiceType.mangoKiwiJuice.rawValue))
@@ -121,6 +125,7 @@ class JuiceMakerViewController: UIViewController {
             self.showAlert(message: Message.failedMakeJuice)
         }
     }
+    
     @IBAction func strawberryjuiceButtonTapped(_ sender: UIButton) {
         if juiceMaker.makeJuice(juice: .strawberryJuice) {
             self.showAlert(message: Message.successMakeJuice(juice: JuiceType.strawberryJuice.rawValue))
@@ -130,6 +135,7 @@ class JuiceMakerViewController: UIViewController {
             self.showAlert(message: Message.failedMakeJuice)
         }
     }
+    
     @IBAction func bananajuiceButtonTapped(_ sender: UIButton) {
         if juiceMaker.makeJuice(juice: .bananaJuice) {
             self.showAlert(message: Message.successMakeJuice(juice: JuiceType.bananaJuice.rawValue))
@@ -139,6 +145,7 @@ class JuiceMakerViewController: UIViewController {
             self.showAlert(message: Message.failedMakeJuice)
         }
     }
+    
     @IBAction func kiwijuiceButtonTapped(_ sender: UIButton) {
         if juiceMaker.makeJuice(juice: .kiwiJuice) {
             self.showAlert(message: Message.successMakeJuice(juice: JuiceType.kiwiJuice.rawValue))
@@ -148,6 +155,7 @@ class JuiceMakerViewController: UIViewController {
             self.showAlert(message: Message.failedMakeJuice)
         }
     }
+    
     @IBAction func mangojuiceButtonTapped(_ sender: UIButton) {
         if juiceMaker.makeJuice(juice: .mangoJuice) {
             self.showAlert(message: Message.successMakeJuice(juice: JuiceType.mangoJuice.rawValue))
@@ -158,7 +166,16 @@ class JuiceMakerViewController: UIViewController {
         }
     }
     
+    func editAction() {
+        guard let controller = self.storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController else {
+            return
+        }
+    
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
 }
+
 
 extension UIButton {
     func setTitleFont(font: UIFont) {
