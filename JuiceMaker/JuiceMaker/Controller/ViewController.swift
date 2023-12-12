@@ -7,17 +7,15 @@
 import UIKit
 
 class ViewController: UIViewController {
-    let fruitStore = FruitStore()
+    
+    let fruitStore = FruitStore.shared
+
     
     @IBOutlet weak var strawberry: UILabel!
     @IBOutlet weak var banana: UILabel!
     @IBOutlet weak var pineApple: UILabel!
     @IBOutlet weak var kiwi: UILabel!
     @IBOutlet weak var mango: UILabel!
-    
-    
-    
-    
     
     func displaySuccessAlert(message: String) {
         let alertController = UIAlertController(title: "쥬스 완성", message: message, preferredStyle: .alert)
@@ -42,6 +40,11 @@ class ViewController: UIViewController {
         updateFruitLabels()
         
     }
+    
+    @IBAction func changeInvetoryButtonTapped(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "goToQuantityUpdate", sender: sender)
+    }
+    
     
     func updateFruitLabels() {
         if let strawberryQuantity = fruitStore.fruitInventory["딸기"] {

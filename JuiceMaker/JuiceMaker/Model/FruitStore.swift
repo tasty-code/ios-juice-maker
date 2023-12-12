@@ -9,13 +9,26 @@ import Foundation
 // 과일 저장소 타입
 class FruitStore {
     
-    var fruitInventory: [String: Int] = [
-        "딸기": 10,
-        "바나나": 10,
-        "파인애플": 10,
-        "키위": 10,
-        "망고": 10
-    ]
+    var fruitInventory: [String: Int]
+    static let shared = FruitStore()
+    
+    init () {
+        fruitInventory =  [
+            "딸기": 10,
+            "바나나": 10,
+            "파인애플": 10,
+            "키위": 10,
+            "망고": 10
+        ]
+    }
+    
+//    var fruitInventory: [String: Int] = [
+//        "딸기": 10,
+//        "바나나": 10,
+//        "파인애플": 10,
+//        "키위": 10,
+//        "망고": 10
+//    ]
     
     func displayCurrentFruitInventory(fruit: String) -> Int? {
         guard let currentQuantity = fruitInventory[fruit] else {
