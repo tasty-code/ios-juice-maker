@@ -35,4 +35,8 @@ final class FruitStore {
             self.fruitStocks[fruitType] = newFruitStock
         }
     }
+    
+    func fetch() -> [FruitStock] {
+        return self.fruitStocks.map { stock in stock.value }
+    }
 }
