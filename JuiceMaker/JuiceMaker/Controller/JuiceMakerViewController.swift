@@ -46,6 +46,10 @@ class JuiceMakerViewController: UIViewController {
         }
     }
     
+    @IBAction func addButton(_ sender: Any) {
+        guard let fruitStockViewController = storyboard?.instantiateViewController(identifier: "fruitStockViewController") as? FruitStockViewController else { return }
+        self.present(fruitStockViewController, animated: true, completion: nil)
+    }
     func updateFruitLabel() {
         
     }
