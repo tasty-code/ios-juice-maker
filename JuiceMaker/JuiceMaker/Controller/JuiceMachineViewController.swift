@@ -6,17 +6,18 @@ final class JuiceMachineViewController: UIViewController {
     
     @IBOutlet var juiceMachineView: JuiceMachineView!
     private let reception = Reception()
-    
+
     deinit { NotificationCenter.default.removeObserver(self) }
 }
 
 // MARK: - LifeCycle
 extension JuiceMachineViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        getFruitsStock()
         setupNotificationCenter()
+        setInitialStockLabel()
     }
 }
 
@@ -49,7 +50,7 @@ private extension JuiceMachineViewController {
     }
     
     @objc func bananaJuiceOrderButtonTapped() {
-    reception.acceptJuiceOrder(juiceType: .banana)
+        reception.acceptJuiceOrder(juiceType: .banana)
     }
 
     @objc func pineappleJuiceOrderButtonTapped() {
@@ -69,14 +70,29 @@ private extension JuiceMachineViewController {
 private extension JuiceMachineViewController {
     
     func setupNotificationCenter() {
-        NotificationCenter.default.addObserver(self, selector: #selector(getFruitsStock), name: .fruitStockDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateFruitStock), name: .fruitStockDidChange, object: nil)
     }
     
-    @objc func getFruitsStock() {
-        juiceMachineView.bananaStockLabel.text = String(reception.getFruitsStock(fruit: .banana))
-        juiceMachineView.strawberryStockLabel.text = String(reception.getFruitsStock(fruit: .strawberry))
-        juiceMachineView.mangoStockLabel.text = String(reception.getFruitsStock(fruit: .mango))
-        juiceMachineView.pineappleStockLabel.text = String(reception.getFruitsStock(fruit: .pineapple))
-        juiceMachineView.kiwiStockLabel.text = String(reception.getFruitsStock(fruit: .kiwi))
+    @objc func updateFruitStock(notification: Notification) {
+        guard let fruitStock = 
+                notification.userInfo?["fruitsStock"] as? [FruitStore.Fruits: Int] else { return }
+        updateStockLabel(from: fruitStock)
+    }
+    
+    func updateStockLabel(from fruitStock: [FruitStore.Fruits: Int]) {
+        juiceMachineView.bananaStockLabel.text = String(fruitStock[.banana] ?? 0)
+        print(String(fruitStock[.banana] ?? 0))
+        juiceMachineView.strawberryStockLabel.text = String(fruitStock[.strawberry] ?? 0)
+        juiceMachineView.mangoStockLabel.text = String(fruitStock[.mango] ?? 0)
+        juiceMachineView.pineappleStockLabel.text = String(fruitStock[.pineapple] ?? 0)
+        juiceMachineView.kiwiStockLabel.text = String(fruitStock[.kiwi] ?? 0)
+    }
+}
+
+// MARK: - 임시 초기값 설정
+extension JuiceMachineViewController {
+    func setInitialStockLabel() {
+        let fruitStock = reception.fetchInitialFruitsStock()
+        updateStockLabel(from: fruitStock)
     }
 }

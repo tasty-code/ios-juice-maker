@@ -30,24 +30,11 @@ struct Reception {
         }
     }
     
-    
     func acceptStockManageOrder(fruit: FruitStore.Fruits) {
-        
     }
     
-    func getFruitsStock(fruit: FruitStore.Fruits) -> Int {
-        switch fruit {
-        case .banana:
-            return juiceMaker.fruitStore.fruitsStock[.banana] ?? 0
-        case .strawberry:
-            return juiceMaker.fruitStore.fruitsStock[.strawberry] ?? 0
-        case .kiwi:
-            return juiceMaker.fruitStore.fruitsStock[.kiwi] ?? 0
-        case .mango:
-            return juiceMaker.fruitStore.fruitsStock[.mango] ?? 0
-        case .pineapple:
-            return juiceMaker.fruitStore.fruitsStock[.pineapple] ?? 0
-        }
+    func fetchInitialFruitsStock() -> [FruitStore.Fruits: Int] {
+        return juiceMaker.fruitStore.fruitsStock
     }
 }
 
