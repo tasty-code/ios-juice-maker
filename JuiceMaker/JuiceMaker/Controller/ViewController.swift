@@ -15,6 +15,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var kiwi: UILabel!
     @IBOutlet weak var mango: UILabel!
     
+    
+    
+    
+    
     func displaySuccessAlert(message: String) {
         let alertController = UIAlertController(title: "쥬스 완성", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)

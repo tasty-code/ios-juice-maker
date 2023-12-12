@@ -32,3 +32,25 @@ class Alert: UIAlertController {
         present(alertController, animated: true)
     }
 }
+
+
+
+//protocol AlertPresentable {
+//    
+//    func showSuccessAlert()
+//    func showFailAlert()
+//}
+//
+//
+//extension AlertPresentable {
+//    func showSuccessAlert() {
+//        // show
+//    }
+//    
+//    func showFailAlert() {
+//        // show
+//    }
+//    
+//}
+
+
