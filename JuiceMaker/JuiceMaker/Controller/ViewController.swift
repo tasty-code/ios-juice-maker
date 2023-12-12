@@ -31,4 +31,14 @@ extension ViewController {
     func configureUI() {
         labels.forEach { $0.text = fruitSore.fruitCount(fruit: $1).description}
     }
+    
+    func goToStockCangeView() {
+        guard let secondVC = storyboard?.instantiateViewController(withIdentifier: ViewID.secondVC.id) as? SecondViewController else { return }
+        self.navigationController?.pushViewController(secondVC, animated: true)
+    }
+    
+    @IBAction func stockChangeButtonTapped(_ sender: UIBarButtonItem) {
+        goToStockCangeView()
+    }
 }
+

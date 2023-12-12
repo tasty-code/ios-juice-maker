@@ -13,7 +13,7 @@
         <!--맛있는 쥬스를 만들어 드려요!-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="firstVC" id="BYZ-38-t0r" customClass="ViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -215,7 +215,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="맛있는 쥬스를 만들어 드려요!" id="Eal-fj-o4N">
-                        <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT"/>
+                        <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT">
+                            <connections>
+                                <action selector="stockChangeButtonTapped:" destination="BYZ-38-t0r" id="YYK-8Q-jfc"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="bananaLabel" destination="gvk-pA-Lw5" id="xZU-Al-Lsn"/>
@@ -247,10 +251,10 @@
             </objects>
             <point key="canvasLocation" x="19.419642857142858" y="92.753623188405811"/>
         </scene>
-        <!--View Controller-->
+        <!--Second View Controller-->
         <scene sceneID="fkG-vv-hpE">
             <objects>
-                <viewController id="Yu1-lM-nqp" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="secondVC" id="Yu1-lM-nqp" customClass="SecondViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tKV-4l-Vtc">
                         <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -279,14 +283,11 @@
                                             </stepper>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="ZQk-f4-zrz" firstAttribute="centerY" secondItem="Tmr-sM-e98" secondAttribute="centerY" id="0Ny-MG-EXu"/>
-                                            <constraint firstItem="0yV-kn-zaT" firstAttribute="width" secondItem="dCK-AJ-zGU" secondAttribute="width" id="7oE-w8-Cs9"/>
-                                            <constraint firstItem="ZQk-f4-zrz" firstAttribute="width" secondItem="dCK-AJ-zGU" secondAttribute="width" id="ReX-kX-W9K"/>
-                                            <constraint firstItem="0yV-kn-zaT" firstAttribute="centerX" secondItem="Tmr-sM-e98" secondAttribute="centerX" id="UZQ-mh-KKG"/>
-                                            <constraint firstItem="0yV-kn-zaT" firstAttribute="centerY" secondItem="Tmr-sM-e98" secondAttribute="centerY" id="ann-XV-pPO"/>
-                                            <constraint firstItem="dCK-AJ-zGU" firstAttribute="centerY" secondItem="Tmr-sM-e98" secondAttribute="centerY" id="kE8-bR-ZD1"/>
-                                            <constraint firstItem="ZQk-f4-zrz" firstAttribute="centerX" secondItem="Tmr-sM-e98" secondAttribute="centerX" id="mEk-sU-vuG"/>
-                                            <constraint firstItem="dCK-AJ-zGU" firstAttribute="centerX" secondItem="Tmr-sM-e98" secondAttribute="centerX" id="oz2-kq-Exv"/>
+                                            <constraint firstItem="dCK-AJ-zGU" firstAttribute="centerX" secondItem="Tmr-sM-e98" secondAttribute="centerX" id="AOG-Vk-DS7"/>
+                                            <constraint firstItem="0yV-kn-zaT" firstAttribute="centerX" secondItem="Tmr-sM-e98" secondAttribute="centerX" id="J6o-C2-OJg"/>
+                                            <constraint firstItem="ZQk-f4-zrz" firstAttribute="width" secondItem="dCK-AJ-zGU" secondAttribute="width" id="hKv-TU-UPG"/>
+                                            <constraint firstItem="ZQk-f4-zrz" firstAttribute="centerX" secondItem="Tmr-sM-e98" secondAttribute="centerX" id="ngj-sb-OB1"/>
+                                            <constraint firstItem="0yV-kn-zaT" firstAttribute="width" secondItem="dCK-AJ-zGU" secondAttribute="width" id="xmo-JP-Oc3"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="1O6-9p-r1i">
@@ -310,11 +311,11 @@
                                             </stepper>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="gKu-86-RhI" firstAttribute="centerX" secondItem="1O6-9p-r1i" secondAttribute="centerX" id="5SH-k8-qNV"/>
-                                            <constraint firstItem="O5s-2N-3iP" firstAttribute="centerX" secondItem="1O6-9p-r1i" secondAttribute="centerX" id="QQO-JE-a8M"/>
-                                            <constraint firstItem="gKu-86-RhI" firstAttribute="width" secondItem="y33-ND-gz2" secondAttribute="width" id="fX9-pc-DOg"/>
-                                            <constraint firstItem="O5s-2N-3iP" firstAttribute="width" secondItem="y33-ND-gz2" secondAttribute="width" id="fXS-tl-DeP"/>
-                                            <constraint firstItem="y33-ND-gz2" firstAttribute="centerX" secondItem="1O6-9p-r1i" secondAttribute="centerX" id="q9P-Vv-cO0"/>
+                                            <constraint firstItem="gKu-86-RhI" firstAttribute="width" secondItem="y33-ND-gz2" secondAttribute="width" id="DN7-y6-Tav"/>
+                                            <constraint firstItem="O5s-2N-3iP" firstAttribute="centerX" secondItem="1O6-9p-r1i" secondAttribute="centerX" id="Ud9-kH-kik"/>
+                                            <constraint firstItem="y33-ND-gz2" firstAttribute="centerX" secondItem="1O6-9p-r1i" secondAttribute="centerX" id="d7J-zT-F0s"/>
+                                            <constraint firstItem="gKu-86-RhI" firstAttribute="centerX" secondItem="1O6-9p-r1i" secondAttribute="centerX" id="oMQ-oe-Y6w"/>
+                                            <constraint firstItem="O5s-2N-3iP" firstAttribute="width" secondItem="y33-ND-gz2" secondAttribute="width" id="xZe-GX-gMd"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="zHl-qC-sdP">
@@ -338,11 +339,11 @@
                                             </stepper>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="rac-Ji-vZK" firstAttribute="centerX" secondItem="zHl-qC-sdP" secondAttribute="centerX" id="1gK-mT-lvt"/>
-                                            <constraint firstItem="MpT-VW-hCb" firstAttribute="centerX" secondItem="zHl-qC-sdP" secondAttribute="centerX" id="HSK-5p-b2s"/>
-                                            <constraint firstItem="Rcr-xr-eqz" firstAttribute="centerX" secondItem="zHl-qC-sdP" secondAttribute="centerX" id="L3f-RX-XOF"/>
-                                            <constraint firstItem="MpT-VW-hCb" firstAttribute="width" secondItem="rac-Ji-vZK" secondAttribute="width" id="Opj-U2-6If"/>
-                                            <constraint firstItem="Rcr-xr-eqz" firstAttribute="width" secondItem="rac-Ji-vZK" secondAttribute="width" id="jwA-bX-vlH"/>
+                                            <constraint firstItem="Rcr-xr-eqz" firstAttribute="width" secondItem="rac-Ji-vZK" secondAttribute="width" id="6st-kL-rY0"/>
+                                            <constraint firstItem="rac-Ji-vZK" firstAttribute="centerX" secondItem="zHl-qC-sdP" secondAttribute="centerX" id="FlA-1q-A8v"/>
+                                            <constraint firstItem="MpT-VW-hCb" firstAttribute="width" secondItem="rac-Ji-vZK" secondAttribute="width" id="Q57-T8-OBh"/>
+                                            <constraint firstItem="Rcr-xr-eqz" firstAttribute="centerX" secondItem="zHl-qC-sdP" secondAttribute="centerX" id="Ubt-xz-mDr"/>
+                                            <constraint firstItem="MpT-VW-hCb" firstAttribute="centerX" secondItem="zHl-qC-sdP" secondAttribute="centerX" id="yic-eA-44f"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="3uK-fH-63J">
@@ -366,11 +367,11 @@
                                             </stepper>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="ZDv-1m-HBY" firstAttribute="width" secondItem="EHe-D1-1xN" secondAttribute="width" id="LWD-IF-Vbn"/>
-                                            <constraint firstItem="ZDv-1m-HBY" firstAttribute="centerX" secondItem="3uK-fH-63J" secondAttribute="centerX" id="OmL-lk-YeJ"/>
-                                            <constraint firstItem="EHe-D1-1xN" firstAttribute="centerX" secondItem="3uK-fH-63J" secondAttribute="centerX" id="VS9-A8-qMM"/>
-                                            <constraint firstItem="klA-59-Nu4" firstAttribute="centerX" secondItem="3uK-fH-63J" secondAttribute="centerX" id="flR-cm-fHj"/>
-                                            <constraint firstItem="klA-59-Nu4" firstAttribute="width" secondItem="EHe-D1-1xN" secondAttribute="width" id="oYa-pG-GTe"/>
+                                            <constraint firstItem="ZDv-1m-HBY" firstAttribute="centerX" secondItem="3uK-fH-63J" secondAttribute="centerX" id="JX9-fr-moU"/>
+                                            <constraint firstItem="ZDv-1m-HBY" firstAttribute="width" secondItem="EHe-D1-1xN" secondAttribute="width" id="JgW-Tx-2Tq"/>
+                                            <constraint firstItem="klA-59-Nu4" firstAttribute="width" secondItem="EHe-D1-1xN" secondAttribute="width" id="V0u-ll-ChL"/>
+                                            <constraint firstItem="EHe-D1-1xN" firstAttribute="centerX" secondItem="3uK-fH-63J" secondAttribute="centerX" id="V1h-yg-l6j"/>
+                                            <constraint firstItem="klA-59-Nu4" firstAttribute="centerX" secondItem="3uK-fH-63J" secondAttribute="centerX" id="khk-o5-uvu"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="WMh-JA-ECY">
@@ -394,25 +395,21 @@
                                             </stepper>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="xbn-6P-grO" firstAttribute="width" secondItem="w1F-9o-qJR" secondAttribute="width" id="MAf-7x-dkc"/>
-                                            <constraint firstItem="YJI-ER-LJR" firstAttribute="width" secondItem="w1F-9o-qJR" secondAttribute="width" id="l8e-wV-5K2"/>
-                                            <constraint firstItem="xbn-6P-grO" firstAttribute="centerX" secondItem="WMh-JA-ECY" secondAttribute="centerX" id="mHY-3n-nkl"/>
-                                            <constraint firstItem="YJI-ER-LJR" firstAttribute="centerX" secondItem="WMh-JA-ECY" secondAttribute="centerX" id="okH-Ad-kiP"/>
-                                            <constraint firstItem="w1F-9o-qJR" firstAttribute="centerX" secondItem="WMh-JA-ECY" secondAttribute="centerX" id="wOH-ut-1W6"/>
+                                            <constraint firstItem="xbn-6P-grO" firstAttribute="width" secondItem="w1F-9o-qJR" secondAttribute="width" id="72u-YY-7vM"/>
+                                            <constraint firstItem="YJI-ER-LJR" firstAttribute="width" secondItem="w1F-9o-qJR" secondAttribute="width" id="KyT-7b-rQY"/>
+                                            <constraint firstItem="w1F-9o-qJR" firstAttribute="centerX" secondItem="WMh-JA-ECY" secondAttribute="centerX" id="PMR-2d-PIZ"/>
+                                            <constraint firstItem="YJI-ER-LJR" firstAttribute="centerX" secondItem="WMh-JA-ECY" secondAttribute="centerX" id="Zn5-lq-i8K"/>
+                                            <constraint firstItem="xbn-6P-grO" firstAttribute="centerX" secondItem="WMh-JA-ECY" secondAttribute="centerX" id="ez0-7a-vwt"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="Tmr-sM-e98" firstAttribute="centerY" secondItem="mRg-Qb-PyB" secondAttribute="centerY" id="asE-dR-M9Q"/>
-                                    <constraint firstItem="Tmr-sM-e98" firstAttribute="centerX" secondItem="mRg-Qb-PyB" secondAttribute="centerX" id="zmY-nO-9jO"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gcO-Xb-kNs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="mRg-Qb-PyB" firstAttribute="centerX" secondItem="tKV-4l-Vtc" secondAttribute="centerX" id="dcd-W7-6OB"/>
-                            <constraint firstItem="mRg-Qb-PyB" firstAttribute="centerY" secondItem="tKV-4l-Vtc" secondAttribute="centerY" id="lJM-7e-61f"/>
+                            <constraint firstItem="mRg-Qb-PyB" firstAttribute="centerX" secondItem="tKV-4l-Vtc" secondAttribute="centerX" id="1NH-FB-XOn"/>
+                            <constraint firstItem="mRg-Qb-PyB" firstAttribute="centerY" secondItem="tKV-4l-Vtc" secondAttribute="centerY" id="zCf-Cl-Ivb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="g4W-fY-l7r"/>

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		844E12762B27F4E70048B0C2 /* ViewID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844E12752B27F4E70048B0C2 /* ViewID.swift */; };
+		844E12782B27F5900048B0C2 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844E12772B27F5900048B0C2 /* SecondViewController.swift */; };
 		BDEC04862B1EB70400E30D7A /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEC04852B1EB70400E30D7A /* Fruit.swift */; };
 		BDEC04882B1EB7FA00E30D7A /* JuiceMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEC04872B1EB7FA00E30D7A /* JuiceMenu.swift */; };
 		BDEC048A2B1F0D0400E30D7A /* Juice.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEC04892B1F0D0400E30D7A /* Juice.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		844E12752B27F4E70048B0C2 /* ViewID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewID.swift; sourceTree = "<group>"; };
+		844E12772B27F5900048B0C2 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		BDEC04852B1EB70400E30D7A /* Fruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
 		BDEC04872B1EB7FA00E30D7A /* JuiceMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMenu.swift; sourceTree = "<group>"; };
 		BDEC04892B1F0D0400E30D7A /* Juice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Juice.swift; sourceTree = "<group>"; };
@@ -47,12 +51,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		844E12742B27F4D30048B0C2 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				844E12752B27F4E70048B0C2 /* ViewID.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		C71CD66D266C7B470038B9CB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				C73DAF36255D0CDD00020D38 /* AppDelegate.swift */,
 				C73DAF38255D0CDD00020D38 /* SceneDelegate.swift */,
 				C73DAF3A255D0CDD00020D38 /* ViewController.swift */,
+				844E12772B27F5900048B0C2 /* SecondViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -98,6 +111,7 @@
 		C73DAF35255D0CDD00020D38 /* JuiceMaker */ = {
 			isa = PBXGroup;
 			children = (
+				844E12742B27F4D30048B0C2 /* Enums */,
 				C71CD66D266C7B470038B9CB /* Controller */,
 				C71CD66F266C7B500038B9CB /* Model */,
 				C71CD671266C7B570038B9CB /* View */,
@@ -180,9 +194,11 @@
 				BDEC04862B1EB70400E30D7A /* Fruit.swift in Sources */,
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
 				C73DAF3B255D0CDD00020D38 /* ViewController.swift in Sources */,
+				844E12762B27F4E70048B0C2 /* ViewID.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
 				C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */,
 				BDEC048A2B1F0D0400E30D7A /* Juice.swift in Sources */,
+				844E12782B27F5900048B0C2 /* SecondViewController.swift in Sources */,
 				C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
