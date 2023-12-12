@@ -4,7 +4,7 @@
 //  Copyright © yagom academy. All rights reserved.
 // 
 
-struct JuiceMaker {
+final class JuiceMaker {
     private let fruitStore: FruitStore
     
     var resultConverter: JuiceMakerResultConvertable?

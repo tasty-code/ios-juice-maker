@@ -8,9 +8,11 @@ import UIKit
 
 final class JuiceMakerViewController: UIViewController {
     
-    private var stockDisplay: StockDisplay?
+    private let stockDisplay: StockDisplay?
     
-    private var juiceMaker: JuiceMaker?
+    private let juiceMaker: JuiceMaker?
+    
+    private let router: JuiceMakerRouter?
     
     @IBOutlet private weak var strawberryStockLabel: UILabel!
     
@@ -25,6 +27,7 @@ final class JuiceMakerViewController: UIViewController {
     required init?(coder: NSCoder) {
         self.stockDisplay = nil
         self.juiceMaker = nil
+        self.router = nil
         
         super.init(coder: coder)
     }
@@ -32,7 +35,7 @@ final class JuiceMakerViewController: UIViewController {
     init?(coder: NSCoder, fruitStore: FruitStore) {
         self.stockDisplay = StockDisplay(fruitStore: fruitStore)
         self.juiceMaker = JuiceMaker(fruitStore: fruitStore)
-        
+        self.router = JuiceMakerRouter(dataStore: fruitStore)
         super.init(coder: coder)
         setUp()
     }
@@ -71,7 +74,6 @@ final class JuiceMakerViewController: UIViewController {
         juiceMaker?.makeJuice(flavor: .mango)
     }
     
-    
     private func setUp() {
         let stockDisplayConverter = StockDisplayResultConverter()
         self.stockDisplay?.resultConverter = stockDisplayConverter
@@ -80,9 +82,9 @@ final class JuiceMakerViewController: UIViewController {
         let juiceConverter = JuiceMakerResultConverter()
         self.juiceMaker?.resultConverter = juiceConverter
         juiceConverter.display = self
+        
+        self.router?.sourceViewController = self
     }
-    
-
 }
 
 extension JuiceMakerViewController: StoryboardIdentifiable { }
@@ -102,7 +104,9 @@ extension JuiceMakerViewController: StockDisplayResultDisplayable {
 extension JuiceMakerViewController: JuiceMakerResultDisplayable {
     func displayMakingResult(viewModel: JuiceMakerModel.ViewModel) {
         guard let juiceName = viewModel.juiceName else {
-            let action: AlertActionHandler = { [weak self] _ in }
+            let action: AlertActionHandler = { [weak self] _ in
+                self?.router?.routeToStockManager()
+            }
             present(JuiceMakerAlert.fruitShortage(editAction: action).alertController, animated: true)
             return
         }
