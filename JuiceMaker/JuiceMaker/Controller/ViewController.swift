@@ -21,12 +21,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let starwberryQuantity = fruitStore.fruitInventory["딸기"] {
-            strawberry.text = "\(starwberryQuantity)"
-        } else {
-            print(fruitStoreError.errorDefault)
-        }
         
+        if let strawberryQuantity = fruitStore.displayCurrentFruitInventory(fruit: "딸기") {
+            strawberry.text = "\(strawberryQuantity)"
+        }
+            
         if let bananaQuantity = fruitStore.fruitInventory["바나나"] {
             banana.text = "\(bananaQuantity)"
         } else {
@@ -68,14 +67,21 @@ class ViewController: UIViewController {
                 // '예'를 선택한 경우, segue 실행하여 화면 전환
                 self?.performSegue(withIdentifier: "goToQuantityUpdate", sender: sender)
             }
-            let noAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
+            let noAction = UIAlertAction(title: "아니오", style: .cancel)
             alertController.addAction(yesAction)
             alertController.addAction(noAction)
             self.present(alertController, animated: true, completion: nil)
         }
+        do {
+            _ = try fruitStore.makeJuice(juiceRecipe: .strawberryBanana)
+        } catch {
+            print(fruitStoreError.makeJuiceError)
+        }
+        
     }
     
     @IBAction func mangoKiwiJuiceButton(_ sender: UIButton) {
+        
     }
     
     @IBAction func strawberryButton(_ sender: UIButton) {
