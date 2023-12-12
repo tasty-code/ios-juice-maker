@@ -5,13 +5,13 @@
 //  Created by Matthew on 12/7/23.
 //
 
-import Foundation
+import UIKit
 
-struct FruitData {
-    let name: FruitType
-    var quantity: Int64
+struct FruitInfo {
+    let name: Fruit
+    var quantity: Int
     
-    init(name: FruitType, quantity: Int64) {
+    init(name: Fruit, quantity: Int) {
         self.name = name
         self.quantity = quantity
     }

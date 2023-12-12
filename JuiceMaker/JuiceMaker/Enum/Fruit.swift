@@ -5,9 +5,9 @@
 //  Created by 둘리 on 2023/12/10.
 //
 
-import Foundation
+import UIKit
 
-enum FruitType: String {
+enum Fruit: String {
     case strawberry = "딸기"
     case banana = "바나나"
     case pineapple = "파인애플"

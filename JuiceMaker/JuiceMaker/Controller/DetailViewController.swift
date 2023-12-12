@@ -7,10 +7,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
-
-    var fruitStore = FruitStore.shared
-    
+final class DetailViewController: UIViewController {
     @IBOutlet weak var quantityStrawberryLabel: UILabel!
     @IBOutlet weak var quantityBananaLabel: UILabel!
     @IBOutlet weak var quantityPineappleLabel: UILabel!
@@ -26,10 +23,10 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLabel()
-        addTarget()
+        addActionButton()
     }
     
-    func addTarget() {
+    private func addActionButton() {
         remoteStrawberryButton.addTarget(self, action: #selector(strawberryStepperValueChanged(_:)), for: .valueChanged)
         remoteBananaButton.addTarget(self, action: #selector(bananaStepperValueChanged(_:)), for: .valueChanged)
         remotePineappleButton.addTarget(self, action: #selector(pineappleStepperValueChanged(_:)), for: .valueChanged)
@@ -37,57 +34,61 @@ class DetailViewController: UIViewController {
         remotemangoButton.addTarget(self, action: #selector(mangoStepperValueChanged(_:)), for: .valueChanged)
     }
     
-    func setupLabel() {
-        quantityStrawberryLabel.text = fruitStore.showFruitQuantity(fruit: FruitType.strawberry)
-        quantityBananaLabel.text = fruitStore.showFruitQuantity(fruit: FruitType.banana)
-        quantityPineappleLabel.text = fruitStore.showFruitQuantity(fruit: FruitType.pineapple)
-        quantityKiwiLabel.text = fruitStore.showFruitQuantity(fruit: FruitType.kiwi)
-        quantityMangoLabel.text = fruitStore.showFruitQuantity(fruit: FruitType.mango)
+    private func setupLabel() {
+        quantityStrawberryLabel.text = FruitStore.shared.showFruitQuantity(fruit: Fruit.strawberry)
+        quantityBananaLabel.text = FruitStore.shared.showFruitQuantity(fruit: Fruit.banana)
+        quantityPineappleLabel.text = FruitStore.shared.showFruitQuantity(fruit: Fruit.pineapple)
+        quantityKiwiLabel.text = FruitStore.shared.showFruitQuantity(fruit: Fruit.kiwi)
+        quantityMangoLabel.text = FruitStore.shared.showFruitQuantity(fruit: Fruit.mango)
     }
     
-    @objc func strawberryStepperValueChanged(_ sender: UIStepper) {
+    @objc
+    private func strawberryStepperValueChanged(_ sender: UIStepper) {
         let currentValue = Int(sender.value)
         let previousValue = Int(sender.tag)
         
         if currentValue > previousValue {
-            fruitStore.addFruitQuantity(fruit: FruitType.strawberry)
+            FruitStore.shared.addFruitQuantity(fruit: Fruit.strawberry)
         } else if currentValue < previousValue {
-            fruitStore.deleteFruitQuantity(fruit: FruitType.strawberry)
+            FruitStore.shared.deleteFruitQuantity(fruit: Fruit.strawberry)
         }
         
         sender.tag = Int(sender.value)
         setupLabel()
     }
     
-    @objc func bananaStepperValueChanged(_ sender: UIStepper) {
+    @objc
+    private func bananaStepperValueChanged(_ sender: UIStepper) {
         let currentValue = Int(sender.value)
         let previousValue = Int(sender.tag)
         
         if currentValue > previousValue {
-            fruitStore.addFruitQuantity(fruit: FruitType.banana)
+            FruitStore.shared.addFruitQuantity(fruit: Fruit.banana)
         } else if currentValue < previousValue {
-            fruitStore.deleteFruitQuantity(fruit: FruitType.banana)
+            FruitStore.shared.deleteFruitQuantity(fruit: Fruit.banana)
         }
         
         sender.tag = Int(sender.value)
         setupLabel()
     }
     
-    @objc func pineappleStepperValueChanged(_ sender: UIStepper) {
+    @objc
+    private func pineappleStepperValueChanged(_ sender: UIStepper) {
         let currentValue = Int(sender.value)
         let previousValue = Int(sender.tag)
         
         if currentValue > previousValue {
-            fruitStore.addFruitQuantity(fruit: FruitType.pineapple)
+            FruitStore.shared.addFruitQuantity(fruit: Fruit.pineapple)
         } else if currentValue < previousValue {
-            fruitStore.deleteFruitQuantity(fruit: FruitType.pineapple)
+            FruitStore.shared.deleteFruitQuantity(fruit: Fruit.pineapple)
         }
         
         sender.tag = Int(sender.value)
         setupLabel()
     }
     
-    @objc func kiwiStepperValueChanged(_ sender: UIStepper) {
+    @objc
+    private func kiwiStepperValueChanged(_ sender: UIStepper) {
         let currentValue = Int(sender.value)
         let previousValue = Int(sender.tag)
         
@@ -104,14 +105,15 @@ class DetailViewController: UIViewController {
         setupLabel()
     }
     
-    @objc func mangoStepperValueChanged(_ sender: UIStepper) {
+    @objc
+    private func mangoStepperValueChanged(_ sender: UIStepper) {
         let currentValue = Int(sender.value)
         let previousValue = Int(sender.tag)
         
         if currentValue > previousValue {
-            fruitStore.addFruitQuantity(fruit: FruitType.mango)
+            FruitStore.shared.addFruitQuantity(fruit: Fruit.mango)
         } else if currentValue < previousValue {
-            fruitStore.deleteFruitQuantity(fruit: FruitType.mango)
+            FruitStore.shared.deleteFruitQuantity(fruit: Fruit.mango)
         }
         
         sender.tag = Int(sender.value)

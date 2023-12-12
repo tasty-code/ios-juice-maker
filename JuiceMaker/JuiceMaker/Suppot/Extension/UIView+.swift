@@ -5,11 +5,10 @@
 //  Created by 둘리 on 2023/12/11.
 //
 
-import Foundation
 import UIKit
 
 extension UIView {
-    func addGradient(colors: [UIColor]) {
+    public func addGradient(colors: [UIColor]) {
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.frame = self.bounds
         gradient.colors = colors.map{ $0.cgColor }
