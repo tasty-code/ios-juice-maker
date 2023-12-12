@@ -7,7 +7,7 @@
 import UIKit
 
 class ViewController: UIViewController, FruitStoreViewController {
-
+    
     @IBOutlet weak var strawberryLabel: UILabel!
     @IBOutlet weak var bananaLabel: UILabel!
     @IBOutlet weak var pineappleLabel: UILabel!
@@ -15,12 +15,14 @@ class ViewController: UIViewController, FruitStoreViewController {
     @IBOutlet weak var mangoLabel: UILabel!
     
     var labels: Dictionary<UILabel, Fruit> = [:]
-    var fruitStore: FruitStore = FruitStore()
+    var fruitStore: FruitStore = FruitStore.shared
+    var juiceMaker: JuiceMaker = JuiceMaker()
+    let jucieMenu: [Juice] = Juice.allCases
     
     override func viewDidLoad() {
         super.viewDidLoad()
         labels = [strawberryLabel : .strawberry, bananaLabel : .banana, pineappleLabel : .pineapple, kiwiLabel : .kiwi, mangoLabel : .mango]
-        configureFroutStoreUI()
+        configureFruitStoreUI()
     }
 
 }
@@ -35,5 +37,13 @@ extension ViewController {
     @IBAction func stockChangeButtonTapped(_ sender: UIBarButtonItem) {
         goToStockCangeView()
     }
+    
+    @IBAction func juiceButtonTapped(_ sender: UIButton) {
+        guard let juice =  juiceMaker.makeJuice(juice: jucieMenu[sender.tag]) else {
+            present(Alert.juiceFail(goToStockCangeView).modal, animated: true, completion: nil)
+            return
+        }
+        present(Alert.juiceSucess(juice).modal, animated: true, completion: nil)
+        configureFruitStoreUI()
+    }
 }
-

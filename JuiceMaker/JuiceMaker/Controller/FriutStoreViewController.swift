@@ -16,11 +16,11 @@ protocol FruitStoreViewController {
     var mangoLabel: UILabel! { get }
     var labels:  Dictionary<UILabel, Fruit> { get }
 
-    func configureFroutStoreUI()
+    func configureFruitStoreUI()
 }
 
 extension FruitStoreViewController {
-    func configureFroutStoreUI() {
+    func configureFruitStoreUI() {
         labels.forEach { $0.text = fruitStore.fruitCount(fruit: $1).description }
     }
 }
