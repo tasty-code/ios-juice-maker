@@ -7,7 +7,7 @@
 import Foundation
 
 struct JuiceMaker {
-    var fruitStore: FruitStore = FruitStore()
+    var fruitStore: FruitStore = FruitStore.shared
     
     func isEnough(juiceMenu: JuiceMenu) -> Bool {
         var stockCheck: Bool = true
@@ -22,7 +22,6 @@ struct JuiceMaker {
     
     mutating func makeJuice(juiceMenu: JuiceMenu) -> Juice? {
         guard isEnough(juiceMenu: juiceMenu) else {
-            print("재고 없어용ㅠㅠ")
             return nil
         }
         
@@ -30,8 +29,7 @@ struct JuiceMaker {
             fruitStore.release(fruit: fruit, count: count)
         }
         
-        print("\(juiceMenu.name) 나왔습니다.")
         return Juice(juiceMenu: juiceMenu)
     }
-    
+
 }

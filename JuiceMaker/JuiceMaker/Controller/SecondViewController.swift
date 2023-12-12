@@ -16,11 +16,11 @@ class SecondViewController: UIViewController, FruitStoreViewController {
     @IBOutlet weak var mangoLabel: UILabel!
     
     var labels: Dictionary<UILabel, Fruit> = [:]
-    var fruitStore: FruitStore = FruitStore()
+    var fruitStore: FruitStore = FruitStore.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
         labels = [strawberryLabel : .strawberry, bananaLabel : .banana, pineappleLabel : .pineapple, kiwiLabel : .kiwi, mangoLabel : .mango]
-        configureFroutStoreUI()
+        configureFruitStoreUI()
     }
 }

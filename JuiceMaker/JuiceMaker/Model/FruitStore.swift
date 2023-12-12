@@ -6,21 +6,22 @@
 
 import Foundation
 
-struct FruitStore {
+class FruitStore {
+    static var shared: FruitStore = FruitStore()
     private var store: Dictionary<Fruit, Int>
     
-    init() {
+    private init() {
         self.store = Dictionary()
         Fruit.allCases.forEach { store[$0] = 10 }
     }
     
-    public mutating func warehouse(fruit: Fruit, count: Int) {
+    public func warehouse(fruit: Fruit, count: Int) {
         if let nowCount = store[fruit] {
             store[fruit] = nowCount + count
         }
     }
     
-    public mutating func release(fruit: Fruit, count: Int) {
+    public func release(fruit: Fruit, count: Int) {
         guard let nowCount = store[fruit] else {
             return
         }
