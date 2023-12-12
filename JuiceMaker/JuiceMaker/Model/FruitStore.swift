@@ -19,6 +19,10 @@ final class FruitStore {
         ]
     }
     
+    func getFruitStock() -> [Fruits: Int] {
+        return fruitStock
+    }
+    
     func changeStock(fruitName: Fruits, amount: Int) {
         guard var currentStock = fruitStock[fruitName] else { return }
         currentStock += amount
