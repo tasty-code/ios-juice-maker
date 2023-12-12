@@ -31,7 +31,6 @@ final class JuiceMakerViewController: UIViewController {
         
         setUp()
         stockDisplay?.displayStock()
-        
     }
     
     
@@ -77,6 +76,7 @@ final class JuiceMakerViewController: UIViewController {
 
 }
 
+extension JuiceMakerViewController: StoryboardIdentifiable { }
 
 extension JuiceMakerViewController: StockDisplayResultDisplayable {
     func displayStock(viewModel: StockDisplayModel.ViewModel) {
