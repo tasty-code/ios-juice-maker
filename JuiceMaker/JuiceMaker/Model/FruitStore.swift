@@ -10,7 +10,7 @@ import Foundation
 class FruitStore {
     
     var fruitInventory: [String: Int] = [
-        "딸기": 50,
+        "딸기": 10,
         "바나나": 10,
         "파인애플": 10,
         "키위": 10,
