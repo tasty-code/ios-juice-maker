@@ -1,13 +1,14 @@
 //
-//  JuiceMaker - ViewController.swift
-//  Created by yagom. 
-//  Copyright © yagom academy. All rights reserved.
-// 
+//  SecondViewController.swift
+//  JuiceMaker
+//
+//  Created by dopamint on 12/12/23.
+//
 
 import UIKit
 
-class ViewController: UIViewController, FruitStoreViewController {
 
+class SecondViewController: UIViewController, FruitStoreViewController {
     @IBOutlet weak var strawberryLabel: UILabel!
     @IBOutlet weak var bananaLabel: UILabel!
     @IBOutlet weak var pineappleLabel: UILabel!
@@ -22,18 +23,4 @@ class ViewController: UIViewController, FruitStoreViewController {
         labels = [strawberryLabel : .strawberry, bananaLabel : .banana, pineappleLabel : .pineapple, kiwiLabel : .kiwi, mangoLabel : .mango]
         configureFroutStoreUI()
     }
-
 }
-
-extension ViewController {
-    
-    func goToStockCangeView() {
-        guard let secondVC = storyboard?.instantiateViewController(withIdentifier: ViewID.secondVC.id) as? SecondViewController else { return }
-        self.navigationController?.pushViewController(secondVC, animated: true)
-    }
-    
-    @IBAction func stockChangeButtonTapped(_ sender: UIBarButtonItem) {
-        goToStockCangeView()
-    }
-}
-

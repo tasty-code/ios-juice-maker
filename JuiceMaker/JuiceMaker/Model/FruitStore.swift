@@ -39,4 +39,13 @@ struct FruitStore {
         }
         return false
     }
+    
+    func fruitCount(fruit: Fruit) -> Int {
+        if let nowCount =  store[fruit] {
+            return nowCount
+        }
+        return 0
+    }
 }
+
+
