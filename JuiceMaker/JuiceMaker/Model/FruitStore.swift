@@ -23,7 +23,7 @@ class FruitStore {
         }
     }
     
-    var storage: [Fruit: Int] = [:]
+    private(set) var storage: [Fruit: Int] = [:]
     
     func supply(fruitName: Fruit, amount: Int) throws {
         guard let currentStock = self.storage[fruitName], (currentStock + amount) >= 0 else {
