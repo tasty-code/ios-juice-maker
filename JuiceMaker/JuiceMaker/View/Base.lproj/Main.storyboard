@@ -413,6 +413,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="g4W-fY-l7r"/>
+                    <connections>
+                        <outlet property="bananaLabel" destination="gKu-86-RhI" id="EuU-zs-g2G"/>
+                        <outlet property="kiwiLabel" destination="ZDv-1m-HBY" id="Zha-8Q-Mtk"/>
+                        <outlet property="mangoLabel" destination="YJI-ER-LJR" id="BhG-K2-D3O"/>
+                        <outlet property="pineappleLabel" destination="MpT-VW-hCb" id="Udw-25-dBu"/>
+                        <outlet property="strawberryLabel" destination="0yV-kn-zaT" id="0Xj-ww-LQn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
             </objects>
