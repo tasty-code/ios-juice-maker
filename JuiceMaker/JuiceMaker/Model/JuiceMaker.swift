@@ -23,7 +23,7 @@ struct JuiceMaker {
     func order(_ recipe: Recipe) -> Bool {
         do {
             try takeOrder(recipe)
-        } catch JuiceMakerErrors.orderFail(let recipe) {
+        } catch JuiceMakerErrors.orderFail {
             return false
         } catch {
             return false
@@ -38,7 +38,7 @@ struct JuiceMaker {
                   let recipe = store.recipes[String(splittedIngredientArray[0])],
                     fruitsStock >= recipe[0]
             else {
-                throw JuiceMakerErrors.orderFail(kind)
+                throw JuiceMakerErrors.orderFail
             }
             store.fruits[String(splittedIngredientArray[0])] = fruitsStock - recipe[0]
             store.fruitsFlag[String(splittedIngredientArray[0])] = true
@@ -47,7 +47,7 @@ struct JuiceMaker {
                 guard let fruitsStock = store.fruits[String(fruit)],
                       let recipe = store.recipes[kind.rawValue],
                       fruitsStock >= recipe[index] else {
-                    throw JuiceMakerErrors.orderFail(kind)
+                    throw JuiceMakerErrors.orderFail
                 }
                 store.fruits[String(fruit)] = fruitsStock - recipe[index]
                 store.fruitsFlag[String(fruit)] = true
