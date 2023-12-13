@@ -10,7 +10,7 @@ import Foundation
 struct JuiceMaker {
     private let fruitStore = FruitStore()
     
-    mutating func makeJuice(juice: Juice) {
+    mutating func makeJuice(juice: Juice) -> Bool {
         do {
             let recipe = juice.recipe
             guard fruitStore.checkStockAvailability(recipe: recipe) else {
@@ -20,10 +20,13 @@ struct JuiceMaker {
             for (fruit, amount) in recipe {
                 fruitStore.changeStock(fruitName: fruit, amount: -amount)
             }
+            return true
         } catch JuiceMakerError.insufficientStock {
             print(JuiceMakerError.insufficientStock.errorMessage)
+            return false
         } catch {
             print(JuiceMakerError.unexpected.errorMessage)
+            return false
         }
     }
 }

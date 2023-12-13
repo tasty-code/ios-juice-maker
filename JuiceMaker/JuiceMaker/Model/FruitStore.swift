@@ -20,12 +20,6 @@ final class FruitStore {
         ]
     }
     
-    public var fruitstock2: [Fruits: Int] {
-        get {
-            return fruitStock
-        }
-    }
-    
     func changeStock(fruitName: Fruits, amount: Int) {
         guard var currentStock = fruitStock[fruitName] else { return }
         currentStock += amount
