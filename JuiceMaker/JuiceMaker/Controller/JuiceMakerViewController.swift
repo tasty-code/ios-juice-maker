@@ -22,36 +22,41 @@ class JuiceMakerViewController: UIViewController {
     }
     
     @IBAction func orderJuice(_ sender: UIButton) {
-        var selectedJuice: Juice?
-        
-        switch sender.tag {
-        case 0:
-            selectedJuice = .strawberry
-        case 1:
-            selectedJuice = .banana
-        case 2:
-            selectedJuice = .pineapple
-        case 3:
-            selectedJuice = .kiwi
-        case 4:
-            selectedJuice = .mango
-        case 5:
-            selectedJuice = .strawberryBanana
-        case 6:
-            selectedJuice = .mangoKiwi
-        default:
+        guard let selectedJuice = selectedJuice(tag: sender.tag) else {
             return
         }
-    
-        if let selectedJuice = selectedJuice {
-            guard juiceMaker.makeJuice(juice: selectedJuice) else {
-                return failAlert()
-            }
+        
+        let isOrderable = juiceMaker.makeJuice(juice: selectedJuice)
+        switch isOrderable {
+        case .success:
             successAlert(menu: selectedJuice)
+        case .failure:
+            failAlert()
         }
     }
     
-    @IBAction func addButton(_ sender: Any) {
+    private func selectedJuice(tag: Int) -> Juice? {
+        switch tag {
+        case 0:
+            return .strawberry
+        case 1:
+            return .banana
+        case 2:
+            return .pineapple
+        case 3:
+            return .kiwi
+        case 4:
+            return .mango
+        case 5:
+            return .strawberryBanana
+        case 6:
+            return .mangoKiwi
+        default:
+            return nil
+        }
+    }
+    
+    @IBAction func addButton(_ sender: UIButton) {
         guard let fruitStockViewController = storyboard?.instantiateViewController(identifier: "fruitStockViewController") as? FruitStockViewController else { return }
         self.present(fruitStockViewController, animated: true, completion: nil)
     }
@@ -73,7 +78,7 @@ class JuiceMakerViewController: UIViewController {
                                       message: "재료가 모자라요.\n재고를 수정할까요?",
                                       preferredStyle: .alert)
         let confirm = UIAlertAction(title: "예", style: .default, handler: { _ in
-            self.addButton(UIAlertAction())
+            self.addButton(UIButton())
         })
         let close = UIAlertAction(title: "아니요", style: .destructive)
         
