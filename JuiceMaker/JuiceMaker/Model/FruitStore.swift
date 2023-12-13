@@ -32,7 +32,7 @@ final class FruitStore {
         Recipe.mango.rawValue: [3],
         Recipe.mangoKiwi.rawValue: [2, 1]
     ]
-    
+    /*
     func supplyFruits(fruitName: String, quantity: Int) throws {
         guard let currentStock = fruits[fruitName] else {
             throw JuiceMakerErrors.notEnoughFruits
@@ -41,6 +41,7 @@ final class FruitStore {
         print("과일 저장소에서 \(fruitName)를 \(quantity)만큼 추가 저장했습니다")
         print(fruits)
     }
+     */
     
     func resetFlag() {
         self.fruitsFlag.keys.forEach { fruits in

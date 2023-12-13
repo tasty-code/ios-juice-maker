@@ -9,6 +9,6 @@ import Foundation
 
 enum JuiceMakerErrors: Error {
     case orderFail
-    case notEnoughFruits
+//    case notEnoughFruits
 }
 

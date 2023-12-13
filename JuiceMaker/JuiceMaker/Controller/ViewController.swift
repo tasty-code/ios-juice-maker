@@ -31,6 +31,10 @@ class ViewController: UIViewController {
         initView()
     }
     
+    @IBAction func moveToFruitStoreBtnTapped(_ sender: Any) {
+        moveFruitStore()
+    }
+    
     @IBAction func juiceMakeBtnTapped(_ choice: UIButton) {
         var selectedRecipe : Recipe
         switch choice.tag {
@@ -53,7 +57,19 @@ class ViewController: UIViewController {
         }
         let result = juiceMaker.order(selectedRecipe)
         let recipeName = selectedRecipe.recipeName
-        setMarketView(result, recipeName)
+        setMarketView(checkSuccess(result), recipeName)
+    }
+    
+}
+
+extension ViewController {
+    private func checkSuccess(_ result: Result<Bool, JuiceMakerErrors>) -> Bool {
+        switch result {
+        case .success(_):
+            return true
+        case .failure(_):
+            return false
+        }
     }
     
     private func setMarketView(_ isDone: Bool, _ recipeName: String) {
@@ -87,7 +103,11 @@ class ViewController: UIViewController {
             AlertController.showSuccessAlert(vcToShow: self, preferedStyle: UIAlertController.Style.alert, title: "\(recipeName) 쥬스 나왔습니다! 맛있게 드세요!", message: "", completeTitle: "확인", completionHandler: nil)
         }
         else {
-            AlertController.showFailAlert(vcToShow: self, preferedStyle: UIAlertController.Style.alert, title: "재료가 모자라요. 재고를 수정할까요?", message: "", cancelTitle: "아니오", completeTitle: "예", cancelHandler: nil, completionHandler: nil)
+            AlertController.showFailAlert(vcToShow: self, preferedStyle: UIAlertController.Style.alert, title: "재료가 모자라요. 재고를 수정할까요?", message: "", cancelTitle: "아니오", completeTitle: "예", cancelHandler: nil, completionHandler: moveFruitStore)
         }
+    }
+    
+    private func moveFruitStore() {
+        self.performSegue(withIdentifier: "moveToStock", sender: "test")
     }
 }

@@ -16,19 +16,15 @@ struct JuiceMaker {
         self.store.initializeFruit()
     }
     
-    func showMenu() {
-        print("어서오세요 아래 매뉴중 하나를 선택해주세요!\n딸바쥬스, 망키쥬스, 딸기쥬스, 바나나쥬스, 파인애플쥬스, 키위쥬스, 망고쥬스")
-    }
-    
-    func order(_ recipe: Recipe) -> Bool {
+    func order(_ recipe: Recipe) -> Result<Bool, JuiceMakerErrors> {
         do {
             try takeOrder(recipe)
         } catch JuiceMakerErrors.orderFail {
-            return false
+            return .failure(.orderFail)
         } catch {
-            return false
+            
         }
-        return true
+        return .success(true)
     }
     
     func takeOrder(_ kind: Recipe) throws {
