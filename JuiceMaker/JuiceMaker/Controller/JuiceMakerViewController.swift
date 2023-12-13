@@ -32,10 +32,11 @@ final class JuiceMakerViewController: UIViewController {
         if let font = UIFont(name: "DungGeunMo", size: 20) {
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: font]
         }
-        setNavigationButton()
+        
         setupBackgroundGradientButton()
+        setNavigationButton()
     }
-   
+    
     private func setupBackgroundGradientButton() {
         self.orderBananaJuiceButton.addGradient(colors: [.bananaColor])
         self.orderStrawberryJuiceButton.addGradient(colors: [.strawberryColor])
@@ -63,6 +64,24 @@ final class JuiceMakerViewController: UIViewController {
         performSegue(withIdentifier: "DetailView", sender: nil)
     }
     
+    @IBAction private func juiceButtonTapped(_ sender: UIButton) {
+        let selectTag = Int(sender.tag)
+        let result = Juice.allCases[selectTag]
+        makeJuiceProcess(juice: result)
+    }
+
+    private func makeJuiceProcess(juice: Juice) {
+        JuiceMaker.shared.makeJuice(juice: juice) ? JuiceProcess(input: juice) : makeFailedAlert(title: Message.failedMakeJuiceTitle.description, message: Message.failedMakeJuice.description, okAction: { _ in
+            self.editAction()
+        })
+    }
+
+    private func JuiceProcess(input: Juice) {
+            JuiceMaker.shared.addJuiceQuantity(juice: input)
+            updateQuantityLabel(juice: input)
+        makeCompletedAlert(title: Message.successMakeJuiceTitle.description, message: String(Message.successMakeJuice(juice: input.rawValue).description))
+    }
+    
     private func updateQuantityLabel(juice: Juice) {
         let labels: [Juice: UILabel] = {
             return [
@@ -81,44 +100,17 @@ final class JuiceMakerViewController: UIViewController {
         }
     }
     
-    
-    
-    
-    
-    
-    
-    
-//    @IBAction private func juiceButtonTapped(_ sender: UIButton) {
-//        let selectTag = Int(sender.tag)
-//        let result = Juice.allCases[selectTag]
-//        makeJuiceProcess(juice: result)
-//    }
-//
-//    private func makeJuiceProcess(juice: Juice) {
-//        JuiceMaker.shared.makeJuice(juice: juice) ? mugyum(result: juice) : makeFailedAlert(title: "제작실패", message: Message.failedMakeJuice.description, okAction: { _ in
-//            self.editAction()
-//        })
-//    }
-//
-//    private func mugyum(result: Juice) {
-//            JuiceMaker.shared.addJuiceQuantity(juice: result)
-//            updateQuantityLabel(juice: result)
-//            makeCompletedAlert(title: "쥬스 제작완료", message: "\(result.rawValue)가 나왔습니다. 맛있게 드세요.")
-//    }
-//
-    func editAction() {
+    private func editAction() {
         guard let controller = self.storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController else {
             return
         }
-    
         self.navigationController?.pushViewController(controller, animated: true)
     }
-    
 }
 
 
 extension UIButton {
-    func setTitleFont(font: UIFont) {
+    public func setTitleFont(font: UIFont) {
         self.titleLabel?.font = font
     }
 }

@@ -24,14 +24,7 @@ final class DetailViewController: UIViewController {
         super.viewDidLoad()
         setupLabel()
         addActionButton()
-    }
-    
-    private func addActionButton() {
-        remoteStrawberryButton.addTarget(self, action: #selector(strawberryStepperValueChanged(_:)), for: .valueChanged)
-        remoteBananaButton.addTarget(self, action: #selector(bananaStepperValueChanged(_:)), for: .valueChanged)
-        remotePineappleButton.addTarget(self, action: #selector(pineappleStepperValueChanged(_:)), for: .valueChanged)
-        remoteKiwiButton.addTarget(self, action: #selector(kiwiStepperValueChanged(_:)), for: .valueChanged)
-        remotemangoButton.addTarget(self, action: #selector(mangoStepperValueChanged(_:)), for: .valueChanged)
+        setupRemoteButtonValsue()
     }
     
     private func setupLabel() {
@@ -42,83 +35,27 @@ final class DetailViewController: UIViewController {
         quantityMangoLabel.text = FruitStore.shared.showFruitQuantity(fruit: Fruit.mango)
     }
     
-    @objc
-    private func strawberryStepperValueChanged(_ sender: UIStepper) {
-        let currentValue = Int(sender.value)
-        let previousValue = Int(sender.tag)
-        
-        if currentValue > previousValue {
-            FruitStore.shared.addFruitQuantity(fruit: Fruit.strawberry)
-        } else if currentValue < previousValue {
-            FruitStore.shared.deleteFruitQuantity(fruit: Fruit.strawberry)
-        }
-        
-        sender.tag = Int(sender.value)
-        setupLabel()
+    private func addActionButton() {
+        remoteStrawberryButton.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
+        remoteBananaButton.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
+        remotePineappleButton.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
+        remoteKiwiButton.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
+        remotemangoButton.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
+    }
+    
+    private func setupRemoteButtonValsue() {
+        remoteStrawberryButton.value = Double(FruitStore.shared.fruitList[0].quantity)
+        remoteBananaButton.value = Double(FruitStore.shared.fruitList[1].quantity)
+        remotePineappleButton.value = Double(FruitStore.shared.fruitList[2].quantity)
+        remoteKiwiButton.value = Double(FruitStore.shared.fruitList[3].quantity)
+        remotemangoButton.value = Double(FruitStore.shared.fruitList[4].quantity)
     }
     
     @objc
-    private func bananaStepperValueChanged(_ sender: UIStepper) {
-        let currentValue = Int(sender.value)
-        let previousValue = Int(sender.tag)
-        
-        if currentValue > previousValue {
-            FruitStore.shared.addFruitQuantity(fruit: Fruit.banana)
-        } else if currentValue < previousValue {
-            FruitStore.shared.deleteFruitQuantity(fruit: Fruit.banana)
-        }
-        
-        sender.tag = Int(sender.value)
+    private func stepperValueChanged(_ sender: UIStepper) {
+        let selectTag = Int(sender.tag)
+        let result = Fruit.allCases[selectTag]
+        FruitStore.shared.updateFruitQuantity(fruit: result, result: Int(sender.value))
         setupLabel()
     }
-    
-    @objc
-    private func pineappleStepperValueChanged(_ sender: UIStepper) {
-        let currentValue = Int(sender.value)
-        let previousValue = Int(sender.tag)
-        
-        if currentValue > previousValue {
-            FruitStore.shared.addFruitQuantity(fruit: Fruit.pineapple)
-        } else if currentValue < previousValue {
-            FruitStore.shared.deleteFruitQuantity(fruit: Fruit.pineapple)
-        }
-        
-        sender.tag = Int(sender.value)
-        setupLabel()
-    }
-    
-    @objc
-    private func kiwiStepperValueChanged(_ sender: UIStepper) {
-        let currentValue = Int(sender.value)
-        let previousValue = Int(sender.tag)
-        
-//        if currentValue > previousValue ? fruitStore.addFruitQuantity(fruit: FruitType.kiwi) : fruitStore.deleteFruitQuantity(fruit: FruitType.kiwi)
-//    }
-//        
-//        if currentValue > previousValue {
-//            fruitStore.addFruitQuantity(fruit: FruitType.kiwi)
-//        } else if currentValue < previousValue {
-//            fruitStore.deleteFruitQuantity(fruit: FruitType.kiwi)
-//        }
-        
-        sender.tag = Int(sender.value)
-        setupLabel()
-    }
-    
-    @objc
-    private func mangoStepperValueChanged(_ sender: UIStepper) {
-        let currentValue = Int(sender.value)
-        let previousValue = Int(sender.tag)
-        
-        if currentValue > previousValue {
-            FruitStore.shared.addFruitQuantity(fruit: Fruit.mango)
-        } else if currentValue < previousValue {
-            FruitStore.shared.deleteFruitQuantity(fruit: Fruit.mango)
-        }
-        
-        sender.tag = Int(sender.value)
-        setupLabel()
-    }
-    
-    
 }
