@@ -9,6 +9,7 @@ import UIKit
 
 final class InventoryViewController: UIViewController {
     
+    // MARK: @IBOutlet
     @IBOutlet private weak var strawberryQuantityLabel: UILabel!
     @IBOutlet private weak var bananaQuantityLabel: UILabel!
     @IBOutlet private weak var pineappleQuantityLabel: UILabel!
@@ -20,6 +21,7 @@ final class InventoryViewController: UIViewController {
     @IBOutlet private weak var kiwiStepper: UIStepper!
     @IBOutlet private weak var mangoStepper: UIStepper!
     
+    // MARK: Properties
     private var fruitStore: FruitStore
     private lazy var componentsByFruit: [Fruit: (label: UILabel, stepper: UIStepper)] = [
         .strawberry: (strawberryQuantityLabel, strawberryStepper),
@@ -37,22 +39,26 @@ final class InventoryViewController: UIViewController {
         mangoStepper: mangoQuantityLabel
     ]
     
+    // MARK: Initializer
     required init?(coder aDecoder: NSCoder) {
         self.fruitStore = FruitStore.shared
         super.init(coder: aDecoder)
     }
     
+    // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
     }
     
+    // MARK: @IBAction
     @IBAction private func modifyFruitStepper(_ sender: UIStepper) {
         updateFruitQuantity(sender)
     }
 }
 
+// MARK: - Custom Methods
 extension InventoryViewController {
     
     private func configureUI() {

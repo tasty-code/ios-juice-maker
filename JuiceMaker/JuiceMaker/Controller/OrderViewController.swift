@@ -8,12 +8,14 @@ import UIKit
 
 final class OrderViewController: UIViewController {
     
+    // MARK: @IBOutlet
     @IBOutlet private weak var strawberryQuantityLabel: UILabel!
     @IBOutlet private weak var bananaQuantityLabel: UILabel!
     @IBOutlet private weak var pineappleQuantityLabel: UILabel!
     @IBOutlet private weak var kiwiQuantityLabel: UILabel!
     @IBOutlet private weak var mangoQuantityLabel: UILabel!
     
+    // MARK: Properties
     private var fruitStore: FruitStore
     private let juiceMaker: JuiceMaker
     private lazy var labelsByFruit: [Fruit: UILabel] = [
@@ -24,12 +26,14 @@ final class OrderViewController: UIViewController {
         .mango: mangoQuantityLabel
     ]
     
+    // MARK: Initializer
     required init?(coder aDecoder: NSCoder) {
         self.fruitStore = FruitStore.shared
         self.juiceMaker = JuiceMaker()
         super.init(coder: aDecoder)
     }
     
+    // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -69,6 +73,7 @@ final class OrderViewController: UIViewController {
     }
 }
 
+// MARK: - Custom Methods
 extension OrderViewController {
     
     private func configureUI() {
