@@ -6,7 +6,8 @@ final class JuiceMachineViewController: UIViewController {
     
     @IBOutlet var juiceMachineView: JuiceMachineView!
     private let reception = Reception()
-
+    private let fruitStore = FruitStore()
+    
     deinit { NotificationCenter.default.removeObserver(self) }
 }
 
@@ -17,13 +18,18 @@ extension JuiceMachineViewController {
         super.viewDidLoad()
         setupUI()
         setupNotificationCenter()
-        setInitialStockLabel()
     }
 }
 
 // MARK: - Setup UI
 private extension JuiceMachineViewController {
+    
     func setupUI() {
+        setupButtonAction()
+        setInitialStockLabel()
+    }
+    
+    func setupButtonAction() {
         juiceMachineView.bananaOrderButton.addTarget(self, action: #selector(bananaJuiceOrderButtonTapped), for: .touchUpInside)
         juiceMachineView.strawberryOrderButton.addTarget(self, action: #selector(strawberryJuiceOrderButtonTapped), for: .touchUpInside)
         juiceMachineView.mangoOrderButton.addTarget(self, action: #selector(mangoJuiceButtonTapped), for: .touchUpInside)
@@ -31,6 +37,12 @@ private extension JuiceMachineViewController {
         juiceMachineView.pineappleOrderButton.addTarget(self, action: #selector(pineappleJuiceOrderButtonTapped), for: .touchUpInside)
         juiceMachineView.ddalbaOrderButton.addTarget(self, action: #selector(ddalbaJuiceOrderButtonTapped), for: .touchUpInside)
         juiceMachineView.mangkiOrderButton.addTarget(self, action: #selector(mangkiJuiceButtonTapped), for: .touchUpInside)
+        setInitialStockLabel()
+
+    }
+    
+    func setInitialStockLabel() {
+        updateStockLabel(from: fruitStore.fruitsStock)
     }
 }
 
@@ -71,7 +83,6 @@ private extension JuiceMachineViewController {
     
     func setupNotificationCenter() {
         NotificationCenter.default.addObserver(self, selector: #selector(updateFruitStock), name: .fruitStockDidChange, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleStockError), name: .fruitStockLimit, object: nil)
     }
     
     @objc func updateFruitStock(notification: Notification) {
@@ -87,17 +98,5 @@ private extension JuiceMachineViewController {
         juiceMachineView.mangoStockLabel.text = String(fruitStock[.mango] ?? 0)
         juiceMachineView.pineappleStockLabel.text = String(fruitStock[.pineapple] ?? 0)
         juiceMachineView.kiwiStockLabel.text = String(fruitStock[.kiwi] ?? 0)
-    }
-    
-    @objc func handleStockError() {
-        AlertHandler.shared.presentAlert(of: .fruitShortage("재고부족해요!"))
-    }
-}
-
-// MARK: - 임시 초기값 설정
-extension JuiceMachineViewController {
-    func setInitialStockLabel() {
-        let fruitStock = reception.fetchInitialFruitsStock()
-        updateStockLabel(from: fruitStock)
     }
 }

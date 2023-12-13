@@ -29,13 +29,6 @@ struct Reception {
             juiceMaker.makeMangkiJuice()
         }
     }
-    
-    func acceptStockManageOrder(fruit: FruitStore.Fruits) {
-    }
-    
-    func fetchInitialFruitsStock() -> [FruitStore.Fruits: Int] {
-        return juiceMaker.fruitStore.fruitsStock
-    }
 }
 
 

@@ -28,7 +28,6 @@ final class FruitStore {
 extension FruitStore {
     func incrementFruit(fruit: Fruits, quantities: Int) {
         guard let currentStock = fruitsStock[fruit] else {
-            postFruitsStockError()
             print("\(#function) 에러 발생!")
             return
         }
@@ -39,7 +38,6 @@ extension FruitStore {
     func decrementFruit(fruit: Fruits, quantities: Int) {
         guard let currentStock = fruitsStock[fruit],
               currentStock - quantities >= limitedQuantity else {
-            postFruitsStockError()
             print("\(#function) 재고 부족!")
             return
         }
@@ -53,9 +51,5 @@ extension FruitStore {
 private extension FruitStore {
     func postFruitsStock() {
         NotificationCenter.default.post(name: .fruitStockDidChange, object: nil, userInfo: ["fruitsStock": fruitsStock])
-    }
-    
-    func postFruitsStockError() {
-        NotificationCenter.default.post(name: .fruitStockLimit, object: nil)
     }
 }
