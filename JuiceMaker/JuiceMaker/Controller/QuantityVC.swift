@@ -41,23 +41,30 @@ class QuantityVC: UIViewController {
         super.viewDidLoad()
         updateFruitLabels()
     }
-    
     @IBAction func strawberryStepper(_ sender: UIStepper) {
         fruitStore.fruitInventory["딸기"] = Int(sender.value)
         updateFruitLabels()
         delegate?.didUpdateFruitInventory()
     }
-    
+
     @IBAction func bananaStepper(_ sender: UIStepper) {
-        
+        fruitStore.fruitInventory["바나나"] = Int(sender.value)
+        updateFruitLabels()
+        delegate?.didUpdateFruitInventory()
     }
     @IBAction func pinappleStepper(_ sender: UIStepper) {
-        
+        fruitStore.fruitInventory["파인애플"] = Int(sender.value)
+        updateFruitLabels()
+        delegate?.didUpdateFruitInventory()
     }
     @IBAction func kiwiStepper(_ sender: UIStepper) {
-        
+        fruitStore.fruitInventory["키위"] = Int(sender.value)
+        updateFruitLabels()
+        delegate?.didUpdateFruitInventory()
     }
     @IBAction func mangoStepper(_ sender: UIStepper) {
-        
+        fruitStore.fruitInventory["망고"] = Int(sender.value)
+        updateFruitLabels()
+        delegate?.didUpdateFruitInventory()
     }
 }

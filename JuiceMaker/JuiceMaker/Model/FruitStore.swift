@@ -30,14 +30,6 @@ class FruitStore {
         delegate?.didUpdateFruitInventory()
     }
     
-//    var fruitInventory: [String: Int] = [
-//        "딸기": 10,
-//        "바나나": 10,
-//        "파인애플": 10,
-//        "키위": 10,
-//        "망고": 10
-//    ]
-    
     func displayCurrentFruitInventory(fruit: String) -> Int? {
         guard let currentQuantity = fruitInventory[fruit] else {
             print("과일저장오류")
@@ -46,14 +38,13 @@ class FruitStore {
         return currentQuantity
     }
     
-    
     func updateFruitQuantity(fruit: String, quantity: Int) throws {
         guard var currentQuantity = fruitInventory[fruit] else {
             throw fruitStoreError.currentQuantityError
         }
         currentQuantity = quantity
         if currentQuantity <= 0 {
-            throw fruitStoreError.fruitQuantityError
+            throw fruitStoreError.errorDefault
         }
         fruitInventory[fruit] = currentQuantity
     }

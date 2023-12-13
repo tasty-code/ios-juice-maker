@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		700DF3FE2B26FEC000BE5342 /* AlertCaseEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700DF3FD2B26FEC000BE5342 /* AlertCaseEnum.swift */; };
+		700DF3FE2B26FEC000BE5342 /* AlertProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700DF3FD2B26FEC000BE5342 /* AlertProtocol.swift */; };
 		700DF4002B2835DC00BE5342 /* QuantityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700DF3FF2B2835DB00BE5342 /* QuantityVC.swift */; };
-		700DF4022B28ABBC00BE5342 /* FruitStoreDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700DF4012B28ABBC00BE5342 /* FruitStoreDelegateProtocol.swift */; };
+		700DF4022B28ABBC00BE5342 /* FruitStoreDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700DF4012B28ABBC00BE5342 /* FruitStoreDelegate.swift */; };
 		70B096072B1EC3520054EC5D /* JuiceRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B096062B1EC3520054EC5D /* JuiceRecipe.swift */; };
 		70F2621C2B20082500582EF2 /* fruitStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F2621B2B20082500582EF2 /* fruitStoreError.swift */; };
 		C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71CD66A266C7ACB0038B9CB /* FruitStore.swift */; };
@@ -23,9 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		700DF3FD2B26FEC000BE5342 /* AlertCaseEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCaseEnum.swift; sourceTree = "<group>"; };
+		700DF3FD2B26FEC000BE5342 /* AlertProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertProtocol.swift; sourceTree = "<group>"; };
 		700DF3FF2B2835DB00BE5342 /* QuantityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityVC.swift; sourceTree = "<group>"; };
-		700DF4012B28ABBC00BE5342 /* FruitStoreDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitStoreDelegateProtocol.swift; sourceTree = "<group>"; };
+		700DF4012B28ABBC00BE5342 /* FruitStoreDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitStoreDelegate.swift; sourceTree = "<group>"; };
 		70B096062B1EC3520054EC5D /* JuiceRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceRecipe.swift; sourceTree = "<group>"; };
 		70F2621B2B20082500582EF2 /* fruitStoreError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fruitStoreError.swift; sourceTree = "<group>"; };
 		C71CD66A266C7ACB0038B9CB /* FruitStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitStore.swift; sourceTree = "<group>"; };
@@ -54,8 +54,8 @@
 		700DF3FC2B26FE8E00BE5342 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				700DF3FD2B26FEC000BE5342 /* AlertCaseEnum.swift */,
-				700DF4012B28ABBC00BE5342 /* FruitStoreDelegateProtocol.swift */,
+				700DF3FD2B26FEC000BE5342 /* AlertProtocol.swift */,
+				700DF4012B28ABBC00BE5342 /* FruitStoreDelegate.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -200,14 +200,14 @@
 			files = (
 				70F2621C2B20082500582EF2 /* fruitStoreError.swift in Sources */,
 				70B096072B1EC3520054EC5D /* JuiceRecipe.swift in Sources */,
-				700DF4022B28ABBC00BE5342 /* FruitStoreDelegateProtocol.swift in Sources */,
+				700DF4022B28ABBC00BE5342 /* FruitStoreDelegate.swift in Sources */,
 				700DF4002B2835DC00BE5342 /* QuantityVC.swift in Sources */,
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
 				C73DAF3B255D0CDD00020D38 /* ViewController.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
 				C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */,
 				C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */,
-				700DF3FE2B26FEC000BE5342 /* AlertCaseEnum.swift in Sources */,
+				700DF3FE2B26FEC000BE5342 /* AlertProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
