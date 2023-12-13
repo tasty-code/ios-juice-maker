@@ -41,6 +41,7 @@ class QuantityVC: UIViewController {
         super.viewDidLoad()
         updateFruitLabels()
     }
+
     @IBAction func strawberryStepper(_ sender: UIStepper) {
         fruitStore.fruitInventory["딸기"] = Int(sender.value)
         updateFruitLabels()

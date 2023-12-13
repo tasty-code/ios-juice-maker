@@ -6,6 +6,10 @@
 
 import UIKit
 
+protocol FruitStoreDelegate: AnyObject {
+    func didUpdateFruitInventory()
+}
+
 class ViewController: UIViewController, FruitStoreDelegate, AlertPresentable {
     let fruitStore = FruitStore.shared
     
@@ -22,14 +26,15 @@ class ViewController: UIViewController, FruitStoreDelegate, AlertPresentable {
     override func viewDidLoad() {
         super.viewDidLoad()
         fruitStore.delegate = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        fruitStore.delegate = self
         updateFruitLabels()
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        fruitStore.delegate = self
+//        updateFruitLabels()
+//    }
+//    
     @IBAction func changeInvetoryButtonTapped(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "goToQuantityUpdate", sender: sender)
     }
