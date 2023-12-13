@@ -23,48 +23,29 @@ struct JuiceMaker {
     ]
     
     func makeJuice(juice: Juice) -> Bool {
-        let fruitStore = FruitStore.shared
         switch juice {
-            
         case .strawberryJuice:
-            if fruitStore.checkFruitsQuantity(fruit: .strawberry, willUseQuantity: 16) {
-                fruitStore.usedFruitsQuantity(fruit: .strawberry, usedQuantity: 16)
-                return true
-            }
+            return validationCheckAndUsedFruit(fruit: .strawberry, quantity: 16)
         case .bananaJuice:
-            if fruitStore.checkFruitsQuantity(fruit: .banana, willUseQuantity: 2) {
-                fruitStore.usedFruitsQuantity(fruit: .banana, usedQuantity: 2)
-                return true
-            }
+            return validationCheckAndUsedFruit(fruit: .banana, quantity: 2)
         case .pineappleJuice:
-            if fruitStore.checkFruitsQuantity(fruit: .pineapple, willUseQuantity: 2) {
-                fruitStore.usedFruitsQuantity(fruit: .pineapple, usedQuantity: 2)
-                return true
-            }
+            return validationCheckAndUsedFruit(fruit: .pineapple, quantity: 2)
         case .kiwiJuice:
-            if fruitStore.checkFruitsQuantity(fruit: .kiwi, willUseQuantity: 3) {
-                fruitStore.usedFruitsQuantity(fruit: .kiwi, usedQuantity: 2)
-                return true
-            }
+            return validationCheckAndUsedFruit(fruit: .kiwi, quantity: 3)
         case .mangoJuice:
-            if fruitStore.checkFruitsQuantity(fruit: .mango, willUseQuantity: 3) {
-                fruitStore.usedFruitsQuantity(fruit: .mango, usedQuantity: 3)
-                return true
-            }
+            return validationCheckAndUsedFruit(fruit: .mango, quantity: 3)
         case .strawberryBananaJuice:
-            if fruitStore.checkFruitsQuantity(fruit: .strawberry, willUseQuantity: 10),
-               fruitStore.checkFruitsQuantity(fruit: .banana, willUseQuantity: 1) {
-                fruitStore.usedFruitsQuantity(fruit: .strawberry, usedQuantity: 10)
-                fruitStore.usedFruitsQuantity(fruit: .banana, usedQuantity: 1)
-                return true
-            }
+            return validationCheckAndUsedFruit(fruit: .strawberry, quantity: 10) && validationCheckAndUsedFruit(fruit: .banana, quantity: 1)
         case .mangoKiwiJuice:
-            if fruitStore.checkFruitsQuantity(fruit: .mango, willUseQuantity: 2),
-               fruitStore.checkFruitsQuantity(fruit: .kiwi, willUseQuantity: 1) {
-                fruitStore.usedFruitsQuantity(fruit: .mango, usedQuantity: 2)
-                fruitStore.usedFruitsQuantity(fruit: .kiwi, usedQuantity: 1)
-                return true
-            }
+            return validationCheckAndUsedFruit(fruit: .mango, quantity: 2) && validationCheckAndUsedFruit(fruit: .kiwi, quantity: 1)
+        }
+    }
+    
+    private func validationCheckAndUsedFruit(fruit: Fruit, quantity: Int)  -> Bool{
+        let fruitStore = FruitStore.shared
+        if fruitStore.checkFruitsQuantity(fruit: fruit, willUseQuantity: quantity) {
+            fruitStore.usedFruitsQuantity(fruit: fruit, usedQuantity: quantity)
+            return true
         }
         return false
     }

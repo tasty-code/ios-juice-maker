@@ -20,15 +20,9 @@ final class FruitStore {
         FruitInfo(name: .mango, quantity: 0)
     ]
     
-    public func addFruitQuantity(fruit: Fruit) {
+    public func updateFruitQuantity(fruit: Fruit, result: Int) {
         if let index = fruitList.firstIndex(where: { $0.name == fruit }) {
-            fruitList[index].quantity += 1
-        }
-    }
-    
-    public func deleteFruitQuantity(fruit: Fruit) {
-        if let index = fruitList.firstIndex(where: { $0.name == fruit }) {
-            fruitList[index].quantity -= 1
+            fruitList[index].quantity = result
         }
     }
     
@@ -52,15 +46,8 @@ final class FruitStore {
         }
     }
     
-    //a\ 과일 재고 확인
-    // 1. 고ㅏ일 종류
     func checkFruit(fruit: Fruit) -> Int {
-        // fruit의 갯수 확인 함수 호출  6개 Int
-        // 1. 과일 어디에 저장되어 있는가
-        // 2. 저장된 곳에서 이 과일은 어디에 있는가
-        // 2. 저장된 곳에서 갯수를 확인 한다
-        // 3. 확인하나 갯수를 리턴한다.
-        return fruitList.map {$0.name == fruit}.count
+        return fruitList.map { $0.name == fruit }.count
     }
     
 
