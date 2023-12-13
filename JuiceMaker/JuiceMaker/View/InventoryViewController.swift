@@ -9,19 +9,18 @@ import UIKit
 
 final class InventoryViewController: UIViewController {
     
-    @IBOutlet weak var strawberryQuantityLabel: UILabel!
-    @IBOutlet weak var bananaQuantityLabel: UILabel!
-    @IBOutlet weak var pineappleQuantityLabel: UILabel!
-    @IBOutlet weak var kiwiQuantityLabel: UILabel!
-    @IBOutlet weak var mangoQuantityLabel: UILabel!
-    @IBOutlet weak var strawberryStepper: UIStepper!
-    @IBOutlet weak var bananaStepper: UIStepper!
-    @IBOutlet weak var pineappleStepper: UIStepper!
-    @IBOutlet weak var kiwiStepper: UIStepper!
-    @IBOutlet weak var mangoStepper: UIStepper!
+    @IBOutlet private weak var strawberryQuantityLabel: UILabel!
+    @IBOutlet private weak var bananaQuantityLabel: UILabel!
+    @IBOutlet private weak var pineappleQuantityLabel: UILabel!
+    @IBOutlet private weak var kiwiQuantityLabel: UILabel!
+    @IBOutlet private weak var mangoQuantityLabel: UILabel!
+    @IBOutlet private weak var strawberryStepper: UIStepper!
+    @IBOutlet private weak var bananaStepper: UIStepper!
+    @IBOutlet private weak var pineappleStepper: UIStepper!
+    @IBOutlet private weak var kiwiStepper: UIStepper!
+    @IBOutlet private weak var mangoStepper: UIStepper!
     
     private var fruitStore: FruitStore
-    
     private lazy var componentsByFruit: [Fruit: (label: UILabel, stepper: UIStepper)] = [
         .strawberry: (strawberryQuantityLabel, strawberryStepper),
         .banana: (bananaQuantityLabel, bananaStepper),
@@ -49,14 +48,17 @@ final class InventoryViewController: UIViewController {
         configureUI()
     }
     
-    @IBAction func modifyFruitStepper(_ sender: UIStepper) {
+    @IBAction private func modifyFruitStepper(_ sender: UIStepper) {
         updateFruitQuantity(sender)
     }
+}
+
+extension InventoryViewController {
     
     private func configureUI() {
-        for (fruit, component) in componentsByFruit {
-            component.label.text = String(fruitStore.fruitContainer[fruit, default: 0])
-            component.stepper.value = Double(fruitStore.fruitContainer[fruit, default: 0])
+        for (fruit, components) in componentsByFruit {
+            components.label.text = String(fruitStore.fruitContainer[fruit, default: 0])
+            components.stepper.value = Double(fruitStore.fruitContainer[fruit, default: 0])
         }
     }
     
