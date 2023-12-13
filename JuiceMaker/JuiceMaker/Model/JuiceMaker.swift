@@ -12,7 +12,7 @@ struct JuiceMaker {
     
     /// 쥬스 제조 메서드
     func makeJuice(juiceType: Juice) throws {
-        let dic = juiceType.checkFruitQuantity
+        let dic = juiceType.requiredFruitQuantity
         
         for (fruit, quantity) in dic {
             guard var storedFruit = fruitStore.fruitContainer[fruit] else {
