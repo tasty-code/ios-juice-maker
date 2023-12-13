@@ -24,8 +24,6 @@ struct JuiceMaker {
         do {
             try takeOrder(recipe)
         } catch JuiceMakerErrors.orderFail(let recipe) {
-            print("\(recipe) 주문에 실패 했습니다...")
-            print("\(self.store.fruits)")
             return false
         } catch {
             return false

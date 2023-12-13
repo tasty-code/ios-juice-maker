@@ -52,10 +52,14 @@ class ViewController: UIViewController {
             selectedRecipe = Recipe.mango
         }
         let result = juiceMaker.order(selectedRecipe)
-        setMarketView(result)
+        let recipeName = selectedRecipe.recipeName
+        setMarketView(result, recipeName)
     }
     
-    private func setMarketView(_ isDone: Bool) {
+    private func setMarketView(_ isDone: Bool, _ recipeName: String) {
+        // alert
+        showAlert(isDone, recipeName)
+        // labelView
         self.fruitStore.fruitsFlag.forEach { fruit, isUsed in
             guard let uiLabel = fruitsLabel[fruit],
                   let fruitValue = self.fruitStore.fruits[fruit],
@@ -75,6 +79,15 @@ class ViewController: UIViewController {
                 return
             }
             uiLabel.text = String(fruitValue)
+        }
+    }
+    
+    private func showAlert(_ isDone: Bool, _ recipeName: String) {
+        if isDone {
+            AlertController.showSuccessAlert(vcToShow: self, preferedStyle: UIAlertController.Style.alert, title: "\(recipeName) 쥬스 나왔습니다! 맛있게 드세요!", message: "", completeTitle: "확인", completionHandler: nil)
+        }
+        else {
+            AlertController.showFailAlert(vcToShow: self, preferedStyle: UIAlertController.Style.alert, title: "재료가 모자라요. 재고를 수정할까요?", message: "", cancelTitle: "아니오", completeTitle: "예", cancelHandler: nil, completionHandler: nil)
         }
     }
 }
