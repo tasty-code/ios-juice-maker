@@ -8,14 +8,27 @@ import UIKit
 
 final class OrderViewController: UIViewController {
     
-    private let fruitStore = FruitStore.shared
-    private let juiceMaker = JuiceMaker()
-    
     @IBOutlet private weak var strawberryQuantityLabel: UILabel!
     @IBOutlet private weak var bananaQuantityLabel: UILabel!
     @IBOutlet private weak var pineappleQuantityLabel: UILabel!
     @IBOutlet private weak var kiwiQuantityLabel: UILabel!
     @IBOutlet private weak var mangoQuantityLabel: UILabel!
+    
+    private var fruitStore: FruitStore
+    private let juiceMaker: JuiceMaker
+    private lazy var labelsByFruit: [Fruit: UILabel] = [
+        .strawberry: strawberryQuantityLabel,
+        .banana: bananaQuantityLabel,
+        .pineapple: pineappleQuantityLabel,
+        .kiwi: kiwiQuantityLabel,
+        .mango: mangoQuantityLabel
+    ]
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.fruitStore = FruitStore.shared
+        self.juiceMaker = JuiceMaker()
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +40,9 @@ final class OrderViewController: UIViewController {
         configureUI()
     }
 
+    // MARK: @IBAction
     @IBAction private func tapEditInventoryButton(_ sender: UIBarButtonItem) {
-        pushNextViewController()
+        pushInventoryViewController()
     }
     
     @IBAction private func tapMakeJuiceButton(_ sender: UIButton) {
@@ -49,24 +63,24 @@ final class OrderViewController: UIViewController {
                                    confirmTitle: "예",
                                    cancelTitle: "아니오",
                                    confirmAction: { _ in
-                self.pushNextViewController()
+                self.pushInventoryViewController()
             })
         }
     }
+}
+
+extension OrderViewController {
     
     private func configureUI() {
-        strawberryQuantityLabel.text = String(fruitStore.fruitContainer[.strawberry, default: 0])
-        bananaQuantityLabel.text = String(fruitStore.fruitContainer[.banana, default: 0])
-        pineappleQuantityLabel.text = String(fruitStore.fruitContainer[.pineapple, default: 0])
-        kiwiQuantityLabel.text = String(fruitStore.fruitContainer[.kiwi, default: 0])
-        mangoQuantityLabel.text = String(fruitStore.fruitContainer[.mango, default: 0])
+        for (fruit, label) in labelsByFruit {
+            label.text = String(fruitStore.fruitContainer[fruit, default: 0])
+        }
     }
     
-    private func pushNextViewController() {
+    private func pushInventoryViewController() {
         guard let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: InventoryViewController.className)
                 as? UIViewController else { return }
         
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }
 }
-
