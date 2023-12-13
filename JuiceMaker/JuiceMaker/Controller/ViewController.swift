@@ -7,11 +7,8 @@
 import UIKit
 
 class ViewController: UIViewController, FruitStoreDelegate, AlertPresentable {
-    
-    func showSuccessAlert() {} //프로토콜 채택을 위한 함수
-    
     let fruitStore = FruitStore.shared
-
+    
     @IBOutlet weak var strawberry: UILabel!
     @IBOutlet weak var banana: UILabel!
     @IBOutlet weak var pineApple: UILabel!
@@ -56,7 +53,6 @@ class ViewController: UIViewController, FruitStoreDelegate, AlertPresentable {
     }
     
     @IBAction func strawBananaJuice(_ sender: UIButton) {
-        
         do {
             _ = try fruitStore.makeJuice(juiceRecipe: .strawberryBanana)
             showSuccessAlert(message: "\(JuiceRecipe.strawberryBanana.name)")
@@ -114,7 +110,7 @@ class ViewController: UIViewController, FruitStoreDelegate, AlertPresentable {
         } catch {
             showFailAlert()
         }
-
+        
     }
     
     @IBAction func mangoJuiceButton(_ sender: UIButton) {
