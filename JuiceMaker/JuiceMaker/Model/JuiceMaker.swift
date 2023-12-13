@@ -22,7 +22,7 @@ struct JuiceMaker {
         do {
             try fruitStore.consumeStocks(recipes)
             
-            let completeOrderMessage = "주문한 메뉴 나옴"
+            let completeOrderMessage = "나왔습니다! 맛있게 드세요!"
             outcomeCreated = .success(message: "\(menuName) \(completeOrderMessage)")
         } catch InventoryError.outOfStock(description: let message) {
             outcomeCreated = .failure(description: message)

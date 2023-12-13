@@ -26,12 +26,9 @@ class JuiceMakingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         showNumberOnLabel(fruits: juiceMaker.fruitStore.inventory)
         setUpTargetActionOnButtons()
-        
-        
-        
+        registerObserver()
     }
     
 }
@@ -117,4 +114,23 @@ extension JuiceMakingViewController {
         let segue = "segueToStockManagement"
         performSegue(withIdentifier: segue, sender: sender)
     }
+}
+
+extension JuiceMakingViewController {
+    func registerObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didChangeFruitsAmount(_:)), name: Notification.Name("fruitsAmountDidChange"), object: nil)
+    }
+    
+    @objc func didChangeFruitsAmount(_ notification: Notification) {
+        guard let userInfo = notification.userInfo, let fruitInfo = userInfo as? [Fruit : Int] else {
+            return
+        }
+       
+        self.showNumberOnLabel(fruits: fruitInfo)
+    }
+    
+    func turnOffObserver() {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("fruitsAmountDidChange"), object: nil)
+    }
+    
 }
