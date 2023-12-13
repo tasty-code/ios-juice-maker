@@ -16,6 +16,9 @@ extension UIViewController {
     var className: String {
         NSStringFromClass(self.classForCoder).components(separatedBy: ".").last!
     }
+}
+
+extension UIViewController {
     
     /// 확인 버튼 하나만 있는 Alert 메서드
     func presentAlert(title: String,
@@ -30,15 +33,15 @@ extension UIViewController {
         
         self.present(alertViewController, animated: true, completion: completion)
     }
-
+    
     /// 확인, 취소 버튼이 있는 Alert 메서드
     func presentAlertWithCancel(title: String,
-                               message: String,
-                               confirmTitle: String,
-                               cancelTitle: String,
-                               confirmAction: ((UIAlertAction) -> Void)? = nil,
-                               cancelAction: ((UIAlertAction) -> Void)? = nil,
-                               completion: (() -> Void)? = nil) {
+                                message: String,
+                                confirmTitle: String,
+                                cancelTitle: String,
+                                confirmAction: ((UIAlertAction) -> Void)? = nil,
+                                cancelAction: ((UIAlertAction) -> Void)? = nil,
+                                completion: (() -> Void)? = nil) {
         let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let confirmAction = UIAlertAction(title: confirmTitle, style: .default, handler: confirmAction)
