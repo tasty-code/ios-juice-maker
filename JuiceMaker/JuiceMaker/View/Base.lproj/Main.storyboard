@@ -217,7 +217,7 @@
                     <navigationItem key="navigationItem" title="맛있는 쥬스를 만들어 드려요!" id="Eal-fj-o4N">
                         <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT">
                             <connections>
-                                <segue destination="Yu1-lM-nqp" kind="show" identifier="segueToStockManagement" id="EQg-c6-pu2"/>
+                                <segue destination="RtH-jy-9TE" kind="showDetail" id="RWS-1p-fL0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -258,11 +258,11 @@
             </objects>
             <point key="canvasLocation" x="19.419642857142858" y="92.753623188405811"/>
         </scene>
-        <!--View Controller-->
+        <!--재고 수정 -->
         <scene sceneID="fkG-vv-hpE">
             <objects>
                 <viewController id="Yu1-lM-nqp" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="tKV-4l-Vtc">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="secondVC" id="tKV-4l-Vtc">
                         <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -384,11 +384,32 @@
                             <constraint firstItem="RV2-AZ-0uj" firstAttribute="centerX" secondItem="tKV-4l-Vtc" secondAttribute="centerX" id="vht-3o-ZUN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="g4W-fY-l7r"/>
+                    <navigationItem key="navigationItem" title="재고 수정 " id="CYh-h3-uag">
+                        <barButtonItem key="leftBarButtonItem" title="취소" id="Vqk-p5-75A"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="OAa-eb-eNf"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="762" y="1131"/>
+            <point key="canvasLocation" x="1513.5071090047393" y="1130.7692307692307"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="h3u-aE-Vh9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RtH-jy-9TE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lOB-wa-Uhb">
+                        <rect key="frame" x="0.0" y="0.0" width="844" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Yu1-lM-nqp" kind="relationship" relationship="rootViewController" id="7ye-oN-szF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VvG-AH-cpn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="761.37440758293837" y="1130.7692307692307"/>
         </scene>
     </scenes>
     <resources>

@@ -21,7 +21,7 @@ class JuiceMakingViewController: UIViewController {
     @IBOutlet var orderMangoButton: UIButton!
     @IBOutlet var orderStrawberryBananaButton: UIButton!
     @IBOutlet var orderMangoKiwiButton: UIButton!
-    
+
     let juiceMaker = JuiceMaker(fruitStore: FruitStore())
     
     override func viewDidLoad() {
@@ -29,6 +29,9 @@ class JuiceMakingViewController: UIViewController {
         
         showNumberOnLabel(fruits: juiceMaker.fruitStore.inventory)
         setUpTargetActionOnButtons()
+        
+        
+        
     }
     
 }
