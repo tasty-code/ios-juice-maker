@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,7 +22,7 @@
 		E411670F2B269F010012BE2F /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E411670E2B269F010012BE2F /* UIView+.swift */; };
 		E41167122B26A1140012BE2F /* JuiceMakerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41167112B26A1140012BE2F /* JuiceMakerButton.swift */; };
 		E443D26E2B25D11F0014E061 /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E443D26D2B25D11F0014E061 /* Fruit.swift */; };
-		E477D06F2B26C1C8000C9192 /* ColorAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477D06E2B26C1C8000C9192 /* ColorAsset.swift */; };
+		E477D06F2B26C1C8000C9192 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477D06E2B26C1C8000C9192 /* UIColor+.swift */; };
 		E477D0732B26C84B000C9192 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E477D0722B26C84B000C9192 /* Colors.xcassets */; };
 		E477D0752B26EBB5000C9192 /* JuiceMakerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477D0742B26EBB5000C9192 /* JuiceMakerLabel.swift */; };
 		E4A738752B21608C00166343 /* Juice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A738732B21608C00166343 /* Juice.swift */; };
@@ -49,7 +49,7 @@
 		E411670E2B269F010012BE2F /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		E41167112B26A1140012BE2F /* JuiceMakerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMakerButton.swift; sourceTree = "<group>"; };
 		E443D26D2B25D11F0014E061 /* Fruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
-		E477D06E2B26C1C8000C9192 /* ColorAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorAsset.swift; sourceTree = "<group>"; };
+		E477D06E2B26C1C8000C9192 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		E477D0722B26C84B000C9192 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		E477D0742B26EBB5000C9192 /* JuiceMakerLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMakerLabel.swift; sourceTree = "<group>"; };
 		E4A738732B21608C00166343 /* Juice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Juice.swift; sourceTree = "<group>"; };
@@ -157,6 +157,7 @@
 			children = (
 				E411670E2B269F010012BE2F /* UIView+.swift */,
 				C155FC622B28230E008047C0 /* UIViewController+.swift */,
+				E477D06E2B26C1C8000C9192 /* UIColor+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -175,7 +176,6 @@
 			children = (
 				E4A738732B21608C00166343 /* Juice.swift */,
 				E443D26D2B25D11F0014E061 /* Fruit.swift */,
-				E477D06E2B26C1C8000C9192 /* ColorAsset.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -267,7 +267,7 @@
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
 				E41167122B26A1140012BE2F /* JuiceMakerButton.swift in Sources */,
 				C1ED27CC2B217B530013F195 /* JuiceMakerViewController.swift in Sources */,
-				E477D06F2B26C1C8000C9192 /* ColorAsset.swift in Sources */,
+				E477D06F2B26C1C8000C9192 /* UIColor+.swift in Sources */,
 				C155FC632B28230E008047C0 /* UIViewController+.swift in Sources */,
 				E4AE21D72B22F5D9004484C0 /* Message.swift in Sources */,
 				C1ED27D02B2187760013F195 /* ViewController.swift in Sources */,
