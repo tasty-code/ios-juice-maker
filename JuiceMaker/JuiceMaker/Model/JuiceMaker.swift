@@ -8,7 +8,15 @@ import Foundation
 
 struct JuiceMaker {
     
-    private let fruitStore = FruitStore.shared
+    // MARK: Properties
+    private let fruitStore: FruitStore
+    
+    // MARK: Initializer
+    init(fruitStore: FruitStore = FruitStore.shared) {
+        self.fruitStore = fruitStore
+    }
+    
+    // MARK: Custom Methods
     
     /// 쥬스 제조 메서드
     func makeJuice(juiceType: Juice) throws {
