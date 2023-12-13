@@ -31,12 +31,12 @@ final class InventoryViewController: UIViewController {
         .mango: (mangoQuantityLabel, mangoStepper)
     ]
     
-    private lazy var labelsByStepper: [UIStepper: UILabel] = [
-        strawberryStepper: strawberryQuantityLabel,
-        bananaStepper: bananaQuantityLabel,
-        pineappleStepper: pineappleQuantityLabel,
-        kiwiStepper: kiwiQuantityLabel,
-        mangoStepper: mangoQuantityLabel
+    private lazy var fruitElementsByStepper: [UIStepper: (label: UILabel, fruit: Fruit)] = [
+        strawberryStepper: (strawberryQuantityLabel, .strawberry),
+        bananaStepper: (bananaQuantityLabel, .banana),
+        pineappleStepper: (pineappleQuantityLabel, .pineapple),
+        kiwiStepper: (kiwiQuantityLabel, .kiwi),
+        mangoStepper: (mangoQuantityLabel, .mango)
     ]
     
     // MARK: Initializer
@@ -52,9 +52,11 @@ final class InventoryViewController: UIViewController {
         configureUI()
     }
     
-    // MARK: @IBAction
-    @IBAction private func modifyFruitStepper(_ sender: UIStepper) {
-        updateFruitQuantity(sender)
+    @IBAction func tapStepper(_ sender: UIStepper) {
+        guard let fruit = fruitElementsByStepper[sender]?.fruit else {
+            return
+        }
+        updateFruitQuantity(sender, fruit)
     }
 }
 
@@ -68,7 +70,8 @@ extension InventoryViewController {
         }
     }
     
-    private func updateFruitQuantity(_ stepper: UIStepper) {
-        labelsByStepper[stepper]?.text = String(Int(stepper.value))
+    private func updateFruitQuantity(_ stepper: UIStepper, _ fruit: Fruit) {
+        fruitElementsByStepper[stepper]?.label.text = String(Int(stepper.value))
+        fruitStore.fruitContainer[fruit] = Int(stepper.value)
     }
 }
