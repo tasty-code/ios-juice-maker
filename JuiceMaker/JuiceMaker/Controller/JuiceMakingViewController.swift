@@ -31,6 +31,10 @@ class JuiceMakingViewController: UIViewController {
         registerObserver()
     }
     
+    deinit {
+        turnOffObserver()
+    }
+    
 }
 
 extension JuiceMakingViewController {

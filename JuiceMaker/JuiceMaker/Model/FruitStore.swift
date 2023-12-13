@@ -18,12 +18,20 @@ class FruitStore {
         inventory[fruit] = number
     }
     
-    private func decreaseStock() {
-        
+    private func sendNotification(about fruit: Fruit, number: Int) {
+        NotificationCenter.default.post(name: Notification.Name("fruitsAmountDidChange"), object: nil, userInfo: [fruit: number])
     }
     
-    private func useIngredients() {
-        decreaseStock()
+    private func decreaseStock(of fruit: Fruit, by number: Int, from numberOfFruitExist: Int) {
+        let valueAfterChange = numberOfFruitExist - number
+        inventory[fruit] = valueAfterChange
+        sendNotification(about: fruit, number: valueAfterChange)
+    }
+    
+    private func useIngredients(accordingTo recipes: [(requiredFruit: Fruit, requestedAmount: Int)], checkAmountOfFruits: [Int]) {
+        for (index, fruitAmount) in checkAmountOfFruits.enumerated() {
+            decreaseStock(of: recipes[index].requiredFruit, by: recipes[index].requestedAmount, from: fruitAmount)
+        }
     }
     
     private func checkStock(amountOfFruitNow: Int, requiredAmount: Int) throws {
@@ -52,9 +60,9 @@ class FruitStore {
     }
     
     func consumeStocks(_ recipes: [(requiredFruit: Fruit, requestedAmount: Int)]) throws {
-        let _ = try checkIngredients(recipes)
+        let amountOfFruit = try checkIngredients(recipes)
         
-        useIngredients()
+        useIngredients(accordingTo: recipes, checkAmountOfFruits: amountOfFruit)
     }
     
 }
