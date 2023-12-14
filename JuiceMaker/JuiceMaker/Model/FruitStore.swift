@@ -3,7 +3,6 @@ import Foundation
 
 extension Notification.Name {
     static let fruitStockDidChange = Notification.Name("fruitStockDidChange")
-    static let fruitStockLimit = Notification.Name("fruitStockLimit")
 }
 
 // MARK: - FruitStore 초기화

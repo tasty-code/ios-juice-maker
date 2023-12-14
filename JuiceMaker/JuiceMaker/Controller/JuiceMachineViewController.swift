@@ -38,7 +38,6 @@ private extension JuiceMachineViewController {
         juiceMachineView.ddalbaOrderButton.addTarget(self, action: #selector(ddalbaJuiceOrderButtonTapped), for: .touchUpInside)
         juiceMachineView.mangkiOrderButton.addTarget(self, action: #selector(mangkiJuiceButtonTapped), for: .touchUpInside)
         setInitialStockLabel()
-
     }
     
     func setInitialStockLabel() {
@@ -70,7 +69,7 @@ private extension JuiceMachineViewController {
     }
     
     @objc func kiwiJuiceOrderButtonTapped() {
-        reception.acceptJuiceOrder( juiceType: .kiwi)
+        reception.acceptJuiceOrder(juiceType: .kiwi)
     }
     
     @objc func mangoJuiceButtonTapped() {
@@ -93,7 +92,6 @@ private extension JuiceMachineViewController {
     
     func updateStockLabel(from fruitStock: [FruitStore.Fruits: Int]) {
         juiceMachineView.bananaStockLabel.text = String(fruitStock[.banana] ?? 0)
-        print(String(fruitStock[.banana] ?? 0))
         juiceMachineView.strawberryStockLabel.text = String(fruitStock[.strawberry] ?? 0)
         juiceMachineView.mangoStockLabel.text = String(fruitStock[.mango] ?? 0)
         juiceMachineView.pineappleStockLabel.text = String(fruitStock[.pineapple] ?? 0)
