@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		082E3B812B22E9F00068A685 /* AlertHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082E3B802B22E9F00068A685 /* AlertHandler.swift */; };
+		0838FFC12B2AAAC3006994A9 /* ErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0838FFC02B2AAAC3006994A9 /* ErrorType.swift */; };
 		08C6F55F2B20881B0060C97B /* JuiceMachineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6F55E2B20881B0060C97B /* JuiceMachineView.swift */; };
 		C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71CD66A266C7ACB0038B9CB /* FruitStore.swift */; };
 		C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DAF36255D0CDD00020D38 /* AppDelegate.swift */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		082E3B802B22E9F00068A685 /* AlertHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHandler.swift; sourceTree = "<group>"; };
+		0838FFC02B2AAAC3006994A9 /* ErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorType.swift; sourceTree = "<group>"; };
 		08C6F55E2B20881B0060C97B /* JuiceMachineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMachineView.swift; sourceTree = "<group>"; };
 		C71CD66A266C7ACB0038B9CB /* FruitStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitStore.swift; sourceTree = "<group>"; };
 		C73DAF33255D0CDD00020D38 /* JuiceMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JuiceMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +67,7 @@
 				CE4E51582B216328005209C3 /* JuiceType.swift */,
 				C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */,
 				C71CD66A266C7ACB0038B9CB /* FruitStore.swift */,
+				0838FFC02B2AAAC3006994A9 /* ErrorType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 				C73DAF3B255D0CDD00020D38 /* JuiceMachineViewController.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
 				CE4E51592B216328005209C3 /* JuiceType.swift in Sources */,
+				0838FFC12B2AAAC3006994A9 /* ErrorType.swift in Sources */,
 				CE4E51572B214F7D005209C3 /* Reception.swift in Sources */,
 				C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */,
 				C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */,

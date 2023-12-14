@@ -85,7 +85,10 @@ private extension JuiceMachineViewController {
     
     @objc func updateFruitStock(notification: Notification) {
         guard let fruitStock = 
-                notification.userInfo?["fruitsStock"] as? [FruitStore.Fruits: Int] else { return }
+            notification.userInfo?["fruitsStock"] as? [FruitStore.Fruits: Int] else {
+            ErrorType.notificationCenterError("\(#function)에서 문제가 생겼습니다!").printMessage()
+            return
+        }
         updateStockLabel(from: fruitStock)
     }
     
