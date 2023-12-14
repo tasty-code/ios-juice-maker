@@ -20,17 +20,17 @@ final class AlertHandler {
         return currentVC ?? nil
     }
     
-    private func fetchAlertMessage(alertType: AlertType) -> (String, String) {
-        switch alertType {
-        case .fruitShortage(let customeMessage):
-            return ("재고부족!", customeMessage)
-        case .successJuiceOrder(let customeMessage):
-            return ("주스제조성공!", customeMessage)
+    private func fetchAlertMessage(of type: AlertType) -> (String, String) {
+        switch type {
+        case .fruitShortage(let customMessage):
+            return ("재고부족!", customMessage)
+        case .successJuiceOrder(let customMessage):
+            return ("주스제조성공!", customMessage)
         }
     }
     
     private func generateAlert(of type: AlertType) -> UIAlertController {
-        let (title, message) = fetchAlertMessage(alertType: type)
+        let (title, message) = fetchAlertMessage(of: type)
         let alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
         return alertView
     }

@@ -16,7 +16,8 @@ final class FruitStore {
     private let limitedQuantity = 0
     
     init() {
-        fruitsStock = Dictionary(uniqueKeysWithValues: Fruits.allCases.map {($0, 10)})
+        let initialValue = 10
+        fruitsStock = Dictionary(uniqueKeysWithValues: Fruits.allCases.map {($0, initialValue)})
         postFruitsStock()
     }
 }

@@ -26,7 +26,7 @@ private extension JuiceMachineViewController {
     
     func setupUI() {
         setupButtonAction()
-        setInitialStockLabel()
+        setupInitialStockLabel()
     }
     
     func setupButtonAction() {
@@ -37,10 +37,9 @@ private extension JuiceMachineViewController {
         juiceMachineView.pineappleOrderButton.addTarget(self, action: #selector(pineappleJuiceOrderButtonTapped), for: .touchUpInside)
         juiceMachineView.ddalbaOrderButton.addTarget(self, action: #selector(ddalbaJuiceOrderButtonTapped), for: .touchUpInside)
         juiceMachineView.mangkiOrderButton.addTarget(self, action: #selector(mangkiJuiceButtonTapped), for: .touchUpInside)
-        setInitialStockLabel()
     }
     
-    func setInitialStockLabel() {
+    func setupInitialStockLabel() {
         updateStockLabel(from: fruitStore.fruitsStock)
     }
 }
@@ -49,31 +48,31 @@ private extension JuiceMachineViewController {
 private extension JuiceMachineViewController {
 
     @objc func ddalbaJuiceOrderButtonTapped() {
-        reception.acceptJuiceOrder(juiceType: .ddalba)
+        reception.acceptJuiceOrder(of: .ddalba)
     }
     
     @objc func mangkiJuiceButtonTapped() {
-        reception.acceptJuiceOrder(juiceType: .mangki)
+        reception.acceptJuiceOrder(of: .mangki)
     }
     
     @objc func strawberryJuiceOrderButtonTapped() {
-        reception.acceptJuiceOrder(juiceType: .strawberry)
+        reception.acceptJuiceOrder(of: .strawberry)
     }
     
     @objc func bananaJuiceOrderButtonTapped() {
-        reception.acceptJuiceOrder(juiceType: .banana)
+        reception.acceptJuiceOrder(of: .banana)
     }
 
     @objc func pineappleJuiceOrderButtonTapped() {
-        reception.acceptJuiceOrder(juiceType: .pineapple)
+        reception.acceptJuiceOrder(of: .pineapple)
     }
     
     @objc func kiwiJuiceOrderButtonTapped() {
-        reception.acceptJuiceOrder(juiceType: .kiwi)
+        reception.acceptJuiceOrder(of: .kiwi)
     }
     
     @objc func mangoJuiceButtonTapped() {
-        reception.acceptJuiceOrder(juiceType: .mango)
+        reception.acceptJuiceOrder(of: .mango)
     }
 }
 

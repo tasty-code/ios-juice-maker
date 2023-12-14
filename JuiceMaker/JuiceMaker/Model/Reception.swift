@@ -5,8 +5,8 @@ struct Reception {
     
     private let juiceMaker = JuiceMaker()
     
-    func acceptJuiceOrder(juiceType: JuiceType) {
-        switch juiceType {
+    func acceptJuiceOrder(of type: JuiceType) {
+        switch type {
         case .strawberry:
             juiceMaker.makeStrawberryJuice()
             
