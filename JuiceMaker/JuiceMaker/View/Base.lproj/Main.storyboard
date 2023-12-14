@@ -261,7 +261,7 @@
         <!--재고 수정 -->
         <scene sceneID="fkG-vv-hpE">
             <objects>
-                <viewController id="Yu1-lM-nqp" sceneMemberID="viewController">
+                <viewController id="Yu1-lM-nqp" customClass="StockManagementViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="secondVC" id="tKV-4l-Vtc">
                         <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -388,6 +388,18 @@
                         <barButtonItem key="leftBarButtonItem" title="취소" id="Vqk-p5-75A"/>
                         <barButtonItem key="rightBarButtonItem" title="Item" id="OAa-eb-eNf"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="changeAmountOfBanana" destination="O5s-2N-3iP" id="v6p-LC-Roy"/>
+                        <outlet property="changeAmountOfKiwi" destination="klA-59-Nu4" id="94l-Qz-dHa"/>
+                        <outlet property="changeAmountOfMango" destination="xbn-6P-grO" id="HRV-L8-xk6"/>
+                        <outlet property="changeAmountOfPineApple" destination="Rcr-xr-eqz" id="QfE-yx-EbV"/>
+                        <outlet property="changeAmountOfStrawberry" destination="ZQk-f4-zrz" id="NZz-qS-Bin"/>
+                        <outlet property="numberOfBanana" destination="gKu-86-RhI" id="9Dv-Mq-REd"/>
+                        <outlet property="numberOfKiwi" destination="ZDv-1m-HBY" id="8Z3-p7-xvA"/>
+                        <outlet property="numberOfMango" destination="YJI-ER-LJR" id="sOv-Ed-h45"/>
+                        <outlet property="numberOfPineApple" destination="MpT-VW-hCb" id="m31-dr-ycV"/>
+                        <outlet property="numberOfStrawberry" destination="0yV-kn-zaT" id="Xkh-e8-2GA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
             </objects>
