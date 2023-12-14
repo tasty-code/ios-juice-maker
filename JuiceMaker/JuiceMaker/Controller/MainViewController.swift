@@ -103,32 +103,28 @@ class MainViewController: UIViewController {
         }
     }
     
-    @IBAction func StrawberryJuiceOrderButtonTapped(_ sender: UIButton) {
-        openResultAlert(juiceMaker.makeJuice(juiceMenu: .strawberry))
+    @IBAction func fruitJuiceOrderButtonTapped(_ sender: UIButton) {
+        guard let title = sender.currentTitle else {
+             return
+         }
+        
+        switch title {
+        case "딸기쥬스 주문":
+            showResultAlert(juiceMaker.makeJuice(juiceMenu: .strawberry))
+        case "바나나쥬스 주문":
+            showResultAlert(juiceMaker.makeJuice(juiceMenu: .banana))
+        case "파인애플쥬스 주문":
+            showResultAlert(juiceMaker.makeJuice(juiceMenu: .pineapple))
+        case "키위쥬스 주문":
+            showResultAlert(juiceMaker.makeJuice(juiceMenu: .kiwi))
+        case "망고쥬스 주문":
+            showResultAlert(juiceMaker.makeJuice(juiceMenu: .mango))
+        case "딸바쥬스 주문":
+            showResultAlert(juiceMaker.makeJuice(juiceMenu: .straberryBanana))
+        case "망키쥬스 주문":
+            showResultAlert(juiceMaker.makeJuice(juiceMenu: .mangoKiwi))
+        default:
+            showResultAlert(.failure(JuiceError.unknown))
+        }
     }
-    
-    @IBAction func bananaJuiceOrderButtonTapped(_ sender: UIButton) {
-        openResultAlert(juiceMaker.makeJuice(juiceMenu: .banana))
-    }
-    
-    @IBAction func pineappleJuiceOrderButtonTapped(_ sender: UIButton) {
-        openResultAlert(juiceMaker.makeJuice(juiceMenu: .pineapple))
-    }
-    
-    @IBAction func kiwiJuiceOrderButtonTapped(_ sender: UIButton) {
-        openResultAlert(juiceMaker.makeJuice(juiceMenu: .kiwi))
-    }
-    
-    @IBAction func mangoJuiceOrderButtonTapped(_ sender: UIButton) {
-        openResultAlert(juiceMaker.makeJuice(juiceMenu: .mango))
-    }
-    
-    @IBAction func strawberryBananaJuiceOrderButtonTapped(_ sender: UIButton) {
-        openResultAlert(juiceMaker.makeJuice(juiceMenu: .straberryBanana))
-    }
-    
-    @IBAction func mangoKiwiJuiceOrderButtonTapped(_ sender: UIButton) {
-        openResultAlert(juiceMaker.makeJuice(juiceMenu: .mangoKiwi))
-    }
-    
 }
