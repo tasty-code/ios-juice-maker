@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A63FFB82B2ACC11001CC5B9 /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A63FFB72B2ACC11001CC5B9 /* AlertBuilder.swift */; };
 		2AFA95D12B1EBD0B00AD48EC /* FruitName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFA95D02B1EBD0B00AD48EC /* FruitName.swift */; };
 		2AFA95FB2B200FDF00AD48EC /* JuiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFA95FA2B200FDF00AD48EC /* JuiceError.swift */; };
 		2AFA95FD2B22F01700AD48EC /* JuiceMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFA95FC2B22F01700AD48EC /* JuiceMenu.swift */; };
@@ -18,9 +19,11 @@
 		C73DAF43255D0CDF00020D38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C73DAF41255D0CDF00020D38 /* LaunchScreen.storyboard */; };
 		C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */; };
 		DCB745482B22FA29003FE1DA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB745472B22FA29003FE1DA /* MainViewController.swift */; };
+		DCDD53762B28356900DCED66 /* ModifyInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDD53752B28356900DCED66 /* ModifyInventoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A63FFB72B2ACC11001CC5B9 /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
 		2AFA95D02B1EBD0B00AD48EC /* FruitName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitName.swift; sourceTree = "<group>"; };
 		2AFA95FA2B200FDF00AD48EC /* JuiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JuiceError.swift; path = JuiceMaker/JuiceError.swift; sourceTree = SOURCE_ROOT; };
 		2AFA95FC2B22F01700AD48EC /* JuiceMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMenu.swift; sourceTree = "<group>"; };
@@ -34,6 +37,7 @@
 		C73DAF44255D0CDF00020D38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMaker.swift; sourceTree = "<group>"; };
 		DCB745472B22FA29003FE1DA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		DCDD53752B28356900DCED66 /* ModifyInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyInventoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,12 +51,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A63FFB62B2ACC00001CC5B9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2A63FFB72B2ACC11001CC5B9 /* AlertBuilder.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		C71CD66D266C7B470038B9CB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				C73DAF36255D0CDD00020D38 /* AppDelegate.swift */,
-				C73DAF38255D0CDD00020D38 /* SceneDelegate.swift */,
 				DCB745472B22FA29003FE1DA /* MainViewController.swift */,
+				DCDD53752B28356900DCED66 /* ModifyInventoryViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -98,12 +109,23 @@
 		C73DAF35255D0CDD00020D38 /* JuiceMaker */ = {
 			isa = PBXGroup;
 			children = (
+				2A63FFB62B2ACC00001CC5B9 /* Utils */,
+				DCC5F5202B2AB69F00FB0D57 /* Application */,
 				C71CD66D266C7B470038B9CB /* Controller */,
 				C71CD66F266C7B500038B9CB /* Model */,
 				C71CD671266C7B570038B9CB /* View */,
 				C73DAF44255D0CDF00020D38 /* Info.plist */,
 			);
 			path = JuiceMaker;
+			sourceTree = "<group>";
+		};
+		DCC5F5202B2AB69F00FB0D57 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				C73DAF36255D0CDD00020D38 /* AppDelegate.swift */,
+				C73DAF38255D0CDD00020D38 /* SceneDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,8 +202,10 @@
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
 				2AFA95D12B1EBD0B00AD48EC /* FruitName.swift in Sources */,
 				C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */,
+				2A63FFB82B2ACC11001CC5B9 /* AlertBuilder.swift in Sources */,
 				2AFA95FD2B22F01700AD48EC /* JuiceMenu.swift in Sources */,
 				2AFA95FB2B200FDF00AD48EC /* JuiceError.swift in Sources */,
+				DCDD53762B28356900DCED66 /* ModifyInventoryViewController.swift in Sources */,
 				C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */,
 				DCB745482B22FA29003FE1DA /* MainViewController.swift in Sources */,
 			);
