@@ -20,68 +20,46 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        observeJuiceMadeNotification()
+        updateFruitQuantityLabels()
+    }
+    
+    private func observeJuiceMadeNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(updateFruitQuantities), name: NSNotification.Name("JuiceMade"), object: nil)
-        
+    }
+    
+    private func updateFruitQuantityLabels() {
         let allFruitQuantity = juiceMaker.fruitStore.currentQuantityOfAllFruits()
-        guard let strawberry = allFruitQuantity[.strawberry] else {
-            showResultAlert(.failure(JuiceError.unknown))
-            return
-        }
-        guard let banana = allFruitQuantity[.banana] else {
-            showResultAlert(.failure(JuiceError.unknown))
-            return
-        }
-        guard let pineapple = allFruitQuantity[.pineapple] else {
-            showResultAlert(.failure(JuiceError.unknown))
-            return
-        }
-        guard let kiwi = allFruitQuantity[.kiwi] else {
-            showResultAlert(.failure(JuiceError.unknown))
-            return
-        }
-        guard let mango = allFruitQuantity[.mango] else {
+        
+        updateFruitLabel(fruitName: .strawberry, quantity: allFruitQuantity[.strawberry])
+        updateFruitLabel(fruitName: .banana, quantity: allFruitQuantity[.banana])
+        updateFruitLabel(fruitName: .pineapple, quantity: allFruitQuantity[.pineapple])
+        updateFruitLabel(fruitName: .kiwi, quantity: allFruitQuantity[.kiwi])
+        updateFruitLabel(fruitName: .mango, quantity: allFruitQuantity[.mango])
+    }
+    
+    private func updateFruitLabel(fruitName: FruitName, quantity: Int?) {
+        guard let fruitQuantity = quantity else {
             showResultAlert(.failure(JuiceError.unknown))
             return
         }
         
-        strawberryQuantity.text = String(strawberry)
-        bananaQuantity.text = String(banana)
-        pineappleQuantity.text = String(pineapple)
-        kiwiQuantity.text = String(kiwi)
-        mangoQuantity.text = String(mango)
+        switch fruitName {
+        case .strawberry:
+            strawberryQuantity.text = String(fruitQuantity)
+        case .banana:
+            bananaQuantity.text = String(fruitQuantity)
+        case .pineapple:
+            pineappleQuantity.text = String(fruitQuantity)
+        case .kiwi:
+            kiwiQuantity.text = String(fruitQuantity)
+        case .mango:
+            mangoQuantity.text = String(fruitQuantity)
+        }
     }
     
     @objc func updateFruitQuantities() {
-        guard let strawberry = juiceMaker.fruitStore.currentFruitStockQuantity(fruitName: .strawberry) else {
-            showResultAlert(.failure(JuiceError.unknown))
-            return
-        }
-        
-        guard let banana = juiceMaker.fruitStore.currentFruitStockQuantity(fruitName: .banana) else {
-            showResultAlert(.failure(JuiceError.unknown))
-            return
-        }
-        
-        guard let pineapple = juiceMaker.fruitStore.currentFruitStockQuantity(fruitName: .pineapple) else {
-            showResultAlert(.failure(JuiceError.unknown))
-            return
-        }
-        
-        guard let kiwi = juiceMaker.fruitStore.currentFruitStockQuantity(fruitName: .kiwi) else {
-            showResultAlert(.failure(JuiceError.unknown))
-            return
-        }
-        
-        guard let mango = juiceMaker.fruitStore.currentFruitStockQuantity(fruitName: .mango) else {
-            showResultAlert(.failure(JuiceError.unknown))
-            return
-        }
-        
-        strawberryQuantity.text = String(strawberry)
-        bananaQuantity.text = String(banana)
-        pineappleQuantity.text = String(pineapple)
-        kiwiQuantity.text = String(kiwi)
-        mangoQuantity.text = String(mango)
+        updateFruitQuantityLabels()
     }
     
     private func showResultAlert(_ result: Result<Void, JuiceError>) {
