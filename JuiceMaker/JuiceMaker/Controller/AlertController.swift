@@ -15,7 +15,6 @@ struct AlertController {
                           completeTitle: String = "확인",
                           completionHandler: (() -> Void)? = nil){
         guard let currentVC = vcToShow else {
-//            completionHandler?()
             return
         }
         let alert = UIAlertController(title: title,
@@ -37,7 +36,6 @@ struct AlertController {
                           cancelHandler: (() -> Void)?,
                           completionHandler: (() -> Void)?){
         guard let currentVC = vcToShow else {
-//            completionHandler?()
             return
         }
         let alert = UIAlertController(title: title,
