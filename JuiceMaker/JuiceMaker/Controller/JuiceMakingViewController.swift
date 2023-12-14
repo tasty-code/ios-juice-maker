@@ -1,13 +1,13 @@
 //
 //  JuiceMaker - ViewController.swift
-//  Created by yagom. 
+//  Created by yagom.
 //  Copyright © yagom academy. All rights reserved.
-// 
+//
 
 import UIKit
 
 class JuiceMakingViewController: UIViewController {
-
+    
     @IBOutlet var numberOfStrawberry: UILabel!
     @IBOutlet var numberOfBanana: UILabel!
     @IBOutlet var numberOfPineApple: UILabel!
@@ -21,7 +21,9 @@ class JuiceMakingViewController: UIViewController {
     @IBOutlet var orderMangoButton: UIButton!
     @IBOutlet var orderStrawberryBananaButton: UIButton!
     @IBOutlet var orderMangoKiwiButton: UIButton!
-
+    
+    @IBOutlet var stockChangeButton: UIBarButtonItem!
+    
     let juiceMaker = JuiceMaker(fruitStore: FruitStore())
     
     override func viewDidLoad() {
@@ -69,6 +71,10 @@ extension JuiceMakingViewController {
         orderMangoButton.addTarget(self, action: #selector(orderJuice(_:)), for: .touchUpInside)
         orderStrawberryBananaButton.addTarget(self, action: #selector(orderJuice(_:)), for:.touchUpInside)
         orderMangoKiwiButton.addTarget(self, action: #selector(orderJuice(_:)), for: .touchUpInside)
+        
+        stockChangeButton.target = self
+        stockChangeButton.action = #selector(stockChangeButtonTapped)
+        
     }
     
     @objc func orderJuice(_ sender: UIButton) {
@@ -111,12 +117,15 @@ extension JuiceMakingViewController {
         }
         return alert
     }
+    
+    @objc func stockChangeButtonTapped() {
+        dataToStockManagementViewController()
+    }
 }
 
 extension JuiceMakingViewController {
     func transitionToStockManagement(_ sender: UIAlertAction) {
-        let segue = "segueToStockManagement"
-        performSegue(withIdentifier: segue, sender: sender)
+        dataToStockManagementViewController()
     }
 }
 
@@ -129,7 +138,7 @@ extension JuiceMakingViewController {
         guard let userInfo = notification.userInfo, let fruitInfo = userInfo as? [Fruit : Int] else {
             return
         }
-       
+        
         self.showNumberOnLabel(fruits: fruitInfo)
     }
     
@@ -137,4 +146,14 @@ extension JuiceMakingViewController {
         NotificationCenter.default.removeObserver(self, name: Notification.Name("fruitsAmountDidChange"), object: nil)
     }
     
+}
+
+extension JuiceMakingViewController {
+    func dataToStockManagementViewController() {
+        if let stockManagementVC = self.storyboard?.instantiateViewController(withIdentifier: "StockManagementViewController") as? StockManagementViewController {
+            stockManagementVC.receivedData = juiceMaker.fruitStore.inventory
+            let stockManagementNavigationController = UINavigationController(rootViewController: stockManagementVC)
+            self.present(stockManagementNavigationController, animated: true, completion: nil)
+        }
+    }
 }

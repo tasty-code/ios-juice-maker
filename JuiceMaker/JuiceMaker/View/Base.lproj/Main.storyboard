@@ -215,11 +215,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="맛있는 쥬스를 만들어 드려요!" id="Eal-fj-o4N">
-                        <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT">
-                            <connections>
-                                <segue destination="RtH-jy-9TE" kind="showDetail" identifier="segueToStockManagement" id="RWS-1p-fL0"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT"/>
                     </navigationItem>
                     <connections>
                         <outlet property="numberOfBanana" destination="gvk-pA-Lw5" id="zry-v2-Opr"/>
@@ -234,6 +230,7 @@
                         <outlet property="orderPineAppleButton" destination="BFb-ka-wGA" id="tYL-q3-OI7"/>
                         <outlet property="orderStrawberryBananaButton" destination="hrc-2F-fzl" id="cfE-BG-ZHK"/>
                         <outlet property="orderStrawberryButton" destination="avd-o5-3JM" id="3Wy-Ka-FVg"/>
+                        <outlet property="stockChangeButton" destination="C3q-Te-cNT" id="R3W-y5-KKR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -261,7 +258,7 @@
         <!--재고 수정 -->
         <scene sceneID="fkG-vv-hpE">
             <objects>
-                <viewController id="Yu1-lM-nqp" customClass="StockManagementViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StockManagementViewController" id="Yu1-lM-nqp" customClass="StockManagementViewController" customModule="JuiceMaker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="secondVC" id="tKV-4l-Vtc">
                         <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
