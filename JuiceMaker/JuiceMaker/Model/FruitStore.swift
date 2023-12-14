@@ -35,7 +35,7 @@ class FruitStore {
     }
     
     private func checkStock(amountOfFruitNow: Int, requiredAmount: Int) throws {
-        guard amountOfFruitNow > requiredAmount else {
+        guard amountOfFruitNow >= requiredAmount else {
             throw InventoryError.outOfStock(description: InventoryError.outOfStockMessage)
         }
     }
