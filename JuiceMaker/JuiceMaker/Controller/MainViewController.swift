@@ -66,29 +66,24 @@ class MainViewController: UIViewController {
         switch result {
         case .success:
             NotificationCenter.default.post(name: NSNotification.Name("JuiceMade"), object: nil)
-            let alert = UIAlertController(title: "주문 완료", message: "쥬스가 나왔습니다! 맛있게 드세요!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
+            AlertBuilder(vc: self).addAction("확인", style: .default).addMessage(title:"주문 완료", message: "쥬스가 나왔습니다! 맛있게 드세요!", style: .alert)
             
         case .failure(let error):
+            
             switch error {
             case JuiceError.outOfStock:
-                let alert = UIAlertController(title: "재료 부족", message: "재료가 모자라요. 재고를 수정할까요?", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "예", style: .default, handler: { _ in
+                AlertBuilder(vc: self).addAction("예", style: .default) {
+                    [weak self] in
+                        guard let self = self else { return }
                     self.performSegue(withIdentifier: "modifyInventorySegue", sender: nil)
-                }))
-                alert.addAction(UIAlertAction(title: "아니오", style: .cancel, handler: nil))
-                present(alert, animated: true, completion: nil)
+                }
+                        .addAction("아니오", style: .cancel).addMessage(title:"재료 부족", message: "재료가 모자라요. 재고를 수정할까요?", style: .alert)
                 
             case JuiceError.unknown:
-                let alert = UIAlertController(title: "알 수 없는 에러", message: "에러가 발생하였습니다.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
-                present(alert, animated: true, completion: nil)
+                AlertBuilder(vc: self).addAction("확인", style: .default).addMessage(title:"알 수 없는 에러", message: "에러가 발생하였습니다.", style: .alert)
                 
             case JuiceError.quantityOfAllFruitsAccessFailed:
-                let alert = UIAlertController(title: "유효하지 않은 레시피", message: "주문할 수 없는 쥬스입니다.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
-                present(alert, animated: true, completion: nil)
+                AlertBuilder(vc: self).addAction("확인", style: .default).addMessage(title:"유효하지 않은 레시피", message: "주문할 수 없는 쥬스입니다.", style: .alert)
             }
         }
     }

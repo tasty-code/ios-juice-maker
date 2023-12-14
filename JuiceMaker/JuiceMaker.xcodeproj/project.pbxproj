@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A63FFB82B2ACC11001CC5B9 /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A63FFB72B2ACC11001CC5B9 /* AlertBuilder.swift */; };
 		2AFA95D12B1EBD0B00AD48EC /* FruitName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFA95D02B1EBD0B00AD48EC /* FruitName.swift */; };
 		2AFA95FB2B200FDF00AD48EC /* JuiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFA95FA2B200FDF00AD48EC /* JuiceError.swift */; };
 		2AFA95FD2B22F01700AD48EC /* JuiceMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFA95FC2B22F01700AD48EC /* JuiceMenu.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A63FFB72B2ACC11001CC5B9 /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
 		2AFA95D02B1EBD0B00AD48EC /* FruitName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitName.swift; sourceTree = "<group>"; };
 		2AFA95FA2B200FDF00AD48EC /* JuiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JuiceError.swift; path = JuiceMaker/JuiceError.swift; sourceTree = SOURCE_ROOT; };
 		2AFA95FC2B22F01700AD48EC /* JuiceMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMenu.swift; sourceTree = "<group>"; };
@@ -49,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A63FFB62B2ACC00001CC5B9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2A63FFB72B2ACC11001CC5B9 /* AlertBuilder.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		C71CD66D266C7B470038B9CB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +109,7 @@
 		C73DAF35255D0CDD00020D38 /* JuiceMaker */ = {
 			isa = PBXGroup;
 			children = (
+				2A63FFB62B2ACC00001CC5B9 /* Utils */,
 				DCC5F5202B2AB69F00FB0D57 /* Application */,
 				C71CD66D266C7B470038B9CB /* Controller */,
 				C71CD66F266C7B500038B9CB /* Model */,
@@ -191,6 +202,7 @@
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
 				2AFA95D12B1EBD0B00AD48EC /* FruitName.swift in Sources */,
 				C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */,
+				2A63FFB82B2ACC11001CC5B9 /* AlertBuilder.swift in Sources */,
 				2AFA95FD2B22F01700AD48EC /* JuiceMenu.swift in Sources */,
 				2AFA95FB2B200FDF00AD48EC /* JuiceError.swift in Sources */,
 				DCDD53762B28356900DCED66 /* ModifyInventoryViewController.swift in Sources */,
