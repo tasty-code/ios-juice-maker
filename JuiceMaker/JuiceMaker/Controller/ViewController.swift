@@ -6,12 +6,11 @@
 
 import UIKit
 
-protocol FruitStoreDelegate: AnyObject {
-    func didUpdateFruitInventory()
-}
 
-class ViewController: UIViewController, FruitStoreDelegate, AlertPresentable {
-    let fruitStore = FruitStore.shared
+
+class ViewController: UIViewController, AlertPresentable {
+    
+    let fruitStore = FruitStore()
     
     @IBOutlet weak var strawberry: UILabel!
     @IBOutlet weak var banana: UILabel!
@@ -19,22 +18,13 @@ class ViewController: UIViewController, FruitStoreDelegate, AlertPresentable {
     @IBOutlet weak var kiwi: UILabel!
     @IBOutlet weak var mango: UILabel!
     
-    func didUpdateFruitInventory() {
-        updateFruitLabels()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         fruitStore.delegate = self
         updateFruitLabels()
+        
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        fruitStore.delegate = self
-//        updateFruitLabels()
-//    }
-//    
+
     @IBAction func changeInvetoryButtonTapped(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "goToQuantityUpdate", sender: sender)
     }
@@ -115,7 +105,6 @@ class ViewController: UIViewController, FruitStoreDelegate, AlertPresentable {
         } catch {
             showFailAlert()
         }
-        
     }
     
     @IBAction func mangoJuiceButton(_ sender: UIButton) {
@@ -125,6 +114,17 @@ class ViewController: UIViewController, FruitStoreDelegate, AlertPresentable {
             updateFruitLabels()
         } catch {
             showFailAlert()
+        }
+    }
+}
+
+extension ViewController: QuantityVCDelegate {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToQuantityUpdate",
+           let quantityVC = segue.destination as? QuantityVC {
+            quantityVC.fruitStore = self.fruitStore
+            quantityVC.delegate = self
         }
     }
 }

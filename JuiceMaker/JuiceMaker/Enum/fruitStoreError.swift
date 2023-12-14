@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 enum fruitStoreError: Error {
     case currentQuantityError
     case makeJuiceError

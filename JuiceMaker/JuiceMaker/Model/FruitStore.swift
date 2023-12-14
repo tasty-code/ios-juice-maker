@@ -10,10 +10,7 @@ import Foundation
 class FruitStore {
     
     var fruitInventory: [String: Int]
-    
-    static let shared = FruitStore()
-    
-    weak var delegate: FruitStoreDelegate?
+    weak var delegate: QuantityVCDelegate?
     
     init () {
         fruitInventory =  [
@@ -27,7 +24,6 @@ class FruitStore {
     
     func updateInventory(with inventory: [String: Int]) {
         fruitInventory = inventory
-        delegate?.didUpdateFruitInventory()
     }
     
     func displayCurrentFruitInventory(fruit: String) -> Int? {

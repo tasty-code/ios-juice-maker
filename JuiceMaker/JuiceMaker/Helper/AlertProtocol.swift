@@ -6,7 +6,6 @@
 //
 
 import UIKit
-//ViewContoroller에서 Alert을 호출하게 구현하고 싶음
 
 protocol AlertPresentable: UIViewController {
     func showSuccessAlert(message:String)
