@@ -27,10 +27,10 @@ final class JuiceMakerViewController: UIViewController {
     
         let isOrderable = juiceMaker.makeJuice(juice: selectedJuice)
         switch isOrderable {
-        case .success:
+        case true:
             successAlert(menu: selectedJuice)
             configureView()
-        case .failure:
+        case false:
             failAlert()
         }
     }

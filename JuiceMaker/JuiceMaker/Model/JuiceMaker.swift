@@ -10,28 +10,19 @@ import Foundation
 struct JuiceMaker {
     let fruitStore = FruitStore()
 
-    func makeJuice(juice: Juice) -> Result<Bool, JuiceMakerError> {
-        do {
-            let recipe = juice.recipe
-            try checkStockAvailability(for: recipe)
-            try reduceStock(for: recipe)
-            return .success(true)
-        } catch JuiceMakerError.insufficientStock {
-            print(JuiceMakerError.insufficientStock.errorMessage)
-            return .failure(.insufficientStock)
-        } catch {
-            print(JuiceMakerError.unexpected.errorMessage)
-            return .failure(.unexpected)
+    func makeJuice(juice: Juice) -> Bool {
+        let recipe = juice.recipe
+        let isSucceed = fruitStore.checkStockAvailability(recipe: recipe)
+        switch isSucceed {
+        case .success:
+            reduceStock(for: recipe)
+            return true
+        case .failure:
+            return false
         }
     }
 
-    private func checkStockAvailability(for recipe: [Fruits: Int]) throws {
-        guard fruitStore.checkStockAvailability(recipe: recipe) else {
-            throw JuiceMakerError.insufficientStock
-        }
-    }
-
-    private func reduceStock(for recipe: [Fruits: Int]) throws {
+    private func reduceStock(for recipe: [Fruits: Int]) {
         for (fruit, amount) in recipe {
             fruitStore.changeStock(fruitName: fruit, amount: -amount)
         }
