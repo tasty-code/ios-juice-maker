@@ -45,7 +45,6 @@ final class JuiceMakerViewController: UIViewController {
         stockDisplay?.displayStock()
     }
     
-    
     @IBAction func makeStrawberryBananaJuice(_ sender: UIButton) {
         juiceMaker?.makeJuice(flavor: .strawberryBanana)
     }
@@ -72,6 +71,10 @@ final class JuiceMakerViewController: UIViewController {
     
     @IBAction func makeMangoJuice(_ sender: UIButton) {
         juiceMaker?.makeJuice(flavor: .mango)
+    }
+    
+    @IBAction func moveToStockManager(_ sender: UIBarButtonItem) {
+        self.router?.routeToNextViewController()
     }
     
     private func setUp() {
