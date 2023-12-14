@@ -4,7 +4,11 @@ import Foundation
 // MARK: - JuiceMaker 초기화
 struct JuiceMaker {
     
-    let fruitStore = FruitStore()
+    let fruitStore: FruitStore
+    
+    init(fruitStore: FruitStore) {
+        self.fruitStore = fruitStore
+    }
 
 }
 

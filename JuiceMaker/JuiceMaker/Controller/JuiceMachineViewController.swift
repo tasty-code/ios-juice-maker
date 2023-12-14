@@ -6,7 +6,6 @@ final class JuiceMachineViewController: UIViewController {
     
     @IBOutlet var juiceMachineView: JuiceMachineView!
     private let reception = Reception()
-    private let fruitStore = FruitStore()
     
     deinit { NotificationCenter.default.removeObserver(self) }
 }
@@ -40,7 +39,8 @@ private extension JuiceMachineViewController {
     }
     
     func setupInitialStockLabel() {
-        updateStockLabel(from: fruitStore.fruitsStock)
+        var initialFruitStock = reception.fetchInitialFruitsStock()
+        updateStockLabel(from: initialFruitStock)
     }
 }
 
