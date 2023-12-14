@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol JuiceMadeDelegate: AnyObject {
+    func juiceMade()
+}
+
 class MainViewController: UIViewController {
     
     @IBOutlet weak var strawberryQuantity: UILabel!
@@ -17,15 +21,13 @@ class MainViewController: UIViewController {
     
     let juiceMaker = JuiceMaker()
     
+    weak var juiceMadeDelegate: JuiceMadeDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        observeJuiceMadeNotification()
+        juiceMadeDelegate = self
         updateFruitQuantityLabels()
-    }
-    
-    private func observeJuiceMadeNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(updateFruitQuantities), name: NSNotification.Name("JuiceMade"), object: nil)
     }
     
     private func updateFruitQuantityLabels() {
@@ -58,14 +60,11 @@ class MainViewController: UIViewController {
         }
     }
     
-    @objc func updateFruitQuantities() {
-        updateFruitQuantityLabels()
-    }
-    
     private func showResultAlert(_ result: Result<Void, JuiceError>) {
         switch result {
         case .success:
-            NotificationCenter.default.post(name: NSNotification.Name("JuiceMade"), object: nil)
+            juiceMadeDelegate?.juiceMade()
+            
             AlertBuilder(vc: self).addAction("확인", style: .default).addMessage(title:"주문 완료", message: "쥬스가 나왔습니다! 맛있게 드세요!", style: .alert)
             
         case .failure(let error):
@@ -111,5 +110,11 @@ class MainViewController: UIViewController {
         default:
             showResultAlert(.failure(JuiceError.unknown))
         }
+    }
+}
+
+extension MainViewController: JuiceMadeDelegate {
+    func juiceMade() {
+        updateFruitQuantityLabels()
     }
 }
