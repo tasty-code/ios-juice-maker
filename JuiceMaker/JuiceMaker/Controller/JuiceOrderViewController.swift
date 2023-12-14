@@ -16,16 +16,10 @@ final class JuiceOrderViewController: UIViewController {
     @IBOutlet weak var kiwiLabel: UILabel!
     @IBOutlet weak var mangoLabel: UILabel!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         updateFruitStockLabel()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-
-            updateFruitStockLabel()
-        }
     
     @IBAction private func manageStockButtonTapped(_ sender: UIButton) {
         moveToManageStockView()
