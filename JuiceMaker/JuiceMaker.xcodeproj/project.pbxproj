@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		844E12762B27F4E70048B0C2 /* ViewID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844E12752B27F4E70048B0C2 /* ViewID.swift */; };
 		844E12782B27F5900048B0C2 /* FruitStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844E12772B27F5900048B0C2 /* FruitStockViewController.swift */; };
 		BD9EA4D02B2A9A0C0062FEA8 /* StoreViewUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EA4CF2B2A9A0C0062FEA8 /* StoreViewUpdatable.swift */; };
 		BD9EA4D22B2AB9F70062FEA8 /* UIVewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EA4D12B2AB9F70062FEA8 /* UIVewController+.swift */; };
@@ -24,7 +23,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		844E12752B27F4E70048B0C2 /* ViewID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewID.swift; sourceTree = "<group>"; };
 		844E12772B27F5900048B0C2 /* FruitStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitStockViewController.swift; sourceTree = "<group>"; };
 		BD9EA4CF2B2A9A0C0062FEA8 /* StoreViewUpdatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewUpdatable.swift; sourceTree = "<group>"; };
 		BD9EA4D12B2AB9F70062FEA8 /* UIVewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVewController+.swift"; sourceTree = "<group>"; };
@@ -53,14 +51,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		844E12742B27F4D30048B0C2 /* Enums */ = {
-			isa = PBXGroup;
-			children = (
-				844E12752B27F4E70048B0C2 /* ViewID.swift */,
-			);
-			path = Enums;
-			sourceTree = "<group>";
-		};
 		C71CD66D266C7B470038B9CB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,7 +104,6 @@
 		C73DAF35255D0CDD00020D38 /* JuiceMaker */ = {
 			isa = PBXGroup;
 			children = (
-				844E12742B27F4D30048B0C2 /* Enums */,
 				C71CD66D266C7B470038B9CB /* Controller */,
 				C71CD66F266C7B500038B9CB /* Model */,
 				C71CD671266C7B570038B9CB /* View */,
@@ -199,7 +188,6 @@
 				BD9EA4D02B2A9A0C0062FEA8 /* StoreViewUpdatable.swift in Sources */,
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
 				C73DAF3B255D0CDD00020D38 /* JuiceOrderViewController.swift in Sources */,
-				844E12762B27F4E70048B0C2 /* ViewID.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
 				C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */,
 				844E12782B27F5900048B0C2 /* FruitStockViewController.swift in Sources */,

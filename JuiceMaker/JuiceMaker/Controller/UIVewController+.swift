@@ -8,6 +8,9 @@
 import UIKit
 
 extension UIViewController {
+    static var className: String {
+        NSStringFromClass(self.classForCoder()).components(separatedBy: ".").last!
+    }
     
     func makeRequestAlert(title : String,
                    message : String,

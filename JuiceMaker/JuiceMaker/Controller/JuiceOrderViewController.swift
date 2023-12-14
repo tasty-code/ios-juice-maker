@@ -33,7 +33,7 @@ extension JuiceOrderViewController {
     }
     
     func pushFruitStockView() {
-        guard let secondVC = storyboard?.instantiateViewController(withIdentifier: ViewID.secondVC.id) as? FruitStockViewController else { return }
+        guard let secondVC = storyboard?.instantiateViewController(withIdentifier: FruitStockViewController.className) as? FruitStockViewController else { return }
         self.navigationController?.pushViewController(secondVC, animated: true)
     }
     
