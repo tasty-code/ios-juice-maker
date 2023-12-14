@@ -24,18 +24,23 @@ class MainViewController: UIViewController {
         
         let allFruitQuantity = juiceMaker.fruitStore.currentQuantityOfAllFruits()
         guard let strawberry = allFruitQuantity[.strawberry] else {
+            showResultAlert(.failure(JuiceError.unknown))
             return
         }
         guard let banana = allFruitQuantity[.banana] else {
+            showResultAlert(.failure(JuiceError.unknown))
             return
         }
         guard let pineapple = allFruitQuantity[.pineapple] else {
+            showResultAlert(.failure(JuiceError.unknown))
             return
         }
         guard let kiwi = allFruitQuantity[.kiwi] else {
+            showResultAlert(.failure(JuiceError.unknown))
             return
         }
         guard let mango = allFruitQuantity[.mango] else {
+            showResultAlert(.failure(JuiceError.unknown))
             return
         }
         
@@ -48,22 +53,27 @@ class MainViewController: UIViewController {
     
     @objc func updateFruitQuantities() {
         guard let strawberry = juiceMaker.fruitStore.currentFruitStockQuantity(fruitName: .strawberry) else {
+            showResultAlert(.failure(JuiceError.unknown))
             return
         }
         
         guard let banana = juiceMaker.fruitStore.currentFruitStockQuantity(fruitName: .banana) else {
+            showResultAlert(.failure(JuiceError.unknown))
             return
         }
         
         guard let pineapple = juiceMaker.fruitStore.currentFruitStockQuantity(fruitName: .pineapple) else {
+            showResultAlert(.failure(JuiceError.unknown))
             return
         }
         
         guard let kiwi = juiceMaker.fruitStore.currentFruitStockQuantity(fruitName: .kiwi) else {
+            showResultAlert(.failure(JuiceError.unknown))
             return
         }
         
         guard let mango = juiceMaker.fruitStore.currentFruitStockQuantity(fruitName: .mango) else {
+            showResultAlert(.failure(JuiceError.unknown))
             return
         }
         
