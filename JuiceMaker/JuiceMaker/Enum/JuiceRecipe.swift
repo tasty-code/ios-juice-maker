@@ -7,7 +7,6 @@
 
 import Foundation
 
-// JuiceRecipe 열거형 정의
 enum JuiceRecipe {
     case strawberry
     case banana

@@ -6,8 +6,6 @@
 
 import UIKit
 
-
-
 class ViewController: UIViewController, AlertPresentable {
     
     let fruitStore = FruitStore()
@@ -20,10 +18,17 @@ class ViewController: UIViewController, AlertPresentable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        starwBananaJuiceButton.tag = 1
+        magoKiwiJuiceButton.tag = 2
+        starwberrtJuiceButton.tag = 3
+        bananaJuiceButton.tag = 4
+        pinappleJuiuceButton.tag = 5
+        kiwiJuiceButton.tag = 6
+        mango.tag = 7
         fruitStore.delegate = self
         updateFruitLabels()
     }
-
+    
     @IBAction func changeInvetoryButtonTapped(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "goToQuantityUpdate", sender: sender)
     }
@@ -36,79 +41,116 @@ class ViewController: UIViewController, AlertPresentable {
         mango.text = "\(fruitStore.fruitInventory["망고"] ?? 0)"
     }
     
-    @IBAction func strawBananaJuice(_ sender: UIButton) {
+    @IBAction func makeJuice(_ sender: UIButton) {
+        let juiceName : JuiceRecipe
+        switch sender.tag {
+        case 1:
+            juiceName = .strawberryBanana
+        case 2:
+            juiceName = .mangoKiwi
+        case 3:
+            juiceName = .strawberry
+        case 4:
+            juiceName = .banana
+        case 5:
+            juiceName = .pineapple
+        case 6:
+            juiceName = .kiwi
+        case 7:
+            juiceName = .mango
+        default:
+            return
+        }
         do {
-            _ = try fruitStore.makeJuice(juiceRecipe: .strawberryBanana)
-            showSuccessAlert(message: "\(JuiceRecipe.strawberryBanana.name)")
+            _ = try fruitStore.makeJuice(juiceRecipe: juiceName)
+            showSuccessAlert(message: "\(juiceName.name)")
             updateFruitLabels()
         } catch {
             showFailAlert()
         }
     }
     
-    @IBAction func mangoKiwiJuiceButton(_ sender: UIButton) {
-        do {
-            _ = try fruitStore.makeJuice(juiceRecipe: .mangoKiwi)
-            showSuccessAlert(message: "\(JuiceRecipe.mangoKiwi.name)")
-            updateFruitLabels()
-        } catch {
-            showFailAlert()
-        }
-    }
+    @IBOutlet weak var starwBananaJuiceButton: UIButton!
+    @IBOutlet weak var magoKiwiJuiceButton: UIButton!
+    @IBOutlet weak var starwberrtJuiceButton: UIButton!
+    @IBOutlet weak var bananaJuiceButton: UIButton!
+    @IBOutlet weak var pinappleJuiuceButton: UIButton!
+    @IBOutlet weak var kiwiJuiceButton: UIButton!
+    @IBOutlet weak var mangoJuiceButton: UIButton!
     
-    @IBAction func strawberryButton(_ sender: UIButton) {
-        do {
-            _ = try fruitStore.makeJuice(juiceRecipe: .strawberry)
-            showSuccessAlert(message: "\(JuiceRecipe.strawberry.name)")
-            updateFruitLabels()
-        } catch {
-            showFailAlert()
-        }
-    }
-    
-    @IBAction func bananaJuiceButton(_ sender: UIButton) {
-        do {
-            _ = try fruitStore.makeJuice(juiceRecipe: .banana)
-            showSuccessAlert(message: "\(JuiceRecipe.banana.name)")
-            updateFruitLabels()
-        } catch {
-            showFailAlert()
-        }
-    }
-    
-    @IBAction func pinAppleJuiceButton(_ sender: UIButton) {
-        do {
-            _ = try fruitStore.makeJuice(juiceRecipe: .pineapple)
-            showSuccessAlert(message: "\(JuiceRecipe.pineapple.name)")
-            updateFruitLabels()
-        } catch {
-            showFailAlert()
-        }
-    }
-    
-    @IBAction func kiwiButton(_ sender: UIButton) {
-        do {
-            _ = try fruitStore.makeJuice(juiceRecipe: .kiwi)
-            showSuccessAlert(message: "\(JuiceRecipe.kiwi.name)")
-            updateFruitLabels()
-        } catch {
-            showFailAlert()
-        }
-    }
-    
-    @IBAction func mangoJuiceButton(_ sender: UIButton) {
-        do {
-            _ = try fruitStore.makeJuice(juiceRecipe: .mango)
-            showSuccessAlert(message: "\(JuiceRecipe.mango.name)")
-            updateFruitLabels()
-        } catch {
-            showFailAlert()
-        }
-    }
+    //    @IBAction func strawBananaJuice(_ sender: UIButton) {
+    //        do {
+    //            _ = try fruitStore.makeJuice(juiceRecipe: .strawberryBanana)
+    //            showSuccessAlert(message: "\(JuiceRecipe.strawberryBanana.name)")
+    //            updateFruitLabels()
+    //        } catch {
+    //            showFailAlert()
+    //        }
+    //    }
+    //
+    //    @IBAction func mangoKiwiJuiceButton(_ sender: UIButton) {
+    //        do {
+    //            _ = try fruitStore.makeJuice(juiceRecipe: .mangoKiwi)
+    //            showSuccessAlert(message: "\(JuiceRecipe.mangoKiwi.name)")
+    //            updateFruitLabels()
+    //        } catch {
+    //            showFailAlert()
+    //        }
+    //    }
+    //
+    //    @IBAction func strawberryButton(_ sender: UIButton) {
+    //        do {
+    //            _ = try fruitStore.makeJuice(juiceRecipe: .strawberry)
+    //            showSuccessAlert(message: "\(JuiceRecipe.strawberry.name)")
+    //            updateFruitLabels()
+    //        } catch {
+    //            showFailAlert()
+    //        }
+    //    }
+    //
+    //    @IBAction func bananaJuiceButton(_ sender: UIButton) {
+    //        do {
+    //            _ = try fruitStore.makeJuice(juiceRecipe: .banana)
+    //            showSuccessAlert(message: "\(JuiceRecipe.banana.name)")
+    //            updateFruitLabels()
+    //        } catch {
+    //            showFailAlert()
+    //        }
+    //    }
+    //
+    //    @IBAction func pinAppleJuiceButton(_ sender: UIButton) {
+    //        do {
+    //            _ = try fruitStore.makeJuice(juiceRecipe: .pineapple)
+    //            showSuccessAlert(message: "\(JuiceRecipe.pineapple.name)")
+    //            updateFruitLabels()
+    //        } catch {
+    //            showFailAlert()
+    //        }
+    //    }
+    //
+    //    @IBAction func kiwiButton(_ sender: UIButton) {
+    //        do {
+    //            _ = try fruitStore.makeJuice(juiceRecipe: .kiwi)
+    //            showSuccessAlert(message: "\(JuiceRecipe.kiwi.name)")
+    //            updateFruitLabels()
+    //        } catch {
+    //            showFailAlert()
+    //        }
+    //    }
+    //
+    //    @IBAction func mangoJuiceButton(_ sender: UIButton) {
+    //        do {
+    //            _ = try fruitStore.makeJuice(juiceRecipe: .mango)
+    //            showSuccessAlert(message: "\(JuiceRecipe.mango.name)")
+    //            updateFruitLabels()
+    //        } catch {
+    //            showFailAlert()
+    //        }
+    //    }
+    //}
 }
 
 extension ViewController: QuantityVCDelegate {
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToQuantityUpdate",
            let quantityVC = segue.destination as? QuantityVC {
@@ -117,3 +159,4 @@ extension ViewController: QuantityVCDelegate {
         }
     }
 }
+
