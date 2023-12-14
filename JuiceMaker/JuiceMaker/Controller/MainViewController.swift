@@ -93,7 +93,9 @@ class MainViewController: UIViewController {
                 present(alert, animated: true, completion: nil)
                 
             case JuiceError.unknown:
-                break
+                let alert = UIAlertController(title: "알 수 없는 에러", message: "에러가 발생하였습니다.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+                present(alert, animated: true, completion: nil)
                 
             case JuiceError.quantityOfAllFruitsAccessFailed:
                 let alert = UIAlertController(title: "유효하지 않은 레시피", message: "주문할 수 없는 쥬스입니다.", preferredStyle: .alert)
