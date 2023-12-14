@@ -14,6 +14,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var pineappleQuantity: UILabel!
     @IBOutlet weak var kiwiQuantity: UILabel!
     @IBOutlet weak var mangoQuantity: UILabel!
+    
     let juiceMaker = JuiceMaker()
     
     override func viewDidLoad() {
@@ -73,7 +74,7 @@ class MainViewController: UIViewController {
         mangoQuantity.text = String(mango)
     }
     
-    private func openResultAlert(_ result: Result<Void, JuiceError>) {
+    private func showResultAlert(_ result: Result<Void, JuiceError>) {
         switch result {
         case .success:
             NotificationCenter.default.post(name: NSNotification.Name("JuiceMade"), object: nil)
