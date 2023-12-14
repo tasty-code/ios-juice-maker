@@ -1,20 +1,23 @@
 //
 //  JuiceMaker - ViewController.swift
-//  Created by yagom. 
+//  Created by yagom.
 //  Copyright © 유니 & 이안. All rights reserved.
-// 
+//
 
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var strawberryLabel: UILabel!
     @IBOutlet weak var bananaLabel: UILabel!
     @IBOutlet weak var pineappleLabel: UILabel!
     @IBOutlet weak var kiwiLabel: UILabel!
     @IBOutlet weak var mangoLabel: UILabel!
-
-
+    
+    @IBOutlet var orderJuiceButton: [UIButton]!
+    
+    let juiceMaker = JuiceMaker()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setFruitLabel()
@@ -32,7 +35,33 @@ class ViewController: UIViewController {
         return String(FruitStore.shared.inventory(fruit: fruit))
     }
     
-
-
+    @IBAction func orderJuiceButtonTapped(_ sender: UIButton) {
+        switch sender {
+        case orderJuiceButton[0]:
+            order(juice: .strawberryBananaJuice, lables: strawberryLabel, bananaLabel)
+        case orderJuiceButton[1]:
+            order(juice: .mangoKiwiJuice, lables: mangoLabel, kiwiLabel)
+        case orderJuiceButton[2]:
+            order(juice: .strawberryJuice, lables: strawberryLabel)
+        case orderJuiceButton[3]:
+            order(juice: .bananaJuice, lables: bananaLabel)
+        case orderJuiceButton[4]:
+            order(juice: .pineappleJuice, lables: pineappleLabel)
+        case orderJuiceButton[5]:
+            order(juice: .kiwiJuice, lables: kiwiLabel)
+        default:
+            order(juice: .mangoJuice, lables: mangoLabel)
+        }
+    }
+    
+    func order(juice: Juice, lables: UILabel...) {
+        do {
+            try juiceMaker.make(juice: juice)
+        } catch let error as JuiceMakerError {
+            print("\(error.message)")
+        } catch {
+            print("에러")
+        }
+    }
 }
 

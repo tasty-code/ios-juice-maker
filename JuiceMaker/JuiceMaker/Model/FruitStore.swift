@@ -27,7 +27,7 @@ final class FruitStore {
         try canConsume(fruit: fruit, amount: amount)
         
         guard amount >= 0 else {
-            throw JuiceMakerError.negativeAmount
+            throw JuiceMakerError.negativeAmount(fruit: fruit)
         }
         fruitInventory[fruit, default: 0] -= amount
         return fruitInventory[fruit, default: 0]
@@ -38,10 +38,10 @@ final class FruitStore {
     }
     
     private func canConsume(fruit: Fruit, amount: Int) throws {
-            let currentInventory = inventory(fruit: fruit)
-            
-            if currentInventory < amount {
-                throw JuiceMakerError.outOfStock
-            }
+        let currentInventory = inventory(fruit: fruit)
+        
+        if currentInventory < amount {
+            throw JuiceMakerError.outOfStock(fruit: fruit)
+        }
     }
 }
