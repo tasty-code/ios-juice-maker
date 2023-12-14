@@ -15,7 +15,6 @@ final class FruitStore {
         self.fruitStocks = newStocks
     }
     
-    
     private func consume(_ fruitType: Fruit, numberOfFruits: Int) throws -> FruitStock {
         guard let copyOfTargetStock = fruitStocks[fruitType] else {
             throw JuiceMakerError.fruitStockNotFound

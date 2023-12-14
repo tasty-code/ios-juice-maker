@@ -28,6 +28,7 @@ final class StockDisplayResultConverter: StockDisplayResultConvertable {
             display?.displayStock(viewModel: viewModel)
             return
         }
+        
         let eachFruitCount = StockDisplayModel.ViewModel.EachFruitCount(
             strawberryCount: strawberryStock.count,
             bananaCount: bananaStock.count,
