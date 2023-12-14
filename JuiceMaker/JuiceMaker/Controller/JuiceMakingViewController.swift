@@ -153,6 +153,12 @@ extension JuiceMakingViewController {
         if let stockManagementVC = self.storyboard?.instantiateViewController(withIdentifier: "StockManagementViewController") as? StockManagementViewController {
             stockManagementVC.receivedData = juiceMaker.fruitStore.inventory
             let stockManagementNavigationController = UINavigationController(rootViewController: stockManagementVC)
+            
+            stockManagementNavigationController.modalPresentationStyle = .pageSheet
+            stockManagementNavigationController.sheetPresentationController?.detents = [.large(), .medium()]
+            stockManagementNavigationController.sheetPresentationController?.preferredCornerRadius = 30
+            stockManagementNavigationController.sheetPresentationController?.prefersEdgeAttachedInCompactHeight = true
+            
             self.present(stockManagementNavigationController, animated: true, completion: nil)
         }
     }
