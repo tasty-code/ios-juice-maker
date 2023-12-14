@@ -32,18 +32,18 @@ extension JuiceOrderViewController {
         labels = [strawberryLabel : .strawberry, bananaLabel : .banana, pineappleLabel : .pineapple, kiwiLabel : .kiwi, mangoLabel : .mango]
     }
     
-    func goToStockCangeView() {
+    func pushFruitStockView() {
         guard let secondVC = storyboard?.instantiateViewController(withIdentifier: ViewID.secondVC.id) as? FruitStockViewController else { return }
         self.navigationController?.pushViewController(secondVC, animated: true)
     }
     
     @IBAction func stockChangeButtonTapped(_ sender: UIBarButtonItem) {
-        goToStockCangeView()
+        pushFruitStockView()
     }
     
     @IBAction func juiceButtonTapped(_ sender: UIButton) {
         guard let juice =  juiceMaker.makeJuice(juice: jucieMenu[sender.tag]) else {
-            present(Alert.juiceFail(goToStockCangeView).modal, animated: true, completion: nil)
+            present(Alert.juiceFail(pushFruitStockView).modal, animated: true, completion: nil)
             return
         }
         present(Alert.juiceSucess(juice).modal, animated: true, completion: nil)
