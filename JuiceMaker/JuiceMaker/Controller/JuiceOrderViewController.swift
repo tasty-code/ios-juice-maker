@@ -65,7 +65,7 @@ final class JuiceOrderViewController: UIViewController {
     }
 }
 
-extension UIViewController {
+extension JuiceOrderViewController {
     func moveToManageStockView() {
         guard let viewController = storyboard?.instantiateViewController(identifier: NameSpace.manageStockVC) as? ManageStockViewController else { return }
         
