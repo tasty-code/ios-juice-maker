@@ -1,0 +1,258 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "0yV-kn-zaT.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"0\"; ObjectID = \"0yV-kn-zaT\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "0"
+          }
+        }
+      }
+    },
+    "3Ce-SU-JeH.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"0\"; ObjectID = \"3Ce-SU-JeH\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "0"
+          }
+        }
+      }
+    },
+    "avd-o5-3JM.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"딸기쥬스 주문\"; ObjectID = \"avd-o5-3JM\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "딸기쥬스 주문"
+          }
+        }
+      }
+    },
+    "BFb-ka-wGA.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"파인애플쥬스 주문\"; ObjectID = \"BFb-ka-wGA\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "파인애플쥬스 주문"
+          }
+        }
+      }
+    },
+    "C3q-Te-cNT.title" : {
+      "comment" : "Class = \"UIBarButtonItem\"; title = \"재고수정\"; ObjectID = \"C3q-Te-cNT\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "재고수정"
+          }
+        }
+      }
+    },
+    "ccQ-Dk-PuY.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"0\"; ObjectID = \"ccQ-Dk-PuY\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "0"
+          }
+        }
+      }
+    },
+    "Eal-fj-o4N.title" : {
+      "comment" : "Class = \"UINavigationItem\"; title = \"맛있는 쥬스를 만들어 드려요!\"; ObjectID = \"Eal-fj-o4N\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "맛있는 쥬스를 만들어 드려요!"
+          }
+        }
+      }
+    },
+    "EDv-eL-8Im.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"0\"; ObjectID = \"EDv-eL-8Im\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "0"
+          }
+        }
+      }
+    },
+    "FZq-de-TJG.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"0\"; ObjectID = \"FZq-de-TJG\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "0"
+          }
+        }
+      }
+    },
+    "gKu-86-RhI.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"0\"; ObjectID = \"gKu-86-RhI\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "0"
+          }
+        }
+      }
+    },
+    "gvk-pA-Lw5.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"0\"; ObjectID = \"gvk-pA-Lw5\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "0"
+          }
+        }
+      }
+    },
+    "hrc-2F-fzl.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"딸바쥬스 주문\"; ObjectID = \"hrc-2F-fzl\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "딸바쥬스 주문"
+          }
+        }
+      }
+    },
+    "ngP-kF-Yii.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"망키쥬스 주문\"; ObjectID = \"ngP-kF-Yii\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "망키쥬스 주문"
+          }
+        }
+      }
+    },
+    "pxF-v9-h5N.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"0\"; ObjectID = \"pxF-v9-h5N\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "0"
+          }
+        }
+      }
+    },
+    "q6G-4X-bVm.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"망고쥬스 주문\"; ObjectID = \"q6G-4X-bVm\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "망고쥬스 주문"
+          }
+        }
+      }
+    },
+    "Qas-vP-td6.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"0\"; ObjectID = \"Qas-vP-td6\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "0"
+          }
+        }
+      }
+    },
+    "wb8-8G-rlR.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"0\"; ObjectID = \"wb8-8G-rlR\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "0"
+          }
+        }
+      }
+    },
+    "wcW-7H-RXw.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"키위쥬스 주문\"; ObjectID = \"wcW-7H-RXw\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "키위쥬스 주문"
+          }
+        }
+      }
+    },
+    "y2A-PH-DJY.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"바나나쥬스 주문\"; ObjectID = \"y2A-PH-DJY\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "바나나쥬스 주문"
+          }
+        }
+      }
+    },
+    "YJI-ER-LJR.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"0\"; ObjectID = \"YJI-ER-LJR\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "0"
+          }
+        }
+      }
+    },
+    "ZDv-1m-HBY.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"0\"; ObjectID = \"ZDv-1m-HBY\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "0"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
