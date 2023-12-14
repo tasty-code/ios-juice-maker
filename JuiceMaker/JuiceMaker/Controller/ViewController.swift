@@ -55,7 +55,7 @@ class ViewController: UIViewController {
         default:
             selectedRecipe = Recipe.mango
         }
-        let result = juiceMaker.order(selectedRecipe)
+        let result = juiceMaker.judgeOrder(selectedRecipe)
         let recipeName = selectedRecipe.recipeName
         setMarketView(checkSuccess(result), recipeName)
     }
@@ -73,9 +73,7 @@ extension ViewController {
     }
     
     private func setMarketView(_ isDone: Bool, _ recipeName: String) {
-        // alert
         showAlert(isDone, recipeName)
-        // labelView
         self.fruitStore.fruitsFlag.forEach { fruit, isUsed in
             guard let uiLabel = fruitsLabel[fruit],
                   let fruitValue = self.fruitStore.fruits[fruit],

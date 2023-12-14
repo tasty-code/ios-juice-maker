@@ -16,7 +16,7 @@ struct JuiceMaker {
         self.store.initializeFruit()
     }
     
-    func order(_ recipe: Recipe) -> Result<Bool, JuiceMakerErrors> {
+    func judgeOrder(_ recipe: Recipe) -> Result<Bool, JuiceMakerErrors> {
         do {
             try takeOrder(recipe)
         } catch JuiceMakerErrors.orderFail {
