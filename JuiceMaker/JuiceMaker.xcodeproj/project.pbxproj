@@ -51,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		995736392B2AD93F00E1892B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				995736352B2A9BD700E1892B /* Alert.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		C71CD66D266C7B470038B9CB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -70,7 +78,6 @@
 				15B9EA7B2B204A45006929F1 /* Fruit.swift */,
 				157B24922B20599800A841FB /* Juice.swift */,
 				156D1EB92B283C2200F26237 /* JuiceMakeError.swift */,
-				995736352B2A9BD700E1892B /* Alert.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -106,6 +113,7 @@
 			children = (
 				C71CD66D266C7B470038B9CB /* Controller */,
 				C71CD66F266C7B500038B9CB /* Model */,
+				995736392B2AD93F00E1892B /* Extension */,
 				C71CD671266C7B570038B9CB /* View */,
 				C73DAF44255D0CDF00020D38 /* Info.plist */,
 			);

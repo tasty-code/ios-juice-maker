@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         setFruitLabel()
     }
     
-    func setFruitLabel() {
+    private func setFruitLabel() {
         strawberryLabel.text = changeIntToStirng(fruit: .strawberry)
         bananaLabel.text =  changeIntToStirng(fruit: .banana)
         pineappleLabel.text = changeIntToStirng(fruit: .pineapple)
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         mangoLabel.text =  changeIntToStirng(fruit: .mango)
         
     }
-    func changeIntToStirng(fruit: Fruit) -> String {
+    private func changeIntToStirng(fruit: Fruit) -> String {
         return String(FruitStore.shared.inventory(fruit: fruit))
     }
     
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func order(juice: Juice, lables: UILabel...) {
+    private func order(juice: Juice, lables: UILabel...) {
         do {
             try juiceMaker.make(juice: juice)
             showAlert(title: "완성", message: "\(juice.name) 나왔습니다! 맛있게 드세요", alertButton: false)
