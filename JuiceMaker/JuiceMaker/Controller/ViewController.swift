@@ -57,8 +57,12 @@ class ViewController: UIViewController {
     func order(juice: Juice, lables: UILabel...) {
         do {
             try juiceMaker.make(juice: juice)
+            showAlert(title: "완성", message: "\(juice.name) 나왔습니다! 맛있게 드세요", alertButton: false)
+            setFruitLabel()
         } catch let error as JuiceMakerError {
-            print("\(error.message)")
+            showAlert(title: "재고부족", message: "\(error.message)", alertButton: true) { _ in
+                self.performSegue(withIdentifier: "InventoryView", sender: self)
+            }
         } catch {
             print("에러")
         }
