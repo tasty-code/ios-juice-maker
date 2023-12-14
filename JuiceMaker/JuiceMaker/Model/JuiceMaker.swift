@@ -12,33 +12,33 @@ struct JuiceMaker {
 extension JuiceMaker {
     
     func makeStrawberryJuice() {
-        fruitStore.decrementFruit(fruit: .strawberry, quantities: 16)
+        fruitStore.decrementFruit(of: .strawberry, by: 16)
     }
     
     func makeBananaJuice() {
-        fruitStore.decrementFruit(fruit: .banana, quantities: 2)
+        fruitStore.decrementFruit(of: .banana, by: 2)
     }
 
     func makeKiwiJuice() {
-        fruitStore.decrementFruit(fruit: .kiwi, quantities: 3)
+        fruitStore.decrementFruit(of: .kiwi, by: 3)
     }
     
     func makePineappleJuice() {
-        fruitStore.decrementFruit(fruit: .pineapple, quantities: 2)
+        fruitStore.decrementFruit(of: .pineapple, by: 2)
     }
     
     func makeDdalbaJuice() {
-        fruitStore.decrementFruit(fruit: .strawberry, quantities: 10)
-        fruitStore.decrementFruit(fruit: .banana, quantities: 1)
+        fruitStore.decrementFruit(of: .strawberry, by: 10)
+        fruitStore.decrementFruit(of: .banana, by: 1)
     }
     
     func makeMangoJuice() {
-        fruitStore.decrementFruit(fruit: .mango, quantities: 3)
+        fruitStore.decrementFruit(of: .mango, by: 3)
     }
 
     func makeMangkiJuice() {
-        fruitStore.decrementFruit(fruit: .mango, quantities: 2)
-        fruitStore.decrementFruit(fruit: .kiwi, quantities: 1)
+        fruitStore.decrementFruit(of: .mango, by: 2)
+        fruitStore.decrementFruit(of: .kiwi, by: 1)
     }
 }
 

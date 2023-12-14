@@ -25,22 +25,22 @@ final class FruitStore {
 // MARK: - FruitStore 메서드
 
 extension FruitStore {
-    func incrementFruit(fruit: Fruits, quantities: Int) {
-        guard let currentStock = fruitsStock[fruit] else {
+    func incrementFruit(of type: Fruits, by quantities: Int) {
+        guard let currentStock = fruitsStock[type] else {
             print("\(#function) 에러 발생!")
             return
         }
-        fruitsStock[fruit] = currentStock + quantities
+        fruitsStock[type] = currentStock + quantities
         postFruitsStock()
     }
     
-    func decrementFruit(fruit: Fruits, quantities: Int) {
-        guard let currentStock = fruitsStock[fruit],
+    func decrementFruit(of type: Fruits, by quantities: Int) {
+        guard let currentStock = fruitsStock[type],
               currentStock - quantities >= limitedQuantity else {
             print("\(#function) 재고 부족!")
             return
         }
-        fruitsStock[fruit] = currentStock - quantities
+        fruitsStock[type] = currentStock - quantities
         postFruitsStock()
     }
 }
