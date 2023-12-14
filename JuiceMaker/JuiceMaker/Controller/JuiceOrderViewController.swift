@@ -21,6 +21,12 @@ final class JuiceOrderViewController: UIViewController {
         updateFruitStockLabel()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+
+            updateFruitStockLabel()
+        }
+    
     @IBAction private func manageStockButtonTapped(_ sender: UIButton) {
         moveToManageStockView()
     }
@@ -68,6 +74,9 @@ final class JuiceOrderViewController: UIViewController {
 extension UIViewController {
     func moveToManageStockView() {
         guard let viewController = storyboard?.instantiateViewController(identifier: NameSpace.manageStockVC) as? ManageStockViewController else { return }
-        self.navigationController?.pushViewController(viewController, animated: true)
+        
+        viewController.modalPresentationStyle = .fullScreen
+        
+        self.present(viewController, animated: true)
     }
 }
