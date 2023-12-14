@@ -28,7 +28,7 @@ final class ManageStockViewController: UIViewController {
     }
     
     @IBAction func closeTapped(_ sender: UIButton) {
-        self.presentingViewController?.dismiss(animated: true)
+        self.dismiss(animated: true)
         updateFruitStock()
     }
     
