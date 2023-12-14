@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, FruitStoreViewController {
+class JuiceOrderViewController: UIViewController, StoreViewUpdatable {
     
     @IBOutlet weak var strawberryLabel: UILabel!
     @IBOutlet weak var bananaLabel: UILabel!
@@ -16,21 +16,24 @@ class ViewController: UIViewController, FruitStoreViewController {
     
     var labels: Dictionary<UILabel, Fruit> = [:]
     var fruitStore: FruitStore = FruitStore.shared
-    var juiceMaker: JuiceMaker = JuiceMaker()
-    let jucieMenu: [Juice] = Juice.allCases
+    private var juiceMaker: JuiceMaker = JuiceMaker()
+    private let jucieMenu: [Juice] = Juice.allCases
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        labels = [strawberryLabel : .strawberry, bananaLabel : .banana, pineappleLabel : .pineapple, kiwiLabel : .kiwi, mangoLabel : .mango]
+        setLabels()
         configureFruitStoreUI()
     }
 
 }
 
-extension ViewController {
+extension JuiceOrderViewController {
+    func setLabels() {
+        labels = [strawberryLabel : .strawberry, bananaLabel : .banana, pineappleLabel : .pineapple, kiwiLabel : .kiwi, mangoLabel : .mango]
+    }
     
     func goToStockCangeView() {
-        guard let secondVC = storyboard?.instantiateViewController(withIdentifier: ViewID.secondVC.id) as? SecondViewController else { return }
+        guard let secondVC = storyboard?.instantiateViewController(withIdentifier: ViewID.secondVC.id) as? FruitStockViewController else { return }
         self.navigationController?.pushViewController(secondVC, animated: true)
     }
     
