@@ -33,7 +33,7 @@ final class FruitStore {
         return fruitInventory[fruit, default: 0]
     }
     
-    private func inventory(fruit: Fruit) -> Int {
+    func inventory(fruit: Fruit) -> Int {
         return fruitInventory[fruit, default: 0]
     }
     
