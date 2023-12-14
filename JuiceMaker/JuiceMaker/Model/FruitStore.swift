@@ -22,10 +22,6 @@ class FruitStore {
         ]
     }
     
-    func updateInventory(with inventory: [String: Int]) {
-        fruitInventory = inventory
-    }
-    
     func displayCurrentFruitInventory(fruit: String) -> Int? {
         guard let currentQuantity = fruitInventory[fruit] else {
             print("과일저장오류")
@@ -45,15 +41,6 @@ class FruitStore {
         fruitInventory[fruit] = currentQuantity
     }
     
-    func checkAvailability(for juiceIngredients: [String: Int]) -> Bool {
-        for (fruit, requiredQuantity) in juiceIngredients {
-            guard let availableQuantity = fruitInventory[fruit], requiredQuantity <= availableQuantity else {
-                return false
-            }
-        }
-        return false
-    }
-    
     func makeJuice(juiceRecipe: JuiceRecipe) throws  -> String {
         let  ingredients = juiceRecipe.ingredients
         for (fruit, juiceIngrediant) in ingredients {
@@ -63,15 +50,6 @@ class FruitStore {
             fruitInventory[fruit] = ingrediantsInInventory - juiceIngrediant
         }
         return ("\(juiceRecipe.name)쥬스 나왔습니다! 맛있게 드세요!")
-    }
-    
-    func updateInventoryAfterJuiceMaking(juiceRecipe: JuiceRecipe) {
-        let ingredients = juiceRecipe.ingredients
-        for (fruit, juiceIngredient) in ingredients {
-            if let ingredientsInInventory = fruitInventory[fruit] {
-                fruitInventory[fruit] = ingredientsInInventory - juiceIngredient
-            }
-        }
     }
 }
 

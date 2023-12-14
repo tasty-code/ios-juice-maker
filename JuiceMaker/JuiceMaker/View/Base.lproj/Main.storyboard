@@ -247,7 +247,7 @@
                         <outlet property="banana" destination="gvk-pA-Lw5" id="CSh-Fx-2iZ"/>
                         <outlet property="kiwi" destination="FZq-de-TJG" id="rNc-gP-rx3"/>
                         <outlet property="mango" destination="3Ce-SU-JeH" id="FkW-M0-ZP2"/>
-                        <outlet property="pineApple" destination="ccQ-Dk-PuY" id="tTL-YS-1WT"/>
+                        <outlet property="pineapple" destination="ccQ-Dk-PuY" id="tTL-YS-1WT"/>
                         <outlet property="strawberry" destination="Qas-vP-td6" id="oLf-c1-6La"/>
                     </connections>
                 </viewController>

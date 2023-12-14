@@ -24,21 +24,11 @@ class QuantityVC: UIViewController {
     @IBOutlet weak var mago: UILabel!
     
     func updateFruitLabels() {
-        if let strawberryQuantity = fruitStore?.fruitInventory["딸기"] {
-            strawberry.text = String(strawberryQuantity)
-        }
-        if let bananaQuantity = fruitStore?.fruitInventory["바나나"] {
-            banana.text = String(bananaQuantity)
-        }
-        if let pineAppleQuantity = fruitStore?.fruitInventory["파인애플"] {
-            pineapple.text = String(pineAppleQuantity)
-        }
-        if let kiwiQuantity = fruitStore?.fruitInventory["키위"] {
-            kiwi.text = String(kiwiQuantity)
-        }
-        if let mangoQuantity = fruitStore?.fruitInventory["망고"] {
-            mago.text = String(mangoQuantity)
-        }
+        strawberry.text = "\(fruitStore?.fruitInventory["딸기"] ?? 0)"
+        banana.text = "\(fruitStore?.fruitInventory["바나나"] ?? 0)"
+        pineapple.text = "\(fruitStore?.fruitInventory["파인애플"] ?? 0)"
+        kiwi.text = "\(fruitStore?.fruitInventory["키위"] ?? 0)"
+        mago.text = "\(fruitStore?.fruitInventory["망고"] ?? 0)"
     }
     
     override func viewDidLoad() {
