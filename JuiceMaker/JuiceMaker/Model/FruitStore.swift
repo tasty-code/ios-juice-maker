@@ -8,7 +8,7 @@ import Foundation
 
 // 과일 저장소 타입
 final class FruitStore {
-    private var fruitStock = [Fruits: Int]()
+    private(set) var fruitStock = [Fruits: Int]()
     
     init() {
         fruitStock = [
@@ -33,5 +33,9 @@ final class FruitStore {
             }
         }
         return true
+    }
+    
+    func quantity(of fruit: Fruits) -> Int {
+        return fruitStock[fruit] ?? 0
     }
 }

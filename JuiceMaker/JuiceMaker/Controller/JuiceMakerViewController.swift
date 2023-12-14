@@ -6,22 +6,22 @@
 
 import UIKit
 
-class JuiceMakerViewController: UIViewController {
+final class JuiceMakerViewController: UIViewController {
     
-    var fruit = FruitStore()
-    var juiceMaker = JuiceMaker()
+    private let juiceMaker = JuiceMaker()
     
-    @IBOutlet var strawberryLabel: UILabel!
-    @IBOutlet var bananaLabel: UILabel!
-    @IBOutlet var kiwiLabel: UILabel!
-    @IBOutlet var pineappleLabel: UILabel!
-    @IBOutlet var mangoLabel: UILabel!
+    @IBOutlet private weak var strawberryLabel: UILabel!
+    @IBOutlet private weak var bananaLabel: UILabel!
+    @IBOutlet private weak var kiwiLabel: UILabel!
+    @IBOutlet private weak var pineappleLabel: UILabel!
+    @IBOutlet private weak var mangoLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureView()
     }
     
-    @IBAction func orderJuice(_ sender: UIButton) {
+    @IBAction private func orderJuice(_ sender: UIButton) {
         guard let selectedJuice = selectedJuice(tag: sender.tag) else {
             return
         }
@@ -30,6 +30,7 @@ class JuiceMakerViewController: UIViewController {
         switch isOrderable {
         case .success:
             successAlert(menu: selectedJuice)
+            configureView()
         case .failure:
             failAlert()
         }
@@ -56,12 +57,9 @@ class JuiceMakerViewController: UIViewController {
         }
     }
     
-    @IBAction func addButton(_ sender: UIButton) {
+    @IBAction private func addButton(_ sender: UIButton) {
         guard let fruitStockViewController = storyboard?.instantiateViewController(identifier: "fruitStockViewController") as? FruitStockViewController else { return }
         self.present(fruitStockViewController, animated: true, completion: nil)
-    }
-    
-    func updateFruitLabel() {
     }
     
     private func successAlert(menu: Juice) {
@@ -85,5 +83,16 @@ class JuiceMakerViewController: UIViewController {
         alert.addAction(confirm)
         alert.addAction(close)
         present(alert, animated: true, completion: nil)
+    }
+}
+
+extension JuiceMakerViewController {
+
+    private func configureView() {
+        strawberryLabel.text = String(juiceMaker.fruitStore.quantity(of: .strawberry))
+        bananaLabel.text = String(juiceMaker.fruitStore.quantity(of: .banana))
+        pineappleLabel.text = String(juiceMaker.fruitStore.quantity(of: .pineapple))
+        kiwiLabel.text = String(juiceMaker.fruitStore.quantity(of: .kiwi))
+        mangoLabel.text = String(juiceMaker.fruitStore.quantity(of: .mango))
     }
 }

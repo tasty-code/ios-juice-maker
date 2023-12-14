@@ -8,9 +8,9 @@ import Foundation
 
 // 쥬스 메이커 타입
 struct JuiceMaker {
-    private let fruitStore = FruitStore()
+    let fruitStore = FruitStore()
     
-    mutating func makeJuice(juice: Juice) -> Result<Bool, JuiceMakerError> {
+    func makeJuice(juice: Juice) -> Result<Bool, JuiceMakerError> {
         do {
             let recipe = juice.recipe
             guard fruitStore.checkStockAvailability(recipe: recipe) else {
