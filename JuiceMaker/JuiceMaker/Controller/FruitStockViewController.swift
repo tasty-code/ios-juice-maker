@@ -16,7 +16,12 @@ class FruitStockViewController: UIViewController, StoreViewUpdatable {
     @IBOutlet weak var mangoLabel: UILabel!
     
     var labels: Dictionary<UILabel, Fruit> = [:]
-    var fruitStore: FruitStore = FruitStore.shared
+    var fruitStore: FruitStore
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.fruitStore = FruitStore.shared
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

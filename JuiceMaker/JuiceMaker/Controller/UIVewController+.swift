@@ -17,8 +17,7 @@ extension UIViewController {
                    okAction : ((UIAlertAction) -> Void)?,
                    cancelAction : ((UIAlertAction) -> Void)? = nil,
                    completion : (() -> Void)? = nil) {
-        let alertViewController = UIAlertController(title: title, message: message,
-                                                    preferredStyle: .alert)
+        let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "확인", style: .default, handler: okAction)
         alertViewController.addAction(okAction)
@@ -26,7 +25,6 @@ extension UIViewController {
         
         let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: cancelAction)
         alertViewController.addAction(cancelAction)
-        
 
         self.present(alertViewController, animated: true, completion: completion)
     }
@@ -35,8 +33,7 @@ extension UIViewController {
                    message : String,
                    okAction : ((UIAlertAction) -> Void)? = nil,
                    completion : (() -> Void)? = nil) {
-        let alertViewController = UIAlertController(title: title, message: message,
-                                                    preferredStyle: .alert)
+        let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "확인", style: .default, handler: okAction)
         alertViewController.addAction(okAction)

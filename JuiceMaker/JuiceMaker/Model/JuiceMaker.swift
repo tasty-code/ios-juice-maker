@@ -7,7 +7,11 @@
 import Foundation
 
 struct JuiceMaker {
-    var fruitStore: FruitStore = FruitStore.shared
+    var fruitStore: FruitStore
+    
+    init(fruitStore: FruitStore = FruitStore.shared) {
+        self.fruitStore = fruitStore
+    }
     
     func isEnough(juice: Juice) -> Bool {
         var stockCheck: Bool = true

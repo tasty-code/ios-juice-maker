@@ -15,9 +15,15 @@ class JuiceOrderViewController: UIViewController, StoreViewUpdatable {
     @IBOutlet weak var mangoLabel: UILabel!
     
     var labels: Dictionary<UILabel, Fruit> = [:]
-    var fruitStore: FruitStore = FruitStore.shared
-    private var juiceMaker: JuiceMaker = JuiceMaker()
+    var fruitStore: FruitStore
+    private var juiceMaker: JuiceMaker
     private let jucieMenu: [Juice] = Juice.allCases
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.fruitStore = FruitStore.shared
+        self.juiceMaker = JuiceMaker()
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
