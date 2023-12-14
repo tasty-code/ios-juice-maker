@@ -22,10 +22,9 @@ final class JuiceMakerViewController: UIViewController {
     }
     
     @IBAction private func orderJuice(_ sender: UIButton) {
-        guard let selectedJuice = selectedJuice(tag: sender.tag) else {
-            return
-        }
-        
+        guard let sender = sender.titleLabel?.text?.replacingOccurrences(of: " 주문", with: ""),
+              let selectedJuice = Juice(rawValue: sender) else { return }
+    
         let isOrderable = juiceMaker.makeJuice(juice: selectedJuice)
         switch isOrderable {
         case .success:
@@ -36,34 +35,13 @@ final class JuiceMakerViewController: UIViewController {
         }
     }
     
-    private func selectedJuice(tag: Int) -> Juice? {
-        switch tag {
-        case 0:
-            return .strawberry
-        case 1:
-            return .banana
-        case 2:
-            return .pineapple
-        case 3:
-            return .kiwi
-        case 4:
-            return .mango
-        case 5:
-            return .strawberryBanana
-        case 6:
-            return .mangoKiwi
-        default:
-            return nil
-        }
-    }
-    
     @IBAction private func addButton(_ sender: UIButton) {
         guard let fruitStockViewController = storyboard?.instantiateViewController(identifier: "fruitStockViewController") as? FruitStockViewController else { return }
         self.present(fruitStockViewController, animated: true, completion: nil)
     }
     
     private func successAlert(menu: Juice) {
-        let alert = UIAlertController(title: "\(menu)쥬스 나왔습니다!",
+        let alert = UIAlertController(title: "\(menu.rawValue) 나왔습니다!",
                                       message: "맛있게 드세요!",
                                       preferredStyle: .alert)
         let action = UIAlertAction(title: "확인", style: .default)
