@@ -12,7 +12,7 @@ final class JuiceMakerViewController: UIViewController {
     
     private let juiceMaker: JuiceMaker?
     
-    private let router: JuiceMakerRouter?
+    private let router: JuiceMakerRoutable?
     
     @IBOutlet private weak var strawberryStockLabel: UILabel!
     
@@ -105,7 +105,7 @@ extension JuiceMakerViewController: JuiceMakerResultDisplayable {
     func displayMakingResult(viewModel: JuiceMakerModel.ViewModel) {
         guard let juiceName = viewModel.juiceName else {
             let action: AlertActionHandler = { [weak self] _ in
-                self?.router?.routeToStockManager()
+                self?.router?.routeToNextViewController()
             }
             present(JuiceMakerAlert.fruitShortage(editAction: action).alertController, animated: true)
             return
