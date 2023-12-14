@@ -43,10 +43,10 @@ extension JuiceOrderViewController {
     
     @IBAction func juiceButtonTapped(_ sender: UIButton) {
         guard let juice =  juiceMaker.makeJuice(juice: jucieMenu[sender.tag]) else {
-            present(Alert.juiceFail(pushFruitStockView).modal, animated: true, completion: nil)
+            makeRequestAlert(title: "알림", message: "재료가 모자라요. 재고를 수정할까요?", okAction: { _ in self.pushFruitStockView() })
             return
         }
-        present(Alert.juiceSucess(juice).modal, animated: true, completion: nil)
+        makeAlert(title: "알림", message: "\(juice.name) 나왔습니다! 맛있게 드세요!")
         configureFruitStoreUI()
     }
 }
