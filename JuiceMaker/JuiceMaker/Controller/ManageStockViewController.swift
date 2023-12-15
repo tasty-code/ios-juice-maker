@@ -29,7 +29,6 @@ final class ManageStockViewController: UIViewController {
     
     @IBAction private func closedTapped(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true)
-        updateFruitStock()
     }
     
     private func configureUI() {
@@ -51,25 +50,19 @@ final class ManageStockViewController: UIViewController {
     @IBAction private func stepperTapped(_ sender: UIStepper) {
         switch sender {
         case strawberryStepper:
-            strawberryStockLabel.text = String(Int(sender.value))
+            fruitStore.updateFruitStock(fruit: .strawberry, num: UInt(sender.value))
         case bananaStepper:
-            bananaStockLabel.text = String(Int(sender.value))
+            fruitStore.updateFruitStock(fruit: .banana, num: UInt(sender.value))
         case pineappleStepper:
-            pineappleStockLabel.text = String(Int(sender.value))
+            fruitStore.updateFruitStock(fruit: .pineapple, num: UInt(sender.value))
         case kiwiStepper:
-            kiwiStockLabel.text = String(Int(sender.value))
+            fruitStore.updateFruitStock(fruit: .kiwi, num: UInt(sender.value))
         case mangoStepper:
-            mangoStockLabel.text = String(Int(sender.value))
+            fruitStore.updateFruitStock(fruit: .mango, num: UInt(sender.value))
         default:
             break
         }
-    }
-    
-    private func updateFruitStock() {
-        fruitStore.fruitStock[.strawberry] = UInt(strawberryStockLabel.text ?? "")
-        fruitStore.fruitStock[.banana] = UInt(bananaStockLabel.text ?? "")
-        fruitStore.fruitStock[.pineapple] = UInt(pineappleStockLabel.text ?? "")
-        fruitStore.fruitStock[.mango] = UInt(mangoStockLabel.text ?? "")
-        fruitStore.fruitStock[.kiwi] = UInt(kiwiStockLabel.text ?? "")
+        
+        configureUI()
     }
 }
