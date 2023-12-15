@@ -6,7 +6,7 @@
 
 import UIKit
 
-class JuiceOrderingViewController: UIViewController, StoreViewUpdatable {
+class JuiceOrderingViewController: FruitStoreViewController {
     
     @IBOutlet weak var strawberryLabel: UILabel!
     @IBOutlet weak var bananaLabel: UILabel!
@@ -14,13 +14,10 @@ class JuiceOrderingViewController: UIViewController, StoreViewUpdatable {
     @IBOutlet weak var kiwiLabel: UILabel!
     @IBOutlet weak var mangoLabel: UILabel!
     
-    var labels: Dictionary<UILabel, Fruit> = [:]
-    var fruitStore: FruitStore
     private var juiceMaker: JuiceMaker
     private let juiceMenu: [Juice] = Juice.allCases
     
     required init?(coder aDecoder: NSCoder) {
-        self.fruitStore = FruitStore.shared
         self.juiceMaker = JuiceMaker()
         super.init(coder: aDecoder)
     }

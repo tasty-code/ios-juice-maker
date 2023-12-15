@@ -8,18 +8,14 @@
 import UIKit
 
 
-class FruitStockViewController: UIViewController, StoreViewUpdatable {
+class FruitStockViewController: FruitStoreViewController {
     @IBOutlet weak var strawberryLabel: UILabel!
     @IBOutlet weak var bananaLabel: UILabel!
     @IBOutlet weak var pineappleLabel: UILabel!
     @IBOutlet weak var kiwiLabel: UILabel!
     @IBOutlet weak var mangoLabel: UILabel!
     
-    var labels: Dictionary<UILabel, Fruit> = [:]
-    var fruitStore: FruitStore
-    
     required init?(coder aDecoder: NSCoder) {
-        self.fruitStore = FruitStore.shared
         super.init(coder: aDecoder)
     }
     
