@@ -19,10 +19,10 @@ class SupplyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        showFruitsCount()
+        reloadFruitsCount()
     }
     
-    private func showFruitsCount() {
+    private func reloadFruitsCount() {
         strawberryCount.text = fruitStore.storage[.strawberry]?.description
         bananaCount.text = fruitStore.storage[.banana]?.description
         pineappleCount.text = fruitStore.storage[.pineapple]?.description
