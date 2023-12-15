@@ -16,8 +16,8 @@ final class JuiceOrderViewController: UIViewController {
     @IBOutlet weak var kiwiLabel: UILabel!
     @IBOutlet weak var mangoLabel: UILabel!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         updateFruitStockLabel()
     }
     
@@ -68,6 +68,9 @@ final class JuiceOrderViewController: UIViewController {
 extension UIViewController {
     func moveToManageStockView() {
         guard let viewController = storyboard?.instantiateViewController(identifier: NameSpace.manageStockVC) as? ManageStockViewController else { return }
-        self.navigationController?.pushViewController(viewController, animated: true)
+        
+        viewController.modalPresentationStyle = .fullScreen
+        
+        present(viewController, animated: true)
     }
 }

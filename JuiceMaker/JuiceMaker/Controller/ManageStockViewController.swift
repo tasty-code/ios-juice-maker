@@ -25,8 +25,12 @@ final class ManageStockViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkFruitsStock()
-        
-        navigationController?.navigationBar.topItem?.backButtonTitle = "뒤로 가기"
+    }
+    
+    
+    @IBAction func closedTapped(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true)
+        updateFruitStock()
     }
     
     private func checkFruitsStock() {
@@ -61,5 +65,13 @@ final class ManageStockViewController: UIViewController {
         default:
             break
         }
+    }
+    
+    private func updateFruitStock() {
+        fruitStore.fruitStock[.strawberry] = UInt(strawberryStockLabel.text ?? "")
+        fruitStore.fruitStock[.banana] = UInt(bananaStockLabel.text ?? "")
+        fruitStore.fruitStock[.pineapple] = UInt(pineappleStockLabel.text ?? "")
+        fruitStore.fruitStock[.mango] = UInt(mangoStockLabel.text ?? "")
+        fruitStore.fruitStock[.kiwi] = UInt(kiwiStockLabel.text ?? "")
     }
 }
