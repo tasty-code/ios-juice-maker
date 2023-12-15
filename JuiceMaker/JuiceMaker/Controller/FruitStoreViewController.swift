@@ -9,17 +9,17 @@ import UIKit
 
 class FruitStoreViewController: UIViewController{
     var fruitStore: FruitStore
-    var labels: Dictionary<UILabel, Fruit>
+    var labelDict: Dictionary<UILabel, Fruit>
     
     required init?(coder aDecoder: NSCoder) {
         self.fruitStore = FruitStore.shared
-        self.labels = [:]
+        self.labelDict = [:]
         super.init(coder: aDecoder)
     }
 }
 
 extension FruitStoreViewController {
     func configureFruitStoreUI() {
-        labels.forEach { $0.text = fruitStore.fruitCount(fruit: $1).description }
+        labelDict.forEach { $0.text = fruitStore.fruitCount(fruit: $1).description }
     }
 }
