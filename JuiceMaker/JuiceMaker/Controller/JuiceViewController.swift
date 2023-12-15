@@ -81,16 +81,21 @@ class JuiceViewController: UIViewController {
     
     private func alertJuiceServed(menu: JuiceMaker.Menu) {
         let alert = UIAlertController(title: "", message: "\(menu) 나왔습니다! 맛있게 드세요!", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("쥬스 수령", comment: "Default action"), style: .default))
-        present(alert, animated: true, completion: nil)
+        let juiceServedAlertAction = UIAlertAction(title: "쥬스 수령", style: .default)
+        
+        alert.addAction(juiceServedAlertAction)
+        present(alert, animated: true)
     }
     
     private func alertInsufficientStock() {
         let alert = UIAlertController(title: "", message: "재료가 모자라요. 재고를 수정할까요?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("예", comment: "Default action"), style: .default, handler: { _ in
+        let yesAlertAction = UIAlertAction(title: "예", style: .default, handler: { _ in
             self.showNavigationView()
-        }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("아니오", comment: "Default action"), style: .default))
-        present(alert, animated: true, completion: nil)
+        })
+        let noAlertAction = UIAlertAction(title: "아니오", style: .cancel)
+        
+        alert.addAction(yesAlertAction)
+        alert.addAction(noAlertAction)
+        present(alert, animated: true)
     }
 }
