@@ -11,7 +11,7 @@ enum Juice: CaseIterable {
     case strawberryJuice
     case bananaJuice
     case kiwiJuice
-    case pineaplleJuice
+    case pineappleJuice
     case strawberryBananaJuice
     case mangoJuicie
     case mangoKiwiJuice
@@ -24,7 +24,7 @@ enum Juice: CaseIterable {
             return [.banana : 2]
         case .kiwiJuice:
             return [.kiwi : 3]
-        case .pineaplleJuice:
+        case .pineappleJuice:
             return [.pineapple : 2]
         case .strawberryBananaJuice:
             return [.strawberry : 10, .banana : 1]
@@ -43,7 +43,7 @@ enum Juice: CaseIterable {
             return "바나나쥬스"
         case .kiwiJuice:
             return "키위쥬스"
-        case .pineaplleJuice:
+        case .pineappleJuice:
             return "파인애플쥬스"
         case .strawberryBananaJuice:
             return "딸바쥬스"

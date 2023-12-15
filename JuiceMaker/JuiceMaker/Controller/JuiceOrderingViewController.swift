@@ -24,15 +24,15 @@ class JuiceOrderingViewController: FruitStoreViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLabels()
+        setLabelDict()
         configureFruitStoreUI()
     }
 
 }
 
 extension JuiceOrderingViewController {
-    func setLabels() {
-        labels = [strawberryLabel: .strawberry, bananaLabel: .banana, pineappleLabel: .pineapple, kiwiLabel: .kiwi, mangoLabel: .mango]
+    func setLabelDict() {
+        labelDict = [strawberryLabel: .strawberry, bananaLabel: .banana, pineappleLabel: .pineapple, kiwiLabel: .kiwi, mangoLabel: .mango]
     }
     
     func pushFruitStockViewController() {
