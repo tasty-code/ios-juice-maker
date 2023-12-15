@@ -27,7 +27,6 @@ final class ManageStockViewController: UIViewController {
         checkFruitsStock()
     }
     
-    
     @IBAction func closedTapped(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true)
         updateFruitStock()
@@ -36,7 +35,6 @@ final class ManageStockViewController: UIViewController {
     private func checkFruitsStock() {
         let firstStock = fruitStore.fruitStock.compactMapValues { String($0) }
         let secondStock = fruitStore.fruitStock.compactMapValues { Double($0) }
-        
         
         strawberryStockLabel.text = firstStock[.strawberry]
         strawberryStepper.value = secondStock[.strawberry] ?? 0

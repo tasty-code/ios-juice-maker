@@ -33,6 +33,7 @@ final class JuiceOrderViewController: UIViewController {
         }
         guard let juice = juiceMaker.checkJuiceRecipe(juiceName: juiceName) else { 
             let alert = Alert.createAlert(title: "오류", message: JuiceMakerError.cannotFindJuice.description, okTitle: "확인") { }
+            present(alert, animated: true)
             return
         }
         order(juice: juice)
@@ -63,14 +64,15 @@ final class JuiceOrderViewController: UIViewController {
         kiwiLabel.text = stock[.kiwi]
         mangoLabel.text = stock[.mango]
     }
-}
-
-extension UIViewController {
+    
     func moveToManageStockView() {
-        guard let viewController = storyboard?.instantiateViewController(identifier: NameSpace.manageStockVC) as? ManageStockViewController else { return }
+        guard let vc = storyboard?.instantiateViewController(identifier: ManageStockViewController.identifier) as? ManageStockViewController else {
+            let alert = Alert.createAlert(message: JuiceMakerError.cannotLoadManageStockView.description, okTitle: "확인") { }
+            present(alert, animated: true)
+            return
+        }
         
-        viewController.modalPresentationStyle = .fullScreen
-        
-        present(viewController, animated: true)
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
 }
