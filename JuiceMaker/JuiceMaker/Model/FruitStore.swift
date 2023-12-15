@@ -8,7 +8,6 @@ import Foundation
 
 // 과일 저장소 타입
 final class FruitStore {
-    
     var fruits: [String : Int] = [:]
     
     func initializeFruit() {

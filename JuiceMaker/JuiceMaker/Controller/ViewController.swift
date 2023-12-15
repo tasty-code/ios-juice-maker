@@ -6,8 +6,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    
+final class ViewController: UIViewController {
     @IBOutlet weak var strawberryLabel: UILabel!
     @IBOutlet weak var bananaLabel: UILabel!
     @IBOutlet weak var pineappleLabel: UILabel!

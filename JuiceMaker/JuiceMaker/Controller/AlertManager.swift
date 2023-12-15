@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 struct AlertManager {
     static func showSuccessAlert(vcToShow: UIViewController?,
                           preferedStyle: UIAlertController.Style = .alert,
