@@ -6,7 +6,7 @@
 
 final class FruitStore {
     static let shared = FruitStore()
-    private(set) var fruitStock: [Fruit: UInt]
+    var fruitStock: [Fruit: UInt]
     
     private init(fruitStock: [Fruit : UInt] = [.banana: 10, .kiwi: 10, .mango: 10, .pineapple: 10, .strawberry: 10]) {
         self.fruitStock = fruitStock
@@ -19,7 +19,8 @@ final class FruitStore {
     
     func consumeFruit(fruit: Fruit, num: UInt) throws {
         try checkStock(fruit: fruit, num: num)
-        subtractFruit(fruit: fruit, num: num)
+        let currentStock = checkQuantity(fruit: fruit)
+        updateFruitStock(fruit: fruit, num: currentStock - num)
     }
     
     private func checkQuantity(fruit: Fruit) -> UInt {
@@ -27,13 +28,7 @@ final class FruitStore {
         return quantity
     }
     
-    func addFruit(fruit: Fruit, num: UInt) {
-        let currentStock = checkQuantity(fruit: fruit)
-        fruitStock[fruit] = currentStock + num
-    }
-    
-    private func subtractFruit(fruit: Fruit, num: UInt) {
-        let currentStock = checkQuantity(fruit: fruit)
-        fruitStock[fruit] = currentStock - num
+    func updateFruitStock(fruit: Fruit, num: UInt) {
+        fruitStock[fruit] = num
     }
 }
