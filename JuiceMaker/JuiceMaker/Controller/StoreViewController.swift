@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class StoreViewController: UIViewController {
     @IBOutlet weak var strawberryLabel: UILabel!
     @IBOutlet weak var bananaLabel: UILabel!
     @IBOutlet weak var pineappleLabel: UILabel!
@@ -61,7 +61,7 @@ final class ViewController: UIViewController {
     
 }
 
-extension ViewController {
+extension StoreViewController {
     private func checkSuccess(_ result: Result<Bool, JuiceMakerErrors>) -> Bool {
         switch result {
         case .success(_):
