@@ -65,7 +65,7 @@ class MainViewController: UIViewController {
         case .success:
             juiceMadeDelegate?.juiceMade()
             
-            AlertBuilder(vc: self)
+            AlertBuilder(viewController: self)
                 .addAction("확인", style: .default)
                 .addMessage(
                     title:"주문 완료",
@@ -77,7 +77,7 @@ class MainViewController: UIViewController {
             
             switch error {
             case JuiceError.outOfStock:
-                AlertBuilder(vc: self).addAction("예", style: .default) {
+                AlertBuilder(viewController: self).addAction("예", style: .default) {
                     [weak self] in
                         guard let self = self else { return }
                     self.performSegue(withIdentifier: "modifyInventorySegue", sender: nil)
@@ -85,10 +85,10 @@ class MainViewController: UIViewController {
                         .addAction("아니오", style: .cancel).addMessage(title:"재료 부족", message: "재료가 모자라요. 재고를 수정할까요?", style: .alert)
                 
             case JuiceError.unknown:
-                AlertBuilder(vc: self).addAction("확인", style: .default).addMessage(title:"알 수 없는 에러", message: "에러가 발생하였습니다.", style: .alert)
+                AlertBuilder(viewController: self).addAction("확인", style: .default).addMessage(title:"알 수 없는 에러", message: "에러가 발생하였습니다.", style: .alert)
                 
             case JuiceError.quantityOfAllFruitsAccessFailed:
-                AlertBuilder(vc: self).addAction("확인", style: .default).addMessage(title:"유효하지 않은 레시피", message: "주문할 수 없는 쥬스입니다.", style: .alert)
+                AlertBuilder(viewController: self).addAction("확인", style: .default).addMessage(title:"유효하지 않은 레시피", message: "주문할 수 없는 쥬스입니다.", style: .alert)
             }
         }
     }
