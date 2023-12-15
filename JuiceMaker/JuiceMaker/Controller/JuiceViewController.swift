@@ -8,11 +8,11 @@ import UIKit
 
 class JuiceViewController: UIViewController {
     
-    @IBOutlet private weak var strawberryCount: UILabel!
-    @IBOutlet private weak var bananaCount: UILabel!
-    @IBOutlet private weak var pineappleCount: UILabel!
-    @IBOutlet private weak var kiwiCount: UILabel!
-    @IBOutlet private weak var mangoCount: UILabel!
+    @IBOutlet private weak var strawberryCountLabel: UILabel!
+    @IBOutlet private weak var bananaCountLabel: UILabel!
+    @IBOutlet private weak var pineappleCountLabel: UILabel!
+    @IBOutlet private weak var kiwiCountLabel: UILabel!
+    @IBOutlet private weak var mangoCountLabel: UILabel!
     
     private let juiceMaker = JuiceMaker()
     private let fruitStore = FruitStore.shared
@@ -20,59 +20,59 @@ class JuiceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        showFruitsCount()
+        reloadFruitsCount()
     }
     
-    private func showFruitsCount() {
-        strawberryCount.text = fruitStore.storage[.strawberry]?.description
-        bananaCount.text = fruitStore.storage[.banana]?.description
-        pineappleCount.text = fruitStore.storage[.pineapple]?.description
-        kiwiCount.text = fruitStore.storage[.kiwi]?.description
-        mangoCount.text = fruitStore.storage[.mango]?.description
-    }
-
-    @IBAction private func adjustStock(_ sender: Any) {
+    @IBAction private func adjustingStockButtonTapped(_ sender: UIButton) {
         showNavigationView()
     }
     
-    private func showNavigationView() {
-        let supplyVC = storyboard?.instantiateViewController(withIdentifier: "SupplyViewController") as! SupplyViewController
-        navigationController?.pushViewController(supplyVC, animated: true)
-    }
-    
-    @IBAction private func orderStrawberryJuice(_ sender: Any) {
+    @IBAction private func strawberryJuiceButtonTapped(_ sender: UIButton) {
         orderJuice(menu: .딸기쥬스)
     }
     
-    @IBAction private func orderBananaJuice(_ sender: Any) {
+    @IBAction private func bananaJuiceButtonTapped(_ sender: UIButton) {
         orderJuice(menu: .바나나쥬스)
     }
     
-    @IBAction private func orderPineappleJuice(_ sender: Any) {
+    @IBAction private func pineappleJuiceButtonTapped(_ sender: UIButton) {
         orderJuice(menu: .파인애플쥬스)
     }
     
-    @IBAction private func orderKiwiJuice(_ sender: Any) {
+    @IBAction private func kiwiJuiceButtonTapped(_ sender: UIButton) {
         orderJuice(menu: .키위쥬스)
     }
     
-    @IBAction private func orderMangoJuice(_ sender: Any) {
+    @IBAction private func mangoJuiceButtonTapped(_ sender: UIButton) {
         orderJuice(menu: .망고쥬스)
     }
     
-    @IBAction private func orderStrawberryBananaJuice(_ sender: Any) {
+    @IBAction private func strawberryBananaJuiceButtonTapped(_ sender: UIButton) {
         orderJuice(menu: .딸바쥬스)
     }
     
-    @IBAction private func orderMangoKiwiJuice(_ sender: Any) {
+    @IBAction private func mangoKiwiJuiceButtonTapped(_ sender: UIButton) {
         orderJuice(menu: .망고키위쥬스)
+    }
+    
+    private func reloadFruitsCount() {
+        strawberryCountLabel.text = fruitStore.storage[.strawberry]?.description
+        bananaCountLabel.text = fruitStore.storage[.banana]?.description
+        pineappleCountLabel.text = fruitStore.storage[.pineapple]?.description
+        kiwiCountLabel.text = fruitStore.storage[.kiwi]?.description
+        mangoCountLabel.text = fruitStore.storage[.mango]?.description
+    }
+    
+    private func showNavigationView() {
+        let supplyViewController = storyboard?.instantiateViewController(withIdentifier: "SupplyViewController") as! SupplyViewController
+        navigationController?.pushViewController(supplyViewController, animated: true)
     }
     
     private func orderJuice(menu: JuiceMaker.Menu) {
         do {
             try juiceMaker.makeJuice(menu: menu)
             alertJuiceServed(menu: menu)
-            showFruitsCount()
+            reloadFruitsCount()
         } catch {
             print(error)
             alertInsufficientStock()
