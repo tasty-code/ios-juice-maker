@@ -26,7 +26,7 @@ final class FruitStore {
 // MARK: - FruitStore 메서드
 
 extension FruitStore {
-    func incrementFruit(of type: Fruits, by quantities: Int) {
+    func increment(fruit type: Fruits, by quantities: Int) {
         guard let currentStock = fruitsStock[type] else {
             ErrorType.limitedStockError("\(#function)문제발생").printMessage()
             return
@@ -35,7 +35,7 @@ extension FruitStore {
         postFruitsStock()
     }
     
-    func decrementFruit(of type: Fruits, by quantities: Int) {
+    func decrement(fruit type: Fruits, by quantities: Int) {
         guard let currentStock = fruitsStock[type],
             currentStock - quantities >= limitedQuantity else {
             ErrorType.limitedStockError("\(#function)문제발생! 재고부족!").printMessage()
