@@ -98,10 +98,10 @@ extension ViewController {
     
     private func showAlert(_ isDone: Bool, _ recipeName: String) {
         if isDone {
-            AlertController.showSuccessAlert(vcToShow: self, preferedStyle: UIAlertController.Style.alert, title: "\(recipeName) 쥬스 나왔습니다! 맛있게 드세요!", message: "", completeTitle: "확인", completionHandler: nil)
+            AlertManager.showSuccessAlert(vcToShow: self, preferedStyle: UIAlertController.Style.alert, title: "\(recipeName) 쥬스 나왔습니다! 맛있게 드세요!", message: "", completeTitle: "확인", completionHandler: nil)
         }
         else {
-            AlertController.showFailAlert(vcToShow: self, preferedStyle: UIAlertController.Style.alert, title: "재료가 모자라요. 재고를 수정할까요?", message: "", cancelTitle: "아니오", completeTitle: "예", cancelHandler: nil, completionHandler: moveFruitStore)
+            AlertManager.showFailAlert(vcToShow: self, preferedStyle: UIAlertController.Style.alert, title: "재료가 모자라요. 재고를 수정할까요?", message: "", cancelTitle: "아니오", completeTitle: "예", cancelHandler: nil, completionHandler: moveFruitStore)
         }
     }
     
