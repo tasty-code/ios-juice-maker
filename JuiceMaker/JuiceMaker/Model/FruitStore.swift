@@ -18,9 +18,7 @@ class FruitStore {
     static let shared = FruitStore()
     
     private init() {
-        for fruit in Fruit.allCases {
-            storage[fruit] = 10
-        }
+        setUpInitialFruitsStock()
     }
     
     private(set) var storage: [Fruit: Int] = [:]
@@ -44,6 +42,12 @@ class FruitStore {
         
         for (fruitName, amount) in fruits {
             storage[fruitName]? -= amount
+        }
+    }
+    
+    private func setUpInitialFruitsStock() {
+        for fruit in Fruit.allCases {
+            storage[fruit] = 10
         }
     }
 }
