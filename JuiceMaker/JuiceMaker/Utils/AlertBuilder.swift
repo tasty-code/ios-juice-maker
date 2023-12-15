@@ -17,8 +17,8 @@ final class AlertBuilder {
     private weak var viewController: UIViewController?
     private var alertActions: [AlertAction] = []
     
-    init(vc: UIViewController) {
-        self.viewController = vc
+    init(viewController: UIViewController) {
+        self.viewController = viewController
     }
     
     func addAction(_ title: String, style: UIAlertAction.Style, action: (() -> Void)? = nil) -> Self {
