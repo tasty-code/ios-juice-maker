@@ -34,20 +34,20 @@ class OrderJuiceViewController: UIViewController {
     }
     
     @IBAction func orderJuiceButtonTapped(_ sender: UIButton) {
-        switch sender {
-        case orderJuiceButton[0]:
+        switch sender.tag {
+        case 0:
             order(juice: .strawberryBananaJuice)
-        case orderJuiceButton[1]:
+        case 1:
             order(juice: .mangoKiwiJuice)
-        case orderJuiceButton[2]:
+        case 2:
             order(juice: .strawberryJuice)
-        case orderJuiceButton[3]:
+        case 3:
             order(juice: .bananaJuice)
-        case orderJuiceButton[4]:
+        case 4:
             order(juice: .pineappleJuice)
-        case orderJuiceButton[5]:
+        case 5:
             order(juice: .kiwiJuice)
-        case orderJuiceButton[6]:
+        case 6:
             order(juice: .mangoJuice)
         default:
             print("에러처리")
