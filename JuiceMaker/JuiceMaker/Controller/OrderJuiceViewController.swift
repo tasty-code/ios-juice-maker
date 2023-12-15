@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class OrderJuiceViewController: UIViewController {
     
     @IBOutlet weak var strawberryLabel: UILabel!
     @IBOutlet weak var bananaLabel: UILabel!
@@ -17,49 +17,50 @@ class ViewController: UIViewController {
     @IBOutlet var orderJuiceButton: [UIButton]!
     
     let juiceMaker = JuiceMaker()
+    let fruitStore: FruitStore = .shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setFruitLabel()
+        setInitialFruitLabel()
     }
     
-    private func setFruitLabel() {
-        strawberryLabel.text = changeIntToStirng(fruit: .strawberry)
-        bananaLabel.text =  changeIntToStirng(fruit: .banana)
-        pineappleLabel.text = changeIntToStirng(fruit: .pineapple)
-        kiwiLabel.text =  changeIntToStirng(fruit: .kiwi)
-        mangoLabel.text =  changeIntToStirng(fruit: .mango)
+    private func setInitialFruitLabel() {
+        strawberryLabel.text = "\(fruitStore.inventory(fruit: .strawberry))"
+        bananaLabel.text =  "\(fruitStore.inventory(fruit: .banana))"
+        pineappleLabel.text = "\(fruitStore.inventory(fruit: .pineapple))"
+        kiwiLabel.text =  "\(fruitStore.inventory(fruit: .kiwi))"
+        mangoLabel.text =  "\(fruitStore.inventory(fruit: .mango))"
         
-    }
-    private func changeIntToStirng(fruit: Fruit) -> String {
-        return String(FruitStore.shared.inventory(fruit: fruit))
     }
     
     @IBAction func orderJuiceButtonTapped(_ sender: UIButton) {
         switch sender {
         case orderJuiceButton[0]:
-            order(juice: .strawberryBananaJuice, lables: strawberryLabel, bananaLabel)
+            order(juice: .strawberryBananaJuice)
         case orderJuiceButton[1]:
-            order(juice: .mangoKiwiJuice, lables: mangoLabel, kiwiLabel)
+            order(juice: .mangoKiwiJuice)
         case orderJuiceButton[2]:
-            order(juice: .strawberryJuice, lables: strawberryLabel)
+            order(juice: .strawberryJuice)
         case orderJuiceButton[3]:
-            order(juice: .bananaJuice, lables: bananaLabel)
+            order(juice: .bananaJuice)
         case orderJuiceButton[4]:
-            order(juice: .pineappleJuice, lables: pineappleLabel)
+            order(juice: .pineappleJuice)
         case orderJuiceButton[5]:
-            order(juice: .kiwiJuice, lables: kiwiLabel)
+            order(juice: .kiwiJuice)
+        case orderJuiceButton[6]:
+            order(juice: .mangoJuice)
         default:
-            order(juice: .mangoJuice, lables: mangoLabel)
+            print("에러처리")
         }
     }
     
-    private func order(juice: Juice, lables: UILabel...) {
+    private func order(juice: Juice) {
         do {
             try juiceMaker.make(juice: juice)
             showAlert(title: "완성", message: "\(juice.name) 나왔습니다! 맛있게 드세요", alertButton: false)
-            setFruitLabel()
+            setInitialFruitLabel()
         } catch let error as JuiceMakerError {
+            print("\(error.message)")
             showAlert(title: "재고부족", message: "\(error.message)", alertButton: true) { _ in
                 self.performSegue(withIdentifier: "InventoryView", sender: self)
             }
