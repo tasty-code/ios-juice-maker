@@ -10,31 +10,29 @@ import UIKit
 final class ManageStockViewController: UIViewController {
     private let fruitStore = FruitStore.shared
     
-    @IBOutlet weak private var strawberryStockLabel: UILabel!
-    @IBOutlet weak private var bananaStockLabel: UILabel!
-    @IBOutlet weak private var pineappleStockLabel: UILabel!
-    @IBOutlet weak private var mangoStockLabel: UILabel!
-    @IBOutlet weak private var kiwiStockLabel: UILabel!
+    @IBOutlet weak var strawberryStockLabel: UILabel!
+    @IBOutlet weak var bananaStockLabel: UILabel!
+    @IBOutlet weak var pineappleStockLabel: UILabel!
+    @IBOutlet weak var mangoStockLabel: UILabel!
+    @IBOutlet weak var kiwiStockLabel: UILabel!
     
-    @IBOutlet weak private var strawberryStepper: UIStepper!
-    @IBOutlet weak private var bananaStepper: UIStepper!
-    @IBOutlet weak private var pineappleStepper: UIStepper!
-    @IBOutlet weak private var kiwiStepper: UIStepper!
-    @IBOutlet weak private var mangoStepper: UIStepper!
+    @IBOutlet weak var strawberryStepper: UIStepper!
+    @IBOutlet weak var bananaStepper: UIStepper!
+    @IBOutlet weak var pineappleStepper: UIStepper!
+    @IBOutlet weak var kiwiStepper: UIStepper!
+    @IBOutlet weak var mangoStepper: UIStepper!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        checkFruitsStock()
+        
+        navigationController?.navigationBar.topItem?.backButtonTitle = "뒤로 가기"
     }
     
-    @IBAction func closeTapped(_ sender: UIButton) {
-        self.dismiss(animated: true)
-        updateFruitStock()
-    }
-    
-    private func setupUI() {
+    private func checkFruitsStock() {
         let firstStock = fruitStore.fruitStock.compactMapValues { String($0) }
         let secondStock = fruitStore.fruitStock.compactMapValues { Double($0) }
+        
         
         strawberryStockLabel.text = firstStock[.strawberry]
         strawberryStepper.value = secondStock[.strawberry] ?? 0
@@ -63,13 +61,5 @@ final class ManageStockViewController: UIViewController {
         default:
             break
         }
-    }
-    
-    private func updateFruitStock() {
-        fruitStore.fruitStock[.strawberry] = UInt(strawberryStockLabel.text ?? "")
-        fruitStore.fruitStock[.banana] = UInt(bananaStockLabel.text ?? "")
-        fruitStore.fruitStock[.pineapple] = UInt(pineappleStockLabel.text ?? "")
-        fruitStore.fruitStock[.mango] = UInt(mangoStockLabel.text ?? "")
-        fruitStore.fruitStock[.kiwi] = UInt(kiwiStockLabel.text ?? "")
     }
 }
