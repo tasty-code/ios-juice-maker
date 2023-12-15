@@ -65,8 +65,9 @@ extension InventoryViewController {
     
     private func configureUI() {
         for (fruit, components) in componentsByFruit {
-            components.label.text = String(fruitStore.fruitContainer[fruit, default: 0])
-            components.stepper.value = Double(fruitStore.fruitContainer[fruit, default: 0])
+            let fruitQuantity: Int = fruitStore.fruitContainer[fruit, default: 0]
+            components.label.text = String(fruitQuantity)
+            components.stepper.value = Double(fruitQuantity)
         }
     }
     
