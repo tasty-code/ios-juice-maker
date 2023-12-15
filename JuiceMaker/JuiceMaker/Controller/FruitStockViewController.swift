@@ -8,19 +8,26 @@
 import UIKit
 
 
-class SecondViewController: UIViewController, FruitStoreViewController {
+class FruitStockViewController: FruitStoreViewController {
     @IBOutlet weak var strawberryLabel: UILabel!
     @IBOutlet weak var bananaLabel: UILabel!
     @IBOutlet weak var pineappleLabel: UILabel!
     @IBOutlet weak var kiwiLabel: UILabel!
     @IBOutlet weak var mangoLabel: UILabel!
     
-    var labels: Dictionary<UILabel, Fruit> = [:]
-    var fruitStore: FruitStore = FruitStore.shared
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        labels = [strawberryLabel : .strawberry, bananaLabel : .banana, pineappleLabel : .pineapple, kiwiLabel : .kiwi, mangoLabel : .mango]
+        setLabels()
         configureFruitStoreUI()
+    }
+}
+
+extension FruitStockViewController {
+    func setLabels() {
+        labels = [strawberryLabel: .strawberry, bananaLabel: .banana, pineappleLabel: .pineapple, kiwiLabel: .kiwi, mangoLabel: .mango]
     }
 }
