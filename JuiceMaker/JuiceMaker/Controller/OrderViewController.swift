@@ -66,8 +66,8 @@ final class OrderViewController: UIViewController {
                                    message: "재료가 모자라요. 재고를 수정할까요?",
                                    confirmTitle: "예",
                                    cancelTitle: "아니오",
-                                   confirmAction: { _ in
-                self.pushInventoryViewController()
+                                   confirmAction: { [weak self] _ in
+                self?.pushInventoryViewController()
             })
         }
     }
