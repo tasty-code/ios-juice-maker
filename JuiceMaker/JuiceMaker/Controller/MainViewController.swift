@@ -65,7 +65,13 @@ class MainViewController: UIViewController {
         case .success:
             juiceMadeDelegate?.juiceMade()
             
-            AlertBuilder(vc: self).addAction("확인", style: .default).addMessage(title:"주문 완료", message: "쥬스가 나왔습니다! 맛있게 드세요!", style: .alert)
+            AlertBuilder(vc: self)
+                .addAction("확인", style: .default)
+                .addMessage(
+                    title:"주문 완료",
+                    message: "쥬스가 나왔습니다! 맛있게 드세요!",
+                    style: .alert
+                )
             
         case .failure(let error):
             
