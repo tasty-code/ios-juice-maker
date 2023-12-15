@@ -32,6 +32,6 @@ class FruitStockViewController: UIViewController, StoreViewUpdatable {
 
 extension FruitStockViewController {
     func setLabels() {
-        labels = [strawberryLabel : .strawberry, bananaLabel : .banana, pineappleLabel : .pineapple, kiwiLabel : .kiwi, mangoLabel : .mango]
+        labels = [strawberryLabel: .strawberry, bananaLabel: .banana, pineappleLabel: .pineapple, kiwiLabel: .kiwi, mangoLabel: .mango]
     }
 }

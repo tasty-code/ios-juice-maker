@@ -6,7 +6,7 @@
 
 import UIKit
 
-class JuiceOrderViewController: UIViewController, StoreViewUpdatable {
+class JuiceOrderingViewController: UIViewController, StoreViewUpdatable {
     
     @IBOutlet weak var strawberryLabel: UILabel!
     @IBOutlet weak var bananaLabel: UILabel!
@@ -17,7 +17,7 @@ class JuiceOrderViewController: UIViewController, StoreViewUpdatable {
     var labels: Dictionary<UILabel, Fruit> = [:]
     var fruitStore: FruitStore
     private var juiceMaker: JuiceMaker
-    private let jucieMenu: [Juice] = Juice.allCases
+    private let juiceMenu: [Juice] = Juice.allCases
     
     required init?(coder aDecoder: NSCoder) {
         self.fruitStore = FruitStore.shared
@@ -33,23 +33,23 @@ class JuiceOrderViewController: UIViewController, StoreViewUpdatable {
 
 }
 
-extension JuiceOrderViewController {
+extension JuiceOrderingViewController {
     func setLabels() {
-        labels = [strawberryLabel : .strawberry, bananaLabel : .banana, pineappleLabel : .pineapple, kiwiLabel : .kiwi, mangoLabel : .mango]
+        labels = [strawberryLabel: .strawberry, bananaLabel: .banana, pineappleLabel: .pineapple, kiwiLabel: .kiwi, mangoLabel: .mango]
     }
     
-    func pushFruitStockView() {
+    func pushFruitStockViewController() {
         guard let secondVC = storyboard?.instantiateViewController(withIdentifier: FruitStockViewController.className) as? FruitStockViewController else { return }
         self.navigationController?.pushViewController(secondVC, animated: true)
     }
     
     @IBAction func stockChangeButtonTapped(_ sender: UIBarButtonItem) {
-        pushFruitStockView()
+        pushFruitStockViewController()
     }
     
     @IBAction func juiceButtonTapped(_ sender: UIButton) {
-        guard let juice =  juiceMaker.makeJuice(juice: jucieMenu[sender.tag]) else {
-            makeRequestAlert(title: "알림", message: "재료가 모자라요. 재고를 수정할까요?", okAction: { _ in self.pushFruitStockView() })
+        guard let juice =  juiceMaker.makeJuice(juice: juiceMenu[sender.tag]) else {
+            makeRequestAlert(title: "알림", message: "재료가 모자라요. 재고를 수정할까요?", okAction: { _ in self.pushFruitStockViewController() })
             return
         }
         makeAlert(title: "알림", message: "\(juice.name) 나왔습니다! 맛있게 드세요!")
