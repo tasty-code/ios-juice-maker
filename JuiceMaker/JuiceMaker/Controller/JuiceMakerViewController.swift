@@ -28,19 +28,19 @@ final class JuiceMakerViewController: UIViewController {
         let isOrderable = juiceMaker.makeJuice(juice: selectedJuice)
         switch isOrderable {
         case true:
-            successAlert(menu: selectedJuice)
+            presentSuccessAlert(menu: selectedJuice)
             configureView()
         case false:
-            failAlert()
+            presentFailAlert()
         }
     }
     
-    @IBAction private func addButton(_ sender: UIButton) {
+    @IBAction private func stockUpdateViewButton(_ sender: UIButton) {
         guard let fruitStockViewController = storyboard?.instantiateViewController(identifier: "fruitStockViewController") as? FruitStockViewController else { return }
         self.present(fruitStockViewController, animated: true, completion: nil)
     }
     
-    private func successAlert(menu: Juice) {
+    private func presentSuccessAlert(menu: Juice) {
         let alert = UIAlertController(title: "\(menu.rawValue) 나왔습니다!",
                                       message: "맛있게 드세요!",
                                       preferredStyle: .alert)
@@ -49,12 +49,12 @@ final class JuiceMakerViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    private func failAlert() {
+    private func presentFailAlert() {
         let alert = UIAlertController(title: nil,
                                       message: "재료가 모자라요.\n재고를 수정할까요?",
                                       preferredStyle: .alert)
         let confirm = UIAlertAction(title: "예", style: .default, handler: { _ in
-            self.addButton(UIButton())
+            self.stockUpdateViewButton(UIButton())
         })
         let close = UIAlertAction(title: "아니요", style: .destructive)
         
