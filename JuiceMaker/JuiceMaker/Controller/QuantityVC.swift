@@ -17,6 +17,12 @@ class QuantityVC: UIViewController {
     
     weak var delegate: QuantityVCDelegate?
     
+    @IBOutlet weak var strawberryStepper: UIStepper!
+    @IBOutlet weak var bananaStepper: UIStepper!
+    @IBOutlet weak var pineappleStepper: UIStepper!
+    @IBOutlet weak var kiwiStepper: UIStepper!
+    @IBOutlet weak var magoStepper: UIStepper!
+    
     @IBOutlet weak var strawberry: UILabel!
     @IBOutlet weak var banana: UILabel!
     @IBOutlet weak var pineapple: UILabel!
@@ -31,12 +37,21 @@ class QuantityVC: UIViewController {
         mago.text = "\(fruitStore?.fruitInventory["망고"] ?? 0)"
     }
     
+    func initStepperValue() {
+        strawberryStepper.value = Double(fruitStore?.fruitInventory["딸기"] ?? 0)
+        bananaStepper.value = Double(fruitStore?.fruitInventory["바나나"] ?? 0)
+        pineappleStepper.value = Double(fruitStore?.fruitInventory["파인애플"] ?? 0)
+        kiwiStepper.value = Double(fruitStore?.fruitInventory["키위"] ?? 0)
+        magoStepper.value = Double(fruitStore?.fruitInventory["망고"] ?? 0)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateFruitLabels()
+        initStepperValue()
         delegate?.updateFruitLabels()
     }
-
+    
     @IBAction func strawberryStepper(_ sender: UIStepper) {
         if let fruitStore = fruitStore {
             fruitStore.fruitInventory["딸기"] = Int(sender.value)
@@ -44,7 +59,7 @@ class QuantityVC: UIViewController {
             updateFruitLabels()
         }
     }
-
+    
     @IBAction func bananaStepper(_ sender: UIStepper) {
         fruitStore?.fruitInventory["바나나"] = Int(sender.value)
         updateFruitLabels()
