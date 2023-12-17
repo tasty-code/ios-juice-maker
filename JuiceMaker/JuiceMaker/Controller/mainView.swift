@@ -6,9 +6,7 @@
 
 import UIKit
 
-protocol mainViewDelegate: AnyObject {
-    
-}
+
 
 
 class mainView: UIViewController, AlertPresentable {
@@ -21,15 +19,19 @@ class mainView: UIViewController, AlertPresentable {
     @IBOutlet weak var kiwi: UILabel!
     @IBOutlet weak var mango: UILabel!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func buttontag() {
         starwBananaJuiceButton.tag = 1
         magoKiwiJuiceButton.tag = 2
         starwberrtJuiceButton.tag = 3
         bananaJuiceButton.tag = 4
         pinappleJuiuceButton.tag = 5
         kiwiJuiceButton.tag = 6
-        mango.tag = 7
+        magoKiwiJuiceButton.tag = 7
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        buttontag()
         fruitStore.delegate = self
         updateFruitLabels()
     }
