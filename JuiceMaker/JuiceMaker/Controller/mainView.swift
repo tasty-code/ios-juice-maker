@@ -48,7 +48,7 @@ class mainView: UIViewController, AlertPresentable {
         mango.text = "\(fruitStore.fruitInventory["망고"] ?? 0)"
     }
     
-    @IBAction func makeJuice(_ sender: UIButton) {
+    @IBAction func makeJuiceButtonTapped(_ sender: UIButton) {
         let juiceName : JuiceRecipe
         switch sender.tag {
         case 1:
