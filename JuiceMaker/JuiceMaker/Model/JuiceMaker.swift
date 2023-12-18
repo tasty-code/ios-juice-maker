@@ -7,11 +7,15 @@
 import Foundation
 
 struct JuiceMaker {
-    var fruitStore: FruitStore = FruitStore()
+    var fruitStore: FruitStore
     
-    func isEnough(juiceMenu: JuiceMenu) -> Bool {
+    init(fruitStore: FruitStore = FruitStore.shared) {
+        self.fruitStore = fruitStore
+    }
+    
+    func isEnough(juice: Juice) -> Bool {
         var stockCheck: Bool = true
-        for (fruit, count) in juiceMenu.recipe {
+        for (fruit, count) in juice.recipe {
             guard fruitStore.checkStock(fruit: fruit, count: count) else {
                 stockCheck = false
                 break
@@ -20,18 +24,16 @@ struct JuiceMaker {
         return stockCheck
     }
     
-    mutating func makeJuice(juiceMenu: JuiceMenu) -> Juice? {
-        guard isEnough(juiceMenu: juiceMenu) else {
-            print("재고 없어용ㅠㅠ")
+    mutating func makeJuice(juice: Juice) -> Juice? {
+        guard isEnough(juice: juice) else {
             return nil
         }
         
-        juiceMenu.recipe.forEach { (fruit: Fruit, count: Int) in
+        juice.recipe.forEach { (fruit: Fruit, count: Int) in
             fruitStore.release(fruit: fruit, count: count)
         }
         
-        print("\(juiceMenu.name) 나왔습니다.")
-        return Juice(juiceMenu: juiceMenu)
+        return juice
     }
-    
+
 }
