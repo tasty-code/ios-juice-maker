@@ -7,8 +7,7 @@
 import Foundation
 
 class FruitStore {
-    
-    private var inventory: [Fruit: Int]
+    var inventory: [Fruit: Int]
     
     init() {
         inventory = [.banana: 10, .kiwi: 10, .mango: 10, .pineapple: 10, .strawberry: 10]
