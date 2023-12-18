@@ -21,14 +21,11 @@ final class JuiceMakerViewController: UIViewController {
         configureView()
     }
     
-    @IBAction private func orderJuice(_ sender: UIButton) {
-        guard let sender = sender.titleLabel?.text?.replacingOccurrences(of: " 주문", with: ""),
-              let selectedJuice = Juice(rawValue: sender) else { return }
-    
-        let isOrderable = juiceMaker.makeJuice(juice: selectedJuice)
+    private func orderJuice(juice: Juice) {
+        let isOrderable = juiceMaker.makeJuice(juice: juice)
         switch isOrderable {
         case true:
-            presentSuccessAlert(menu: selectedJuice)
+            presentSuccessAlert(menu: juice)
             configureView()
         case false:
             presentFailAlert()
@@ -61,6 +58,34 @@ final class JuiceMakerViewController: UIViewController {
         alert.addAction(confirm)
         alert.addAction(close)
         present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction private func touchUpStrawberryBananaJuiceOrderButton(_ sender: Any) {
+        orderJuice(juice: .strawberryBanana)
+    }
+    
+    @IBAction private func touchUpMangoKiwiJuiceOrderButton(_ sender: Any) {
+        orderJuice(juice: .mangoKiwi)
+    }
+    
+    @IBAction private func touchUpstrawberryJuiceOrderButton(_ sender: Any) {
+        orderJuice(juice: .strawberry)
+    }
+    
+    @IBAction private func touchUpBananaJuiceOrderButton(_ sender: Any) {
+        orderJuice(juice: .banana)
+    }
+    
+    @IBAction private func touchUpPineappleJuiceOrderButton(_ sender: Any) {
+        orderJuice(juice: .pineapple)
+    }
+    
+    @IBAction private func touchUpKiwiJuiceOrderButton(_ sender: Any) {
+        orderJuice(juice: .kiwi)
+    }
+    
+    @IBAction private func touchUpMangoJuiceOrderButton(_ sender: Any) {
+        orderJuice(juice: .mango)
     }
 }
 
