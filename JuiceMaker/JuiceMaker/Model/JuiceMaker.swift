@@ -4,15 +4,9 @@
 //
 
 struct JuiceMaker {
-    let fruitStore: FruitStore = FruitStore(
-        strawberryStock: 10,
-        bananaStock: 10,
-        pineappleStock: 10,
-        kiwiStock: 10,
-        mangoStock: 10
-    )
+    let fruitStore: FruitStore
     
-   func makeJuice(juice: Juice) {
+    func makeJuice(juice: Juice) {
         for (fruit, count) in juice.recipe {
             fruitStore.useJuiceIngredient(fruit: fruit, count: count)
         }
@@ -31,8 +25,7 @@ struct JuiceMaker {
                 continue
             }
         }
-        
-        guard 
+        guard
             canMakeJuice
         else {
             let understockedFruit = understockedFruits.joined(separator: ",")
