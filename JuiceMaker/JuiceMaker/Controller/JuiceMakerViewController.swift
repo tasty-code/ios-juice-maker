@@ -32,14 +32,6 @@ final class JuiceMakerViewController: UIViewController {
         }
     }
     
-    @IBAction private func stockUpdateViewButton(_ sender: Any) {
-        guard let fruitStockViewController = self.storyboard?.instantiateViewController(withIdentifier: "fruitStockViewController") as? FruitStockViewController else {return}
-        
-        let fruitStockNavigationController = UINavigationController.init(rootViewController: fruitStockViewController)
-        fruitStockNavigationController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-        self.present(fruitStockNavigationController, animated: true, completion: nil)
-    }
-    
     private func presentSuccessAlert(menu: Juice) {
         let alert = UIAlertController(title: "\(menu.rawValue) 나왔습니다!",
                                       message: "맛있게 드세요!",
@@ -54,7 +46,7 @@ final class JuiceMakerViewController: UIViewController {
                                       message: "재료가 모자라요.\n재고를 수정할까요?",
                                       preferredStyle: .alert)
         let confirm = UIAlertAction(title: "예", style: .default, handler: { _ in
-            self.stockUpdateViewButton(UIButton())
+            self.performSegue(withIdentifier: "MoveToFruitStockView", sender: self)
         })
         let close = UIAlertAction(title: "아니요", style: .destructive)
         
