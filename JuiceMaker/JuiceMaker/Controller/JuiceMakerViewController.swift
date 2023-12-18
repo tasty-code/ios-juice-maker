@@ -13,20 +13,31 @@ final class JuiceMakerViewController: UIViewController, JuiceMakerAlert {
     @IBOutlet weak var kiwiStockLabel: UILabel!
     @IBOutlet weak var mangoStockLabel: UILabel!
     
-    private let juiceMaker = JuiceMaker()
+    var fruitStore: FruitStore
+    var juiceMaker: JuiceMaker
+    
+    init?(fruitStore: FruitStore, juiceMaker: JuiceMaker, coder: NSCoder) {
+        self.fruitStore = fruitStore
+        self.juiceMaker = juiceMaker
+        super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
     }
-    
+
     private func configureUI() {
         guard
-            let strawberryStock = juiceMaker.fruitStore.fruitStocks[.strawberry],
-            let bananaStock = juiceMaker.fruitStore.fruitStocks[.banana],
-            let pineappleStock = juiceMaker.fruitStore.fruitStocks[.pineapple],
-            let kiwiStock = juiceMaker.fruitStore.fruitStocks[.kiwi],
-            let mangoStock = juiceMaker.fruitStore.fruitStocks[.mango]
+            let strawberryStock = fruitStore.fruitStocks[.strawberry],
+            let bananaStock = fruitStore.fruitStocks[.banana],
+            let pineappleStock = fruitStore.fruitStocks[.pineapple],
+            let kiwiStock = fruitStore.fruitStocks[.kiwi],
+            let mangoStock = fruitStore.fruitStocks[.mango]
         else {
             return
         }
@@ -42,142 +53,72 @@ final class JuiceMakerViewController: UIViewController, JuiceMakerAlert {
                                                                  action: #selector(showFruitStoreViewController))
     }
     
-    private func makeAndNotifyOrder(juice: Juice) throws {
+    private func startJuiceMakerProcess(juice: Juice) throws {
         try juiceMaker.checkUnderstockedFruits(juice: juice)
         juiceMaker.makeJuice(juice: juice)
-        showJuiceMakerAlert(viewController: self, isCompletedMakeJucie: true, message: "\(juice.name) 나왔습니다! 맛있게 드세요!")
+        showJuiceMakerAlert(isCompletedMakeJuice: true,
+                            message: "\(juice.name) 나왔습니다! 맛있게 드세요!",
+                            completion: nil)
     }
     
     @objc
     func showFruitStoreViewController() {
         guard
-            let fruitStoreViewController = storyboard?.instantiateViewController(identifier: "FruitStoreViewController") as? FruitStoreViewController
+            let fruitStoreViewController = storyboard?.instantiateViewController(identifier: "FruitStoreViewController", creator: { coder in
+                return FruitStoreViewController(fruitStore: self.fruitStore, coder: coder)
+            })
         else {
-            return
+            fatalError("init(coder:) has not been implemented")
         }
-        
-        fruitStoreViewController.strawberryStock = self.strawberryStockLabel.text ?? ""
-        fruitStoreViewController.bananaStock = self.bananaStockLabel.text ?? ""
-        fruitStoreViewController.pineappleStock = self.pineappleStockLabel.text ?? ""
-        fruitStoreViewController.kiwiStock = self.kiwiStockLabel.text ?? ""
-        fruitStoreViewController.mangoStock = self.mangoStockLabel.text ?? ""
-        
         self.navigationController?.pushViewController(fruitStoreViewController, animated: true)
     }
-   
-    @IBAction private func tappedStrawberryBananaJuiceButton(_ sender: UIButton) {
+    
+    private func proceedMakingJuice(juice: Juice, labels: [UILabel]) {
         do {
-            try makeAndNotifyOrder(juice: .strawberryBananaJuice)
-            guard
-                let strawberryStock = juiceMaker.fruitStore.fruitStocks[.strawberry],
-                let bananaStock = juiceMaker.fruitStore.fruitStocks[.banana]
-            else {
-                return
+            try startJuiceMakerProcess(juice: juice)
+            let sortedJuiceRecipe = juice.recipe.sorted(by: { $0.value > $1.value })
+            for (index, ingredient) in sortedJuiceRecipe.enumerated() {
+                guard
+                    let remainStock = fruitStore.fruitStocks[ingredient.key]
+                else {
+                    return
+                }
+                guard index < labels.count else { return }
+                labels[index].text = String(remainStock)
             }
-            strawberryStockLabel.text = String(strawberryStock)
-            bananaStockLabel.text = String(bananaStock)
         } catch {
-            showJuiceMakerAlert(viewController: self, 
-                                isCompletedMakeJucie: false,
-                                message: error.localizedDescription)
+            showJuiceMakerAlert(isCompletedMakeJuice: false,
+                                message: error.localizedDescription) {
+                self.showFruitStoreViewController()
+            }
         }
+    }
+    
+    @IBAction private func tappedStrawberryBananaJuiceButton(_ sender: UIButton) {
+        proceedMakingJuice(juice: .strawberryBananaJuice, labels: [strawberryStockLabel, bananaStockLabel])
     }
     
     @IBAction private func tappedMangoKiwiJuiceButton(_ sender: UIButton) {
-        do {
-            try makeAndNotifyOrder(juice: .mangoKiwiJuice)
-            guard
-                let kiwiStock = juiceMaker.fruitStore.fruitStocks[.kiwi],
-                let mangoStock = juiceMaker.fruitStore.fruitStocks[.mango]
-            else {
-                return
-            }
-            kiwiStockLabel.text = String(kiwiStock)
-            mangoStockLabel.text = String(mangoStock)
-        } catch {
-            showJuiceMakerAlert(viewController: self,
-                                isCompletedMakeJucie: false,
-                                message: error.localizedDescription)
-        }
+        proceedMakingJuice(juice: .mangoKiwiJuice, labels: [mangoStockLabel, kiwiStockLabel])
     }
     
     @IBAction private func tappedStrawberryJuiceButtonTapped(_ sender: UIButton) {
-        do {
-            try makeAndNotifyOrder(juice: .strawberryJuice)
-            guard
-                let strawberryStock = juiceMaker.fruitStore.fruitStocks[.strawberry]
-            else {
-                return
-            }
-            strawberryStockLabel.text = String(strawberryStock)
-        } catch {
-            showJuiceMakerAlert(viewController: self,
-                                isCompletedMakeJucie: false,
-                                message: error.localizedDescription)
-        }
+        proceedMakingJuice(juice: .strawberryJuice, labels: [strawberryStockLabel])
     }
     
     @IBAction private func tappedBananaJuiceButtonTapped(_ sender: UIButton) {
-        do {
-            try makeAndNotifyOrder(juice: .bananaJuice)
-            guard
-                let bananaStock = juiceMaker.fruitStore.fruitStocks[.banana]
-            else {
-                return
-            }
-            bananaStockLabel.text = String(bananaStock)
-        } catch {
-            showJuiceMakerAlert(viewController: self,
-                                isCompletedMakeJucie: false,
-                                message: error.localizedDescription)
-        }
+        proceedMakingJuice(juice: .bananaJuice, labels: [bananaStockLabel])
     }
     
     @IBAction private func tappedPineappleJuiceButtonTapped(_ sender: UIButton) {
-        do {
-            try makeAndNotifyOrder(juice: .pineappleJuice)
-            guard
-                let pineappleStock = juiceMaker.fruitStore.fruitStocks[.pineapple]
-            else {
-                return
-            }
-            pineappleStockLabel.text = String(pineappleStock)
-        } catch {
-            showJuiceMakerAlert(viewController: self,
-                                isCompletedMakeJucie: false,
-                                message: error.localizedDescription)
-        }
+        proceedMakingJuice(juice: .pineappleJuice, labels: [pineappleStockLabel])
     }
     
     @IBAction private func tappedKiwiJuiceButtonTapped(_ sender: UIButton) {
-        do {
-            try makeAndNotifyOrder(juice: .kiwiJuice)
-            guard
-                let kiwiStock = juiceMaker.fruitStore.fruitStocks[.kiwi]
-            else {
-                return
-            }
-            kiwiStockLabel.text = String(kiwiStock)
-        } catch {
-            showJuiceMakerAlert(viewController: self,
-                                isCompletedMakeJucie: false,
-                                message: error.localizedDescription)
-        }
+        proceedMakingJuice(juice: .kiwiJuice, labels: [kiwiStockLabel])
     }
     
     @IBAction private func tappedMangoJuiceButtonTapped(_ sender: UIButton) {
-        do {
-            try makeAndNotifyOrder(juice: .mangoJuice)
-            guard
-                let mangoStock = juiceMaker.fruitStore.fruitStocks[.mango]
-            else {
-                return
-            }
-            mangoStockLabel.text = String(mangoStock)
-        } catch {
-            showJuiceMakerAlert(viewController: self,
-                                isCompletedMakeJucie: false,
-                                message: error.localizedDescription)
-        }
+        proceedMakingJuice(juice: .mangoJuice, labels: [mangoStockLabel])
     }
 }
