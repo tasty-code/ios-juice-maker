@@ -7,7 +7,6 @@
 import UIKit
 
 final class JuiceOrderViewController: UIViewController {
-//    private let fruitStore = FruitStore.shared
     private let juiceMaker = JuiceMaker()
     
     @IBOutlet weak private var strawberryLabel: UILabel!

@@ -8,7 +8,6 @@
 import UIKit
 
 final class ManageStockViewController: UIViewController {
-//    private let fruitStore = FruitStore.shared
     private let juiceMaker = JuiceMaker()
     var fruitStock: [Fruit: UInt] = [:]
     var delegate: Delegate?
