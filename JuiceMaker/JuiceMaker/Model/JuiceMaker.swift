@@ -9,9 +9,11 @@ import Foundation
 struct JuiceMaker {
     
     func make(juice: Juice) throws {
-        for (fruit, quantity) in juice.recipe {
-            try FruitStore.shared.consume(fruit: fruit, amount: quantity)
+        for (fruit, requiredAmount) in juice.recipe {
+            try FruitStore.shared.checkInventoryError(fruit: fruit, amount: requiredAmount)
         }
-        print("\(juice.name) 나왔습니다.")
+        for (fruit, amount) in juice.recipe {
+            FruitStore.shared.consume(fruit: fruit, amount: amount)
+        }
     }
 }

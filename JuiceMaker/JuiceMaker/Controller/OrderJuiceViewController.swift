@@ -58,16 +58,25 @@ class OrderJuiceViewController: UIViewController {
     private func order(juice: Juice) {
         do {
             try juiceMaker.make(juice: juice)
+            print("\(juice.name) 나왔습니다.")
             showAlert(title: "완성", message: "\(juice.name) 나왔습니다! 맛있게 드세요")
             setInitialFruitLabel()
         } catch let error as JuiceMakerError {
             print("\(error.message)")
+            juiceMakeErrorCase(error)
+        } catch {
+            print("알 수 없는 에러")
+            showAlert(title: "에러", message: "예상치 못한 에러가 발생했습니다.")
+        }
+    }
+    private func juiceMakeErrorCase(_ error: JuiceMakerError) {
+        switch error {
+        case .outOfStock(_):
             showAlertWithConfirmation(title: "재고부족", message: "\(error.message)") { _ in
                 self.performSegue(withIdentifier: "InventoryView", sender: self)
             }
-        } catch {
-            print("에러")
-            showAlert(title: "에러", message: "예상치 못한 에러가 발생했습니다.")
+        case .negativeAmount(_):
+            showAlert(title: "에러", message: "사용량이 음수입니다")
         }
     }
 }

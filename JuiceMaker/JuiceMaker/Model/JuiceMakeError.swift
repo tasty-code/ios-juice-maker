@@ -13,9 +13,9 @@ enum JuiceMakerError: LocalizedError {
     
     var message: String {
         switch self {
-        case .outOfStock(fruit: let fruit):
+        case .outOfStock(let fruit):
             return "\(fruit.name)의 재고가 부족합니다 재고를 수정할까요?"
-        case .negativeAmount(fruit: let fruit):
+        case .negativeAmount(let fruit):
             return "\(fruit.name)의 재고가 음수입니다. 재고를 수정할까요?"
         }
     }

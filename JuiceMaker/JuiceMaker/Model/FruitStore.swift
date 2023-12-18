@@ -26,9 +26,10 @@ final class FruitStore {
         return fruitInventory[fruit, default: 0]
     }
     
-    func consume(fruit: Fruit, amount: Int) throws {
-        try checkInventoryError(fruit: fruit, amount: amount)
+    func consume(fruit: Fruit, amount: Int) {
         fruitInventory[fruit, default: 0] -= amount
+        print("\(fruit.name) - \(amount)")
+        print(fruitInventory)
     }
     
     private func canConsume(fruit: Fruit, amount: Int) -> Bool {
@@ -36,7 +37,7 @@ final class FruitStore {
         return currentInventory >= amount
     }
     
-    private func checkInventoryError(fruit: Fruit, amount: Int) throws {
+    func checkInventoryError(fruit: Fruit, amount: Int) throws {
         guard canConsume(fruit: fruit, amount: amount) else {
             throw JuiceMakerError.outOfStock(fruit: fruit)
         }
