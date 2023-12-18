@@ -15,6 +15,14 @@ class FruitStockViewController: FruitStoreViewController {
     @IBOutlet weak var kiwiLabel: UILabel!
     @IBOutlet weak var mangoLabel: UILabel!
     
+    @IBOutlet weak var strawberryStepper: UIStepper!
+    @IBOutlet weak var bananaStepper: UIStepper!
+    @IBOutlet weak var pineappleStepper: UIStepper!
+    @IBOutlet weak var kiwiStepper: UIStepper!
+    @IBOutlet weak var mangoStepper: UIStepper!
+    
+    private var stepperDict: Dictionary<UIStepper, Fruit> = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setLabelDict()
@@ -24,16 +32,35 @@ class FruitStockViewController: FruitStoreViewController {
 }
 
 extension FruitStockViewController {
-    func setLabelDict() {
-        labelDict = [strawberryLabel: .strawberry, bananaLabel: .banana, pineappleLabel: .pineapple, kiwiLabel: .kiwi, mangoLabel: .mango]
-    }
-    
     @IBAction func closeButtoonTapped(_ sender: UIButton) {
         dismissFruitStockViewController()
     }
     
+    @IBAction func stepperTapped(_ sender: UIStepper) {
+        guard let fruit = stepperDict[sender] else {
+            return
+        }
+        let afterCount: Int = Int(sender.value)
+    }
+    
     func dismissFruitStockViewController() {
         self.dismiss(animated: false)
+    }
+    
+    func setLabelDict() {
+        labelDict = [strawberryLabel: .strawberry, bananaLabel: .banana, pineappleLabel: .pineapple, kiwiLabel: .kiwi, mangoLabel: .mango]
+    }
+
+    
+    func setStepperDict() {
+        stepperDict = [strawberryStepper : .strawberry, bananaStepper : .banana, pineappleStepper : .pineapple, kiwiStepper : .kiwi, mangoStepper : .mango]
+        stepperDict.forEach(setStepper)
+    }
+    
+    func setStepper(stepper: UIStepper, fruit: Fruit) {
+        stepper.minimumValue = fruit.minimum
+        stepper.maximumValue = fruit.maximum
+        stepper.value = Double(fruitStore.fruitCount(fruit: fruit))
     }
     
 }

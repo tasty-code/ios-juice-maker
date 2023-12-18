@@ -301,6 +301,9 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZQk-f4-zrz">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="stepperTapped:" destination="Yu1-lM-nqp" eventType="valueChanged" id="pJM-xk-JhO"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                         <constraints>
@@ -329,6 +332,9 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="O5s-2N-3iP">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="stepperTapped:" destination="Yu1-lM-nqp" eventType="valueChanged" id="fMT-92-DQ3"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                         <constraints>
@@ -357,6 +363,9 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Rcr-xr-eqz">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="stepperTapped:" destination="Yu1-lM-nqp" eventType="valueChanged" id="fHd-s3-AvP"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                         <constraints>
@@ -385,6 +394,9 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="klA-59-Nu4">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="stepperTapped:" destination="Yu1-lM-nqp" eventType="valueChanged" id="SS0-9g-uMN"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                         <constraints>
@@ -413,6 +425,9 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="xbn-6P-grO">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="stepperTapped:" destination="Yu1-lM-nqp" eventType="valueChanged" id="INR-4R-74g"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                         <constraints>
@@ -431,7 +446,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="닫기"/>
                                 <connections>
-                                    <action selector="closeButtoonTapped:" destination="Yu1-lM-nqp" eventType="touchUpInside" id="xtT-MH-emr"/>
+                                    <action selector="closeButtoonTapped:" destination="Yu1-lM-nqp" eventType="touchUpInside" id="69K-nL-KYY"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="재고 관리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C0P-WJ-68r">
@@ -452,10 +467,15 @@
                     <navigationItem key="navigationItem" id="aHG-V7-DgY"/>
                     <connections>
                         <outlet property="bananaLabel" destination="gKu-86-RhI" id="EuU-zs-g2G"/>
+                        <outlet property="bananaStepper" destination="O5s-2N-3iP" id="S26-xr-GC6"/>
                         <outlet property="kiwiLabel" destination="ZDv-1m-HBY" id="Zha-8Q-Mtk"/>
+                        <outlet property="kiwiStepper" destination="klA-59-Nu4" id="d9o-Qy-hZb"/>
                         <outlet property="mangoLabel" destination="YJI-ER-LJR" id="BhG-K2-D3O"/>
+                        <outlet property="mangoStepper" destination="xbn-6P-grO" id="s3e-Fb-sUv"/>
                         <outlet property="pineappleLabel" destination="MpT-VW-hCb" id="Udw-25-dBu"/>
+                        <outlet property="pineappleStepper" destination="Rcr-xr-eqz" id="Kst-f5-SXU"/>
                         <outlet property="strawberryLabel" destination="0yV-kn-zaT" id="0Xj-ww-LQn"/>
+                        <outlet property="strawberryStepper" destination="ZQk-f4-zrz" id="8o0-eY-AeS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
