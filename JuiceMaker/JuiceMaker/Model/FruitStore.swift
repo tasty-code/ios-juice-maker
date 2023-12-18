@@ -5,10 +5,10 @@
 //
 
 final class FruitStore {
-    static let shared = FruitStore()
-    var fruitStock: [Fruit: UInt]
+//    static let shared = FruitStore()
+    private(set) var fruitStock: [Fruit: UInt]
     
-    private init(fruitStock: [Fruit : UInt] = [.banana: 10, .kiwi: 10, .mango: 10, .pineapple: 10, .strawberry: 10]) {
+    init(fruitStock: [Fruit : UInt] = [.banana: 10, .kiwi: 10, .mango: 10, .pineapple: 10, .strawberry: 10]) {
         self.fruitStock = fruitStock
     }
     

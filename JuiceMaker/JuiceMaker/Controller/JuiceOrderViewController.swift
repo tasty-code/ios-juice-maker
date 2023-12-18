@@ -7,7 +7,7 @@
 import UIKit
 
 final class JuiceOrderViewController: UIViewController {
-    private let fruitStore = FruitStore.shared
+//    private let fruitStore = FruitStore.shared
     private let juiceMaker = JuiceMaker()
     
     @IBOutlet weak private var strawberryLabel: UILabel!
@@ -56,7 +56,7 @@ final class JuiceOrderViewController: UIViewController {
     }
     
     private func updateFruitStockLabel() {
-        let stock = fruitStore.fruitStock.compactMapValues { String($0) }
+        let stock = juiceMaker.fruitStore.fruitStock.compactMapValues { String($0) }
         
         strawberryLabel.text = stock[.strawberry]
         bananaLabel.text = stock[.banana]
@@ -72,7 +72,21 @@ final class JuiceOrderViewController: UIViewController {
             return
         }
         
+        vc.fruitStock = juiceMaker.fruitStore.fruitStock
+        
+        vc.delegate = self
+        
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
+    }
+}
+
+extension JuiceOrderViewController: Delegate {
+    func fruitStock(fruit: [Fruit : UInt]) {
+        juiceMaker.fruitStore.updateFruitStock(fruit: .strawberry, num: fruit[.strawberry] ?? 0)
+        juiceMaker.fruitStore.updateFruitStock(fruit: .banana, num: fruit[.banana] ?? 0)
+        juiceMaker.fruitStore.updateFruitStock(fruit: .kiwi, num: fruit[.kiwi] ?? 0)
+        juiceMaker.fruitStore.updateFruitStock(fruit: .pineapple, num: fruit[.pineapple] ?? 0)
+        juiceMaker.fruitStore.updateFruitStock(fruit: .mango, num: fruit[.mango] ?? 0)
     }
 }

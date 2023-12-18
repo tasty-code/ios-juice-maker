@@ -8,7 +8,10 @@
 import UIKit
 
 final class ManageStockViewController: UIViewController {
-    private let fruitStore = FruitStore.shared
+//    private let fruitStore = FruitStore.shared
+    private let juiceMaker = JuiceMaker()
+    var fruitStock: [Fruit: UInt] = [:]
+    var delegate: Delegate?
     
     @IBOutlet weak private var strawberryStockLabel: UILabel!
     @IBOutlet weak private var bananaStockLabel: UILabel!
@@ -29,11 +32,14 @@ final class ManageStockViewController: UIViewController {
     
     @IBAction private func closedTapped(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true)
+        
+        delegate?.fruitStock(fruit: fruitStock)
+        
     }
     
     private func configureUI() {
-        let firstStock = fruitStore.fruitStock.compactMapValues { String($0) }
-        let secondStock = fruitStore.fruitStock.compactMapValues { Double($0) }
+        let firstStock = fruitStock.compactMapValues { String($0) }
+        let secondStock = fruitStock.compactMapValues { Double($0) }
         
         strawberryStockLabel.text = firstStock[.strawberry]
         strawberryStepper.value = secondStock[.strawberry] ?? 0
@@ -45,20 +51,21 @@ final class ManageStockViewController: UIViewController {
         kiwiStepper.value = secondStock[.kiwi] ?? 0
         mangoStockLabel.text = firstStock[.mango]
         mangoStepper.value = secondStock[.mango] ?? 0
+      
     }
     
     @IBAction private func stepperTapped(_ sender: UIStepper) {
         switch sender {
         case strawberryStepper:
-            fruitStore.updateFruitStock(fruit: .strawberry, num: UInt(sender.value))
+            fruitStock[.strawberry] = UInt(sender.value)
         case bananaStepper:
-            fruitStore.updateFruitStock(fruit: .banana, num: UInt(sender.value))
+            fruitStock[.banana] = UInt(sender.value)
         case pineappleStepper:
-            fruitStore.updateFruitStock(fruit: .pineapple, num: UInt(sender.value))
+            fruitStock[.pineapple] = UInt(sender.value)
         case kiwiStepper:
-            fruitStore.updateFruitStock(fruit: .kiwi, num: UInt(sender.value))
+            fruitStock[.kiwi] = UInt(sender.value)
         case mangoStepper:
-            fruitStore.updateFruitStock(fruit: .mango, num: UInt(sender.value))
+            fruitStock[.mango] = UInt(sender.value)
         default:
             break
         }
