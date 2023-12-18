@@ -15,9 +15,7 @@ class FruitStockViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func closedButton(_ sender: UIButton) {
+    @IBAction func closedStockViewButton(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-
 }
