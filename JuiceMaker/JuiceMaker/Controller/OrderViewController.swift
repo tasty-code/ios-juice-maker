@@ -45,7 +45,7 @@ final class OrderViewController: UIViewController {
     }
 
     // MARK: @IBAction
-    @IBAction private func tapEditInventoryButton(_ sender: UIBarButtonItem) {
+    @IBAction private func tapEditInventoryButton(_ sender: UIButton) {
         pushInventoryViewController()
     }
     
@@ -86,6 +86,8 @@ extension OrderViewController {
         guard let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: InventoryViewController.className)
                 as? UIViewController else { return }
         
-        self.navigationController?.pushViewController(nextViewController, animated: true)
+        nextViewController.modalPresentationStyle = .fullScreen
+        
+        self.present(nextViewController, animated: true)
     }
 }

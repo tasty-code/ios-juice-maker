@@ -52,6 +52,10 @@ final class InventoryViewController: UIViewController {
         configureUI()
     }
     
+    @IBAction func tapCloseInventoryButton(_ sender: UIButton) {
+        self.dismiss(animated: true)
+    }
+    
     @IBAction func tapStepper(_ sender: UIStepper) {
         guard let fruit = fruitElementsByStepper[sender]?.fruit else {
             return
