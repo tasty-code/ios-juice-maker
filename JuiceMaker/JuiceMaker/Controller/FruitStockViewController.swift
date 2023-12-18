@@ -22,6 +22,7 @@ class FruitStockViewController: FruitStoreViewController {
     @IBOutlet weak var mangoStepper: UIStepper!
     
     private var stepperDict: Dictionary<UIStepper, Fruit> = [:]
+    var onDismissal: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +53,7 @@ extension FruitStockViewController {
     }
     
     func dismissFruitStockViewController() {
+        onDismissal?()
         self.dismiss(animated: false)
     }
     
