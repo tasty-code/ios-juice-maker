@@ -12,44 +12,42 @@ class FruitStore {
     }
     
     enum StorageError: Error {
-        case invalidSelection
         case insufficientStock
-        case invalidAmountOfFruit
     }
     
-    init() {
-        for fruit in Fruit.allCases {
-            self.storage[fruit] = 10
-        }
+    static let shared = FruitStore()
+    
+    private init() {
+        setUpInitialFruitsStock()
     }
     
-    private var storage: [Fruit: Int] = [:]
+    private(set) var storage: [Fruit: Int] = [:]
     
-    func supply(fruits: [Fruit: Int]) throws {
-        for (fruitName, amount) in fruits {
-            guard amount > 0 else {
-                throw StorageError.invalidAmountOfFruit
-            }
-            
-            self.storage[fruitName]? += amount
+    func adjustStock(fruit: Fruit, amount: Int) throws {
+        guard let currentStock = storage[fruit],
+                  (currentStock + amount) >= 0 else {
+            throw StorageError.insufficientStock
         }
+        
+        storage[fruit]? += amount
     }
     
     func consume(fruits: [Fruit: Int]) throws {
         for (fruitName, amount) in fruits {
-            guard let currentStock = self.storage[fruitName] else {
-                throw StorageError.invalidSelection
-            }
-            
-            guard amount > 0 else {
-                throw StorageError.invalidAmountOfFruit
-            }
-            
-            guard amount <= currentStock else {
+            guard let currentStock = storage[fruitName], 
+                      amount <= currentStock else {
                 throw StorageError.insufficientStock
             }
-            
-            self.storage[fruitName]? -= amount
+        }
+        
+        for (fruitName, amount) in fruits {
+            storage[fruitName]? -= amount
+        }
+    }
+    
+    private func setUpInitialFruitsStock() {
+        for fruit in Fruit.allCases {
+            storage[fruit] = 10
         }
     }
 }

@@ -30,13 +30,9 @@ struct JuiceMaker {
         }
     }
     
-    private let fruitStore = FruitStore()
+    private let fruitStore = FruitStore.shared
     
-    func makeJuice(menu: Menu) {
-        do {
-            try fruitStore.consume(fruits: menu.recipe)
-        } catch {
-            print(error)
-        }
+    func makeJuice(menu: Menu) throws {
+        try fruitStore.consume(fruits: menu.recipe)
     }
 }
