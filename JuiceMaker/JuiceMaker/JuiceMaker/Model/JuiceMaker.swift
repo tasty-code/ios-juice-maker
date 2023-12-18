@@ -37,13 +37,4 @@ struct JuiceMaker {
         }
         fruitStore.updateInventory(fruit: fruit, quantity: -quantity)
     }
-    
-//    func useQuantity(fruit: Fruit, quantity: Int, name: String) -> [Fruit] {
-////        let currentQuantity = fruitStore.getQuantity(of: fruit.fruitname)
-//        if currentQuantity < quantity {
-//            return [.strawberry]
-//        }
-//        return [.pineapple]
-//        
-//    }
 }
