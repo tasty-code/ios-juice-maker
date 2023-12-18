@@ -19,29 +19,29 @@ final class FruitStore {
         .pineapple: 10,
         .mango: 10
     ]
-    @discardableResult func add(fruit: Fruit, amount: Int) -> Int {
+    func add(fruit: Fruit, amount: Int) {
         fruitInventory[fruit, default: 0] += amount
-        return fruitInventory[fruit, default: 0]
     }
-    @discardableResult func consume(fruit: Fruit, amount: Int) throws -> Int {
-        try canConsume(fruit: fruit, amount: amount)
-        
-        guard amount >= 0 else {
-            throw JuiceMakerError.negativeAmount(fruit: fruit)
-        }
-        fruitInventory[fruit, default: 0] -= amount
-        return fruitInventory[fruit, default: 0]
-    }
-    
     func inventory(fruit: Fruit) -> Int {
         return fruitInventory[fruit, default: 0]
     }
     
-    private func canConsume(fruit: Fruit, amount: Int) throws {
+    func consume(fruit: Fruit, amount: Int) throws {
+        try checkInventoryError(fruit: fruit, amount: amount)
+        fruitInventory[fruit, default: 0] -= amount
+    }
+    
+    private func canConsume(fruit: Fruit, amount: Int) -> Bool {
         let currentInventory = inventory(fruit: fruit)
-        
-        if currentInventory < amount {
+        return currentInventory >= amount
+    }
+    
+    private func checkInventoryError(fruit: Fruit, amount: Int) throws {
+        guard canConsume(fruit: fruit, amount: amount) else {
             throw JuiceMakerError.outOfStock(fruit: fruit)
+        }
+        guard amount >= 0 else {
+            throw JuiceMakerError.negativeAmount(fruit: fruit)
         }
     }
 }
