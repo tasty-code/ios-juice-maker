@@ -8,22 +8,23 @@ import Foundation
 
 // 쥬스 메이커 타입
 struct JuiceMaker {
-    private let fruitStore = FruitStore()
-    
-    mutating func makeJuice(juice: Juice) {
-        do {
-            let recipe = juice.recipe
-            guard fruitStore.checkStockAvailability(recipe: recipe) else {
-                throw JuiceMakerError.insufficientStock
-            }
-            
-            for (fruit, amount) in recipe {
-                fruitStore.changeStock(fruitName: fruit, amount: -amount)
-            }
-        } catch JuiceMakerError.insufficientStock {
-            print(JuiceMakerError.insufficientStock.errorMessage)
-        } catch {
-            print(JuiceMakerError.unexpected.errorMessage)
+    let fruitStore = FruitStore()
+
+    func makeJuice(juice: Juice) -> Bool {
+        let recipe = juice.recipe
+        let isSucceed = fruitStore.checkStockAvailability(recipe: recipe)
+        switch isSucceed {
+        case .success:
+            reduceStock(for: recipe)
+            return true
+        case .failure:
+            return false
+        }
+    }
+
+    private func reduceStock(for recipe: [Fruits: Int]) {
+        for (fruit, amount) in recipe {
+            fruitStore.changeStock(fruitName: fruit, amount: -amount)
         }
     }
 }

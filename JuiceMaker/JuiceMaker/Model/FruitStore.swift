@@ -6,9 +6,9 @@
 
 import Foundation
 
-// 과일 저장소 타입
 final class FruitStore {
-    private var fruitStock = [Fruits: Int]()
+    private(set) var fruitStock = [Fruits: Int]()
+    
     init() {
         fruitStock = [
             .strawberry: 10,
@@ -25,12 +25,16 @@ final class FruitStore {
         fruitStock[fruitName] = currentStock
     }
     
-    func checkStockAvailability(recipe: [Fruits: Int]) -> Bool {
+    func checkStockAvailability(recipe: [Fruits: Int]) -> Result<Bool, JuiceMakerError> {
         for (fruit, amount) in recipe {
             guard let stock = fruitStock[fruit], stock >= amount else {
-                return false
+                return .failure(.insufficientStock)
             }
         }
-        return true
+        return .success(true)
+    }
+    
+    func quantity(of fruit: Fruits) -> Int {
+        return fruitStock[fruit] ?? 0
     }
 }
