@@ -5,7 +5,7 @@ import UIKit
 final class JuiceMachineViewController: UIViewController {
     
     @IBOutlet var juiceMachineView: JuiceMachineView!
-    private let reception = Reception()
+    private var reception: Reception?
     
     deinit { NotificationCenter.default.removeObserver(self) }
 }
@@ -17,6 +17,7 @@ extension JuiceMachineViewController {
         super.viewDidLoad()
         setupUI()
         setupNotificationCenter()
+        self.reception = Reception()
     }
 }
 
@@ -25,7 +26,6 @@ private extension JuiceMachineViewController {
     
     func setupUI() {
         setupButtonAction()
-        setupInitialStockLabel()
     }
     
     func setupButtonAction() {
@@ -38,41 +38,37 @@ private extension JuiceMachineViewController {
         juiceMachineView.mangkiOrderButton.addTarget(self, action: #selector(mangkiJuiceButtonTapped), for: .touchUpInside)
     }
     
-    func setupInitialStockLabel() {
-        var initialFruitStock = reception.fetchInitialFruitsStock()
-        updateStockLabel(from: initialFruitStock)
-    }
 }
 
 // MARK: - Button Action Method
 private extension JuiceMachineViewController {
 
     @objc func ddalbaJuiceOrderButtonTapped() {
-        reception.acceptJuiceOrder(of: .ddalba)
+        reception?.acceptJuiceOrder(of: .ddalba)
     }
     
     @objc func mangkiJuiceButtonTapped() {
-        reception.acceptJuiceOrder(of: .mangki)
+        reception?.acceptJuiceOrder(of: .mangki)
     }
     
     @objc func strawberryJuiceOrderButtonTapped() {
-        reception.acceptJuiceOrder(of: .strawberry)
+        reception?.acceptJuiceOrder(of: .strawberry)
     }
     
     @objc func bananaJuiceOrderButtonTapped() {
-        reception.acceptJuiceOrder(of: .banana)
+        reception?.acceptJuiceOrder(of: .banana)
     }
 
     @objc func pineappleJuiceOrderButtonTapped() {
-        reception.acceptJuiceOrder(of: .pineapple)
+        reception?.acceptJuiceOrder(of: .pineapple)
     }
     
     @objc func kiwiJuiceOrderButtonTapped() {
-        reception.acceptJuiceOrder(of: .kiwi)
+        reception?.acceptJuiceOrder(of: .kiwi)
     }
     
     @objc func mangoJuiceButtonTapped() {
-        reception.acceptJuiceOrder(of: .mango)
+        reception?.acceptJuiceOrder(of: .mango)
     }
 }
 

@@ -3,8 +3,8 @@ import Foundation
 
 struct Reception {
     
-    var juiceMaker: JuiceMaker
-    let fruitStore: FruitStore
+    private let juiceMaker: JuiceMaker
+    private let fruitStore: FruitStore
     
     init() {
         self.fruitStore = FruitStore()
@@ -34,10 +34,6 @@ struct Reception {
         case .mangki:
             juiceMaker.makeMangkiJuice()
         }
-    }
-    
-    func fetchInitialFruitsStock() -> [FruitStore.Fruits: Int]{
-        return fruitStore.fruitsStock
     }
 }
 
