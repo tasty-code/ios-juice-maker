@@ -239,7 +239,7 @@
                         <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT">
                             <connections>
                                 <action selector="changeInvetoryButtonTapped:" destination="BYZ-38-t0r" id="wcB-fo-npR"/>
-                                <segue destination="Yu1-lM-nqp" kind="show" identifier="goToQuantityUpdate" id="dwP-5l-tUC"/>
+                                <segue destination="Yu1-lM-nqp" kind="show" id="cLs-TI-Qrx"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -444,6 +444,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WwV-Td-3Bn" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="bR8-cc-NaO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ufw-7J-6hD">
                         <rect key="frame" x="0.0" y="0.0" width="844" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -459,7 +460,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dwP-5l-tUC"/>
+        <segue reference="cLs-TI-Qrx"/>
     </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="AccentColor">

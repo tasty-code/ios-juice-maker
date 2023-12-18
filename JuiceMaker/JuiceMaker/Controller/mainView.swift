@@ -26,7 +26,7 @@ class mainView: UIViewController, AlertPresentable {
         bananaJuiceButton.tag = 4
         pinappleJuiuceButton.tag = 5
         kiwiJuiceButton.tag = 6
-        magoKiwiJuiceButton.tag = 7
+        mango.tag = 7
     }
     
     override func viewDidLoad() {
