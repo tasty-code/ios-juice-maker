@@ -239,7 +239,7 @@
                     <navigationItem key="navigationItem" title="맛있는 쥬스를 만들어 드려요!" id="Eal-fj-o4N">
                         <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT">
                             <connections>
-                                <action selector="stockUpdateViewButton2:" destination="BYZ-38-t0r" id="KY7-x2-RBZ"/>
+                                <action selector="stockUpdateViewButton:" destination="BYZ-38-t0r" id="F3r-cz-796"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

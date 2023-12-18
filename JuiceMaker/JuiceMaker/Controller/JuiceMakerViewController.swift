@@ -32,9 +32,12 @@ final class JuiceMakerViewController: UIViewController {
         }
     }
     
-    @IBAction private func stockUpdateViewButton(_ sender: UIButton) {
-        guard let fruitStockViewController = storyboard?.instantiateViewController(identifier: "fruitStockViewController") as? FruitStockViewController else { return }
-        self.present(fruitStockViewController, animated: true, completion: nil)
+    @IBAction private func stockUpdateViewButton(_ sender: Any) {
+        guard let fruitStockViewController = self.storyboard?.instantiateViewController(withIdentifier: "fruitStockViewController") as? FruitStockViewController else {return}
+        
+        let fruitStockNavigationController = UINavigationController.init(rootViewController: fruitStockViewController)
+        fruitStockNavigationController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        self.present(fruitStockNavigationController, animated: true, completion: nil)
     }
     
     private func presentSuccessAlert(menu: Juice) {
