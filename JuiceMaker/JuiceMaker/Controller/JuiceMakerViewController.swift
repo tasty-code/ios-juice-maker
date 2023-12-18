@@ -8,8 +8,6 @@
 import UIKit
 
 final class JuiceMakerViewController: UIViewController {
-    @IBOutlet weak var navigationRightButton: UIBarButtonItem!
-    
     @IBOutlet weak var orderStrawberryBananaJuiceButton: JuiceMakerButton!
     @IBOutlet weak var orderPineappleJuiceButton: JuiceMakerButton!
     @IBOutlet weak var orderMangoKiwiJuiceButton: JuiceMakerButton!
@@ -26,44 +24,44 @@ final class JuiceMakerViewController: UIViewController {
     @IBOutlet weak var quantityMangoKiwiJuiceLabel: JuiceMakerLabel!
     @IBOutlet weak var quantityMangoJuiceLabel: JuiceMakerLabel!
     
+    @IBOutlet weak var toolbarRightButton: UIButton!
+    
+    @IBOutlet weak var toolbarTitleLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let font = UIFont(name: "DungGeunMo", size: 20) {
-            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: font]
-        }
-        
+        configUIToolbarTitleLabel()
         setupBackgroundGradientButton()
-        setNavigationButton()
+        configUIToolbarRightButton()
+    }
+    
+    private func configUIToolbarTitleLabel() {
+        let font = UIFont(name: "DungGeunMo", size: 20)!
+        toolbarTitleLabel.text = "맛있는 쥬스를 만들어 드려요!"
+        toolbarTitleLabel.textColor = .black
+        toolbarTitleLabel.font = font
     }
     
     private func setupBackgroundGradientButton() {
-        self.orderBananaJuiceButton.addGradient(colors: [.bananaColor])
-        self.orderStrawberryJuiceButton.addGradient(colors: [.strawberryColor])
-        self.orderPineappleJuiceButton.addGradient(colors: [.pineappleColor])
-        self.orderKiwiJuiceButton.addGradient(colors: [.kiwiColor])
-        self.orderMangoJuiceButton.addGradient(colors: [.mangoColor])
-        self.orderMangoKiwiJuiceButton.addGradient(colors: [.mangoColor, .kiwiColor])
-        self.orderStrawberryBananaJuiceButton.addGradient(colors: [.strawberryColor, .bananaColor])
+        self.orderBananaJuiceButton.configureUIGradient(colors: [.bananaColor])
+        self.orderStrawberryJuiceButton.configureUIGradient(colors: [.strawberryColor])
+        self.orderPineappleJuiceButton.configureUIGradient(colors: [.pineappleColor])
+        self.orderKiwiJuiceButton.configureUIGradient(colors: [.kiwiColor])
+        self.orderMangoJuiceButton.configureUIGradient(colors: [.mangoColor])
+        self.orderMangoKiwiJuiceButton.configureUIGradient(colors: [.mangoColor, .kiwiColor])
+        self.orderStrawberryBananaJuiceButton.configureUIGradient(colors: [.strawberryColor, .bananaColor])
     }
     
-    private func setNavigationButton() {
+    private func configUIToolbarRightButton() {
         let font = UIFont(name: "DungGeunMo", size: 20)!
-        let customButton = UIButton()
-        customButton.frame = CGRect(x: 0, y: 0, width: 70, height: 30)
-        customButton.setTitle("재고수정", for: .normal)
-        customButton.setTitleColor(.blue, for: .normal)
-        customButton.setTitleFont(font: font)
-        customButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        navigationRightButton.customView = customButton
-        customButton.addTarget(self, action: #selector(conectDetailViewController), for: .touchUpInside)
+        toolbarRightButton.frame = CGRect(x: 0, y: 0, width: 70, height: 30)
+        toolbarRightButton.setTitle("재고수정", for: .normal)
+        toolbarRightButton.setTitleColor(.blue, for: .normal)
+        toolbarRightButton.setTitleFont(font: font)
+        toolbarRightButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        toolbarRightButton.addTarget(self, action: #selector(presentDetailViewController), for: .touchUpInside)
     }
-    
-    @objc
-    private func conectDetailViewController() {
-        performSegue(withIdentifier: "DetailView", sender: nil)
-    }
-    
+  
     @IBAction private func juiceButtonTapped(_ sender: UIButton) {
         let selectTag = Int(sender.tag)
         let result = Juice.allCases[selectTag]
@@ -71,15 +69,15 @@ final class JuiceMakerViewController: UIViewController {
     }
 
     private func makeJuiceProcess(juice: Juice) {
-        JuiceMaker.shared.makeJuice(juice: juice) ? JuiceProcess(input: juice) : makeFailedAlert(title: Message.failedMakeJuiceTitle.description, message: Message.failedMakeJuice.description, okAction: { _ in
-            self.editAction()
+        JuiceMaker.shared.makeJuice(juice: juice) ? JuiceProcess(input: juice) : failedAlert(title: Message.failedMakeJuiceTitle.description, message: Message.failedMakeJuice.description, okAction: { _ in
+            self.presentDetailViewController()
         })
     }
 
     private func JuiceProcess(input: Juice) {
             JuiceMaker.shared.addJuiceQuantity(juice: input)
             updateQuantityLabel(juice: input)
-        makeCompletedAlert(title: Message.successMakeJuiceTitle.description, message: String(Message.successMakeJuice(juice: input.rawValue).description))
+        completedAlert(title: Message.successMakeJuiceTitle.description, message: String(Message.successMakeJuice(juice: input.rawValue).description))
     }
     
     private func updateQuantityLabel(juice: Juice) {
@@ -100,17 +98,11 @@ final class JuiceMakerViewController: UIViewController {
         }
     }
     
-    private func editAction() {
+    @objc
+    private func presentDetailViewController() {
         guard let controller = self.storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController else {
             return
         }
-        self.navigationController?.pushViewController(controller, animated: true)
-    }
-}
-
-
-extension UIButton {
-    public func setTitleFont(font: UIFont) {
-        self.titleLabel?.font = font
+        self.present(controller, animated: true)
     }
 }

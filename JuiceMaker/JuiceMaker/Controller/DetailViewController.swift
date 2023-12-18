@@ -20,11 +20,34 @@ final class DetailViewController: UIViewController {
     @IBOutlet weak var remoteKiwiButton: UIStepper!
     @IBOutlet weak var remotemangoButton: UIStepper!
     
+    @IBOutlet weak var toolbarRightButton: UIButton!
+
+    @IBOutlet weak var toolbarTitleLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLabel()
         addActionButton()
         setupRemoteButtonValsue()
+        configUIToolbarRightButton()
+        configUIToolbarTitleLabel()
+    }
+    
+    private func configUIToolbarTitleLabel() {
+        let font = UIFont(name: "DungGeunMo", size: 20)!
+        toolbarTitleLabel.text = "재고확인"
+        toolbarTitleLabel.textColor = .black
+        toolbarTitleLabel.font = font
+    }
+    
+    private func configUIToolbarRightButton() {
+        let font = UIFont(name: "DungGeunMo", size: 20)!
+        toolbarRightButton.frame = CGRect(x: 0, y: 0, width: 70, height: 30)
+        toolbarRightButton.setTitle("닫기", for: .normal)
+        toolbarRightButton.setTitleColor(.blue, for: .normal)
+        toolbarRightButton.setTitleFont(font: font)
+        toolbarRightButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        toolbarRightButton.addTarget(self, action: #selector(dismissController), for: .touchUpInside)
     }
     
     private func setupLabel() {
@@ -58,4 +81,10 @@ final class DetailViewController: UIViewController {
         FruitStore.shared.updateFruitQuantity(fruit: result, result: Int(sender.value))
         setupLabel()
     }
+    
+    @objc
+    private func dismissController() {
+        self.dismiss(animated: true)
+    }
+    
 }
