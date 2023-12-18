@@ -15,19 +15,25 @@ class FruitStockViewController: FruitStoreViewController {
     @IBOutlet weak var kiwiLabel: UILabel!
     @IBOutlet weak var mangoLabel: UILabel!
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setLabelDict()
         configureFruitStoreUI()
     }
+    
 }
 
 extension FruitStockViewController {
     func setLabelDict() {
         labelDict = [strawberryLabel: .strawberry, bananaLabel: .banana, pineappleLabel: .pineapple, kiwiLabel: .kiwi, mangoLabel: .mango]
     }
+    
+    @IBAction func closeButtoonTapped(_ sender: UIButton) {
+        dismissFruitStockViewController()
+    }
+    
+    func dismissFruitStockViewController() {
+        self.dismiss(animated: false)
+    }
+    
 }
