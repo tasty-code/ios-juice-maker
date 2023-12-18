@@ -26,6 +26,7 @@ class FruitStockViewController: FruitStoreViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setLabelDict()
+        setStepperDict()
         configureFruitStoreUI()
     }
     
@@ -40,7 +41,14 @@ extension FruitStockViewController {
         guard let fruit = stepperDict[sender] else {
             return
         }
+        
         let afterCount: Int = Int(sender.value)
+        
+        afterCount > fruitStore.fruitCount(fruit: fruit)
+            ? fruitStore.warehouse(fruit: fruit, count: 1)
+            : fruitStore.release(fruit: fruit, count: 1)
+        
+        configureFruitStoreUI()
     }
     
     func dismissFruitStockViewController() {
@@ -50,7 +58,6 @@ extension FruitStockViewController {
     func setLabelDict() {
         labelDict = [strawberryLabel: .strawberry, bananaLabel: .banana, pineappleLabel: .pineapple, kiwiLabel: .kiwi, mangoLabel: .mango]
     }
-
     
     func setStepperDict() {
         stepperDict = [strawberryStepper : .strawberry, bananaStepper : .banana, pineappleStepper : .pineapple, kiwiStepper : .kiwi, mangoStepper : .mango]
