@@ -15,11 +15,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        uiUpdate()
+        updateStockLabel()
     }
     
     
-    @IBAction func strawberryJuice(_ sender: UIButton) {
+    @IBAction func orderJuice(_ sender: UIButton) {
         var juice: Juice
         switch sender.tag {
         case 0:
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         
         do {
             try juiceMaker.makeJuice(juice)
-            uiUpdate()
+            updateStockLabel()
             let successAlert = UIAlertController(title: "주문 완료", message: "\(juice.name) 나왔습니다! 맛있게 드세요!", preferredStyle: .alert)
             successAlert.addAction(UIAlertAction(title: "확인", style: .default))
             present(successAlert, animated: true)
@@ -68,7 +68,7 @@ class ViewController: UIViewController {
         self.navigationController?.pushViewController(vc2, animated: false)
     }
     
-    func uiUpdate() {
+    func updateStockLabel() {
         for label in FruitLabel {
             let fruit: Fruit
             switch label.tag {
@@ -89,9 +89,3 @@ class ViewController: UIViewController {
         }
     }
 }
-
-
-enum StoryType {
-    static let first = UIStoryboard(name: "Main", bundle: .main)
-}
-
