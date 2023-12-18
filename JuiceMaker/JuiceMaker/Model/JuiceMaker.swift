@@ -12,7 +12,7 @@ struct JuiceMaker {
     private let fruitStore: FruitStore
     
     // MARK: Initializer
-    init(fruitStore: FruitStore = FruitStore.shared, counter: Int = 0) {
+    init(fruitStore: FruitStore = FruitStore.shared) {
         self.fruitStore = fruitStore
     }
     
