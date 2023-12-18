@@ -1,8 +1,29 @@
-//
-//  StockManageViewController.swift
-//  JuiceMaker
-//
-//  Created by ㅣ on 12/18/23.
-//
 
-import Foundation
+import UIKit
+
+// MARK: - StockManageViewController init & deinit
+class StockManageViewController: UIViewController {
+    
+    let reception: Reception
+    
+    init?(coder: NSCoder, reception: Reception) {
+        self.reception = reception
+        super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: - StockManageViewController LifeCycle
+extension StockManageViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
+
+
+
+
