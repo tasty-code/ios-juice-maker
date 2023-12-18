@@ -6,7 +6,34 @@
 
 import Foundation
 
-// 쥬스 메이커 타입
 struct JuiceMaker {
+    var fruitStore: FruitStore
     
+    init(fruitStore: FruitStore = FruitStore.shared) {
+        self.fruitStore = fruitStore
+    }
+    
+    func isEnough(juice: Juice) -> Bool {
+        var stockCheck: Bool = true
+        for (fruit, count) in juice.recipe {
+            guard fruitStore.checkStock(fruit: fruit, count: count) else {
+                stockCheck = false
+                break
+            }
+        }
+        return stockCheck
+    }
+    
+    mutating func makeJuice(juice: Juice) -> Juice? {
+        guard isEnough(juice: juice) else {
+            return nil
+        }
+        
+        juice.recipe.forEach { (fruit: Fruit, count: Int) in
+            fruitStore.release(fruit: fruit, count: count)
+        }
+        
+        return juice
+    }
+
 }
