@@ -15,22 +15,36 @@ final class FruitStoreViewController: UIViewController {
     @IBOutlet weak var kiwiStockLabel: UILabel!
     @IBOutlet weak var mangoStockLabel: UILabel!
     
-    var strawberryStock: String = ""
-    var bananaStock: String = ""
-    var pineappleStock: String = ""
-    var kiwiStock: String = ""
-    var mangoStock: String = ""
+    var fruitStore: FruitStore
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
+        setStockLabelUI()
     }
     
-    private func configureUI() {
-        strawberryStockLabel.text = strawberryStock
-        bananaStockLabel.text = bananaStock
-        pineappleStockLabel.text = pineappleStock
-        kiwiStockLabel.text = kiwiStock
-        mangoStockLabel.text = mangoStock
+    init?(fruitStore: FruitStore, coder: NSCoder) {
+        self.fruitStore = fruitStore
+        super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) {
+         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setStockLabelUI() {
+        guard
+            let strawberryStock = fruitStore.fruitStocks[.strawberry],
+            let bananaStock = fruitStore.fruitStocks[.banana],
+            let pineappleStock = fruitStore.fruitStocks[.pineapple],
+            let kiwiStock = fruitStore.fruitStocks[.kiwi],
+            let mangoStock = fruitStore.fruitStocks[.mango]
+        else {
+            return
+        }
+        strawberryStockLabel.text = String(strawberryStock)
+        bananaStockLabel.text = String(bananaStock)
+        pineappleStockLabel.text = String(pineappleStock)
+        kiwiStockLabel.text = String(kiwiStock)
+        mangoStockLabel.text = String(mangoStock)
     }
 }
