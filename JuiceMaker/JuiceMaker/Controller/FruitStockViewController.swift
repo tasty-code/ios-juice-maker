@@ -19,7 +19,6 @@ class FruitStockViewController: FruitStoreViewController {
         super.viewDidLoad()
         setLabelDict()
         configureFruitStoreUI()
-        self.navigationItem.setHidesBackButton(true, animated: true)
     }
     
 }
@@ -29,12 +28,12 @@ extension FruitStockViewController {
         labelDict = [strawberryLabel: .strawberry, bananaLabel: .banana, pineappleLabel: .pineapple, kiwiLabel: .kiwi, mangoLabel: .mango]
     }
     
-    @IBAction func closeButtoonTapped(_ sender: UIBarButtonItem) {
+    @IBAction func closeButtoonTapped(_ sender: UIButton) {
         popFruitStockViewController()
     }
     
     func popFruitStockViewController() {
-        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: false)
     }
     
 }

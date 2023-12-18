@@ -37,7 +37,7 @@ extension JuiceOrderingViewController {
     
     func pushFruitStockViewController() {
         guard let secondVC = storyboard?.instantiateViewController(withIdentifier: FruitStockViewController.className) as? FruitStockViewController else { return }
-        self.navigationController?.pushViewController(secondVC, animated: true)
+        self.present(secondVC, animated: false)
     }
     
     @IBAction func stockChangeButtonTapped(_ sender: UIBarButtonItem) {
