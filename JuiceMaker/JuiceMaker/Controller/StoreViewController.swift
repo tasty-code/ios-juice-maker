@@ -35,7 +35,7 @@ final class StoreViewController: UIViewController {
     }
     
     @IBAction func juiceMakeBtnTapped(_ choice: UIButton) {
-        var selectedRecipe : Recipe
+        var selectedRecipe : Recipe?
         switch choice.tag {
         case 0:
             selectedRecipe = Recipe.strawberryBanana
@@ -52,8 +52,9 @@ final class StoreViewController: UIViewController {
         case 6:
             selectedRecipe = Recipe.mango
         default:
-            selectedRecipe = Recipe.mango
+            break
         }
+        guard let selectedRecipe else { return }
         let result = juiceMaker.judgeOrder(selectedRecipe)
         let recipeName = selectedRecipe.recipeName
         setMarketView(checkSuccess(result), recipeName)
