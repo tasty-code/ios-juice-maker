@@ -35,18 +35,18 @@ extension JuiceOrderingViewController {
         labelDict = [strawberryLabel: .strawberry, bananaLabel: .banana, pineappleLabel: .pineapple, kiwiLabel: .kiwi, mangoLabel: .mango]
     }
     
-    func pushFruitStockViewController() {
+    func presentFruitStockViewController() {
         guard let secondVC = storyboard?.instantiateViewController(withIdentifier: FruitStockViewController.className) as? FruitStockViewController else { return }
         self.present(secondVC, animated: false)
     }
     
     @IBAction func stockChangeButtonTapped(_ sender: UIBarButtonItem) {
-        pushFruitStockViewController()
+        presentFruitStockViewController()
     }
     
     @IBAction func juiceButtonTapped(_ sender: UIButton) {
         guard let juice =  juiceMaker.makeJuice(juice: juiceMenu[sender.tag]) else {
-            makeRequestAlert(title: "알림", message: "재료가 모자라요. 재고를 수정할까요?", okAction: { _ in self.pushFruitStockViewController() })
+            makeRequestAlert(title: "알림", message: "재료가 모자라요. 재고를 수정할까요?", okAction: { _ in self.presentFruitStockViewController() })
             return
         }
         makeAlert(title: "알림", message: "\(juice.name) 나왔습니다! 맛있게 드세요!")

@@ -29,10 +29,10 @@ extension FruitStockViewController {
     }
     
     @IBAction func closeButtoonTapped(_ sender: UIButton) {
-        popFruitStockViewController()
+        dismissFruitStockViewController()
     }
     
-    func popFruitStockViewController() {
+    func dismissFruitStockViewController() {
         self.dismiss(animated: false)
     }
     
