@@ -13,14 +13,4 @@ enum Fruit: String, CaseIterable {
     case pineapple = "파인애플"
     case kiwi = "키위"
     case mango = "망고"
-    
-    static var allCases: [Fruit] {
-        return [
-            .strawberry,
-            .banana,
-            .pineapple,
-            .kiwi,
-            .mango
-        ]
-    }
 }
