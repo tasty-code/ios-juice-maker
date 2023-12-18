@@ -16,6 +16,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateStockLabel()
+        
+//        self.navigationItem.hidesBackButton = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationItem.setHidesBackButton(true, animated: true)
     }
     
     
@@ -66,6 +74,7 @@ class ViewController: UIViewController {
     @IBAction func stockUpdateAction(_ sender: UIBarButtonItem) {
         guard let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "secondVC") as? SecondViewController else { return }
         self.navigationController?.pushViewController(vc2, animated: false)
+//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     func updateStockLabel() {
