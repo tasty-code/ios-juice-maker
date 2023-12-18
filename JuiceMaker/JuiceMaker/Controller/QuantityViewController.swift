@@ -1,5 +1,5 @@
 //
-//  QuantityVC.swift
+//  QuantityViewController.swift
 //  JuiceMaker
 //
 //  Created by 권태호 on 12/12/2023.
@@ -11,7 +11,7 @@ protocol QuantityVCDelegate: AnyObject {
     func updateFruitLabels()
 }
 
-class QuantityVC: UIViewController {
+class QuantityViewController: UIViewController {
     
     var fruitStore: FruitStore?
     

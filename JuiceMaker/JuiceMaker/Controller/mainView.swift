@@ -8,8 +8,7 @@ import UIKit
 
 
 
-
-class mainView: UIViewController, AlertPresentable {
+class mainView: UIViewController {
     
     let fruitStore = FruitStore()
     
@@ -26,7 +25,7 @@ class mainView: UIViewController, AlertPresentable {
         bananaJuiceButton.tag = 4
         pinappleJuiuceButton.tag = 5
         kiwiJuiceButton.tag = 6
-        mango.tag = 7
+        mangoJuiceButton.tag = 7
     }
     
     override func viewDidLoad() {
@@ -48,6 +47,33 @@ class mainView: UIViewController, AlertPresentable {
         mango.text = "\(fruitStore.fruitInventory["망고"] ?? 0)"
     }
     
+
+    
+    @IBOutlet weak var starwBananaJuiceButton: UIButton!
+    @IBOutlet weak var magoKiwiJuiceButton: UIButton!
+    @IBOutlet weak var starwberrtJuiceButton: UIButton!
+    @IBOutlet weak var bananaJuiceButton: UIButton!
+    @IBOutlet weak var pinappleJuiuceButton: UIButton!
+    @IBOutlet weak var kiwiJuiceButton: UIButton!
+    @IBOutlet weak var mangoJuiceButton: UIButton!
+    
+}
+
+
+// MARK: - QuantityVCDelegate
+extension mainView: QuantityVCDelegate {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToQuantityUpdate",
+           let quantityVC = segue.destination as? QuantityViewController {
+            quantityVC.fruitStore = self.fruitStore
+            quantityVC.delegate = self
+        }
+    }
+}
+
+
+// MARK: - AlertPresentable
+extension mainView: AlertPresentable {
     @IBAction func makeJuiceButtonTapped(_ sender: UIButton) {
         let juiceName : JuiceRecipe
         switch sender.tag {
@@ -76,24 +102,4 @@ class mainView: UIViewController, AlertPresentable {
             showFailAlert()
         }
     }
-    
-    @IBOutlet weak var starwBananaJuiceButton: UIButton!
-    @IBOutlet weak var magoKiwiJuiceButton: UIButton!
-    @IBOutlet weak var starwberrtJuiceButton: UIButton!
-    @IBOutlet weak var bananaJuiceButton: UIButton!
-    @IBOutlet weak var pinappleJuiuceButton: UIButton!
-    @IBOutlet weak var kiwiJuiceButton: UIButton!
-    @IBOutlet weak var mangoJuiceButton: UIButton!
-    
 }
-
-extension mainView: QuantityVCDelegate {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToQuantityUpdate",
-           let quantityVC = segue.destination as? QuantityVC {
-            quantityVC.fruitStore = self.fruitStore
-            quantityVC.delegate = self
-        }
-    }
-}
-
