@@ -22,7 +22,7 @@ struct JuiceMaker {
         JuiceInfo(name: .mangoKiwiJuice, quantity: 0)
     ]
     
-    func makeJuice(juice: Juice) -> Bool {
+    func isJuiceAvailable(juice: Juice) -> Bool {
         switch juice {
         case .strawberryJuice:
             return validationCheckAndUsedFruit(fruit: .strawberry, quantity: 16)
