@@ -30,7 +30,7 @@ class SupplyViewController: UIViewController {
     }
     
     @IBAction func closeButtonTapped(_ sender: UIBarButtonItem) {
-        
+        presentingViewController?.dismiss(animated: true)
     }
     
     @IBAction func strawberryStepperTapped(_ sender: UIStepper) {

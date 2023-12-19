@@ -74,8 +74,8 @@ class JuiceViewController: UIViewController {
     }
     
     private func showNavigationView() {
-        let supplyViewController = storyboard?.instantiateViewController(withIdentifier: "SupplyViewController") as! SupplyViewController
-        navigationController?.pushViewController(supplyViewController, animated: true)
+        let supplyViewNavigationController = storyboard?.instantiateViewController(withIdentifier: "SupplyViewNavigationController") as! UINavigationController
+        present(supplyViewNavigationController, animated: true)
     }
     
     private func alertJuiceServed(menu: JuiceMaker.Menu) {
