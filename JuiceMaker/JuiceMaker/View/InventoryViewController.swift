@@ -22,7 +22,7 @@ final class InventoryViewController: UIViewController {
     @IBOutlet private weak var mangoStepper: UIStepper!
     
     // MARK: Properties
-    private var fruitStore: FruitStore
+    private let fruitStore: FruitStore = FruitStore(fruitContainer: [:])
     private lazy var componentsByFruit: [Fruit: (label: UILabel, stepper: UIStepper)] = [
         .strawberry: (strawberryQuantityLabel, strawberryStepper),
         .banana: (bananaQuantityLabel, bananaStepper),
@@ -38,13 +38,7 @@ final class InventoryViewController: UIViewController {
         kiwiStepper: (kiwiQuantityLabel, .kiwi),
         mangoStepper: (mangoQuantityLabel, .mango)
     ]
-    
-    // MARK: Initializer
-    required init?(coder aDecoder: NSCoder) {
-        self.fruitStore = FruitStore.shared
-        super.init(coder: aDecoder)
-    }
-    
+
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +47,10 @@ final class InventoryViewController: UIViewController {
     }
     
     @IBAction func tapCloseInventoryButton(_ sender: UIButton) {
+        guard let presentingViewController = presentingViewController as? OrderViewController else {
+            return
+        }
+        presentingViewController.setUpFruitContainer(data: fruitStore.fetchFruitContainer())
         self.dismiss(animated: true)
     }
     
@@ -69,14 +67,19 @@ extension InventoryViewController {
     
     private func configureUI() {
         for (fruit, components) in componentsByFruit {
-            let fruitQuantity: Int = fruitStore.fruitContainer[fruit, default: 0]
+            let fruitQuantity: Int = fruitStore.fetchFruitQuantity(of: fruit)
             components.label.text = String(fruitQuantity)
             components.stepper.value = Double(fruitQuantity)
         }
     }
     
     private func updateFruitQuantity(_ stepper: UIStepper, _ fruit: Fruit) {
-        fruitElementsByStepper[stepper]?.label.text = String(Int(stepper.value))
-        fruitStore.fruitContainer[fruit] = Int(stepper.value)
+        let fruitQuantity = Int(stepper.value)
+        fruitElementsByStepper[stepper]?.label.text = String(fruitQuantity)
+        fruitStore.updateFruitQuantity(of: fruit, by: fruitQuantity)
+    }
+    
+    func setUpFruitContainerData(_ data: [Fruit: Int]) {
+        fruitStore.updateFruitContainer(data)
     }
 }

@@ -16,7 +16,7 @@ final class OrderViewController: UIViewController {
     @IBOutlet private weak var mangoQuantityLabel: UILabel!
     
     // MARK: Properties
-    private var fruitStore: FruitStore
+    private let fruitStore: FruitStore
     private let juiceMaker: JuiceMaker
     private lazy var labelsByFruit: [Fruit: UILabel] = [
         .strawberry: strawberryQuantityLabel,
@@ -28,8 +28,14 @@ final class OrderViewController: UIViewController {
     
     // MARK: Initializer
     required init?(coder aDecoder: NSCoder) {
-        self.fruitStore = FruitStore.shared
-        self.juiceMaker = JuiceMaker()
+        self.fruitStore = FruitStore.init(fruitContainer: [
+            .strawberry: 10,
+            .banana: 10,
+            .kiwi: 10,
+            .pineapple: 10,
+            .mango: 10,
+        ])
+        self.juiceMaker = JuiceMaker(fruitStore: self.fruitStore)
         super.init(coder: aDecoder)
     }
     
@@ -46,7 +52,7 @@ final class OrderViewController: UIViewController {
 
     // MARK: @IBAction
     @IBAction private func tapEditInventoryButton(_ sender: UIButton) {
-        pushInventoryViewController()
+        presentInventoryViewController()
     }
     
     @IBAction private func tapMakeJuiceButton(_ sender: UIButton) {
@@ -67,7 +73,7 @@ final class OrderViewController: UIViewController {
                                    confirmTitle: "예",
                                    cancelTitle: "아니오",
                                    confirmAction: { [weak self] _ in
-                self?.pushInventoryViewController()
+                self?.presentInventoryViewController()
             })
         }
     }
@@ -78,16 +84,20 @@ extension OrderViewController {
     
     private func configureUI() {
         for (fruit, label) in labelsByFruit {
-            label.text = String(fruitStore.fruitContainer[fruit, default: 0])
+            label.text = String(fruitStore.fetchFruitQuantity(of: fruit))
         }
     }
     
-    private func pushInventoryViewController() {
+    private func presentInventoryViewController() {
         guard let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: InventoryViewController.className)
-                as? UIViewController else { return }
+                as? InventoryViewController else { return }
         
+        nextViewController.setUpFruitContainerData(fruitStore.fetchFruitContainer())
         nextViewController.modalPresentationStyle = .fullScreen
-        
         self.present(nextViewController, animated: true)
+    }
+    
+    func setUpFruitContainer(data: [Fruit: Int]) {
+        fruitStore.updateFruitContainer(data)
     }
 }
