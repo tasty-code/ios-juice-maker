@@ -36,7 +36,7 @@ final class StockManagerViewController: UIViewController {
         stockDisplay?.displayStock()
     }
     
-    @IBAction func completeManaging(_ sender: Any) {
+    @IBAction private func completeManaging(_ sender: Any) {
         self.dismiss(animated: true)
     }
     
