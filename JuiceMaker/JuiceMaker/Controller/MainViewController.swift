@@ -8,9 +8,9 @@ import UIKit
 
 
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, QuantityViewControllerDelegate {
     
-    let fruitStore = FruitStore()
+    var fruitStore = FruitStore()
     
     @IBOutlet weak var strawberry: UILabel!
     @IBOutlet weak var banana: UILabel!
@@ -36,7 +36,12 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func changeInvetoryButtonTapped(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "goToQuantityUpdate", sender: sender)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let quantityVC = storyboard.instantiateViewController(withIdentifier: "quantityVC") as? QuantityViewController {
+            quantityVC.fruitStore = self.fruitStore
+            quantityVC.delegate = self
+            navigationController?.pushViewController(quantityVC, animated: true)
+        }
     }
     
     func updateFruitLabels() {
@@ -56,18 +61,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var mangoJuiceButton: UIButton!
     
 }
-
-// MARK: - QuantityVCDelegate
-extension MainViewController: QuantityViewControllerDelegate {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToQuantityUpdate",
-           let quantityViewController = segue.destination as? QuantityViewController {
-            quantityViewController.fruitStore = self.fruitStore
-            quantityViewController.delegate = self
-        }
-    }
-}
-
 // MARK: - AlertPresentable
 extension MainViewController: AlertPresentable {
     @IBAction func makeJuiceButtonTapped(_ sender: UIButton) {

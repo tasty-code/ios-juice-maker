@@ -14,6 +14,9 @@ protocol QuantityViewControllerDelegate: AnyObject {
 class QuantityViewController: UIViewController {
     
     var fruitStore: FruitStore?
+    let storyboardName = "MainViewController"
+    let storyboardID = "qunatityVC"
+
     
     weak var delegate: QuantityViewControllerDelegate?
     
@@ -50,34 +53,36 @@ class QuantityViewController: UIViewController {
         updateFruitLabels()
         initStepperValue()
         delegate?.updateFruitLabels()
+        navigationItem.title = "재고추가"
+        navigationItem.rightBarButtonItem?.title = "닫기"
     }
     
     @IBAction func strawberryStepper(_ sender: UIStepper) {
         if let fruitStore = fruitStore {
             fruitStore.fruitInventory["딸기"] = Int(sender.value)
-            delegate?.updateFruitLabels()
             updateFruitLabels()
+            delegate?.updateFruitLabels()
         }
     }
     
     @IBAction func bananaStepper(_ sender: UIStepper) {
         fruitStore?.fruitInventory["바나나"] = Int(sender.value)
-        updateFruitLabels()
         delegate?.updateFruitLabels()
+        updateFruitLabels()
     }
     @IBAction func pinappleStepper(_ sender: UIStepper) {
         fruitStore?.fruitInventory["파인애플"] = Int(sender.value)
-        updateFruitLabels()
         delegate?.updateFruitLabels()
+        updateFruitLabels()
     }
     @IBAction func kiwiStepper(_ sender: UIStepper) {
         fruitStore?.fruitInventory["키위"] = Int(sender.value)
-        updateFruitLabels()
         delegate?.updateFruitLabels()
+        updateFruitLabels()
     }
     @IBAction func mangoStepper(_ sender: UIStepper) {
         fruitStore?.fruitInventory["망고"] = Int(sender.value)
-        updateFruitLabels()
         delegate?.updateFruitLabels()
+        updateFruitLabels()
     }
 }
