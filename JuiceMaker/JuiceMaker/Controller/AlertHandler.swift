@@ -23,9 +23,9 @@ final class AlertHandler {
     private func fetchAlertMessage(of type: AlertType) -> (String, String) {
         switch type {
         case .fruitShortage(let customMessage):
-            return ("재고부족!", customMessage)
+            return ("과일 부족", customMessage)
         case .successJuiceOrder(let customMessage):
-            return ("주스제조성공!", customMessage)
+            return ("주스 제조 성공!", customMessage)
         }
     }
     
@@ -37,6 +37,7 @@ final class AlertHandler {
     
     func presentAlert(of type: AlertType, completion: @escaping (UIAlertAction) -> Void) {
         let topViewController = fetchTopVC()
+        if topViewController is UIAlertController { return }
         let alertView = generateAlert(of: type)
         alertView.addAction(UIAlertAction(title: "아니오", style: .default))
         alertView.addAction(UIAlertAction(title: "예", style: .default, handler: completion))

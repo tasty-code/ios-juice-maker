@@ -3,13 +3,14 @@ import Foundation
 
 extension Notification.Name {
     static let fruitStockDidChange = Notification.Name("fruitStockDidChange")
+    static let errorOccured = Notification.Name("errorOccured")
 }
 
 // MARK: - FruitStore 초기화
 
 final class FruitStore {
     enum Fruits: CaseIterable {
-        case strawberry, mango, banana, kiwi, pineapple
+        case strawberry, mango, banana, kiwi, pineapple, cherry
     }
     
     private let limitedQuantity = 0
@@ -23,7 +24,7 @@ final class FruitStore {
 extension FruitStore {
     func increment(fruit type: Fruits, by quantities: Int) {
         guard let currentStock = fruitsStock[type] else {
-            ErrorType.limitedStockError("\(#function)문제발생").printMessage()
+            postErrorOccurred()
             return
         }
         fruitsStock[type] = currentStock + quantities
@@ -32,7 +33,7 @@ extension FruitStore {
     
     func decrement(fruit type: Fruits, by quantities: Int) {
         guard let currentStock = fruitsStock[type], currentStock - quantities >= limitedQuantity else {
-            ErrorType.limitedStockError("\(#function)문제발생! 재고부족!").printMessage()
+            postErrorOccurred()
             return
         }
         fruitsStock[type] = currentStock - quantities
@@ -54,5 +55,9 @@ extension FruitStore {
 private extension FruitStore {
     func postFruitsStock() {
         NotificationCenter.default.post(name: .fruitStockDidChange, object: nil, userInfo: ["fruitsStock": fruitsStock])
+    }
+    
+    func postErrorOccurred() {
+        NotificationCenter.default.post(name: .errorOccured, object: nil)
     }
 }
