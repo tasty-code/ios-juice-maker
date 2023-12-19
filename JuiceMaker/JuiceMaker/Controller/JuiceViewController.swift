@@ -23,7 +23,7 @@ class JuiceViewController: UIViewController {
     }
     
     @IBAction func updatingStockButtonTapped(_ sender: UIBarButtonItem) {
-        showNavigationView()
+        showStockViewModal()
     }
     
     @IBAction private func strawberryJuiceOrderButtonTapped(_ sender: UIButton) {
@@ -73,12 +73,12 @@ class JuiceViewController: UIViewController {
         mangoCountLabel.text = String(describing: fruitStore.storage[.mango] ?? 0)
     }
     
-    private func showNavigationView() {
-        let supplyViewNavigationController = storyboard?.instantiateViewController(withIdentifier: "SupplyViewNavigationController") as! UINavigationController
-        if let supplyViewController = supplyViewNavigationController.viewControllers.first as? SupplyViewController {
-            supplyViewController.delegate = self
+    private func showStockViewModal() {
+        let stockViewNavigationController = storyboard?.instantiateViewController(withIdentifier: "StockViewNavigationController") as! UINavigationController
+        if let stockViewController = stockViewNavigationController.viewControllers.first as? StockViewController {
+            stockViewController.delegate = self
         }
-        present(supplyViewNavigationController, animated: true)
+        present(stockViewNavigationController, animated: true)
     }
     
     private func alertJuiceServed(menu: JuiceMaker.Menu) {
@@ -92,7 +92,7 @@ class JuiceViewController: UIViewController {
     private func alertInsufficientStock() {
         let alert = UIAlertController(title: "", message: "재료가 모자라요. 재고를 수정할까요?", preferredStyle: .alert)
         let yesAlertAction = UIAlertAction(title: "예", style: .default, handler: { _ in
-            self.showNavigationView()
+            self.showStockViewModal()
         })
         let noAlertAction = UIAlertAction(title: "아니오", style: .cancel)
         
@@ -102,8 +102,8 @@ class JuiceViewController: UIViewController {
     }
 }
 
-extension JuiceViewController: SupplyViewControllerDelegate {
-    func supplyViewControllerDidExit() {
+extension JuiceViewController: StockViewControllerDelegate {
+    func stockViewControllerDidExit() {
         reloadFruitsCount()
     }
 }

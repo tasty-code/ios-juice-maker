@@ -6,7 +6,7 @@
 
 import UIKit
 
-class SupplyViewController: UIViewController {
+class StockViewController: UIViewController {
     
     @IBOutlet private weak var strawberryCountLabel: UILabel!
     @IBOutlet private weak var bananaCountLabel: UILabel!
@@ -20,7 +20,7 @@ class SupplyViewController: UIViewController {
     @IBOutlet weak var kiwiStepper: UIStepper!
     @IBOutlet weak var mangoStepper: UIStepper!
     
-    weak var delegate: SupplyViewControllerDelegate?
+    weak var delegate: StockViewControllerDelegate?
     private let fruitStore = FruitStore.shared
     
     override func viewIsAppearing(_ animated: Bool) {
@@ -31,7 +31,7 @@ class SupplyViewController: UIViewController {
     }
     
     @IBAction func closeButtonTapped(_ sender: UIBarButtonItem) {
-        delegate?.supplyViewControllerDidExit()
+        delegate?.stockViewControllerDidExit()
         presentingViewController?.dismiss(animated: true)
     }
     
@@ -78,6 +78,6 @@ class SupplyViewController: UIViewController {
     }
 }
 
-protocol SupplyViewControllerDelegate: AnyObject {
-    func supplyViewControllerDidExit()
+protocol StockViewControllerDelegate: AnyObject {
+    func stockViewControllerDidExit()
 }
