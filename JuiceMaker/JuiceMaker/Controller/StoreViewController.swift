@@ -111,7 +111,7 @@ extension StoreViewController {
         if isDone {
             AlertManager.setAlert(
                 vcToShow: self,
-                preferedStyle: UIAlertController.Style.alert,
+                preferredStyle: UIAlertController.Style.alert,
                 title: "\(recipeName) 쥬스 나왔습니다! 맛있게 드세요!",
                 message: "",
                 buttonActions: [dismissAlertAction]
@@ -120,7 +120,7 @@ extension StoreViewController {
         else {
             AlertManager.setAlert(
                 vcToShow: self,
-                preferedStyle: UIAlertController.Style.alert,
+                preferredStyle: UIAlertController.Style.alert,
                 title: "재료가 모자라요. 재고를 수정할까요?",
                 message: "",
                 buttonActions: [acceptAlertAction, cancelAlertAction]
