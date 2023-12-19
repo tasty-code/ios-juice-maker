@@ -93,7 +93,15 @@ extension JuiceMakerViewController {
     }
 }
 
-extension JuiceMakerViewController: StoryboardIdentifiable { }
+extension JuiceMakerViewController: StoryboardBased {
+    static func instantiate(fruitStore: FruitStore) -> Self {
+        return sceneStoryboard.instantiateViewController(
+            identifier: storyboardIdentifier
+        ) { coder in
+            return Self.init(coder: coder, fruitStore: fruitStore)
+        }
+    }
+}
 
 extension JuiceMakerViewController: StockDisplayResultDisplayable {
     func displayStock(viewModel: StockDisplayModel.ViewModel) {

@@ -29,6 +29,7 @@
 		F456FA382B283D1F0025386D /* StoryboardIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F456FA372B283D1F0025386D /* StoryboardIdentifiable.swift */; };
 		F456FA3A2B2840C40025386D /* StockManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F456FA392B2840C40025386D /* StockManagerViewController.swift */; };
 		F456FA3C2B2841C30025386D /* JuiceMakerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F456FA3B2B2841C30025386D /* JuiceMakerRouter.swift */; };
+		F4B6BCD52B3165B60020A6C0 /* StoryboardBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B6BCD42B3165B60020A6C0 /* StoryboardBased.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		F456FA372B283D1F0025386D /* StoryboardIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardIdentifiable.swift; sourceTree = "<group>"; };
 		F456FA392B2840C40025386D /* StockManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockManagerViewController.swift; sourceTree = "<group>"; };
 		F456FA3B2B2841C30025386D /* JuiceMakerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMakerRouter.swift; sourceTree = "<group>"; };
+		F4B6BCD42B3165B60020A6C0 /* StoryboardBased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardBased.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 			children = (
 				7F7DBF7C2B2834800081CBAD /* JuiceMakerAlert.swift */,
 				F456FA372B283D1F0025386D /* StoryboardIdentifiable.swift */,
+				F4B6BCD42B3165B60020A6C0 /* StoryboardBased.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				C73DAF3B255D0CDD00020D38 /* JuiceMakerViewController.swift in Sources */,
 				F42621552B1DBF3F00C6423A /* JuiceFlavor.swift in Sources */,
 				F42621532B1DBF2E00C6423A /* JuiceMakerError.swift in Sources */,
+				F4B6BCD52B3165B60020A6C0 /* StoryboardBased.swift in Sources */,
 				F42621512B1DBEFD00C6423A /* FruitStock.swift in Sources */,
 				F426214F2B1DBEE800C6423A /* Fruit.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,

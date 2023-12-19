@@ -51,7 +51,20 @@ extension StockManagerViewController {
     }
 }
 
-extension StockManagerViewController: StoryboardIdentifiable { }
+extension StockManagerViewController: StoryboardBased {
+    static func instantiate(
+        fruitStore: FruitStore
+    ) -> Self {
+        return sceneStoryboard.instantiateViewController(
+            identifier: storyboardIdentifier
+        ) { coder in
+            return Self.init(
+                coder: coder,
+                fruitStore: fruitStore
+            )
+        }
+    }
+}
 
 extension StockManagerViewController: StockDisplayResultDisplayable {
     func displayStock(viewModel: StockDisplayModel.ViewModel) {
