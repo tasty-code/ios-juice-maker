@@ -27,6 +27,11 @@ class JuiceOrderingViewController: FruitStoreViewController {
         setLabelDict()
         configureFruitStoreUI()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureFruitStoreUI()
+    }
 
 }
 
@@ -37,7 +42,7 @@ extension JuiceOrderingViewController {
     
     func presentFruitStockViewController() {
         guard let secondVC = storyboard?.instantiateViewController(withIdentifier: FruitStockViewController.className) as? FruitStockViewController else { return }
-        secondVC.onDismissal = self.configureFruitStoreUI
+        secondVC.modalPresentationStyle = .fullScreen
         self.present(secondVC, animated: false)
     }
     
@@ -46,7 +51,7 @@ extension JuiceOrderingViewController {
     }
     
     @IBAction func juiceButtonTapped(_ sender: UIButton) {
-        guard let juice =  juiceMaker.makeJuice(juice: juiceMenu[sender.tag]) else {
+        guard let juice = juiceMaker.makeJuice(juice: juiceMenu[sender.tag]) else {
             makeRequestAlert(title: "알림", message: "재료가 모자라요. 재고를 수정할까요?", okAction: { _ in self.presentFruitStockViewController() })
             return
         }

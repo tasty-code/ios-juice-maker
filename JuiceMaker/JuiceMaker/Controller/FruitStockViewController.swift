@@ -21,9 +21,7 @@ class FruitStockViewController: FruitStoreViewController {
     @IBOutlet weak var kiwiStepper: FruitStockStepper!
     @IBOutlet weak var mangoStepper: FruitStockStepper!
     
-    private var stepperDict: Dictionary<FruitStockStepper, Fruit> = [:]
-    var onDismissal: (() -> Void)?
-    
+    private var stepperDict: Dictionary<FruitStockStepper, Fruit> = [:]    
     override func viewDidLoad() {
         super.viewDidLoad()
         setLabelDict()
@@ -43,13 +41,14 @@ extension FruitStockViewController {
             return
         }
         
-        sender.tappedSign == .plus ? fruitStore.warehouse(fruit: fruit, count: 1) : fruitStore.release(fruit: fruit, count: 1)
+        sender.tappedSign == .plus 
+            ? fruitStore.warehouse(fruit: fruit, count: 1)
+            : fruitStore.release(fruit: fruit, count: 1)
         
         configureFruitStoreUI()
     }
     
     func dismissFruitStockViewController() {
-        onDismissal?()
         self.dismiss(animated: false)
     }
     
