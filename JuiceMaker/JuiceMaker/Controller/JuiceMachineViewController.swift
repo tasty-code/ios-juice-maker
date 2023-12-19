@@ -36,6 +36,7 @@ private extension JuiceMachineViewController {
         juiceMachineView.pineappleOrderButton.addTarget(self, action: #selector(pineappleJuiceOrderButtonTapped), for: .touchUpInside)
         juiceMachineView.ddalbaOrderButton.addTarget(self, action: #selector(ddalbaJuiceOrderButtonTapped), for: .touchUpInside)
         juiceMachineView.mangkiOrderButton.addTarget(self, action: #selector(mangkiJuiceButtonTapped), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "재고 수정", style: .plain, target: self, action: #selector(rightBarButtonTapped))
     }
     
 }
@@ -69,6 +70,14 @@ private extension JuiceMachineViewController {
     
     @objc func mangoJuiceButtonTapped() {
         reception.acceptJuiceOrder(of: .mango)
+    }
+    
+    @objc func rightBarButtonTapped() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let stockManageViewController = storyboard.instantiateViewController(identifier: "StockManageViewController") as? StockManageViewController {
+            stockManageViewController.reception = reception
+            self.navigationController?.pushViewController(stockManageViewController, animated: true)
+        }
     }
 }
 
