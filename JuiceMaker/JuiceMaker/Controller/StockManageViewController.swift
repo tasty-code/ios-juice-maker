@@ -37,19 +37,24 @@ private extension StockManageViewController {
 // MARK: - Button Action Method
 private extension StockManageViewController {
     
-    @objc func strawberryStockStepperTapped() {
+    @objc func strawberryStockStepperTapped(_ sender: UIStepper) {
+        reception?.applyChangedStocks(of: .strawberry, to: Int(sender.value))
     }
     
-    @objc func bananaStockStepperTapped() {
+    @objc func bananaStockStepperTapped(_ sender: UIStepper) {
+        reception?.applyChangedStocks(of: .banana, to: Int(sender.value))
     }
     
-    @objc func pineappleStockStepperTapped() {
+    @objc func pineappleStockStepperTapped(_ sender: UIStepper) {
+        reception?.applyChangedStocks(of: .pineapple, to: Int(sender.value))
     }
     
-    @objc func kiwiStockStepperTapped() {
+    @objc func kiwiStockStepperTapped(_ sender: UIStepper) {
+        reception?.applyChangedStocks(of: .kiwi, to: Int(sender.value))
     }
     
-    @objc func mangoStockStepperTapped() {
+    @objc func mangoStockStepperTapped(_ sender: UIStepper) {
+        reception?.applyChangedStocks(of: .mango, to: Int(sender.value))
     }
 }
 
@@ -62,11 +67,12 @@ private extension StockManageViewController {
     
     @objc func updateFruitStock(notification: Notification) {
         guard let fruitStock =
-            notification.userInfo?["fruitsStock"] as? [FruitStore.Fruits: Int] else {
+                notification.userInfo?["fruitsStock"] as? [FruitStore.Fruits: Int] else {
             ErrorType.notificationCenterError("\(#function)에서 문제가 생겼습니다!").printMessage()
             return
         }
         updateStockLabel(from: fruitStock)
+        setUpInitialStepperValue(from: fruitStock)
     }
     
     func updateStockLabel(from fruitStock: [FruitStore.Fruits: Int]) {

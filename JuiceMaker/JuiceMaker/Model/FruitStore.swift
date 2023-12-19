@@ -31,12 +31,16 @@ extension FruitStore {
     }
     
     func decrement(fruit type: Fruits, by quantities: Int) {
-        guard let currentStock = fruitsStock[type],
-            currentStock - quantities >= limitedQuantity else {
+        guard let currentStock = fruitsStock[type], currentStock - quantities >= limitedQuantity else {
             ErrorType.limitedStockError("\(#function)문제발생! 재고부족!").printMessage()
             return
         }
         fruitsStock[type] = currentStock - quantities
+        postFruitsStock()
+    }
+    
+    func editStock(of type: Fruits, to quantities: Int) {
+        fruitsStock[type] = quantities
         postFruitsStock()
     }
     

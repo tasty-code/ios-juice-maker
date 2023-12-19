@@ -14,7 +14,6 @@ struct Reception {
     func applyCurrentStocks() {
         fruitStore.onUpdateStock()
     }
-        
     
     func acceptJuiceOrder(of type: JuiceType) {
         switch type {
@@ -40,7 +39,10 @@ struct Reception {
             juiceMaker.makeMangkiJuice()
         }
     }
+    
+    func applyChangedStocks(of type: FruitStore.Fruits, to quantities: Int) {
+        fruitStore.editStock(of: type, to: quantities)
+    }
+    
 }
-
-
 
