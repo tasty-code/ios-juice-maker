@@ -11,17 +11,21 @@ protocol JuiceMadeDelegate: AnyObject {
     func juiceMade()
 }
 
+protocol SendFruitQuantityDelegate: AnyObject {
+    func sendFruitQuantityData(fruitQuantity: [FruitName: Int])
+}
+
 class MainViewController: UIViewController {
-    
-    @IBOutlet weak var strawberryQuantity: UILabel!
-    @IBOutlet weak var bananaQuantity: UILabel!
-    @IBOutlet weak var pineappleQuantity: UILabel!
-    @IBOutlet weak var kiwiQuantity: UILabel!
-    @IBOutlet weak var mangoQuantity: UILabel!
+    @IBOutlet weak var strawberryQuantityLabel: UILabel!
+    @IBOutlet weak var bananaQuantityLabel: UILabel!
+    @IBOutlet weak var pineappleQuantityLabel: UILabel!
+    @IBOutlet weak var kiwiQuantityLabel: UILabel!
+    @IBOutlet weak var mangoQuantityLabel: UILabel!
     
     let juiceMaker = JuiceMaker()
     
     weak var juiceMadeDelegate: JuiceMadeDelegate?
+    weak var sendFruitQuantityDelegate: SendFruitQuantityDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,16 +52,27 @@ class MainViewController: UIViewController {
         
         switch fruitName {
         case .strawberry:
-            strawberryQuantity.text = String(fruitQuantity)
+            strawberryQuantityLabel.text = String(fruitQuantity)
         case .banana:
-            bananaQuantity.text = String(fruitQuantity)
+            bananaQuantityLabel.text = String(fruitQuantity)
         case .pineapple:
-            pineappleQuantity.text = String(fruitQuantity)
+            pineappleQuantityLabel.text = String(fruitQuantity)
         case .kiwi:
-            kiwiQuantity.text = String(fruitQuantity)
+            kiwiQuantityLabel.text = String(fruitQuantity)
         case .mango:
-            mangoQuantity.text = String(fruitQuantity)
+            mangoQuantityLabel.text = String(fruitQuantity)
         }
+    }
+    
+    private func moveModifyInventoryView() {
+        guard let modifyInventoryVC = self.storyboard?.instantiateViewController(withIdentifier: "ModifyInventoryViewController") as? ModifyInventoryViewController else { return }
+        
+        modifyInventoryVC.sendFruitQuantityDelegate = self
+        self.sendFruitQuantityDelegate = modifyInventoryVC
+        
+        self.sendFruitQuantityDelegate?.sendFruitQuantityData(fruitQuantity: juiceMaker.fruitStore.currentQuantityOfAllFruits())
+        
+        self.navigationController?.pushViewController(modifyInventoryVC, animated: true)
     }
     
     private func showResultAlert(_ result: Result<Void, JuiceError>) {
@@ -74,15 +89,14 @@ class MainViewController: UIViewController {
                 )
             
         case .failure(let error):
-            
             switch error {
             case JuiceError.outOfStock:
                 AlertBuilder(viewController: self).addAction("예", style: .default) {
                     [weak self] in
-                        guard let self = self else { return }
-                    self.performSegue(withIdentifier: "modifyInventorySegue", sender: nil)
+                    guard let self = self else { return }
+                    moveModifyInventoryView()
                 }
-                        .addAction("아니오", style: .cancel).addMessage(title:"재료 부족", message: "재료가 모자라요. 재고를 수정할까요?", style: .alert)
+                .addAction("아니오", style: .cancel).addMessage(title:"재료 부족", message: "재료가 모자라요. 재고를 수정할까요?", style: .alert)
                 
             case JuiceError.unknown:
                 AlertBuilder(viewController: self).addAction("확인", style: .default).addMessage(title:"알 수 없는 에러", message: "에러가 발생하였습니다.", style: .alert)
@@ -94,33 +108,41 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func fruitJuiceOrderButtonTapped(_ sender: UIButton) {
-        guard let title = sender.currentTitle else {
-             return
-         }
         
-        switch title {
-        case "딸기쥬스 주문":
+        switch sender.tag {
+        case 0:
             showResultAlert(juiceMaker.makeJuice(juiceMenu: .strawberry))
-        case "바나나쥬스 주문":
+        case 1:
             showResultAlert(juiceMaker.makeJuice(juiceMenu: .banana))
-        case "파인애플쥬스 주문":
+        case 2:
             showResultAlert(juiceMaker.makeJuice(juiceMenu: .pineapple))
-        case "키위쥬스 주문":
+        case 3:
             showResultAlert(juiceMaker.makeJuice(juiceMenu: .kiwi))
-        case "망고쥬스 주문":
+        case 4:
             showResultAlert(juiceMaker.makeJuice(juiceMenu: .mango))
-        case "딸바쥬스 주문":
+        case 5:
             showResultAlert(juiceMaker.makeJuice(juiceMenu: .straberryBanana))
-        case "망키쥬스 주문":
+        case 6:
             showResultAlert(juiceMaker.makeJuice(juiceMenu: .mangoKiwi))
         default:
             showResultAlert(.failure(JuiceError.unknown))
         }
+    }
+    @IBAction func modifyInventoryButton(_ sender: UIBarButtonItem) {
+        moveModifyInventoryView()
     }
 }
 
 extension MainViewController: JuiceMadeDelegate {
     func juiceMade() {
         updateFruitQuantityLabels()
+    }
+}
+
+extension MainViewController: SendFruitQuantityDelegate {
+    func sendFruitQuantityData(fruitQuantity: [FruitName : Int]) {
+        self.juiceMaker.fruitStore.setAllFruitStockQuantity(allFruitQuantityDictionary: fruitQuantity)
+        updateFruitQuantityLabels()
+        
     }
 }
