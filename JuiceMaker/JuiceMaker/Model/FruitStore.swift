@@ -19,7 +19,7 @@ final class FruitStore {
         guard let copyOfTargetStock = fruitStocks[fruitType] else {
             throw JuiceMakerError.fruitStockNotFound
         }
-        let newTarget = try copyOfTargetStock.consumedFruits(count: numberOfFruits)
+        let newTarget = try copyOfTargetStock.fruitsConsumed(count: numberOfFruits)
         return newTarget
     }
     
@@ -35,7 +35,7 @@ final class FruitStore {
         }
     }
     
-    func fetch() -> [FruitStock] {
+    func fetchStocks() -> [FruitStock] {
         return self.fruitStocks.map { stock in stock.value }
     }
 }

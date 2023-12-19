@@ -13,14 +13,14 @@ final class JuiceMaker {
         self.fruitStore = fruitStore
     }
     
-    func makeJuice(flavor: JuiceFlavor) {
+    func produceJuice(flavor: JuiceFlavor) {
         do {
             try consumeFruitsForMakingJuice(flavor: flavor)
-            let result = JuiceMakerModel.Result(juice: flavor)
-            resultConverter?.convertRestult(result)
+            let result = JuiceMakerModel.Response(juice: flavor)
+            resultConverter?.convertResult(result)
         } catch {
-            let result = JuiceMakerModel.Result(juice: nil)
-            resultConverter?.convertRestult(result)
+            let result = JuiceMakerModel.Response(juice: nil)
+            resultConverter?.convertResult(result)
         }
     }
     

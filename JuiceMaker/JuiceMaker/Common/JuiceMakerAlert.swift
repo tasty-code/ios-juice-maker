@@ -11,7 +11,7 @@ typealias AlertActionHandler = ((UIAlertAction) -> Void)
 
 enum JuiceMakerAlert {
     case juiceIsReady(juiceName: String)
-    case fruitShortage(editAction: AlertActionHandler?)
+    case fruitShortage(editAction: AlertActionHandler)
     
     private var title: String {
         return "알림"

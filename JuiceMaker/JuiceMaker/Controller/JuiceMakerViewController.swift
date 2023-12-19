@@ -7,10 +7,9 @@
 import UIKit
 
 final class JuiceMakerViewController: UIViewController {
+    private let stockDisplayUseCase: StockDisplay?
     
-    private let stockDisplay: StockDisplay?
-    
-    private let juiceMaker: JuiceMaker?
+    private let juiceMakerUseCase: JuiceMaker?
     
     private let router: JuiceMakerRoutable?
     
@@ -25,76 +24,88 @@ final class JuiceMakerViewController: UIViewController {
     @IBOutlet private weak var mangoStockLabel: UILabel!
     
     required init?(coder: NSCoder) {
-        self.stockDisplay = nil
-        self.juiceMaker = nil
+        self.stockDisplayUseCase = nil
+        self.juiceMakerUseCase = nil
         self.router = nil
         
         super.init(coder: coder)
     }
     
     init?(coder: NSCoder, fruitStore: FruitStore) {
-        self.stockDisplay = StockDisplay(fruitStore: fruitStore)
-        self.juiceMaker = JuiceMaker(fruitStore: fruitStore)
+        self.stockDisplayUseCase = StockDisplay(fruitStore: fruitStore)
+        self.juiceMakerUseCase = JuiceMaker(fruitStore: fruitStore)
         self.router = JuiceMakerRouter(dataStore: fruitStore)
         super.init(coder: coder)
-        setUp()
+        setUpLayers()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        stockDisplay?.displayStock()
+        stockDisplayUseCase?.displayStock()
+    }
+}
+
+extension JuiceMakerViewController {
+    @IBAction private func didTapStrawberryBananaJuice(_ sender: UIButton) {
+        juiceMakerUseCase?.produceJuice(flavor: .strawberryBanana)
     }
     
-    @IBAction func makeStrawberryBananaJuice(_ sender: UIButton) {
-        juiceMaker?.makeJuice(flavor: .strawberryBanana)
+    @IBAction private func didTapMangoKiwiJuice(_ sender: UIButton) {
+        juiceMakerUseCase?.produceJuice(flavor: .mangoKiwi)
     }
     
-    @IBAction func makeMangoKiwiJuice(_ sender: UIButton) {
-        juiceMaker?.makeJuice(flavor: .mangoKiwi)
+    @IBAction private func didTapStrawberryJuice(_ sender: UIButton) {
+        juiceMakerUseCase?.produceJuice(flavor: .strawberry)
     }
     
-    @IBAction func makeStrawberryJuice(_ sender: UIButton) {
-        juiceMaker?.makeJuice(flavor: .strawberry)
+    @IBAction private func didTapBananaJuice(_ sender: UIButton) {
+        juiceMakerUseCase?.produceJuice(flavor: .banana)
     }
     
-    @IBAction func makeBananaJuice(_ sender: UIButton) {
-        juiceMaker?.makeJuice(flavor: .banana)
+    @IBAction private func didTapPineappleJuice(_ sender: UIButton) {
+        juiceMakerUseCase?.produceJuice(flavor: .pineapple)
     }
     
-    @IBAction func makePineappleJuice(_ sender: UIButton) {
-        juiceMaker?.makeJuice(flavor: .pineapple)
+    @IBAction private func didTapKiwiJuice(_ sender: UIButton) {
+        juiceMakerUseCase?.produceJuice(flavor: .kiwi)
     }
     
-    @IBAction func makeKiwiJuice(_ sender: UIButton) {
-        juiceMaker?.makeJuice(flavor: .kiwi)
+    @IBAction private func didTapMangoJuice(_ sender: UIButton) {
+        juiceMakerUseCase?.produceJuice(flavor: .mango)
     }
     
-    @IBAction func makeMangoJuice(_ sender: UIButton) {
-        juiceMaker?.makeJuice(flavor: .mango)
-    }
-    
-    @IBAction func moveToStockManager(_ sender: UIBarButtonItem) {
+    @IBAction private func didTapStockManager(_ sender: UIBarButtonItem) {
         self.router?.routeToNextViewController()
     }
-    
-    private func setUp() {
+}
+
+extension JuiceMakerViewController {
+    private func setUpLayers() {
         let stockDisplayConverter = StockDisplayResultConverter()
-        self.stockDisplay?.resultConverter = stockDisplayConverter
+        self.stockDisplayUseCase?.resultConverter = stockDisplayConverter
         stockDisplayConverter.display = self
         
         let juiceConverter = JuiceMakerResultConverter()
-        self.juiceMaker?.resultConverter = juiceConverter
+        self.juiceMakerUseCase?.resultConverter = juiceConverter
         juiceConverter.display = self
         
         self.router?.sourceViewController = self
     }
 }
 
-extension JuiceMakerViewController: StoryboardIdentifiable { }
+extension JuiceMakerViewController: StoryboardBased {
+    static func instantiate(fruitStore: FruitStore) -> Self {
+        return sceneStoryboard.instantiateViewController(
+            identifier: storyboardIdentifier
+        ) { coder in
+            return Self.init(coder: coder, fruitStore: fruitStore)
+        }
+    }
+}
 
 extension JuiceMakerViewController: StockDisplayResultDisplayable {
     func displayStock(viewModel: StockDisplayModel.ViewModel) {
-        guard let eachFruitCount = viewModel.eachFruitCount else { return }
+        guard let eachFruitCount = viewModel.countOfEachFruits else { return }
         
         self.strawberryStockLabel.text = "\(eachFruitCount.strawberryCount)"
         self.bananaStockLabel.text = "\(eachFruitCount.bananaCount)"
@@ -114,7 +125,7 @@ extension JuiceMakerViewController: JuiceMakerResultDisplayable {
             return
         }
         
-        stockDisplay?.displayStock()
+        stockDisplayUseCase?.displayStock()
         
         present(JuiceMakerAlert.juiceIsReady(juiceName: juiceName).alertController, animated: true)
     }
