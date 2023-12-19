@@ -37,6 +37,7 @@ extension JuiceOrderingViewController {
     
     func presentFruitStockViewController() {
         guard let secondVC = storyboard?.instantiateViewController(withIdentifier: FruitStockViewController.className) as? FruitStockViewController else { return }
+        secondVC.onDismissal = self.configureFruitStoreUI
         self.present(secondVC, animated: false)
     }
     
