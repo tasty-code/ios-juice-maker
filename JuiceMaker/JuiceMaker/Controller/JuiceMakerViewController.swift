@@ -5,7 +5,7 @@
 
 import UIKit
 
-final class JuiceMakerViewController: UIViewController, JuiceMakerAlert {
+final class JuiceMakerViewController: UIViewController {
     
     @IBOutlet weak var strawberryStockLabel: UILabel!
     @IBOutlet weak var pineappleStockLabel: UILabel!
@@ -13,6 +13,7 @@ final class JuiceMakerViewController: UIViewController, JuiceMakerAlert {
     @IBOutlet weak var kiwiStockLabel: UILabel!
     @IBOutlet weak var mangoStockLabel: UILabel!
     
+    @IBOutlet weak var manageFruitButton: UIBarButtonItem!
     var fruitStore: FruitStore = FruitStore(strawberryStock: 10,
                                             bananaStock: 10,
                                             pineappleStock: 10,
@@ -23,9 +24,17 @@ final class JuiceMakerViewController: UIViewController, JuiceMakerAlert {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        setStockLabelUI()
     }
     
     private func configureUI() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "재고수정",
+                                                                 style: .plain,
+                                                                 target: self,
+                                                                 action: #selector(showFruitStoreViewController))
+    }
+    
+    private func setStockLabelUI() {
         guard
             let strawberryStock = fruitStore.fruitStocks[.strawberry],
             let bananaStock = fruitStore.fruitStocks[.banana],
@@ -40,11 +49,6 @@ final class JuiceMakerViewController: UIViewController, JuiceMakerAlert {
         pineappleStockLabel.text = String(pineappleStock)
         kiwiStockLabel.text = String(kiwiStock)
         mangoStockLabel.text = String(mangoStock)
-        
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "재고수정",
-                                                                 style: .plain,
-                                                                 target: self,
-                                                                 action: #selector(showFruitStoreViewController))
     }
     
     private func startJuiceMakerProcess(juice: Juice) throws {
@@ -54,24 +58,17 @@ final class JuiceMakerViewController: UIViewController, JuiceMakerAlert {
                             message: "\(juice.name) 나왔습니다! 맛있게 드세요!",
                             completion: nil)
     }
-    /*
-     instantiateViewController(identifier:creator:): 스토리보드에서 지정된 뷰 컨트롤러를 생성하고 사용자 지정 초기화 코드를 사용하여 초기화합니다.
 
-     instantiateViewController(withIdentifier:): 지정된 식별자를 가진 뷰 컨트롤러를 생성하고 스토리보드의 데이터로 초기화합니다.
-
-     */
     @objc
     func showFruitStoreViewController() {
-        guard let a = storyboard?.instantiateViewController(withIdentifier: "FruitStoreViewController") else {
-            return
-        } // 지정된 식별자를 가진 뷰 컨트롤러를 생성하고 스토리보드의 데이터로 초기화합니다.
         guard
             let fruitStoreViewController = storyboard?.instantiateViewController(identifier: "FruitStoreViewController", creator: { coder in
                 return FruitStoreViewController(fruitStore: self.fruitStore, coder: coder)
-            }) //  스토리보드에서 지정된 뷰 컨트롤러를 생성하고 사용자 지정 초기화 코드를 사용하여 초기화합니다.
+            })
         else {
             fatalError("init(coder:) has not been implemented")
         }
+        fruitStoreViewController.delegate = self
         self.navigationController?.pushViewController(fruitStoreViewController, animated: true)
     }
     
@@ -91,10 +88,14 @@ final class JuiceMakerViewController: UIViewController, JuiceMakerAlert {
         } catch {
             showJuiceMakerAlert(isCompletedMakeJuice: false,
                                 message: error.localizedDescription,
-                                completion: {
-                self.showFruitStoreViewController()
+                                completion: { [weak self] in
+                print("핸들러 시작")
+                self?.showFruitStoreViewController()
+                print("핸들러 종료")
             })
+            print("catch문 끝")
         }
+        print("proceedMakingJuice 함수 끝")
     }
     
     @IBAction private func tappedStrawberryBananaJuiceButton(_ sender: UIButton) {
@@ -123,5 +124,11 @@ final class JuiceMakerViewController: UIViewController, JuiceMakerAlert {
     
     @IBAction private func tappedMangoJuiceButtonTapped(_ sender: UIButton) {
         proceedMakingJuice(juice: .mangoJuice, labels: [mangoStockLabel])
+    }
+}
+
+extension JuiceMakerViewController: FruitStockDelegate, JuiceMakerAlert {
+    func updateFruitStock() {
+        setStockLabelUI()
     }
 }
