@@ -24,6 +24,11 @@ final class StoreViewController: UIViewController {
     var fruitStore: FruitStore = FruitStore()
     lazy var juiceMaker: JuiceMaker = JuiceMaker(store: fruitStore)
     
+    let dismissAlertAction = UIAlertAction(title: "확인", style: .default)
+    let acceptAlertAction = UIAlertAction(title: "예", style: .default)
+    let cancelAlertAction = UIAlertAction(title: "아니오", style: .destructive)
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fruitStore.initializeFruit()
@@ -58,6 +63,10 @@ final class StoreViewController: UIViewController {
         let result = juiceMaker.judgeOrder(selectedRecipe)
         let recipeName = selectedRecipe.recipeName
         setMarketView(checkSuccess(result), recipeName)
+    }
+    
+    private func moveFruitStore() {
+        self.performSegue(withIdentifier: "moveToStock", sender: "test")
     }
     
 }
@@ -98,14 +107,25 @@ extension StoreViewController {
     
     private func showAlert(_ isDone: Bool, _ recipeName: String) {
         if isDone {
-            AlertManager.showSuccessAlert(vcToShow: self, preferedStyle: UIAlertController.Style.alert, title: "\(recipeName) 쥬스 나왔습니다! 맛있게 드세요!", message: "", completeTitle: "확인", completionHandler: nil)
+            AlertManager.setAlert(
+                vcToShow: self,
+                preferedStyle: UIAlertController.Style.alert,
+                title: "\(recipeName) 쥬스 나왔습니다! 맛있게 드세요!",
+                message: "",
+                buttonActions: [dismissAlertAction]
+            )
         }
         else {
-            AlertManager.showFailAlert(vcToShow: self, preferedStyle: UIAlertController.Style.alert, title: "재료가 모자라요. 재고를 수정할까요?", message: "", cancelTitle: "아니오", completeTitle: "예", cancelHandler: nil, completionHandler: moveFruitStore)
+            AlertManager.setAlert(
+                vcToShow: self,
+                preferedStyle: UIAlertController.Style.alert,
+                title: "재료가 모자라요. 재고를 수정할까요?",
+                message: "",
+                buttonActions: [acceptAlertAction, cancelAlertAction]
+            )
+            
         }
     }
     
-    private func moveFruitStore() {
-        self.performSegue(withIdentifier: "moveToStock", sender: "test")
-    }
+    
 }

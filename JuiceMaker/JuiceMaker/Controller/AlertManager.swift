@@ -7,12 +7,38 @@
 
 import UIKit
 struct AlertManager {
+    static func setAlert(
+        vcToShow: UIViewController?,
+        preferedStyle: UIAlertController.Style = .alert,
+        title: String = String(),
+        message: String = String(),
+        buttonActions: [UIAlertAction]
+    ) {
+        guard let currentVC = vcToShow else {
+            return
+        }
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: preferedStyle
+        )
+        for alertAction in buttonActions {
+            alert.addAction(alertAction)
+        }
+        currentVC.present(alert, animated: true, completion: nil)
+    }
+    
+    let dismissAlertAction = UIAlertAction(title: "확인", style: .default)
+    let acceptAlertAction = UIAlertAction(title: "예", style: .default)
+    let cancelAlertAction = UIAlertAction(title: "아니오", style: .destructive)
+    
+    
     static func showSuccessAlert(vcToShow: UIViewController?,
-                          preferedStyle: UIAlertController.Style = .alert,
-                          title: String = "",
-                          message: String = "",
-                          completeTitle: String = "확인",
-                          completionHandler: (() -> Void)? = nil){
+                                 preferedStyle: UIAlertController.Style = .alert,
+                                 title: String = "",
+                                 message: String = "",
+                                 completeTitle: String = "확인",
+                                 completionHandler: (() -> Void)? = nil){
         guard let currentVC = vcToShow else {
             return
         }
@@ -27,13 +53,13 @@ struct AlertManager {
     }
     
     static func showFailAlert(vcToShow: UIViewController?,
-                          preferedStyle: UIAlertController.Style = .alert,
-                          title: String = "",
-                          message: String = "",
-                          cancelTitle: String = "취소",
-                          completeTitle: String = "확인",
-                          cancelHandler: (() -> Void)?,
-                          completionHandler: (() -> Void)?){
+                              preferedStyle: UIAlertController.Style = .alert,
+                              title: String = "",
+                              message: String = "",
+                              cancelTitle: String = "취소",
+                              completeTitle: String = "확인",
+                              cancelHandler: (() -> Void)?,
+                              completionHandler: (() -> Void)?){
         guard let currentVC = vcToShow else {
             return
         }
