@@ -239,7 +239,7 @@
                         <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT">
                             <connections>
                                 <action selector="changeInvetoryButtonTapped:" destination="BYZ-38-t0r" id="wcB-fo-npR"/>
-                                <segue destination="Yu1-lM-nqp" kind="show" id="cLs-TI-Qrx"/>
+                                <segue destination="Yu1-lM-nqp" kind="show" identifier="goToQuantityUpdate" id="cLs-TI-Qrx"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

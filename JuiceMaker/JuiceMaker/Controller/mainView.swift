@@ -61,12 +61,12 @@ class mainView: UIViewController {
 
 
 // MARK: - QuantityVCDelegate
-extension mainView: QuantityVCDelegate {
+extension mainView: QuantityViewControllerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToQuantityUpdate",
-           let quantityVC = segue.destination as? QuantityViewController {
-            quantityVC.fruitStore = self.fruitStore
-            quantityVC.delegate = self
+           let quantityViewController = segue.destination as? QuantityViewController {
+            quantityViewController.fruitStore = self.fruitStore
+            quantityViewController.delegate = self
         }
     }
 }

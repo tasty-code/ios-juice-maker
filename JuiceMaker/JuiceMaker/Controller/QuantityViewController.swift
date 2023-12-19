@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol QuantityVCDelegate: AnyObject {
+protocol QuantityViewControllerDelegate: AnyObject {
     func updateFruitLabels()
 }
 
@@ -15,7 +15,7 @@ class QuantityViewController: UIViewController {
     
     var fruitStore: FruitStore?
     
-    weak var delegate: QuantityVCDelegate?
+    weak var delegate: QuantityViewControllerDelegate?
     
     @IBOutlet weak var strawberryStepper: UIStepper!
     @IBOutlet weak var bananaStepper: UIStepper!

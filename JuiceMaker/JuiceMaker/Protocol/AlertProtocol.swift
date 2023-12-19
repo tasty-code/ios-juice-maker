@@ -30,11 +30,3 @@ extension AlertPresentable {
         present(alerContoroller, animated: true)
     }
 }
-
-
-
-
-
-
-
-
