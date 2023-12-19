@@ -96,7 +96,7 @@ extension JuiceMakingViewController {
         case orderMangoKiwiButton:
             result = juiceMaker.produce(.mangoKiwi)
         default:
-            let message = "???"
+            let message = "잘못된입력입니다"
             result = .failure(description: message)
         }
         
