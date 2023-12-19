@@ -20,22 +20,24 @@ extension AlertPresentable where Self: UIViewController {
         present(alertController, animated: true)
     }
     
-     func showQuantityVC() {
+    func showQuantityVC() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let quantityVC = storyboard.instantiateViewController(withIdentifier: "quantityVC") as? QuantityViewController {
             navigationController?.pushViewController(quantityVC, animated: true)
         }
-        
-        func showFailAlert() {
-            let alertController = UIAlertController(title: "재료가 모자라요.", message: "재고를 수정할까요?", preferredStyle: .alert)
-            let yesAction = UIAlertAction(title: "예", style: .default) { [unowned self] _ in
-                self.showQuantityVC()
-            }
-            let noAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
-            alertController.addAction(yesAction)
-            alertController.addAction(noAction)
-            present(alertController, animated: true)
+    }
+    
+    func showFailAlert() {
+        let alertController = UIAlertController(title: "재료가 모자라요.", message: "재고를 수정할까요?", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "예", style: .default) { [unowned self] _ in
+            self.showQuantityVC()
         }
+        let noAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
+        alertController.addAction(yesAction)
+        alertController.addAction(noAction)
+        present(alertController, animated: true)
     }
 }
+
+
 
