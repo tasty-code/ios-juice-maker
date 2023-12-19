@@ -19,13 +19,13 @@ class MainViewController: UIViewController {
     @IBOutlet weak var mango: UILabel!
     
     func buttontag() {
-        starwBananaJuiceButton.tag = FruitTagEnum.strawberryBanana.rawValue
-        magoKiwiJuiceButton.tag = FruitTagEnum.mangoKiwi.rawValue
-        starwberrtJuiceButton.tag = FruitTagEnum.strawberry.rawValue
-        bananaJuiceButton.tag = FruitTagEnum.banana.rawValue
-        pinappleJuiuceButton.tag = FruitTagEnum.pineapple.rawValue
-        kiwiJuiceButton.tag = FruitTagEnum.kiwi.rawValue
-        mangoJuiceButton.tag = FruitTagEnum.mangoKiwi.rawValue
+        starwBananaJuiceButton.tag = FruitTag.strawberryBanana.rawValue
+        magoKiwiJuiceButton.tag = FruitTag.mangoKiwi.rawValue
+        starwberrtJuiceButton.tag = FruitTag.strawberry.rawValue
+        bananaJuiceButton.tag = FruitTag.banana.rawValue
+        pinappleJuiuceButton.tag = FruitTag.pineapple.rawValue
+        kiwiJuiceButton.tag = FruitTag.kiwi.rawValue
+        mangoJuiceButton.tag = FruitTag.mangoKiwi.rawValue
     }
     
     override func viewDidLoad() {

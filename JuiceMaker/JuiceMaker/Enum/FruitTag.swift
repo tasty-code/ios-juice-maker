@@ -7,9 +7,7 @@
 
 import Foundation
 
-
-
-enum FruitTagEnum: Int {
+enum FruitTag: Int {
     case strawberryBanana = 1
     case mangoKiwi = 2
     case strawberry = 3
