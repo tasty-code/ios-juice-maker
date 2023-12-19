@@ -25,11 +25,10 @@ final class StockManagementViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        showNumberOnLabel(fruits: receivedData)
-        
+        showNumberOnLabel(fruits: receivedFruitInventoryData)
     }
     
-    var receivedData: [Fruit:Int] = [:]
+    var receivedFruitInventoryData: [Fruit:Int] = [:]
     
 }
 

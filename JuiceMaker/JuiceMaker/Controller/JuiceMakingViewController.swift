@@ -29,7 +29,7 @@ final class JuiceMakingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         showNumberOnLabel(fruits: juiceMaker.fruitStore.inventory)
-        setUpTargetActionOnButtons()
+        setupTargetActionOnButtons()
         registerObserver()
     }
     
@@ -40,7 +40,7 @@ final class JuiceMakingViewController: UIViewController {
     // MARK: - 화면이동
     private func dataToStockManagementViewController() {
         if let stockManagementVC = self.storyboard?.instantiateViewController(withIdentifier: "StockManagementViewController") as? StockManagementViewController {
-            stockManagementVC.receivedData = juiceMaker.fruitStore.inventory
+            stockManagementVC.receivedFruitInventoryData = juiceMaker.fruitStore.inventory
             let stockManagementNavigationController = UINavigationController(rootViewController: stockManagementVC)
             
             stockManagementNavigationController.modalPresentationStyle = .pageSheet
@@ -80,7 +80,7 @@ private extension JuiceMakingViewController {
 
 // MARK: - 버튼 및 알림창
 private extension JuiceMakingViewController {
-    func setUpTargetActionOnButtons() {
+    func setupTargetActionOnButtons() {
         orderStrawberryButton.addTarget(self, action: #selector(orderJuice(_:)), for: .touchUpInside)
         orderBananaButton.addTarget(self, action: #selector(orderJuice(_:)), for: .touchUpInside)
         orderPineAppleButton.addTarget(self, action: #selector(orderJuice(_:)), for: .touchUpInside)
@@ -91,7 +91,6 @@ private extension JuiceMakingViewController {
         
         stockChangeButton.target = self
         stockChangeButton.action = #selector(stockChangeButtonTapped)
-        
     }
     
     @objc func orderJuice(_ sender: UIButton) {
@@ -160,5 +159,4 @@ private extension JuiceMakingViewController {
     func turnOffObserver() {
         NotificationCenter.default.removeObserver(self, name: Notification.Name("fruitsAmountDidChange"), object: nil)
     }
-    
 }
