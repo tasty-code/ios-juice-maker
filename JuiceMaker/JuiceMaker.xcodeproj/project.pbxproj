@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		C155FC632B28230E008047C0 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C155FC622B28230E008047C0 /* UIViewController+.swift */; };
+		C17402B52B317ACA00196D0D /* MainViewText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17402B42B317ACA00196D0D /* MainViewText.swift */; };
 		C1ED27CB2B217B530013F195 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ED27C92B217B530013F195 /* DetailViewController.swift */; };
 		C1ED27CC2B217B530013F195 /* JuiceMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ED27CA2B217B530013F195 /* JuiceMakerViewController.swift */; };
 		C1ED27D02B2187760013F195 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ED27CF2B2187760013F195 /* ViewController.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		C155FC622B28230E008047C0 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		C17402B42B317ACA00196D0D /* MainViewText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewText.swift; path = ../../../../aloneDailyQuest/AloneDailyQuest_Project/Extension/MainViewText.swift; sourceTree = "<group>"; };
 		C1ED27C92B217B530013F195 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C1ED27CA2B217B530013F195 /* JuiceMakerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JuiceMakerViewController.swift; sourceTree = "<group>"; };
 		C1ED27CF2B2187760013F195 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +71,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C17402B32B31798200196D0D /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				C17402B42B317ACA00196D0D /* MainViewText.swift */,
+			);
+			path = Text;
+			sourceTree = "<group>";
+		};
 		C1DAE6342B26F3DE003544B4 /* Suppot */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +149,7 @@
 			children = (
 				C1DAE6342B26F3DE003544B4 /* Suppot */,
 				E4AE21D52B22F5BC004484C0 /* Message */,
+				C17402B32B31798200196D0D /* Text */,
 				C1ED27DC2B218C980013F195 /* Font */,
 				C1ED27D12B218C510013F195 /* Views */,
 				C73DAF36255D0CDD00020D38 /* AppDelegate.swift */,
@@ -264,6 +275,7 @@
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
 				E4A738792B2160F900166343 /* JuiceInfo.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
+				C17402B52B317ACA00196D0D /* MainViewText.swift in Sources */,
 				E41167122B26A1140012BE2F /* JuiceMakerButton.swift in Sources */,
 				C1ED27CC2B217B530013F195 /* JuiceMakerViewController.swift in Sources */,
 				E477D06F2B26C1C8000C9192 /* UIColor+.swift in Sources */,
