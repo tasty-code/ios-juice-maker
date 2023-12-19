@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StockManagementViewController: UIViewController {
+final class StockManagementViewController: UIViewController {
     
     @IBOutlet var numberOfStrawberryLabel: UILabel!
     @IBOutlet var numberOfBananaLabel: UILabel!
@@ -33,7 +33,7 @@ class StockManagementViewController: UIViewController {
     
 }
 
-extension StockManagementViewController {
+private extension StockManagementViewController {
     func setUp(number: Int, on label:UILabel) {
         label.text = String(number)
     }

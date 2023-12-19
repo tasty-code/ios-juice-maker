@@ -6,14 +6,14 @@
 
 import Foundation
 
-class FruitStore {
+final class FruitStore {
     private(set) var inventory = Fruit.allCases.reduce([Fruit: Int]()) { bag, fruit in
         var bag = bag
         let initialNumberOfFruits = 10
         bag[fruit] = initialNumberOfFruits
         return bag
     }
-
+    
     func changeAmount(_ fruit: Fruit, _ number: Int) {
         inventory[fruit] = number
     }

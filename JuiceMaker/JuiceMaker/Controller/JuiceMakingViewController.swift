@@ -6,7 +6,7 @@
 
 import UIKit
 
-class JuiceMakingViewController: UIViewController {
+final class JuiceMakingViewController: UIViewController {
     
     @IBOutlet var numberOfStrawberryLabel: UILabel!
     @IBOutlet var numberOfBananaLabel: UILabel!
@@ -24,7 +24,7 @@ class JuiceMakingViewController: UIViewController {
     
     @IBOutlet var stockChangeButton: UIBarButtonItem!
     
-    let juiceMaker = JuiceMaker(fruitStore: FruitStore())
+    private let juiceMaker = JuiceMaker(fruitStore: FruitStore())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,9 +37,23 @@ class JuiceMakingViewController: UIViewController {
         turnOffObserver()
     }
     
+    private func dataToStockManagementViewController() {
+        if let stockManagementVC = self.storyboard?.instantiateViewController(withIdentifier: "StockManagementViewController") as? StockManagementViewController {
+            stockManagementVC.receivedData = juiceMaker.fruitStore.inventory
+            let stockManagementNavigationController = UINavigationController(rootViewController: stockManagementVC)
+            
+            stockManagementNavigationController.modalPresentationStyle = .pageSheet
+            stockManagementNavigationController.sheetPresentationController?.detents = [.large(), .medium()]
+            stockManagementNavigationController.sheetPresentationController?.preferredCornerRadius = 30
+            stockManagementNavigationController.sheetPresentationController?.prefersEdgeAttachedInCompactHeight = true
+            
+            self.present(stockManagementNavigationController, animated: true, completion: nil)
+        }
+    }
+    
 }
 
-extension JuiceMakingViewController {
+private extension JuiceMakingViewController {
     func setUp(number: Int, on label:UILabel) {
         label.text = String(number)
     }
@@ -62,7 +76,7 @@ extension JuiceMakingViewController {
     }
 }
 
-extension JuiceMakingViewController {
+private extension JuiceMakingViewController {
     func setUpTargetActionOnButtons() {
         orderStrawberryButton.addTarget(self, action: #selector(orderJuice(_:)), for: .touchUpInside)
         orderBananaButton.addTarget(self, action: #selector(orderJuice(_:)), for: .touchUpInside)
@@ -123,13 +137,13 @@ extension JuiceMakingViewController {
     }
 }
 
-extension JuiceMakingViewController {
+private extension JuiceMakingViewController {
     func transitionToStockManagement(_ sender: UIAlertAction) {
         dataToStockManagementViewController()
     }
 }
 
-extension JuiceMakingViewController {
+private extension JuiceMakingViewController {
     func registerObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeFruitsAmount(_:)), name: Notification.Name("fruitsAmountDidChange"), object: nil)
     }
@@ -146,20 +160,4 @@ extension JuiceMakingViewController {
         NotificationCenter.default.removeObserver(self, name: Notification.Name("fruitsAmountDidChange"), object: nil)
     }
     
-}
-
-extension JuiceMakingViewController {
-    func dataToStockManagementViewController() {
-        if let stockManagementVC = self.storyboard?.instantiateViewController(withIdentifier: "StockManagementViewController") as? StockManagementViewController {
-            stockManagementVC.receivedData = juiceMaker.fruitStore.inventory
-            let stockManagementNavigationController = UINavigationController(rootViewController: stockManagementVC)
-            
-            stockManagementNavigationController.modalPresentationStyle = .pageSheet
-            stockManagementNavigationController.sheetPresentationController?.detents = [.large(), .medium()]
-            stockManagementNavigationController.sheetPresentationController?.preferredCornerRadius = 30
-            stockManagementNavigationController.sheetPresentationController?.prefersEdgeAttachedInCompactHeight = true
-            
-            self.present(stockManagementNavigationController, animated: true, completion: nil)
-        }
-    }
 }
