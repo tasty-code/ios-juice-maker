@@ -15,10 +15,9 @@ class SupplyViewController: UIViewController {
     @IBOutlet private weak var mangoCountLabel: UILabel!
     
     private let fruitStore = FruitStore.shared
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    
+    override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
         reloadFruitsCount()
     }
     

@@ -16,10 +16,9 @@ class JuiceViewController: UIViewController {
     
     private let juiceMaker = JuiceMaker()
     private let fruitStore = FruitStore.shared
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
+    override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
         reloadFruitsCount()
     }
     
