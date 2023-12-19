@@ -19,13 +19,13 @@ class MainViewController: UIViewController {
     @IBOutlet weak var mango: UILabel!
     
     func buttontag() {
-        starwBananaJuiceButton.tag = 1
-        magoKiwiJuiceButton.tag = 2
-        starwberrtJuiceButton.tag = 3
-        bananaJuiceButton.tag = 4
-        pinappleJuiuceButton.tag = 5
-        kiwiJuiceButton.tag = 6
-        mangoJuiceButton.tag = 7
+        starwBananaJuiceButton.tag = FruitTagEnum.strawberryBanana.rawValue
+        magoKiwiJuiceButton.tag = FruitTagEnum.mangoKiwi.rawValue
+        starwberrtJuiceButton.tag = FruitTagEnum.strawberry.rawValue
+        bananaJuiceButton.tag = FruitTagEnum.banana.rawValue
+        pinappleJuiuceButton.tag = FruitTagEnum.pineapple.rawValue
+        kiwiJuiceButton.tag = FruitTagEnum.kiwi.rawValue
+        mangoJuiceButton.tag = FruitTagEnum.mangoKiwi.rawValue
     }
     
     override func viewDidLoad() {
@@ -47,8 +47,6 @@ class MainViewController: UIViewController {
         mango.text = "\(fruitStore.fruitInventory["망고"] ?? 0)"
     }
     
-
-    
     @IBOutlet weak var starwBananaJuiceButton: UIButton!
     @IBOutlet weak var magoKiwiJuiceButton: UIButton!
     @IBOutlet weak var starwberrtJuiceButton: UIButton!
@@ -58,7 +56,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var mangoJuiceButton: UIButton!
     
 }
-
 
 // MARK: - QuantityVCDelegate
 extension MainViewController: QuantityViewControllerDelegate {
@@ -70,7 +67,6 @@ extension MainViewController: QuantityViewControllerDelegate {
         }
     }
 }
-
 
 // MARK: - AlertPresentable
 extension MainViewController: AlertPresentable {

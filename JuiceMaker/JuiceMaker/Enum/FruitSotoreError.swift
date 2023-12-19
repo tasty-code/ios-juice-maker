@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum fruitStoreError: Error {
+enum FruitSotoreError: Error {
     case currentQuantityError
     case makeJuiceError
     case errorDefault
 }
 
-extension fruitStoreError: LocalizedError {
+extension FruitSotoreError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .currentQuantityError:
