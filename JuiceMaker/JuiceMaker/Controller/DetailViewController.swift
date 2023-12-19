@@ -65,9 +65,9 @@ final class DetailViewController: UIViewController {
     }
     
     private func configUIToolbarRightButton() {
-        let font = UIFont(name: "DungGeunMo", size: 20)!
+        let font = UIFont(name: MainViewText.fontText.description, size: 20)!
         toolbarRightButton.frame = CGRect(x: 0, y: 0, width: 70, height: 30)
-        toolbarRightButton.setTitle("닫기", for: .normal)
+        toolbarRightButton.setTitle(MainViewText.closeText.description, for: .normal)
         toolbarRightButton.setTitleColor(.blue, for: .normal)
         toolbarRightButton.setTitleFont(font: font)
         toolbarRightButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -75,8 +75,8 @@ final class DetailViewController: UIViewController {
     }
     
     private func configUIToolbarTitleLabel() {
-        let font = UIFont(name: "DungGeunMo", size: 20)!
-        toolbarTitleLabel.text = "재고확인"
+        let font = UIFont(name: MainViewText.fontText.description, size: 20)!
+        toolbarTitleLabel.text = MainViewText.detailViewText.description
         toolbarTitleLabel.textColor = .black
         toolbarTitleLabel.font = font
     }

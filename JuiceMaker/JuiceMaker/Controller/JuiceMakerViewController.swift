@@ -35,8 +35,8 @@ final class JuiceMakerViewController: UIViewController {
     }
     
     private func configureToolbarTitleLabel() {
-        let font = UIFont(name: "DungGeunMo", size: 20)!
-        toolbarTitleLabel.text = "맛있는 쥬스를 만들어 드려요!"
+        let font = UIFont(name: MainViewText.fontText.description, size: 20)!
+        toolbarTitleLabel.text = MainViewText.mainText.description
         toolbarTitleLabel.textColor = .black
         toolbarTitleLabel.font = font
     }
@@ -52,9 +52,9 @@ final class JuiceMakerViewController: UIViewController {
     }
     
     private func configureToolbarRightButton() {
-        let font = UIFont(name: "DungGeunMo", size: 20)!
+        let font = UIFont(name: MainViewText.fontText.description, size: 20)!
         toolbarRightButton.frame = CGRect(x: 0, y: 0, width: 70, height: 30)
-        toolbarRightButton.setTitle("재고수정", for: .normal)
+        toolbarRightButton.setTitle(MainViewText.detailViewText.description, for: .normal)
         toolbarRightButton.setTitleColor(.blue, for: .normal)
         toolbarRightButton.setTitleFont(font: font)
         toolbarRightButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -64,17 +64,12 @@ final class JuiceMakerViewController: UIViewController {
     @IBAction private func juiceButtonTapped(_ sender: UIButton) {
         let selectTag = Int(sender.tag)
         let result = Juice.allCases[selectTag]
-        makeJuiceProcess(juice: result)
+        JuiceMaker.shared.isJuiceAvailable(juice: result) ? successMakeJuice(input: result) : failedAlert(title: Message.failedMakeJuiceTitle.description, message: Message.failedMakeJuice.description, okAction: { _ in
+                    self.showDetailView()
+                })
     }
-
-    private func makeJuiceProcess(juice: Juice) {
-        JuiceMaker.shared.isJuiceAvailable(juice: juice) ? JuiceProcess(input: juice) : failedAlert(title: Message.failedMakeJuiceTitle.description, message: Message.failedMakeJuice.description, okAction: { _ in
-            self.showDetailView()
-        })
-    }
-
-    private func JuiceProcess(input: Juice) {
-        JuiceMaker.shared.addJuiceQuantity(juice: input)
+    
+    private func successMakeJuice(input: Juice) {
         setupQuantityLabel(juice: input)
         completedAlert(title: Message.successMakeJuiceTitle.description, message: String(Message.successMakeJuice(juice: input.rawValue).description))
     }
@@ -99,7 +94,7 @@ final class JuiceMakerViewController: UIViewController {
     
     @objc
     private func showDetailView() {
-        guard let controller = self.storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController else {
+        guard let controller = self.storyboard?.instantiateViewController(identifier: MainViewText.detailViewControllerText.description) as? DetailViewController else {
             return
         }
         self.present(controller, animated: true)
