@@ -8,7 +8,7 @@ import UIKit
 
 
 
-class mainView: UIViewController {
+class MainViewController: UIViewController {
     
     let fruitStore = FruitStore()
     
@@ -61,7 +61,7 @@ class mainView: UIViewController {
 
 
 // MARK: - QuantityVCDelegate
-extension mainView: QuantityViewControllerDelegate {
+extension MainViewController: QuantityViewControllerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToQuantityUpdate",
            let quantityViewController = segue.destination as? QuantityViewController {
@@ -73,7 +73,7 @@ extension mainView: QuantityViewControllerDelegate {
 
 
 // MARK: - AlertPresentable
-extension mainView: AlertPresentable {
+extension MainViewController: AlertPresentable {
     @IBAction func makeJuiceButtonTapped(_ sender: UIButton) {
         let juiceName : JuiceRecipe
         switch sender.tag {
