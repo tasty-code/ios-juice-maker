@@ -6,7 +6,7 @@
 //
 
 enum StockDisplayModel {
-    struct Result {
+    struct Response {
         let stocks: [FruitStock]?
     }
     
@@ -19,6 +19,6 @@ enum StockDisplayModel {
             let mangoCount: Int
         }
         
-        let eachFruitCount: EachFruitCount?
+        let countOfEachFruits: EachFruitCount?
     }
 }
