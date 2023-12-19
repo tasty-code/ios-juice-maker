@@ -5,7 +5,7 @@
 // 
 
 struct JuiceMaker {
-    private(set) var fruitStore = FruitStore()
+    let fruitStore = FruitStore()
     
     init() {}
     

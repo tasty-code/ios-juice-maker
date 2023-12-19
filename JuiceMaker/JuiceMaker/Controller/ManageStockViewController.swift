@@ -8,7 +8,6 @@
 import UIKit
 
 final class ManageStockViewController: UIViewController {
-    private let juiceMaker = JuiceMaker()
     var fruitStock: [Fruit: UInt] = [:]
     var delegate: Delegate?
     
@@ -25,15 +24,14 @@ final class ManageStockViewController: UIViewController {
     @IBOutlet weak private var mangoStepper: UIStepper!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         configureUI()
     }
     
     @IBAction private func closedTapped(_ sender: UIBarButtonItem) {
+        
+        delegate?.fruitStock(fruitStock: fruitStock)
+        
         self.dismiss(animated: true)
-        
-        delegate?.fruitStock(fruit: fruitStock)
-        
     }
     
     private func configureUI() {
@@ -50,7 +48,6 @@ final class ManageStockViewController: UIViewController {
         kiwiStepper.value = secondStock[.kiwi] ?? 0
         mangoStockLabel.text = firstStock[.mango]
         mangoStepper.value = secondStock[.mango] ?? 0
-      
     }
     
     @IBAction private func stepperTapped(_ sender: UIStepper) {

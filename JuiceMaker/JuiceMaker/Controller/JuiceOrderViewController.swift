@@ -15,8 +15,7 @@ final class JuiceOrderViewController: UIViewController {
     @IBOutlet weak private var kiwiLabel: UILabel!
     @IBOutlet weak private var mangoLabel: UILabel!
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
         updateFruitStockLabel()
     }
     
@@ -25,13 +24,13 @@ final class JuiceOrderViewController: UIViewController {
     }
     
     @IBAction private func checkJuiceOrder(_ sender: UIButton) {
-        guard let juiceName = sender.titleLabel?.text?.components(separatedBy: " ")[0] else {
-            let alert = Alert.createAlert(title: "오류", message: JuiceMakerError.cannotFindLabel.description, okTitle: "확인") { }
+        guard let juiceName = sender.titleLabel?.text?.components(separatedBy: " ").first else {
+            let alert = Alert.create(title: "오류", message: JuiceMakerError.cannotFindLabel.description, okTitle: "확인") { }
             present(alert, animated: true)
             return
         }
         guard let juice = juiceMaker.checkJuiceRecipe(juiceName: juiceName) else { 
-            let alert = Alert.createAlert(title: "오류", message: JuiceMakerError.cannotFindJuice.description, okTitle: "확인") { }
+            let alert = Alert.create(title: "오류", message: JuiceMakerError.cannotFindJuice.description, okTitle: "확인") { }
             present(alert, animated: true)
             return
         }
@@ -41,12 +40,12 @@ final class JuiceOrderViewController: UIViewController {
     private func order(juice: Juice) {
         do {
             try juiceMaker.orderJuice(juice: juice)
-            let alert = Alert.createAlert(message: "\(juice.name) 나왔습니다! 맛있게 드세요!", okTitle: "확인") { }
+            let alert = Alert.create(message: "\(juice.name) 나왔습니다! 맛있게 드세요!", okTitle: "확인") { }
             present(alert, animated: true)
             updateFruitStockLabel()
         } catch {
-            let alert = Alert.createAlert(message: JuiceMakerError.outOfStock.description, okTitle: "예") {
-                self.moveToManageStockView()
+            let alert = Alert.create(message: JuiceMakerError.outOfStock.description, okTitle: "예") {[weak self] in
+                self?.moveToManageStockView()
             }
             alert.addAction(UIAlertAction(title: "아니오", style: .default))
             present(alert, animated: true)
@@ -66,26 +65,27 @@ final class JuiceOrderViewController: UIViewController {
     
     private func moveToManageStockView() {
         guard let vc = storyboard?.instantiateViewController(identifier: ManageStockViewController.identifier) as? ManageStockViewController else {
-            let alert = Alert.createAlert(message: JuiceMakerError.cannotLoadManageStockView.description, okTitle: "확인") { }
+            let alert = Alert.create(message: JuiceMakerError.cannotLoadManageStockView.description, okTitle: "확인") { }
             present(alert, animated: true)
             return
         }
         
         vc.fruitStock = juiceMaker.fruitStore.fruitStock
-        
         vc.delegate = self
-        
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
     }
 }
 
 extension JuiceOrderViewController: Delegate {
-    func fruitStock(fruit: [Fruit : UInt]) {
-        juiceMaker.fruitStore.updateFruitStock(fruit: .strawberry, num: fruit[.strawberry] ?? 0)
-        juiceMaker.fruitStore.updateFruitStock(fruit: .banana, num: fruit[.banana] ?? 0)
-        juiceMaker.fruitStore.updateFruitStock(fruit: .kiwi, num: fruit[.kiwi] ?? 0)
-        juiceMaker.fruitStore.updateFruitStock(fruit: .pineapple, num: fruit[.pineapple] ?? 0)
-        juiceMaker.fruitStore.updateFruitStock(fruit: .mango, num: fruit[.mango] ?? 0)
+    override func viewWillAppear(_ animated: Bool) {
+        updateFruitStockLabel()
+    }
+    
+    func fruitStock(fruitStock: [Fruit : UInt]) {
+        for (index, _) in fruitStock.enumerated() {
+            guard let fruit = Fruit(rawValue: index) else { return }
+            juiceMaker.fruitStore.updateFruitStock(fruit: fruit, num: fruitStock[fruit] ?? 0)
+        }
     }
 }

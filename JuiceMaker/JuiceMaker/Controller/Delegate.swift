@@ -2,11 +2,12 @@
 //  Delegate.swift
 //  JuiceMaker
 //
-//  Created by Lee minyeol on 12/18/23.
+//  Created by 미르 & 미성
 //
 
 import Foundation
 
 protocol Delegate {
-    func fruitStock(fruit: [Fruit: UInt])
+    func fruitStock(fruitStock: [Fruit: UInt])
+    func viewWillAppear(_ animated: Bool)
 }
