@@ -13,10 +13,10 @@ final class StockManageView : UIView {
     
     // MARK: - 버튼
     
-    @IBOutlet weak var strawberryStockButton: UIStepper!
-    @IBOutlet weak var bananaStockButton: UIStepper!
-    @IBOutlet weak var pineappleStockButton: UIStepper!
-    @IBOutlet weak var kiwiStockButton: UIStepper!
-    @IBOutlet weak var mangoStockButton: UIStepper!
+    @IBOutlet weak var strawberryStockStepper: UIStepper!
+    @IBOutlet weak var bananaStockStepper: UIStepper!
+    @IBOutlet weak var pineappleStockStepper: UIStepper!
+    @IBOutlet weak var kiwiStockStepper: UIStepper!
+    @IBOutlet weak var mangoStockStepper: UIStepper!
 }
 

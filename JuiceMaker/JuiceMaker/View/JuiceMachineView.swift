@@ -11,7 +11,6 @@ final class JuiceMachineView : UIView {
     @IBOutlet weak var kiwiStockLabel: UILabel!
     @IBOutlet weak var mangoStockLabel: UILabel!
     
-    
     // MARK: - 버튼
     
     @IBOutlet weak var ddalbaOrderButton: UIButton!
