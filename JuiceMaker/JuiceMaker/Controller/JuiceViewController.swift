@@ -75,6 +75,9 @@ class JuiceViewController: UIViewController {
     
     private func showNavigationView() {
         let supplyViewNavigationController = storyboard?.instantiateViewController(withIdentifier: "SupplyViewNavigationController") as! UINavigationController
+        if let supplyViewController = supplyViewNavigationController.viewControllers.first as? SupplyViewController {
+            supplyViewController.delegate = self
+        }
         present(supplyViewNavigationController, animated: true)
     }
     
@@ -96,5 +99,11 @@ class JuiceViewController: UIViewController {
         alert.addAction(yesAlertAction)
         alert.addAction(noAlertAction)
         present(alert, animated: true)
+    }
+}
+
+extension JuiceViewController: SupplyViewControllerDelegate {
+    func supplyViewControllerDidExit() {
+        reloadFruitsCount()
     }
 }

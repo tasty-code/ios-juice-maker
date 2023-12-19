@@ -20,6 +20,7 @@ class SupplyViewController: UIViewController {
     @IBOutlet weak var kiwiStepper: UIStepper!
     @IBOutlet weak var mangoStepper: UIStepper!
     
+    weak var delegate: SupplyViewControllerDelegate?
     private let fruitStore = FruitStore.shared
     
     override func viewIsAppearing(_ animated: Bool) {
@@ -30,6 +31,7 @@ class SupplyViewController: UIViewController {
     }
     
     @IBAction func closeButtonTapped(_ sender: UIBarButtonItem) {
+        delegate?.supplyViewControllerDidExit()
         presentingViewController?.dismiss(animated: true)
     }
     
@@ -74,4 +76,8 @@ class SupplyViewController: UIViewController {
         kiwiCountLabel.text = String(describing: fruitStore.storage[.kiwi] ?? 0)
         mangoCountLabel.text = String(describing: fruitStore.storage[.mango] ?? 0)
     }
+}
+
+protocol SupplyViewControllerDelegate: AnyObject {
+    func supplyViewControllerDidExit()
 }
