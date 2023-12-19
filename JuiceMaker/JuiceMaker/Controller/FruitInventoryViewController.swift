@@ -41,5 +41,20 @@ class FruitInventoryViewController: UIViewController {
          kiwiLabel.text =  "\(juiceMaker.fruitStore.inventory(fruit: .kiwi))"
          mangoLabel.text =  "\(juiceMaker.fruitStore.inventory(fruit: .mango))"
      }
+    
+    @IBAction func strawberryStepper(_ sender: UIStepper) {
+    }
+    
+    @IBAction func bananaStepper(_ sender: UIStepper) {
+    }
+    
+    @IBAction func pineappleStepper(_ sender: UIStepper) {
+    }
+    
+    @IBAction func kiwiStepper(_ sender: UIStepper) {
+    }
+    
+    @IBAction func mangoStepper(_ sender: UIStepper) {
+    }
 }
 
