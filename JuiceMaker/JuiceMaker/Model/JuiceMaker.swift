@@ -7,13 +7,14 @@
 import Foundation
 
 struct JuiceMaker {
+    let fruitStore = FruitStore()
     
     func make(juice: Juice) throws {
         for (fruit, requiredAmount) in juice.recipe {
-            try FruitStore.shared.checkInventoryError(fruit: fruit, amount: requiredAmount)
+            try fruitStore.checkInventoryError(fruit: fruit, amount: requiredAmount)
         }
         for (fruit, amount) in juice.recipe {
-            FruitStore.shared.consume(fruit: fruit, amount: amount)
+            fruitStore.consume(fruit: fruit, amount: amount)
         }
     }
 }

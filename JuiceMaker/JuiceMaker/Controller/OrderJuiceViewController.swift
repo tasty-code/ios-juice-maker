@@ -17,21 +17,20 @@ class OrderJuiceViewController: UIViewController {
     @IBOutlet var orderJuiceButton: [UIButton]!
     
     let juiceMaker = JuiceMaker()
-    let fruitStore: FruitStore = .shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setInitialFruitLabel()
     }
-    
+
     private func setInitialFruitLabel() {
-        strawberryLabel.text = "\(fruitStore.inventory(fruit: .strawberry))"
-        bananaLabel.text =  "\(fruitStore.inventory(fruit: .banana))"
-        pineappleLabel.text = "\(fruitStore.inventory(fruit: .pineapple))"
-        kiwiLabel.text =  "\(fruitStore.inventory(fruit: .kiwi))"
-        mangoLabel.text =  "\(fruitStore.inventory(fruit: .mango))"
-        
+        strawberryLabel.text = "\(juiceMaker.fruitStore.inventory(fruit: .strawberry))"
+        bananaLabel.text =  "\(juiceMaker.fruitStore.inventory(fruit: .banana))"
+        pineappleLabel.text = "\(juiceMaker.fruitStore.inventory(fruit: .pineapple))"
+        kiwiLabel.text =  "\(juiceMaker.fruitStore.inventory(fruit: .kiwi))"
+        mangoLabel.text =  "\(juiceMaker.fruitStore.inventory(fruit: .mango))"
     }
+    
     
     @IBAction func orderJuiceButtonTapped(_ sender: UIButton) {
         switch sender.tag {
@@ -62,7 +61,6 @@ class OrderJuiceViewController: UIViewController {
             showAlert(title: "완성", message: "\(juice.name) 나왔습니다! 맛있게 드세요")
             setInitialFruitLabel()
         } catch let error as JuiceMakerError {
-            print("\(error.message)")
             juiceMakeErrorCase(error)
         } catch {
             print("알 수 없는 에러")
@@ -72,11 +70,13 @@ class OrderJuiceViewController: UIViewController {
     private func juiceMakeErrorCase(_ error: JuiceMakerError) {
         switch error {
         case .outOfStock(_):
+            print("\(error.message)")
             showAlertWithConfirmation(title: "재고부족", message: "\(error.message)") { _ in
                 self.performSegue(withIdentifier: "InventoryView", sender: self)
             }
         case .negativeAmount(_):
-            showAlert(title: "에러", message: "사용량이 음수입니다")
+            print("\(error.message)")
+            showAlert(title: "에러", message: "\(error.message)")
         }
     }
 }

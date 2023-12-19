@@ -6,19 +6,19 @@
 
 import Foundation
 
-final class FruitStore {
+ class FruitStore {
     
-    static let shared = FruitStore()
+    private var fruitInventory: [Fruit: Int]
     
-    private init() {}
-    
-    private var fruitInventory: [Fruit: Int] = [
-        .strawberry: 10,
-        .banana: 10,
-        .kiwi: 10,
-        .pineapple: 10,
-        .mango: 10
-    ]
+    init() {
+        fruitInventory = [
+            .strawberry: 10,
+            .banana: 10,
+            .kiwi: 10,
+            .pineapple: 10,
+            .mango: 10
+        ]
+    }
     func add(fruit: Fruit, amount: Int) {
         fruitInventory[fruit, default: 0] += amount
     }
@@ -28,8 +28,6 @@ final class FruitStore {
     
     func consume(fruit: Fruit, amount: Int) {
         fruitInventory[fruit, default: 0] -= amount
-        print("\(fruit.name) - \(amount)")
-        print(fruitInventory)
     }
     
     private func canConsume(fruit: Fruit, amount: Int) -> Bool {
@@ -38,11 +36,11 @@ final class FruitStore {
     }
     
     func checkInventoryError(fruit: Fruit, amount: Int) throws {
-        guard canConsume(fruit: fruit, amount: amount) else {
-            throw JuiceMakerError.outOfStock(fruit: fruit)
-        }
         guard amount >= 0 else {
             throw JuiceMakerError.negativeAmount(fruit: fruit)
+        }
+        guard canConsume(fruit: fruit, amount: amount) else {
+            throw JuiceMakerError.outOfStock(fruit: fruit)
         }
     }
 }
