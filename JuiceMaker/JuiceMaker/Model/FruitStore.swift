@@ -23,13 +23,8 @@ class FruitStore {
     
     private(set) var storage: [Fruit: Int] = [:]
     
-    func updateStock(fruit: Fruit, amount: Int) throws {
-        guard let currentStock = storage[fruit],
-                  (currentStock + amount) >= 0 else {
-            throw StorageError.insufficientStock
-        }
-        
-        storage[fruit]? += amount
+    func updateStock(fruit: Fruit, amount: Int) {
+        storage[fruit] = amount
     }
     
     func consume(fruits: [Fruit: Int]) throws {

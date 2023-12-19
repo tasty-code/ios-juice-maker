@@ -25,7 +25,7 @@ class SupplyViewController: UIViewController {
     override func viewIsAppearing(_ animated: Bool) {
         super.viewIsAppearing(animated)
         
-        setInitStepperValue()
+        setInitialStepperValue()
         reloadFruitsCount()
     }
     
@@ -49,7 +49,13 @@ class SupplyViewController: UIViewController {
         updateStock(fruit: .mango, sender: sender)
     }
     
-    private func setInitStepperValue() {
+    private func updateStock(fruit: FruitStore.Fruit, sender: UIStepper) {
+        let stepperValue = Int(sender.value)
+        fruitStore.updateStock(fruit: fruit, amount: stepperValue)
+        reloadFruitsCount()
+    }
+    
+    private func setInitialStepperValue() {
         strawberryStepper.value = Double(fruitStore.storage[.strawberry] ?? 0)
         bananaStepper.value = Double(fruitStore.storage[.banana] ?? 0)
         pineappleStepper.value = Double(fruitStore.storage[.pineapple] ?? 0)
@@ -63,13 +69,5 @@ class SupplyViewController: UIViewController {
         pineappleCountLabel.text = String(describing: fruitStore.storage[.pineapple] ?? 0)
         kiwiCountLabel.text = String(describing: fruitStore.storage[.kiwi] ?? 0)
         mangoCountLabel.text = String(describing: fruitStore.storage[.mango] ?? 0)
-    }
-    
-    private func updateStock(fruit: FruitStore.Fruit, sender: UIStepper) {
-        let stepperValue = Int(sender.value)
-        let currentFruitStock = fruitStore.storage[fruit] ?? 0
-        let adjustmentValue = stepperValue - currentFruitStock
-        try? fruitStore.updateStock(fruit: fruit, amount: adjustmentValue)
-        reloadFruitsCount()
     }
 }
