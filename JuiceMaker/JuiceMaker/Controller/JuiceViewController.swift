@@ -1,5 +1,5 @@
 //
-//  JuiceMaker - ViewController.swift
+//  JuiceMaker - JuiceViewController.swift
 //  Created by yagom. 
 //  Copyright © yagom academy. All rights reserved.
 // 
@@ -22,7 +22,7 @@ class JuiceViewController: UIViewController {
         reloadFruitsCount()
     }
     
-    @IBAction func updatingStockButtonTapped(_ sender: UIBarButtonItem) {
+    @IBAction private func updatingStockButtonTapped(_ sender: UIBarButtonItem) {
         showStockViewModal()
     }
     
@@ -65,14 +65,6 @@ class JuiceViewController: UIViewController {
         }
     }
     
-    private func reloadFruitsCount() {
-        strawberryCountLabel.text = String(describing: fruitStore.storage[.strawberry] ?? 0)
-        bananaCountLabel.text = String(describing: fruitStore.storage[.banana] ?? 0)
-        pineappleCountLabel.text = String(describing: fruitStore.storage[.pineapple] ?? 0)
-        kiwiCountLabel.text = String(describing: fruitStore.storage[.kiwi] ?? 0)
-        mangoCountLabel.text = String(describing: fruitStore.storage[.mango] ?? 0)
-    }
-    
     private func showStockViewModal() {
         let stockViewNavigationController = storyboard?.instantiateViewController(withIdentifier: "StockViewNavigationController") as! UINavigationController
         if let stockViewController = stockViewNavigationController.viewControllers.first as? StockViewController {
@@ -99,6 +91,14 @@ class JuiceViewController: UIViewController {
         alert.addAction(yesAlertAction)
         alert.addAction(noAlertAction)
         present(alert, animated: true)
+    }
+    
+    private func reloadFruitsCount() {
+        strawberryCountLabel.text = String(describing: fruitStore.storage[.strawberry] ?? 0)
+        bananaCountLabel.text = String(describing: fruitStore.storage[.banana] ?? 0)
+        pineappleCountLabel.text = String(describing: fruitStore.storage[.pineapple] ?? 0)
+        kiwiCountLabel.text = String(describing: fruitStore.storage[.kiwi] ?? 0)
+        mangoCountLabel.text = String(describing: fruitStore.storage[.mango] ?? 0)
     }
 }
 

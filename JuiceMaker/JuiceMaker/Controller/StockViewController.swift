@@ -1,5 +1,5 @@
 //
-//  SupplyViewController.swift
+//  StockViewController.swift
 //  JuiceMaker
 //
 //
@@ -14,11 +14,11 @@ class StockViewController: UIViewController {
     @IBOutlet private weak var kiwiCountLabel: UILabel!
     @IBOutlet private weak var mangoCountLabel: UILabel!
     
-    @IBOutlet weak var strawberryStepper: UIStepper!
-    @IBOutlet weak var bananaStepper: UIStepper!
-    @IBOutlet weak var pineappleStepper: UIStepper!
-    @IBOutlet weak var kiwiStepper: UIStepper!
-    @IBOutlet weak var mangoStepper: UIStepper!
+    @IBOutlet private weak var strawberryStepper: UIStepper!
+    @IBOutlet private weak var bananaStepper: UIStepper!
+    @IBOutlet private weak var pineappleStepper: UIStepper!
+    @IBOutlet private weak var kiwiStepper: UIStepper!
+    @IBOutlet private weak var mangoStepper: UIStepper!
     
     weak var delegate: StockViewControllerDelegate?
     private let fruitStore = FruitStore.shared
@@ -30,28 +30,28 @@ class StockViewController: UIViewController {
         reloadFruitsCount()
     }
     
-    @IBAction func closeButtonTapped(_ sender: UIBarButtonItem) {
+    @IBAction private func closeButtonTapped(_ sender: UIBarButtonItem) {
         delegate?.stockViewControllerDidExit()
         presentingViewController?.dismiss(animated: true)
     }
     
-    @IBAction func strawberryStepperTapped(_ sender: UIStepper) {
+    @IBAction private func strawberryStepperTapped(_ sender: UIStepper) {
         updateStock(fruit: .strawberry, sender: sender)
     }
     
-    @IBAction func bananaStepperTapped(_ sender: UIStepper) {
+    @IBAction private func bananaStepperTapped(_ sender: UIStepper) {
         updateStock(fruit: .banana, sender: sender)
     }
     
-    @IBAction func pineappleStepperTapped(_ sender: UIStepper) {
+    @IBAction private func pineappleStepperTapped(_ sender: UIStepper) {
         updateStock(fruit: .pineapple, sender: sender)
     }
     
-    @IBAction func kiwiStepperTapped(_ sender: UIStepper) {
+    @IBAction private func kiwiStepperTapped(_ sender: UIStepper) {
         updateStock(fruit: .kiwi, sender: sender)
     }
     
-    @IBAction func mangoStepperTapped(_ sender: UIStepper) {
+    @IBAction private func mangoStepperTapped(_ sender: UIStepper) {
         updateStock(fruit: .mango, sender: sender)
     }
     
