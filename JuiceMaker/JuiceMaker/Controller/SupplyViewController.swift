@@ -29,6 +29,10 @@ class SupplyViewController: UIViewController {
         reloadFruitsCount()
     }
     
+    @IBAction func closeButtonTapped(_ sender: UIBarButtonItem) {
+        
+    }
+    
     @IBAction func strawberryStepperTapped(_ sender: UIStepper) {
         updateStock(fruit: .strawberry, sender: sender)
     }
