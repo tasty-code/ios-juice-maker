@@ -11,6 +11,11 @@ struct Reception {
         self.juiceMaker = JuiceMaker(fruitStore: fruitStore)
     }
     
+    func applyCurrentStocks() {
+        fruitStore.onUpdateStock()
+    }
+        
+    
     func acceptJuiceOrder(of type: JuiceType) {
         switch type {
         case .strawberry:

@@ -12,14 +12,9 @@ final class FruitStore {
         case strawberry, mango, banana, kiwi, pineapple
     }
     
-    var fruitsStock : [Fruits: Int]
     private let limitedQuantity = 0
-    
-    init() {
-        let initialValue = 10
-        fruitsStock = Dictionary(uniqueKeysWithValues: Fruits.allCases.map {($0, initialValue)})
-        postFruitsStock()
-    }
+    private let initialValue = 10
+    lazy var fruitsStock = Dictionary(uniqueKeysWithValues: Fruits.allCases.map {($0, initialValue)})
 }
 
 
@@ -42,6 +37,10 @@ extension FruitStore {
             return
         }
         fruitsStock[type] = currentStock - quantities
+        postFruitsStock()
+    }
+    
+    func onUpdateStock() {
         postFruitsStock()
     }
 }
