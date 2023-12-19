@@ -10,22 +10,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        self.window = UIWindow(windowScene: windowScene)
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let fruitStore = FruitStore(strawberryStock: 10, 
-                                    bananaStock: 10,
-                                    pineappleStock: 10,
-                                    kiwiStock: 10,
-                                    mangoStock: 10)
-        let juiceMaker = JuiceMaker(fruitStore: fruitStore)
-        let juiceMakerViewController = storyboard.instantiateViewController(identifier: "JuiceMakerViewController", creator: { coder in
-                return JuiceMakerViewController(fruitStore: fruitStore, juiceMaker: juiceMaker, coder: coder)
-            })
-        let navigationController = UINavigationController(rootViewController: juiceMakerViewController)
-        self.window?.rootViewController = navigationController
-        self.window?.makeKeyAndVisible()
+        guard let _ = (scene as? UIWindowScene) else { return }
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

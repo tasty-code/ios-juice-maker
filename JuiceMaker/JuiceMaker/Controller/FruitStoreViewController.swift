@@ -15,7 +15,7 @@ final class FruitStoreViewController: UIViewController {
     @IBOutlet weak var kiwiStockLabel: UILabel!
     @IBOutlet weak var mangoStockLabel: UILabel!
     
-    var fruitStore: FruitStore
+    private let fruitStore: FruitStore
     
     override func viewDidLoad() {
         super.viewDidLoad()
