@@ -9,17 +9,17 @@ import UIKit
 
 final class StockManagementViewController: UIViewController {
     
-    @IBOutlet var numberOfStrawberryLabel: UILabel!
-    @IBOutlet var numberOfBananaLabel: UILabel!
-    @IBOutlet var numberOfPineAppleLabel: UILabel!
-    @IBOutlet var numberOfKiwiLabel: UILabel!
-    @IBOutlet var numberOfMangoLabel: UILabel!
+    @IBOutlet private var numberOfStrawberryLabel: UILabel!
+    @IBOutlet private var numberOfBananaLabel: UILabel!
+    @IBOutlet private var numberOfPineAppleLabel: UILabel!
+    @IBOutlet private var numberOfKiwiLabel: UILabel!
+    @IBOutlet private var numberOfMangoLabel: UILabel!
     
-    @IBOutlet var changeAmountOfStrawberryStepper: UIStepper!
-    @IBOutlet var changeAmountOfBananaStepper: UIStepper!
-    @IBOutlet var changeAmountOfPineAppleStepper: UIStepper!
-    @IBOutlet var changeAmountOfKiwiStepper: UIStepper!
-    @IBOutlet var changeAmountOfMangoStepper: UIStepper!
+    @IBOutlet private var changeAmountOfStrawberryStepper: UIStepper!
+    @IBOutlet private var changeAmountOfBananaStepper: UIStepper!
+    @IBOutlet private var changeAmountOfPineAppleStepper: UIStepper!
+    @IBOutlet private var changeAmountOfKiwiStepper: UIStepper!
+    @IBOutlet private var changeAmountOfMangoStepper: UIStepper!
     
     
     override func viewDidLoad() {
@@ -33,6 +33,7 @@ final class StockManagementViewController: UIViewController {
     
 }
 
+// MARK: - Label 초기 셋팅
 private extension StockManagementViewController {
     func setUp(number: Int, on label:UILabel) {
         label.text = String(number)

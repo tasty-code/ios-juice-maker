@@ -8,21 +8,21 @@ import UIKit
 
 final class JuiceMakingViewController: UIViewController {
     
-    @IBOutlet var numberOfStrawberryLabel: UILabel!
-    @IBOutlet var numberOfBananaLabel: UILabel!
-    @IBOutlet var numberOfPineAppleLabel: UILabel!
-    @IBOutlet var numberOfKiwiLabel: UILabel!
-    @IBOutlet var numberOfMangoLabel: UILabel!
+    @IBOutlet private var numberOfStrawberryLabel: UILabel!
+    @IBOutlet private var numberOfBananaLabel: UILabel!
+    @IBOutlet private var numberOfPineAppleLabel: UILabel!
+    @IBOutlet private var numberOfKiwiLabel: UILabel!
+    @IBOutlet private var numberOfMangoLabel: UILabel!
     
-    @IBOutlet var orderStrawberryButton: UIButton!
-    @IBOutlet var orderBananaButton: UIButton!
-    @IBOutlet var orderPineAppleButton: UIButton!
-    @IBOutlet var orderKiwiButton: UIButton!
-    @IBOutlet var orderMangoButton: UIButton!
-    @IBOutlet var orderStrawberryBananaButton: UIButton!
-    @IBOutlet var orderMangoKiwiButton: UIButton!
+    @IBOutlet private var orderStrawberryButton: UIButton!
+    @IBOutlet private var orderBananaButton: UIButton!
+    @IBOutlet private var orderPineAppleButton: UIButton!
+    @IBOutlet private var orderKiwiButton: UIButton!
+    @IBOutlet private var orderMangoButton: UIButton!
+    @IBOutlet private var orderStrawberryBananaButton: UIButton!
+    @IBOutlet private var orderMangoKiwiButton: UIButton!
     
-    @IBOutlet var stockChangeButton: UIBarButtonItem!
+    @IBOutlet private var stockChangeButton: UIBarButtonItem!
     
     private let juiceMaker = JuiceMaker(fruitStore: FruitStore())
     
@@ -37,6 +37,7 @@ final class JuiceMakingViewController: UIViewController {
         turnOffObserver()
     }
     
+    // MARK: - 화면이동
     private func dataToStockManagementViewController() {
         if let stockManagementVC = self.storyboard?.instantiateViewController(withIdentifier: "StockManagementViewController") as? StockManagementViewController {
             stockManagementVC.receivedData = juiceMaker.fruitStore.inventory
@@ -53,6 +54,7 @@ final class JuiceMakingViewController: UIViewController {
     
 }
 
+// MARK: - 레이블 셋팅
 private extension JuiceMakingViewController {
     func setUp(number: Int, on label:UILabel) {
         label.text = String(number)
@@ -76,6 +78,7 @@ private extension JuiceMakingViewController {
     }
 }
 
+// MARK: - 버튼 및 알림창
 private extension JuiceMakingViewController {
     func setUpTargetActionOnButtons() {
         orderStrawberryButton.addTarget(self, action: #selector(orderJuice(_:)), for: .touchUpInside)
@@ -115,7 +118,6 @@ private extension JuiceMakingViewController {
         }
         
         self.present(generateAlert(by: result), animated: true, completion: nil)
-        
     }
     
     func generateAlert(by result: JuiceMaker.JuiceMakingResult) -> UIAlertController {
@@ -135,14 +137,13 @@ private extension JuiceMakingViewController {
     @objc func stockChangeButtonTapped() {
         dataToStockManagementViewController()
     }
-}
-
-private extension JuiceMakingViewController {
+    
     func transitionToStockManagement(_ sender: UIAlertAction) {
         dataToStockManagementViewController()
     }
 }
 
+// MARK: - 수량 변화 감지 옵저버
 private extension JuiceMakingViewController {
     func registerObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeFruitsAmount(_:)), name: Notification.Name("fruitsAmountDidChange"), object: nil)
