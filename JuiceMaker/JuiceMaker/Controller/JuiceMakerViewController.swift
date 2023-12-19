@@ -25,24 +25,23 @@ final class JuiceMakerViewController: UIViewController {
     @IBOutlet weak var quantityMangoJuiceLabel: JuiceMakerLabel!
     
     @IBOutlet weak var toolbarRightButton: UIButton!
-    
     @IBOutlet weak var toolbarTitleLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configUIToolbarTitleLabel()
-        setupBackgroundGradientButton()
-        configUIToolbarRightButton()
+        configureToolbarTitleLabel()
+        configureBackgroundGradientButton()
+        configureToolbarRightButton()
     }
     
-    private func configUIToolbarTitleLabel() {
+    private func configureToolbarTitleLabel() {
         let font = UIFont(name: "DungGeunMo", size: 20)!
         toolbarTitleLabel.text = "맛있는 쥬스를 만들어 드려요!"
         toolbarTitleLabel.textColor = .black
         toolbarTitleLabel.font = font
     }
     
-    private func setupBackgroundGradientButton() {
+    private func configureBackgroundGradientButton() {
         self.orderBananaJuiceButton.configureUIGradient(colors: [.bananaColor])
         self.orderStrawberryJuiceButton.configureUIGradient(colors: [.strawberryColor])
         self.orderPineappleJuiceButton.configureUIGradient(colors: [.pineappleColor])
@@ -52,14 +51,14 @@ final class JuiceMakerViewController: UIViewController {
         self.orderStrawberryBananaJuiceButton.configureUIGradient(colors: [.strawberryColor, .bananaColor])
     }
     
-    private func configUIToolbarRightButton() {
+    private func configureToolbarRightButton() {
         let font = UIFont(name: "DungGeunMo", size: 20)!
         toolbarRightButton.frame = CGRect(x: 0, y: 0, width: 70, height: 30)
         toolbarRightButton.setTitle("재고수정", for: .normal)
         toolbarRightButton.setTitleColor(.blue, for: .normal)
         toolbarRightButton.setTitleFont(font: font)
         toolbarRightButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        toolbarRightButton.addTarget(self, action: #selector(presentDetailViewController), for: .touchUpInside)
+        toolbarRightButton.addTarget(self, action: #selector(showDetailView), for: .touchUpInside)
     }
   
     @IBAction private func juiceButtonTapped(_ sender: UIButton) {
@@ -69,18 +68,18 @@ final class JuiceMakerViewController: UIViewController {
     }
 
     private func makeJuiceProcess(juice: Juice) {
-        JuiceMaker.shared.makeJuice(juice: juice) ? JuiceProcess(input: juice) : failedAlert(title: Message.failedMakeJuiceTitle.description, message: Message.failedMakeJuice.description, okAction: { _ in
-            self.presentDetailViewController()
+        JuiceMaker.shared.isJuiceAvailable(juice: juice) ? JuiceProcess(input: juice) : failedAlert(title: Message.failedMakeJuiceTitle.description, message: Message.failedMakeJuice.description, okAction: { _ in
+            self.showDetailView()
         })
     }
 
     private func JuiceProcess(input: Juice) {
-            JuiceMaker.shared.addJuiceQuantity(juice: input)
-            updateQuantityLabel(juice: input)
+        JuiceMaker.shared.addJuiceQuantity(juice: input)
+        setupQuantityLabel(juice: input)
         completedAlert(title: Message.successMakeJuiceTitle.description, message: String(Message.successMakeJuice(juice: input.rawValue).description))
     }
     
-    private func updateQuantityLabel(juice: Juice) {
+    private func setupQuantityLabel(juice: Juice) {
         let labels: [Juice: UILabel] = {
             return [
                 .strawberryJuice: quantityStrawberryJuiceLabel,
@@ -99,7 +98,7 @@ final class JuiceMakerViewController: UIViewController {
     }
     
     @objc
-    private func presentDetailViewController() {
+    private func showDetailView() {
         guard let controller = self.storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController else {
             return
         }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_0" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment version="5120" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -476,16 +476,16 @@
                     </view>
                     <navigationItem key="navigationItem" id="g4W-fY-l7r"/>
                     <connections>
+                        <outlet property="bananaStepper" destination="O5s-2N-3iP" id="BVs-n6-MEy"/>
+                        <outlet property="kiwiStepper" destination="klA-59-Nu4" id="kVt-Ax-XZg"/>
+                        <outlet property="mangoStepper" destination="xbn-6P-grO" id="1rZ-Xr-tKP"/>
+                        <outlet property="pineappleStepper" destination="yoJ-bz-mMM" id="DPl-eV-TrH"/>
                         <outlet property="quantityBananaLabel" destination="gKu-86-RhI" id="8qe-7X-qPn"/>
                         <outlet property="quantityKiwiLabel" destination="ZDv-1m-HBY" id="I0Q-AC-9E5"/>
                         <outlet property="quantityMangoLabel" destination="YJI-ER-LJR" id="9KY-pz-ZKi"/>
                         <outlet property="quantityPineappleLabel" destination="wb8-8G-rlR" id="72c-wx-uoC"/>
                         <outlet property="quantityStrawberryLabel" destination="0yV-kn-zaT" id="h8z-WX-pPO"/>
-                        <outlet property="remoteBananaButton" destination="O5s-2N-3iP" id="xXR-Na-LEk"/>
-                        <outlet property="remoteKiwiButton" destination="klA-59-Nu4" id="EAC-at-7uL"/>
-                        <outlet property="remotePineappleButton" destination="yoJ-bz-mMM" id="ViS-ej-936"/>
-                        <outlet property="remoteStrawberryButton" destination="ZQk-f4-zrz" id="ARi-5O-fEw"/>
-                        <outlet property="remotemangoButton" destination="xbn-6P-grO" id="dDZ-53-2Ek"/>
+                        <outlet property="strawberryStepper" destination="ZQk-f4-zrz" id="igS-jK-zET"/>
                         <outlet property="toolbarRightButton" destination="Eum-JM-oVM" id="gqF-5f-Alz"/>
                         <outlet property="toolbarTitleLabel" destination="TU6-2B-Uqo" id="XRL-2M-eKn"/>
                     </connections>
