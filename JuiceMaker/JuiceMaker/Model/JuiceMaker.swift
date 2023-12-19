@@ -12,7 +12,7 @@ struct JuiceMaker {
     private let fruitStore: FruitStore
     
     // MARK: Initializer
-    init(fruitStore: FruitStore = FruitStore.shared) {
+    init(fruitStore: FruitStore) {
         self.fruitStore = fruitStore
     }
     
@@ -21,20 +21,18 @@ struct JuiceMaker {
     /// 쥬스 제조 메서드
     func makeJuice(juiceType: Juice) throws {
         let dic = juiceType.requiredFruitQuantity
-        let originalFruitContainer = fruitStore.fruitContainer
+        let originalFruitContainer = fruitStore.fetchFruitContainer()
         
         for (fruit, quantity) in dic {
-            guard var storedFruit = fruitStore.fruitContainer[fruit] else {
-                return
-            }
+            var storedFruit = fruitStore.fetchFruitQuantity(of: fruit)
             
             if storedFruit < quantity {
-                fruitStore.fruitContainer = originalFruitContainer
+                fruitStore.updateFruitContainer(originalFruitContainer)
                 throw JuiceMakerError.invalidRequest
             }
             
             storedFruit -= quantity
-            fruitStore.fruitContainer[fruit] = storedFruit
+            fruitStore.updateFruitQuantity(of: fruit, by: storedFruit)
         }
     }
 }
