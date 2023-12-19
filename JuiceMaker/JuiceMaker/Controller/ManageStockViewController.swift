@@ -9,7 +9,7 @@ import UIKit
 
 final class ManageStockViewController: UIViewController {
     var fruitStock: [Fruit: UInt] = [:]
-    var delegate: Delegate?
+    weak var delegate: Delegate?
     
     @IBOutlet weak private var strawberryStockLabel: UILabel!
     @IBOutlet weak private var bananaStockLabel: UILabel!

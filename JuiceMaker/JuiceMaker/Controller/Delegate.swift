@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Delegate {
+protocol Delegate: AnyObject {
     func fruitStock(fruitStock: [Fruit: UInt])
     func viewWillAppear(_ animated: Bool)
 }
