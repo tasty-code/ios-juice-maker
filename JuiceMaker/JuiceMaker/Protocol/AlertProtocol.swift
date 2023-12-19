@@ -8,6 +8,7 @@
 import UIKit
 
 protocol AlertPresentable {
+    var alertFruitStore:FruitStore? { get }
     func showSuccessAlert(message: String)
     func showFailAlert()
 }
@@ -23,6 +24,7 @@ extension AlertPresentable where Self: UIViewController {
     func showQuantityVC() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let quantityVC = storyboard.instantiateViewController(withIdentifier: "quantityVC") as? QuantityViewController {
+            quantityVC.fruitStore = self.alertFruitStore
             navigationController?.pushViewController(quantityVC, animated: true)
         }
     }

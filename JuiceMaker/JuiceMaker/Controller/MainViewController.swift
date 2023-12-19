@@ -63,7 +63,9 @@ class MainViewController: UIViewController, QuantityViewControllerDelegate {
 }
 // MARK: - AlertPresentable
 extension MainViewController: AlertPresentable {
-    
+    var alertFruitStore: FruitStore? {
+        return self.fruitStore
+    }
     @IBAction func makeJuiceButtonTapped(_ sender: UIButton) {
         let juiceName : JuiceRecipe
         switch sender.tag {
