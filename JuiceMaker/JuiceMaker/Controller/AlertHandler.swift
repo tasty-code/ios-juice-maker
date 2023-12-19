@@ -31,13 +31,15 @@ final class AlertHandler {
     
     private func generateAlert(of type: AlertType) -> UIAlertController {
         let (title, message) = fetchAlertMessage(of: type)
-        let alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        var alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
         return alertView
     }
     
-    func presentAlert(of type: AlertType) {
+    func presentAlert(of type: AlertType, completion: @escaping (UIAlertAction) -> Void) {
         let topViewController = fetchTopVC()
         let alertView = generateAlert(of: type)
+        alertView.addAction(UIAlertAction(title: "아니오", style: .default))
+        alertView.addAction(UIAlertAction(title: "예", style: .default, handler: completion))
         topViewController?.present(alertView, animated: true)
     }
 }
