@@ -79,7 +79,9 @@ class OrderJuiceViewController: UIViewController {
         }
     }
     private func showFruitInventoryView() {
-        guard let showFruitInventory = self.storyboard?.instantiateViewController(withIdentifier: "FruitInventoryViewController") as? FruitInventoryViewController else { return }
+        guard let showFruitInventory = self.storyboard?.instantiateViewController(identifier: "FruitInventoryViewController", creator: { coder in
+            return FruitInventoryViewController(juiceMaker: self.juiceMaker, coder: coder)
+        }) else { return }
         showFruitInventory.modalPresentationStyle = .fullScreen
         self.present(showFruitInventory, animated: true, completion: nil)
     }
@@ -87,4 +89,3 @@ class OrderJuiceViewController: UIViewController {
         showFruitInventoryView()
     }
 }
-
