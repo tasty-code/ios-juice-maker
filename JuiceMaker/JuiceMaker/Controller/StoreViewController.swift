@@ -125,9 +125,6 @@ extension StoreViewController {
                 message: "",
                 buttonActions: [acceptAlertAction, cancelAlertAction]
             )
-            
         }
     }
-    
-    
 }
