@@ -23,49 +23,36 @@ class JuiceViewController: UIViewController {
         reloadFruitsCount()
     }
     
-    @IBAction private func adjustingStockButtonTapped(_ sender: UIButton) {
+    @IBAction private func updatingStockButtonTapped(_ sender: UIButton) {
         showNavigationView()
     }
     
-    @IBAction private func strawberryJuiceButtonTapped(_ sender: UIButton) {
+    @IBAction private func strawberryJuiceOrderButtonTapped(_ sender: UIButton) {
         orderJuice(menu: .딸기쥬스)
     }
     
-    @IBAction private func bananaJuiceButtonTapped(_ sender: UIButton) {
+    @IBAction private func bananaJuiceOrderButtonTapped(_ sender: UIButton) {
         orderJuice(menu: .바나나쥬스)
     }
     
-    @IBAction private func pineappleJuiceButtonTapped(_ sender: UIButton) {
+    @IBAction private func pineappleJuiceOrderButtonTapped(_ sender: UIButton) {
         orderJuice(menu: .파인애플쥬스)
     }
     
-    @IBAction private func kiwiJuiceButtonTapped(_ sender: UIButton) {
+    @IBAction private func kiwiJuiceOrderButtonTapped(_ sender: UIButton) {
         orderJuice(menu: .키위쥬스)
     }
     
-    @IBAction private func mangoJuiceButtonTapped(_ sender: UIButton) {
+    @IBAction private func mangoJuiceOrderButtonTapped(_ sender: UIButton) {
         orderJuice(menu: .망고쥬스)
     }
     
-    @IBAction private func strawberryBananaJuiceButtonTapped(_ sender: UIButton) {
+    @IBAction private func strawberryBananaJuiceOrderButtonTapped(_ sender: UIButton) {
         orderJuice(menu: .딸바쥬스)
     }
     
-    @IBAction private func mangoKiwiJuiceButtonTapped(_ sender: UIButton) {
+    @IBAction private func mangoKiwiJuiceOrderButtonTapped(_ sender: UIButton) {
         orderJuice(menu: .망고키위쥬스)
-    }
-    
-    private func reloadFruitsCount() {
-        strawberryCountLabel.text = fruitStore.storage[.strawberry]?.description
-        bananaCountLabel.text = fruitStore.storage[.banana]?.description
-        pineappleCountLabel.text = fruitStore.storage[.pineapple]?.description
-        kiwiCountLabel.text = fruitStore.storage[.kiwi]?.description
-        mangoCountLabel.text = fruitStore.storage[.mango]?.description
-    }
-    
-    private func showNavigationView() {
-        let supplyViewController = storyboard?.instantiateViewController(withIdentifier: "SupplyViewController") as! SupplyViewController
-        navigationController?.pushViewController(supplyViewController, animated: true)
     }
     
     private func orderJuice(menu: JuiceMaker.Menu) {
@@ -77,6 +64,19 @@ class JuiceViewController: UIViewController {
             print(error)
             alertInsufficientStock()
         }
+    }
+    
+    private func reloadFruitsCount() {
+        strawberryCountLabel.text = String(describing: fruitStore.storage[.strawberry])
+        bananaCountLabel.text = String(describing: fruitStore.storage[.banana])
+        pineappleCountLabel.text = String(describing: fruitStore.storage[.pineapple])
+        kiwiCountLabel.text = String(describing: fruitStore.storage[.kiwi])
+        mangoCountLabel.text = String(describing: fruitStore.storage[.mango])
+    }
+    
+    private func showNavigationView() {
+        let supplyViewController = storyboard?.instantiateViewController(withIdentifier: "SupplyViewController") as! SupplyViewController
+        navigationController?.pushViewController(supplyViewController, animated: true)
     }
     
     private func alertJuiceServed(menu: JuiceMaker.Menu) {

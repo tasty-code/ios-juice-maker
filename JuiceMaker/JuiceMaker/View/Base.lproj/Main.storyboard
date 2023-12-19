@@ -400,11 +400,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="g4W-fY-l7r"/>
                     <connections>
-                        <outlet property="bananaCount" destination="gKu-86-RhI" id="CQb-HT-bse"/>
-                        <outlet property="kiwiCount" destination="ZDv-1m-HBY" id="Iz5-5E-yuy"/>
-                        <outlet property="mangoCount" destination="YJI-ER-LJR" id="6lm-cS-qcp"/>
-                        <outlet property="pineappleCount" destination="MpT-VW-hCb" id="yTp-Fd-ctY"/>
-                        <outlet property="strawberryCount" destination="0yV-kn-zaT" id="9aU-VF-N6U"/>
+                        <outlet property="bananaCountLabel" destination="gKu-86-RhI" id="CQb-HT-bse"/>
+                        <outlet property="kiwiCountLabel" destination="ZDv-1m-HBY" id="Iz5-5E-yuy"/>
+                        <outlet property="mangoCountLabel" destination="YJI-ER-LJR" id="6lm-cS-qcp"/>
+                        <outlet property="pineappleCountLabel" destination="MpT-VW-hCb" id="yTp-Fd-ctY"/>
+                        <outlet property="strawberryCountLabel" destination="0yV-kn-zaT" id="9aU-VF-N6U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>

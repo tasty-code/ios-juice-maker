@@ -8,11 +8,11 @@ import UIKit
 
 class SupplyViewController: UIViewController {
     
-    @IBOutlet private weak var strawberryCount: UILabel!
-    @IBOutlet private weak var bananaCount: UILabel!
-    @IBOutlet private weak var pineappleCount: UILabel!
-    @IBOutlet private weak var kiwiCount: UILabel!
-    @IBOutlet private weak var mangoCount: UILabel!
+    @IBOutlet private weak var strawberryCountLabel: UILabel!
+    @IBOutlet private weak var bananaCountLabel: UILabel!
+    @IBOutlet private weak var pineappleCountLabel: UILabel!
+    @IBOutlet private weak var kiwiCountLabel: UILabel!
+    @IBOutlet private weak var mangoCountLabel: UILabel!
     
     private let fruitStore = FruitStore.shared
 
@@ -23,11 +23,11 @@ class SupplyViewController: UIViewController {
     }
     
     private func reloadFruitsCount() {
-        strawberryCount.text = fruitStore.storage[.strawberry]?.description
-        bananaCount.text = fruitStore.storage[.banana]?.description
-        pineappleCount.text = fruitStore.storage[.pineapple]?.description
-        kiwiCount.text = fruitStore.storage[.kiwi]?.description
-        mangoCount.text = fruitStore.storage[.mango]?.description
+        strawberryCountLabel.text = String(describing: fruitStore.storage[.strawberry])
+        bananaCountLabel.text = String(describing: fruitStore.storage[.banana])
+        pineappleCountLabel.text = String(describing: fruitStore.storage[.pineapple])
+        kiwiCountLabel.text = String(describing: fruitStore.storage[.kiwi])
+        mangoCountLabel.text = String(describing: fruitStore.storage[.mango])
     }
 
 
