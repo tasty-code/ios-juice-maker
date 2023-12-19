@@ -21,7 +21,7 @@ final class StoreViewController: UIViewController {
         Fruit.mango.rawValue : mangoLabel
     ]
     
-    var fruitStore: FruitStore = FruitStore()
+    let fruitStore = FruitStore.shared
     lazy var juiceMaker: JuiceMaker = JuiceMaker(store: fruitStore)
     
     let dismissAlertAction = UIAlertAction(title: "확인", style: .default)
