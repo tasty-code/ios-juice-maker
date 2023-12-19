@@ -6,13 +6,9 @@
 
 import Foundation
 
-import Foundation
-
-enum JuiceMakerError: Error {
+enum JuiceMakerError: LocalizedError {
     case outOfStock(fruit: String)
-}
-
-extension JuiceMakerError: LocalizedError {
+    
     var errorDescription: String? {
         switch self {
         case .outOfStock(let fruit):
