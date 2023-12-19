@@ -17,7 +17,7 @@ class OrderJuiceViewController: UIViewController {
     @IBOutlet var orderJuiceButton: [UIButton]!
     
     let juiceMaker = JuiceMaker()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setInitialFruitLabel()
@@ -31,22 +31,21 @@ class OrderJuiceViewController: UIViewController {
         mangoLabel.text =  "\(juiceMaker.fruitStore.inventory(fruit: .mango))"
     }
     
-    
     @IBAction func orderJuiceButtonTapped(_ sender: UIButton) {
         switch sender.tag {
-        case 0:
+        case TagNameSpace.strawberryBananaJuiceButton:
             order(juice: .strawberryBananaJuice)
-        case 1:
+        case TagNameSpace.mangoKiwiJuiceButton:
             order(juice: .mangoKiwiJuice)
-        case 2:
+        case TagNameSpace.strawberryJuiceButton:
             order(juice: .strawberryJuice)
-        case 3:
+        case TagNameSpace.bananaJuiceButton:
             order(juice: .bananaJuice)
-        case 4:
+        case TagNameSpace.pineappleJuiceButton:
             order(juice: .pineappleJuice)
-        case 5:
+        case TagNameSpace.kiwiJuiceButton:
             order(juice: .kiwiJuice)
-        case 6:
+        case TagNameSpace.mangoJuiceButton:
             order(juice: .mangoJuice)
         default:
             print("메뉴 준비중입니다.")
@@ -72,12 +71,20 @@ class OrderJuiceViewController: UIViewController {
         case .outOfStock(_):
             print("\(error.message)")
             showAlertWithConfirmation(title: "재고부족", message: "\(error.message)") { _ in
-                self.performSegue(withIdentifier: "InventoryView", sender: self)
+                self.showFruitInventoryView()
             }
         case .negativeAmount(_):
             print("\(error.message)")
             showAlert(title: "에러", message: "\(error.message)")
         }
+    }
+    private func showFruitInventoryView() {
+        guard let showFruitInventory = self.storyboard?.instantiateViewController(withIdentifier: "FruitInventoryViewController") as? FruitInventoryViewController else { return }
+        showFruitInventory.modalPresentationStyle = .fullScreen
+        self.present(showFruitInventory, animated: true, completion: nil)
+    }
+    @IBAction func modifyInventoryTapped(_ sender: UIBarButtonItem) {
+        showFruitInventoryView()
     }
 }
 
