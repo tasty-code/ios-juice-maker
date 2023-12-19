@@ -299,7 +299,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZQk-f4-zrz">
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZQk-f4-zrz" customClass="FruitStockStepper" customModule="JuiceMaker" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
                                                 <connections>
                                                     <action selector="stepperTapped:" destination="Yu1-lM-nqp" eventType="valueChanged" id="pJM-xk-JhO"/>
@@ -330,7 +330,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="O5s-2N-3iP">
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="O5s-2N-3iP" customClass="FruitStockStepper" customModule="JuiceMaker" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
                                                 <connections>
                                                     <action selector="stepperTapped:" destination="Yu1-lM-nqp" eventType="valueChanged" id="fMT-92-DQ3"/>
@@ -361,7 +361,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Rcr-xr-eqz">
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Rcr-xr-eqz" customClass="FruitStockStepper" customModule="JuiceMaker" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
                                                 <connections>
                                                     <action selector="stepperTapped:" destination="Yu1-lM-nqp" eventType="valueChanged" id="fHd-s3-AvP"/>
@@ -392,7 +392,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="klA-59-Nu4">
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="klA-59-Nu4" customClass="FruitStockStepper" customModule="JuiceMaker" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
                                                 <connections>
                                                     <action selector="stepperTapped:" destination="Yu1-lM-nqp" eventType="valueChanged" id="SS0-9g-uMN"/>
@@ -423,7 +423,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="xbn-6P-grO">
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="xbn-6P-grO" customClass="FruitStockStepper" customModule="JuiceMaker" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
                                                 <connections>
                                                     <action selector="stepperTapped:" destination="Yu1-lM-nqp" eventType="valueChanged" id="INR-4R-74g"/>

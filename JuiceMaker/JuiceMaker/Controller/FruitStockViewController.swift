@@ -15,13 +15,13 @@ class FruitStockViewController: FruitStoreViewController {
     @IBOutlet weak var kiwiLabel: UILabel!
     @IBOutlet weak var mangoLabel: UILabel!
     
-    @IBOutlet weak var strawberryStepper: UIStepper!
-    @IBOutlet weak var bananaStepper: UIStepper!
-    @IBOutlet weak var pineappleStepper: UIStepper!
-    @IBOutlet weak var kiwiStepper: UIStepper!
-    @IBOutlet weak var mangoStepper: UIStepper!
+    @IBOutlet weak var strawberryStepper: FruitStockStepper!
+    @IBOutlet weak var bananaStepper: FruitStockStepper!
+    @IBOutlet weak var pineappleStepper: FruitStockStepper!
+    @IBOutlet weak var kiwiStepper: FruitStockStepper!
+    @IBOutlet weak var mangoStepper: FruitStockStepper!
     
-    private var stepperDict: Dictionary<UIStepper, Fruit> = [:]
+    private var stepperDict: Dictionary<FruitStockStepper, Fruit> = [:]
     var onDismissal: (() -> Void)?
     
     override func viewDidLoad() {
@@ -38,16 +38,12 @@ extension FruitStockViewController {
         dismissFruitStockViewController()
     }
     
-    @IBAction func stepperTapped(_ sender: UIStepper) {
+    @IBAction func stepperTapped(_ sender: FruitStockStepper) {
         guard let fruit = stepperDict[sender] else {
             return
         }
         
-        let afterCount: Int = Int(sender.value)
-        
-        afterCount > fruitStore.fruitCount(fruit: fruit)
-            ? fruitStore.warehouse(fruit: fruit, count: 1)
-            : fruitStore.release(fruit: fruit, count: 1)
+        sender.tappedSign == .plus ? fruitStore.warehouse(fruit: fruit, count: 1) : fruitStore.release(fruit: fruit, count: 1)
         
         configureFruitStoreUI()
     }
@@ -66,10 +62,11 @@ extension FruitStockViewController {
         stepperDict.forEach(setStepper)
     }
     
-    func setStepper(stepper: UIStepper, fruit: Fruit) {
+    func setStepper(stepper: FruitStockStepper, fruit: Fruit) {
         stepper.minimumValue = fruit.minimum
         stepper.maximumValue = fruit.maximum
         stepper.value = Double(fruitStore.fruitCount(fruit: fruit))
+        stepper.oldValue = Double(fruitStore.fruitCount(fruit: fruit))
     }
     
 }
