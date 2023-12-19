@@ -30,23 +30,23 @@ class SupplyViewController: UIViewController {
     }
     
     @IBAction func strawberryStepperTapped(_ sender: UIStepper) {
-        
+        updateStock(fruit: .strawberry, sender: sender)
     }
     
     @IBAction func bananaStepperTapped(_ sender: UIStepper) {
-        
+        updateStock(fruit: .banana, sender: sender)
     }
     
     @IBAction func pineappleStepperTapped(_ sender: UIStepper) {
-        
+        updateStock(fruit: .pineapple, sender: sender)
     }
     
     @IBAction func kiwiStepperTapped(_ sender: UIStepper) {
-        
+        updateStock(fruit: .kiwi, sender: sender)
     }
     
     @IBAction func mangoStepperTapped(_ sender: UIStepper) {
-        
+        updateStock(fruit: .mango, sender: sender)
     }
     
     private func setInitStepperValue() {
@@ -64,6 +64,12 @@ class SupplyViewController: UIViewController {
         kiwiCountLabel.text = String(describing: fruitStore.storage[.kiwi] ?? 0)
         mangoCountLabel.text = String(describing: fruitStore.storage[.mango] ?? 0)
     }
-
-
+    
+    private func updateStock(fruit: FruitStore.Fruit, sender: UIStepper) {
+        let stepperValue = Int(sender.value)
+        let currentFruitStock = fruitStore.storage[fruit] ?? 0
+        let adjustmentValue = stepperValue - currentFruitStock
+        try? fruitStore.updateStock(fruit: fruit, amount: adjustmentValue)
+        reloadFruitsCount()
+    }
 }
