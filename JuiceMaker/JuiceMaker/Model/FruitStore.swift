@@ -7,18 +7,11 @@
 import Foundation
 
 class FruitStore {
-    static var shared: FruitStore = FruitStore()
     private var store: Dictionary<Fruit, Int>
     
-    private init() {
+    init() {
         self.store = Dictionary()
         Fruit.allCases.forEach { store[$0] = 10 }
-    }
-    
-    public func warehouse(fruit: Fruit, count: Int) {
-        if let nowCount = store[fruit] {
-            store[fruit] = nowCount + count
-        }
     }
     
     public func release(fruit: Fruit, count: Int) {
@@ -46,6 +39,10 @@ class FruitStore {
             return nowCount
         }
         return 0
+    }
+    
+    func updateFruitStore(fruitStore: Dictionary<Fruit, Int>) {
+        store = fruitStore
     }
 }
 
