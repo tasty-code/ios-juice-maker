@@ -41,8 +41,9 @@ final class JuiceMakingViewController: UIViewController {
     private func dataToStockManagementViewController() {
         if let stockManagementVC = self.storyboard?.instantiateViewController(withIdentifier: "StockManagementViewController") as? StockManagementViewController {
             stockManagementVC.receivedFruitInventoryData = juiceMaker.fruitStore.inventory
-            let stockManagementNavigationController = UINavigationController(rootViewController: stockManagementVC)
+            stockManagementVC.delegate = self
             
+            let stockManagementNavigationController = UINavigationController(rootViewController: stockManagementVC)
             stockManagementNavigationController.modalPresentationStyle = .pageSheet
             stockManagementNavigationController.sheetPresentationController?.detents = [.large(), .medium()]
             stockManagementNavigationController.sheetPresentationController?.preferredCornerRadius = 30
@@ -158,5 +159,12 @@ private extension JuiceMakingViewController {
     
     func turnOffObserver() {
         NotificationCenter.default.removeObserver(self, name: Notification.Name("fruitsAmountDidChange"), object: nil)
+    }
+}
+
+extension JuiceMakingViewController: StockManagementViewControllerDelegate {
+    func updateStockData(updatedData: [Fruit: Int]) {
+        juiceMaker.fruitStore.updateInventory(updatedData)
+        showNumberOnLabel(fruits: juiceMaker.fruitStore.inventory)
     }
 }

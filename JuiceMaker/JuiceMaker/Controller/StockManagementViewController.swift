@@ -29,6 +29,7 @@ final class StockManagementViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
+        changeStock(fruits: receivedFruitInventoryData)
         delegate?.updateStockData(updatedData: receivedFruitInventoryData)
         navigationController?.dismiss(animated: true, completion: nil)
     }
@@ -126,6 +127,40 @@ extension StockManagementViewController {
                 setup(number: fruit.value, on: changeAmountOfKiwiStepper)
             case .mango:
                 setup(number: fruit.value, on: changeAmountOfMangoStepper)
+            }
+        }
+    }
+}
+
+// MARK: - 변경된 값 저장
+extension StockManagementViewController {
+    func changeAmount(_ fruit: Fruit, _ number: Int) {
+        receivedFruitInventoryData[fruit] = number
+    }
+    
+    func changeStock(fruits: [Fruit: Int]) {
+        for fruit in fruits {
+            switch fruit.key {
+            case .strawberry:
+                if let num = numberOfStrawberryLabel.text, let num = Int(num) {
+                    changeAmount(.strawberry, num)
+                }
+            case .banana:
+                if let num = numberOfBananaLabel.text, let num = Int(num) {
+                    changeAmount(.banana, num)
+                }
+            case .pineapple:
+                if let num = numberOfPineAppleLabel.text, let num = Int(num) {
+                    changeAmount(.pineapple, num)
+                }
+            case .kiwi:
+                if let num = numberOfKiwiLabel.text, let num = Int(num) {
+                    changeAmount(.kiwi, num)
+                }
+            case .mango:
+                if let num = numberOfMangoLabel.text, let num = Int(num) {
+                    changeAmount(.mango, num)
+                }
             }
         }
     }
