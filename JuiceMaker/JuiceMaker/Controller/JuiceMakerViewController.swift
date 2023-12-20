@@ -22,7 +22,12 @@ final class JuiceMakerViewController: UIViewController, FruitStockDelegate {
     }
     
     func didUpdateFruitStock(fruitStock: [Fruits : Int]) {
-        
+        fruitStock.forEach { (fruit,value) in
+            let currentFruit = juiceMaker.fruitStore.quantity(of: fruit)
+            let difference = value - currentFruit
+            juiceMaker.fruitStore.changeStock(fruitName: fruit, amount: difference)
+        }
+        configureView()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -97,7 +102,7 @@ final class JuiceMakerViewController: UIViewController, FruitStockDelegate {
 }
 
 extension JuiceMakerViewController {
-
+    
     private func configureView() {
         strawberryLabel.text = String(juiceMaker.fruitStore.quantity(of: .strawberry))
         bananaLabel.text = String(juiceMaker.fruitStore.quantity(of: .banana))

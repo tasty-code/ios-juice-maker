@@ -29,7 +29,7 @@ class FruitStockViewController: UIViewController {
     
     weak var delegate: FruitStockDelegate?
     var fruitStock: [Fruits: Int] = [:]
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateFruitLabels()
@@ -65,8 +65,8 @@ class FruitStockViewController: UIViewController {
     }
     
     private func handleFruitStepper(_ fruit: Fruits, value: Int) {
-            fruitStock[fruit] = value
-        }
+        fruitStock[fruit] = value
+    }
     
     private func updateFruitLabels() {
         if let strawberryStock = fruitStock[.strawberry],
@@ -83,6 +83,7 @@ class FruitStockViewController: UIViewController {
     }
     
     @IBAction func closedStockViewButton(_ sender: UIBarButtonItem) {
+        delegate?.didUpdateFruitStock(fruitStock: fruitStock)
         self.dismiss(animated: true, completion: nil)
     }
 }
