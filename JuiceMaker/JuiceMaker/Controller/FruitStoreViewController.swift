@@ -12,7 +12,7 @@ class FruitStoreViewController: UIViewController{
     var labelDict: Dictionary<UILabel, Fruit>
     
     required init?(coder aDecoder: NSCoder) {
-        self.fruitStore = FruitStore.shared
+        self.fruitStore = FruitStore()
         self.labelDict = [:]
         super.init(coder: aDecoder)
     }

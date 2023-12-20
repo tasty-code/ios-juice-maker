@@ -12,11 +12,6 @@ class FruitStockStepper: UIStepper {
     var tappedSign: Sign = .none
     var oldValue: Double = 0.0
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setAddTarget()
-    }
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setAddTarget()

@@ -9,7 +9,7 @@ import Foundation
 struct JuiceMaker {
     var fruitStore: FruitStore
     
-    init(fruitStore: FruitStore = FruitStore.shared) {
+    init(fruitStore: FruitStore) {
         self.fruitStore = fruitStore
     }
     

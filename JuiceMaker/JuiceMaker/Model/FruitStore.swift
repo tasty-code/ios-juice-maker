@@ -7,10 +7,9 @@
 import Foundation
 
 class FruitStore {
-    static var shared: FruitStore = FruitStore()
     private var store: Dictionary<Fruit, Int>
     
-    private init() {
+    init() {
         self.store = Dictionary()
         Fruit.allCases.forEach { store[$0] = 10 }
     }
