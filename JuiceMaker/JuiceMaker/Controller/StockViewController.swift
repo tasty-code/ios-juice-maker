@@ -26,7 +26,7 @@ class StockViewController: UIViewController {
     override func viewIsAppearing(_ animated: Bool) {
         super.viewIsAppearing(animated)
         
-        setInitialStepperValue()
+        setInitialStepperValues()
         reloadFruitsCount()
     }
     
@@ -64,7 +64,7 @@ class StockViewController: UIViewController {
         reloadFruitsCount()
     }
     
-    private func setInitialStepperValue() {
+    private func setInitialStepperValues() {
         strawberryStepper.value = Double(fruitStore.storage[.strawberry] ?? 0)
         bananaStepper.value = Double(fruitStore.storage[.banana] ?? 0)
         pineappleStepper.value = Double(fruitStore.storage[.pineapple] ?? 0)

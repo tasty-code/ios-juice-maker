@@ -22,7 +22,7 @@ class JuiceViewController: UIViewController {
         reloadFruitsCount()
     }
     
-    @IBAction private func updatingStockButtonTapped(_ sender: UIBarButtonItem) {
+    @IBAction private func updateStockButtonTapped(_ sender: UIBarButtonItem) {
         showStockViewModal()
     }
     
