@@ -33,9 +33,40 @@ class FruitStockViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateFruitLabels()
-
-        // Do any additional setup after loading the view.
+        initStock()
     }
+    
+    private func initStock() {
+        if let tempValue = fruitStock[.strawberry] { strawberryStepper.value = Double(tempValue) }
+        if let tempValue = fruitStock[.banana] { bananaStepper.value = Double(tempValue) }
+        if let tempValue = fruitStock[.pineapple] { pineappleStepper.value = Double(tempValue) }
+        if let tempValue = fruitStock[.mango] { mangoStepper.value = Double(tempValue) }
+        if let tempValue = fruitStock[.kiwi] { kiwiStepper.value = Double(tempValue) }
+    }
+    
+    @IBAction private func stepperPressed(_ sender: UIStepper) {
+        let value = Int(sender.value)
+        switch sender {
+        case strawberryStepper:
+            handleFruitStepper(.strawberry, value: value)
+        case bananaStepper:
+            handleFruitStepper(.banana, value: value)
+        case pineappleStepper:
+            handleFruitStepper(.pineapple, value: value)
+        case kiwiStepper:
+            handleFruitStepper(.kiwi, value: value)
+        case mangoStepper:
+            handleFruitStepper(.mango, value: value)
+        default:
+            break
+        }
+        
+        updateFruitLabels()
+    }
+    
+    private func handleFruitStepper(_ fruit: Fruits, value: Int) {
+            fruitStock[fruit] = value
+        }
     
     private func updateFruitLabels() {
         if let strawberryStock = fruitStock[.strawberry],
