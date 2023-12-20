@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DCG-dP-Fms">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DCG-dP-Fms">
     <device id="retina6_0" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -309,7 +309,7 @@
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZQk-f4-zrz">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
                                                 <connections>
-                                                    <action selector="strawberryStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="oLc-eD-FkT"/>
+                                                    <action selector="changeValueStrawberryStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="8rE-TX-Oa3"/>
                                                 </connections>
                                             </stepper>
                                         </subviews>
@@ -333,7 +333,7 @@
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="O5s-2N-3iP">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
                                                 <connections>
-                                                    <action selector="bananaStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="Mkr-Hn-cY0"/>
+                                                    <action selector="changeValueBananaStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="NFr-I5-k3O"/>
                                                 </connections>
                                             </stepper>
                                         </subviews>
@@ -357,7 +357,7 @@
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Rcr-xr-eqz">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
                                                 <connections>
-                                                    <action selector="pineappleStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="EoK-Ch-oJF"/>
+                                                    <action selector="changeValuePineappleStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="gDY-8A-muM"/>
                                                 </connections>
                                             </stepper>
                                         </subviews>
@@ -381,7 +381,7 @@
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="klA-59-Nu4">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
                                                 <connections>
-                                                    <action selector="kiwiStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="Sbp-DC-Y1t"/>
+                                                    <action selector="changeValueKiwiStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="nbY-Mv-Edk"/>
                                                 </connections>
                                             </stepper>
                                         </subviews>
@@ -405,7 +405,7 @@
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="xbn-6P-grO">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
                                                 <connections>
-                                                    <action selector="mangoStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="NVd-yh-FYA"/>
+                                                    <action selector="changeValueMangoStepper:" destination="Yu1-lM-nqp" eventType="valueChanged" id="Bae-T3-ED2"/>
                                                 </connections>
                                             </stepper>
                                         </subviews>
@@ -432,10 +432,15 @@
                     <navigationItem key="navigationItem" id="g4W-fY-l7r"/>
                     <connections>
                         <outlet property="bananaLabel" destination="gKu-86-RhI" id="hQf-Dv-eoy"/>
+                        <outlet property="bananaStepper" destination="O5s-2N-3iP" id="Icp-cM-Ut3"/>
                         <outlet property="kiwiLabel" destination="ZDv-1m-HBY" id="AMY-gj-n5J"/>
+                        <outlet property="kiwiStepper" destination="klA-59-Nu4" id="Jzx-9K-PjS"/>
                         <outlet property="mangoLabel" destination="YJI-ER-LJR" id="fb1-yT-Mtm"/>
+                        <outlet property="mangoStepper" destination="xbn-6P-grO" id="vLL-UT-s7z"/>
                         <outlet property="pineappleLabel" destination="MpT-VW-hCb" id="pHD-A2-dUf"/>
+                        <outlet property="pineappleStepper" destination="Rcr-xr-eqz" id="e08-tL-uXA"/>
                         <outlet property="strawberryLabel" destination="0yV-kn-zaT" id="5iO-eM-0cd"/>
+                        <outlet property="strawberryStepper" destination="ZQk-f4-zrz" id="ynn-jx-xdN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>

@@ -15,6 +15,12 @@ class FruitInventoryViewController: UIViewController {
     @IBOutlet weak var kiwiLabel: UILabel!
     @IBOutlet weak var mangoLabel: UILabel!
     
+    @IBOutlet weak var strawberryStepper: UIStepper!
+    @IBOutlet weak var bananaStepper: UIStepper!
+    @IBOutlet weak var pineappleStepper: UIStepper!
+    @IBOutlet weak var kiwiStepper: UIStepper!
+    @IBOutlet weak var mangoStepper: UIStepper!
+    
     let juiceMaker: JuiceMaker
     
     init?(juiceMaker: JuiceMaker, coder: NSCoder) {
@@ -29,11 +35,13 @@ class FruitInventoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         receiveFruitLabel()
+        receiveFruitStepper()
     }
     
     @IBAction func backButtonTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
+    
     private func receiveFruitLabel() {
          strawberryLabel.text = "\(juiceMaker.fruitStore.inventory(fruit: .strawberry))"
          bananaLabel.text =  "\(juiceMaker.fruitStore.inventory(fruit: .banana))"
@@ -42,19 +50,37 @@ class FruitInventoryViewController: UIViewController {
          mangoLabel.text =  "\(juiceMaker.fruitStore.inventory(fruit: .mango))"
      }
     
-    @IBAction func strawberryStepper(_ sender: UIStepper) {
+    private func receiveFruitStepper() {
+        strawberryStepper.value = Double( juiceMaker.fruitStore.inventory(fruit: .strawberry))
+        bananaStepper.value =  Double(juiceMaker.fruitStore.inventory(fruit: .banana))
+        pineappleStepper.value = Double(juiceMaker.fruitStore.inventory(fruit: .pineapple))
+        kiwiStepper.value =  Double(juiceMaker.fruitStore.inventory(fruit: .kiwi))
+        mangoStepper.value =  Double(juiceMaker.fruitStore.inventory(fruit: .mango))
     }
     
-    @IBAction func bananaStepper(_ sender: UIStepper) {
+    @IBAction func changeValueStrawberryStepper(_ sender: UIStepper) {
+        strawberryLabel.text = Int(sender.value).description
+        juiceMaker.fruitStore.changeAmout(fruit: .strawberry, amout: Int(sender.value))
     }
     
-    @IBAction func pineappleStepper(_ sender: UIStepper) {
+    @IBAction func changeValueBananaStepper(_ sender: UIStepper) {
+        bananaLabel.text = Int(sender.value).description
+        juiceMaker.fruitStore.changeAmout(fruit: .banana, amout: Int(sender.value))
     }
     
-    @IBAction func kiwiStepper(_ sender: UIStepper) {
+    @IBAction func changeValuePineappleStepper(_ sender: UIStepper) {
+        pineappleLabel.text = Int(sender.value).description
+        juiceMaker.fruitStore.changeAmout(fruit: .pineapple, amout: Int(sender.value))
     }
     
-    @IBAction func mangoStepper(_ sender: UIStepper) {
+    @IBAction func changeValueKiwiStepper(_ sender: UIStepper) {
+        kiwiLabel.text = Int(sender.value).description
+        juiceMaker.fruitStore.changeAmout(fruit: .kiwi, amout: Int(sender.value))
+    }
+    
+    @IBAction func changeValueMangoStepper(_ sender: UIStepper) {
+        mangoLabel.text = Int(sender.value).description
+        juiceMaker.fruitStore.changeAmout(fruit: .mango, amout: Int(sender.value))
     }
 }
 

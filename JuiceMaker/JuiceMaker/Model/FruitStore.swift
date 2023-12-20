@@ -22,6 +22,11 @@ import Foundation
     func add(fruit: Fruit, amount: Int) {
         fruitInventory[fruit, default: 0] += amount
     }
+     
+    func changeAmout(fruit: Fruit, amout: Int) {
+        fruitInventory[fruit, default: 0] = amout
+    }
+     
     func inventory(fruit: Fruit) -> Int {
         return fruitInventory[fruit, default: 0]
     }

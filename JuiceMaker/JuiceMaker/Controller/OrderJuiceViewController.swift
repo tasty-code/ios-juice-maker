@@ -17,6 +17,10 @@ class OrderJuiceViewController: UIViewController {
     @IBOutlet var orderJuiceButton: [UIButton]!
     
     let juiceMaker = JuiceMaker()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setInitialFruitLabel()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
