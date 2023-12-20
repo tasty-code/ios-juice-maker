@@ -12,12 +12,7 @@ protocol QuantityViewControllerDelegate: AnyObject {
 }
 
 class QuantityViewController: UIViewController {
-    
     var fruitStore: FruitStore?
-    let storyboardName = "MainViewController"
-    let storyboardID = "qunatityVC"
-
-    
     weak var delegate: QuantityViewControllerDelegate?
     
     @IBOutlet weak var strawberryStepper: UIStepper!
@@ -31,6 +26,16 @@ class QuantityViewController: UIViewController {
     @IBOutlet weak var pineapple: UILabel!
     @IBOutlet weak var kiwi: UILabel!
     @IBOutlet weak var mago: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateFruitLabels()
+        initStepperValue()
+        delegate?.updateFruitLabels()
+        navigationItem.title = "재고현황"
+        let closeButton = UIBarButtonItem(title: "닫기", style: .plain, target: self, action: #selector(dismissModal))
+        navigationItem.rightBarButtonItem = closeButton
+    }
     
     func updateFruitLabels() {
         strawberry.text = "\(fruitStore?.fruitInventory["딸기"] ?? 0)"
@@ -48,13 +53,8 @@ class QuantityViewController: UIViewController {
         magoStepper.value = Double(fruitStore?.fruitInventory["망고"] ?? 0)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        updateFruitLabels()
-        initStepperValue()
-        delegate?.updateFruitLabels()
-        navigationItem.title = "재고추가"
-        navigationItem.rightBarButtonItem?.title = "닫기"
+    @objc func dismissModal() {
+        self.dismiss(animated: true)
     }
     
     @IBAction func strawberryStepper(_ sender: UIStepper) {

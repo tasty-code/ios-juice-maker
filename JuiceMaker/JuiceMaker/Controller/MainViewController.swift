@@ -40,7 +40,9 @@ class MainViewController: UIViewController, QuantityViewControllerDelegate {
         if let quantityVC = storyboard.instantiateViewController(withIdentifier: "quantityVC") as? QuantityViewController {
             quantityVC.fruitStore = self.fruitStore
             quantityVC.delegate = self
-            navigationController?.pushViewController(quantityVC, animated: true)
+            let navigationController = UINavigationController(rootViewController: quantityVC)
+            navigationController.modalPresentationStyle = .fullScreen
+            self.present(navigationController, animated: true)
         }
     }
     
