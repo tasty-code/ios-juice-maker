@@ -25,23 +25,21 @@ class FruitStockViewController: UIViewController {
     @IBOutlet weak var kiwiStepper: UIStepper!
     @IBOutlet weak var mangoStepper: UIStepper!
     
-    @IBOutlet var steppers: [UIStepper]!
-    
     weak var delegate: FruitStockDelegate?
     var fruitStock: [Fruits: Int] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateFruitLabels()
-        initStock()
+        initializeStepper()
     }
     
-    private func initStock() {
-        if let tempValue = fruitStock[.strawberry] { strawberryStepper.value = Double(tempValue) }
-        if let tempValue = fruitStock[.banana] { bananaStepper.value = Double(tempValue) }
-        if let tempValue = fruitStock[.pineapple] { pineappleStepper.value = Double(tempValue) }
-        if let tempValue = fruitStock[.mango] { mangoStepper.value = Double(tempValue) }
-        if let tempValue = fruitStock[.kiwi] { kiwiStepper.value = Double(tempValue) }
+    private func initializeStepper() {
+        if let strawberryInitValue = fruitStock[.strawberry] { strawberryStepper.value = Double(strawberryInitValue) }
+        if let bananaInitValue = fruitStock[.banana] { bananaStepper.value = Double(bananaInitValue) }
+        if let pineappleInitValue = fruitStock[.pineapple] { pineappleStepper.value = Double(pineappleInitValue) }
+        if let mangoInitValue = fruitStock[.mango] { mangoStepper.value = Double(mangoInitValue) }
+        if let kiwiInitValue = fruitStock[.kiwi] { kiwiStepper.value = Double(kiwiInitValue) }
     }
     
     @IBAction private func stepperPressed(_ sender: UIStepper) {
@@ -60,7 +58,6 @@ class FruitStockViewController: UIViewController {
         default:
             break
         }
-        
         updateFruitLabels()
     }
     
