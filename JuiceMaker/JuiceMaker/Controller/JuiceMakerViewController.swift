@@ -19,6 +19,10 @@ final class JuiceMakerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(configureView),
+                                               name: .update,
+                                               object: nil)
     }
     
     private func orderJuice(juice: Juice) {
@@ -85,12 +89,15 @@ final class JuiceMakerViewController: UIViewController {
 }
 
 extension JuiceMakerViewController {
-    
-    private func configureView() {
+    @objc private func configureView() {
         strawberryLabel.text = String(FruitStore.shared.quantity(of: .strawberry))
         bananaLabel.text = String(FruitStore.shared.quantity(of: .banana))
         pineappleLabel.text = String(FruitStore.shared.quantity(of: .pineapple))
         kiwiLabel.text = String(FruitStore.shared.quantity(of: .kiwi))
         mangoLabel.text = String(FruitStore.shared.quantity(of: .mango))
     }
+}
+
+extension Notification.Name {
+    static let update = Notification.Name("update")
 }

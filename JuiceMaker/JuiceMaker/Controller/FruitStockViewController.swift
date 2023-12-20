@@ -27,6 +27,11 @@ class FruitStockViewController: UIViewController {
         initializeStepper()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        NotificationCenter.default.post(name: .update, object: nil)
+    }
+    
     private func initializeStepper() {
         if let strawberryInitValue = FruitStore.shared.fruitStock[.strawberry] { strawberryStepper.value = Double(strawberryInitValue) }
         if let bananaInitValue = FruitStore.shared.fruitStock[.banana] { bananaStepper.value = Double(bananaInitValue) }
