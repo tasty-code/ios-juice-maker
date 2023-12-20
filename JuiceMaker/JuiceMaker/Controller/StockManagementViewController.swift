@@ -55,3 +55,41 @@ private extension StockManagementViewController {
         }
     }
 }
+
+// MARK: - stepper 설정
+extension StockManagementViewController {
+    func setupTargetActionOnStepper() {
+        changeAmountOfStrawberryStepper.addTarget(self, action: #selector(changeAmount(_:)), for: .valueChanged)
+        changeAmountOfBananaStepper.addTarget(self, action: #selector(changeAmount(_:)), for: .valueChanged)
+        changeAmountOfPineAppleStepper.addTarget(self, action: #selector(changeAmount(_:)), for: .valueChanged)
+        changeAmountOfKiwiStepper.addTarget(self, action: #selector(changeAmount(_:)), for: .valueChanged)
+        changeAmountOfMangoStepper.addTarget(self, action: #selector(changeAmount(_:)), for: .valueChanged)
+    }
+    
+    @objc func changeAmount(_ sender: UIStepper) {
+        switch sender {
+        case changeAmountOfStrawberryStepper:
+            if let result = receivedFruitInventoryData[.strawberry] {
+                numberOfStrawberryLabel.text = (Int(sender.value) + result).description
+            }
+        case changeAmountOfBananaStepper:
+            if let result = receivedFruitInventoryData[.banana] {
+                numberOfBananaLabel.text = (Int(sender.value) + result).description
+            }
+        case changeAmountOfPineAppleStepper:
+            if let result = receivedFruitInventoryData[.pineapple] {
+                numberOfPineAppleLabel.text = (Int(sender.value) + result).description
+            }
+        case changeAmountOfKiwiStepper:
+            if let result = receivedFruitInventoryData[.kiwi] {
+                numberOfKiwiLabel.text = (Int(sender.value) + result).description
+            }
+        case changeAmountOfMangoStepper:
+            if let result = receivedFruitInventoryData[.mango] {
+                numberOfMangoLabel.text = (Int(sender.value) + result).description
+            }
+        default:
+            return
+        }
+    }
+}
