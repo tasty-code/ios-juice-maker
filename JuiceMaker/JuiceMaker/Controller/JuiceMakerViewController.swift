@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class JuiceMakerViewController: UIViewController {
+final class JuiceMakerViewController: UIViewController, FruitStockDelegate {
     
     private let juiceMaker = JuiceMaker()
     
@@ -19,6 +19,18 @@ final class JuiceMakerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
+    }
+    
+    func didUpdateFruitStock(fruitStock: [Fruits : Int]) {
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let navigationViewController = segue.destination as? UINavigationController else { return }
+        if let fruitStockViewController = navigationViewController.visibleViewController as? FruitStockViewController {
+            fruitStockViewController.fruitStock = juiceMaker.fruitStore.fruitStock
+            fruitStockViewController.delegate = self
+        }
     }
     
     private func orderJuice(juice: Juice) {

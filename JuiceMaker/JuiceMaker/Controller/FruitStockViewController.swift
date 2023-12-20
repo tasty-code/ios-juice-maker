@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol FruitStockDelegate: AnyObject {
+    func didUpdateFruitStock(fruitStock: [Fruits: Int])
+}
+
 class FruitStockViewController: UIViewController {
 
+    weak var delegate: FruitStockDelegate?
+    var fruitStock: [Fruits: Int] = [:]
     override func viewDidLoad() {
         super.viewDidLoad()
 
