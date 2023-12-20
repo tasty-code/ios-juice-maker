@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DCG-dP-Fms">
     <device id="retina6_0" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment version="5120" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,20 +22,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G51-18-mJE">
-                                <rect key="frame" x="401.33333333333331" y="20" width="41.333333333333314" height="20.333333333333329"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A9c-Z9-Elc">
-                                <rect key="frame" x="760" y="20" width="54" height="34"/>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Button"/>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zaq-m5-IIF">
-                                <rect key="frame" x="42" y="60" width="760" height="134"/>
+                                <rect key="frame" x="42" y="74" width="760" height="134"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tcB-i6-XX4">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="134"/>
@@ -173,7 +161,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vaj-6k-c2D">
-                                <rect key="frame" x="41.666666666666686" y="234" width="761" height="108"/>
+                                <rect key="frame" x="41.666666666666686" y="248" width="761" height="108"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="zzl-05-bVq">
                                         <rect key="frame" x="0.0" y="0.0" width="760" height="50"/>
@@ -297,20 +285,21 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="zaq-m5-IIF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="4Oh-pN-ym0"/>
-                            <constraint firstAttribute="trailing" secondItem="A9c-Z9-Elc" secondAttribute="trailing" constant="30" id="5iI-qn-NpA"/>
-                            <constraint firstItem="G51-18-mJE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Q81-IL-EZo"/>
-                            <constraint firstItem="G51-18-mJE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="coR-aS-oKY"/>
+                            <constraint firstItem="zaq-m5-IIF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="4Oh-pN-ym0"/>
                             <constraint firstItem="zaq-m5-IIF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="djB-qE-avF"/>
                             <constraint firstItem="vaj-6k-c2D" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gLH-nZ-Syh"/>
                             <constraint firstItem="vaj-6k-c2D" firstAttribute="top" secondItem="zaq-m5-IIF" secondAttribute="bottom" constant="40" id="kGU-Nt-hK4"/>
-                            <constraint firstItem="A9c-Z9-Elc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="rbF-4i-on0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="맛있는 쥬스를 만들어 드려요!" id="Eal-fj-o4N">
-                        <barButtonItem key="rightBarButtonItem" title="재고수정" style="plain" id="C3q-Te-cNT"/>
+                        <barButtonItem key="rightBarButtonItem" title="재고수정" style="plain" id="C3q-Te-cNT">
+                            <connections>
+                                <segue destination="Yu1-lM-nqp" kind="push" identifier="DetailView" id="AX3-Mo-nDm"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="navigationRightButton" destination="C3q-Te-cNT" id="WWH-VU-B3Y"/>
                         <outlet property="orderBananaJuiceButton" destination="y2A-PH-DJY" id="217-Ie-gy2"/>
                         <outlet property="orderKiwiJuiceButton" destination="wcW-7H-RXw" id="kej-Fe-Kqm"/>
                         <outlet property="orderMangoJuiceButton" destination="q6G-4X-bVm" id="Rpl-Lm-aNO"/>
@@ -325,13 +314,29 @@
                         <outlet property="quantityPineappleJuiceLabel" destination="ccQ-Dk-PuY" id="VsB-jA-74x"/>
                         <outlet property="quantityStrawberryBananaJuiceLabel" destination="pxF-v9-h5N" id="6vo-O6-r8d"/>
                         <outlet property="quantityStrawberryJuiceLabel" destination="Qas-vP-td6" id="ZlJ-Yw-cyx"/>
-                        <outlet property="toolbarRightButton" destination="A9c-Z9-Elc" id="T7T-R1-O97"/>
-                        <outlet property="toolbarTitleLabel" destination="G51-18-mJE" id="QA8-ZS-MTR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="762.08530805687201" y="92.307692307692307"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LzN-aE-P5w">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DCG-dP-Fms" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wpg-nM-F9y">
+                        <rect key="frame" x="0.0" y="0.0" width="844" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="AmB-GK-67P"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="66L-FI-VI3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="19.419642857142858" y="92.753623188405811"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="fkG-vv-hpE">
@@ -451,43 +456,26 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eum-JM-oVM">
-                                <rect key="frame" x="735" y="20" width="32" height="34"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="닫기"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TU6-2B-Uqo">
-                                <rect key="frame" x="401.33333333333331" y="20" width="41.333333333333314" height="20.333333333333329"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gcO-Xb-kNs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="TU6-2B-Uqo" firstAttribute="centerX" secondItem="tKV-4l-Vtc" secondAttribute="centerX" id="I5Q-0r-xR1"/>
-                            <constraint firstItem="TU6-2B-Uqo" firstAttribute="top" secondItem="gcO-Xb-kNs" secondAttribute="top" constant="20" id="R3X-Ka-2wr"/>
                             <constraint firstItem="ZYx-aQ-4MA" firstAttribute="centerX" secondItem="tKV-4l-Vtc" secondAttribute="centerX" id="dwW-YG-V3X"/>
-                            <constraint firstItem="gcO-Xb-kNs" firstAttribute="trailing" secondItem="Eum-JM-oVM" secondAttribute="trailing" constant="30" id="fmI-NR-Iqi"/>
-                            <constraint firstItem="Eum-JM-oVM" firstAttribute="top" secondItem="gcO-Xb-kNs" secondAttribute="top" constant="20" id="jjk-Ku-8zR"/>
                             <constraint firstItem="ZYx-aQ-4MA" firstAttribute="centerY" secondItem="tKV-4l-Vtc" secondAttribute="centerY" id="oeb-Fh-Lyf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="g4W-fY-l7r"/>
                     <connections>
-                        <outlet property="bananaStepper" destination="O5s-2N-3iP" id="BVs-n6-MEy"/>
-                        <outlet property="kiwiStepper" destination="klA-59-Nu4" id="kVt-Ax-XZg"/>
-                        <outlet property="mangoStepper" destination="xbn-6P-grO" id="1rZ-Xr-tKP"/>
-                        <outlet property="pineappleStepper" destination="yoJ-bz-mMM" id="DPl-eV-TrH"/>
                         <outlet property="quantityBananaLabel" destination="gKu-86-RhI" id="8qe-7X-qPn"/>
                         <outlet property="quantityKiwiLabel" destination="ZDv-1m-HBY" id="I0Q-AC-9E5"/>
                         <outlet property="quantityMangoLabel" destination="YJI-ER-LJR" id="9KY-pz-ZKi"/>
                         <outlet property="quantityPineappleLabel" destination="wb8-8G-rlR" id="72c-wx-uoC"/>
                         <outlet property="quantityStrawberryLabel" destination="0yV-kn-zaT" id="h8z-WX-pPO"/>
-                        <outlet property="strawberryStepper" destination="ZQk-f4-zrz" id="igS-jK-zET"/>
-                        <outlet property="toolbarRightButton" destination="Eum-JM-oVM" id="gqF-5f-Alz"/>
-                        <outlet property="toolbarTitleLabel" destination="TU6-2B-Uqo" id="XRL-2M-eKn"/>
+                        <outlet property="remoteBananaButton" destination="O5s-2N-3iP" id="xXR-Na-LEk"/>
+                        <outlet property="remoteKiwiButton" destination="klA-59-Nu4" id="EAC-at-7uL"/>
+                        <outlet property="remotePineappleButton" destination="yoJ-bz-mMM" id="ViS-ej-936"/>
+                        <outlet property="remoteStrawberryButton" destination="ZQk-f4-zrz" id="ARi-5O-fEw"/>
+                        <outlet property="remotemangoButton" destination="xbn-6P-grO" id="dDZ-53-2Ek"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>

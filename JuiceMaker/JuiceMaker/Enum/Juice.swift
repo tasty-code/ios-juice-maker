@@ -34,4 +34,16 @@ enum Juice: String, CaseIterable {
             return [FruitInfo(name: Fruit.mango, quantity: 2), FruitInfo(name: Fruit.kiwi, quantity: 1)]
         }
     }
+    
+    static var allCases: [Juice] {
+        return [
+            .strawberryJuice,
+            .bananaJuice,
+            .pineappleJuice,
+            .kiwiJuice,
+            .mangoJuice,
+            .strawberryBananaJuice,
+            .mangoKiwiJuice
+        ]
+    }
 }

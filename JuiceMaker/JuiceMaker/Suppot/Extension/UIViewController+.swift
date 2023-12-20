@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIViewController {
-    public func completedAlert(title: String,
+    public func makeCompletedAlert(title: String,
                                    message: String,
                                    okAction: ((UIAlertAction) -> ())? = nil,
                                    completion: (() -> ())? = nil) {
@@ -21,7 +21,7 @@ extension UIViewController {
         self.present(alertViewController, animated: true, completion: completion)
     }
     
-    public func failedAlert(title: String,
+    public func makeFailedAlert(title: String,
                                 message: String,
                                 okAction: ((UIAlertAction) -> ())? = nil,
                                 cancelAction: ((UIAlertAction) -> ())? = nil,

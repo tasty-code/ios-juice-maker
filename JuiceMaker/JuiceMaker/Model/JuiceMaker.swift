@@ -22,23 +22,22 @@ struct JuiceMaker {
         JuiceInfo(name: .mangoKiwiJuice, quantity: 0)
     ]
     
-    mutating func isJuiceAvailable(juice: Juice) -> Bool {
+    func makeJuice(juice: Juice) -> Bool {
         switch juice {
         case .strawberryJuice:
-            return validationCheckAndUsedFruit(fruit: .strawberry, quantity: 16) ? addJuiceQuantity(juice: juice) : false
+            return validationCheckAndUsedFruit(fruit: .strawberry, quantity: 16)
         case .bananaJuice:
-            return validationCheckAndUsedFruit(fruit: .banana, quantity: 2) ? addJuiceQuantity(juice: juice) : false
+            return validationCheckAndUsedFruit(fruit: .banana, quantity: 2)
         case .pineappleJuice:
-            return validationCheckAndUsedFruit(fruit: .pineapple, quantity: 2) ? addJuiceQuantity(juice: juice) : false
+            return validationCheckAndUsedFruit(fruit: .pineapple, quantity: 2)
         case .kiwiJuice:
-            return validationCheckAndUsedFruit(fruit: .kiwi, quantity: 3) ? addJuiceQuantity(juice: juice) : false
+            return validationCheckAndUsedFruit(fruit: .kiwi, quantity: 3)
         case .mangoJuice:
-            return validationCheckAndUsedFruit(fruit: .mango, quantity: 3) ? addJuiceQuantity(juice: juice) : false
+            return validationCheckAndUsedFruit(fruit: .mango, quantity: 3)
         case .strawberryBananaJuice:
-            return validationCheckAndUsedFruit(fruit: .strawberry, quantity: 10) && validationCheckAndUsedFruit(fruit: .banana, quantity: 1) ? addJuiceQuantity(juice: juice) : false
+            return validationCheckAndUsedFruit(fruit: .strawberry, quantity: 10) && validationCheckAndUsedFruit(fruit: .banana, quantity: 1)
         case .mangoKiwiJuice:
-            return validationCheckAndUsedFruit(fruit: .mango, quantity: 2) && validationCheckAndUsedFruit(fruit: .kiwi, quantity: 1) ?
-                addJuiceQuantity(juice: juice) : false
+            return validationCheckAndUsedFruit(fruit: .mango, quantity: 2) && validationCheckAndUsedFruit(fruit: .kiwi, quantity: 1)
         }
     }
     
@@ -58,11 +57,10 @@ struct JuiceMaker {
         return String(0)
     }
     
-    mutating public func addJuiceQuantity(juice: Juice) -> Bool {
+    mutating public func addJuiceQuantity(juice: Juice) {
         if let index = juiceList.firstIndex(where: { $0.name == juice }) {
             juiceList[index].quantity += 1
         }
-        return true
     }
 }
 
