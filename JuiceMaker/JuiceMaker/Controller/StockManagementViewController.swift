@@ -93,3 +93,27 @@ extension StockManagementViewController {
         }
     }
 }
+
+extension StockManagementViewController {
+    func setup(number: Int, on stepper: UIStepper) {
+        stepper.minimumValue = -Double(number)
+        stepper.maximumValue = 100
+    }
+    
+    func setupStepper(fruits: [Fruit: Int]) {
+        for fruit in fruits {
+            switch fruit.key {
+            case .strawberry:
+                setup(number: fruit.value, on: changeAmountOfStrawberryStepper)
+            case .banana:
+                setup(number: fruit.value, on: changeAmountOfBananaStepper)
+            case .pineapple:
+                setup(number: fruit.value, on: changeAmountOfPineAppleStepper)
+            case .kiwi:
+                setup(number: fruit.value, on: changeAmountOfKiwiStepper)
+            case .mango:
+                setup(number: fruit.value, on: changeAmountOfMangoStepper)
+            }
+        }
+    }
+}
