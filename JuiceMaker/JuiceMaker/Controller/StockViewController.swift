@@ -36,28 +36,27 @@ class StockViewController: UIViewController {
     }
     
     @IBAction private func strawberryStepperTapped(_ sender: UIStepper) {
-        updateStock(fruit: .strawberry, sender: sender)
+        updateStock(fruit: .strawberry, amount: Int(sender.value))
     }
     
     @IBAction private func bananaStepperTapped(_ sender: UIStepper) {
-        updateStock(fruit: .banana, sender: sender)
+        updateStock(fruit: .banana, amount: Int(sender.value))
     }
     
     @IBAction private func pineappleStepperTapped(_ sender: UIStepper) {
-        updateStock(fruit: .pineapple, sender: sender)
+        updateStock(fruit: .pineapple, amount: Int(sender.value))
     }
     
     @IBAction private func kiwiStepperTapped(_ sender: UIStepper) {
-        updateStock(fruit: .kiwi, sender: sender)
+        updateStock(fruit: .kiwi, amount: Int(sender.value))
     }
     
     @IBAction private func mangoStepperTapped(_ sender: UIStepper) {
-        updateStock(fruit: .mango, sender: sender)
+        updateStock(fruit: .mango, amount: Int(sender.value))
     }
     
-    private func updateStock(fruit: FruitStore.Fruit, sender: UIStepper) {
-        let stepperValue = Int(sender.value)
-        fruitStore.updateStock(fruit: fruit, amount: stepperValue)
+    private func updateStock(fruit: FruitStore.Fruit, amount: Int) {
+        fruitStore.updateStock(fruit: fruit, amount: amount)
         reloadFruitsCount()
     }
     
