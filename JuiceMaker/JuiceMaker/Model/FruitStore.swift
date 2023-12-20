@@ -41,8 +41,8 @@ class FruitStore {
         return 0
     }
     
-    func updateFruitStore(fruitDict: Dictionary<Fruit, Int>) {
-        store = fruitDict
+    func updateFruitStore(fruitStore: Dictionary<Fruit, Int>) {
+        store = fruitStore
     }
 }
 

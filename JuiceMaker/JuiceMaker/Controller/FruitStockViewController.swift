@@ -48,8 +48,9 @@ extension FruitStockViewController {
     }
     
     func dismissFruitStockViewController() {
-        let store: Dictionary<Fruit, Int> = stepperDict.reduce(into: [:]) { (fruitStore, property) in
-            let (stepper, fruit) = property
+        let store: Dictionary<Fruit, Int> = stepperDict.reduce(into: [:]) {
+            (fruitStore, keyValuePair) in
+            let (stepper, fruit) = keyValuePair
             fruitStore[fruit] = Int(stepper.value)
         }
         updateFruitStore?(store)
