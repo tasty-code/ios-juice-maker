@@ -66,7 +66,7 @@ final class StockViewController: UIViewController {
         switch sender.tag {
         case 0:
             selectedFruit = Fruit.strawberry
-        case 1: 
+        case 1:
             selectedFruit = Fruit.banana
         case 2:
             selectedFruit = Fruit.pineapple
@@ -83,6 +83,7 @@ final class StockViewController: UIViewController {
             return
         }
         let intSender = Int(sender.value)
+        fruitStore.fruits[selectedFruit.rawValue] = intSender
         setTextView.text = String(intSender)
     }
 }

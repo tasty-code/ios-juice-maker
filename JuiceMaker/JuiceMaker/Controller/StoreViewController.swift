@@ -34,13 +34,11 @@ final class StoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fruitStore.initializeFruit()
-        initView()
-        print("test2")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("test1")
+        initView()
     }
     
     @IBAction func moveToFruitStoreBtnTapped(_ sender: Any) {
@@ -74,10 +72,9 @@ final class StoreViewController: UIViewController {
     }
     
     private func moveFruitStore() {
-//        self.performSegue(withIdentifier: "moveToStock", sender: "test")
         guard let secondVC = storyboard?.instantiateViewController(withIdentifier: "StockViewController") as? StockViewController else { return }
         secondVC.modalPresentationStyle = .fullScreen
-        self.present(secondVC, animated: false)
+        self.present(secondVC, animated: true)
     }
     
 }
