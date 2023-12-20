@@ -9,7 +9,7 @@ import UIKit
 
 final class ManageStockViewController: UIViewController {
     var fruitStock: [Fruit: UInt] = [:]
-    weak var delegate: Delegate?
+    weak var delegate: JuiceOrderViewControllerDelegate?
     
     @IBOutlet weak private var strawberryStockLabel: UILabel!
     @IBOutlet weak private var bananaStockLabel: UILabel!
@@ -28,9 +28,8 @@ final class ManageStockViewController: UIViewController {
     }
     
     @IBAction private func closedTapped(_ sender: UIBarButtonItem) {
-        
         delegate?.fruitStock(fruitStock: fruitStock)
-        
+        delegate?.viewAppearing()
         self.dismiss(animated: true)
     }
     

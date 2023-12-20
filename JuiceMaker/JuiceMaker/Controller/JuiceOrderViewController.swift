@@ -6,6 +6,11 @@
 
 import UIKit
 
+protocol JuiceOrderViewControllerDelegate: AnyObject {
+    func viewAppearing()
+    func fruitStock(fruitStock: [Fruit: UInt])
+}
+
 final class JuiceOrderViewController: UIViewController {
     private let juiceMaker = JuiceMaker()
     
@@ -77,8 +82,8 @@ final class JuiceOrderViewController: UIViewController {
     }
 }
 
-extension JuiceOrderViewController: Delegate {
-    override func viewWillAppear(_ animated: Bool) {
+extension JuiceOrderViewController: JuiceOrderViewControllerDelegate {
+    func viewAppearing() {
         updateFruitStockLabel()
     }
     
