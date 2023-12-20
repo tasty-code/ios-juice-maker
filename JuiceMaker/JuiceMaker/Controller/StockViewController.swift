@@ -30,8 +30,12 @@ class StockViewController: UIViewController {
         reloadFruitsCount()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate?.stockViewControllerWillDisappear()
+    }
+    
     @IBAction private func closeButtonTapped(_ sender: UIBarButtonItem) {
-        delegate?.stockViewControllerDidExit()
         presentingViewController?.dismiss(animated: true)
     }
     
@@ -78,5 +82,5 @@ class StockViewController: UIViewController {
 }
 
 protocol StockViewControllerDelegate: AnyObject {
-    func stockViewControllerDidExit()
+    func stockViewControllerWillDisappear()
 }

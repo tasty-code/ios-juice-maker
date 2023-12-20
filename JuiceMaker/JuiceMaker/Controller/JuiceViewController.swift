@@ -103,7 +103,7 @@ class JuiceViewController: UIViewController {
 }
 
 extension JuiceViewController: StockViewControllerDelegate {
-    func stockViewControllerDidExit() {
+    func stockViewControllerWillDisappear() {
         reloadFruitsCount()
     }
 }
