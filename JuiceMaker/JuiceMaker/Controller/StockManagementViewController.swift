@@ -9,6 +9,8 @@ import UIKit
 
 final class StockManagementViewController: UIViewController {
     
+    // test
+    
     @IBOutlet private var numberOfStrawberryLabel: UILabel!
     @IBOutlet private var numberOfBananaLabel: UILabel!
     @IBOutlet private var numberOfPineAppleLabel: UILabel!
