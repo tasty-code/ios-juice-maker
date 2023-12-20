@@ -6,10 +6,9 @@
 
 import UIKit
 
-final class JuiceMakerViewController: UIViewController, FruitStockDelegate {
+final class JuiceMakerViewController: UIViewController {
     
     private let juiceMaker = JuiceMaker()
-//    private let fruitStore: FruitStore = FruitStore.shared
     
     @IBOutlet private weak var strawberryLabel: UILabel!
     @IBOutlet private weak var bananaLabel: UILabel!
@@ -20,23 +19,6 @@ final class JuiceMakerViewController: UIViewController, FruitStockDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
-    }
-    
-    func didUpdateFruitStock(fruitStock: [Fruits : Int]) {
-        fruitStock.forEach { (fruit,value) in
-            let currentFruit = FruitStore.shared.quantity(of: fruit)
-            let difference = value - currentFruit
-            FruitStore.shared.changeStock(fruitName: fruit, amount: difference)
-        }
-        configureView()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let navigationViewController = segue.destination as? UINavigationController else { return }
-        if let fruitStockViewController = navigationViewController.visibleViewController as? FruitStockViewController {
-            fruitStockViewController.fruitStock = FruitStore.shared.fruitStock
-            fruitStockViewController.delegate = self
-        }
     }
     
     private func orderJuice(juice: Juice) {
