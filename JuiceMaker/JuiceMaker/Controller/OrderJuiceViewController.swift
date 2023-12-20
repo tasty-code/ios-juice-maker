@@ -73,13 +73,13 @@ class OrderJuiceViewController: UIViewController {
     private func juiceMakeErrorCase(_ error: JuiceMakerError) {
         switch error {
         case .outOfStock(_):
-            print("\(error.message)")
-            showAlertWithConfirmation(title: "재고부족", message: "\(error.message)") { _ in
+            print(error.message)
+            showAlertWithConfirmation(title: "재고부족", message: error.message) { _ in
                 self.showFruitInventoryView()
             }
         case .negativeAmount(_):
-            print("\(error.message)")
-            showAlert(title: "에러", message: "\(error.message)")
+            print(error.message)
+            showAlert(title: "에러", message: error.message)
         }
     }
     private func showFruitInventoryView() {
