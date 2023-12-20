@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DCG-dP-Fms">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DCG-dP-Fms">
     <device id="retina6_0" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -382,8 +382,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="재고 수정 " id="CYh-h3-uag">
-                        <barButtonItem key="leftBarButtonItem" title="취소" id="Vqk-p5-75A"/>
-                        <barButtonItem key="rightBarButtonItem" title="저장" id="OAa-eb-eNf"/>
+                        <barButtonItem key="leftBarButtonItem" title="취소" id="Vqk-p5-75A">
+                            <connections>
+                                <action selector="cancleButtonPressed:" destination="Yu1-lM-nqp" id="3xf-JS-hxJ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="저장" id="OAa-eb-eNf">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="Yu1-lM-nqp" id="G4N-pj-HEe"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="changeAmountOfBananaStepper" destination="O5s-2N-3iP" id="v6p-LC-Roy"/>

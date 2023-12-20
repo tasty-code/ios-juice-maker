@@ -7,10 +7,11 @@
 
 import UIKit
 
+protocol StockManagementViewControllerDelegate: AnyObject {
+    func updateStockData(updatedData: [Fruit: Int])
+}
+
 final class StockManagementViewController: UIViewController {
-    
-    // test
-    
     @IBOutlet private var numberOfStrawberryLabel: UILabel!
     @IBOutlet private var numberOfBananaLabel: UILabel!
     @IBOutlet private var numberOfPineAppleLabel: UILabel!
@@ -23,11 +24,23 @@ final class StockManagementViewController: UIViewController {
     @IBOutlet private var changeAmountOfKiwiStepper: UIStepper!
     @IBOutlet private var changeAmountOfMangoStepper: UIStepper!
     
+    @IBAction func cancleButtonPressed(_ sender: Any) {
+        navigationController?.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func doneButtonPressed(_ sender: Any) {
+        delegate?.updateStockData(updatedData: receivedFruitInventoryData)
+        navigationController?.dismiss(animated: true, completion: nil)
+    }
+    
+    weak var delegate: StockManagementViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         showNumberOnLabel(fruits: receivedFruitInventoryData)
+        setupTargetActionOnStepper()
+        setupStepper(fruits: receivedFruitInventoryData)
     }
     
     var receivedFruitInventoryData: [Fruit:Int] = [:]
@@ -94,9 +107,7 @@ extension StockManagementViewController {
             return
         }
     }
-}
-
-extension StockManagementViewController {
+    
     func setup(number: Int, on stepper: UIStepper) {
         stepper.minimumValue = -Double(number)
         stepper.maximumValue = 100

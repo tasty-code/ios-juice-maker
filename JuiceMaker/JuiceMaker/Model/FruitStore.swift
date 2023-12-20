@@ -1,6 +1,6 @@
 //
 //  JuiceMaker - FruitStore.swift
-//  Created by yagom. 
+//  Created by yagom.
 //  Copyright © yagom academy. All rights reserved.
 //
 
@@ -14,8 +14,8 @@ final class FruitStore {
         return bag
     }
     
-    func changeAmount(_ fruit: Fruit, _ number: Int) {
-        inventory[fruit] = number
+    func updateInventory(_ updatedData: [Fruit: Int]) {
+        inventory = updatedData
     }
     
     private func sendNotification(about fruit: Fruit, number: Int) {
@@ -55,7 +55,7 @@ final class FruitStore {
             try checkStock(amountOfFruitNow: numberOfFruit, requiredAmount: demand.requestedAmount)
             numberOfFruitExist.append(numberOfFruit)
         }
-
+        
         return numberOfFruitExist
     }
     
