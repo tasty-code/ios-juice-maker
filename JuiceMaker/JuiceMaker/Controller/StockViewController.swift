@@ -25,14 +25,13 @@ class StockViewController: UIViewController {
     
     override func viewIsAppearing(_ animated: Bool) {
         super.viewIsAppearing(animated)
-        
         setInitialStepperValues()
         reloadFruitsCount()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        delegate?.stockViewControllerWillDisappear()
+        delegate?.stockViewWillDisappear()
     }
     
     @IBAction private func closeButtonTapped(_ sender: UIBarButtonItem) {
@@ -82,5 +81,5 @@ class StockViewController: UIViewController {
 }
 
 protocol StockViewControllerDelegate: AnyObject {
-    func stockViewControllerWillDisappear()
+    func stockViewWillDisappear()
 }
