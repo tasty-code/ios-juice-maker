@@ -9,6 +9,7 @@ import UIKit
 final class JuiceMakerViewController: UIViewController, FruitStockDelegate {
     
     private let juiceMaker = JuiceMaker()
+//    private let fruitStore: FruitStore = FruitStore.shared
     
     @IBOutlet private weak var strawberryLabel: UILabel!
     @IBOutlet private weak var bananaLabel: UILabel!
@@ -23,9 +24,9 @@ final class JuiceMakerViewController: UIViewController, FruitStockDelegate {
     
     func didUpdateFruitStock(fruitStock: [Fruits : Int]) {
         fruitStock.forEach { (fruit,value) in
-            let currentFruit = juiceMaker.fruitStore.quantity(of: fruit)
+            let currentFruit = FruitStore.shared.quantity(of: fruit)
             let difference = value - currentFruit
-            juiceMaker.fruitStore.changeStock(fruitName: fruit, amount: difference)
+            FruitStore.shared.changeStock(fruitName: fruit, amount: difference)
         }
         configureView()
     }
@@ -33,7 +34,7 @@ final class JuiceMakerViewController: UIViewController, FruitStockDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let navigationViewController = segue.destination as? UINavigationController else { return }
         if let fruitStockViewController = navigationViewController.visibleViewController as? FruitStockViewController {
-            fruitStockViewController.fruitStock = juiceMaker.fruitStore.fruitStock
+            fruitStockViewController.fruitStock = FruitStore.shared.fruitStock
             fruitStockViewController.delegate = self
         }
     }
@@ -104,10 +105,10 @@ final class JuiceMakerViewController: UIViewController, FruitStockDelegate {
 extension JuiceMakerViewController {
     
     private func configureView() {
-        strawberryLabel.text = String(juiceMaker.fruitStore.quantity(of: .strawberry))
-        bananaLabel.text = String(juiceMaker.fruitStore.quantity(of: .banana))
-        pineappleLabel.text = String(juiceMaker.fruitStore.quantity(of: .pineapple))
-        kiwiLabel.text = String(juiceMaker.fruitStore.quantity(of: .kiwi))
-        mangoLabel.text = String(juiceMaker.fruitStore.quantity(of: .mango))
+        strawberryLabel.text = String(FruitStore.shared.quantity(of: .strawberry))
+        bananaLabel.text = String(FruitStore.shared.quantity(of: .banana))
+        pineappleLabel.text = String(FruitStore.shared.quantity(of: .pineapple))
+        kiwiLabel.text = String(FruitStore.shared.quantity(of: .kiwi))
+        mangoLabel.text = String(FruitStore.shared.quantity(of: .mango))
     }
 }

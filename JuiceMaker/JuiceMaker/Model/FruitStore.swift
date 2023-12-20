@@ -8,8 +8,9 @@ import Foundation
 
 final class FruitStore {
     private(set) var fruitStock = [Fruits: Int]()
+    static let shared = FruitStore()
     
-    init() {
+    private init() {
         fruitStock = [
             .strawberry: 10,
             .banana: 10,
