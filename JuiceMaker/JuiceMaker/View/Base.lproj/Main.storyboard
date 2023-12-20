@@ -406,6 +406,23 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="bananaStepper" destination="O5s-2N-3iP" id="Lca-sz-szb"/>
+                        <outlet property="bananaStockLabel" destination="gKu-86-RhI" id="jfm-ap-evU"/>
+                        <outlet property="kiwiStepper" destination="klA-59-Nu4" id="eip-Nt-d7G"/>
+                        <outlet property="kiwiStockLabel" destination="ZDv-1m-HBY" id="IRg-rP-KbN"/>
+                        <outlet property="mangoStepper" destination="xbn-6P-grO" id="L8E-ob-Gel"/>
+                        <outlet property="mangoStockLabel" destination="YJI-ER-LJR" id="OSK-8d-3ir"/>
+                        <outlet property="pineappleStepper" destination="Rcr-xr-eqz" id="9aX-Wp-IBg"/>
+                        <outlet property="pineappleStockLabel" destination="MpT-VW-hCb" id="LKD-9E-NH8"/>
+                        <outlet property="strawberryStepper" destination="ZQk-f4-zrz" id="my9-b7-UI5"/>
+                        <outlet property="strawberryStockLabel" destination="0yV-kn-zaT" id="Dcv-My-udN"/>
+                        <outletCollection property="steppers" destination="ZQk-f4-zrz" collectionClass="NSMutableArray" id="t2b-re-CSa"/>
+                        <outletCollection property="steppers" destination="O5s-2N-3iP" collectionClass="NSMutableArray" id="6lC-Ox-p6D"/>
+                        <outletCollection property="steppers" destination="Rcr-xr-eqz" collectionClass="NSMutableArray" id="zhg-h8-Y0S"/>
+                        <outletCollection property="steppers" destination="xbn-6P-grO" collectionClass="NSMutableArray" id="xFJ-Tk-cLX"/>
+                        <outletCollection property="steppers" destination="klA-59-Nu4" collectionClass="NSMutableArray" id="2HV-Fn-ZhG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
             </objects>
