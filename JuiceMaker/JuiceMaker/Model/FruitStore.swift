@@ -22,22 +22,41 @@ final class FruitStore {
 // MARK: - FruitStore 메서드
 
 extension FruitStore {
-    func increment(fruit type: Fruits, by quantities: Int) {
-        guard let currentStock = fruitsStock[type] else {
-            postErrorOccurred()
-            return
-        }
-        fruitsStock[type] = currentStock + quantities
-        postFruitsStock()
-    }
     
-    func decrement(fruit type: Fruits, by quantities: Int) {
-        guard let currentStock = fruitsStock[type], currentStock - quantities >= limitedQuantity else {
-            postErrorOccurred()
-            return
+    func increment(fruits: [Fruits], by quantities: [Int]) {
+
+        let fruitQuantitiesPairs = Array(zip(fruits, quantities))
+        
+        for (fruit, quantity) in fruitQuantitiesPairs {
+            guard 
+                let currentFruitStock = fruitsStock[fruit]
+            else {
+                postErrorOccurred()
+                return
+            }
+            
+            fruitsStock[fruit] = currentFruitStock + quantity
+            postFruitsStock()
         }
-        fruitsStock[type] = currentStock - quantities
-        postFruitsStock()
+    }
+
+
+    func decrement(fruits: [Fruits], by quantities: [Int]) {
+
+        let fruitQuantitiesPairs = Array(zip(fruits, quantities))
+        
+        for (fruit, quantity) in fruitQuantitiesPairs {
+            guard 
+                let currentFruitStock = fruitsStock[fruit],
+                currentFruitStock-quantity >= limitedQuantity
+            else {
+                postErrorOccurred()
+                return
+            }
+            
+            fruitsStock[fruit] = currentFruitStock - quantity
+            postFruitsStock()
+        }
     }
     
     func editStock(of type: Fruits, to quantities: Int) {
