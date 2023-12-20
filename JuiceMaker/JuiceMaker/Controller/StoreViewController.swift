@@ -35,6 +35,12 @@ final class StoreViewController: UIViewController {
         super.viewDidLoad()
         fruitStore.initializeFruit()
         initView()
+        print("test2")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("test1")
     }
     
     @IBAction func moveToFruitStoreBtnTapped(_ sender: Any) {
@@ -68,7 +74,10 @@ final class StoreViewController: UIViewController {
     }
     
     private func moveFruitStore() {
-        self.performSegue(withIdentifier: "moveToStock", sender: "test")
+//        self.performSegue(withIdentifier: "moveToStock", sender: "test")
+        guard let secondVC = storyboard?.instantiateViewController(withIdentifier: "StockViewController") as? StockViewController else { return }
+        secondVC.modalPresentationStyle = .fullScreen
+        self.present(secondVC, animated: false)
     }
     
 }
