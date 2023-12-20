@@ -48,7 +48,7 @@ extension JuiceOrderingViewController {
         guard let secondVC = storyboard?.instantiateViewController(withIdentifier: FruitStockViewController.className) as? FruitStockViewController else { return }
         
         secondVC.modalPresentationStyle = .fullScreen
-        secondVC.frutCount = fruitStore.fruitCount
+        secondVC.fruitCount = fruitStore.fruitCount
         secondVC.updateFruitStore = fruitStore.updateFruitStore
         
         self.present(secondVC, animated: false)

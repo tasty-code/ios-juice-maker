@@ -23,7 +23,7 @@ class FruitStockViewController: UIViewController {
     
     private var labelDict: Dictionary<UIStepper, UILabel> = [:]
     private var stepperDict: Dictionary<UIStepper, Fruit> = [:]
-    var frutCount: ((Fruit) -> Int)?
+    var fruitCount: ((Fruit) -> Int)?
     var updateFruitStore: ((Dictionary<Fruit, Int>) -> Void)?
     
     override func viewDidLoad() {
@@ -69,7 +69,7 @@ extension FruitStockViewController {
     func setStepper(stepper: UIStepper, fruit: Fruit) {
         stepper.minimumValue = fruit.minimum
         stepper.maximumValue = fruit.maximum
-        stepper.value = Double(frutCount?(fruit) ?? 0)
+        stepper.value = Double(fruitCount?(fruit) ?? 0)
     }
     
     func setLabelText(stepper: UIStepper, label: UILabel) {
