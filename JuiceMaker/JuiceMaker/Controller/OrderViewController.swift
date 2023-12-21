@@ -90,15 +90,15 @@ extension OrderViewController {
     }
     
     private func presentInventoryViewController() {
-        guard let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: InventoryViewController.className)
-                as? InventoryViewController else { return }
-        
         let fruitInventory = fruitStore.checkFruitContainer()
-        nextViewController.setUpFruitContainer(data: fruitInventory)
+        guard let nextViewController = self.storyboard?.instantiateViewController(identifier: InventoryViewController.className, creator: { coder in
+            return InventoryViewController(coder: coder, fruitStore: FruitStore(fruitContainer: fruitInventory))
+        }) else { return }
+        
         nextViewController.modalPresentationStyle = .fullScreen
         self.present(nextViewController, animated: true)
     }
-    
+
     func setUpFruitContainer(data: [Fruit: Int]) {
         fruitStore.updateFruitContainer(with: data)
     }

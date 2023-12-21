@@ -39,12 +39,15 @@ final class InventoryViewController: UIViewController {
         mangoStepper: (mangoQuantityLabel, .mango)
     ]
     
-    // MARK: Initializer
-    required init?(coder aDecoder: NSCoder) {
-        self.fruitStore = FruitStore.init(fruitContainer: [:])
+    init?(coder aDecoder: NSCoder, fruitStore: FruitStore) {
+        self.fruitStore = fruitStore
         super.init(coder: aDecoder)
     }
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
