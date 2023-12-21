@@ -7,12 +7,13 @@
 
 import UIKit
 struct AlertManager {
+    
     static func setAlert(
         vcToShow: UIViewController?,
         preferredStyle: UIAlertController.Style = .alert,
         title: String = String(),
         message: String = String(),
-        buttonActions: [UIAlertAction]
+        handler: [String : (() -> Void)?] = [:]
     ) {
         guard let currentVC = vcToShow else {
             return
@@ -22,11 +23,19 @@ struct AlertManager {
             message: message,
             preferredStyle: preferredStyle
         )
-        for alertAction in buttonActions {
+        print(handler.keys)
+        handler.forEach { name, action in
+            var alertAction: UIAlertAction
+            if action != nil  {
+                alertAction = UIAlertAction(title: name, style: .default) {_ in
+                    action?()
+                }
+            } else {
+                alertAction = UIAlertAction(title: name, style: .cancel)
+            }
             alert.addAction(alertAction)
         }
         currentVC.present(alert, animated: true, completion: nil)
-        
     }
     
     private func generateAlert(

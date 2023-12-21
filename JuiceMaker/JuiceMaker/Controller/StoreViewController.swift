@@ -120,7 +120,7 @@ extension StoreViewController {
                 preferredStyle: UIAlertController.Style.alert,
                 title: "\(recipeName) 쥬스 나왔습니다! 맛있게 드세요!",
                 message: "",
-                buttonActions: [dismissAlertAction]
+                handler: ["확인": nil]
             )
         }
         else {
@@ -129,7 +129,7 @@ extension StoreViewController {
                 preferredStyle: UIAlertController.Style.alert,
                 title: "재료가 모자라요. 재고를 수정할까요?",
                 message: "",
-                buttonActions: [acceptAlertAction, cancelAlertAction]
+                handler: ["예": self.moveFruitStore, "아니오": nil]
             )
         }
     }
