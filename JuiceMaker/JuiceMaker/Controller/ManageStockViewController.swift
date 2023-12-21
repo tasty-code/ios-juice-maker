@@ -24,6 +24,7 @@ final class ManageStockViewController: UIViewController {
     @IBOutlet weak private var mangoStepper: UIStepper!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         configureUI()
     }
     

@@ -21,6 +21,7 @@ final class JuiceOrderViewController: UIViewController {
     @IBOutlet weak private var mangoLabel: UILabel!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         updateFruitStockLabel()
     }
     
