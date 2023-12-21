@@ -12,14 +12,13 @@ final class JuiceMakerViewController: UIViewController {
     @IBOutlet weak var bananaStockLabel: UILabel!
     @IBOutlet weak var kiwiStockLabel: UILabel!
     @IBOutlet weak var mangoStockLabel: UILabel!
-    
-    @IBOutlet weak var manageFruitButton: UIBarButtonItem!
-    var fruitStore: FruitStore = FruitStore(strawberryStock: 10,
+
+    private var fruitStore: FruitStore = FruitStore(strawberryStock: 10,
                                             bananaStock: 10,
                                             pineappleStock: 10,
                                             kiwiStock: 10,
                                             mangoStock: 10)
-    lazy var juiceMaker: JuiceMaker = JuiceMaker(fruitStore: fruitStore)
+    private lazy var juiceMaker: JuiceMaker = JuiceMaker(fruitStore: fruitStore)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +59,7 @@ final class JuiceMakerViewController: UIViewController {
     }
 
     @objc
-    func showFruitStoreViewController() {
+    private func showFruitStoreViewController() {
         guard
             let fruitStoreViewController = storyboard?.instantiateViewController(identifier: "FruitStoreViewController", creator: { coder in
                 return FruitStoreViewController(fruitStore: self.fruitStore, coder: coder)
@@ -69,7 +68,7 @@ final class JuiceMakerViewController: UIViewController {
             fatalError("init(coder:) has not been implemented")
         }
         fruitStoreViewController.delegate = self
-        self.navigationController?.pushViewController(fruitStoreViewController, animated: true)
+        present(fruitStoreViewController, animated: true)
     }
     
     private func proceedMakingJuice(juice: Juice, labels: [UILabel]) {
@@ -89,13 +88,9 @@ final class JuiceMakerViewController: UIViewController {
             showJuiceMakerAlert(isCompletedMakeJuice: false,
                                 message: error.localizedDescription,
                                 completion: { [weak self] in
-                print("핸들러 시작")
                 self?.showFruitStoreViewController()
-                print("핸들러 종료")
             })
-            print("catch문 끝")
         }
-        print("proceedMakingJuice 함수 끝")
     }
     
     @IBAction private func tappedStrawberryBananaJuiceButton(_ sender: UIButton) {
