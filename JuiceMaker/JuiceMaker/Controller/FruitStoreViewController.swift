@@ -83,32 +83,42 @@ final class FruitStoreViewController: UIViewController {
         mangoStepper.value = Double(mangoStock)
     }
     
+    private func updateFruitStock(label: UILabel, fruit: Fruits, count: Int) {
+        label.text = String(count)
+        fruitStore.fruitStocks[fruit] = count
+    }
+    
     @IBAction private func tappedStrawberryStepper(_ sender: UIStepper) {
-        strawberryStockLabel.text = String(Int(sender.value))
-        fruitStore.fruitStocks[.strawberry] = Int(sender.value)
+        updateFruitStock(label: strawberryStockLabel, 
+                         fruit: .strawberry,
+                         count: Int(sender.value))
     }
     
     @IBAction private func tappedBananaStepper(_ sender: UIStepper) {
-        bananaStockLabel.text = String(Int(sender.value))
-        fruitStore.fruitStocks[.banana] = Int(sender.value)
+        updateFruitStock(label: bananaStockLabel,
+                         fruit: .banana,
+                         count: Int(sender.value))
     }
     
     @IBAction private func tappedPineappleStepper(_ sender: UIStepper) {
-        pineappleStockLabel.text = String(Int(sender.value))
-        fruitStore.fruitStocks[.pineapple] = Int(sender.value)
+        updateFruitStock(label: pineappleStockLabel,
+                         fruit: .pineapple,
+                         count: Int(sender.value))
     }
     
     @IBAction private func tappedKiwiStepper(_ sender: UIStepper) {
-        kiwiStockLabel.text = String(Int(sender.value))
-        fruitStore.fruitStocks[.kiwi] = Int(sender.value)
+        updateFruitStock(label: kiwiStockLabel,
+                         fruit: .kiwi,
+                         count: Int(sender.value))
     }
     
     @IBAction private func tappedMangoStepper(_ sender: UIStepper) {
-        mangoStockLabel.text = String(Int(sender.value))
-        fruitStore.fruitStocks[.mango] = Int(sender.value)
+        updateFruitStock(label: mangoStockLabel,
+                         fruit: .mango,
+                         count: Int(sender.value))
     }
 
-    @IBAction func tappedCloseButton(_ sender: UIBarButtonItem) {
+    @IBAction private func tappedCloseButton(_ sender: UIBarButtonItem) {
         delegate?.updateFruitStock()
         dismiss(animated: true)
     }
