@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FruitStockViewController: UIViewController {
+final class FruitStockViewController: UIViewController {
     @IBOutlet weak var strawberryLabel: UILabel!
     @IBOutlet weak var bananaLabel: UILabel!
     @IBOutlet weak var pineappleLabel: UILabel!
@@ -26,7 +26,7 @@ class FruitStockViewController: UIViewController {
     private var stepperDict: Dictionary<UIStepper, Fruit> = [:]
     var fruitCount: ((Fruit) -> Int)?
     var updateFruitStore: ((Dictionary<Fruit, Int>) -> Void)?
-    var originStockValue: [Int] = []
+    private var originStockValue: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,27 +62,27 @@ extension FruitStockViewController {
         makeAlert(title: "알림", message: "재고가 수정되었습니다!")
     }
     
-    func dismissFruitStockViewController() {
+    private func dismissFruitStockViewController() {
         self.dismiss(animated: false)
     }
     
-    func setLabelDict() {
+    private func setLabelDict() {
         labelDict = [strawberryStepper: strawberryLabel, bananaStepper: bananaLabel, pineappleStepper: pineappleLabel, kiwiStepper: kiwiLabel, mangoStepper: mangoLabel]
     }
     
-    func setStepperDict() {
+    private func setStepperDict() {
         stepperDict = [strawberryStepper : .strawberry, bananaStepper : .banana, pineappleStepper : .pineapple, kiwiStepper : .kiwi, mangoStepper : .mango]
         stepperDict.forEach(setStepper)
     }
     
-    func setStepper(stepper: UIStepper, fruit: Fruit) {
+    private func setStepper(stepper: UIStepper, fruit: Fruit) {
         stepper.minimumValue = fruit.minimum
         stepper.maximumValue = fruit.maximum
         stepper.value = Double(fruitCount?(fruit) ?? 0)
         originStockValue.append(Int(stepper.value))
     }
     
-    func setLabelText(stepper: UIStepper, label: UILabel) {
+    private func setLabelText(stepper: UIStepper, label: UILabel) {
         label.text = String(Int(stepper.value))
     }
 }

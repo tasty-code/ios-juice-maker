@@ -6,7 +6,7 @@
 
 import UIKit
 
-class JuiceOrderingViewController: UIViewController {
+final class JuiceOrderingViewController: UIViewController {
     
     @IBOutlet weak var strawberryLabel: UILabel!
     @IBOutlet weak var bananaLabel: UILabel!
@@ -40,11 +40,11 @@ class JuiceOrderingViewController: UIViewController {
 }
 
 extension JuiceOrderingViewController {
-    func setLabelDict() {
+    private func setLabelDict() {
         labelDict = [strawberryLabel: .strawberry, bananaLabel: .banana, pineappleLabel: .pineapple, kiwiLabel: .kiwi, mangoLabel: .mango]
     }
     
-    func presentFruitStockViewController() {
+    private func presentFruitStockViewController() {
         guard let secondVC = storyboard?.instantiateViewController(withIdentifier: FruitStockViewController.className) as? FruitStockViewController else { return }
         
         secondVC.modalPresentationStyle = .fullScreen
@@ -67,7 +67,7 @@ extension JuiceOrderingViewController {
         configureFruitStoreUI()
     }
     
-    func configureFruitStoreUI() {
+    private func configureFruitStoreUI() {
         labelDict.forEach { $0.text = fruitStore.fruitCount(fruit: $1).description }
     }
 }
