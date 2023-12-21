@@ -33,11 +33,17 @@ final class FruitStockViewController: UIViewController {
     }
     
     private func initializeStepper() {
-        if let strawberryInitValue = FruitStore.shared.fruitStock[.strawberry] { strawberryStepper.value = Double(strawberryInitValue) }
-        if let bananaInitValue = FruitStore.shared.fruitStock[.banana] { bananaStepper.value = Double(bananaInitValue) }
-        if let pineappleInitValue = FruitStore.shared.fruitStock[.pineapple] { pineappleStepper.value = Double(pineappleInitValue) }
-        if let mangoInitValue = FruitStore.shared.fruitStock[.mango] { mangoStepper.value = Double(mangoInitValue) }
-        if let kiwiInitValue = FruitStore.shared.fruitStock[.kiwi] { kiwiStepper.value = Double(kiwiInitValue) }
+        if let strawberryInitValue = FruitStore.shared.fruitStock[.strawberry],
+           let bananaInitValue = FruitStore.shared.fruitStock[.banana],
+           let pineappleInitValue = FruitStore.shared.fruitStock[.pineapple],
+           let mangoInitValue = FruitStore.shared.fruitStock[.mango],
+           let kiwiInitValue = FruitStore.shared.fruitStock[.kiwi] {
+            strawberryStepper.value = Double(strawberryInitValue)
+            bananaStepper.value = Double(bananaInitValue)
+            pineappleStepper.value = Double(pineappleInitValue)
+            mangoStepper.value = Double(mangoInitValue)
+            kiwiStepper.value = Double(kiwiInitValue)
+        }
     }
     
     @IBAction private func stepperPressed(_ sender: UIStepper) {
