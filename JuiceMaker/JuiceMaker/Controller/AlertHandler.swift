@@ -1,9 +1,9 @@
 
 import UIKit
 
-protocol AlertDelegation {
-    func presentAlert(of type: AlertType, completion: @escaping (UIAlertAction) -> Void)
-    func presentAelrt(of type: AlertType)
+protocol PresentationDelegate {
+    func presentAlert(with type: AlertType, completion: @escaping (UIAlertAction) -> Void)
+    func presentAelrt(with type: AlertType)
 }
 
 enum AlertType {
@@ -11,7 +11,7 @@ enum AlertType {
     case fruitShortage(String)
 }
 
-final class AlertHandler: AlertDelegation {
+final class AlertHandler: PresentationDelegate {
     
     private func fetchTopVC() -> UIViewController? {
         var currentVC = UIApplication.shared.keyWindow?.rootViewController
@@ -36,7 +36,7 @@ final class AlertHandler: AlertDelegation {
         return alertView
     }
     
-    func presentAlert(of type: AlertType, completion: @escaping (UIAlertAction) -> Void) {
+    func presentAlert(with type: AlertType, completion: @escaping (UIAlertAction) -> Void) {
         let topViewController = fetchTopVC()
         if topViewController is UIAlertController { return }
         let alertView = generateAlert(of: type)
@@ -45,7 +45,7 @@ final class AlertHandler: AlertDelegation {
         topViewController?.present(alertView, animated: true)
     }
     
-    func presentAelrt(of type: AlertType) {
+    func presentAelrt(with type: AlertType) {
         let topViewController = fetchTopVC()
         if topViewController is UIAlertController { return }
         let alertView = generateAlert(of: type)
