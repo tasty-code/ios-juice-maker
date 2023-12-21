@@ -15,16 +15,17 @@ final class JuiceMaker {
     
     func produceJuice(flavor: JuiceFlavor) {
         do {
-            try consumeFruitsForMakingJuice(flavor: flavor)
-            let result = JuiceMakerModel.Response(juice: flavor)
-            resultConverter?.convertResult(result)
+            let updatedStocks = try consumeFruitsForMakingJuice(flavor: flavor)
+            let result = JuiceMakerModel.Response.SuccessInfo(juice: flavor, updatedStocks: updatedStocks)
+            let response = JuiceMakerModel.Response(result: result)
+            resultConverter?.convertResult(response)
         } catch {
-            let result = JuiceMakerModel.Response(juice: nil)
+            let result = JuiceMakerModel.Response(result: nil)
             resultConverter?.convertResult(result)
         }
     }
     
-    private func consumeFruitsForMakingJuice(flavor: JuiceFlavor) throws {
-        try fruitStore.consume(ingredients: flavor.recipe)
+    private func consumeFruitsForMakingJuice(flavor: JuiceFlavor) throws -> [FruitStock] {
+        return try fruitStore.consume(ingredients: flavor.recipe)
     }
 }
