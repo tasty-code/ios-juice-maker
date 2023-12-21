@@ -108,7 +108,7 @@ final class FruitStoreViewController: UIViewController {
         fruitStore.fruitStocks[.mango] = Int(sender.value)
     }
 
-    @IBAction private func tappedCloseButton(_ sender: UIButton) {
+    @IBAction func tappedCloseButton(_ sender: UIBarButtonItem) {
         delegate?.updateFruitStock()
         dismiss(animated: true)
     }
