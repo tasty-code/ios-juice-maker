@@ -6,11 +6,12 @@
 //
 
 enum StockDisplayModel {
-    struct Response {
-        let stocks: [FruitStock]?
+    enum Response {
+        case success([FruitStock])
+//        case failure
     }
     
-    struct ViewModel {
+    enum ViewModel {
         struct EachFruitCount {
             let strawberryCount: Int
             let bananaCount: Int
@@ -19,6 +20,7 @@ enum StockDisplayModel {
             let mangoCount: Int
         }
         
-        let countOfEachFruits: EachFruitCount?
+        case success(EachFruitCount)
+        case failure
     }
 }

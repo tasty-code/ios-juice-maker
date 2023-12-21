@@ -68,13 +68,16 @@ extension StockManagerViewController: StoryboardBased {
 
 extension StockManagerViewController: StockDisplayResultDisplayable {
     func displayStock(viewModel: StockDisplayModel.ViewModel) {
-        guard let eachFruitCount = viewModel.countOfEachFruits else { return }
-        
-        self.strawberryStockLabel.text = "\(eachFruitCount.strawberryCount)"
-        self.bananaStockLabel.text = "\(eachFruitCount.bananaCount)"
-        self.pineappleStockLabel.text = "\(eachFruitCount.pineappleCount)"
-        self.kiwiStockLabel.text = "\(eachFruitCount.kiwiCount)"
-        self.mangoStockLabel.text = "\(eachFruitCount.mangoCount)"
+        switch viewModel {
+        case .success(let eachFruitCount):
+            self.strawberryStockLabel.text = "\(eachFruitCount.strawberryCount)"
+            self.bananaStockLabel.text = "\(eachFruitCount.bananaCount)"
+            self.pineappleStockLabel.text = "\(eachFruitCount.pineappleCount)"
+            self.kiwiStockLabel.text = "\(eachFruitCount.kiwiCount)"
+            self.mangoStockLabel.text = "\(eachFruitCount.mangoCount)"
+        case .failure:
+            return
+        }
     }
 }
 

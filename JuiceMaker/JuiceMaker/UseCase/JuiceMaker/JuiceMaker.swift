@@ -15,7 +15,7 @@ final class JuiceMaker {
     
     func displayStock() {
         let stocks = fruitStore.fetchStocks()
-        let result = StockDisplayModel.Response(stocks: stocks)
+        let result = StockDisplayModel.Response.success(stocks)
         resultConverter?.convertResult(result)
     }
     
