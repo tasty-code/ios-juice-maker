@@ -31,10 +31,15 @@ final class JuiceMakerViewController: UIViewController {
         super.init(coder: coder)
     }
     
-    init?(coder: NSCoder, fruitStore: FruitStore) {
-        self.stockDisplayUseCase = StockDisplay(fruitStore: fruitStore)
-        self.juiceMakerUseCase = JuiceMaker(fruitStore: fruitStore)
-        self.router = JuiceMakerRouter(dataStore: fruitStore)
+    init?(
+        coder: NSCoder,
+        stockDisplayUseCase: StockDisplay,
+        juiceMakerUseCase: JuiceMaker,
+        router: JuiceMakerRouter
+    ) {
+        self.stockDisplayUseCase = stockDisplayUseCase
+        self.juiceMakerUseCase = juiceMakerUseCase
+        self.router = router
         super.init(coder: coder)
         setUpLayers()
     }
@@ -94,11 +99,18 @@ extension JuiceMakerViewController {
 }
 
 extension JuiceMakerViewController: StoryboardBased {
-    static func instantiate(fruitStore: FruitStore) -> Self {
-        return sceneStoryboard.instantiateViewController(
-            identifier: storyboardIdentifier
-        ) { coder in
-            return Self.init(coder: coder, fruitStore: fruitStore)
+    static func instantiate(
+        stockDisplayUseCase: StockDisplay,
+        juiceMakerUseCase: JuiceMaker,
+        router: JuiceMakerRouter
+    ) -> Self {
+        return sceneStoryboard.instantiateViewController(identifier: storyboardIdentifier) { coder in
+            return Self.init(
+                coder: coder,
+                stockDisplayUseCase: stockDisplayUseCase,
+                juiceMakerUseCase: juiceMakerUseCase,
+                router: router
+            )
         }
     }
 }

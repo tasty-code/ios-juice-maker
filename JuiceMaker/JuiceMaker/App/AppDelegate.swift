@@ -14,16 +14,21 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        let fruitStore = FruitStore(initialCount: 10)
-        let viewController = JuiceMakerViewController.instantiate(fruitStore: fruitStore)
-        let rootViewController = UINavigationController(rootViewController: viewController)
-        
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = rootViewController
+        window.rootViewController = self.makeRootViewController()
         window.makeKeyAndVisible()
         self.window = window
-        
         return true
+    }
+    
+    private func makeRootViewController() -> UINavigationController {
+        let fruitStore = FruitStore(initialCount: 10)
+        let viewController = JuiceMakerViewController.instantiate(
+            stockDisplayUseCase: StockDisplay(fruitStore: fruitStore),
+            juiceMakerUseCase: JuiceMaker(fruitStore: fruitStore),
+            router: JuiceMakerRouter(dataStore: fruitStore)
+        )
+        return UINavigationController(rootViewController: viewController)
     }
 }
 
