@@ -28,7 +28,7 @@ class FruitStockViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
+        super.viewWillDisappear(animated)
         NotificationCenter.default.post(name: .update, object: nil)
     }
     

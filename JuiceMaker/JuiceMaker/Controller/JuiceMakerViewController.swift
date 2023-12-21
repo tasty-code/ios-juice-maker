@@ -49,9 +49,11 @@ final class JuiceMakerViewController: UIViewController {
         let alert = UIAlertController(title: nil,
                                       message: "재료가 모자라요.\n재고를 수정할까요?",
                                       preferredStyle: .alert)
-        let confirm = UIAlertAction(title: "예", style: .default, handler: { _ in
-            self.performSegue(withIdentifier: "MoveToFruitStockView", sender: self)
-        })
+        
+        let confirm = UIAlertAction(title: "예", style: .default) { [weak self] _ in
+            self?.performSegue(withIdentifier: "MoveToFruitStockView", sender: self)
+        }
+
         let close = UIAlertAction(title: "아니요", style: .destructive)
         
         alert.addAction(confirm)
