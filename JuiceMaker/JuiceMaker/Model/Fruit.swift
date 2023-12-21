@@ -5,8 +5,8 @@
 //  Created by 미르 & 미성
 //
 
-enum Fruit: Int {
-    case strawberry = 0
+enum Fruit {
+    case strawberry
     case banana
     case pineapple
     case kiwi

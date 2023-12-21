@@ -6,9 +6,8 @@
 
 import UIKit
 
-protocol JuiceOrderViewControllerDelegate: AnyObject {
-    func viewAppearing()
-    func fruitStock(fruitStock: [Fruit: UInt])
+protocol UIViewControllerDelegate: AnyObject {
+    func fruitStockDidChange(fruitStock: [Fruit: UInt])
 }
 
 final class JuiceOrderViewController: UIViewController {
@@ -83,14 +82,11 @@ final class JuiceOrderViewController: UIViewController {
     }
 }
 
-extension JuiceOrderViewController: JuiceOrderViewControllerDelegate {
-    func viewAppearing() {
-        updateFruitStockLabel()
-    }
-    
-    func fruitStock(fruitStock: [Fruit : UInt]) {
+extension JuiceOrderViewController: UIViewControllerDelegate {
+    func fruitStockDidChange(fruitStock: [Fruit : UInt]) {
         for fruit in fruitStock {
             juiceMaker.fruitStore.updateFruitStock(fruit: fruit.key, num: fruitStock[fruit.key] ?? 0)
         }
+        updateFruitStockLabel()
     }
 }
