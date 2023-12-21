@@ -91,18 +91,24 @@ class MainViewController: UIViewController {
         case .failure(let error):
             switch error {
             case JuiceError.outOfStock:
-                AlertBuilder(viewController: self).addAction("예", style: .default) {
+                AlertBuilder(viewController: self)
+                    .addAction("예", style: .default) {
                     [weak self] in
                     guard let self = self else { return }
                     moveModifyInventoryView()
                 }
-                .addAction("아니오", style: .cancel).addMessage(title:"재료 부족", message: "재료가 모자라요. 재고를 수정할까요?", style: .alert)
+                    .addAction("아니오", style: .cancel)
+                    .addMessage(title:"재료 부족", message: "재료가 모자라요. 재고를 수정할까요?", style: .alert)
                 
             case JuiceError.unknown:
-                AlertBuilder(viewController: self).addAction("확인", style: .default).addMessage(title:"알 수 없는 에러", message: "에러가 발생하였습니다.", style: .alert)
+                AlertBuilder(viewController: self)
+                    .addAction("확인", style: .default)
+                    .addMessage(title:"알 수 없는 에러", message: "에러가 발생하였습니다.", style: .alert)
                 
             case JuiceError.quantityOfAllFruitsAccessFailed:
-                AlertBuilder(viewController: self).addAction("확인", style: .default).addMessage(title:"유효하지 않은 레시피", message: "주문할 수 없는 쥬스입니다.", style: .alert)
+                AlertBuilder(viewController: self)
+                    .addAction("확인", style: .default)
+                    .addMessage(title:"유효하지 않은 레시피", message: "주문할 수 없는 쥬스입니다.", style: .alert)
             }
         }
     }
