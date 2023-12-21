@@ -73,7 +73,7 @@ private extension StockManagementViewController {
 }
 
 // MARK: - stepper 설정
-extension StockManagementViewController {
+private extension StockManagementViewController {
     func setupTargetActionOnStepper() {
         changeAmountOfStrawberryStepper.addTarget(self, action: #selector(changeAmount(_:)), for: .valueChanged)
         changeAmountOfBananaStepper.addTarget(self, action: #selector(changeAmount(_:)), for: .valueChanged)
@@ -133,7 +133,7 @@ extension StockManagementViewController {
 }
 
 // MARK: - 변경된 값 저장
-extension StockManagementViewController {
+private extension StockManagementViewController {
     func changeAmount(_ fruit: Fruit, _ number: Int) {
         receivedFruitInventoryData[fruit] = number
     }
