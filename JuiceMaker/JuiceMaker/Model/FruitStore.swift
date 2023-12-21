@@ -23,7 +23,7 @@ final class FruitStore {
         return newTarget
     }
     
-    func consume(ingredients: JuiceIngredients) throws {
+    func consume(ingredients: JuiceIngredients) throws -> [FruitStock] {
         let newFruitStocks: [FruitStock] = try ingredients.reduce(into: []) { (result, ingredient) in
             let newStock = try consume(ingredient.key, numberOfFruits: ingredient.value)
             result.append(newStock)
@@ -33,6 +33,7 @@ final class FruitStore {
             let fruitType = newFruitStock.fruitType
             self.fruitStocks[fruitType] = newFruitStock
         }
+        return newFruitStocks
     }
     
     func fetchStocks() -> [FruitStock] {

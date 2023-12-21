@@ -117,7 +117,7 @@ extension JuiceMakerViewController: StockDisplayResultDisplayable {
 
 extension JuiceMakerViewController: JuiceMakerResultDisplayable {
     func displayMakingResult(viewModel: JuiceMakerModel.ViewModel) {
-        guard let juiceName = viewModel.juiceName else {
+        guard let info = viewModel.successInfo else {
             let action: AlertActionHandler = { [weak self] _ in
                 self?.router?.routeToNextViewController()
             }
@@ -125,8 +125,19 @@ extension JuiceMakerViewController: JuiceMakerResultDisplayable {
             return
         }
         
-        stockDisplayUseCase?.displayStock()
-        
-        present(JuiceMakerAlert.juiceIsReady(juiceName: juiceName).alertController, animated: true)
+        info.updatedStocks.forEach { (fruit, updatedCount) in
+            updateStockLabel(of: fruit, with: updatedCount)
+        }
+        present(JuiceMakerAlert.juiceIsReady(juiceName: info.juiceName).alertController, animated: true)
+    }
+    
+    private func updateStockLabel(of fruit: Fruit, with updatedCount: Int) {
+        switch fruit {
+        case .strawberry: self.strawberryStockLabel.text = "\(updatedCount)"
+        case .banana: self.bananaStockLabel.text = "\(updatedCount)"
+        case .pineapple: self.pineappleStockLabel.text = "\(updatedCount)"
+        case .kiwi: self.kiwiStockLabel.text = "\(updatedCount)"
+        case .mango: self.mangoStockLabel.text = "\(updatedCount)"
+        }
     }
 }
