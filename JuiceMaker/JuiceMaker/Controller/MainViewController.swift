@@ -22,7 +22,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var kiwiQuantityLabel: UILabel!
     @IBOutlet weak var mangoQuantityLabel: UILabel!
     
-    let juiceMaker = JuiceMaker()
+    let juiceMaker = JuiceMaker(fruitStore: FruitStore())
     
     weak var juiceMadeDelegate: JuiceMadeDelegate?
     weak var sendFruitQuantityDelegate: SendFruitQuantityDelegate?
