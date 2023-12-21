@@ -19,6 +19,10 @@ final class JuiceMakerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(configureView),
+                                               name: .update,
+                                               object: nil)
     }
     
     private func orderJuice(juice: Juice) {
@@ -30,14 +34,6 @@ final class JuiceMakerViewController: UIViewController {
         case false:
             presentFailAlert()
         }
-    }
-    
-    @IBAction private func stockUpdateViewButton(_ sender: Any) {
-        guard let fruitStockViewController = self.storyboard?.instantiateViewController(withIdentifier: "fruitStockViewController") as? FruitStockViewController else {return}
-        
-        let fruitStockNavigationController = UINavigationController.init(rootViewController: fruitStockViewController)
-        fruitStockNavigationController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-        self.present(fruitStockNavigationController, animated: true, completion: nil)
     }
     
     private func presentSuccessAlert(menu: Juice) {
@@ -53,9 +49,11 @@ final class JuiceMakerViewController: UIViewController {
         let alert = UIAlertController(title: nil,
                                       message: "재료가 모자라요.\n재고를 수정할까요?",
                                       preferredStyle: .alert)
-        let confirm = UIAlertAction(title: "예", style: .default, handler: { _ in
-            self.stockUpdateViewButton(UIButton())
-        })
+        
+        let confirm = UIAlertAction(title: "예", style: .default) { [weak self] _ in
+            self?.performSegue(withIdentifier: "MoveToFruitStockView", sender: self)
+        }
+
         let close = UIAlertAction(title: "아니요", style: .destructive)
         
         alert.addAction(confirm)
@@ -93,12 +91,15 @@ final class JuiceMakerViewController: UIViewController {
 }
 
 extension JuiceMakerViewController {
-
-    private func configureView() {
-        strawberryLabel.text = String(juiceMaker.fruitStore.quantity(of: .strawberry))
-        bananaLabel.text = String(juiceMaker.fruitStore.quantity(of: .banana))
-        pineappleLabel.text = String(juiceMaker.fruitStore.quantity(of: .pineapple))
-        kiwiLabel.text = String(juiceMaker.fruitStore.quantity(of: .kiwi))
-        mangoLabel.text = String(juiceMaker.fruitStore.quantity(of: .mango))
+    @objc private func configureView() {
+        strawberryLabel.text = String(FruitStore.shared.quantity(of: .strawberry))
+        bananaLabel.text = String(FruitStore.shared.quantity(of: .banana))
+        pineappleLabel.text = String(FruitStore.shared.quantity(of: .pineapple))
+        kiwiLabel.text = String(FruitStore.shared.quantity(of: .kiwi))
+        mangoLabel.text = String(FruitStore.shared.quantity(of: .mango))
     }
+}
+
+extension Notification.Name {
+    static let update = Notification.Name("update")
 }
