@@ -302,7 +302,7 @@
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZQk-f4-zrz">
                                                 <rect key="frame" x="0.0" y="234" width="94" height="32"/>
                                                 <connections>
-                                                    <action selector="stepperPressed:" destination="Yu1-lM-nqp" eventType="valueChanged" id="d03-QM-Oxq"/>
+                                                    <action selector="strawberryStepperPressed:" destination="Yu1-lM-nqp" eventType="valueChanged" id="rhe-1I-Sbo"/>
                                                 </connections>
                                             </stepper>
                                         </subviews>
@@ -326,7 +326,7 @@
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="O5s-2N-3iP">
                                                 <rect key="frame" x="0.0" y="234" width="94" height="32"/>
                                                 <connections>
-                                                    <action selector="stepperPressed:" destination="Yu1-lM-nqp" eventType="valueChanged" id="jnk-Mc-wJf"/>
+                                                    <action selector="bananaStepperPressed:" destination="Yu1-lM-nqp" eventType="valueChanged" id="rXL-aO-He6"/>
                                                 </connections>
                                             </stepper>
                                         </subviews>
@@ -350,7 +350,7 @@
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Rcr-xr-eqz">
                                                 <rect key="frame" x="0.0" y="234" width="94" height="32"/>
                                                 <connections>
-                                                    <action selector="stepperPressed:" destination="Yu1-lM-nqp" eventType="valueChanged" id="DNV-jN-cJS"/>
+                                                    <action selector="pineappleStepperPressed:" destination="Yu1-lM-nqp" eventType="valueChanged" id="PpZ-I0-70V"/>
                                                 </connections>
                                             </stepper>
                                         </subviews>
@@ -374,7 +374,7 @@
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="klA-59-Nu4">
                                                 <rect key="frame" x="0.0" y="234" width="94" height="32"/>
                                                 <connections>
-                                                    <action selector="stepperPressed:" destination="Yu1-lM-nqp" eventType="valueChanged" id="sbh-YU-eHu"/>
+                                                    <action selector="kiwiStepperPressed:" destination="Yu1-lM-nqp" eventType="valueChanged" id="zLo-Tp-ZsF"/>
                                                 </connections>
                                             </stepper>
                                         </subviews>
@@ -398,7 +398,7 @@
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="xbn-6P-grO">
                                                 <rect key="frame" x="0.0" y="234" width="94" height="32"/>
                                                 <connections>
-                                                    <action selector="stepperPressed:" destination="Yu1-lM-nqp" eventType="valueChanged" id="u0V-sA-0mN"/>
+                                                    <action selector="mangoStepperPressed:" destination="Yu1-lM-nqp" eventType="valueChanged" id="EPi-WT-LtU"/>
                                                 </connections>
                                             </stepper>
                                         </subviews>

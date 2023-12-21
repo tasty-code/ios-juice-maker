@@ -46,22 +46,25 @@ final class FruitStockViewController: UIViewController {
         }
     }
     
-    @IBAction private func stepperPressed(_ sender: UIStepper) {
-        let value = Int(sender.value)
-        switch sender {
-        case strawberryStepper:
-            handleFruitStepper(.strawberry, value: value)
-        case bananaStepper:
-            handleFruitStepper(.banana, value: value)
-        case pineappleStepper:
-            handleFruitStepper(.pineapple, value: value)
-        case kiwiStepper:
-            handleFruitStepper(.kiwi, value: value)
-        case mangoStepper:
-            handleFruitStepper(.mango, value: value)
-        default:
-            break
-        }
+    @IBAction func strawberryStepperPressed(_ sender: UIStepper) {
+        handleFruitStepper(.strawberry, value: Int(sender.value))
+        updateFruitLabels()
+    }
+    
+    @IBAction func bananaStepperPressed(_ sender: UIStepper) {
+        handleFruitStepper(.banana, value: Int(sender.value))
+        updateFruitLabels()
+    }
+    @IBAction func pineappleStepperPressed(_ sender: UIStepper) {
+        handleFruitStepper(.pineapple, value: Int(sender.value))
+        updateFruitLabels()
+    }
+    @IBAction func kiwiStepperPressed(_ sender: UIStepper) {
+        handleFruitStepper(.kiwi, value: Int(sender.value))
+        updateFruitLabels()
+    }
+    @IBAction func mangoStepperPressed(_ sender: UIStepper) {
+        handleFruitStepper(.mango, value: Int(sender.value))
         updateFruitLabels()
     }
     
