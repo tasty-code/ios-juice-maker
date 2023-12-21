@@ -88,8 +88,4 @@ extension InventoryViewController {
         fruitElementsByStepper[stepper]?.label.text = String(fruitQuantity)
         fruitStore.updateFruitQuantity(of: fruit, by: fruitQuantity)
     }
-    
-    func setUpFruitContainer(data: [Fruit: Int]) {
-        fruitStore.updateFruitContainer(with: data)
-    }
 }
