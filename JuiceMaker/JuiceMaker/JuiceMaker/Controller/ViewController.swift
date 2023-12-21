@@ -6,6 +6,12 @@
 
 import UIKit
 
+extension ViewController: SecondViewControllerDelegate {
+    func didUpdateFruitStock() {
+        updateStockLabel()
+    }
+}
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var strawberryImageView: UIImageView!
@@ -16,18 +22,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateStockLabel()
-        
-//        self.navigationItem.hidesBackButton = true
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        self.navigationItem.setHidesBackButton(true, animated: true)
-    }
-    
     
     @IBAction func orderJuice(_ sender: UIButton) {
+        
         var juice: Juice
         switch sender.tag {
         case 0:
@@ -50,15 +48,20 @@ class ViewController: UIViewController {
         
         do {
             try juiceMaker.makeJuice(juice)
-            updateStockLabel()
+            
             let successAlert = UIAlertController(title: "주문 완료", message: "\(juice.name) 나왔습니다! 맛있게 드세요!", preferredStyle: .alert)
+            
             successAlert.addAction(UIAlertAction(title: "확인", style: .default))
+            
+            updateStockLabel()
             present(successAlert, animated: true)
         } catch ErrorType.insufficientFruits {
             let stockAlert = UIAlertController(title: "재고 부족", message: "\(juice.name) 재료가 모자라요. 재고를 수정할까요?", preferredStyle: .alert)
-            let actionYes = UIAlertAction(title: "예", style: .default, handler: {
-                _ in self.performSegue(withIdentifier: "secondVC", sender: self)
+            
+            let actionYes = UIAlertAction(title: "예", style: .default, handler: {_ in
+                self.presentSecondViewController()
             })
+            
             let actionNo = UIAlertAction(title: "아니요", style: .cancel)
             
             actionYes.setValue(UIColor.red, forKey: "titleTextColor")
@@ -78,23 +81,32 @@ class ViewController: UIViewController {
     }
     
     func updateStockLabel() {
-        for label in FruitLabel {
-            let fruit: Fruit
-            switch label.tag {
-            case 0:
-                fruit = .strawberry
-            case 1:
-                fruit = .banana
-            case 2:
-                fruit = .kiwi
-            case 3:
-                fruit = .mango
-            case 4:
-                fruit = .pineapple
-            default:
-                continue
+            for label in self.FruitLabel {
+                let fruit: Fruit
+                switch label.tag {
+                case 0:
+                    fruit = .strawberry
+                case 1:
+                    fruit = .banana
+                case 2:
+                    fruit = .pineapple
+                case 3:
+                    fruit = .kiwi
+                case 4:
+                    fruit = .mango
+                default:
+                    continue
+                }
+                label.text = "\(self.juiceMaker.fruitStore.getQuantity(of: fruit))"
             }
-            label.text = "\(juiceMaker.fruitStore.getQuantity(of: fruit))"
-        }
+    }
+    
+    func presentSecondViewController() {
+        guard let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "secondVC") as? SecondViewController else { return }
+        vc2.juiceMaker = self.juiceMaker
+        vc2.delegate = self
+        vc2.modalPresentationStyle = .fullScreen
+        let navigationController = UINavigationController(rootViewController: vc2)
+        self.present(navigationController, animated: true, completion: nil)
     }
 }
