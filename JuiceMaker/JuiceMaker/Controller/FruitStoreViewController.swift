@@ -28,6 +28,7 @@ final class FruitStoreViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         setStockLabelUI()
+        setStepperValue()
     }
     
     init?(fruitStore: FruitStore, coder: NSCoder) {
@@ -65,34 +66,50 @@ final class FruitStoreViewController: UIViewController {
         mangoStockLabel.text = String(mangoStock)
     }
     
-    @objc
-    func tappedCloseButton() {
-        delegate?.updateFruitStock()
-        self.navigationController?.popViewController(animated: true)
+    private func setStepperValue() {
+        guard
+            let strawberryStock = fruitStore.fruitStocks[.strawberry],
+            let bananaStock = fruitStore.fruitStocks[.banana],
+            let pineappleStock = fruitStore.fruitStocks[.pineapple],
+            let kiwiStock = fruitStore.fruitStocks[.kiwi],
+            let mangoStock = fruitStore.fruitStocks[.mango]
+        else {
+            return
+        }
+        strawberryStepper.value = Double(strawberryStock)
+        bananaStepper.value = Double(bananaStock)
+        pinappleStepper.value = Double(pineappleStock)
+        kiwiStepper.value = Double(kiwiStock)
+        mangoStepper.value = Double(mangoStock)
     }
     
-    @IBAction func tappedStrawberryStepper(_ sender: UIStepper) {
+    @IBAction private func tappedStrawberryStepper(_ sender: UIStepper) {
         strawberryStockLabel.text = String(Int(sender.value))
         fruitStore.fruitStocks[.strawberry] = Int(sender.value)
     }
     
-    @IBAction func tappedBananaStepper(_ sender: UIStepper) {
+    @IBAction private func tappedBananaStepper(_ sender: UIStepper) {
         bananaStockLabel.text = String(Int(sender.value))
         fruitStore.fruitStocks[.banana] = Int(sender.value)
     }
     
-    @IBAction func tappedPineappleStepper(_ sender: UIStepper) {
+    @IBAction private func tappedPineappleStepper(_ sender: UIStepper) {
         pineappleStockLabel.text = String(Int(sender.value))
         fruitStore.fruitStocks[.pineapple] = Int(sender.value)
     }
     
-    @IBAction func tappedKiwiStepper(_ sender: UIStepper) {
+    @IBAction private func tappedKiwiStepper(_ sender: UIStepper) {
         kiwiStockLabel.text = String(Int(sender.value))
         fruitStore.fruitStocks[.kiwi] = Int(sender.value)
     }
     
-    @IBAction func tappedMangoStepper(_ sender: UIStepper) {
+    @IBAction private func tappedMangoStepper(_ sender: UIStepper) {
         mangoStockLabel.text = String(Int(sender.value))
         fruitStore.fruitStocks[.mango] = Int(sender.value)
+    }
+
+    @IBAction private func tappedCloseButton(_ sender: UIButton) {
+        delegate?.updateFruitStock()
+        dismiss(animated: true)
     }
 }
