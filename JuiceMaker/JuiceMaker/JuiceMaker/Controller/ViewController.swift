@@ -56,6 +56,7 @@ class ViewController: UIViewController {
             updateStockLabel()
             present(successAlert, animated: true)
         } catch ErrorType.insufficientFruits {
+            
             let stockAlert = UIAlertController(title: "재고 부족", message: "\(juice.name) 재료가 모자라요. 재고를 수정할까요?", preferredStyle: .alert)
             
             let actionYes = UIAlertAction(title: "예", style: .default, handler: {_ in
@@ -64,20 +65,19 @@ class ViewController: UIViewController {
             
             let actionNo = UIAlertAction(title: "아니요", style: .cancel)
             
-            actionYes.setValue(UIColor.red, forKey: "titleTextColor")
+            actionNo.setValue(UIColor.red, forKey: "titleTextColor")
             
-            stockAlert.addAction(actionYes)
             stockAlert.addAction(actionNo)
+            stockAlert.addAction(actionYes)
             
             present(stockAlert, animated: true)
         } catch {
             print("Unknown error")
         }
     }
+    
     @IBAction func stockUpdateAction(_ sender: UIBarButtonItem) {
-        guard let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "secondVC") as? SecondViewController else { return }
-        self.navigationController?.pushViewController(vc2, animated: false)
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        presentSecondViewController()
     }
     
     func updateStockLabel() {
