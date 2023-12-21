@@ -22,7 +22,7 @@ final class InventoryViewController: UIViewController {
     @IBOutlet private weak var mangoStepper: UIStepper!
     
     // MARK: Properties
-    private let fruitStore: FruitStore = FruitStore(fruitContainer: [:])
+    private let fruitStore: FruitStore
     private lazy var componentsByFruit: [Fruit: (label: UILabel, stepper: UIStepper)] = [
         .strawberry: (strawberryQuantityLabel, strawberryStepper),
         .banana: (bananaQuantityLabel, bananaStepper),
@@ -38,6 +38,12 @@ final class InventoryViewController: UIViewController {
         kiwiStepper: (kiwiQuantityLabel, .kiwi),
         mangoStepper: (mangoQuantityLabel, .mango)
     ]
+    
+    // MARK: Initializer
+    required init?(coder aDecoder: NSCoder) {
+        self.fruitStore = FruitStore.init(fruitContainer: [:])
+        super.init(coder: aDecoder)
+    }
 
     // MARK: Life Cycle
     override func viewDidLoad() {
