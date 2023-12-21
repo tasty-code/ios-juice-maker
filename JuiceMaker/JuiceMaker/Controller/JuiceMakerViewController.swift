@@ -74,7 +74,10 @@ extension JuiceMakerViewController {
     }
     
     @IBAction private func didTapStockManager(_ sender: UIBarButtonItem) {
-        self.router?.routeToNextViewController()
+        let managinCompletionHandler: (() -> Void) = { [weak self] in
+            self?.juiceMakerUseCase?.displayStock()
+        }
+        self.router?.routeToNextViewController(dismissingHandler: managinCompletionHandler)
     }
 }
 
@@ -128,7 +131,11 @@ extension JuiceMakerViewController: JuiceMakerResultDisplayable {
             present(JuiceMakerAlert.juiceIsReady(juiceName: successInfo.juiceName).alertController, animated: true)
         case .failure:
             let action: AlertActionHandler = { [weak self] _ in
-                self?.router?.routeToNextViewController()
+                let managinCompletionHandler: (() -> Void) = {
+                    self?.juiceMakerUseCase?.displayStock()
+                }
+                
+                self?.router?.routeToNextViewController(dismissingHandler: managinCompletionHandler)
             }
             present(JuiceMakerAlert.fruitShortage(editAction: action).alertController, animated: true)
         }
