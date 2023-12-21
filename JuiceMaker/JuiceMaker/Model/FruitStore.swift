@@ -17,15 +17,15 @@ final class FruitStore {
     }
     
     // MARK: Custom Methods
-    func fetchFruitContainer() -> [Fruit: Int] {
+    func checkFruitContainer() -> [Fruit: Int] {
         return fruitContainer
     }
     
-    func fetchFruitQuantity(of fruit: Fruit) -> Int {
-        return fruitContainer[fruit, default: 0] 
+    func checkFruitQuantity(of fruit: Fruit) -> Int {
+        return fruitContainer[fruit, default: 0]
     }
     
-    func updateFruitContainer(_ data: [Fruit: Int]) {
+    func updateFruitContainer(with data: [Fruit: Int]) {
         fruitContainer = data
     }
     

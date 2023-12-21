@@ -84,6 +84,8 @@ extension OrderViewController {
     
     private func configureUI() {
         for (fruit, label) in labelsByFruit {
+            let fruitQuantity = fruitStore.checkFruitQuantity(of: fruit)
+            label.text = String(fruitQuantity)
         }
     }
     
@@ -91,10 +93,13 @@ extension OrderViewController {
         guard let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: InventoryViewController.className)
                 as? InventoryViewController else { return }
         
+        let fruitInventory = fruitStore.checkFruitContainer()
+        nextViewController.setUpFruitContainer(data: fruitInventory)
         nextViewController.modalPresentationStyle = .fullScreen
         self.present(nextViewController, animated: true)
     }
     
     func setUpFruitContainer(data: [Fruit: Int]) {
+        fruitStore.updateFruitContainer(with: data)
     }
 }

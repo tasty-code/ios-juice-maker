@@ -21,18 +21,18 @@ struct JuiceMaker {
     /// 쥬스 제조 메서드
     func makeJuice(juiceType: Juice) throws {
         let dic = juiceType.requiredFruitQuantity
-        let originalFruitContainer = fruitStore.fetchFruitContainer()
+        let originalFruitContainer = fruitStore.checkFruitContainer()
         
-        for (fruit, quantity) in dic {
-            var storedFruit = fruitStore.fetchFruitQuantity(of: fruit)
+        for (fruit, requiredQuantity) in dic {
+            var remainingQuantity = fruitStore.checkFruitQuantity(of: fruit)
             
-            if storedFruit < quantity {
-                fruitStore.updateFruitContainer(originalFruitContainer)
+            if remainingQuantity < requiredQuantity {
+                fruitStore.updateFruitContainer(with: originalFruitContainer)
                 throw JuiceMakerError.invalidRequest
             }
             
-            storedFruit -= quantity
-            fruitStore.updateFruitQuantity(of: fruit, by: storedFruit)
+            remainingQuantity -= requiredQuantity
+            fruitStore.updateFruitQuantity(of: fruit, by: remainingQuantity)
         }
     }
 }

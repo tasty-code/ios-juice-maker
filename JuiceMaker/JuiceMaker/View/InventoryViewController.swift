@@ -50,7 +50,8 @@ final class InventoryViewController: UIViewController {
         guard let presentingViewController = presentingViewController as? OrderViewController else {
             return
         }
-        presentingViewController.setUpFruitContainer(data: fruitStore.fetchFruitContainer())
+        let fruitInventory = fruitStore.checkFruitContainer()
+        presentingViewController.setUpFruitContainer(data: fruitInventory)
         self.dismiss(animated: true)
     }
     
@@ -67,7 +68,7 @@ extension InventoryViewController {
     
     private func configureUI() {
         for (fruit, components) in componentsByFruit {
-            let fruitQuantity: Int = fruitStore.fetchFruitQuantity(of: fruit)
+            let fruitQuantity: Int = fruitStore.checkFruitQuantity(of: fruit)
             components.label.text = String(fruitQuantity)
             components.stepper.value = Double(fruitQuantity)
         }
@@ -79,7 +80,7 @@ extension InventoryViewController {
         fruitStore.updateFruitQuantity(of: fruit, by: fruitQuantity)
     }
     
-    func setUpFruitContainerData(_ data: [Fruit: Int]) {
-        fruitStore.updateFruitContainer(data)
+    func setUpFruitContainer(data: [Fruit: Int]) {
+        fruitStore.updateFruitContainer(with: data)
     }
 }
