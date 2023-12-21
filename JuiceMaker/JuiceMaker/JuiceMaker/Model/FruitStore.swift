@@ -12,6 +12,10 @@ class FruitStore {
     init() {
         inventory = [.banana: 10, .kiwi: 10, .mango: 10, .pineapple: 10, .strawberry: 10]
     }
+    
+    func setQuantity(of fruit: Fruit, to newQuantity: Int) {
+        inventory[fruit] = newQuantity
+    }
 
     func updateInventory(fruit: Fruit, quantity: Int) {
         guard let currentQuantity = inventory[fruit] else { return }
