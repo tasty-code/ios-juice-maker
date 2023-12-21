@@ -6,11 +6,13 @@
 //
 
 enum StockManagerModel {
-    struct Result {
-        let stock: FruitStock?
+    enum Response {
+        case success(stock: FruitStock)
+        case failure
     }
     
-    struct ViewModel {
-        let stock: FruitStock?
+    enum ViewModel {
+        case success(stock: FruitStock)
+        case failure
     }
 }

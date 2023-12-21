@@ -17,10 +17,10 @@ final class StockManager {
     func updateStock(of fruit: Fruit, to newCount: Int) {
         do {
             let updatedStock = try fruitStore.updateStock(of: fruit, to: newCount)
-            let result = StockManagerModel.Result(stock: updatedStock)
+            let result = StockManagerModel.Response.success(stock: updatedStock)
             resultConverter?.convertResult(result)
         } catch {
-            let result = StockManagerModel.Result(stock: nil)
+            let result = StockManagerModel.Response.failure
             resultConverter?.convertResult(result)
         }
     }

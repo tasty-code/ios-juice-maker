@@ -100,6 +100,7 @@ extension StockManagerViewController {
             mangoCountStepper,
         ].forEach { stepper in
             stepper?.stepValue = 1.0
+            stepper?.minimumValue = 0
         }
     }
 }
@@ -142,21 +143,23 @@ extension StockManagerViewController: StockDisplayResultDisplayable {
 
 extension StockManagerViewController: StockManagerResultDisplayable {
     func displayModifiedStock(viewModel: StockManagerModel.ViewModel) {
-        guard let newStock = viewModel.stock else {
-            
+        switch viewModel {
+        case .success(let newStock):
+            switch newStock.fruitType {
+            case .strawberry:
+                strawberryStockLabel.text = "\(newStock.count)"
+            case .banana:
+                bananaStockLabel.text = "\(newStock.count)"
+            case .pineapple:
+                pineappleStockLabel.text = "\(newStock.count)"
+            case .kiwi:
+                kiwiStockLabel.text = "\(newStock.count)"
+            case .mango:
+                mangoStockLabel.text = "\(newStock.count)"
+            }
+        case .failure:
+            // TODO: 0이하 불가 alert
             return
-        }
-        switch newStock.fruitType {
-        case .strawberry:
-            strawberryStockLabel.text = "\(newStock.count)"
-        case .banana:
-            bananaStockLabel.text = "\(newStock.count)"
-        case .pineapple:
-            pineappleStockLabel.text = "\(newStock.count)"
-        case .kiwi:
-            kiwiStockLabel.text = "\(newStock.count)"
-        case .mango:
-            mangoStockLabel.text = "\(newStock.count)"
         }
     }
 }
