@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D541BA42B3131B100581F8E /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D541BA32B3131B100581F8E /* CustomButton.swift */; };
 		1D97DE9F2B205CE600AB00FC /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D97DE9D2B205CE500AB00FC /* Fruit.swift */; };
 		1D97DEA02B205CE600AB00FC /* ErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D97DE9E2B205CE600AB00FC /* ErrorType.swift */; };
 		1DA88AB22B21A788003DB903 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA88AB12B21A788003DB903 /* SecondViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D541BA32B3131B100581F8E /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		1D97DE9D2B205CE500AB00FC /* Fruit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
 		1D97DE9E2B205CE600AB00FC /* ErrorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorType.swift; sourceTree = "<group>"; };
 		1DA88AB12B21A788003DB903 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 				C73DAF38255D0CDD00020D38 /* SceneDelegate.swift */,
 				C73DAF3A255D0CDD00020D38 /* ViewController.swift */,
 				1DA88AB12B21A788003DB903 /* SecondViewController.swift */,
+				1D541BA32B3131B100581F8E /* CustomButton.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
 				1D97DEA02B205CE600AB00FC /* ErrorType.swift in Sources */,
 				C73DAF3B255D0CDD00020D38 /* ViewController.swift in Sources */,
+				1D541BA42B3131B100581F8E /* CustomButton.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
 				C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */,
 				1D97DE9F2B205CE600AB00FC /* Fruit.swift in Sources */,
