@@ -90,9 +90,8 @@ extension OrderViewController {
     }
     
     private func presentInventoryViewController() {
-        let fruitInventory = fruitStore.checkFruitContainer()
         guard let nextViewController = self.storyboard?.instantiateViewController(identifier: InventoryViewController.className, creator: { coder in
-            return InventoryViewController(coder: coder, fruitStore: FruitStore(fruitContainer: fruitInventory))
+            return InventoryViewController(coder: coder, fruitStore: self.fruitStore)
         }) else { return }
         
         nextViewController.modalPresentationStyle = .fullScreen
