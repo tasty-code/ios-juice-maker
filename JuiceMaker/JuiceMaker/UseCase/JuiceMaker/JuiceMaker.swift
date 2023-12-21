@@ -1,8 +1,8 @@
 //
 //  JuiceMaker - JuiceMaker.swift
-//  Created by yagom. 
+//  Created by yagom.
 //  Copyright © yagom academy. All rights reserved.
-// 
+//
 
 final class JuiceMaker {
     private let fruitStore: FruitStore
@@ -11,12 +11,6 @@ final class JuiceMaker {
     
     init(fruitStore: FruitStore) {
         self.fruitStore = fruitStore
-    }
-    
-    func displayStock() {
-        let stocks = fruitStore.fetchStocks()
-        let result = StockDisplayModel.Response.success(stocks)
-        resultConverter?.convertResult(result)
     }
     
     func produceJuice(flavor: JuiceFlavor) {
@@ -35,5 +29,13 @@ final class JuiceMaker {
     
     private func consumeFruitsForMakingJuice(flavor: JuiceFlavor) throws -> [FruitStock] {
         return try fruitStore.consume(ingredients: flavor.recipe)
+    }
+}
+
+extension JuiceMaker {
+    func displayStock() {
+        let stocks = fruitStore.fetchStocks()
+        let result = StockDisplayModel.Response.success(stocks)
+        resultConverter?.convertResult(result)
     }
 }

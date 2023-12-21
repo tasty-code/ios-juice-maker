@@ -8,7 +8,7 @@
 final class StockManager {
     private let fruitStore: FruitStore
     
-    var resultConverter: StockManagerResultConvertable?
+    var resultConverter: (StockManagerResultConvertable & StockDisplayResultConvertable)?
     
     init(fruitStore: FruitStore) {
         self.fruitStore = fruitStore
@@ -23,5 +23,13 @@ final class StockManager {
             let result = StockManagerModel.Response.failure
             resultConverter?.convertResult(result)
         }
+    }
+}
+
+extension StockManager {
+    func displayStock() {
+        let stocks = fruitStore.fetchStocks()
+        let result = StockDisplayModel.Response.success(stocks)
+        resultConverter?.convertResult(result)
     }
 }

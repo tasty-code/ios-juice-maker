@@ -8,8 +8,6 @@
 import UIKit
 
 final class StockManagerViewController: UIViewController {
-    private let stockDisplayUseCase: StockDisplay?
-    
     private let stockManagerUseCase: StockManager?
     
     @IBOutlet private weak var strawberryStockLabel: UILabel!
@@ -33,7 +31,6 @@ final class StockManagerViewController: UIViewController {
     @IBOutlet private weak var mangoCountStepper: UIStepper!
     
     required init?(coder: NSCoder) {
-        self.stockDisplayUseCase = nil
         self.stockManagerUseCase = nil
         super.init(coder: coder)
     }
@@ -42,7 +39,6 @@ final class StockManagerViewController: UIViewController {
         coder: NSCoder,
         fruitStore: FruitStore
     ) {
-        self.stockDisplayUseCase = StockDisplay(fruitStore: fruitStore)
         self.stockManagerUseCase = StockManager(fruitStore: fruitStore)
         super.init(coder: coder)
         setUpLayers()
@@ -50,7 +46,7 @@ final class StockManagerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        stockDisplayUseCase?.displayStock()
+        stockManagerUseCase?.displayStock()
     }
 }
 
@@ -82,10 +78,6 @@ extension StockManagerViewController {
 
 extension StockManagerViewController {
     private func setUpLayers() {
-        let stockDisplayResultConverter = StockDisplayResultConverter()
-        stockDisplayResultConverter.display = self
-        stockDisplayUseCase?.resultConverter = stockDisplayResultConverter
-        
         let stockManagerResultConverter = StockManagerResultConverter()
         stockManagerResultConverter.display = self
         stockManagerUseCase?.resultConverter = stockManagerResultConverter

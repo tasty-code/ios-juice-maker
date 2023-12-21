@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7F7DBF6E2B281C460081CBAD /* StockDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7DBF6D2B281C460081CBAD /* StockDisplayModel.swift */; };
-		7F7DBF702B281E6A0081CBAD /* StockDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7DBF6F2B281E6A0081CBAD /* StockDisplay.swift */; };
 		7F7DBF722B2820230081CBAD /* StockDisplayResultConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7DBF712B2820230081CBAD /* StockDisplayResultConvertable.swift */; };
 		7F7DBF742B2823120081CBAD /* StockDisplayResultDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7DBF732B2823120081CBAD /* StockDisplayResultDisplayable.swift */; };
 		7F7DBF762B282DB70081CBAD /* JuiceMakerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7DBF752B282DB70081CBAD /* JuiceMakerModel.swift */; };
@@ -39,7 +38,6 @@
 
 /* Begin PBXFileReference section */
 		7F7DBF6D2B281C460081CBAD /* StockDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDisplayModel.swift; sourceTree = "<group>"; };
-		7F7DBF6F2B281E6A0081CBAD /* StockDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDisplay.swift; sourceTree = "<group>"; };
 		7F7DBF712B2820230081CBAD /* StockDisplayResultConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDisplayResultConvertable.swift; sourceTree = "<group>"; };
 		7F7DBF732B2823120081CBAD /* StockDisplayResultDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDisplayResultDisplayable.swift; sourceTree = "<group>"; };
 		7F7DBF752B282DB70081CBAD /* JuiceMakerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMakerModel.swift; sourceTree = "<group>"; };
@@ -185,7 +183,6 @@
 			isa = PBXGroup;
 			children = (
 				7F7DBF6D2B281C460081CBAD /* StockDisplayModel.swift */,
-				7F7DBF6F2B281E6A0081CBAD /* StockDisplay.swift */,
 				7F7DBF712B2820230081CBAD /* StockDisplayResultConvertable.swift */,
 				7F7DBF732B2823120081CBAD /* StockDisplayResultDisplayable.swift */,
 			);
@@ -288,7 +285,6 @@
 				7F7DBF762B282DB70081CBAD /* JuiceMakerModel.swift in Sources */,
 				7F7DBF742B2823120081CBAD /* StockDisplayResultDisplayable.swift in Sources */,
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
-				7F7DBF702B281E6A0081CBAD /* StockDisplay.swift in Sources */,
 				C73DAF3B255D0CDD00020D38 /* JuiceMakerViewController.swift in Sources */,
 				F42621552B1DBF3F00C6423A /* JuiceFlavor.swift in Sources */,
 				F42621532B1DBF2E00C6423A /* JuiceMakerError.swift in Sources */,
