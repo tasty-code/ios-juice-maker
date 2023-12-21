@@ -1,16 +1,16 @@
 
 import UIKit
 
+protocol AlertDelegation {
+    func presentAlert(of type: AlertType, completion: @escaping (UIAlertAction) -> Void)
+}
+
 enum AlertType {
     case successJuiceOrder(String)
     case fruitShortage(String)
 }
 
-final class AlertHandler {
-    
-    static let shared = AlertHandler()
-    
-    private init() {}
+final class AlertHandler: AlertDelegation {
     
     private func fetchTopVC() -> UIViewController? {
         var currentVC = UIApplication.shared.keyWindow?.rootViewController
@@ -42,24 +42,7 @@ final class AlertHandler {
         alertView.addAction(UIAlertAction(title: "아니오", style: .default))
         alertView.addAction(UIAlertAction(title: "예", style: .default, handler: completion))
         topViewController?.present(alertView, animated: true)
+
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

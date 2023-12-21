@@ -13,6 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         let fruitStore = FruitStore(limitedQuantity: limitedQuantity, initialQunatities: initialQunatities)
+        let alertHandler = AlertHandler()
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
@@ -27,6 +28,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         juiceMachineViewController.juiceMaker = juiceMaker
         stockManageViewController.stockManager = stockManager
+        
+        juiceMachineViewController.alertDelegate = alertHandler
         
         let navigationViewController = UINavigationController(rootViewController: juiceMachineViewController)
         
