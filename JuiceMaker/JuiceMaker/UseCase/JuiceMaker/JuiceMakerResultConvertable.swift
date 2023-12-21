@@ -13,20 +13,20 @@ final class JuiceMakerResultConverter: JuiceMakerResultConvertable {
     weak var display: JuiceMakerResultDisplayable?
     
     func convertResult(_ response: JuiceMakerModel.Response) {
-        guard let response = response.result else {
-            let viewModel = JuiceMakerModel.ViewModel(successInfo: nil)
+        switch response {
+        case .success(let info):
+            let fruitStocks = info.updatedStocks.map { stock in
+                return (stock.fruitType, stock.count)
+            }
+            let successInfo = JuiceMakerModel.ViewModel.SuccessInfo(
+                juiceName: info.juice.name,
+                updatedStocks: fruitStocks
+            )
+            let viewModel = JuiceMakerModel.ViewModel.sucess(successInfo)
             display?.displayMakingResult(viewModel: viewModel)
-            return
+        case .failure(let error):
+            let viewModel = JuiceMakerModel.ViewModel.failure
+            display?.displayMakingResult(viewModel: viewModel)
         }
-        
-        let fruitStocks = response.updatedStocks.map { stock in
-            return (stock.fruitType, stock.count)
-        }
-        let info = JuiceMakerModel.ViewModel.SuccessInfo(
-            juiceName: response.juice.name,
-            updatedStocks: fruitStocks
-        )
-        let viewModel = JuiceMakerModel.ViewModel(successInfo: info)
-        display?.displayMakingResult(viewModel: viewModel)
     }
 }

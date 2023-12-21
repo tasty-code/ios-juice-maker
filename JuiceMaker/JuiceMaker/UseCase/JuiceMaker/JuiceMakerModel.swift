@@ -6,19 +6,23 @@
 //
 
 enum JuiceMakerModel {
-    struct Response {
+    enum Response {
+        case success(SuccessInfo)
+        case failure(JuiceMakerError)
+        
         struct SuccessInfo {
             let juice: JuiceFlavor
             let updatedStocks: [FruitStock]
         }
-        let result: SuccessInfo?
     }
     
-    struct ViewModel {
+    enum ViewModel {
         struct SuccessInfo {
             let juiceName: String
             let updatedStocks: [(Fruit, Int)]
         }
-        let successInfo: SuccessInfo?
+        
+        case sucess(SuccessInfo)
+        case failure
     }
 }

@@ -16,12 +16,14 @@ final class JuiceMaker {
     func produceJuice(flavor: JuiceFlavor) {
         do {
             let updatedStocks = try consumeFruitsForMakingJuice(flavor: flavor)
-            let result = JuiceMakerModel.Response.SuccessInfo(juice: flavor, updatedStocks: updatedStocks)
-            let response = JuiceMakerModel.Response(result: result)
+            let successInfo = JuiceMakerModel.Response.SuccessInfo(juice: flavor, updatedStocks: updatedStocks)
+            let response = JuiceMakerModel.Response.success(successInfo)
             resultConverter?.convertResult(response)
         } catch {
-            let result = JuiceMakerModel.Response(result: nil)
-            resultConverter?.convertResult(result)
+            if let error = error as? JuiceMakerError {
+                let response = JuiceMakerModel.Response.failure(error)
+                resultConverter?.convertResult(response)
+            }
         }
     }
     
