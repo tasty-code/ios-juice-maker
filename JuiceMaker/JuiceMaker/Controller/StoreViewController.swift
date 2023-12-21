@@ -24,13 +24,6 @@ final class StoreViewController: UIViewController {
     let fruitStore = FruitStore.shared
     lazy var juiceMaker: JuiceMaker = JuiceMaker(store: fruitStore)
     
-    let dismissAlertAction = UIAlertAction(title: "확인", style: .default)
-    lazy var acceptAlertAction = UIAlertAction(title: "예", style: .default) { action in
-        self.moveFruitStore()
-    }
-    let cancelAlertAction = UIAlertAction(title: "아니오", style: .destructive)
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         fruitStore.initializeFruit()
