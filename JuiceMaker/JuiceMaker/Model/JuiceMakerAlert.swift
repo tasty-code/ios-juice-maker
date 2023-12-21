@@ -18,17 +18,13 @@ extension JuiceMakerAlert where Self: UIViewController {
             isCompletedMakeJuice
         else {
             alert.addAction(UIAlertAction(title: "예", style: .default, handler: { _ in
-                print("핸들러 시작")
                 completion?()
-                print("핸들러 끝")
             }))
             alert.addAction(UIAlertAction(title: "아니요", style: .cancel))
             self.present(alert, animated: true)
-            print("guard문 끝")
-            return print("showJuiceMakerAlert: 함수 끝")
+            return
         }
         alert.addAction(UIAlertAction(title: "확인", style: .cancel))
         self.present(alert, animated: true)
-        print("showJuiceMakerAlert: 함수 끝")
     }
 }
