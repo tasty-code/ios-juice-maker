@@ -242,10 +242,17 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bananaJuiceOrderButton" destination="y2A-PH-DJY" id="Zpu-62-2Yh"/>
                         <outlet property="bananaQuantityLabel" destination="gvk-pA-Lw5" id="0VE-D8-yZ3"/>
+                        <outlet property="kiwiJuiceOrderButton" destination="wcW-7H-RXw" id="E9s-CV-Zzo"/>
                         <outlet property="kiwiQuantityLabel" destination="FZq-de-TJG" id="nM7-Ca-7Sq"/>
+                        <outlet property="mangoJuiceOrderButton" destination="q6G-4X-bVm" id="vPb-ja-epf"/>
+                        <outlet property="mangoKiwiJuiceOrderButton" destination="ngP-kF-Yii" id="dTB-yz-l6V"/>
                         <outlet property="mangoQuantityLabel" destination="3Ce-SU-JeH" id="8D2-n3-iW8"/>
+                        <outlet property="pineappleJuiceOrderButton" destination="BFb-ka-wGA" id="dwk-cJ-odg"/>
                         <outlet property="pineappleQuantityLabel" destination="ccQ-Dk-PuY" id="Gau-98-dPp"/>
+                        <outlet property="strawberryBananaJuiceOrderButton" destination="hrc-2F-fzl" id="7cc-QD-2Gx"/>
+                        <outlet property="strawberryJuiceOrderButton" destination="avd-o5-3JM" id="mm7-ty-FSe"/>
                         <outlet property="strawberryQuantityLabel" destination="Qas-vP-td6" id="UJ5-rZ-ofX"/>
                     </connections>
                 </viewController>
@@ -457,7 +464,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

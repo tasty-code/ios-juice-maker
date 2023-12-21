@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol JuiceMadeDelegate: AnyObject {
-    func juiceMade()
-}
-
 protocol SendFruitQuantityDelegate: AnyObject {
     func sendFruitQuantityData(fruitQuantity: [FruitName: Int])
 }
@@ -22,15 +18,20 @@ class MainViewController: UIViewController {
     @IBOutlet weak var kiwiQuantityLabel: UILabel!
     @IBOutlet weak var mangoQuantityLabel: UILabel!
     
+    @IBOutlet weak var strawberryJuiceOrderButton: UIButton!
+    @IBOutlet weak var bananaJuiceOrderButton: UIButton!
+    @IBOutlet weak var pineappleJuiceOrderButton: UIButton!
+    @IBOutlet weak var kiwiJuiceOrderButton: UIButton!
+    @IBOutlet weak var mangoJuiceOrderButton: UIButton!
+    @IBOutlet weak var strawberryBananaJuiceOrderButton: UIButton!
+    @IBOutlet weak var mangoKiwiJuiceOrderButton: UIButton!
+    
     let juiceMaker = JuiceMaker(fruitStore: FruitStore())
     
-    weak var juiceMadeDelegate: JuiceMadeDelegate?
     weak var sendFruitQuantityDelegate: SendFruitQuantityDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        juiceMadeDelegate = self
         updateFruitQuantityLabels()
     }
     
@@ -77,8 +78,8 @@ class MainViewController: UIViewController {
     
     private func showResultAlert(_ result: Result<Void, JuiceError>) {
         switch result {
-        case .success:
-            juiceMadeDelegate?.juiceMade()
+        case .success:            
+            updateFruitQuantityLabels()
             
             AlertBuilder(viewController: self)
                 .addAction("확인", style: .default)
@@ -115,20 +116,20 @@ class MainViewController: UIViewController {
     
     @IBAction func fruitJuiceOrderButtonTapped(_ sender: UIButton) {
         
-        switch sender.tag {
-        case 0:
+        switch sender {
+        case strawberryJuiceOrderButton:
             showResultAlert(juiceMaker.makeJuice(juiceMenu: .strawberry))
-        case 1:
+        case bananaQuantityLabel:
             showResultAlert(juiceMaker.makeJuice(juiceMenu: .banana))
-        case 2:
+        case pineappleJuiceOrderButton:
             showResultAlert(juiceMaker.makeJuice(juiceMenu: .pineapple))
-        case 3:
+        case kiwiJuiceOrderButton:
             showResultAlert(juiceMaker.makeJuice(juiceMenu: .kiwi))
-        case 4:
+        case mangoJuiceOrderButton:
             showResultAlert(juiceMaker.makeJuice(juiceMenu: .mango))
-        case 5:
+        case strawberryBananaJuiceOrderButton:
             showResultAlert(juiceMaker.makeJuice(juiceMenu: .straberryBanana))
-        case 6:
+        case mangoKiwiJuiceOrderButton:
             showResultAlert(juiceMaker.makeJuice(juiceMenu: .mangoKiwi))
         default:
             showResultAlert(.failure(JuiceError.unknown))
@@ -136,12 +137,6 @@ class MainViewController: UIViewController {
     }
     @IBAction func modifyInventoryButton(_ sender: UIBarButtonItem) {
         moveModifyInventoryView()
-    }
-}
-
-extension MainViewController: JuiceMadeDelegate {
-    func juiceMade() {
-        updateFruitQuantityLabels()
     }
 }
 
