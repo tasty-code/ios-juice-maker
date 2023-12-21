@@ -23,7 +23,7 @@ struct AlertManager {
             message: message,
             preferredStyle: preferredStyle
         )
-        print(handler.keys)
+        
         handler.forEach { name, action in
             var alertAction: UIAlertAction
             if action != nil  {
