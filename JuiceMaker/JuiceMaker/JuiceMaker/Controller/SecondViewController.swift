@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SecondViewControllerDelegate: AnyObject {
+    func didUpdateFruitStock()
+}
+
 class SecondViewController: UIViewController {
     
     var data: [String] = []
