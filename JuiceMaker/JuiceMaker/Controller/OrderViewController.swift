@@ -28,7 +28,7 @@ final class OrderViewController: UIViewController {
     
     // MARK: Initializer
     required init?(coder aDecoder: NSCoder) {
-        self.fruitStore = FruitStore.init(fruitContainer: [
+        self.fruitStore = FruitStore(fruitContainer: [
             .strawberry: 10,
             .banana: 10,
             .kiwi: 10,
@@ -84,7 +84,6 @@ extension OrderViewController {
     
     private func configureUI() {
         for (fruit, label) in labelsByFruit {
-            label.text = String(fruitStore.fetchFruitQuantity(of: fruit))
         }
     }
     
@@ -92,12 +91,10 @@ extension OrderViewController {
         guard let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: InventoryViewController.className)
                 as? InventoryViewController else { return }
         
-        nextViewController.setUpFruitContainerData(fruitStore.fetchFruitContainer())
         nextViewController.modalPresentationStyle = .fullScreen
         self.present(nextViewController, animated: true)
     }
     
     func setUpFruitContainer(data: [Fruit: Int]) {
-        fruitStore.updateFruitContainer(data)
     }
 }
