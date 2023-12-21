@@ -5,7 +5,7 @@ import UIKit
 final class JuiceMachineViewController: UIViewController {
     
     @IBOutlet var juiceMachineView: JuiceMachineView!
-    private var reception = Reception()
+    private var juiceMaker = JuiceMaker()
     
     deinit { NotificationCenter.default.removeObserver(self) }
 }
@@ -25,7 +25,6 @@ private extension JuiceMachineViewController {
     
     func setupUI() {
         setupButtonAction()
-        reception.applyCurrentStocks()
     }
     
     func setupButtonAction() {
@@ -45,7 +44,7 @@ private extension JuiceMachineViewController {
 private extension JuiceMachineViewController {
     
     @objc func ddalbaJuiceOrderButtonTapped() {
-        reception.acceptJuiceOrder(of: .ddalba)
+        juiceMaker.makeDdalbaJuice()
         AlertHandler.shared.presentAlert(
             of: .successJuiceOrder("맛있게 드세요 :)")) { _ in
                 print("딸바 주스 제조성공!")
@@ -53,7 +52,7 @@ private extension JuiceMachineViewController {
     }
     
     @objc func mangkiJuiceButtonTapped() {
-        reception.acceptJuiceOrder(of: .mangki)
+        juiceMaker.makeMangkiJuice()
         AlertHandler.shared.presentAlert(
             of: .successJuiceOrder("맛있게 드세요 :)")) { _ in
                 print("망키 주스 제조성공!")
@@ -61,7 +60,7 @@ private extension JuiceMachineViewController {
     }
     
     @objc func strawberryJuiceOrderButtonTapped() {
-        reception.acceptJuiceOrder(of: .strawberry)
+        juiceMaker.makeStrawberryJuice()
         AlertHandler.shared.presentAlert(
             of: .successJuiceOrder("맛있게 드세요 :)")) { _ in
                 print("딸기 주스 제조성공!")
@@ -69,7 +68,7 @@ private extension JuiceMachineViewController {
     }
     
     @objc func bananaJuiceOrderButtonTapped() {
-        reception.acceptJuiceOrder(of: .banana)
+        juiceMaker.makeBananaJuice()
         AlertHandler.shared.presentAlert(
             of: .successJuiceOrder("맛있게 드세요 :)")) { _ in
                 print("바나나 주스 제조성공!")
@@ -77,7 +76,7 @@ private extension JuiceMachineViewController {
     }
     
     @objc func pineappleJuiceOrderButtonTapped() {
-        reception.acceptJuiceOrder(of: .pineapple)
+        juiceMaker.makePineappleJuice()
         AlertHandler.shared.presentAlert(
             of: .successJuiceOrder("맛있게 드세요 :)")) { _ in
                 print("파인애플 주스 제조성공!")
@@ -85,7 +84,7 @@ private extension JuiceMachineViewController {
     }
     
     @objc func kiwiJuiceOrderButtonTapped() {
-        reception.acceptJuiceOrder(of: .kiwi)
+        juiceMaker.makeKiwiJuice()
         AlertHandler.shared.presentAlert(
             of: .successJuiceOrder("맛있게 드세요 :)")) { _ in
                 print("키위 주스 제조성공!")
@@ -93,7 +92,7 @@ private extension JuiceMachineViewController {
     }
     
     @objc func mangoJuiceButtonTapped() {
-        reception.acceptJuiceOrder(of: .mango)
+        juiceMaker.makeMangoJuice()
         AlertHandler.shared.presentAlert(
             of: .successJuiceOrder("맛있게 드세요 :)")) { _ in
                 print("망고 주스 제조성공!")
@@ -140,10 +139,10 @@ private extension JuiceMachineViewController {
 // MARK: - ViewTransition Method
 extension JuiceMachineViewController {
     private func pushStockManageViewController() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let stockManageViewController = storyboard.instantiateViewController(identifier: "StockManageViewController") as? StockManageViewController {
-            stockManageViewController.reception = reception
-            self.navigationController?.pushViewController(stockManageViewController, animated: true)
-        }
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        if let stockManageViewController = storyboard.instantiateViewController(identifier: "StockManageViewController") as? StockManageViewController {
+//            stockManageViewController.reception = reception
+//            self.navigationController?.pushViewController(stockManageViewController, animated: true)
+//        }
     }
 }

@@ -4,7 +4,7 @@ import UIKit
 // MARK: - StockManageViewController init & deinit
 class StockManageViewController: UIViewController {
     @IBOutlet var stockManageView: StockManageView!
-    var reception: Reception?
+    var stockManager = StockManager()
 }
 
 // MARK: - StockManageViewController LifeCycle
@@ -22,7 +22,7 @@ private extension StockManageViewController {
     
     func setupUI() {
         setupButtonAction()
-        reception?.applyCurrentStocks()
+        
     }
     
     func setupButtonAction() {
@@ -38,23 +38,23 @@ private extension StockManageViewController {
 private extension StockManageViewController {
     
     @objc func strawberryStockStepperTapped(_ sender: UIStepper) {
-        reception?.applyChangedStocks(of: .strawberry, to: Int(sender.value))
+        stockManager.manageStrawberryStock(by: Int(sender.value))
     }
     
     @objc func bananaStockStepperTapped(_ sender: UIStepper) {
-        reception?.applyChangedStocks(of: .banana, to: Int(sender.value))
+        stockManager.manageBananaStock(by: Int(sender.value))
     }
     
     @objc func pineappleStockStepperTapped(_ sender: UIStepper) {
-        reception?.applyChangedStocks(of: .pineapple, to: Int(sender.value))
+        stockManager.managePineappleStock(by: Int(sender.value))
     }
     
     @objc func kiwiStockStepperTapped(_ sender: UIStepper) {
-        reception?.applyChangedStocks(of: .kiwi, to: Int(sender.value))
+        stockManager.manageKiwiStock(by: Int(sender.value))
     }
     
     @objc func mangoStockStepperTapped(_ sender: UIStepper) {
-        reception?.applyChangedStocks(of: .mango, to: Int(sender.value))
+        stockManager.manageMangoStock(by: Int(sender.value))
     }
 }
 
