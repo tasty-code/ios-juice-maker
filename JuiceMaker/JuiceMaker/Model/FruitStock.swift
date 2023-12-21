@@ -20,4 +20,9 @@ struct FruitStock {
         let countAfterConsumtion = self.count - count
         return .init(fruitType: self.fruitType, count: countAfterConsumtion)
     }
+    
+    func updateCount(to newCount: Int) throws -> FruitStock {
+        guard newCount >= 0 else { throw JuiceMakerError.invalidStockCount }
+        return .init(fruitType: self.fruitType, count: newCount)
+    }
 }
