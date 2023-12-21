@@ -236,11 +236,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="맛있는 쥬스를 만들어 드려요!" id="Eal-fj-o4N">
-                        <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT">
-                            <connections>
-                                <segue destination="Yu1-lM-nqp" kind="show" id="D4q-57-4Ma"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="재고수정" id="C3q-Te-cNT"/>
                     </navigationItem>
                     <connections>
                         <outlet property="bananaStockLabel" destination="gvk-pA-Lw5" id="en8-qT-FNj"/>
@@ -262,6 +258,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wpg-nM-F9y">
                         <rect key="frame" x="0.0" y="0.0" width="844" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.9694059491" green="0.97293931249999999" blue="0.96931129689999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -425,6 +422,25 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vd9-4I-Yls">
+                                <rect key="frame" x="0.0" y="0.0" width="844" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="재고 수정" id="nbC-sv-MsM">
+                                        <barButtonItem key="rightBarButtonItem" id="qbc-YP-h2I">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="6ke-oc-rbf">
+                                                <rect key="frame" x="723" y="4.6666666666666679" width="54" height="35"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="닫기"/>
+                                                <connections>
+                                                    <action selector="tappedCloseButton:" destination="Yu1-lM-nqp" eventType="touchUpInside" id="z4n-ik-tLu"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gcO-Xb-kNs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -433,7 +449,6 @@
                             <constraint firstItem="zmf-HB-Kzk" firstAttribute="centerY" secondItem="tKV-4l-Vtc" secondAttribute="centerY" id="UKu-Uv-XSX"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="g4W-fY-l7r"/>
                     <connections>
                         <outlet property="bananaStepper" destination="O5s-2N-3iP" id="xu7-z2-A4U"/>
                         <outlet property="bananaStockLabel" destination="gKu-86-RhI" id="2ux-7R-A23"/>
@@ -449,7 +464,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1511" y="92"/>
+            <point key="canvasLocation" x="762" y="-734"/>
         </scene>
     </scenes>
     <resources>
@@ -460,7 +475,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
