@@ -57,6 +57,8 @@ extension FruitStockViewController {
             fruitStore[fruit] = Int(stepper.value)
         }
         updateFruitStore?(store)
+        originStockValue = stepperDict.map { Int($0.key.value) }
+        fruitStockSaveButton.isEnabled = false
         makeAlert(title: "알림", message: "재고가 수정되었습니다!")
     }
     
