@@ -10,3 +10,7 @@ import Foundation
 protocol JuiceMakerResultDisplayable: NSObjectProtocol {
     func displayMakingResult(viewModel: JuiceMakerModel.ViewModel)
 }
+
+protocol StockDisplayResultDisplayable: NSObjectProtocol {
+    func displayStock(viewModel: StockDisplayModel.ViewModel)
+}

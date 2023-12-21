@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7F7DBF6E2B281C460081CBAD /* StockDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7DBF6D2B281C460081CBAD /* StockDisplayModel.swift */; };
-		7F7DBF722B2820230081CBAD /* StockDisplayResultConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7DBF712B2820230081CBAD /* StockDisplayResultConvertable.swift */; };
-		7F7DBF742B2823120081CBAD /* StockDisplayResultDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7DBF732B2823120081CBAD /* StockDisplayResultDisplayable.swift */; };
 		7F7DBF762B282DB70081CBAD /* JuiceMakerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7DBF752B282DB70081CBAD /* JuiceMakerModel.swift */; };
 		7F7DBF782B282FD10081CBAD /* JuiceMakerResultConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7DBF772B282FD10081CBAD /* JuiceMakerResultConvertable.swift */; };
 		7F7DBF7A2B28304E0081CBAD /* JuiceMakingResultDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7DBF792B28304E0081CBAD /* JuiceMakingResultDisplayable.swift */; };
@@ -37,9 +34,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7F7DBF6D2B281C460081CBAD /* StockDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDisplayModel.swift; sourceTree = "<group>"; };
-		7F7DBF712B2820230081CBAD /* StockDisplayResultConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDisplayResultConvertable.swift; sourceTree = "<group>"; };
-		7F7DBF732B2823120081CBAD /* StockDisplayResultDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDisplayResultDisplayable.swift; sourceTree = "<group>"; };
 		7F7DBF752B282DB70081CBAD /* JuiceMakerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMakerModel.swift; sourceTree = "<group>"; };
 		7F7DBF772B282FD10081CBAD /* JuiceMakerResultConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMakerResultConvertable.swift; sourceTree = "<group>"; };
 		7F7DBF792B28304E0081CBAD /* JuiceMakingResultDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMakingResultDisplayable.swift; sourceTree = "<group>"; };
@@ -179,20 +173,9 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		F456FA332B282CF10025386D /* StockDisplay */ = {
-			isa = PBXGroup;
-			children = (
-				7F7DBF6D2B281C460081CBAD /* StockDisplayModel.swift */,
-				7F7DBF712B2820230081CBAD /* StockDisplayResultConvertable.swift */,
-				7F7DBF732B2823120081CBAD /* StockDisplayResultDisplayable.swift */,
-			);
-			path = StockDisplay;
-			sourceTree = "<group>";
-		};
 		F456FA342B282CFF0025386D /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				F456FA332B282CF10025386D /* StockDisplay */,
 				7F7DBF7B2B2831D10081CBAD /* JuiceMaker */,
 				F49D1C652B34527B0087CAA5 /* StockManager */,
 			);
@@ -281,9 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F7DBF722B2820230081CBAD /* StockDisplayResultConvertable.swift in Sources */,
 				7F7DBF762B282DB70081CBAD /* JuiceMakerModel.swift in Sources */,
-				7F7DBF742B2823120081CBAD /* StockDisplayResultDisplayable.swift in Sources */,
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
 				C73DAF3B255D0CDD00020D38 /* JuiceMakerViewController.swift in Sources */,
 				F42621552B1DBF3F00C6423A /* JuiceFlavor.swift in Sources */,
@@ -298,7 +279,6 @@
 				F456FA382B283D1F0025386D /* StoryboardIdentifiable.swift in Sources */,
 				7F7DBF782B282FD10081CBAD /* JuiceMakerResultConvertable.swift in Sources */,
 				F456FA3A2B2840C40025386D /* StockManagerViewController.swift in Sources */,
-				7F7DBF6E2B281C460081CBAD /* StockDisplayModel.swift in Sources */,
 				F456FA3C2B2841C30025386D /* JuiceMakerRouter.swift in Sources */,
 				7F7DBF7A2B28304E0081CBAD /* JuiceMakingResultDisplayable.swift in Sources */,
 				F49D1C642B34517A0087CAA5 /* StockManagerModel.swift in Sources */,

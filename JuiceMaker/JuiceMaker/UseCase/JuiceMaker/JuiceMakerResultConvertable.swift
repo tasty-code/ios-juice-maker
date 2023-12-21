@@ -9,6 +9,10 @@ protocol JuiceMakerResultConvertable {
     func convertResult(_ response: JuiceMakerModel.Response)
 }
 
+protocol StockDisplayResultConvertable {
+    func convertResult(_ result: StockDisplayModel.Response)
+}
+
 final class JuiceMakerResultConverter: JuiceMakerResultConvertable {
     weak var display: (JuiceMakerResultDisplayable & StockDisplayResultDisplayable)?
     

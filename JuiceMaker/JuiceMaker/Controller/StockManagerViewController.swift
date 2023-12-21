@@ -150,7 +150,6 @@ extension StockManagerViewController: StockManagerResultDisplayable {
                 mangoStockLabel.text = "\(newStock.count)"
             }
         case .failure:
-            // TODO: 0이하 불가 alert
             return
         }
     }
