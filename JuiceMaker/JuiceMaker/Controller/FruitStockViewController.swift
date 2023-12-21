@@ -55,14 +55,17 @@ final class FruitStockViewController: UIViewController {
         handleFruitStepper(.banana, value: Int(sender.value))
         updateFruitLabels()
     }
+    
     @IBAction func pineappleStepperPressed(_ sender: UIStepper) {
         handleFruitStepper(.pineapple, value: Int(sender.value))
         updateFruitLabels()
     }
+    
     @IBAction func kiwiStepperPressed(_ sender: UIStepper) {
         handleFruitStepper(.kiwi, value: Int(sender.value))
         updateFruitLabels()
     }
+    
     @IBAction func mangoStepperPressed(_ sender: UIStepper) {
         handleFruitStepper(.mango, value: Int(sender.value))
         updateFruitLabels()
