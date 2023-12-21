@@ -14,7 +14,23 @@ protocol SecondViewControllerDelegate: AnyObject {
 
 class SecondViewController: UIViewController {
     
-    var data: [String] = []
+    @IBOutlet weak var strawberryStockLabel: UILabel!
+    @IBOutlet weak var strawberryStockStepper: UIStepper!
+    
+    @IBOutlet weak var bananaStockLabel: UILabel!
+    @IBOutlet weak var bananaStockStepper: UIStepper!
+    
+    @IBOutlet weak var pineappleStockLabel: UILabel!
+    @IBOutlet weak var pineappleStockStepper: UIStepper!
+    
+    @IBOutlet weak var kiwiStockLabel: UILabel!
+    @IBOutlet weak var kiwiStockStepper: UIStepper!
+    
+    @IBOutlet weak var mangoStockLabel: UILabel!
+    @IBOutlet weak var mangoStockStepper: UIStepper!
+    
+    weak var delegate: SecondViewControllerDelegate?
+    var juiceMaker: JuiceMaker?
     
     override func viewDidLoad() {
         super.viewDidLoad()
