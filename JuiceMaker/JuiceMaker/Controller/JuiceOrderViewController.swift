@@ -88,9 +88,8 @@ extension JuiceOrderViewController: JuiceOrderViewControllerDelegate {
     }
     
     func fruitStock(fruitStock: [Fruit : UInt]) {
-        for (index, _) in fruitStock.enumerated() {
-            guard let fruit = Fruit(rawValue: index) else { return }
-            juiceMaker.fruitStore.updateFruitStock(fruit: fruit, num: fruitStock[fruit] ?? 0)
+        for fruit in fruitStock {
+            juiceMaker.fruitStore.updateFruitStock(fruit: fruit.key, num: fruitStock[fruit.key] ?? 0)
         }
     }
 }

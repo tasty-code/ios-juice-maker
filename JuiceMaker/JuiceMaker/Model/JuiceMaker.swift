@@ -7,8 +7,6 @@
 struct JuiceMaker {
     let fruitStore = FruitStore()
     
-    init() {}
-    
     private func checkJuiceIngredients(juice: Juice) throws {
         for (fruitName, quantity) in juice.recipe {
             try fruitStore.checkStock(fruit: fruitName, num: quantity)
