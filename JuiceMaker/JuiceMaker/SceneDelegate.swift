@@ -5,8 +5,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
     
-    fileprivate let limitedQuantity = 0
-    fileprivate let initialQunatities = 10
+    private let limitedQuantity = 0
+    private let initialQunatities = 10
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
