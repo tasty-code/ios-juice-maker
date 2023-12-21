@@ -48,58 +48,37 @@ private extension JuiceMachineViewController {
     
     @objc func ddalbaJuiceOrderButtonTapped() {
         juiceMaker?.makeDdalbaJuice()
-        alertDelegate?.presentAlert(
-            of: .successJuiceOrder("맛있게 드세요 :)")) { _ in
-                print("딸바 주스 제조성공!")
-            }
+        alertDelegate?.presentAelrt(of: .successJuiceOrder("딸바 주스 맛있게 드세요 :)"))
     }
     
     @objc func mangkiJuiceButtonTapped() {
         juiceMaker?.makeMangkiJuice()
-        alertDelegate?.presentAlert(
-            of: .successJuiceOrder("맛있게 드세요 :)")) { _ in
-                print("망키 주스 제조성공!")
-            }
+        alertDelegate?.presentAelrt(of: .successJuiceOrder("망키 주스 맛있게 드세요 :)"))
     }
     
     @objc func strawberryJuiceOrderButtonTapped() {
         juiceMaker?.makeStrawberryJuice()
-        alertDelegate?.presentAlert(
-            of: .successJuiceOrder("맛있게 드세요 :)")) { _ in
-                print("딸기 주스 제조성공!")
-            }
+        alertDelegate?.presentAelrt(of: .successJuiceOrder("딸기 주스 맛있게 드세요 :)"))
     }
     
     @objc func bananaJuiceOrderButtonTapped() {
         juiceMaker?.makeBananaJuice()
-        alertDelegate?.presentAlert(
-            of: .successJuiceOrder("맛있게 드세요 :)")) { _ in
-                print("바나나 주스 제조성공!")
-            }
+        alertDelegate?.presentAelrt(of: .successJuiceOrder("바나나 주스 맛있게 드세요 :)"))
     }
     
     @objc func pineappleJuiceOrderButtonTapped() {
         juiceMaker?.makePineappleJuice()
-        alertDelegate?.presentAlert(
-            of: .successJuiceOrder("맛있게 드세요 :)")) { _ in
-                print("파인애플 주스 제조성공!")
-            }
+        alertDelegate?.presentAelrt(of: .successJuiceOrder("파인애플 주스 맛있게 드세요 :)"))
     }
     
     @objc func kiwiJuiceOrderButtonTapped() {
         juiceMaker?.makeKiwiJuice()
-        alertDelegate?.presentAlert(
-            of: .successJuiceOrder("맛있게 드세요 :)")) { _ in
-                print("키위 주스 제조성공!")
-            }
+        alertDelegate?.presentAelrt(of: .successJuiceOrder("키위 주스 맛있게 드세요 :)"))
     }
     
     @objc func mangoJuiceButtonTapped() {
         juiceMaker?.makeMangoJuice()
-        alertDelegate?.presentAlert(
-            of: .successJuiceOrder("맛있게 드세요 :)")) { _ in
-                print("망고 주스 제조성공!")
-            }
+        alertDelegate?.presentAelrt(of: .successJuiceOrder("망고 주스 맛있게 드세요 :)"))
     }
     
     @objc func rightBarButtonTapped() {

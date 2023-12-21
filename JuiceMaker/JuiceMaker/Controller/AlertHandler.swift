@@ -3,6 +3,7 @@ import UIKit
 
 protocol AlertDelegation {
     func presentAlert(of type: AlertType, completion: @escaping (UIAlertAction) -> Void)
+    func presentAelrt(of type: AlertType)
 }
 
 enum AlertType {
@@ -42,7 +43,15 @@ final class AlertHandler: AlertDelegation {
         alertView.addAction(UIAlertAction(title: "아니오", style: .default))
         alertView.addAction(UIAlertAction(title: "예", style: .default, handler: completion))
         topViewController?.present(alertView, animated: true)
-
     }
+    
+    func presentAelrt(of type: AlertType) {
+        let topViewController = fetchTopVC()
+        if topViewController is UIAlertController { return }
+        let alertView = generateAlert(of: type)
+        alertView.addAction(UIAlertAction(title: "확인", style: .default))
+        topViewController?.present(alertView, animated: true)
+    }
+
 }
 
