@@ -5,7 +5,8 @@ import UIKit
 final class JuiceMachineViewController: UIViewController {
     
     @IBOutlet var juiceMachineView: JuiceMachineView!
-    private var juiceMaker = JuiceMaker()
+    var juiceMaker: JuiceMaker?
+    var onPushStockManageViewController: (() -> Void)?
     
     deinit { NotificationCenter.default.removeObserver(self) }
 }
@@ -25,6 +26,7 @@ private extension JuiceMachineViewController {
     
     func setupUI() {
         setupButtonAction()
+        juiceMaker?.updateStock()
     }
     
     func setupButtonAction() {
@@ -44,7 +46,7 @@ private extension JuiceMachineViewController {
 private extension JuiceMachineViewController {
     
     @objc func ddalbaJuiceOrderButtonTapped() {
-        juiceMaker.makeDdalbaJuice()
+        juiceMaker?.makeDdalbaJuice()
         AlertHandler.shared.presentAlert(
             of: .successJuiceOrder("맛있게 드세요 :)")) { _ in
                 print("딸바 주스 제조성공!")
@@ -52,7 +54,7 @@ private extension JuiceMachineViewController {
     }
     
     @objc func mangkiJuiceButtonTapped() {
-        juiceMaker.makeMangkiJuice()
+        juiceMaker?.makeMangkiJuice()
         AlertHandler.shared.presentAlert(
             of: .successJuiceOrder("맛있게 드세요 :)")) { _ in
                 print("망키 주스 제조성공!")
@@ -60,7 +62,7 @@ private extension JuiceMachineViewController {
     }
     
     @objc func strawberryJuiceOrderButtonTapped() {
-        juiceMaker.makeStrawberryJuice()
+        juiceMaker?.makeStrawberryJuice()
         AlertHandler.shared.presentAlert(
             of: .successJuiceOrder("맛있게 드세요 :)")) { _ in
                 print("딸기 주스 제조성공!")
@@ -68,7 +70,7 @@ private extension JuiceMachineViewController {
     }
     
     @objc func bananaJuiceOrderButtonTapped() {
-        juiceMaker.makeBananaJuice()
+        juiceMaker?.makeBananaJuice()
         AlertHandler.shared.presentAlert(
             of: .successJuiceOrder("맛있게 드세요 :)")) { _ in
                 print("바나나 주스 제조성공!")
@@ -76,7 +78,7 @@ private extension JuiceMachineViewController {
     }
     
     @objc func pineappleJuiceOrderButtonTapped() {
-        juiceMaker.makePineappleJuice()
+        juiceMaker?.makePineappleJuice()
         AlertHandler.shared.presentAlert(
             of: .successJuiceOrder("맛있게 드세요 :)")) { _ in
                 print("파인애플 주스 제조성공!")
@@ -84,7 +86,7 @@ private extension JuiceMachineViewController {
     }
     
     @objc func kiwiJuiceOrderButtonTapped() {
-        juiceMaker.makeKiwiJuice()
+        juiceMaker?.makeKiwiJuice()
         AlertHandler.shared.presentAlert(
             of: .successJuiceOrder("맛있게 드세요 :)")) { _ in
                 print("키위 주스 제조성공!")
@@ -92,7 +94,7 @@ private extension JuiceMachineViewController {
     }
     
     @objc func mangoJuiceButtonTapped() {
-        juiceMaker.makeMangoJuice()
+        juiceMaker?.makeMangoJuice()
         AlertHandler.shared.presentAlert(
             of: .successJuiceOrder("맛있게 드세요 :)")) { _ in
                 print("망고 주스 제조성공!")
@@ -100,7 +102,7 @@ private extension JuiceMachineViewController {
     }
     
     @objc func rightBarButtonTapped() {
-        pushStockManageViewController()
+        onPushStockManageViewController?()
     }
 }
 
@@ -131,18 +133,7 @@ private extension JuiceMachineViewController {
     @objc func handleError() {
         AlertHandler.shared.presentAlert(
             of: .fruitShortage("과일을 추가하시겠습니까?")) { [weak self] _ in
-                self?.pushStockManageViewController()
+                self?.onPushStockManageViewController?()
             }
-    }
-}
-
-// MARK: - ViewTransition Method
-extension JuiceMachineViewController {
-    private func pushStockManageViewController() {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        if let stockManageViewController = storyboard.instantiateViewController(identifier: "StockManageViewController") as? StockManageViewController {
-//            stockManageViewController.reception = reception
-//            self.navigationController?.pushViewController(stockManageViewController, animated: true)
-//        }
     }
 }

@@ -18,7 +18,6 @@
 		C73DAF40255D0CDE00020D38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C73DAF3F255D0CDE00020D38 /* Assets.xcassets */; };
 		C73DAF43255D0CDF00020D38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C73DAF41255D0CDF00020D38 /* LaunchScreen.storyboard */; };
 		C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */; };
-		CE4E51592B216328005209C3 /* JuiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E51582B216328005209C3 /* JuiceType.swift */; };
 		CE7E20FD2B2FE3C20057ACCF /* StockManageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E20FC2B2FE3C20057ACCF /* StockManageView.swift */; };
 		CE7E21182B33C7D20057ACCF /* StockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E21172B33C7D20057ACCF /* StockManager.swift */; };
 /* End PBXBuildFile section */
@@ -37,7 +36,6 @@
 		C73DAF42255D0CDF00020D38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C73DAF44255D0CDF00020D38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMaker.swift; sourceTree = "<group>"; };
-		CE4E51582B216328005209C3 /* JuiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceType.swift; sourceTree = "<group>"; };
 		CE7E20FC2B2FE3C20057ACCF /* StockManageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockManageView.swift; sourceTree = "<group>"; };
 		CE7E21172B33C7D20057ACCF /* StockManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,7 +64,6 @@
 		C71CD66F266C7B500038B9CB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CE4E51582B216328005209C3 /* JuiceType.swift */,
 				C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */,
 				C71CD66A266C7ACB0038B9CB /* FruitStore.swift */,
 				CE7E21172B33C7D20057ACCF /* StockManager.swift */,
@@ -192,7 +189,6 @@
 				C73DAF3B255D0CDD00020D38 /* JuiceMachineViewController.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
 				CE7E21182B33C7D20057ACCF /* StockManager.swift in Sources */,
-				CE4E51592B216328005209C3 /* JuiceType.swift in Sources */,
 				CE7E20FD2B2FE3C20057ACCF /* StockManageView.swift in Sources */,
 				C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */,
 				C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */,

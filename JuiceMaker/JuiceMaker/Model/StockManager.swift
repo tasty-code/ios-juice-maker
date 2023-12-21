@@ -29,4 +29,8 @@ extension StockManager {
     func manageMangoStock(by quantities: Int) {
         fruitStore?.editStock(of: .mango, to: quantities)
     }
+    
+    func updateStock() {
+        fruitStore?.updateStock()
+    }
 }

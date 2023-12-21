@@ -9,13 +9,20 @@ extension Notification.Name {
 // MARK: - FruitStore 초기화
 
 final class FruitStore {
+    
     enum Fruits: CaseIterable {
         case strawberry, mango, banana, kiwi, pineapple, cherry
     }
     
-    private let limitedQuantity = 0
-    private let initialValue = 10
-    lazy var fruitsStock = Dictionary(uniqueKeysWithValues: Fruits.allCases.map {($0, initialValue)})
+    private let limitedQuantity: Int
+    private let initialQunatity: Int
+    lazy var fruitsStock = Dictionary(uniqueKeysWithValues: Fruits.allCases.map {($0, initialQunatity)})
+    
+    init(limitedQuantity: Int, initialQunatities: Int) {
+        self.limitedQuantity = limitedQuantity
+        self.initialQunatity = initialQunatities
+        updateStock()
+    }
 }
 
 
@@ -64,7 +71,7 @@ extension FruitStore {
         postFruitsStock()
     }
     
-    func onUpdateStock() {
+    func updateStock() {
         postFruitsStock()
     }
 }
