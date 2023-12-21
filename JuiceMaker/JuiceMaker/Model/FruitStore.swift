@@ -6,17 +6,14 @@ extension Notification.Name {
     static let errorOccured = Notification.Name("errorOccured")
 }
 
+
 // MARK: - FruitStore 초기화
 
 final class FruitStore {
-    
-    enum Fruits: CaseIterable {
-        case strawberry, mango, banana, kiwi, pineapple, cherry
-    }
-    
+        
     private let limitedQuantity: Int
     private let initialQunatity: Int
-    lazy var fruitsStock = Dictionary(uniqueKeysWithValues: Fruits.allCases.map {($0, initialQunatity)})
+    lazy var fruitsStock = Dictionary(uniqueKeysWithValues: FruitsType.allCases.map {($0, initialQunatity)})
     
     init(limitedQuantity: Int, initialQunatities: Int) {
         self.limitedQuantity = limitedQuantity
@@ -30,12 +27,12 @@ final class FruitStore {
 
 extension FruitStore {
     
-    func increment(fruits: [Fruits], by quantities: [Int]) {
+    func increment(fruits: [FruitsType], by quantities: [Int]) {
 
         let fruitQuantitiesPairs = Array(zip(fruits, quantities))
         
         for (fruit, quantity) in fruitQuantitiesPairs {
-            guard 
+            guard
                 let currentFruitStock = fruitsStock[fruit]
             else {
                 postErrorOccurred()
@@ -48,12 +45,12 @@ extension FruitStore {
     }
 
 
-    func decrement(fruits: [Fruits], by quantities: [Int]) {
+    func decrement(fruits: [FruitsType], by quantities: [Int]) {
 
         let fruitQuantitiesPairs = Array(zip(fruits, quantities))
         
         for (fruit, quantity) in fruitQuantitiesPairs {
-            guard 
+            guard
                 let currentFruitStock = fruitsStock[fruit],
                 currentFruitStock-quantity >= limitedQuantity
             else {
@@ -66,7 +63,7 @@ extension FruitStore {
         }
     }
     
-    func editStock(of type: Fruits, to quantities: Int) {
+    func editStock(of type: FruitsType, to quantities: Int) {
         fruitsStock[type] = quantities
         postFruitsStock()
     }

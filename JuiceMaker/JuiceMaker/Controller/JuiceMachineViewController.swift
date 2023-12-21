@@ -117,13 +117,13 @@ private extension JuiceMachineViewController {
     
     @objc func updateFruitStock(notification: Notification) {
         guard let fruitStock =
-                notification.userInfo?["fruitsStock"] as? [FruitStore.Fruits: Int] else {
+                notification.userInfo?["fruitsStock"] as? [FruitsType: Int] else {
             return
         }
         updateStockLabel(from: fruitStock)
     }
     
-    func updateStockLabel(from fruitStock: [FruitStore.Fruits: Int]) {
+    func updateStockLabel(from fruitStock: [FruitsType: Int]) {
         juiceMachineView.bananaStockLabel.text = String(fruitStock[.banana] ?? 0)
         juiceMachineView.strawberryStockLabel.text = String(fruitStock[.strawberry] ?? 0)
         juiceMachineView.mangoStockLabel.text = String(fruitStock[.mango] ?? 0)

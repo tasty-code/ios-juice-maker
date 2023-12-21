@@ -73,14 +73,14 @@ private extension StockManageViewController {
     
     @objc func updateFruitStock(notification: Notification) {
         guard let fruitStock =
-                notification.userInfo?["fruitsStock"] as? [FruitStore.Fruits: Int] else {
+                notification.userInfo?["fruitsStock"] as? [FruitsType: Int] else {
             return
         }
         updateStockLabel(from: fruitStock)
         setUpInitialStepperValue(from: fruitStock)
     }
     
-    func updateStockLabel(from fruitStock: [FruitStore.Fruits: Int]) {
+    func updateStockLabel(from fruitStock: [FruitsType: Int]) {
         stockManageView.bananaStockLabel.text = String(fruitStock[.banana] ?? 0)
         stockManageView.strawberryStockLabel.text = String(fruitStock[.strawberry] ?? 0)
         stockManageView.mangoStockLabel.text = String(fruitStock[.mango] ?? 0)
@@ -88,7 +88,7 @@ private extension StockManageViewController {
         stockManageView.kiwiStockLabel.text = String(fruitStock[.kiwi] ?? 0)
     }
     
-    func setUpInitialStepperValue(from fruitStock: [FruitStore.Fruits: Int]) {
+    func setUpInitialStepperValue(from fruitStock: [FruitsType: Int]) {
         stockManageView.strawberryStockStepper.value = Double(fruitStock[.strawberry] ?? 0)
         stockManageView.bananaStockStepper.value = Double(fruitStock[.banana] ?? 0)
         stockManageView.mangoStockStepper.value = Double(fruitStock[.mango] ?? 0)

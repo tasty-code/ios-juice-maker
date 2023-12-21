@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		082A790D2B340EBC00F0924E /* FruitsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082A790C2B340EBC00F0924E /* FruitsType.swift */; };
 		082E3B812B22E9F00068A685 /* AlertHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082E3B802B22E9F00068A685 /* AlertHandler.swift */; };
 		08A966F32B30563A0035A7D2 /* StockManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A966F22B30563A0035A7D2 /* StockManageViewController.swift */; };
 		08C6F55F2B20881B0060C97B /* JuiceMachineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6F55E2B20881B0060C97B /* JuiceMachineView.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		082A790C2B340EBC00F0924E /* FruitsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitsType.swift; sourceTree = "<group>"; };
 		082E3B802B22E9F00068A685 /* AlertHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHandler.swift; sourceTree = "<group>"; };
 		08A966F22B30563A0035A7D2 /* StockManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockManageViewController.swift; sourceTree = "<group>"; };
 		08C6F55E2B20881B0060C97B /* JuiceMachineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMachineView.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */,
 				C71CD66A266C7ACB0038B9CB /* FruitStore.swift */,
 				CE7E21172B33C7D20057ACCF /* StockManager.swift */,
+				082A790C2B340EBC00F0924E /* FruitsType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
 				082E3B812B22E9F00068A685 /* AlertHandler.swift in Sources */,
 				08A966F32B30563A0035A7D2 /* StockManageViewController.swift in Sources */,
+				082A790D2B340EBC00F0924E /* FruitsType.swift in Sources */,
 				08C6F55F2B20881B0060C97B /* JuiceMachineView.swift in Sources */,
 				C73DAF3B255D0CDD00020D38 /* JuiceMachineViewController.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
