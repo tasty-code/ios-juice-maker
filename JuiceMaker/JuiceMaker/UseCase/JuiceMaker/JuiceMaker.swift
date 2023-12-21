@@ -7,10 +7,16 @@
 final class JuiceMaker {
     private let fruitStore: FruitStore
     
-    var resultConverter: JuiceMakerResultConvertable?
+    var resultConverter: (JuiceMakerResultConvertable & StockDisplayResultConvertable)?
     
     init(fruitStore: FruitStore) {
         self.fruitStore = fruitStore
+    }
+    
+    func displayStock() {
+        let stocks = fruitStore.fetchStocks()
+        let result = StockDisplayModel.Response(stocks: stocks)
+        resultConverter?.convertResult(result)
     }
     
     func produceJuice(flavor: JuiceFlavor) {

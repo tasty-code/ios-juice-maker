@@ -7,8 +7,6 @@
 import UIKit
 
 final class JuiceMakerViewController: UIViewController {
-    private let stockDisplayUseCase: StockDisplay?
-    
     private let juiceMakerUseCase: JuiceMaker?
     
     private let router: JuiceMakerRoutable?
@@ -24,7 +22,6 @@ final class JuiceMakerViewController: UIViewController {
     @IBOutlet private weak var mangoStockLabel: UILabel!
     
     required init?(coder: NSCoder) {
-        self.stockDisplayUseCase = nil
         self.juiceMakerUseCase = nil
         self.router = nil
         
@@ -33,11 +30,9 @@ final class JuiceMakerViewController: UIViewController {
     
     init?(
         coder: NSCoder,
-        stockDisplayUseCase: StockDisplay,
         juiceMakerUseCase: JuiceMaker,
         router: JuiceMakerRouter
     ) {
-        self.stockDisplayUseCase = stockDisplayUseCase
         self.juiceMakerUseCase = juiceMakerUseCase
         self.router = router
         super.init(coder: coder)
@@ -46,7 +41,7 @@ final class JuiceMakerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        stockDisplayUseCase?.displayStock()
+        juiceMakerUseCase?.displayStock()
     }
 }
 
@@ -86,10 +81,6 @@ extension JuiceMakerViewController {
 
 extension JuiceMakerViewController {
     private func setUpLayers() {
-        let stockDisplayConverter = StockDisplayResultConverter()
-        self.stockDisplayUseCase?.resultConverter = stockDisplayConverter
-        stockDisplayConverter.display = self
-        
         let juiceConverter = JuiceMakerResultConverter()
         self.juiceMakerUseCase?.resultConverter = juiceConverter
         juiceConverter.display = self
@@ -100,14 +91,12 @@ extension JuiceMakerViewController {
 
 extension JuiceMakerViewController: StoryboardBased {
     static func instantiate(
-        stockDisplayUseCase: StockDisplay,
         juiceMakerUseCase: JuiceMaker,
         router: JuiceMakerRouter
     ) -> Self {
         return sceneStoryboard.instantiateViewController(identifier: storyboardIdentifier) { coder in
             return Self.init(
                 coder: coder,
-                stockDisplayUseCase: stockDisplayUseCase,
                 juiceMakerUseCase: juiceMakerUseCase,
                 router: router
             )
