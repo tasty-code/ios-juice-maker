@@ -37,9 +37,9 @@ final class StockManagerViewController: UIViewController {
     
     init?(
         coder: NSCoder,
-        fruitStore: FruitStore
+        stockManagerUseCase: StockManager
     ) {
-        self.stockManagerUseCase = StockManager(fruitStore: fruitStore)
+        self.stockManagerUseCase = stockManagerUseCase
         super.init(coder: coder)
         setUpLayers()
     }
@@ -99,14 +99,14 @@ extension StockManagerViewController {
 
 extension StockManagerViewController: StoryboardBased {
     static func instantiate(
-        fruitStore: FruitStore
+        stockManagerUseCase: StockManager
     ) -> Self {
         return sceneStoryboard.instantiateViewController(
             identifier: storyboardIdentifier
         ) { coder in
             return Self.init(
                 coder: coder,
-                fruitStore: fruitStore
+                stockManagerUseCase: stockManagerUseCase
             )
         }
     }

@@ -24,7 +24,6 @@ final class JuiceMakerViewController: UIViewController {
     required init?(coder: NSCoder) {
         self.juiceMakerUseCase = nil
         self.router = nil
-        
         super.init(coder: coder)
     }
     

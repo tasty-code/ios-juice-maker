@@ -26,7 +26,8 @@ final class JuiceMakerRouter: JuiceMakerRoutable {
     
     private func routeToStockManager() {
         guard let sourceViewController else { return }
-        let destinationViewController = StockManagerViewController.instantiate(fruitStore: sourceDataStore)
+        let stockManager = StockManager(fruitStore: sourceDataStore)
+        let destinationViewController = StockManagerViewController.instantiate(stockManagerUseCase: stockManager)
         navigateToStockManager(source: sourceViewController, destination: destinationViewController)
     }
     
