@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7F7DBF6E2B281C460081CBAD /* StockDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7DBF6D2B281C460081CBAD /* StockDisplayModel.swift */; };
-		7F7DBF702B281E6A0081CBAD /* StockDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7DBF6F2B281E6A0081CBAD /* StockDisplay.swift */; };
-		7F7DBF722B2820230081CBAD /* StockDisplayResultConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7DBF712B2820230081CBAD /* StockDisplayResultConvertable.swift */; };
-		7F7DBF742B2823120081CBAD /* StockDisplayResultDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7DBF732B2823120081CBAD /* StockDisplayResultDisplayable.swift */; };
 		7F7DBF762B282DB70081CBAD /* JuiceMakerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7DBF752B282DB70081CBAD /* JuiceMakerModel.swift */; };
 		7F7DBF782B282FD10081CBAD /* JuiceMakerResultConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7DBF772B282FD10081CBAD /* JuiceMakerResultConvertable.swift */; };
 		7F7DBF7A2B28304E0081CBAD /* JuiceMakingResultDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7DBF792B28304E0081CBAD /* JuiceMakingResultDisplayable.swift */; };
@@ -28,16 +24,16 @@
 		F456FA382B283D1F0025386D /* StoryboardIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F456FA372B283D1F0025386D /* StoryboardIdentifiable.swift */; };
 		F456FA3A2B2840C40025386D /* StockManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F456FA392B2840C40025386D /* StockManagerViewController.swift */; };
 		F456FA3C2B2841C30025386D /* JuiceMakerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F456FA3B2B2841C30025386D /* JuiceMakerRouter.swift */; };
+		F49D1C602B3451040087CAA5 /* StockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49D1C5F2B3451040087CAA5 /* StockManager.swift */; };
+		F49D1C622B34513B0087CAA5 /* StockManagerResultConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49D1C612B34513B0087CAA5 /* StockManagerResultConvertable.swift */; };
+		F49D1C642B34517A0087CAA5 /* StockManagerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49D1C632B34517A0087CAA5 /* StockManagerModel.swift */; };
+		F49D1C672B3452FE0087CAA5 /* StockManagerResultDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49D1C662B3452FE0087CAA5 /* StockManagerResultDisplayable.swift */; };
 		F4B6BCD52B3165B60020A6C0 /* StoryboardBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B6BCD42B3165B60020A6C0 /* StoryboardBased.swift */; };
 		F4B6BCD72B3166880020A6C0 /* JuiceMakerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4B6BCD62B3166880020A6C0 /* JuiceMakerViewController.storyboard */; };
 		F4B6BCD92B3166A00020A6C0 /* StockManagerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4B6BCD82B3166A00020A6C0 /* StockManagerViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7F7DBF6D2B281C460081CBAD /* StockDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDisplayModel.swift; sourceTree = "<group>"; };
-		7F7DBF6F2B281E6A0081CBAD /* StockDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDisplay.swift; sourceTree = "<group>"; };
-		7F7DBF712B2820230081CBAD /* StockDisplayResultConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDisplayResultConvertable.swift; sourceTree = "<group>"; };
-		7F7DBF732B2823120081CBAD /* StockDisplayResultDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDisplayResultDisplayable.swift; sourceTree = "<group>"; };
 		7F7DBF752B282DB70081CBAD /* JuiceMakerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMakerModel.swift; sourceTree = "<group>"; };
 		7F7DBF772B282FD10081CBAD /* JuiceMakerResultConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMakerResultConvertable.swift; sourceTree = "<group>"; };
 		7F7DBF792B28304E0081CBAD /* JuiceMakingResultDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMakingResultDisplayable.swift; sourceTree = "<group>"; };
@@ -57,6 +53,10 @@
 		F456FA372B283D1F0025386D /* StoryboardIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardIdentifiable.swift; sourceTree = "<group>"; };
 		F456FA392B2840C40025386D /* StockManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockManagerViewController.swift; sourceTree = "<group>"; };
 		F456FA3B2B2841C30025386D /* JuiceMakerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMakerRouter.swift; sourceTree = "<group>"; };
+		F49D1C5F2B3451040087CAA5 /* StockManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockManager.swift; sourceTree = "<group>"; };
+		F49D1C612B34513B0087CAA5 /* StockManagerResultConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockManagerResultConvertable.swift; sourceTree = "<group>"; };
+		F49D1C632B34517A0087CAA5 /* StockManagerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockManagerModel.swift; sourceTree = "<group>"; };
+		F49D1C662B3452FE0087CAA5 /* StockManagerResultDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockManagerResultDisplayable.swift; sourceTree = "<group>"; };
 		F4B6BCD42B3165B60020A6C0 /* StoryboardBased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardBased.swift; sourceTree = "<group>"; };
 		F4B6BCD62B3166880020A6C0 /* JuiceMakerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JuiceMakerViewController.storyboard; sourceTree = "<group>"; };
 		F4B6BCD82B3166A00020A6C0 /* StockManagerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StockManagerViewController.storyboard; sourceTree = "<group>"; };
@@ -173,24 +173,24 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		F456FA332B282CF10025386D /* StockDisplay */ = {
-			isa = PBXGroup;
-			children = (
-				7F7DBF6D2B281C460081CBAD /* StockDisplayModel.swift */,
-				7F7DBF6F2B281E6A0081CBAD /* StockDisplay.swift */,
-				7F7DBF712B2820230081CBAD /* StockDisplayResultConvertable.swift */,
-				7F7DBF732B2823120081CBAD /* StockDisplayResultDisplayable.swift */,
-			);
-			path = StockDisplay;
-			sourceTree = "<group>";
-		};
 		F456FA342B282CFF0025386D /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				F456FA332B282CF10025386D /* StockDisplay */,
 				7F7DBF7B2B2831D10081CBAD /* JuiceMaker */,
+				F49D1C652B34527B0087CAA5 /* StockManager */,
 			);
 			path = UseCase;
+			sourceTree = "<group>";
+		};
+		F49D1C652B34527B0087CAA5 /* StockManager */ = {
+			isa = PBXGroup;
+			children = (
+				F49D1C632B34517A0087CAA5 /* StockManagerModel.swift */,
+				F49D1C5F2B3451040087CAA5 /* StockManager.swift */,
+				F49D1C612B34513B0087CAA5 /* StockManagerResultConvertable.swift */,
+				F49D1C662B3452FE0087CAA5 /* StockManagerResultDisplayable.swift */,
+			);
+			path = StockManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,11 +264,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F7DBF722B2820230081CBAD /* StockDisplayResultConvertable.swift in Sources */,
 				7F7DBF762B282DB70081CBAD /* JuiceMakerModel.swift in Sources */,
-				7F7DBF742B2823120081CBAD /* StockDisplayResultDisplayable.swift in Sources */,
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
-				7F7DBF702B281E6A0081CBAD /* StockDisplay.swift in Sources */,
 				C73DAF3B255D0CDD00020D38 /* JuiceMakerViewController.swift in Sources */,
 				F42621552B1DBF3F00C6423A /* JuiceFlavor.swift in Sources */,
 				F42621532B1DBF2E00C6423A /* JuiceMakerError.swift in Sources */,
@@ -277,13 +274,16 @@
 				F426214F2B1DBEE800C6423A /* Fruit.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
 				7F7DBF7D2B2834800081CBAD /* JuiceMakerAlert.swift in Sources */,
+				F49D1C622B34513B0087CAA5 /* StockManagerResultConvertable.swift in Sources */,
 				C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */,
 				F456FA382B283D1F0025386D /* StoryboardIdentifiable.swift in Sources */,
 				7F7DBF782B282FD10081CBAD /* JuiceMakerResultConvertable.swift in Sources */,
 				F456FA3A2B2840C40025386D /* StockManagerViewController.swift in Sources */,
-				7F7DBF6E2B281C460081CBAD /* StockDisplayModel.swift in Sources */,
 				F456FA3C2B2841C30025386D /* JuiceMakerRouter.swift in Sources */,
 				7F7DBF7A2B28304E0081CBAD /* JuiceMakingResultDisplayable.swift in Sources */,
+				F49D1C642B34517A0087CAA5 /* StockManagerModel.swift in Sources */,
+				F49D1C672B3452FE0087CAA5 /* StockManagerResultDisplayable.swift in Sources */,
+				F49D1C602B3451040087CAA5 /* StockManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

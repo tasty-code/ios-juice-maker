@@ -1,13 +1,13 @@
 //
 //  JuiceMaker - JuiceMaker.swift
-//  Created by yagom. 
+//  Created by yagom.
 //  Copyright © yagom academy. All rights reserved.
-// 
+//
 
 final class JuiceMaker {
     private let fruitStore: FruitStore
     
-    var resultConverter: JuiceMakerResultConvertable?
+    var resultConverter: (JuiceMakerResultConvertable & StockDisplayResultConvertable)?
     
     init(fruitStore: FruitStore) {
         self.fruitStore = fruitStore
@@ -15,16 +15,27 @@ final class JuiceMaker {
     
     func produceJuice(flavor: JuiceFlavor) {
         do {
-            try consumeFruitsForMakingJuice(flavor: flavor)
-            let result = JuiceMakerModel.Response(juice: flavor)
-            resultConverter?.convertResult(result)
+            let updatedStocks = try consumeFruitsForMakingJuice(flavor: flavor)
+            let successInfo = JuiceMakerModel.Response.SuccessInfo(juice: flavor, updatedStocks: updatedStocks)
+            let response = JuiceMakerModel.Response.success(successInfo)
+            resultConverter?.convertResult(response)
         } catch {
-            let result = JuiceMakerModel.Response(juice: nil)
-            resultConverter?.convertResult(result)
+            if let error = error as? JuiceMakerError {
+                let response = JuiceMakerModel.Response.failure(error)
+                resultConverter?.convertResult(response)
+            }
         }
     }
     
-    private func consumeFruitsForMakingJuice(flavor: JuiceFlavor) throws {
-        try fruitStore.consume(ingredients: flavor.recipe)
+    private func consumeFruitsForMakingJuice(flavor: JuiceFlavor) throws -> [FruitStock] {
+        return try fruitStore.consume(ingredients: flavor.recipe)
+    }
+}
+
+extension JuiceMaker {
+    func displayStock() {
+        let stocks = fruitStore.fetchStocks()
+        let result = StockDisplayModel.Response.success(stocks)
+        resultConverter?.convertResult(result)
     }
 }
