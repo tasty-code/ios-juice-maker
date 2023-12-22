@@ -11,7 +11,7 @@ final class JuiceMakerCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     
     private let navigationController: UINavigationController
-    private lazy var fruitStore: FruitStore = FruitStore(initialCount: 10)
+    private let fruitStore: FruitStore
     
     init(navigationController: UINavigationController, fruitStore: FruitStore) {
         self.navigationController = navigationController
@@ -19,9 +19,8 @@ final class JuiceMakerCoordinator: Coordinator {
     }
     
     func start() {
-        self.fruitStore = FruitStore(initialCount: 10)
         let viewController = JuiceMakerViewController.instantiate(
-            juiceMakerUseCase: JuiceMaker(fruitStore: fruitStore),
+            juiceMakerUseCase: JuiceMaker(fruitStore: self.fruitStore),
             coordinator: self
         )
         self.navigationController.viewControllers = [viewController]

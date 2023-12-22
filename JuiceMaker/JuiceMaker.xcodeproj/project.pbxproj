@@ -19,6 +19,7 @@
 		C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */; };
 		F4067D0D2B357D0A00399307 /* StockManagerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4067D0C2B357D0A00399307 /* StockManagerCoordinator.swift */; };
 		F4067D0F2B35997400399307 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4067D0E2B35997400399307 /* Coordinator.swift */; };
+		F4067D112B359EB500399307 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4067D102B359EB500399307 /* AppCoordinator.swift */; };
 		F426214F2B1DBEE800C6423A /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F426214E2B1DBEE800C6423A /* Fruit.swift */; };
 		F42621512B1DBEFD00C6423A /* FruitStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42621502B1DBEFD00C6423A /* FruitStock.swift */; };
 		F42621532B1DBF2E00C6423A /* JuiceMakerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42621522B1DBF2E00C6423A /* JuiceMakerError.swift */; };
@@ -50,6 +51,7 @@
 		C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMaker.swift; sourceTree = "<group>"; };
 		F4067D0C2B357D0A00399307 /* StockManagerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockManagerCoordinator.swift; sourceTree = "<group>"; };
 		F4067D0E2B35997400399307 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		F4067D102B359EB500399307 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		F426214E2B1DBEE800C6423A /* Fruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
 		F42621502B1DBEFD00C6423A /* FruitStock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitStock.swift; sourceTree = "<group>"; };
 		F42621522B1DBF2E00C6423A /* JuiceMakerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMakerError.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				F4067D0E2B35997400399307 /* Coordinator.swift */,
+				F4067D102B359EB500399307 /* AppCoordinator.swift */,
 				F49D1C682B35470E0087CAA5 /* JuiceMakerCoordinator.swift */,
 				F4067D0C2B357D0A00399307 /* StockManagerCoordinator.swift */,
 			);
@@ -276,6 +279,7 @@
 				F4067D0D2B357D0A00399307 /* StockManagerCoordinator.swift in Sources */,
 				F42621552B1DBF3F00C6423A /* JuiceFlavor.swift in Sources */,
 				F42621532B1DBF2E00C6423A /* JuiceMakerError.swift in Sources */,
+				F4067D112B359EB500399307 /* AppCoordinator.swift in Sources */,
 				F4067D0F2B35997400399307 /* Coordinator.swift in Sources */,
 				F4B6BCD52B3165B60020A6C0 /* StoryboardBased.swift in Sources */,
 				F42621512B1DBEFD00C6423A /* FruitStock.swift in Sources */,

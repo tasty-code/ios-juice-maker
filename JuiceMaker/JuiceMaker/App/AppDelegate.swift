@@ -20,11 +20,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         window.rootViewController = navigationController
         
         let fruitStore = FruitStore(initialCount: 10)
-        let juiceCoordinator = JuiceMakerCoordinator(
+        let coordinator = AppCoordinator(
             navigationController: navigationController,
             fruitStore: fruitStore
         )
-        juiceCoordinator.start()
+        coordinator.start()
         
         window.makeKeyAndVisible()
         self.window = window
