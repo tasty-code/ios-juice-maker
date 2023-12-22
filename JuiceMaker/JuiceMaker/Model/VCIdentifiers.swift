@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+enum VCIdentifiers: String {
+    case StockViewController = "StockViewController"
+    case StoreViewController = "StoreViewController"
+}

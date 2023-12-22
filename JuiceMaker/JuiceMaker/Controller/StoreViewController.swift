@@ -65,7 +65,7 @@ final class StoreViewController: UIViewController {
     }
     
     private func moveFruitStore() {
-        guard let secondVC = storyboard?.instantiateViewController(withIdentifier: "StockViewController") as? StockViewController else { return }
+        guard let secondVC = storyboard?.instantiateViewController(withIdentifier: VCIdentifiers.StockViewController.rawValue) as? StockViewController else { return }
         secondVC.modalPresentationStyle = .fullScreen
         self.present(secondVC, animated: true)
     }
