@@ -72,11 +72,11 @@ class StockViewController: UIViewController {
     }
     
     private func reloadFruitsCount() {
-        strawberryCountLabel.text = String(describing: fruitStore.storage[.strawberry] ?? 0)
-        bananaCountLabel.text = String(describing: fruitStore.storage[.banana] ?? 0)
-        pineappleCountLabel.text = String(describing: fruitStore.storage[.pineapple] ?? 0)
-        kiwiCountLabel.text = String(describing: fruitStore.storage[.kiwi] ?? 0)
-        mangoCountLabel.text = String(describing: fruitStore.storage[.mango] ?? 0)
+        strawberryCountLabel.text = String(fruitStore.storage[.strawberry] ?? 0)
+        bananaCountLabel.text = String(fruitStore.storage[.banana] ?? 0)
+        pineappleCountLabel.text = String(fruitStore.storage[.pineapple] ?? 0)
+        kiwiCountLabel.text = String(fruitStore.storage[.kiwi] ?? 0)
+        mangoCountLabel.text = String(fruitStore.storage[.mango] ?? 0)
     }
 }
 
