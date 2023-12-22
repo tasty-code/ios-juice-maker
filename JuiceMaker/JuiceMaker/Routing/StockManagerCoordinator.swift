@@ -41,8 +41,6 @@ protocol StockManagerViewControllerDelegate {
 
 extension StockManagerCoordinator: StockManagerViewControllerDelegate {
     func endStockManaging() {
-//        guard let viewController = self.navigationController.viewControllers.last else { return }
-//        viewController.dismiss(animated: true)
         self.navigationController.dismiss(animated: true)
         self.coordinator?.didEndStockManaging(self)
     }

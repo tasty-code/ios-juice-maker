@@ -41,7 +41,6 @@ final class FruitStore {
     }
     
     func updateStock(of fruitType: Fruit, to newCount: Int) throws -> FruitStock {
-        // TODO: [refactor] 이 로직 consume이랑 같음
         guard let copyOfTargetStock = self.fruitStocks[fruitType] else {
             throw JuiceMakerError.fruitStockNotFound
         }
