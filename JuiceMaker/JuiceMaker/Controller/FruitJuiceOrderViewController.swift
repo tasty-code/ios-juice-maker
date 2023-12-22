@@ -1,12 +1,12 @@
 //
-//  JuiceMaker - JuiceViewController.swift
-//  Created by yagom. 
+//  JuiceMaker - FruitJuiceOrderViewController.swift
+//  Created by yagom.
 //  Copyright © yagom academy. All rights reserved.
 // 
 
 import UIKit
 
-class JuiceViewController: UIViewController {
+class FruitJuiceOrderViewController: UIViewController {
     
     @IBOutlet private weak var strawberryCountLabel: UILabel!
     @IBOutlet private weak var bananaCountLabel: UILabel!
@@ -102,7 +102,7 @@ class JuiceViewController: UIViewController {
     }
 }
 
-extension JuiceViewController: StockViewControllerDelegate {
+extension FruitJuiceOrderViewController: StockViewControllerDelegate {
     func stockViewWillDisappear() {
         reloadFruitsCount()
     }
