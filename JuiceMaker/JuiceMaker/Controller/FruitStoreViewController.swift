@@ -119,7 +119,9 @@ final class FruitStoreViewController: UIViewController {
     }
 
     @IBAction private func tappedCloseButton(_ sender: UIBarButtonItem) {
-        delegate?.updateFruitStock()
+//        delegate?.updateFruitStock()
+        NotificationCenter.default.post(name: NSNotification.Name("updateUINotification"), 
+                                        object: nil)
         dismiss(animated: true)
     }
 }
