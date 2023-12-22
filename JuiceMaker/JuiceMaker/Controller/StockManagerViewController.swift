@@ -10,7 +10,7 @@ import UIKit
 final class StockManagerViewController: UIViewController {
     private let stockManagerUseCase: StockManager?
     
-    private var dismissingHandler: (() -> Void)?
+    private let coordinator: StockManagerViewControllerDelegate?
     
     @IBOutlet private weak var strawberryStockLabel: UILabel!
     
@@ -34,17 +34,17 @@ final class StockManagerViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         self.stockManagerUseCase = nil
-        self.dismissingHandler = nil
+        self.coordinator = nil
         super.init(coder: coder)
     }
     
     init?(
         coder: NSCoder,
         stockManagerUseCase: StockManager,
-        dismissingHandler: (() -> Void)?
+        coordinator: StockManagerViewControllerDelegate?
     ) {
         self.stockManagerUseCase = stockManagerUseCase
-        self.dismissingHandler = dismissingHandler
+        self.coordinator = coordinator
         super.init(coder: coder)
         setUpLayers()
     }
@@ -77,8 +77,7 @@ extension StockManagerViewController {
     }
     
     @IBAction private func completeManaging(_ sender: UIBarButtonItem) {
-        dismissingHandler?()
-        self.dismiss(animated: true)
+        self.coordinator?.endStockManaging()
     }
 }
 
@@ -106,7 +105,7 @@ extension StockManagerViewController {
 extension StockManagerViewController: StoryboardBased {
     static func instantiate(
         stockManagerUseCase: StockManager,
-        dismissingHandler: (() -> Void)?
+        coordinator: StockManagerViewControllerDelegate?
     ) -> Self {
         return sceneStoryboard.instantiateViewController(
             identifier: storyboardIdentifier
@@ -114,7 +113,7 @@ extension StockManagerViewController: StoryboardBased {
             return Self.init(
                 coder: coder,
                 stockManagerUseCase: stockManagerUseCase,
-                dismissingHandler: dismissingHandler
+                coordinator: coordinator
             )
         }
     }

@@ -9,7 +9,7 @@ import UIKit
 final class JuiceMakerViewController: UIViewController {
     private let juiceMakerUseCase: JuiceMaker?
     
-    private let router: JuiceMakerRoutable?
+    private let coordinator: JuiceMakerViewControllerDelegate?
     
     @IBOutlet private weak var strawberryStockLabel: UILabel!
     
@@ -23,17 +23,17 @@ final class JuiceMakerViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         self.juiceMakerUseCase = nil
-        self.router = nil
+        self.coordinator = nil
         super.init(coder: coder)
     }
     
-    init?(
+    private init?(
         coder: NSCoder,
         juiceMakerUseCase: JuiceMaker,
-        router: JuiceMakerRouter
+        coordinator: JuiceMakerViewControllerDelegate
     ) {
         self.juiceMakerUseCase = juiceMakerUseCase
-        self.router = router
+        self.coordinator = coordinator
         super.init(coder: coder)
         setUpLayers()
     }
@@ -74,10 +74,7 @@ extension JuiceMakerViewController {
     }
     
     @IBAction private func didTapStockManager(_ sender: UIBarButtonItem) {
-        let managinCompletionHandler: (() -> Void) = { [weak self] in
-            self?.juiceMakerUseCase?.displayStock()
-        }
-        self.router?.routeToNextViewController(dismissingHandler: managinCompletionHandler)
+        self.coordinator?.startStockManaging()
     }
 }
 
@@ -86,21 +83,19 @@ extension JuiceMakerViewController {
         let juiceConverter = JuiceMakerResultConverter()
         self.juiceMakerUseCase?.resultConverter = juiceConverter
         juiceConverter.display = self
-        
-        self.router?.sourceViewController = self
     }
 }
 
 extension JuiceMakerViewController: StoryboardBased {
     static func instantiate(
         juiceMakerUseCase: JuiceMaker,
-        router: JuiceMakerRouter
+        coordinator: JuiceMakerViewControllerDelegate
     ) -> Self {
         return sceneStoryboard.instantiateViewController(identifier: storyboardIdentifier) { coder in
             return Self.init(
                 coder: coder,
                 juiceMakerUseCase: juiceMakerUseCase,
-                router: router
+                coordinator: coordinator
             )
         }
     }
@@ -131,11 +126,7 @@ extension JuiceMakerViewController: JuiceMakerResultDisplayable {
             present(JuiceMakerAlert.juiceIsReady(juiceName: successInfo.juiceName).alertController, animated: true)
         case .failure:
             let action: AlertActionHandler = { [weak self] _ in
-                let managinCompletionHandler: (() -> Void) = {
-                    self?.juiceMakerUseCase?.displayStock()
-                }
-                
-                self?.router?.routeToNextViewController(dismissingHandler: managinCompletionHandler)
+                self?.coordinator?.startStockManaging()
             }
             present(JuiceMakerAlert.fruitShortage(editAction: action).alertController, animated: true)
         }
@@ -149,5 +140,13 @@ extension JuiceMakerViewController: JuiceMakerResultDisplayable {
         case .kiwi: self.kiwiStockLabel.text = "\(updatedCount)"
         case .mango: self.mangoStockLabel.text = "\(updatedCount)"
         }
+    }
+}
+
+// MARK: - ModalViewControllerDismissingHandlable Implementation
+
+extension JuiceMakerViewController: ModalViewControllerDismissingHandlable {
+    func juiceMakerViewControllerWillAppear() {
+        self.juiceMakerUseCase?.displayStock()
     }
 }
