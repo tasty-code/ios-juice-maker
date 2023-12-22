@@ -33,7 +33,6 @@ final class FruitStockViewController: UIViewController {
         fruitStockSaveButton.isEnabled = false
         setStepperDict()
         setLabelDict()
-        labelDict.forEach(setLabelText)
     }
 }
 
@@ -73,6 +72,7 @@ extension FruitStockViewController {
     private func setStepperDict() {
         stepperDict = [strawberryStepper : .strawberry, bananaStepper : .banana, pineappleStepper : .pineapple, kiwiStepper : .kiwi, mangoStepper : .mango]
         stepperDict.forEach(setStepper)
+        labelDict.forEach(setLabelText)
     }
     
     private func setStepper(stepper: UIStepper, fruit: Fruit) {

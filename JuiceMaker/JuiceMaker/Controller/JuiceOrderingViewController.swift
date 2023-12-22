@@ -45,13 +45,13 @@ extension JuiceOrderingViewController {
     }
     
     private func presentFruitStockViewController() {
-        guard let secondVC = storyboard?.instantiateViewController(withIdentifier: FruitStockViewController.className) as? FruitStockViewController else { return }
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: FruitStockViewController.className) as? FruitStockViewController else { return }
         
-        secondVC.modalPresentationStyle = .fullScreen
-        secondVC.fruitCount = fruitStore.fruitCount
-        secondVC.updateFruitStore = fruitStore.updateFruitStore
+        vc.modalPresentationStyle = .fullScreen
+        vc.fruitCount = fruitStore.fruitCount
+        vc.updateFruitStore = fruitStore.updateFruitStore
         
-        self.present(secondVC, animated: false)
+        self.present(vc, animated: false)
     }
     
     @IBAction func stockChangeButtonTapped(_ sender: UIBarButtonItem) {
