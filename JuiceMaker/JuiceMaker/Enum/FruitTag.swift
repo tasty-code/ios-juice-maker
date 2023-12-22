@@ -15,4 +15,27 @@ enum FruitTag: Int {
     case pineapple = 5
     case kiwi = 6
     case mango = 7
+    
+    var rawValueIsInt: Int {
+        switch self {
+        case .strawberryBanana:
+            return 1
+        case .mangoKiwi:
+            return 2
+        case .strawberry:
+            return 3
+        case .banana:
+            return 4
+        case .pineapple:
+            return 5
+        case .kiwi:
+            return 6
+        case .mango:
+            return 7
+        }
+    }
+    
+    
 }
+
+

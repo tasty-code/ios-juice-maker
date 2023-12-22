@@ -17,13 +17,13 @@ class MainViewController: UIViewController, QuantityViewControllerDelegate {
     @IBOutlet weak var mango: UILabel!
     
     func buttontag() {
-        starwBananaJuiceButton.tag = FruitTag.strawberryBanana.rawValue
-        magoKiwiJuiceButton.tag = FruitTag.mangoKiwi.rawValue
-        starwberrtJuiceButton.tag = FruitTag.strawberry.rawValue
-        bananaJuiceButton.tag = FruitTag.banana.rawValue
-        pinappleJuiuceButton.tag = FruitTag.pineapple.rawValue
-        kiwiJuiceButton.tag = FruitTag.kiwi.rawValue
-        mangoJuiceButton.tag = FruitTag.mangoKiwi.rawValue
+        starwBananaJuiceButton.tag = FruitTag.strawberryBanana.rawValueIsInt
+        magoKiwiJuiceButton.tag = FruitTag.mangoKiwi.rawValueIsInt
+        starwberrtJuiceButton.tag = FruitTag.strawberry.rawValueIsInt
+        bananaJuiceButton.tag = FruitTag.banana.rawValueIsInt
+        pinappleJuiuceButton.tag = FruitTag.pineapple.rawValueIsInt
+        kiwiJuiceButton.tag = FruitTag.kiwi.rawValueIsInt
+        mangoJuiceButton.tag = FruitTag.mangoKiwi.rawValueIsInt
     }
     
     override func viewDidLoad() {
