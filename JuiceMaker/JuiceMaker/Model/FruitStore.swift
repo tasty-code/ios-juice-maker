@@ -21,7 +21,7 @@ final class FruitStore {
         return fruitContainer
     }
     
-    func checkFruitQuantity(of fruit: Fruit) -> Int {
+    func quantity(of fruit: Fruit) -> Int {
         return fruitContainer[fruit, default: 0]
     }
     

@@ -24,7 +24,7 @@ struct JuiceMaker {
         let originalFruitContainer = fruitStore.checkFruitContainer()
         
         for (fruit, requiredQuantity) in dic {
-            var remainingQuantity = fruitStore.checkFruitQuantity(of: fruit)
+            var remainingQuantity = fruitStore.quantity(of: fruit)
             
             if remainingQuantity < requiredQuantity {
                 fruitStore.updateFruitContainer(with: originalFruitContainer)

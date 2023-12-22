@@ -84,7 +84,7 @@ extension OrderViewController {
     
     private func configureUI() {
         for (fruit, label) in labelsByFruit {
-            let fruitQuantity = fruitStore.checkFruitQuantity(of: fruit)
+            let fruitQuantity = fruitStore.quantity(of: fruit)
             label.text = String(fruitQuantity)
         }
     }
