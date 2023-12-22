@@ -6,8 +6,6 @@
 
 import UIKit
 
-
-
 class MainViewController: UIViewController, QuantityViewControllerDelegate {
     
     var fruitStore = FruitStore()
@@ -41,7 +39,7 @@ class MainViewController: UIViewController, QuantityViewControllerDelegate {
             quantityVC.fruitStore = self.fruitStore
             quantityVC.delegate = self
             let navigationController = UINavigationController(rootViewController: quantityVC)
-            navigationController.modalPresentationStyle = .fullScreen
+            navigationController.modalPresentationStyle = .popover
             self.present(navigationController, animated: true)
         }
     }
@@ -61,7 +59,6 @@ class MainViewController: UIViewController, QuantityViewControllerDelegate {
     @IBOutlet weak var pinappleJuiuceButton: UIButton!
     @IBOutlet weak var kiwiJuiceButton: UIButton!
     @IBOutlet weak var mangoJuiceButton: UIButton!
-    
 }
 // MARK: - AlertPresentable
 extension MainViewController: AlertPresentable {

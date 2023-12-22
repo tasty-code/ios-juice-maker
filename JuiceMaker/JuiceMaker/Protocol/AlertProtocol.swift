@@ -25,7 +25,10 @@ extension AlertPresentable where Self: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let quantityVC = storyboard.instantiateViewController(withIdentifier: "quantityVC") as? QuantityViewController {
             quantityVC.fruitStore = self.alertFruitStore
-            navigationController?.pushViewController(quantityVC, animated: true)
+            let navigationController = UINavigationController(rootViewController: quantityVC)
+            navigationController.modalPresentationStyle = .popover
+            self.present(navigationController, animated: true)
+            
         }
     }
     

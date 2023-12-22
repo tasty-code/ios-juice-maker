@@ -13,8 +13,14 @@ class FruitStore {
     
     weak var delegate: QuantityViewControllerDelegate?
     
-    init (fruitInit: [String : Int] = ["딸기": 10,"바나나": 10,"파인애플": 10,"키위": 10,"망고": 10 ]) {
-        fruitInventory = fruitInit
+    init (strawberry:Int = 10, banana:Int = 10, pineapple:Int = 10, kiwi:Int = 10, mango:Int = 10 ) {
+        fruitInventory = [
+            "딸기" : strawberry,
+            "바나나" : banana,
+            "파인애플" : pineapple,
+            "키위" : kiwi,
+            "망고" : mango
+        ]
     }
     
     func displayCurrentFruitInventory(fruit: String) -> Int? {
