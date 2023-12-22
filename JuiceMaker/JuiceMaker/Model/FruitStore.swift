@@ -8,7 +8,7 @@ import Foundation
 
 // 과일 저장소 타입
 final class FruitStore {
-    private var quantityOfAllFruits: [FruitName: Int] = [.strawberry: 50, .banana: 50, .pineapple: 50, .kiwi: 50, .mango: 50]
+    private var quantityOfAllFruits: [FruitName: Int] = [.strawberry: 10, .banana: 10, .pineapple: 10, .kiwi: 10, .mango: 10]
     
     func consumeFruit(fruitName: FruitName, fruitQuantity quantity: Int) throws {
         guard let oldQuantity = currentFruitStockQuantity(fruitName: fruitName) else {
@@ -29,6 +29,10 @@ final class FruitStore {
     
     func setFruitStockQuantity(fruitName: FruitName, quantityToChange: Int) {
         quantityOfAllFruits[fruitName] = quantityToChange
+    }
+    
+    func setAllFruitStockQuantity(allFruitQuantityDictionary: [FruitName : Int]) {
+        quantityOfAllFruits = allFruitQuantityDictionary
     }
 
     func currentQuantityOfAllFruits() -> [FruitName: Int] {
