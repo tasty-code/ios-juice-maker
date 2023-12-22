@@ -6,6 +6,10 @@
 
 import UIKit
 
+protocol StockViewControllerDelegate: AnyObject {
+    func stockViewWillDisappear()
+}
+
 class StockViewController: UIViewController {
     
     @IBOutlet private weak var strawberryCountLabel: UILabel!
@@ -33,7 +37,32 @@ class StockViewController: UIViewController {
         super.viewWillDisappear(animated)
         delegate?.stockViewWillDisappear()
     }
+}
+
+extension StockViewController {
+    private func updateStock(fruit: FruitStore.Fruit, amount: Int) {
+        fruitStore.updateStock(fruit: fruit, amount: amount)
+        reloadFruitsCount()
+    }
     
+    private func reloadFruitsCount() {
+        strawberryCountLabel.text = String(fruitStore.storage[.strawberry] ?? 0)
+        bananaCountLabel.text = String(fruitStore.storage[.banana] ?? 0)
+        pineappleCountLabel.text = String(fruitStore.storage[.pineapple] ?? 0)
+        kiwiCountLabel.text = String(fruitStore.storage[.kiwi] ?? 0)
+        mangoCountLabel.text = String(fruitStore.storage[.mango] ?? 0)
+    }
+    
+    private func setInitialStepperValues() {
+        strawberryStepper.value = Double(fruitStore.storage[.strawberry] ?? 0)
+        bananaStepper.value = Double(fruitStore.storage[.banana] ?? 0)
+        pineappleStepper.value = Double(fruitStore.storage[.pineapple] ?? 0)
+        kiwiStepper.value = Double(fruitStore.storage[.kiwi] ?? 0)
+        mangoStepper.value = Double(fruitStore.storage[.mango] ?? 0)
+    }
+}
+
+extension StockViewController {
     @IBAction private func closeButtonTapped(_ sender: UIBarButtonItem) {
         presentingViewController?.dismiss(animated: true)
     }
@@ -57,29 +86,4 @@ class StockViewController: UIViewController {
     @IBAction private func mangoStepperTapped(_ sender: UIStepper) {
         updateStock(fruit: .mango, amount: Int(sender.value))
     }
-    
-    private func updateStock(fruit: FruitStore.Fruit, amount: Int) {
-        fruitStore.updateStock(fruit: fruit, amount: amount)
-        reloadFruitsCount()
-    }
-    
-    private func setInitialStepperValues() {
-        strawberryStepper.value = Double(fruitStore.storage[.strawberry] ?? 0)
-        bananaStepper.value = Double(fruitStore.storage[.banana] ?? 0)
-        pineappleStepper.value = Double(fruitStore.storage[.pineapple] ?? 0)
-        kiwiStepper.value = Double(fruitStore.storage[.kiwi] ?? 0)
-        mangoStepper.value = Double(fruitStore.storage[.mango] ?? 0)
-    }
-    
-    private func reloadFruitsCount() {
-        strawberryCountLabel.text = String(fruitStore.storage[.strawberry] ?? 0)
-        bananaCountLabel.text = String(fruitStore.storage[.banana] ?? 0)
-        pineappleCountLabel.text = String(fruitStore.storage[.pineapple] ?? 0)
-        kiwiCountLabel.text = String(fruitStore.storage[.kiwi] ?? 0)
-        mangoCountLabel.text = String(fruitStore.storage[.mango] ?? 0)
-    }
-}
-
-protocol StockViewControllerDelegate: AnyObject {
-    func stockViewWillDisappear()
 }
