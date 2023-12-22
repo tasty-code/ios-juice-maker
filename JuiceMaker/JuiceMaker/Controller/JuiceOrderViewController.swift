@@ -6,7 +6,7 @@
 
 import UIKit
 
-protocol UIViewControllerDelegate: AnyObject {
+protocol ManageStockViewControllerDelegate: AnyObject {
     func fruitStockDidChange(fruitStock: [Fruit: UInt])
 }
 
@@ -82,7 +82,7 @@ final class JuiceOrderViewController: UIViewController {
     }
 }
 
-extension JuiceOrderViewController: UIViewControllerDelegate {
+extension JuiceOrderViewController: ManageStockViewControllerDelegate {
     func fruitStockDidChange(fruitStock: [Fruit : UInt]) {
         for fruit in fruitStock {
             juiceMaker.fruitStore.updateFruitStock(fruit: fruit.key, num: fruitStock[fruit.key] ?? 0)
