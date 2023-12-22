@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TagNameSpace {
+enum TagNameSp222ace {
     static let strawberryBananaJuiceButton = 0
     static let mangoKiwiJuiceButton = 1
     static let strawberryJuiceButton = 2

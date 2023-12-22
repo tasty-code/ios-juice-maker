@@ -23,7 +23,7 @@ extension Juice {
     static let kiwiJuice = Juice(name: "키위쥬스", recipe: [.kiwi: 3])
     static let pineappleJuice = Juice(name: "파인애플쥬스", recipe: [.pineapple: 2])
     static let mangoJuice = Juice(name: "망고쥬스", recipe: [.mango: 3])
-    static let strawberryBananaJuice = Juice(name: "딸바쥬스", recipe: [.strawberry: 10, .banana: 1])
-    static let mangoKiwiJuice = Juice(name: "망고키위쥬스", recipe: [.mango: 2, .kiwi: 1])
+    static let strawberryBananaJuice = Juice(name: "딸바쥬스", recipe: [.strawberry: 1, .banana: 10])
+    static let mangoKiwiJuice = Juice(name: "망고키위쥬스", recipe: [.mango: 10, .kiwi: 1])
     
 }
