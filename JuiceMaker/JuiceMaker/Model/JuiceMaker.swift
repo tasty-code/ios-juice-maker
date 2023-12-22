@@ -29,9 +29,7 @@ struct JuiceMaker {
             return nil
         }
         
-        juice.recipe.forEach { (fruit: Fruit, count: Int) in
-            fruitStore.release(fruit: fruit, count: count)
-        }
+        juice.recipe.forEach(fruitStore.release)
         
         return juice
     }

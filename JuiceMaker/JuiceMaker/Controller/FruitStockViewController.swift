@@ -31,8 +31,8 @@ final class FruitStockViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fruitStockSaveButton.isEnabled = false
-        setStepperDict()
         setLabelDict()
+        setStepperDict()
     }
 }
 
@@ -46,7 +46,18 @@ extension FruitStockViewController {
             return
         }   
         setLabelText(stepper: sender, label: label)
-        fruitStockSaveButton.isEnabled = stepperDict.map { Int($0.key.value) } == originStockValue ? false : true
+        
+        var isFruitCountChanged: Bool = false
+        var index: Int = 0
+        for stepper in stepperDict.keys {
+            if Int(stepper.value) != originStockValue[index] {
+                isFruitCountChanged = true
+                break
+            }
+            index += 1
+        }
+        
+        fruitStockSaveButton.isEnabled = isFruitCountChanged ? true : false
     }
     
     @IBAction func fruitStockSaveButtonTapped() {
