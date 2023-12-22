@@ -6,7 +6,11 @@
 
 import UIKit
 
-class MainViewController: UIViewController, QuantityViewControllerDelegate {
+protocol MainViewControllerDelegate: AnyObject {
+    func updateFruitLabels()
+}
+
+class MainViewController: UIViewController {
     
     var fruitStore = FruitStore()
     
@@ -44,13 +48,7 @@ class MainViewController: UIViewController, QuantityViewControllerDelegate {
         }
     }
     
-    func updateFruitLabels() {
-        strawberry.text = "\(fruitStore.fruitInventory["딸기"] ?? 0)"
-        banana.text = "\(fruitStore.fruitInventory["바나나"] ?? 0)"
-        pineapple.text = "\(fruitStore.fruitInventory["파인애플"] ?? 0)"
-        kiwi.text = "\(fruitStore.fruitInventory["키위"] ?? 0)"
-        mango.text = "\(fruitStore.fruitInventory["망고"] ?? 0)"
-    }
+
     
     @IBOutlet weak var starwBananaJuiceButton: UIButton!
     @IBOutlet weak var magoKiwiJuiceButton: UIButton!
@@ -92,5 +90,16 @@ extension MainViewController: AlertPresentable {
         } catch {
             showFailAlert()
         }
+    }
+}
+
+// MARK: - Delegate Fruit
+extension MainViewController: MainViewControllerDelegate {
+     func updateFruitLabels() {
+        strawberry.text = "\(fruitStore.fruitInventory["딸기"] ?? 0)"
+        banana.text = "\(fruitStore.fruitInventory["바나나"] ?? 0)"
+        pineapple.text = "\(fruitStore.fruitInventory["파인애플"] ?? 0)"
+        kiwi.text = "\(fruitStore.fruitInventory["키위"] ?? 0)"
+        mango.text = "\(fruitStore.fruitInventory["망고"] ?? 0)"
     }
 }

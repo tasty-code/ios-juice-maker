@@ -11,7 +11,7 @@ class FruitStore {
     
     var fruitInventory: [String: Int]
     
-    weak var delegate: QuantityViewControllerDelegate?
+    weak var delegate: MainViewControllerDelegate?
     
     init (strawberry:Int = 10, banana:Int = 10, pineapple:Int = 10, kiwi:Int = 10, mango:Int = 10 ) {
         fruitInventory = [

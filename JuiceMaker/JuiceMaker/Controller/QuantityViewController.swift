@@ -5,21 +5,19 @@
 //  Created by 권태호 on 12/12/2023.
 //
 
-import UIKit
+// ViewController에서 데이터를 넘겨준다 -> 재고 수정화면에서 데이터를 수정한다 -> 재고 수정화면을 나갈때 수정된 데이터를 ViewController에 넘겨준다 -> 전달 받은 데이터로 업데이트 한다 의 느낌으로 생각해보시면 좋을 것 같아요!
 
-protocol QuantityViewControllerDelegate: AnyObject {
-    func updateFruitLabels()
-}
+import UIKit
 
 class QuantityViewController: UIViewController {
     var fruitStore: FruitStore?
-    weak var delegate: QuantityViewControllerDelegate?
+    weak var delegate: MainViewControllerDelegate?
     
     @IBOutlet weak var strawberryStepper: UIStepper!
     @IBOutlet weak var bananaStepper: UIStepper!
     @IBOutlet weak var pineappleStepper: UIStepper!
     @IBOutlet weak var kiwiStepper: UIStepper!
-    @IBOutlet weak var magoStepper: UIStepper!
+    @IBOutlet weak var mangoStepper: UIStepper!
     
     @IBOutlet weak var strawberry: UILabel!
     @IBOutlet weak var banana: UILabel!
@@ -29,7 +27,7 @@ class QuantityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateFruitLabels()
+        updateStepperLabel()
         initStepperValue()
         delegate?.updateFruitLabels()
         navigationItem.title = "재고현황"
@@ -37,20 +35,30 @@ class QuantityViewController: UIViewController {
         navigationItem.rightBarButtonItem = closeButton
     }
     
-    func updateFruitLabels() {
-        strawberry.text = "\(fruitStore?.fruitInventory["딸기"] ?? 0)"
-        banana.text = "\(fruitStore?.fruitInventory["바나나"] ?? 0)"
-        pineapple.text = "\(fruitStore?.fruitInventory["파인애플"] ?? 0)"
-        kiwi.text = "\(fruitStore?.fruitInventory["키위"] ?? 0)"
-        mago.text = "\(fruitStore?.fruitInventory["망고"] ?? 0)"
+    func updateStepperLabel() {
+        delegate?.updateFruitLabels()
     }
     
     func initStepperValue() {
-        strawberryStepper.value = Double(fruitStore?.fruitInventory["딸기"] ?? 0)
-        bananaStepper.value = Double(fruitStore?.fruitInventory["바나나"] ?? 0)
-        pineappleStepper.value = Double(fruitStore?.fruitInventory["파인애플"] ?? 0)
-        kiwiStepper.value = Double(fruitStore?.fruitInventory["키위"] ?? 0)
-        magoStepper.value = Double(fruitStore?.fruitInventory["망고"] ?? 0)
+        let strawberryConunt = fruitStore?.fruitInventory["딸기"] ?? 0
+        strawberryStepper.value = Double(strawberryConunt)
+        strawberry.text = "\(strawberryConunt)"
+
+        let bananaCount = fruitStore?.fruitInventory["바나나"] ?? 0
+        bananaStepper.value = Double(bananaCount)
+        banana.text = "\(bananaCount)"
+        
+        let pineappleCount = fruitStore?.fruitInventory["파인애플"] ?? 0
+        pineappleStepper.value = Double(pineappleCount)
+        pineapple.text = "\(pineappleCount)"
+        
+        let kiwiCount = fruitStore?.fruitInventory["키위"] ?? 0
+        kiwiStepper.value = Double(kiwiCount)
+        kiwi.text = "\(kiwiCount)"
+        
+        let mangoCount = fruitStore?.fruitInventory["망고"] ?? 0
+        mangoStepper.value = Double(mangoCount)
+        mago.text = "\(mangoCount)"
     }
     
     @objc func dismissModal() {
@@ -60,29 +68,30 @@ class QuantityViewController: UIViewController {
     @IBAction func strawberryStepper(_ sender: UIStepper) {
         if let fruitStore = fruitStore {
             fruitStore.fruitInventory["딸기"] = Int(sender.value)
-            updateFruitLabels()
-            delegate?.updateFruitLabels()
+            updateStepperLabel()
+            initStepperValue()
         }
     }
     
     @IBAction func bananaStepper(_ sender: UIStepper) {
         fruitStore?.fruitInventory["바나나"] = Int(sender.value)
-        delegate?.updateFruitLabels()
-        updateFruitLabels()
+        updateStepperLabel()
+        initStepperValue()
+        
     }
     @IBAction func pinappleStepper(_ sender: UIStepper) {
         fruitStore?.fruitInventory["파인애플"] = Int(sender.value)
-        delegate?.updateFruitLabels()
-        updateFruitLabels()
+        updateStepperLabel()
+        initStepperValue()
     }
     @IBAction func kiwiStepper(_ sender: UIStepper) {
         fruitStore?.fruitInventory["키위"] = Int(sender.value)
-        delegate?.updateFruitLabels()
-        updateFruitLabels()
+        updateStepperLabel()
+        initStepperValue()
     }
     @IBAction func mangoStepper(_ sender: UIStepper) {
         fruitStore?.fruitInventory["망고"] = Int(sender.value)
-        delegate?.updateFruitLabels()
-        updateFruitLabels()
+        updateStepperLabel()
+        initStepperValue()
     }
 }

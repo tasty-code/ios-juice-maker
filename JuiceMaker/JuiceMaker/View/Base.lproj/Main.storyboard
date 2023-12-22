@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DCG-dP-Fms">
     <device id="retina6_0" orientation="landscape" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -427,7 +426,7 @@
                         <outlet property="kiwi" destination="ZDv-1m-HBY" id="M6e-Ql-tGN"/>
                         <outlet property="kiwiStepper" destination="klA-59-Nu4" id="D7y-pL-rt6"/>
                         <outlet property="mago" destination="YJI-ER-LJR" id="Nv4-pK-5B8"/>
-                        <outlet property="magoStepper" destination="xbn-6P-grO" id="V3H-F8-lwz"/>
+                        <outlet property="mangoStepper" destination="xbn-6P-grO" id="V3H-F8-lwz"/>
                         <outlet property="pineapple" destination="MpT-VW-hCb" id="y9E-cp-eaw"/>
                         <outlet property="pineappleStepper" destination="Rcr-xr-eqz" id="oVq-BE-fDA"/>
                         <outlet property="strawberry" destination="0yV-kn-zaT" id="fd8-V3-Ytp"/>
