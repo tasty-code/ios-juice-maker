@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIButton {
-    public func setTitleFont(font: UIFont) {
+    public func setTitleFont(font: UIFont?) {
         self.titleLabel?.font = font
     }
 }

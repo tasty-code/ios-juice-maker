@@ -34,11 +34,16 @@ final class JuiceMakerViewController: UIViewController {
         configureToolbarRightButton()
     }
     
+    
     private func configureToolbarTitleLabel() {
-        let font = UIFont(name: MainViewText.fontText.description, size: 20)!
-        toolbarTitleLabel.text = MainViewText.mainText.description
-        toolbarTitleLabel.textColor = .black
-        toolbarTitleLabel.font = font
+        do {
+            let font = try UIFont(name: JuiceMakerViewText.fontTitleText.description, size: 20)
+            toolbarTitleLabel.text = JuiceMakerViewText.mainTitleText.description
+            toolbarTitleLabel.textColor = .black
+            toolbarTitleLabel.font = font
+        } catch {
+            print(JuiceMakerError.notFoundFont.description)
+        }
     }
     
     private func configureBackgroundGradientButton() {
@@ -52,21 +57,26 @@ final class JuiceMakerViewController: UIViewController {
     }
     
     private func configureToolbarRightButton() {
-        let font = UIFont(name: MainViewText.fontText.description, size: 20)!
-        toolbarRightButton.frame = CGRect(x: 0, y: 0, width: 70, height: 30)
-        toolbarRightButton.setTitle(MainViewText.detailViewText.description, for: .normal)
-        toolbarRightButton.setTitleColor(.blue, for: .normal)
-        toolbarRightButton.setTitleFont(font: font)
-        toolbarRightButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        toolbarRightButton.addTarget(self, action: #selector(showDetailView), for: .touchUpInside)
+        do {
+            let font = try UIFont(name: JuiceMakerViewText.fontTitleText.description, size: 20)
+            toolbarRightButton.frame = CGRect(x: 0, y: 0, width: 70, height: 30)
+            toolbarRightButton.setTitle(JuiceMakerViewText.editQuantityButtonTitleText.description, for: .normal)
+            toolbarRightButton.setTitleColor(.blue, for: .normal)
+            toolbarRightButton.setTitleFont(font: font)
+            toolbarRightButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            toolbarRightButton.addTarget(self, action: #selector(showDetailView), for: .touchUpInside)
+        } catch {
+            print(JuiceMakerError.notFoundFont.description)
+        }
+        
     }
   
     @IBAction private func juiceButtonTapped(_ sender: UIButton) {
         let selectTag = Int(sender.tag)
         let result = Juice.allCases[selectTag]
-        JuiceMaker.shared.isJuiceAvailable(juice: result) ? successMakeJuice(input: result) : failedAlert(title: Message.failedMakeJuiceTitle.description, message: Message.failedMakeJuice.description, okAction: { _ in
-                    self.showDetailView()
-                })
+        JuiceMaker.shared.isJuiceAvailable(juice: result) ? successMakeJuice(input: result) : failedAlert(title: Message.failedMakeJuiceTitle.description, message: Message.failedMakeJuice.description, okAction: { [unowned self] _ in
+                self.showDetailView()
+            })
     }
     
     private func successMakeJuice(input: Juice) {
@@ -94,9 +104,10 @@ final class JuiceMakerViewController: UIViewController {
     
     @objc
     private func showDetailView() {
-        guard let controller = self.storyboard?.instantiateViewController(identifier: MainViewText.detailViewControllerText.description) as? DetailViewController else {
+        guard let controller = self.storyboard?.instantiateViewController(identifier: JuiceMakerViewText.detailViewControllerText.description) as? DetailViewController else {
             return
         }
+        
         self.present(controller, animated: true)
     }
 }
