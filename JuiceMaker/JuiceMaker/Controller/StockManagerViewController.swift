@@ -8,7 +8,9 @@
 import UIKit
 
 final class StockManagerViewController: UIViewController {
-    private let stockDisplayUseCase: StockDisplay?
+    private let stockManagerUseCase: StockManager?
+    
+    private var dismissingHandler: (() -> Void)?
     
     @IBOutlet private weak var strawberryStockLabel: UILabel!
     
@@ -20,47 +22,99 @@ final class StockManagerViewController: UIViewController {
     
     @IBOutlet private weak var mangoStockLabel: UILabel!
     
+    @IBOutlet private weak var strawberryCountStepper: UIStepper!
+    
+    @IBOutlet private weak var bananaCountStepper: UIStepper!
+    
+    @IBOutlet private weak var pineappleCountStepper: UIStepper!
+    
+    @IBOutlet private weak var kiwiCountStepper: UIStepper!
+    
+    @IBOutlet private weak var mangoCountStepper: UIStepper!
+    
     required init?(coder: NSCoder) {
-        self.stockDisplayUseCase = nil
+        self.stockManagerUseCase = nil
+        self.dismissingHandler = nil
         super.init(coder: coder)
     }
     
-    init?(coder: NSCoder, fruitStore: FruitStore) {
-        self.stockDisplayUseCase = StockDisplay(fruitStore: fruitStore)
+    init?(
+        coder: NSCoder,
+        stockManagerUseCase: StockManager,
+        dismissingHandler: (() -> Void)?
+    ) {
+        self.stockManagerUseCase = stockManagerUseCase
+        self.dismissingHandler = dismissingHandler
         super.init(coder: coder)
         setUpLayers()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        stockDisplayUseCase?.displayStock()
+        stockManagerUseCase?.displayStock()
     }
 }
 
 extension StockManagerViewController {
+    @IBAction func changeStockCount(_ sender: UIStepper) {
+        let fruitType: Fruit
+        switch sender {
+        case strawberryCountStepper:
+            fruitType = .strawberry
+        case bananaCountStepper:
+            fruitType = .banana
+        case pineappleCountStepper:
+            fruitType = .pineapple
+        case kiwiCountStepper:
+            fruitType = .kiwi
+        case mangoCountStepper:
+            fruitType = .mango
+        default:
+            return
+        }
+        let newCount = Int(sender.value)
+        self.stockManagerUseCase?.updateStock(of: fruitType, to: newCount)
+    }
+    
     @IBAction private func completeManaging(_ sender: UIBarButtonItem) {
+        dismissingHandler?()
         self.dismiss(animated: true)
     }
 }
 
 extension StockManagerViewController {
     private func setUpLayers() {
-        let resultConverter = StockDisplayResultConverter()
-        resultConverter.display = self
-        stockDisplayUseCase?.resultConverter = resultConverter
+        let stockManagerResultConverter = StockManagerResultConverter()
+        stockManagerResultConverter.display = self
+        stockManagerUseCase?.resultConverter = stockManagerResultConverter
+    }
+    
+    private func setUI() {
+        [
+            strawberryCountStepper,
+            bananaCountStepper,
+            pineappleCountStepper,
+            kiwiCountStepper,
+            mangoCountStepper,
+        ].forEach { stepper in
+            stepper?.stepValue = 1.0
+            stepper?.minimumValue = 0
+        }
     }
 }
 
 extension StockManagerViewController: StoryboardBased {
     static func instantiate(
-        fruitStore: FruitStore
+        stockManagerUseCase: StockManager,
+        dismissingHandler: (() -> Void)?
     ) -> Self {
         return sceneStoryboard.instantiateViewController(
             identifier: storyboardIdentifier
         ) { coder in
             return Self.init(
                 coder: coder,
-                fruitStore: fruitStore
+                stockManagerUseCase: stockManagerUseCase,
+                dismissingHandler: dismissingHandler
             )
         }
     }
@@ -68,13 +122,43 @@ extension StockManagerViewController: StoryboardBased {
 
 extension StockManagerViewController: StockDisplayResultDisplayable {
     func displayStock(viewModel: StockDisplayModel.ViewModel) {
-        guard let eachFruitCount = viewModel.countOfEachFruits else { return }
-        
-        self.strawberryStockLabel.text = "\(eachFruitCount.strawberryCount)"
-        self.bananaStockLabel.text = "\(eachFruitCount.bananaCount)"
-        self.pineappleStockLabel.text = "\(eachFruitCount.pineappleCount)"
-        self.kiwiStockLabel.text = "\(eachFruitCount.kiwiCount)"
-        self.mangoStockLabel.text = "\(eachFruitCount.mangoCount)"
+        switch viewModel {
+        case .success(let eachFruitCount):
+            self.strawberryStockLabel.text = "\(eachFruitCount.strawberryCount)"
+            self.bananaStockLabel.text = "\(eachFruitCount.bananaCount)"
+            self.pineappleStockLabel.text = "\(eachFruitCount.pineappleCount)"
+            self.kiwiStockLabel.text = "\(eachFruitCount.kiwiCount)"
+            self.mangoStockLabel.text = "\(eachFruitCount.mangoCount)"
+            
+            self.strawberryCountStepper.value = Double(eachFruitCount.strawberryCount)
+            self.bananaCountStepper.value = Double(eachFruitCount.bananaCount)
+            self.pineappleCountStepper.value = Double(eachFruitCount.pineappleCount)
+            self.kiwiCountStepper.value = Double(eachFruitCount.kiwiCount)
+            self.mangoCountStepper.value = Double(eachFruitCount.mangoCount)
+        case .failure:
+            return
+        }
     }
 }
 
+extension StockManagerViewController: StockManagerResultDisplayable {
+    func displayModifiedStock(viewModel: StockManagerModel.ViewModel) {
+        switch viewModel {
+        case .success(let newStock):
+            switch newStock.fruitType {
+            case .strawberry:
+                strawberryStockLabel.text = "\(newStock.count)"
+            case .banana:
+                bananaStockLabel.text = "\(newStock.count)"
+            case .pineapple:
+                pineappleStockLabel.text = "\(newStock.count)"
+            case .kiwi:
+                kiwiStockLabel.text = "\(newStock.count)"
+            case .mango:
+                mangoStockLabel.text = "\(newStock.count)"
+            }
+        case .failure:
+            return
+        }
+    }
+}

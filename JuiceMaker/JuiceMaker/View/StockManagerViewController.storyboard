@@ -38,6 +38,9 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="mTn-Ah-Fhh">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="changeStockCount:" destination="teL-8W-vhy" eventType="valueChanged" id="GCB-wd-v7T"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                     </stackView>
@@ -59,6 +62,9 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Wmu-61-qwT">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="changeStockCount:" destination="teL-8W-vhy" eventType="valueChanged" id="tKB-6X-KBB"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                     </stackView>
@@ -80,6 +86,9 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="1Pl-q7-ewy">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="changeStockCount:" destination="teL-8W-vhy" eventType="valueChanged" id="zTK-BC-ClJ"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                     </stackView>
@@ -101,6 +110,9 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="055-Ju-kgV">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="changeStockCount:" destination="teL-8W-vhy" eventType="valueChanged" id="HvK-Zv-apN"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                     </stackView>
@@ -122,6 +134,9 @@
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="kB7-x8-6bO">
                                                 <rect key="frame" x="0.0" y="124" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="changeStockCount:" destination="teL-8W-vhy" eventType="valueChanged" id="a7p-xm-1od"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                     </stackView>
@@ -143,10 +158,15 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bananaCountStepper" destination="Wmu-61-qwT" id="DGV-eo-aeQ"/>
                         <outlet property="bananaStockLabel" destination="wPU-31-zQd" id="21A-3x-ov8"/>
+                        <outlet property="kiwiCountStepper" destination="055-Ju-kgV" id="Y1A-TN-pfc"/>
                         <outlet property="kiwiStockLabel" destination="Pdq-Qr-Jdl" id="orb-xp-C8B"/>
+                        <outlet property="mangoCountStepper" destination="kB7-x8-6bO" id="x8b-Gk-IfZ"/>
                         <outlet property="mangoStockLabel" destination="xSg-wl-eMv" id="1a2-Qa-8g1"/>
+                        <outlet property="pineappleCountStepper" destination="1Pl-q7-ewy" id="oqp-4c-mRX"/>
                         <outlet property="pineappleStockLabel" destination="aV1-dh-bl1" id="aVY-dk-IdU"/>
+                        <outlet property="strawberryCountStepper" destination="mTn-Ah-Fhh" id="TRl-pI-wTr"/>
                         <outlet property="strawberryStockLabel" destination="aEt-LF-eyR" id="cFy-rZ-Viq"/>
                     </connections>
                 </viewController>
@@ -178,7 +198,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

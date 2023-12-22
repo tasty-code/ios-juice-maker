@@ -24,7 +24,6 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     private func makeRootViewController() -> UINavigationController {
         let fruitStore = FruitStore(initialCount: 10)
         let viewController = JuiceMakerViewController.instantiate(
-            stockDisplayUseCase: StockDisplay(fruitStore: fruitStore),
             juiceMakerUseCase: JuiceMaker(fruitStore: fruitStore),
             router: JuiceMakerRouter(dataStore: fruitStore)
         )

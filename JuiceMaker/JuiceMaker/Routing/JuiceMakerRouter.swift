@@ -9,7 +9,7 @@ import UIKit
 
 protocol JuiceMakerRoutable: AnyObject {
     var sourceViewController: JuiceMakerViewController? { get set }
-    func routeToNextViewController()
+    func routeToNextViewController(dismissingHandler: (() -> Void)?)
 }
 
 final class JuiceMakerRouter: JuiceMakerRoutable {
@@ -20,20 +20,17 @@ final class JuiceMakerRouter: JuiceMakerRoutable {
         self.sourceDataStore = dataStore
     }
     
-    func routeToNextViewController() {
-        self.routeToStockManager()
+    func routeToNextViewController(dismissingHandler: (() -> Void)?) {
+        self.routeToStockManager(dismissingHandler: dismissingHandler)
     }
     
-    private func routeToStockManager() {
+    private func routeToStockManager(dismissingHandler: (() -> Void)?) {
         guard let sourceViewController else { return }
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: .none)
-        let destinationViewController: StockManagerViewController = storyboard.instantiateViewController(
-            identifier: StockManagerViewController.storyboardIdentifier
-        ) { [weak self] coder in
-            guard let self else { return StockManagerViewController(coder: coder) }
-            return StockManagerViewController(coder: coder, fruitStore: sourceDataStore)
-        }
+        let stockManager = StockManager(fruitStore: sourceDataStore)
+        let destinationViewController = StockManagerViewController.instantiate(
+            stockManagerUseCase: stockManager,
+            dismissingHandler: dismissingHandler
+        )
         navigateToStockManager(source: sourceViewController, destination: destinationViewController)
     }
     

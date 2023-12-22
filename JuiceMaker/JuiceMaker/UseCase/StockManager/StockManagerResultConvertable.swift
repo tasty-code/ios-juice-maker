@@ -1,41 +1,30 @@
 //
-//  JuiceMakerResultConvertable.swift
+//  StockManagerResultConvertable.swift
 //  JuiceMaker
 //
-//  Created by Doyoung An on 12/12/23.
+//  Created by Effie on 12/21/23.
 //
 
-protocol JuiceMakerResultConvertable {
-    func convertResult(_ response: JuiceMakerModel.Response)
+protocol StockManagerResultConvertable {
+    func convertResult(_ response: StockManagerModel.Response)
 }
 
-protocol StockDisplayResultConvertable {
-    func convertResult(_ result: StockDisplayModel.Response)
-}
-
-final class JuiceMakerResultConverter: JuiceMakerResultConvertable {
-    weak var display: (JuiceMakerResultDisplayable & StockDisplayResultDisplayable)?
+final class StockManagerResultConverter: StockManagerResultConvertable {
+    weak var display: (StockManagerResultDisplayable & StockDisplayResultDisplayable)?
     
-    func convertResult(_ response: JuiceMakerModel.Response) {
+    func convertResult(_ response: StockManagerModel.Response) {
         switch response {
-        case .success(let info):
-            let fruitStocks = info.updatedStocks.map { stock in
-                return (stock.fruitType, stock.count)
-            }
-            let successInfo = JuiceMakerModel.ViewModel.SuccessInfo(
-                juiceName: info.juice.name,
-                updatedStocks: fruitStocks
-            )
-            let viewModel = JuiceMakerModel.ViewModel.sucess(successInfo)
-            display?.displayMakingResult(viewModel: viewModel)
+        case .success(let stock):
+            let viewModel = StockManagerModel.ViewModel.success(stock: stock)
+            display?.displayModifiedStock(viewModel: viewModel)
         case .failure:
-            let viewModel = JuiceMakerModel.ViewModel.failure
-            display?.displayMakingResult(viewModel: viewModel)
+            let viewModel = StockManagerModel.ViewModel.failure
+            display?.displayModifiedStock(viewModel: viewModel)
         }
     }
 }
 
-extension JuiceMakerResultConverter: StockDisplayResultConvertable {
+extension StockManagerResultConverter: StockDisplayResultConvertable {
     func convertResult(_ result: StockDisplayModel.Response) {
         switch result {
         case .success(let stocks):
