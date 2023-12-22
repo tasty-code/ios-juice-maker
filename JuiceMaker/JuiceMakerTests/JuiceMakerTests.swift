@@ -38,4 +38,12 @@ final class JuiceMakerTests: XCTestCase {
     func test_파인애플의_재고를_3개로_바꾼다() {
         
     }
+    
+    func test_망고쥬스를_만들고_남은_망고는_7개다() {
+      
+    }
+  
+    func test_파인애플의_재고를_3개로_바꾼다() {
+
+    }
 }
