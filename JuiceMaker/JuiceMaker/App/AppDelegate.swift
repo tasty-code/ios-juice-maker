@@ -15,19 +15,20 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = self.makeRootViewController()
+        
+        let navigationController = UINavigationController()
+        window.rootViewController = navigationController
+        
+        let fruitStore = FruitStore(initialCount: 10)
+        let coordinator = AppCoordinator(
+            navigationController: navigationController,
+            fruitStore: fruitStore
+        )
+        coordinator.start()
+        
         window.makeKeyAndVisible()
         self.window = window
+        
         return true
     }
-    
-    private func makeRootViewController() -> UINavigationController {
-        let fruitStore = FruitStore(initialCount: 10)
-        let viewController = JuiceMakerViewController.instantiate(
-            juiceMakerUseCase: JuiceMaker(fruitStore: fruitStore),
-            router: JuiceMakerRouter(dataStore: fruitStore)
-        )
-        return UINavigationController(rootViewController: viewController)
-    }
 }
-
