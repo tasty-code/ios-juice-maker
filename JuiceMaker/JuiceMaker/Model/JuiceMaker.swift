@@ -5,9 +5,7 @@
 // 
 
 struct JuiceMaker {
-    private(set) var fruitStore = FruitStore.shared
-    
-    init() {}
+    let fruitStore = FruitStore()
     
     private func checkJuiceIngredients(juice: Juice) throws {
         for (fruitName, quantity) in juice.recipe {

@@ -6,15 +6,18 @@
 
 import UIKit
 
+protocol ManageStockViewControllerDelegate: AnyObject {
+    func fruitStockDidChange(fruitStock: [Fruit: UInt])
+}
+
 final class JuiceOrderViewController: UIViewController {
-    private let fruitStore = FruitStore.shared
     private let juiceMaker = JuiceMaker()
     
-    @IBOutlet weak var strawberryLabel: UILabel!
-    @IBOutlet weak var bananaLabel: UILabel!
-    @IBOutlet weak var pineappleLabel: UILabel!
-    @IBOutlet weak var kiwiLabel: UILabel!
-    @IBOutlet weak var mangoLabel: UILabel!
+    @IBOutlet weak private var strawberryLabel: UILabel!
+    @IBOutlet weak private var bananaLabel: UILabel!
+    @IBOutlet weak private var pineappleLabel: UILabel!
+    @IBOutlet weak private var kiwiLabel: UILabel!
+    @IBOutlet weak private var mangoLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,24 +29,37 @@ final class JuiceOrderViewController: UIViewController {
     }
     
     @IBAction private func checkJuiceOrder(_ sender: UIButton) {
-        guard let juiceName = sender.titleLabel?.text?.components(separatedBy: " ")[0] else { return present(Alert.createAlertController(alertType: .defaultAlert, title: nil, message: JuiceMakerError.cannotFindLabel.description, view: nil), animated: true) }
-        guard let juice = juiceMaker.checkJuiceRecipe(juiceName: juiceName) else { return present(Alert.createAlertController(alertType: .defaultAlert, title: nil, message: JuiceMakerError.cannotFindJuice.description, view: nil), animated: true) }
+        guard let juiceName = sender.titleLabel?.text?.components(separatedBy: " ").first else {
+            let alert = Alert.create(title: "오류", message: JuiceMakerError.cannotFindLabel.description, okTitle: "확인") { }
+            present(alert, animated: true)
+            return
+        }
+        guard let juice = juiceMaker.checkJuiceRecipe(juiceName: juiceName) else { 
+            let alert = Alert.create(title: "오류", message: JuiceMakerError.cannotFindJuice.description, okTitle: "확인") { }
+            present(alert, animated: true)
+            return
+        }
         order(juice: juice)
     }
     
     private func order(juice: Juice) {
         do {
             try juiceMaker.orderJuice(juice: juice)
-            present(Alert.createAlertController(alertType: .defaultAlert, title: nil, message: "\(juice.name) 나왔습니다! 맛있게 드세요!", view: self), animated: true)
+            let alert = Alert.create(message: "\(juice.name) 나왔습니다! 맛있게 드세요!", okTitle: "확인") { }
+            present(alert, animated: true)
             updateFruitStockLabel()
         } catch {
-            present(Alert.createAlertController(alertType: .outOfStockAlert, title: nil, message: JuiceMakerError.outOfStock.description, view: self), animated: true)
+            let alert = Alert.create(message: JuiceMakerError.outOfStock.description, okTitle: "예") {[weak self] in
+                self?.moveToManageStockView()
+            }
+            alert.addAction(UIAlertAction(title: "아니오", style: .default))
+            present(alert, animated: true)
             updateFruitStockLabel()
         }
     }
     
     private func updateFruitStockLabel() {
-        let stock = fruitStore.fruitStock.compactMapValues { String($0) }
+        let stock = juiceMaker.fruitStore.fruitStock.compactMapValues { String($0) }
         
         strawberryLabel.text = stock[.strawberry]
         bananaLabel.text = stock[.banana]
@@ -51,11 +67,26 @@ final class JuiceOrderViewController: UIViewController {
         kiwiLabel.text = stock[.kiwi]
         mangoLabel.text = stock[.mango]
     }
+    
+    private func moveToManageStockView() {
+        guard let vc = storyboard?.instantiateViewController(identifier: ManageStockViewController.identifier) as? ManageStockViewController else {
+            let alert = Alert.create(message: JuiceMakerError.cannotLoadManageStockView.description, okTitle: "확인") { }
+            present(alert, animated: true)
+            return
+        }
+        
+        vc.fruitStock = juiceMaker.fruitStore.fruitStock
+        vc.delegate = self
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
+    }
 }
 
-extension UIViewController {
-    func moveToManageStockView() {
-        guard let viewController = storyboard?.instantiateViewController(identifier: NameSpace.manageStockVC) as? ManageStockViewController else { return }
-        self.navigationController?.pushViewController(viewController, animated: true)
+extension JuiceOrderViewController: ManageStockViewControllerDelegate {
+    func fruitStockDidChange(fruitStock: [Fruit : UInt]) {
+        for fruit in fruitStock {
+            juiceMaker.fruitStore.updateFruitStock(fruit: fruit.key, num: fruitStock[fruit.key] ?? 0)
+        }
+        updateFruitStockLabel()
     }
 }

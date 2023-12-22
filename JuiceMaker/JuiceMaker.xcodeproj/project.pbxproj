@@ -11,7 +11,6 @@
 		4E0E6E9C2B1DD963004DBB95 /* JuiceMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0E6E9B2B1DD963004DBB95 /* JuiceMakerTests.swift */; };
 		4E0E6EA32B1EBDDE004DBB95 /* JuiceMakerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0E6EA22B1EBDDE004DBB95 /* JuiceMakerError.swift */; };
 		4E8F2C6A2B217BB500003EF5 /* ManageStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F2C692B217BB500003EF5 /* ManageStockViewController.swift */; };
-		4E8F2C902B22F9F000003EF5 /* NameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F2C8F2B22F9F000003EF5 /* NameSpace.swift */; };
 		C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71CD66A266C7ACB0038B9CB /* FruitStore.swift */; };
 		C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DAF36255D0CDD00020D38 /* AppDelegate.swift */; };
 		C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DAF38255D0CDD00020D38 /* SceneDelegate.swift */; };
@@ -20,9 +19,9 @@
 		C73DAF40255D0CDE00020D38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C73DAF3F255D0CDE00020D38 /* Assets.xcassets */; };
 		C73DAF43255D0CDF00020D38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C73DAF41255D0CDF00020D38 /* LaunchScreen.storyboard */; };
 		C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */; };
+		FAC10AE32B2C2F2000073398 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC10AE22B2C2F2000073398 /* UIViewControllerExtension.swift */; };
 		FAEA5ABF2B1DAF4F00E29512 /* Juice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA5ABE2B1DAF4F00E29512 /* Juice.swift */; };
 		FAEA5B362B22E3B500E29512 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA5B352B22E3B500E29512 /* Alert.swift */; };
-		FAEA5B3A2B22F39100E29512 /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA5B392B22F39100E29512 /* AlertType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +40,6 @@
 		4E0E6E9B2B1DD963004DBB95 /* JuiceMakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMakerTests.swift; sourceTree = "<group>"; };
 		4E0E6EA22B1EBDDE004DBB95 /* JuiceMakerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMakerError.swift; sourceTree = "<group>"; };
 		4E8F2C692B217BB500003EF5 /* ManageStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageStockViewController.swift; sourceTree = "<group>"; };
-		4E8F2C8F2B22F9F000003EF5 /* NameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSpace.swift; sourceTree = "<group>"; };
 		C71CD66A266C7ACB0038B9CB /* FruitStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitStore.swift; sourceTree = "<group>"; };
 		C73DAF33255D0CDD00020D38 /* JuiceMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JuiceMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C73DAF36255D0CDD00020D38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,9 +50,9 @@
 		C73DAF42255D0CDF00020D38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C73DAF44255D0CDF00020D38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C73DAF4B255D0D0400020D38 /* JuiceMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMaker.swift; sourceTree = "<group>"; };
+		FAC10AE22B2C2F2000073398 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		FAEA5ABE2B1DAF4F00E29512 /* Juice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Juice.swift; sourceTree = "<group>"; };
 		FAEA5B352B22E3B500E29512 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
-		FAEA5B392B22F39100E29512 /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,8 +101,6 @@
 				FAEA5ABE2B1DAF4F00E29512 /* Juice.swift */,
 				4E0E6EA22B1EBDDE004DBB95 /* JuiceMakerError.swift */,
 				FAEA5B352B22E3B500E29512 /* Alert.swift */,
-				FAEA5B392B22F39100E29512 /* AlertType.swift */,
-				4E8F2C8F2B22F9F000003EF5 /* NameSpace.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -140,12 +136,21 @@
 		C73DAF35255D0CDD00020D38 /* JuiceMaker */ = {
 			isa = PBXGroup;
 			children = (
+				FAC10AE12B2C2F0C00073398 /* Extensions */,
 				C71CD66D266C7B470038B9CB /* Controller */,
 				C71CD66F266C7B500038B9CB /* Model */,
 				C71CD671266C7B570038B9CB /* View */,
 				C73DAF44255D0CDF00020D38 /* Info.plist */,
 			);
 			path = JuiceMaker;
+			sourceTree = "<group>";
+		};
+		FAC10AE12B2C2F0C00073398 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FAC10AE22B2C2F2000073398 /* UIViewControllerExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,15 +264,14 @@
 				4E0E6E872B1DAC98004DBB95 /* Fruit.swift in Sources */,
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
 				4E0E6EA32B1EBDDE004DBB95 /* JuiceMakerError.swift in Sources */,
-				4E8F2C902B22F9F000003EF5 /* NameSpace.swift in Sources */,
 				FAEA5ABF2B1DAF4F00E29512 /* Juice.swift in Sources */,
 				C73DAF3B255D0CDD00020D38 /* JuiceOrderViewController.swift in Sources */,
 				C73DAF37255D0CDD00020D38 /* AppDelegate.swift in Sources */,
 				C73DAF39255D0CDD00020D38 /* SceneDelegate.swift in Sources */,
+				FAC10AE32B2C2F2000073398 /* UIViewControllerExtension.swift in Sources */,
 				C73DAF4C255D0D0400020D38 /* JuiceMaker.swift in Sources */,
 				FAEA5B362B22E3B500E29512 /* Alert.swift in Sources */,
 				4E8F2C6A2B217BB500003EF5 /* ManageStockViewController.swift in Sources */,
-				FAEA5B3A2B22F39100E29512 /* AlertType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

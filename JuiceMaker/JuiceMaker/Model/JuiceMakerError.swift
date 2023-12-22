@@ -11,6 +11,7 @@ enum JuiceMakerError: LocalizedError {
     case outOfStock
     case cannotFindLabel
     case cannotFindJuice
+    case cannotLoadManageStockView
     
     var description: String {
         switch self {
@@ -20,6 +21,8 @@ enum JuiceMakerError: LocalizedError {
             "Label 요소를 찾을 수 없습니다."
         case .cannotFindJuice:
             "버튼에 적힌 쥬스를 찾을 수 없습니다."
+        case .cannotLoadManageStockView:
+            "재고 수정 화면을 로드할 수 없습니다."
         }
     }
 }
