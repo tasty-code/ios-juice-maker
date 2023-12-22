@@ -23,10 +23,15 @@ class FruitJuiceOrderViewController: UIViewController {
     }
     
     private func presentStockViewController() {
-        let stockViewNavigationController = storyboard?.instantiateViewController(withIdentifier: "StockViewNavigationController") as! UINavigationController
-        if let stockViewController = stockViewNavigationController.viewControllers.first as? StockViewController {
-            stockViewController.delegate = self
+        guard let stockViewNavigationController = storyboard?.instantiateViewController(withIdentifier: "StockViewNavigationController") as? UINavigationController else {
+            return
         }
+        
+        guard let stockViewController = stockViewNavigationController.viewControllers.first as? StockViewController else {
+            return
+        }
+        
+        stockViewController.delegate = self
         present(stockViewNavigationController, animated: true)
     }
 }
