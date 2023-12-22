@@ -23,15 +23,14 @@ import Foundation
         fruitInventory[fruit, default: 0] += amount
     }
      
-    func changeAmout(fruit: Fruit, amout: Int) {
-        fruitInventory[fruit, default: 0] = amout
+    func changeAmout(fruit: Fruit, amount: Int) {
+        fruitInventory[fruit, default: 0] = amount
     }
      
     func inventory(fruit: Fruit) -> Int {
         return fruitInventory[fruit, default: 0]
     }
     
-//    func consume(fruit: Fruit, amount: Int) throws {
      func consume(juice: Juice) throws {
          for (fruit, requiredAmount) in juice.recipe {
              try checkInventoryError(fruit: fruit, amount: requiredAmount)

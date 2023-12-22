@@ -29,7 +29,7 @@ class OrderJuiceViewController: UIViewController {
     let juiceMaker = JuiceMaker()
     
     override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
+        super.viewWillAppear(animated)
         updateInventoryQuantity()
     }
 
@@ -46,7 +46,7 @@ class OrderJuiceViewController: UIViewController {
         mangoLabel.text =  "\(juiceMaker.fruitStore.inventory(fruit: .mango))"
     }
     
-    @IBAction func orderJuiceButtonTapped(_ sender: UIButton) {
+    @IBAction private func orderJuiceButtonTapped(_ sender: UIButton) {
         switch sender.tag {
         case TagNameSpace.strawberryBananaJuiceButton:
             order(juice: .strawberryBananaJuice)
@@ -100,7 +100,7 @@ class OrderJuiceViewController: UIViewController {
         showFruitInventory.modalPresentationStyle = .fullScreen
         self.present(showFruitInventory, animated: true, completion: nil)
     }
-    @IBAction func modifyInventoryTapped(_ sender: UIBarButtonItem) {
+    @IBAction private func modifyInventoryTapped(_ sender: UIBarButtonItem) {
         showFruitInventoryView()
     }
 }

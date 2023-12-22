@@ -38,7 +38,7 @@ class FruitInventoryViewController: UIViewController {
         receiveFruitStepper()
     }
     
-    @IBAction func backButtonTapped(_ sender: UIButton) {
+    @IBAction private func backButtonTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     
@@ -58,29 +58,29 @@ class FruitInventoryViewController: UIViewController {
         mangoStepper.value =  Double(juiceMaker.fruitStore.inventory(fruit: .mango))
     }
     
-    @IBAction func changeValueStrawberryStepper(_ sender: UIStepper) {
+    @IBAction private func changeValueStrawberryStepper(_ sender: UIStepper) {
         strawberryLabel.text = Int(sender.value).description
-        juiceMaker.fruitStore.changeAmout(fruit: .strawberry, amout: Int(sender.value))
+        juiceMaker.fruitStore.changeAmout(fruit: .strawberry, amount: Int(sender.value))
     }
     
-    @IBAction func changeValueBananaStepper(_ sender: UIStepper) {
+    @IBAction private func changeValueBananaStepper(_ sender: UIStepper) {
         bananaLabel.text = Int(sender.value).description
-        juiceMaker.fruitStore.changeAmout(fruit: .banana, amout: Int(sender.value))
+        juiceMaker.fruitStore.changeAmout(fruit: .banana, amount: Int(sender.value))
     }
     
-    @IBAction func changeValuePineappleStepper(_ sender: UIStepper) {
+    @IBAction private func changeValuePineappleStepper(_ sender: UIStepper) {
         pineappleLabel.text = Int(sender.value).description
-        juiceMaker.fruitStore.changeAmout(fruit: .pineapple, amout: Int(sender.value))
+        juiceMaker.fruitStore.changeAmout(fruit: .pineapple, amount: Int(sender.value))
     }
     
-    @IBAction func changeValueKiwiStepper(_ sender: UIStepper) {
+    @IBAction private func changeValueKiwiStepper(_ sender: UIStepper) {
         kiwiLabel.text = Int(sender.value).description
-        juiceMaker.fruitStore.changeAmout(fruit: .kiwi, amout: Int(sender.value))
+        juiceMaker.fruitStore.changeAmout(fruit: .kiwi, amount: Int(sender.value))
     }
     
-    @IBAction func changeValueMangoStepper(_ sender: UIStepper) {
+    @IBAction private func changeValueMangoStepper(_ sender: UIStepper) {
         mangoLabel.text = Int(sender.value).description
-        juiceMaker.fruitStore.changeAmout(fruit: .mango, amout: Int(sender.value))
+        juiceMaker.fruitStore.changeAmout(fruit: .mango, amount: Int(sender.value))
     }
 }
 
