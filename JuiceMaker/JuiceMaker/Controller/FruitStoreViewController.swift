@@ -22,7 +22,7 @@ final class FruitStoreViewController: UIViewController {
     @IBOutlet weak var mangoStepper: UIStepper!
     
     private let fruitStore: FruitStore
-    weak var delegate: FruitStockDelegate?
+    weak var delegate: FruitStoreDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

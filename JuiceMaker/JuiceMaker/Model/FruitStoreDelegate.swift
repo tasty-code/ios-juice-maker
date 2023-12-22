@@ -7,6 +7,6 @@
 
 import UIKit
 
-protocol FruitStockDelegate: AnyObject {
+protocol FruitStoreDelegate: AnyObject {
     func updateFruitStock()
 }
