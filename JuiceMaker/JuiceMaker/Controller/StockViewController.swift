@@ -82,8 +82,8 @@ final class StockViewController: UIViewController {
         else {
             return
         }
-        let intSender = Int(sender.value)
-        fruitStore.fruits[selectedFruit.rawValue] = intSender
-        setTextView.text = String(intSender)
+        let updatedFruitsStock = Int(sender.value)
+        fruitStore.fruits[selectedFruit.rawValue] = updatedFruitsStock
+        setTextView.text = String(updatedFruitsStock)
     }
 }
