@@ -23,7 +23,7 @@ class JuiceViewController: UIViewController {
     }
     
     @IBAction private func updateStockButtonTapped(_ sender: UIBarButtonItem) {
-        showStockViewModal()
+        presentStockViewController()
     }
     
     @IBAction private func strawberryJuiceOrderButtonTapped(_ sender: UIButton) {
@@ -65,7 +65,7 @@ class JuiceViewController: UIViewController {
         }
     }
     
-    private func showStockViewModal() {
+    private func presentStockViewController() {
         let stockViewNavigationController = storyboard?.instantiateViewController(withIdentifier: "StockViewNavigationController") as! UINavigationController
         if let stockViewController = stockViewNavigationController.viewControllers.first as? StockViewController {
             stockViewController.delegate = self
@@ -84,7 +84,7 @@ class JuiceViewController: UIViewController {
     private func alertInsufficientStock() {
         let alert = UIAlertController(title: "", message: "재료가 모자라요. 재고를 수정할까요?", preferredStyle: .alert)
         let yesAlertAction = UIAlertAction(title: "예", style: .default, handler: { _ in
-            self.showStockViewModal()
+            self.presentStockViewController()
         })
         let noAlertAction = UIAlertAction(title: "아니오", style: .cancel)
         
