@@ -13,12 +13,18 @@ final class JuiceMakerViewController: UIViewController {
     @IBOutlet weak var kiwiStockLabel: UILabel!
     @IBOutlet weak var mangoStockLabel: UILabel!
 
-    private var fruitStore: FruitStore = FruitStore(strawberryStock: 10,
-                                            bananaStock: 10,
-                                            pineappleStock: 10,
-                                            kiwiStock: 10,
-                                            mangoStock: 10)
-    private lazy var juiceMaker: JuiceMaker = JuiceMaker(fruitStore: fruitStore)
+    private var fruitStore: FruitStore
+    private var juiceMaker: JuiceMaker
+    
+    required init?(coder: NSCoder) {
+        self.fruitStore = FruitStore(strawberryStock: 10, 
+                                     bananaStock: 10,
+                                     pineappleStock: 10,
+                                     kiwiStock: 10,
+                                     mangoStock: 10)
+        self.juiceMaker = JuiceMaker(fruitStore: fruitStore)
+        super.init(coder: coder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +37,13 @@ final class JuiceMakerViewController: UIViewController {
                                                                  style: .plain,
                                                                  target: self,
                                                                  action: #selector(showFruitStoreViewController))
+        NotificationCenter.default.addObserver(self, 
+                                               selector: #selector(setStockLabelUI),
+                                               name: NSNotification.Name("updateUINotification"),
+                                               object: nil)
     }
     
+    @objc
     private func setStockLabelUI() {
         guard
             let strawberryStock = fruitStore.fruitStocks[.strawberry],
@@ -53,9 +64,8 @@ final class JuiceMakerViewController: UIViewController {
     private func startJuiceMakerProcess(juice: Juice) throws {
         try juiceMaker.checkUnderstockedFruits(juice: juice)
         juiceMaker.makeJuice(juice: juice)
-        showJuiceMakerAlert(isCompletedMakeJuice: true,
-                            message: "\(juice.name) 나왔습니다! 맛있게 드세요!",
-                            completion: nil)
+        showJuiceMakerAlert(buttonTitles: ["확인"], 
+                            message: "\(juice.name) 나왔습니다! 맛있게 드세요!")
     }
 
     @objc
@@ -67,7 +77,7 @@ final class JuiceMakerViewController: UIViewController {
         else {
             fatalError("init(coder:) has not been implemented")
         }
-        fruitStoreViewController.delegate = self
+        //fruitStoreViewController.delegate = self
         present(fruitStoreViewController, animated: true)
     }
     
@@ -85,14 +95,15 @@ final class JuiceMakerViewController: UIViewController {
                 labels[index].text = String(remainStock)
             }
         } catch {
-            showJuiceMakerAlert(isCompletedMakeJuice: false,
+            showJuiceMakerAlert(buttonTitles: ["예", "아니오"],
                                 message: error.localizedDescription,
-                                completion: { [weak self] in
+                                styles: [.default, .cancel],
+                                completions: [{ [weak self] in
                 self?.showFruitStoreViewController()
-            })
+            }, nil])
         }
     }
-    
+    // self?.showFruitStoreViewController()
     @IBAction private func tappedStrawberryBananaJuiceButton(_ sender: UIButton) {
         proceedMakingJuice(juice: .strawberryBananaJuice, labels: [strawberryStockLabel, bananaStockLabel])
     }
@@ -122,8 +133,8 @@ final class JuiceMakerViewController: UIViewController {
     }
 }
 
-extension JuiceMakerViewController: FruitStockDelegate, JuiceMakerAlert {
-    func updateFruitStock() {
-        setStockLabelUI()
-    }
+extension JuiceMakerViewController: JuiceMakerAlert {
+//    func updateFruitStock() {
+//        setStockLabelUI()
+//    }
 }
