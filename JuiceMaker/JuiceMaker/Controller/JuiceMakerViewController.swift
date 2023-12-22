@@ -11,6 +11,8 @@ final class JuiceMakerViewController: UIViewController {
     
     private let router: JuiceMakerRoutable?
     
+    private let coordinator: JuiceMakerViewControllerDelegate?
+    
     @IBOutlet private weak var strawberryStockLabel: UILabel!
     
     @IBOutlet private weak var bananaStockLabel: UILabel!
@@ -24,16 +26,19 @@ final class JuiceMakerViewController: UIViewController {
     required init?(coder: NSCoder) {
         self.juiceMakerUseCase = nil
         self.router = nil
+        self.coordinator = nil
         super.init(coder: coder)
     }
     
-    init?(
+    private init?(
         coder: NSCoder,
         juiceMakerUseCase: JuiceMaker,
-        router: JuiceMakerRouter
+        router: JuiceMakerRouter,
+        coordinator: JuiceMakerViewControllerDelegate
     ) {
         self.juiceMakerUseCase = juiceMakerUseCase
         self.router = router
+        self.coordinator = coordinator
         super.init(coder: coder)
         setUpLayers()
     }
@@ -74,10 +79,14 @@ extension JuiceMakerViewController {
     }
     
     @IBAction private func didTapStockManager(_ sender: UIBarButtonItem) {
-        let managinCompletionHandler: (() -> Void) = { [weak self] in
+//        let managinCompletionHandler: (() -> Void) = { [weak self] in
+//            self?.juiceMakerUseCase?.displayStock()
+//        }
+//        self.router?.routeToNextViewController(dismissingHandler: managinCompletionHandler)
+        
+        self.coordinator?.startStockManaging { [weak self] in
             self?.juiceMakerUseCase?.displayStock()
         }
-        self.router?.routeToNextViewController(dismissingHandler: managinCompletionHandler)
     }
 }
 
@@ -94,13 +103,15 @@ extension JuiceMakerViewController {
 extension JuiceMakerViewController: StoryboardBased {
     static func instantiate(
         juiceMakerUseCase: JuiceMaker,
-        router: JuiceMakerRouter
+        router: JuiceMakerRouter,
+        coordinator: JuiceMakerViewControllerDelegate
     ) -> Self {
         return sceneStoryboard.instantiateViewController(identifier: storyboardIdentifier) { coder in
             return Self.init(
                 coder: coder,
                 juiceMakerUseCase: juiceMakerUseCase,
-                router: router
+                router: router,
+                coordinator: coordinator
             )
         }
     }
