@@ -431,6 +431,16 @@
                         <outlet property="pineappleStepper" destination="Rcr-xr-eqz" id="WR0-Et-9xb"/>
                         <outlet property="strawberryQuantityLabel" destination="0yV-kn-zaT" id="NvN-5q-wdV"/>
                         <outlet property="strawberryStepper" destination="ZQk-f4-zrz" id="MBr-al-hXY"/>
+                        <outletCollection property="fruitSteppers" destination="ZQk-f4-zrz" collectionClass="NSMutableArray" id="vWy-CE-5XW"/>
+                        <outletCollection property="fruitSteppers" destination="O5s-2N-3iP" collectionClass="NSMutableArray" id="6YU-zN-Lu0"/>
+                        <outletCollection property="fruitSteppers" destination="Rcr-xr-eqz" collectionClass="NSMutableArray" id="4Rg-O8-8iL"/>
+                        <outletCollection property="fruitSteppers" destination="klA-59-Nu4" collectionClass="NSMutableArray" id="UDb-aX-vPS"/>
+                        <outletCollection property="fruitSteppers" destination="xbn-6P-grO" collectionClass="NSMutableArray" id="kP7-8o-XTj"/>
+                        <outletCollection property="fruitquantityLabels" destination="0yV-kn-zaT" collectionClass="NSMutableArray" id="Rm4-Ff-Itz"/>
+                        <outletCollection property="fruitquantityLabels" destination="gKu-86-RhI" collectionClass="NSMutableArray" id="Pls-Y0-5lH"/>
+                        <outletCollection property="fruitquantityLabels" destination="MpT-VW-hCb" collectionClass="NSMutableArray" id="nz7-s6-OZy"/>
+                        <outletCollection property="fruitquantityLabels" destination="ZDv-1m-HBY" collectionClass="NSMutableArray" id="usl-iC-UPS"/>
+                        <outletCollection property="fruitquantityLabels" destination="YJI-ER-LJR" collectionClass="NSMutableArray" id="WIF-3W-mZQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ieh-6D-g1l" sceneMemberID="firstResponder"/>
