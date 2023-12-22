@@ -7,12 +7,7 @@
 
 import UIKit
 
-protocol Coordinator : AnyObject {
-    var childCoordinators : [Coordinator] { get set }
-    func start()
-}
-
-final class JuiceMakerCoordinator {
+final class JuiceMakerCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     
     private let navigationController: UINavigationController
@@ -24,30 +19,56 @@ final class JuiceMakerCoordinator {
     }
     
     func start() {
-        fruitStore = FruitStore(initialCount: 10)
+        self.fruitStore = FruitStore(initialCount: 10)
         let viewController = JuiceMakerViewController.instantiate(
             juiceMakerUseCase: JuiceMaker(fruitStore: fruitStore),
-            router: JuiceMakerRouter(dataStore: fruitStore),
             coordinator: self
         )
         self.navigationController.viewControllers = [viewController]
     }
 }
 
+// MARK: - JuiceMakerViewControllerDelegate Implementation
+
 protocol JuiceMakerViewControllerDelegate {
-    func startStockManaging(completionHandler: @escaping (() -> Void))
+    func startStockManaging()
 }
 
-
 extension JuiceMakerCoordinator: JuiceMakerViewControllerDelegate {
-    func startStockManaging(completionHandler: @escaping (() -> Void)) {
-        guard let currentViewController = self.navigationController.viewControllers.last else { return }
-        let stockManager = StockManager(fruitStore: fruitStore)
-        let stockManagerViewController = StockManagerViewController.instantiate(
-            stockManagerUseCase: stockManager,
-            dismissingHandler: completionHandler
+    func startStockManaging() {
+        let coordinator = StockManagerCoordinator(
+            navigationController: self.navigationController,
+            fruitStore: self.fruitStore
         )
-        let destinationViewController = UINavigationController(rootViewController: stockManagerViewController)
-        self.navigationController.present(destinationViewController, animated: true)
+        coordinator.coordinator = self
+        coordinator.start()
+        self.childCoordinators.append(coordinator)
     }
+}
+
+// MARK: - StockManagerCoordinatorDelegate Implementation
+
+protocol StockManagerCoordinatorDelegate {
+    func didEndStockManaging(_ coordinator: StockManagerCoordinator)
+}
+
+extension JuiceMakerCoordinator: StockManagerCoordinatorDelegate {
+    func didEndStockManaging(_ coordinator: StockManagerCoordinator) {
+        // 1. remove useless child coordinator
+        self.childCoordinators = self.childCoordinators.filter { $0 !== coordinator }
+        // 2. handle juice maker apppearance
+        handleJuiceMakerViewControllerVisibility()
+    }
+    
+    private func handleJuiceMakerViewControllerVisibility() {
+        if let viewController = self.navigationController.viewControllers.last as? ModalViewControllerDismissingHandlable {
+            viewController.juiceMakerViewControllerWillAppear()
+        }
+    }
+}
+
+// MARK: - ModalViewControllerDismissingHandlable
+
+protocol ModalViewControllerDismissingHandlable {
+    func juiceMakerViewControllerWillAppear()
 }

@@ -31,14 +31,4 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-    
-//    private func makeRootViewController() -> UINavigationController {
-//        let fruitStore = FruitStore(initialCount: 10)
-//        let viewController = JuiceMakerViewController.instantiate(
-//            juiceMakerUseCase: JuiceMaker(fruitStore: fruitStore),
-//            router: JuiceMakerRouter(dataStore: fruitStore)
-//        )
-//        return UINavigationController(rootViewController: viewController)
-//    }
 }
-
