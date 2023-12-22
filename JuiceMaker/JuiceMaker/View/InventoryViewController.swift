@@ -55,7 +55,7 @@ final class InventoryViewController: UIViewController {
         configureUI()
     }
     
-    @IBAction func tapCloseInventoryButton(_ sender: UIButton) {
+    @IBAction private func tapCloseInventoryButton(_ sender: UIButton) {
         guard let presentingViewController = presentingViewController as? OrderViewController else {
             return
         }
@@ -64,7 +64,7 @@ final class InventoryViewController: UIViewController {
         self.dismiss(animated: true)
     }
     
-    @IBAction func tapStepper(_ sender: UIStepper) {
+    @IBAction private func tapStepper(_ sender: UIStepper) {
         guard let fruit = fruitElementsByStepper[sender]?.fruit else {
             return
         }
@@ -77,7 +77,6 @@ extension InventoryViewController {
     
     private func configureUI() {
         for (fruit, components) in componentsByFruit {
-            let fruitQuantity: Int = fruitStore.checkFruitQuantity(of: fruit)
             components.label.text = String(fruitQuantity)
             components.stepper.value = Double(fruitQuantity)
         }
