@@ -24,23 +24,14 @@ final class StoreViewController: UIViewController {
     let fruitStore = FruitStore.shared
     lazy var juiceMaker: JuiceMaker = JuiceMaker(store: fruitStore)
     
-    let dismissAlertAction = UIAlertAction(title: "확인", style: .default)
-    lazy var acceptAlertAction = UIAlertAction(title: "예", style: .default) { action in
-        self.moveFruitStore()
-    }
-    let cancelAlertAction = UIAlertAction(title: "아니오", style: .destructive)
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         fruitStore.initializeFruit()
-        initView()
-        print("test2")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("test1")
+        initView()
     }
     
     @IBAction func moveToFruitStoreBtnTapped(_ sender: Any) {
@@ -74,10 +65,9 @@ final class StoreViewController: UIViewController {
     }
     
     private func moveFruitStore() {
-//        self.performSegue(withIdentifier: "moveToStock", sender: "test")
-        guard let secondVC = storyboard?.instantiateViewController(withIdentifier: "StockViewController") as? StockViewController else { return }
+        guard let secondVC = storyboard?.instantiateViewController(withIdentifier: VCIdentifiers.StockViewController.rawValue) as? StockViewController else { return }
         secondVC.modalPresentationStyle = .fullScreen
-        self.present(secondVC, animated: false)
+        self.present(secondVC, animated: true)
     }
     
 }
@@ -123,7 +113,7 @@ extension StoreViewController {
                 preferredStyle: UIAlertController.Style.alert,
                 title: "\(recipeName) 쥬스 나왔습니다! 맛있게 드세요!",
                 message: "",
-                buttonActions: [dismissAlertAction]
+                handler: ["확인": nil]
             )
         }
         else {
@@ -132,7 +122,7 @@ extension StoreViewController {
                 preferredStyle: UIAlertController.Style.alert,
                 title: "재료가 모자라요. 재고를 수정할까요?",
                 message: "",
-                buttonActions: [acceptAlertAction, cancelAlertAction]
+                handler: ["예": self.moveFruitStore, "아니오": nil]
             )
         }
     }
