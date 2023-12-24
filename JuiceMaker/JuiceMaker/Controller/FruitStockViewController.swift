@@ -22,11 +22,12 @@ final class FruitStockViewController: UIViewController {
     
     @IBOutlet weak var fruitStockSaveButton: UIButton!
     
-    private var labelDict: Dictionary<UIStepper, UILabel> = [:]
-    private var stepperDict: Dictionary<UIStepper, Fruit> = [:]
-    var fruitCount: ((Fruit) -> Int)?
-    var updateFruitStore: ((Dictionary<Fruit, Int>) -> Void)?
+    private var stepperByLabel: Dictionary<UIStepper, UILabel> = [:]
+    private var stepperByFruit: Dictionary<UIStepper, Fruit> = [:]
+//    var fruitCount: ((Fruit) -> Int)?
+//    var updateFruitStore: ((Dictionary<Fruit, Int>) -> Void)?
     private var originStockValue: [Int] = []
+    weak var delegate: FruitStockDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,14 +43,14 @@ extension FruitStockViewController {
     }
     
     @IBAction func stepperTapped(_ sender: UIStepper) {
-        guard let label = labelDict[sender] else {
+        guard let label = stepperByLabel[sender] else {
             return
         }   
         setLabelText(stepper: sender, label: label)
         
         var isFruitCountChanged: Bool = false
         var index: Int = 0
-        for stepper in stepperDict.keys {
+        for stepper in stepperByFruit.keys {
             if Int(stepper.value) != originStockValue[index] {
                 isFruitCountChanged = true
                 break
@@ -61,13 +62,14 @@ extension FruitStockViewController {
     }
     
     @IBAction func fruitStockSaveButtonTapped() {
-        let store: Dictionary<Fruit, Int> = stepperDict.reduce(into: [:]) {
+        let store: Dictionary<Fruit, Int> = stepperByFruit.reduce(into: [:]) {
             (fruitStore, keyValuePair) in
             let (stepper, fruit) = keyValuePair
             fruitStore[fruit] = Int(stepper.value)
         }
-        updateFruitStore?(store)
-        originStockValue = stepperDict.map { Int($0.key.value) }
+//        updateFruitStore?(store)
+        delegate?.updateFruitStore(newFruitStore: store)
+        originStockValue = stepperByFruit.map { Int($0.key.value) }
         fruitStockSaveButton.isEnabled = false
         makeAlert(title: "알림", message: "재고가 수정되었습니다!")
     }
@@ -77,19 +79,20 @@ extension FruitStockViewController {
     }
     
     private func setLabelDict() {
-        labelDict = [strawberryStepper: strawberryLabel, bananaStepper: bananaLabel, pineappleStepper: pineappleLabel, kiwiStepper: kiwiLabel, mangoStepper: mangoLabel]
+        stepperByLabel = [strawberryStepper: strawberryLabel, bananaStepper: bananaLabel, pineappleStepper: pineappleLabel, kiwiStepper: kiwiLabel, mangoStepper: mangoLabel]
     }
     
     private func setStepperDict() {
-        stepperDict = [strawberryStepper : .strawberry, bananaStepper : .banana, pineappleStepper : .pineapple, kiwiStepper : .kiwi, mangoStepper : .mango]
-        stepperDict.forEach(setStepper)
-        labelDict.forEach(setLabelText)
+        stepperByFruit = [strawberryStepper: .strawberry, bananaStepper: .banana, pineappleStepper: .pineapple, kiwiStepper: .kiwi, mangoStepper: .mango]
+        stepperByFruit.forEach(setStepper)
+        stepperByLabel.forEach(setLabelText)
     }
     
     private func setStepper(stepper: UIStepper, fruit: Fruit) {
         stepper.minimumValue = fruit.minimum
         stepper.maximumValue = fruit.maximum
-        stepper.value = Double(fruitCount?(fruit) ?? 0)
+//        stepper.value = Double(fruitCount?(fruit) ?? 0)
+        stepper.value = Double(delegate?.fruitCount(fruit: fruit) ?? 0)
         originStockValue.append(Int(stepper.value))
     }
     
