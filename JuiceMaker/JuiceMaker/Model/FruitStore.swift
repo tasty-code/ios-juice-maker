@@ -8,15 +8,28 @@ import Foundation
 
 final class FruitStore {
     
-    static let shared = FruitStore()
+    // MARK: Properties
+    private var fruitContainer: [Fruit: Int]
     
-    var fruitContainer: [Fruit: Int] = [
-        .strawberry: 10,
-        .banana: 10,
-        .kiwi: 10,
-        .pineapple: 10,
-        .mango: 10,
-    ]
+    // MARK: Initializer
+    init(fruitContainer: [Fruit: Int]) {
+        self.fruitContainer = fruitContainer
+    }
     
-    private init() {}
+    // MARK: Custom Methods
+    func checkFruitContainer() -> [Fruit: Int] {
+        return fruitContainer
+    }
+    
+    func quantity(of fruit: Fruit) -> Int {
+        return fruitContainer[fruit, default: 0]
+    }
+    
+    func updateFruitContainer(with data: [Fruit: Int]) {
+        fruitContainer = data
+    }
+    
+    func updateFruitQuantity(of fruit: Fruit, by quantity: Int) {
+        fruitContainer[fruit] = quantity
+    }
 }

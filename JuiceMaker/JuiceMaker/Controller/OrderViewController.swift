@@ -16,7 +16,7 @@ final class OrderViewController: UIViewController {
     @IBOutlet private weak var mangoQuantityLabel: UILabel!
     
     // MARK: Properties
-    private var fruitStore: FruitStore
+    private let fruitStore: FruitStore
     private let juiceMaker: JuiceMaker
     private lazy var labelsByFruit: [Fruit: UILabel] = [
         .strawberry: strawberryQuantityLabel,
@@ -28,8 +28,14 @@ final class OrderViewController: UIViewController {
     
     // MARK: Initializer
     required init?(coder aDecoder: NSCoder) {
-        self.fruitStore = FruitStore.shared
-        self.juiceMaker = JuiceMaker()
+        self.fruitStore = FruitStore(fruitContainer: [
+            .strawberry: 10,
+            .banana: 10,
+            .kiwi: 10,
+            .pineapple: 10,
+            .mango: 10,
+        ])
+        self.juiceMaker = JuiceMaker(fruitStore: self.fruitStore)
         super.init(coder: aDecoder)
     }
     
@@ -45,8 +51,8 @@ final class OrderViewController: UIViewController {
     }
 
     // MARK: @IBAction
-    @IBAction private func tapEditInventoryButton(_ sender: UIBarButtonItem) {
-        pushInventoryViewController()
+    @IBAction private func tapEditInventoryButton(_ sender: UIButton) {
+        presentInventoryViewController()
     }
     
     @IBAction private func tapMakeJuiceButton(_ sender: UIButton) {
@@ -67,7 +73,7 @@ final class OrderViewController: UIViewController {
                                    confirmTitle: "예",
                                    cancelTitle: "아니오",
                                    confirmAction: { [weak self] _ in
-                self?.pushInventoryViewController()
+                self?.presentInventoryViewController()
             })
         }
     }
@@ -78,14 +84,21 @@ extension OrderViewController {
     
     private func configureUI() {
         for (fruit, label) in labelsByFruit {
-            label.text = String(fruitStore.fruitContainer[fruit, default: 0])
+            let fruitQuantity = fruitStore.quantity(of: fruit)
+            label.text = String(fruitQuantity)
         }
     }
     
-    private func pushInventoryViewController() {
-        guard let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: InventoryViewController.className)
-                as? UIViewController else { return }
+    private func presentInventoryViewController() {
+        guard let nextViewController = self.storyboard?.instantiateViewController(identifier: InventoryViewController.className, creator: { coder in
+            return InventoryViewController(coder: coder, fruitStore: self.fruitStore)
+        }) else { return }
         
-        self.navigationController?.pushViewController(nextViewController, animated: true)
+        nextViewController.modalPresentationStyle = .fullScreen
+        self.present(nextViewController, animated: true)
+    }
+
+    func setUpFruitContainer(data: [Fruit: Int]) {
+        fruitStore.updateFruitContainer(with: data)
     }
 }
