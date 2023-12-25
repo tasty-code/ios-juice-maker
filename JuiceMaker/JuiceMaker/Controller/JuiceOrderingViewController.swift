@@ -48,8 +48,6 @@ extension JuiceOrderingViewController {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: FruitStockViewController.className) as? FruitStockViewController else { return }
         
         vc.modalPresentationStyle = .fullScreen
-//        vc.fruitCount = fruitStore.fruitCount
-//        vc.updateFruitStore = fruitStore.updateFruitStore
         vc.delegate = self
         
         self.present(vc, animated: false)
@@ -69,7 +67,6 @@ extension JuiceOrderingViewController {
     }
     
     private func configureFruitStoreUI() {
-//        labelDict.forEach { $0.text = fruitStore.fruitCount(fruit: $1).description }
         labelDict.forEach { $0.text = fruitCount(fruit: $1).description }
     }
     
@@ -78,7 +75,6 @@ extension JuiceOrderingViewController {
     }
     
     func updateFruitStore(newFruitStore: Dictionary<Fruit, Int>) {
-//        fruitStore.updateFruitStore(fruitStore)
         fruitStore.updateFruitStore(fruitStore: newFruitStore)
     }
 }

@@ -6,7 +6,7 @@
 
 import Foundation
 
-class FruitStore {
+final class FruitStore {
     private var store: Dictionary<Fruit, Int>
     
     init() {
@@ -27,21 +27,21 @@ class FruitStore {
     }
     
     
-    func checkStock(fruit: Fruit, count: Int) -> Bool {
+    public func checkStock(fruit: Fruit, count: Int) -> Bool {
         if let nowCount = store[fruit], nowCount >= count {
             return true
         }
         return false
     }
     
-    func fruitCount(fruit: Fruit) -> Int {
+    public func fruitCount(fruit: Fruit) -> Int {
         if let nowCount =  store[fruit] {
             return nowCount
         }
         return 0
     }
     
-    func updateFruitStore(fruitStore: Dictionary<Fruit, Int>) {
+    public func updateFruitStore(fruitStore: Dictionary<Fruit, Int>) {
         store = fruitStore
     }
 }

@@ -24,8 +24,6 @@ final class FruitStockViewController: UIViewController {
     
     private var stepperByLabel: Dictionary<UIStepper, UILabel> = [:]
     private var stepperByFruit: Dictionary<UIStepper, Fruit> = [:]
-//    var fruitCount: ((Fruit) -> Int)?
-//    var updateFruitStore: ((Dictionary<Fruit, Int>) -> Void)?
     private var originStockValue: [Int] = []
     weak var delegate: FruitStockDelegate?
     
@@ -67,7 +65,6 @@ extension FruitStockViewController {
             let (stepper, fruit) = keyValuePair
             fruitStore[fruit] = Int(stepper.value)
         }
-//        updateFruitStore?(store)
         delegate?.updateFruitStore(newFruitStore: store)
         originStockValue = stepperByFruit.map { Int($0.key.value) }
         fruitStockSaveButton.isEnabled = false
@@ -91,7 +88,6 @@ extension FruitStockViewController {
     private func setStepper(stepper: UIStepper, fruit: Fruit) {
         stepper.minimumValue = fruit.minimum
         stepper.maximumValue = fruit.maximum
-//        stepper.value = Double(fruitCount?(fruit) ?? 0)
         stepper.value = Double(delegate?.fruitCount(fruit: fruit) ?? 0)
         originStockValue.append(Int(stepper.value))
     }
