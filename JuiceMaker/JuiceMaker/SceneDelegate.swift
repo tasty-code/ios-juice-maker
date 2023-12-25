@@ -41,6 +41,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             juiceMachineViewController.navigationController?.pushViewController(stockManageViewController, animated: true)
         }
     }
+    
+    
+    
+    let test = "this is test String"
 }
 
 
