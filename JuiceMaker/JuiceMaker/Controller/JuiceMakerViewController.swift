@@ -37,13 +37,8 @@ final class JuiceMakerViewController: UIViewController {
                                                             style: .plain,
                                                             target: self,
                                                             action: #selector(showFruitStoreViewController))
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(setUpContents),
-                                               name: NSNotification.Name("updateUINotification"),
-                                               object: nil)
     }
     
-    @objc
     private func setUpContents() {
         guard
             let strawberryStock = fruitStore.fruitStocks[.strawberry],
@@ -78,7 +73,7 @@ final class JuiceMakerViewController: UIViewController {
         else {
             fatalError("init(coder:) has not been implemented")
         }
-        //fruitStoreViewController.delegate = self
+        fruitStoreViewController.delegate = self
         present(fruitStoreViewController, animated: true)
     }
     
@@ -144,8 +139,8 @@ final class JuiceMakerViewController: UIViewController {
     }
 }
 
-extension JuiceMakerViewController: JuiceMakerAlert {
-    //    func updateFruitStock() {
-    //        setStockLabelUI()
-    //    }
+extension JuiceMakerViewController: JuiceMakerAlert, FruitStoreDelegate {
+    func updateFruitStock() {
+        setUpContents()
+    }
 }
