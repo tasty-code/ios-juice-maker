@@ -15,14 +15,14 @@ final class JuiceOrderingViewController: UIViewController, FruitStockDelegate {
     @IBOutlet weak var mangoLabel: UILabel!
     
     private var fruitStore: FruitStore
-    private var labelDict: Dictionary<UILabel, Fruit>
+    private var FruitByLabel: Dictionary<UILabel, Fruit>
     private var juiceMaker: JuiceMaker
     private let juiceMenu: [Juice]
     
     required init?(coder aDecoder: NSCoder) {
         self.fruitStore = FruitStore()
         self.juiceMaker = JuiceMaker(fruitStore: fruitStore)
-        self.labelDict = [:]
+        self.FruitByLabel = [:]
         self.juiceMenu = Juice.allCases
         super.init(coder: aDecoder)
     }
@@ -41,7 +41,7 @@ final class JuiceOrderingViewController: UIViewController, FruitStockDelegate {
 
 extension JuiceOrderingViewController {
     private func setLabelDict() {
-        labelDict = [strawberryLabel: .strawberry, bananaLabel: .banana, pineappleLabel: .pineapple, kiwiLabel: .kiwi, mangoLabel: .mango]
+        FruitByLabel = [strawberryLabel: .strawberry, bananaLabel: .banana, pineappleLabel: .pineapple, kiwiLabel: .kiwi, mangoLabel: .mango]
     }
     
     private func presentFruitStockViewController() {
@@ -67,7 +67,7 @@ extension JuiceOrderingViewController {
     }
     
     private func configureFruitStoreUI() {
-        labelDict.forEach { $0.text = fruitCount(fruit: $1).description }
+        FruitByLabel.forEach { $0.text = fruitCount(fruit: $1).description }
     }
     
     func fruitCount(fruit: Fruit) -> Int {
