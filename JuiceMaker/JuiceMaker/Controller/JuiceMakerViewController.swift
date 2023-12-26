@@ -17,34 +17,34 @@ final class JuiceMakerViewController: UIViewController {
     private var juiceMaker: JuiceMaker
     
     required init?(coder: NSCoder) {
-        self.fruitStore = FruitStore(strawberryStock: 10,
-                                     bananaStock: 10,
-                                     pineappleStock: 10,
-                                     kiwiStock: 10,
-                                     mangoStock: 10)
-        self.juiceMaker = JuiceMaker(fruitStore: fruitStore)
+        fruitStore = FruitStore(strawberryStock: 10,
+                                bananaStock: 10,
+                                pineappleStock: 10,
+                                kiwiStock: 10,
+                                mangoStock: 10)
+        juiceMaker = JuiceMaker(fruitStore: fruitStore)
         super.init(coder: coder)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        setStockLabelUI()
+        setUpContents()
     }
     
     private func configureUI() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "재고수정",
-                                                                 style: .plain,
-                                                                 target: self,
-                                                                 action: #selector(showFruitStoreViewController))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "재고수정",
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(showFruitStoreViewController))
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(setStockLabelUI),
+                                               selector: #selector(setUpContents),
                                                name: NSNotification.Name("updateUINotification"),
                                                object: nil)
     }
     
     @objc
-    private func setStockLabelUI() {
+    private func setUpContents() {
         guard
             let strawberryStock = fruitStore.fruitStocks[.strawberry],
             let bananaStock = fruitStore.fruitStocks[.banana],
@@ -85,16 +85,7 @@ final class JuiceMakerViewController: UIViewController {
     private func proceedMakingJuice(juice: Juice, labels: [UILabel]) {
         do {
             try startJuiceMakerProcess(juice: juice)
-            let sortedJuiceRecipe = juice.recipe.sorted(by: { $0.value > $1.value })
-            for (index, ingredient) in sortedJuiceRecipe.enumerated() {
-                guard
-                    let remainStock = fruitStore.fruitStocks[ingredient.key]
-                else {
-                    return
-                }
-                guard index < labels.count else { return }
-                labels[index].text = String(remainStock)
-            }
+            updateStockLabels(juice: juice, labels: labels)
         } catch {
             showJuiceMakerAlert(message: error.localizedDescription,
                                 actions: [
@@ -107,6 +98,20 @@ final class JuiceMakerViewController: UIViewController {
                                                   style: .cancel)
                                 ]
             )
+        }
+    }
+    
+    private func updateStockLabels(juice: Juice, labels: [UILabel]) {
+        let sortedJuiceRecipe = juice.recipe.sorted { firstIngredient, secondIngredient in
+            firstIngredient.value > secondIngredient.value
+        }
+        for (index, ingredient) in sortedJuiceRecipe.enumerated() {
+            guard
+                let remainStock = fruitStore.fruitStocks[ingredient.key]
+            else {
+                return
+            }
+            labels[index].text = String(remainStock)
         }
     }
     
