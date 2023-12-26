@@ -36,16 +36,16 @@ final class FruitStoreViewController: UIViewController {
     }
     
     required init?(coder: NSCoder) {
-         fatalError("init(coder:) has not been implemented")
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func configureUI() {
         navigationItem.hidesBackButton = true
         navigationItem.title = "재고추가"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "닫기",
-                                                                 style: .plain,
-                                                                 target: self,
-                                                                 action: #selector(tappedCloseButton))
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(tappedCloseButton))
     }
     
     private func setUpContents() {
@@ -77,7 +77,7 @@ final class FruitStoreViewController: UIViewController {
     }
     
     @IBAction private func tappedStrawberryStepper(_ sender: UIStepper) {
-        updateFruitStock(label: strawberryStockLabel, 
+        updateFruitStock(label: strawberryStockLabel,
                          fruit: .strawberry,
                          count: Int(sender.value))
     }
@@ -105,11 +105,9 @@ final class FruitStoreViewController: UIViewController {
                          fruit: .mango,
                          count: Int(sender.value))
     }
-
+    
     @IBAction private func tappedCloseButton(_ sender: UIBarButtonItem) {
-//        delegate?.updateFruitStock()
-        NotificationCenter.default.post(name: NSNotification.Name("updateUINotification"), 
-                                        object: nil)
+        delegate?.updateFruitStock()
         dismiss(animated: true)
     }
 }
