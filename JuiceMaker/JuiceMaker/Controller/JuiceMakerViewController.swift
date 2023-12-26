@@ -12,12 +12,12 @@ final class JuiceMakerViewController: UIViewController {
     @IBOutlet weak var bananaStockLabel: UILabel!
     @IBOutlet weak var kiwiStockLabel: UILabel!
     @IBOutlet weak var mangoStockLabel: UILabel!
-
+    
     private var fruitStore: FruitStore
     private var juiceMaker: JuiceMaker
     
     required init?(coder: NSCoder) {
-        self.fruitStore = FruitStore(strawberryStock: 10, 
+        self.fruitStore = FruitStore(strawberryStock: 10,
                                      bananaStock: 10,
                                      pineappleStock: 10,
                                      kiwiStock: 10,
@@ -37,7 +37,7 @@ final class JuiceMakerViewController: UIViewController {
                                                                  style: .plain,
                                                                  target: self,
                                                                  action: #selector(showFruitStoreViewController))
-        NotificationCenter.default.addObserver(self, 
+        NotificationCenter.default.addObserver(self,
                                                selector: #selector(setStockLabelUI),
                                                name: NSNotification.Name("updateUINotification"),
                                                object: nil)
@@ -64,10 +64,11 @@ final class JuiceMakerViewController: UIViewController {
     private func startJuiceMakerProcess(juice: Juice) throws {
         try juiceMaker.checkUnderstockedFruits(juice: juice)
         juiceMaker.makeJuice(juice: juice)
-        showJuiceMakerAlert(buttonTitles: ["확인"], 
-                            message: "\(juice.name) 나왔습니다! 맛있게 드세요!")
+        showJuiceMakerAlert(message: "\(juice.name) 나왔습니다! 맛있게 드세요!",
+                            actions: [UIAlertAction(title: "확인", style: .default)]
+        )
     }
-
+    
     @objc
     private func showFruitStoreViewController() {
         guard
@@ -95,15 +96,20 @@ final class JuiceMakerViewController: UIViewController {
                 labels[index].text = String(remainStock)
             }
         } catch {
-            showJuiceMakerAlert(buttonTitles: ["예", "아니오"],
-                                message: error.localizedDescription,
-                                styles: [.default, .cancel],
-                                completions: [{ [weak self] in
-                self?.showFruitStoreViewController()
-            }, nil])
+            showJuiceMakerAlert(message: error.localizedDescription,
+                                actions: [
+                                    UIAlertAction(title: "예",
+                                                  style: .default,
+                                                  handler: { _ in
+                                                      self.showFruitStoreViewController()
+                                                  }),
+                                    UIAlertAction(title: "아니오",
+                                                  style: .cancel)
+                                ]
+            )
         }
     }
-    // self?.showFruitStoreViewController()
+    
     @IBAction private func tappedStrawberryBananaJuiceButton(_ sender: UIButton) {
         proceedMakingJuice(juice: .strawberryBananaJuice, labels: [strawberryStockLabel, bananaStockLabel])
     }
@@ -134,7 +140,7 @@ final class JuiceMakerViewController: UIViewController {
 }
 
 extension JuiceMakerViewController: JuiceMakerAlert {
-//    func updateFruitStock() {
-//        setStockLabelUI()
-//    }
+    //    func updateFruitStock() {
+    //        setStockLabelUI()
+    //    }
 }
