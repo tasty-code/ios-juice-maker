@@ -14,4 +14,14 @@ enum Fruit: String, CaseIterable {
     case pineapple = "파인애플"
     case mango = "망고"
 }
+
+extension Fruit {
+    var maximum: Double {
+        return 1000.0
+    }
+    
+    var minimum: Double {
+        return 0.0
+    }
+}
     

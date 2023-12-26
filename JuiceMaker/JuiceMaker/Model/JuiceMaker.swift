@@ -7,13 +7,13 @@
 import Foundation
 
 struct JuiceMaker {
-    var fruitStore: FruitStore
+    private var fruitStore: FruitStore
     
-    init(fruitStore: FruitStore = FruitStore.shared) {
+    init(fruitStore: FruitStore) {
         self.fruitStore = fruitStore
     }
     
-    func isEnough(juice: Juice) -> Bool {
+    private func isEnough(juice: Juice) -> Bool {
         var stockCheck: Bool = true
         for (fruit, count) in juice.recipe {
             guard fruitStore.checkStock(fruit: fruit, count: count) else {
@@ -24,14 +24,12 @@ struct JuiceMaker {
         return stockCheck
     }
     
-    mutating func makeJuice(juice: Juice) -> Juice? {
+    public mutating func makeJuice(juice: Juice) -> Juice? {
         guard isEnough(juice: juice) else {
             return nil
         }
         
-        juice.recipe.forEach { (fruit: Fruit, count: Int) in
-            fruitStore.release(fruit: fruit, count: count)
-        }
+        juice.recipe.forEach(fruitStore.release)
         
         return juice
     }

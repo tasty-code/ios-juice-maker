@@ -6,19 +6,12 @@
 
 import Foundation
 
-class FruitStore {
-    static var shared: FruitStore = FruitStore()
+final class FruitStore {
     private var store: Dictionary<Fruit, Int>
     
-    private init() {
+    init() {
         self.store = Dictionary()
         Fruit.allCases.forEach { store[$0] = 10 }
-    }
-    
-    public func warehouse(fruit: Fruit, count: Int) {
-        if let nowCount = store[fruit] {
-            store[fruit] = nowCount + count
-        }
     }
     
     public func release(fruit: Fruit, count: Int) {
@@ -34,18 +27,22 @@ class FruitStore {
     }
     
     
-    func checkStock(fruit: Fruit, count: Int) -> Bool {
+    public func checkStock(fruit: Fruit, count: Int) -> Bool {
         if let nowCount = store[fruit], nowCount >= count {
             return true
         }
         return false
     }
     
-    func fruitCount(fruit: Fruit) -> Int {
+    public func fruitCount(fruit: Fruit) -> Int {
         if let nowCount =  store[fruit] {
             return nowCount
         }
         return 0
+    }
+    
+    public func updateFruitStore(fruitStore: Dictionary<Fruit, Int>) {
+        store = fruitStore
     }
 }
 
