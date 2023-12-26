@@ -27,8 +27,7 @@ final class FruitStoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        setStockLabelUI()
-        setStepperValue()
+        setUpContents()
     }
     
     init?(fruitStore: FruitStore, coder: NSCoder) {
@@ -41,15 +40,15 @@ final class FruitStoreViewController: UIViewController {
     }
     
     private func configureUI() {
-        self.navigationItem.hidesBackButton = true
-        self.navigationItem.title = "재고추가"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "닫기",
+        navigationItem.hidesBackButton = true
+        navigationItem.title = "재고추가"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "닫기",
                                                                  style: .plain,
                                                                  target: self,
                                                                  action: #selector(tappedCloseButton))
     }
     
-    private func setStockLabelUI() {
+    private func setUpContents() {
         guard
             let strawberryStock = fruitStore.fruitStocks[.strawberry],
             let bananaStock = fruitStore.fruitStocks[.banana],
@@ -64,18 +63,7 @@ final class FruitStoreViewController: UIViewController {
         pineappleStockLabel.text = String(pineappleStock)
         kiwiStockLabel.text = String(kiwiStock)
         mangoStockLabel.text = String(mangoStock)
-    }
-    
-    private func setStepperValue() {
-        guard
-            let strawberryStock = fruitStore.fruitStocks[.strawberry],
-            let bananaStock = fruitStore.fruitStocks[.banana],
-            let pineappleStock = fruitStore.fruitStocks[.pineapple],
-            let kiwiStock = fruitStore.fruitStocks[.kiwi],
-            let mangoStock = fruitStore.fruitStocks[.mango]
-        else {
-            return
-        }
+        
         strawberryStepper.value = Double(strawberryStock)
         bananaStepper.value = Double(bananaStock)
         pinappleStepper.value = Double(pineappleStock)
