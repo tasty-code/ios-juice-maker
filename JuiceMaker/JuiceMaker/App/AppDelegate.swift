@@ -10,20 +10,28 @@ import UIKit
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
+    var coordinator: AppCoordinator?
+    
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        let fruitStore = FruitStore(initialCount: 10)
-        let viewController = JuiceMakerViewController.instantiate(fruitStore: fruitStore)
-        let rootViewController = UINavigationController(rootViewController: viewController)
-        
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = rootViewController
+        
+        let navigationController = UINavigationController()
+        window.rootViewController = navigationController
+        
+        let fruitStore = FruitStore(initialCount: 10)
+        let coordinator = AppCoordinator(
+            navigationController: navigationController,
+            fruitStore: fruitStore
+        )
+        coordinator.start()
+        self.coordinator = coordinator
+        
         window.makeKeyAndVisible()
         self.window = window
         
         return true
     }
 }
-

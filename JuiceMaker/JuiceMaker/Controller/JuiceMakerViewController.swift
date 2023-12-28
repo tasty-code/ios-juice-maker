@@ -7,11 +7,9 @@
 import UIKit
 
 final class JuiceMakerViewController: UIViewController {
-    private let stockDisplayUseCase: StockDisplay?
-    
     private let juiceMakerUseCase: JuiceMaker?
     
-    private let router: JuiceMakerRoutable?
+    private weak var coordinator: JuiceMakerViewControllerDelegate?
     
     @IBOutlet private weak var strawberryStockLabel: UILabel!
     
@@ -24,24 +22,25 @@ final class JuiceMakerViewController: UIViewController {
     @IBOutlet private weak var mangoStockLabel: UILabel!
     
     required init?(coder: NSCoder) {
-        self.stockDisplayUseCase = nil
         self.juiceMakerUseCase = nil
-        self.router = nil
-        
+        self.coordinator = nil
         super.init(coder: coder)
     }
     
-    init?(coder: NSCoder, fruitStore: FruitStore) {
-        self.stockDisplayUseCase = StockDisplay(fruitStore: fruitStore)
-        self.juiceMakerUseCase = JuiceMaker(fruitStore: fruitStore)
-        self.router = JuiceMakerRouter(dataStore: fruitStore)
+    private init?(
+        coder: NSCoder,
+        juiceMakerUseCase: JuiceMaker,
+        coordinator: JuiceMakerViewControllerDelegate
+    ) {
+        self.juiceMakerUseCase = juiceMakerUseCase
+        self.coordinator = coordinator
         super.init(coder: coder)
         setUpLayers()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        stockDisplayUseCase?.displayStock()
+        juiceMakerUseCase?.displayStock()
     }
 }
 
@@ -75,58 +74,79 @@ extension JuiceMakerViewController {
     }
     
     @IBAction private func didTapStockManager(_ sender: UIBarButtonItem) {
-        self.router?.routeToNextViewController()
+        self.coordinator?.startStockManaging()
     }
 }
 
 extension JuiceMakerViewController {
     private func setUpLayers() {
-        let stockDisplayConverter = StockDisplayResultConverter()
-        self.stockDisplayUseCase?.resultConverter = stockDisplayConverter
-        stockDisplayConverter.display = self
-        
         let juiceConverter = JuiceMakerResultConverter()
         self.juiceMakerUseCase?.resultConverter = juiceConverter
         juiceConverter.display = self
-        
-        self.router?.sourceViewController = self
     }
 }
 
 extension JuiceMakerViewController: StoryboardBased {
-    static func instantiate(fruitStore: FruitStore) -> Self {
-        return sceneStoryboard.instantiateViewController(
-            identifier: storyboardIdentifier
-        ) { coder in
-            return Self.init(coder: coder, fruitStore: fruitStore)
+    static func instantiate(
+        juiceMakerUseCase: JuiceMaker,
+        coordinator: JuiceMakerViewControllerDelegate
+    ) -> Self {
+        return sceneStoryboard.instantiateViewController(identifier: storyboardIdentifier) { coder in
+            return Self.init(
+                coder: coder,
+                juiceMakerUseCase: juiceMakerUseCase,
+                coordinator: coordinator
+            )
         }
     }
 }
 
 extension JuiceMakerViewController: StockDisplayResultDisplayable {
     func displayStock(viewModel: StockDisplayModel.ViewModel) {
-        guard let eachFruitCount = viewModel.countOfEachFruits else { return }
-        
-        self.strawberryStockLabel.text = "\(eachFruitCount.strawberryCount)"
-        self.bananaStockLabel.text = "\(eachFruitCount.bananaCount)"
-        self.pineappleStockLabel.text = "\(eachFruitCount.pineappleCount)"
-        self.kiwiStockLabel.text = "\(eachFruitCount.kiwiCount)"
-        self.mangoStockLabel.text = "\(eachFruitCount.mangoCount)"
+        switch viewModel {
+        case .success(let eachFruitCount):
+            self.strawberryStockLabel.text = "\(eachFruitCount.strawberryCount)"
+            self.bananaStockLabel.text = "\(eachFruitCount.bananaCount)"
+            self.pineappleStockLabel.text = "\(eachFruitCount.pineappleCount)"
+            self.kiwiStockLabel.text = "\(eachFruitCount.kiwiCount)"
+            self.mangoStockLabel.text = "\(eachFruitCount.mangoCount)"
+        case .failure:
+            return
+        }
     }
 }
 
 extension JuiceMakerViewController: JuiceMakerResultDisplayable {
     func displayMakingResult(viewModel: JuiceMakerModel.ViewModel) {
-        guard let juiceName = viewModel.juiceName else {
+        switch viewModel {
+        case .sucess(let successInfo):
+            successInfo.updatedStocks.forEach { (fruit, updatedCount) in
+                updateStockLabel(of: fruit, with: updatedCount)
+            }
+            present(JuiceMakerAlert.juiceIsReady(juiceName: successInfo.juiceName).alertController, animated: true)
+        case .failure:
             let action: AlertActionHandler = { [weak self] _ in
-                self?.router?.routeToNextViewController()
+                self?.coordinator?.startStockManaging()
             }
             present(JuiceMakerAlert.fruitShortage(editAction: action).alertController, animated: true)
-            return
         }
-        
-        stockDisplayUseCase?.displayStock()
-        
-        present(JuiceMakerAlert.juiceIsReady(juiceName: juiceName).alertController, animated: true)
+    }
+    
+    private func updateStockLabel(of fruit: Fruit, with updatedCount: Int) {
+        switch fruit {
+        case .strawberry: self.strawberryStockLabel.text = "\(updatedCount)"
+        case .banana: self.bananaStockLabel.text = "\(updatedCount)"
+        case .pineapple: self.pineappleStockLabel.text = "\(updatedCount)"
+        case .kiwi: self.kiwiStockLabel.text = "\(updatedCount)"
+        case .mango: self.mangoStockLabel.text = "\(updatedCount)"
+        }
+    }
+}
+
+// MARK: - ModalViewControllerDismissingHandlable Implementation
+
+extension JuiceMakerViewController: ModalViewControllerDismissingHandlable {
+    func juiceMakerViewControllerWillAppear() {
+        self.juiceMakerUseCase?.displayStock()
     }
 }
