@@ -29,7 +29,7 @@ final class JuiceMakerCoordinator: Coordinator {
 
 // MARK: - JuiceMakerViewControllerDelegate Implementation
 
-protocol JuiceMakerViewControllerDelegate {
+protocol JuiceMakerViewControllerDelegate: AnyObject {
     func startStockManaging()
 }
 
@@ -39,7 +39,7 @@ extension JuiceMakerCoordinator: JuiceMakerViewControllerDelegate {
             navigationController: self.navigationController,
             fruitStore: self.fruitStore
         )
-        coordinator.coordinator = self
+        coordinator.parentCoordinator = self
         coordinator.start()
         self.childCoordinators.append(coordinator)
     }
@@ -53,9 +53,7 @@ protocol StockManagerCoordinatorDelegate {
 
 extension JuiceMakerCoordinator: StockManagerCoordinatorDelegate {
     func didEndStockManaging(_ coordinator: StockManagerCoordinator) {
-        // 1. remove useless child coordinator
         self.childCoordinators = self.childCoordinators.filter { $0 !== coordinator }
-        // 2. handle juice maker apppearance
         handleJuiceMakerViewControllerVisibility()
     }
     

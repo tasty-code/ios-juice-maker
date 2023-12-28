@@ -6,6 +6,8 @@
 //
 
 struct FruitStock {
+    static let minimumStoctCount: Int = 0
+    
     let fruitType: Fruit
     
     let count: Int
@@ -22,7 +24,7 @@ struct FruitStock {
     }
     
     func updateCount(to newCount: Int) throws -> FruitStock {
-        guard newCount >= 0 else { throw JuiceMakerError.invalidStockCount }
+        guard newCount >= Self.minimumStoctCount else { throw JuiceMakerError.invalidStockCount }
         return .init(fruitType: self.fruitType, count: newCount)
     }
 }

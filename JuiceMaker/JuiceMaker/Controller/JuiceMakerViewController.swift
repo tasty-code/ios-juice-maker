@@ -9,7 +9,7 @@ import UIKit
 final class JuiceMakerViewController: UIViewController {
     private let juiceMakerUseCase: JuiceMaker?
     
-    private let coordinator: JuiceMakerViewControllerDelegate?
+    private weak var coordinator: JuiceMakerViewControllerDelegate?
     
     @IBOutlet private weak var strawberryStockLabel: UILabel!
     

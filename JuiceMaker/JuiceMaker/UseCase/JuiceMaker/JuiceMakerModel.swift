@@ -30,7 +30,6 @@ enum JuiceMakerModel {
 enum StockDisplayModel {
     enum Response {
         case success([FruitStock])
-//        case failure
     }
     
     enum ViewModel {

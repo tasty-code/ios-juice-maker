@@ -10,7 +10,7 @@ import UIKit
 final class StockManagerViewController: UIViewController {
     private let stockManagerUseCase: StockManager?
     
-    private let coordinator: StockManagerViewControllerDelegate?
+    private weak var coordinator: StockManagerViewControllerDelegate?
     
     @IBOutlet private weak var strawberryStockLabel: UILabel!
     
@@ -38,7 +38,7 @@ final class StockManagerViewController: UIViewController {
         super.init(coder: coder)
     }
     
-    init?(
+    private init?(
         coder: NSCoder,
         stockManagerUseCase: StockManager,
         coordinator: StockManagerViewControllerDelegate?
