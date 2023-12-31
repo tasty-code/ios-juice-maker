@@ -77,10 +77,10 @@ final class JuiceMakerViewController: UIViewController {
         present(fruitStoreViewController, animated: true)
     }
     
-    private func proceedMakingJuice(juice: Juice, labels: [UILabel]) {
+    private func proceedMakingJuice(juice: Juice) {
         do {
             try startJuiceMakerProcess(juice: juice)
-            updateStockLabels(juice: juice, labels: labels)
+            setUpContents()
         } catch {
             showJuiceMakerAlert(message: error.localizedDescription,
                                 actions: [
@@ -96,46 +96,32 @@ final class JuiceMakerViewController: UIViewController {
         }
     }
     
-    private func updateStockLabels(juice: Juice, labels: [UILabel]) {
-        let sortedJuiceRecipe = juice.recipe.sorted { firstIngredient, secondIngredient in
-            firstIngredient.value > secondIngredient.value
-        }
-        for (index, ingredient) in sortedJuiceRecipe.enumerated() {
-            guard
-                let remainStock = fruitStore.fruitStocks[ingredient.key]
-            else {
-                return
-            }
-            labels[index].text = String(remainStock)
-        }
-    }
-    
     @IBAction private func tappedStrawberryBananaJuiceButton(_ sender: UIButton) {
-        proceedMakingJuice(juice: .strawberryBananaJuice, labels: [strawberryStockLabel, bananaStockLabel])
+        proceedMakingJuice(juice: .strawberryBananaJuice)
     }
     
     @IBAction private func tappedMangoKiwiJuiceButton(_ sender: UIButton) {
-        proceedMakingJuice(juice: .mangoKiwiJuice, labels: [mangoStockLabel, kiwiStockLabel])
+        proceedMakingJuice(juice: .mangoKiwiJuice)
     }
     
     @IBAction private func tappedStrawberryJuiceButtonTapped(_ sender: UIButton) {
-        proceedMakingJuice(juice: .strawberryJuice, labels: [strawberryStockLabel])
+        proceedMakingJuice(juice: .strawberryJuice)
     }
     
     @IBAction private func tappedBananaJuiceButtonTapped(_ sender: UIButton) {
-        proceedMakingJuice(juice: .bananaJuice, labels: [bananaStockLabel])
+        proceedMakingJuice(juice: .bananaJuice)
     }
     
     @IBAction private func tappedPineappleJuiceButtonTapped(_ sender: UIButton) {
-        proceedMakingJuice(juice: .pineappleJuice, labels: [pineappleStockLabel])
+        proceedMakingJuice(juice: .pineappleJuice)
     }
     
     @IBAction private func tappedKiwiJuiceButtonTapped(_ sender: UIButton) {
-        proceedMakingJuice(juice: .kiwiJuice, labels: [kiwiStockLabel])
+        proceedMakingJuice(juice: .kiwiJuice)
     }
     
     @IBAction private func tappedMangoJuiceButtonTapped(_ sender: UIButton) {
-        proceedMakingJuice(juice: .mangoJuice, labels: [mangoStockLabel])
+        proceedMakingJuice(juice: .mangoJuice)
     }
 }
 
