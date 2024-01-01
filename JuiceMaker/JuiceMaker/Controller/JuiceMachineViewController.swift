@@ -7,7 +7,7 @@ final class JuiceMachineViewController: UIViewController {
     @IBOutlet var juiceMachineView: JuiceMachineView!
     var juiceMaker: JuiceMaker!
     var alertDelegate: PresentationDelegate!
-    var onPushStockManageViewController: (() -> Void)?
+    var coordinator: MainCoordinator!
 
     deinit { NotificationCenter.default.removeObserver(self) }
 }
@@ -82,7 +82,7 @@ private extension JuiceMachineViewController {
     }
     
     @objc func rightBarButtonTapped() {
-        onPushStockManageViewController?()
+        coordinator?.showStockManagement()
     }
 }
 
@@ -113,7 +113,7 @@ private extension JuiceMachineViewController {
     @objc func handleError() {
         alertDelegate.presentAlert(
             with: .fruitShortage("과일을 추가하시겠습니까?")) { [weak self] _ in
-                self?.onPushStockManageViewController?()
+                self?.coordinator?.showStockManagement()
             }
     }
 }

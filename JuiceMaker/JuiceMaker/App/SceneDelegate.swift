@@ -4,6 +4,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
+    var mainCoordinator: MainCoordinator?
     let container = ViewControllerContainer.shared
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -11,17 +12,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         container.setupBindings()
 
-        let juiceMachineVC = container.resolve(JuiceMachineViewController.self)
-        let stockManageVC = container.resolve(StockManageViewController.self)
+        let navigationController = UINavigationController()
+        mainCoordinator = MainCoordinator(navigationController: navigationController, container: container)
+        mainCoordinator?.start()
 
-        let navigationVC = UINavigationController(rootViewController: juiceMachineVC)
-        
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = navigationVC
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-
-        juiceMachineVC.onPushStockManageViewController = {
-            juiceMachineVC.navigationController?.pushViewController(stockManageVC, animated: true)
-        }
     }
 }

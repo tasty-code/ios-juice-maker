@@ -6,6 +6,7 @@ final class StockManageViewController: UIViewController {
     
     @IBOutlet var stockManageView: StockManageView!
     var stockManager: StockManager!
+    var coordinator:MainCoordinator!
 }
 
 // MARK: - StockManageViewController LifeCycle
