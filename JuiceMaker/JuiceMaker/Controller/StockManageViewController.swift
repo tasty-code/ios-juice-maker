@@ -6,7 +6,9 @@ final class StockManageViewController: UIViewController {
     
     @IBOutlet var stockManageView: StockManageView!
     var stockManager: StockManager!
-    var coordinator:MainCoordinator!
+    weak var coordinator:MainCoordinator!
+    
+    deinit { print("StockManageViewController has deinit!") }
 }
 
 // MARK: - StockManageViewController LifeCycle

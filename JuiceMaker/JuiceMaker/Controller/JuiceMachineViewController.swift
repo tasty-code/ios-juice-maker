@@ -7,7 +7,7 @@ final class JuiceMachineViewController: UIViewController {
     @IBOutlet var juiceMachineView: JuiceMachineView!
     var juiceMaker: JuiceMaker!
     var alertDelegate: PresentationDelegate!
-    var coordinator: MainCoordinator!
+    weak var coordinator: MainCoordinator!
 
     deinit { NotificationCenter.default.removeObserver(self) }
 }
