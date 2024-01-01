@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		082486CA2B427AB50072490C /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082486C92B427AB50072490C /* Container.swift */; };
 		082A790D2B340EBC00F0924E /* FruitsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082A790C2B340EBC00F0924E /* FruitsType.swift */; };
 		082E3B812B22E9F00068A685 /* AlertHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082E3B802B22E9F00068A685 /* AlertHandler.swift */; };
 		08A966F32B30563A0035A7D2 /* StockManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A966F22B30563A0035A7D2 /* StockManageViewController.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		082486C92B427AB50072490C /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		082A790C2B340EBC00F0924E /* FruitsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitsType.swift; sourceTree = "<group>"; };
 		082E3B802B22E9F00068A685 /* AlertHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHandler.swift; sourceTree = "<group>"; };
 		08A966F22B30563A0035A7D2 /* StockManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockManageViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +55,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		082486C82B427A950072490C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C73DAF36255D0CDD00020D38 /* AppDelegate.swift */,
+				C73DAF38255D0CDD00020D38 /* SceneDelegate.swift */,
+				082486C92B427AB50072490C /* Container.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		C71CD66D266C7B470038B9CB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,10 +116,9 @@
 		C73DAF35255D0CDD00020D38 /* JuiceMaker */ = {
 			isa = PBXGroup;
 			children = (
-				C73DAF36255D0CDD00020D38 /* AppDelegate.swift */,
-				C73DAF38255D0CDD00020D38 /* SceneDelegate.swift */,
 				C73DAF44255D0CDF00020D38 /* Info.plist */,
 				C73DAF3F255D0CDE00020D38 /* Assets.xcassets */,
+				082486C82B427A950072490C /* App */,
 				C71CD66D266C7B470038B9CB /* Controller */,
 				C71CD66F266C7B500038B9CB /* Model */,
 				C71CD671266C7B570038B9CB /* View */,
@@ -186,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C71CD66B266C7ACB0038B9CB /* FruitStore.swift in Sources */,
+				082486CA2B427AB50072490C /* Container.swift in Sources */,
 				082E3B812B22E9F00068A685 /* AlertHandler.swift in Sources */,
 				08A966F32B30563A0035A7D2 /* StockManageViewController.swift in Sources */,
 				082A790D2B340EBC00F0924E /* FruitsType.swift in Sources */,

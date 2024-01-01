@@ -14,7 +14,7 @@ enum AlertType {
 final class AlertHandler: PresentationDelegate {
     
     private func fetchTopVC() -> UIViewController? {
-        var currentVC = UIApplication.shared.keyWindow?.rootViewController
+        var currentVC = UIApplication.shared.windows.first?.rootViewController
         while let nextVC = currentVC?.presentedViewController {
             currentVC = nextVC
         }
@@ -32,7 +32,7 @@ final class AlertHandler: PresentationDelegate {
     
     private func generateAlert(of type: AlertType) -> UIAlertController {
         let (title, message) = fetchAlertMessage(of: type)
-        var alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
         return alertView
     }
     

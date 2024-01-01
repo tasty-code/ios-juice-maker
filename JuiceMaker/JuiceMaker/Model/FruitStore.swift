@@ -11,13 +11,11 @@ extension Notification.Name {
 
 final class FruitStore {
         
-    private let limitedQuantity: Int
-    private let initialQunatity: Int
+    private let limitedQuantity = 0
+    private let initialQunatity = 10
     lazy var fruitsStock = Dictionary(uniqueKeysWithValues: FruitsType.allCases.map {($0, initialQunatity)})
     
-    init(limitedQuantity: Int, initialQunatities: Int) {
-        self.limitedQuantity = limitedQuantity
-        self.initialQunatity = initialQunatities
+    init() {
         updateStock()
     }
 }
