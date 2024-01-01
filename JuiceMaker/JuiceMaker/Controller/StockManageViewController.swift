@@ -5,8 +5,7 @@ import UIKit
 final class StockManageViewController: UIViewController {
     
     @IBOutlet var stockManageView: StockManageView!
-    var stockManager: StockManager?
-    
+    var stockManager: StockManager!
 }
 
 // MARK: - StockManageViewController LifeCycle
@@ -20,7 +19,7 @@ extension StockManageViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        stockManager?.updateStock()
+        stockManager.updateStock()
     }
 }
 
@@ -44,23 +43,23 @@ private extension StockManageViewController {
 private extension StockManageViewController {
     
     @objc func strawberryStockStepperTapped(_ sender: UIStepper) {
-        stockManager?.manageStrawberryStock(by: Int(sender.value))
+        stockManager.manageStrawberryStock(by: Int(sender.value))
     }
     
     @objc func bananaStockStepperTapped(_ sender: UIStepper) {
-        stockManager?.manageBananaStock(by: Int(sender.value))
+        stockManager.manageBananaStock(by: Int(sender.value))
     }
     
     @objc func pineappleStockStepperTapped(_ sender: UIStepper) {
-        stockManager?.managePineappleStock(by: Int(sender.value))
+        stockManager.managePineappleStock(by: Int(sender.value))
     }
     
     @objc func kiwiStockStepperTapped(_ sender: UIStepper) {
-        stockManager?.manageKiwiStock(by: Int(sender.value))
+        stockManager.manageKiwiStock(by: Int(sender.value))
     }
     
     @objc func mangoStockStepperTapped(_ sender: UIStepper) {
-        stockManager?.manageMangoStock(by: Int(sender.value))
+        stockManager.manageMangoStock(by: Int(sender.value))
     }
 }
 

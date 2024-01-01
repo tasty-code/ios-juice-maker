@@ -5,10 +5,10 @@ import UIKit
 final class JuiceMachineViewController: UIViewController {
     
     @IBOutlet var juiceMachineView: JuiceMachineView!
-    var juiceMaker: JuiceMaker?
+    var juiceMaker: JuiceMaker!
+    var alertDelegate: PresentationDelegate!
     var onPushStockManageViewController: (() -> Void)?
-    var alertDelegate: PresentationDelegate?
-    
+
     deinit { NotificationCenter.default.removeObserver(self) }
 }
 
@@ -27,7 +27,7 @@ private extension JuiceMachineViewController {
     
     func setupUI() {
         setupButtonAction()
-        juiceMaker?.updateStock()
+        juiceMaker.updateStock()
     }
     
     func setupButtonAction() {
@@ -47,38 +47,38 @@ private extension JuiceMachineViewController {
 private extension JuiceMachineViewController {
     
     @objc func ddalbaJuiceOrderButtonTapped() {
-        juiceMaker?.makeDdalbaJuice()
-        alertDelegate?.presentAelrt(with: .successJuiceOrder("딸바 주스 맛있게 드세요 :)"))
+        juiceMaker.makeDdalbaJuice()
+        alertDelegate.presentAelrt(with: .successJuiceOrder("딸바 주스 맛있게 드세요 :)"))
     }
     
     @objc func mangkiJuiceButtonTapped() {
-        juiceMaker?.makeMangkiJuice()
+        juiceMaker.makeMangkiJuice()
         alertDelegate?.presentAelrt(with: .successJuiceOrder("망키 주스 맛있게 드세요 :)"))
     }
     
     @objc func strawberryJuiceOrderButtonTapped() {
-        juiceMaker?.makeStrawberryJuice()
+        juiceMaker.makeStrawberryJuice()
         alertDelegate?.presentAelrt(with: .successJuiceOrder("딸기 주스 맛있게 드세요 :)"))
     }
     
     @objc func bananaJuiceOrderButtonTapped() {
-        juiceMaker?.makeBananaJuice()
-        alertDelegate?.presentAelrt(with: .successJuiceOrder("바나나 주스 맛있게 드세요 :)"))
+        juiceMaker.makeBananaJuice()
+        alertDelegate.presentAelrt(with: .successJuiceOrder("바나나 주스 맛있게 드세요 :)"))
     }
     
     @objc func pineappleJuiceOrderButtonTapped() {
-        juiceMaker?.makePineappleJuice()
-        alertDelegate?.presentAelrt(with: .successJuiceOrder("파인애플 주스 맛있게 드세요 :)"))
+        juiceMaker.makePineappleJuice()
+        alertDelegate.presentAelrt(with: .successJuiceOrder("파인애플 주스 맛있게 드세요 :)"))
     }
     
     @objc func kiwiJuiceOrderButtonTapped() {
-        juiceMaker?.makeKiwiJuice()
-        alertDelegate?.presentAelrt(with: .successJuiceOrder("키위 주스 맛있게 드세요 :)"))
+        juiceMaker.makeKiwiJuice()
+        alertDelegate.presentAelrt(with: .successJuiceOrder("키위 주스 맛있게 드세요 :)"))
     }
     
     @objc func mangoJuiceButtonTapped() {
-        juiceMaker?.makeMangoJuice()
-        alertDelegate?.presentAelrt(with: .successJuiceOrder("망고 주스 맛있게 드세요 :)"))
+        juiceMaker.makeMangoJuice()
+        alertDelegate.presentAelrt(with: .successJuiceOrder("망고 주스 맛있게 드세요 :)"))
     }
     
     @objc func rightBarButtonTapped() {
@@ -111,7 +111,7 @@ private extension JuiceMachineViewController {
     }
     
     @objc func handleError() {
-        alertDelegate?.presentAlert(
+        alertDelegate.presentAlert(
             with: .fruitShortage("과일을 추가하시겠습니까?")) { [weak self] _ in
                 self?.onPushStockManageViewController?()
             }
