@@ -20,24 +20,4 @@ final class Container {
         }
         return service
     }
-    
-    func setupBindings() {
-        self.bind(service: FruitStore.self) { _ in
-            FruitStore()
-        }
-        
-        self.bind(service: JuiceMaker.self) { resolver in
-            let fruitStore = resolver.resolve(FruitStore.self)
-            return JuiceMaker(fruitStore: fruitStore)
-        }
-
-        self.bind(service: StockManager.self) { resolver in
-            let fruitStore = resolver.resolve(FruitStore.self)
-            return StockManager(fruitStore: fruitStore)
-        }
-
-        self.bind(service: AlertHandler.self) { _ in
-            AlertHandler()
-        }
-    }
 }

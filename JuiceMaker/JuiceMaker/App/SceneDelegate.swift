@@ -4,12 +4,12 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
-    
+    let container = Container.shared
+
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
-        let container = Container.shared
-        container.setupBindings()
+        setupBindings()
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
@@ -33,7 +33,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 }
 
 
+// MARK: - 의존성 바인딩
+extension SceneDelegate {
+    func setupBindings() {
+        self.container.bind(service: FruitStore.self) { _ in
+            FruitStore()
+        }
+        
+        container.bind(service: JuiceMaker.self) { resolver in
+            let fruitStore = resolver.resolve(FruitStore.self)
+            return JuiceMaker(fruitStore: fruitStore)
+        }
 
+        container.bind(service: StockManager.self) { resolver in
+            let fruitStore = resolver.resolve(FruitStore.self)
+            return StockManager(fruitStore: fruitStore)
+        }
 
-
-
+        container.bind(service: AlertHandler.self) { _ in
+            AlertHandler()
+        }
+    }
+}
