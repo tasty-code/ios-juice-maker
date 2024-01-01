@@ -2,13 +2,12 @@
 import UIKit
 
 protocol PresentationDelegate {
-    func presentAlert(with type: AlertType, completion: @escaping (UIAlertAction) -> Void)
-    func presentAelrt(with type: AlertType)
-}
+    func presentAlert(with type: AlertType, title: String, message: String, completion: @escaping (UIAlertAction) -> Void)
+    func presentAelrt(with type: AlertType, title: String, message: String)}
 
 enum AlertType {
-    case successJuiceOrder(String)
-    case fruitShortage(String)
+    case successJuiceOrder
+    case fruitShortage
 }
 
 final class AlertHandler: PresentationDelegate {
@@ -20,35 +19,25 @@ final class AlertHandler: PresentationDelegate {
         }
         return currentVC ?? nil
     }
-    
-    private func fetchAlertMessage(of type: AlertType) -> (String, String) {
-        switch type {
-        case .fruitShortage(let customMessage):
-            return ("과일 부족", customMessage)
-        case .successJuiceOrder(let customMessage):
-            return ("주스 제조 성공!", customMessage)
-        }
-    }
-    
-    private func generateAlert(of type: AlertType) -> UIAlertController {
-        let (title, message) = fetchAlertMessage(of: type)
+        
+    private func generateAlert(of type: AlertType, title: String, message: String) -> UIAlertController {
         let alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
         return alertView
     }
     
-    func presentAlert(with type: AlertType, completion: @escaping (UIAlertAction) -> Void) {
+    func presentAlert(with type: AlertType, title: String, message: String, completion: @escaping (UIAlertAction) -> Void) {
         let topViewController = fetchTopVC()
         if topViewController is UIAlertController { return }
-        let alertView = generateAlert(of: type)
+        let alertView = generateAlert(of: type, title: title, message: message)
         alertView.addAction(UIAlertAction(title: "아니오", style: .default))
         alertView.addAction(UIAlertAction(title: "예", style: .default, handler: completion))
         topViewController?.present(alertView, animated: true)
     }
     
-    func presentAelrt(with type: AlertType) {
+    func presentAelrt(with type: AlertType, title: String, message: String) {
         let topViewController = fetchTopVC()
         if topViewController is UIAlertController { return }
-        let alertView = generateAlert(of: type)
+        let alertView = generateAlert(of: type, title: title, message: message)
         alertView.addAction(UIAlertAction(title: "확인", style: .default))
         topViewController?.present(alertView, animated: true)
     }

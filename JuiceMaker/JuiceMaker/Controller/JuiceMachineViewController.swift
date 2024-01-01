@@ -48,37 +48,37 @@ private extension JuiceMachineViewController {
     
     @objc func ddalbaJuiceOrderButtonTapped() {
         juiceMaker.makeDdalbaJuice()
-        alertDelegate.presentAelrt(with: .successJuiceOrder("딸바 주스 맛있게 드세요 :)"))
+        alertDelegate.presentAelrt(with: .successJuiceOrder, title: "제조 성공", message: "딸바주스 맛있게 드세요")
     }
     
     @objc func mangkiJuiceButtonTapped() {
         juiceMaker.makeMangkiJuice()
-        alertDelegate?.presentAelrt(with: .successJuiceOrder("망키 주스 맛있게 드세요 :)"))
+        alertDelegate.presentAelrt(with: .successJuiceOrder, title: "제조 성공", message: "망키주스 맛있게 드세요")
     }
     
     @objc func strawberryJuiceOrderButtonTapped() {
         juiceMaker.makeStrawberryJuice()
-        alertDelegate?.presentAelrt(with: .successJuiceOrder("딸기 주스 맛있게 드세요 :)"))
+        alertDelegate.presentAelrt(with: .successJuiceOrder, title: "제조 성공", message: "딸기주스 맛있게 드세요")
     }
     
     @objc func bananaJuiceOrderButtonTapped() {
         juiceMaker.makeBananaJuice()
-        alertDelegate.presentAelrt(with: .successJuiceOrder("바나나 주스 맛있게 드세요 :)"))
+        alertDelegate.presentAelrt(with: .successJuiceOrder, title: "제조 성공", message: "바나나주스 맛있게 드세요")
     }
     
     @objc func pineappleJuiceOrderButtonTapped() {
         juiceMaker.makePineappleJuice()
-        alertDelegate.presentAelrt(with: .successJuiceOrder("파인애플 주스 맛있게 드세요 :)"))
+        alertDelegate.presentAelrt(with: .successJuiceOrder, title: "제조 성공", message: "파인애플주스 맛있게 드세요")
     }
     
     @objc func kiwiJuiceOrderButtonTapped() {
         juiceMaker.makeKiwiJuice()
-        alertDelegate.presentAelrt(with: .successJuiceOrder("키위 주스 맛있게 드세요 :)"))
+        alertDelegate.presentAelrt(with: .successJuiceOrder, title: "제조 성공", message: "키위주스 맛있게 드세요")
     }
     
     @objc func mangoJuiceButtonTapped() {
         juiceMaker.makeMangoJuice()
-        alertDelegate.presentAelrt(with: .successJuiceOrder("망고 주스 맛있게 드세요 :)"))
+        alertDelegate.presentAelrt(with: .successJuiceOrder, title: "제조 성공", message: "망고주스 맛있게 드세요")
     }
     
     @objc func rightBarButtonTapped() {
@@ -112,7 +112,7 @@ private extension JuiceMachineViewController {
     
     @objc func handleError() {
         alertDelegate.presentAlert(
-            with: .fruitShortage("과일을 추가하시겠습니까?")) { [weak self] _ in
+            with: .fruitShortage, title: "재고부족!", message: "재고를 추가하시겠습니까?") { [weak self] _ in
                 self?.coordinator?.showStockManagement()
             }
     }
